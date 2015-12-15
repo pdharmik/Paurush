@@ -671,7 +671,7 @@
 	/** 
 	  *  Technician Grid Config begin
 	  */
-	if(${requestFormPopup.serviceRequestTechnicianXML!= null}){
+	if(${requestFormPopup.serviceRequest.serviceActivityStatus!= null && requestFormPopup.serviceRequestTechnicianXML!= null}){
 	SRTechnicianGrid = new dhtmlXGridObject('div_technicianContainer_Popup');
 	SRTechnicianGrid.setImagePath("/LexmarkServicesPortal/images/gridImgs/");
 	SRTechnicianGrid.setHeader("<spring:message code='serviceRequest.listHeader.srstatus'/>");

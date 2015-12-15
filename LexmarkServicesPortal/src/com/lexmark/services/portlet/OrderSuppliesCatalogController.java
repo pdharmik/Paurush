@@ -942,7 +942,18 @@ public class OrderSuppliesCatalogController extends BaseController {
 			
 			LOGGER.debug("agreement id"+agreementId + "Part number"+request.getParameter("partNumber") + "partType"+
 					request.getParameter("partType") + "productModel"+request.getParameter("productModel") + "producttype"+
-					request.getParameter("productType"));			
+					request.getParameter("productType"));	
+			
+			Map<String, String> quantityServicesMap;
+			Map<String, String> quantitySuppliesMap;
+			if(null != session.getAttribute("quantityServicesMap",PortletSession.APPLICATION_SCOPE)){
+				quantityServicesMap = (Map<String,String>)session.getAttribute("quantityServicesMap",PortletSession.APPLICATION_SCOPE);
+				LOGGER.debug("quantityServicesMap in catalog controller = "+quantityServicesMap);
+			}
+			if(null != session.getAttribute("quantitySuppliesMap",PortletSession.APPLICATION_SCOPE)){
+				quantitySuppliesMap = (Map<String,String>)session.getAttribute("quantitySuppliesMap",PortletSession.APPLICATION_SCOPE);
+				LOGGER.debug("quantitySuppliesMap in catalog controller = "+quantitySuppliesMap);
+			}
 			
 			ObjectDebugUtil.printObjectContent(contract,LEXLOGGER);			
 			
@@ -2251,6 +2262,8 @@ public class OrderSuppliesCatalogController extends BaseController {
 		session.removeAttribute("catalogDetailPageForm");
 		session.removeAttribute("servicePartQuantity");
 		session.removeAttribute("suppliesPartQuantity");
+		session.removeAttribute("quantityServicesMap");
+		session.removeAttribute("quantitySuppliesMap");
 		}
 		LOGGER.debug("----------------------- [OUT] confirmCatalogOrder method ----------------------");
 		if(srCreationFlag){

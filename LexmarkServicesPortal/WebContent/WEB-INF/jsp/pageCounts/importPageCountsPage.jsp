@@ -259,6 +259,8 @@ table.hdr,table.obj {
     function move(thisObject){
         var a= document.getElementById('fileContent');
         var offset = jQuery('#btnUpload').offset();
+        var widthBrowse = jQuery('#btnUpload').outerWidth();
+        a.style.width = widthBrowse + 'px';
         a.style.left = offset.left + 'px';
         a.style.top = offset.top + 'px';
 	};

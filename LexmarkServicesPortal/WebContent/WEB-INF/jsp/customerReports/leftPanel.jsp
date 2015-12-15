@@ -380,10 +380,54 @@ var indexMinus=0;
 	
 		}
 	} 
-
-	function downloadReport(id) {
+  
+  
+	var dialogFrame;
+	function initializeDialog(){
+		dialogFrame=jQuery('#fileWindow').dialog({
+			autoOpen: false,
+			title: '<spring:message code='customerReports.label.Error'/>',
+			modal: true,
+			resizable: false,
+			position: 'center',
+			height: 'auto',
+			width: 400,
+			open: function(){
+				jQuery('#fileWindow').show();
+			},
+			close: function(event,ui){
+				hideOverlay();
+				dialogFrame.dialog('destroy');					 
+				dialogFrame=null;
+			}
+		});
+	}
+	
+  var frame;
+	function downloadReport(id){
+		$('#fileFrame').contents().find("html").html('');
+		initializeDialog();
+		jQuery('#fileFrame').attr('src',"${downloadReport}&id="+id);
+		checkForFailure();
+			
+		}
+	
+	function checkForFailure(){
+		frame=$('#fileFrame');
+		frame.load(function(){
+		showOverlay();	
+		
+		var htmlContent=frame.contents().find("html").html();
+		
+		if(htmlContent.indexOf("EXCEPTION_PAGE_COUNTS_FILE_NOT_FOUND")!=-1){
+			dialogFrame.dialog('open');
+			}
+		});
+	}
+	/* function downloadReport(id) {
 		var dnldUrl = "${downloadReport}";
 		dnldUrl = dnldUrl + "&id=" + id;
 		window.open(dnldUrl);
-	}
+	} */
+	
 </script>

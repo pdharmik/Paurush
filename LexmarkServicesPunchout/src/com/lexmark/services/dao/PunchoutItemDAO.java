@@ -171,14 +171,26 @@ public class PunchoutItemDAO {
 		String description = null;
 		String manufactureId = null;
 		String prdQty = null;
+		String contractNo = "";
+		String sapLineId = "";
 		for(Object _cartItem:_sform.getCartItems()){
 						
 			description=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.DESCRIPTION.getValue(cartType));
 			unitPrice = (BigDecimal)ControllerUtil.readProperty(_cartItem, BeanFieldNames.PRICE.getValue(cartType));
-			supplierPartId=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.ID.getValue(cartType));
+			//supplierPartId=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.ID.getValue(cartType));
 			manufactureId=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.PRODUCTID.getValue(cartType));
 			prdQty=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.QUANTITY.getValue(cartType));
 			
+			contractNo=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.CONTRACTNO.getValue("printers"));
+			sapLineId=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.SAPLINEID.getValue("printers"));
+			LOGGER.debug("contractNo Number ------------------------>>>>" +contractNo);
+			LOGGER.debug("sapLineId Number ------------------------>>>>" +sapLineId);
+			if (contractNo != null && sapLineId !=null){
+				supplierPartId=contractNo+sapLineId;
+			}else{
+				supplierPartId=null;
+			}
+			LOGGER.debug("CPN Number ------------------------>>>>" +supplierPartId);
 			if(cartType.equalsIgnoreCase("printers"))
 			{
 				if(supplierPartId == null)

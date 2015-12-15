@@ -234,11 +234,11 @@
 		                           	<tr>					 <td><spring:message code='lbs.label.product'/></td><td>{{assetProduct}}</td></tr>
 		                           <tr class="tableRowShade"><td><spring:message code='lbs.label.installdate'/>:</td><td>{{assetInstallDate}}</td></tr>
 		                           <tr>						 <td><spring:message code='lbs.label.modeltype_family'/>:</td><td>{{modelTypeFamily}}</td></tr>
-		                           <tr> <td><spring:message code='lbs.label.producttype'/>:</td><td>{{productType}}</td></tr>
-		                           <tr class="tableRowShade"><td><spring:message code='lbs.label.productseries'/>:</td><td>{{productSeries}}</td></tr>
-		                           <tr><td><spring:message code='lbs.label.brand'/>:</td><td>{{brand}}</td></tr>
-		                           <tr class="tableRowShade"><td><spring:message code='lbs.label.color_mono'/>:</td><td>{{{productTypeHelper colorMono}}}</td></tr>
-		                           <tr><td><spring:message code='lbs.label.single_mfp'/>:</td><td>{{{productTypeHelper singleMFP}}}</td></tr>
+		                           <tr class="tableRowShade"> <td><spring:message code='lbs.label.producttype'/>:</td><td>{{productType}}</td></tr>
+		                           <tr ><td><spring:message code='lbs.label.productseries'/>:</td><td>{{productSeries}}</td></tr>
+		                           <tr class="tableRowShade"><td><spring:message code='lbs.label.brand'/>:</td><td>{{brand}}</td></tr>
+		                           <tr><td><spring:message code='lbs.label.color_mono'/>:</td><td>{{{productTypeHelper colorMono}}}</td></tr>
+		                           <tr class="tableRowShade"><td><spring:message code='lbs.label.single_mfp'/>:</td><td>{{{productTypeHelper singleMFP}}}</td></tr>
 		                           
 		                           <tr><td><spring:message code='lbs.label.department'/>:</td><td>{{department}}</td></tr>
 		                           <tr class="tableRowShade"><td><spring:message code='lbs.label.meterreadtype_manual_vs_automated'/>:</td><td>{{meterReadType}}</td></tr>

@@ -69,7 +69,7 @@ div.gridbox_light .xhdr {
 <script type="text/javascript">
 
 var today = new Date();
-var timezone = 0 - today.getTimezoneOffset()/60;
+var timezone = today.getTimezoneOffset()/60;
 document.getElementById("localizedBeginDate").value = localizeDate(todayStr);
 document.getElementById("localizedEndDate").value = localizeDate(todayStr);
 

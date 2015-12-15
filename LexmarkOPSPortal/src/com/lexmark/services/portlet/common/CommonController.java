@@ -1031,10 +1031,20 @@ public class CommonController extends BaseController{
 					suppliesPartQuantity = accountList.get(i).getQuantitySupplies();
 				}
 			}
-			portletSession.setAttribute("servicePartQuantity", servicePartQuantity ,PortletSession.APPLICATION_SCOPE);
-			portletSession.setAttribute("suppliesPartQuantity", suppliesPartQuantity ,PortletSession.APPLICATION_SCOPE);
+			
+				portletSession.setAttribute("servicePartQuantity", servicePartQuantity ,PortletSession.APPLICATION_SCOPE);
+				portletSession.setAttribute("suppliesPartQuantity", suppliesPartQuantity ,PortletSession.APPLICATION_SCOPE);			
+			
 			LOGGER.debug("servicePartQuantity set in session =================== "+servicePartQuantity);
 			LOGGER.debug("suppliesPartQuantity set in session =================== "+suppliesPartQuantity);
+			
+		    Map<String, String> quantityServicesMap = new HashMap<String, String>();
+		    Map<String, String> quantitySuppliesMap = new HashMap<String, String>();
+		    quantityServicesMap= accountFlagResult.getQuantityServicesMap();
+		    quantitySuppliesMap= accountFlagResult.getQuantitySuppliesMap();
+		    portletSession.setAttribute("quantityServicesMap", quantityServicesMap ,PortletSession.APPLICATION_SCOPE);
+			portletSession.setAttribute("quantitySuppliesMap", quantitySuppliesMap ,PortletSession.APPLICATION_SCOPE);	
+			
 			if(accountList.size()==1) {
 				LOGGER.debug("accountList size is 1");
 				singleAccount = true;
@@ -2049,12 +2059,23 @@ public class CommonController extends BaseController{
 				List<Account> siebelAccountList=siebelAccountListResult.getAccountList();
 				LOGGER.debug("siebel account list size="+siebelAccountList.size());
 				//As there would be one Account
+				String servicePartQuantity = "";
+				String suppliesPartQuantity = "";
 				if(siebelAccountList.get(0)!=null){
 					accountDetailsValues.put(ChangeMgmtConstant.CATALOG_ENTITLEMENT_FLAG,String.valueOf(siebelAccountList.get(0).isCatalogEntitlementFlag()));
 					accountDetailsValues.put(ChangeMgmtConstant.ASSET_ENTITLEMENT_FLAG,String.valueOf(siebelAccountList.get(0).isAssetEntitlementFlag()));
 					accountDetailsValues.put(ChangeMgmtConstant.REQUESTEXPEDITE,String.valueOf(siebelAccountList.get(0).isCatalogExpediteFlag()));
 					LOGGER.debug("Catalog entitlement flag "+siebelAccountList.get(0).isCatalogEntitlementFlag());
 					LOGGER.debug("Asset entitlement flag "+siebelAccountList.get(0).isAssetEntitlementFlag());
+					LOGGER.debug("Service qty is === "+siebelAccountList.get(0).getQuantityServices());
+					LOGGER.debug("Supplies qty is === "+siebelAccountList.get(0).getQuantitySupplies());
+					if(null != siebelAccountList.get(0).getQuantityServices()){
+						servicePartQuantity = siebelAccountList.get(0).getQuantityServices();
+					}				
+					if(null != siebelAccountList.get(0).getQuantitySupplies()){
+						suppliesPartQuantity = siebelAccountList.get(0).getQuantitySupplies();
+					}					
+					
 				}else{
 					LOGGER.debug("Siebel accout list is nulll ...");
 					
@@ -2062,6 +2083,11 @@ public class CommonController extends BaseController{
 					accountDetailsValues.put(ChangeMgmtConstant.ASSET_ENTITLEMENT_FLAG,"false");
 					accountDetailsValues.put(ChangeMgmtConstant.REQUESTEXPEDITE,"false");
 				}	
+				
+				portletSession.setAttribute("servicePartQuantity", servicePartQuantity ,PortletSession.APPLICATION_SCOPE);
+				portletSession.setAttribute("suppliesPartQuantity", suppliesPartQuantity ,PortletSession.APPLICATION_SCOPE);
+				LOGGER.debug("Partner Portal servicePartQuantity set in session =================== "+servicePartQuantity);
+				LOGGER.debug("Partner Portal suppliesPartQuantity set in session =================== "+suppliesPartQuantity);
 				
 			}catch(Exception e){
 				LOGGER.debug("Exception occured while retrieving account flags for partner portal");
