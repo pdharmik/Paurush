@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="MeterReadStatus" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>Siebel BO</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>Employee</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>Contact Attachment</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>comments</value></key>
+	         		<value>Comment</value>
+				</entry>
+				<entry>
+	         		<key><value>submittedOn</value></key>
+	         		<value>ContactFileDate</value>
+				</entry>
+				<entry>
+	         		<key><value>fileName</value></key>
+	         		<value>ContactFileName</value>
+				</entry>
+				<entry>
+	         		<key><value>fileSize</value></key>
+	         		<value>ContactFileSize</value>
+				</entry>
+				<entry>
+	         		<key><value>completedOn</value></key>
+	         		<value>LXK UP Completed On Date</value>
+				</entry>		
+				<entry>
+	         		<key><value>status</value></key>
+	         		<value>LXK UP Status</value>
+				</entry>	
+				<entry>
+	         		<key><value>category</value></key>
+	         		<value>LXM Attachment Classification</value>
+				</entry>	
+				<entry>
+	         		<key><value>contactId</value></key>
+	         		<value>Contact Id</value>
+				</entry>
+				<entry>
+	         		<key><value>fileExt</value></key>
+	         		<value>ContactFileExt</value>
+				</entry>
+				<entry>
+	         		<key><value>bulkUploadStartDate</value></key>
+	         		<value>Created</value>
+				</entry>
+	
+	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

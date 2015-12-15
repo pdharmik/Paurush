@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="http://schemas.lexmark.com/ecm/dctmwebservice/ecmschema/1.0"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.lexmark.com/ecm/dctmwebservice/ecmschema/1.0"
+	version="1.0">
+
+	<xs:element name="ECMServiceException" type="tns:ECMServiceException" />
+
+	<xs:element name="query" type="tns:query" />
+	<xs:element name="queryResponse" type="tns:queryResponse" />
+
+
+	<!-- Document Related Elements-->
+
+
+	<!-- Create Document -->
+	<xs:element name="createDocument" type="tns:createDocument" />
+	<xs:element name="createDocumentResponse" type="tns:createDocumentResponse" />
+
+	<!-- Update Document -->
+	<xs:element name="updateObject" type="tns:updateObject" />
+	<xs:element name="updateObjectResponse" type="tns:updateObjectResponse" />
+
+	<!-- Delete Document -->
+	<xs:element name="deleteDocument" type="tns:deleteDocument" />
+	<xs:element name="deleteDocumentResponse" type="tns:deleteDocumentResponse" />
+	
+	<!-- Future Place holder got getDocuments -->
+	
+	<xs:element name="getDocument" type="tns:getDocument"/>
+    <xs:element name="getDocumentResponse" type="tns:getDocumentResponse"/>
+    
+    
+    <xs:complexType name="getDocument">
+		<xs:sequence>
+			<xs:element name="properties" type="xs:string" nillable="false"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="getDocumentResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:base64Binary" nillable="false"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<!--  Folder Related Document -->
+
+
+	<!-- Create Folder -->
+	<xs:element name="createFolder" type="tns:createFolder" />
+	<xs:element name="createFolderResponse" type="tns:createFolderResponse" />
+
+	<!-- Move Content-->
+	<xs:element name="moveContent" type="tns:moveContent" />
+	<xs:element name="moveContentResponse" type="tns:moveContentResponse" />
+	
+	
+
+
+	<!-- Delete Folder -->
+	<xs:element name="deleteFolder" type="tns:deleteFolder" />
+	<xs:element name="deleteFolderResponse" type="tns:deleteFolderResponse" />
+
+
+	<xs:element name="DocumentumSecurityToken" type="tns:DocumentumSecurityToken" />
+
+	<xs:element name="authenticate" type="tns:authenticate" />
+	<xs:element name="authenticateResponse" type="tns:authenticateResponse" />
+
+
+	<xs:complexType name="ECMServiceException">
+		<xs:sequence>
+			<xs:element name="message" type="xs:string" nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+
+	<xs:complexType name="authenticate">
+		<xs:sequence>
+			<xs:element name="repository" type="xs:string" nillable="false" />
+			<xs:element name="serviceuser" type="xs:string" nillable="false" />
+			<xs:element name="user" type="xs:string" nillable="false" />
+			<xs:element name="serviceuserpassword" type="xs:string"
+				nillable="false" />
+			<xs:element name="application" type="xs:string"
+				nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="authenticateResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:string" nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+
+
+
+
+	<xs:complexType name="query">
+		<xs:sequence>
+			<xs:element name="dqlquery" type="xs:string" nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="queryResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:string" nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<!-- Document Related -->
+
+	<xs:complexType name="createDocument">
+		<xs:sequence>
+			<xs:element name="properties" type="xs:string" nillable="false" />
+			<xs:element name="content" type="xs:base64Binary"
+				nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="createDocumentResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:string" nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:complexType name="updateObject">
+		<xs:sequence>
+			<xs:element name="properties" type="xs:string" nillable="false" />
+			<xs:element name="content" type="xs:base64Binary"
+				nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="updateObjectResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:string" nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="deleteDocument">
+		<xs:sequence>
+			<xs:element name="properties" type="xs:string" nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="deleteDocumentResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:string" nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<!--  Folder Related -->
+	<xs:complexType name="moveContent">
+		<xs:sequence>
+			<xs:element name="properties" type="xs:string" nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="moveContentResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:string" nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+
+
+	<xs:complexType name="createFolder">
+		<xs:sequence>
+			<xs:element name="properties" type="xs:string" nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="createFolderResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:string" nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="deleteFolder">
+		<xs:sequence>
+			<xs:element name="properties" type="xs:string" nillable="false" />
+		
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="deleteFolderResponse">
+		<xs:sequence>
+			<xs:element name="return" type="xs:string" nillable="false" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="DocumentumSecurityToken">
+		<xs:sequence>
+			<xs:element name="token" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>

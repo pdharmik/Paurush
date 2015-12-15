@@ -1,0 +1,127 @@
+/* This CSS sets the default styles for forms. */
+
+fieldset {
+	border: 1px solid #BFBFBF;
+	padding: 8px;
+}
+
+.ie fieldset {
+	padding-top: 0;
+}
+
+legend {
+	font-weight: bold;
+	padding: 0 6px;
+}
+
+input {
+	background: #FFF;
+}
+
+input[type="file"], input[type="reset"], select, textarea, .textarea {
+	border-top:1px solid #bfbfbf;
+	border-left:1px solid #bfbfbf;
+	border-bottom:1px solid #dedede;
+	border-right:1px solid #dedede;
+	font: 1em Arial,Helvetica,Verdana,sans-serif;
+	padding: 5px 1px;
+}
+
+input[type="text"], input[type="password"] {
+	padding:5px 7px;
+	background-color:#fff;
+	border-top:1px solid #bfbfbf;
+	border-left:1px solid #bfbfbf;
+	border-bottom:1px solid #dedede;
+	border-right:1px solid #dedede;
+	outline: 0;	
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -pie-lazy-init:true;
+    zoom:1;
+}
+
+select {
+	padding: 1px;
+}
+
+input[type="image"] {
+	background: transparent none;
+	border: none;
+	padding: 0;
+}
+
+input[type="submit"], input[type="submit"]:hover, input[type="submit"]:focus,
+input[type="submit"].button, input[type="submit"].button:hover, input[type="submit"].button:focus
+input[type="reset"], input[type="reset"]:hover, input[type="reset"]:focus,
+input[type="reset"].button, input[type="reset"].button:hover, input[type="reset"].button:focus
+input[type="button"], input[type="button"]:hover, input[type="button"]:focus,
+input[type="button"].button, input[type="button"].button:hover, input[type="button"].button:focus {
+	cursor: pointer;
+	padding:1px 1em;
+	font-size: 11px;
+	text-transform: uppercase;
+	background-image: none;
+    line-height: 14px;
+	border-radius: 12px;
+	-moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -pie-lazy-init:true;
+    zoom:1;
+
+	background-color: #286898;
+	border: 0;
+	color: #fff;
+}
+
+	
+input[type="reset"]:hover, input[type="reset"]:focus {
+	background: #DFF4FF;
+	border: 1px solid #A7CEDF;
+	color: #369;
+}
+
+/* ---------- IE6 chokes on attribute selectors in a chain, so we separate them into their own rule ---------- */
+
+.ie6 input.text, .ie6 input.password, .ie6 input.file {
+	padding:3px 7px;
+	background-color:#fff;
+	border-top:1px solid #bfbfbf;
+	border-left:1px solid #bfbfbf;
+	border-bottom:1px solid #dedede;
+	border-right:1px solid #dedede;
+	outline: 0;
+}
+
+.ie6 input.submit, .ie6 input.button {
+	cursor: pointer;
+	padding:4px 7px;
+	background-color: #286898;
+	border: 0;
+	color: #fff;
+	font-size: 11px;
+	text-transform: uppercase;
+	background-image: none;
+	line-height:14px;
+}
+
+.ie6 input.button_cancel {
+	cursor: pointer;
+	padding:4px 7px;
+	background-color: #286898;
+	border: 0;
+	color: #fff;
+	font-size: 11px;
+	text-transform: uppercase;
+	background-image: none;
+}
+
+/*------  Defect #2448 ------*/
+@media screen and (-webkit-min-device-pixel-ratio:0)
+	{
+		input[type="submit"], input[type="submit"]:hover, input[type="button"], input[type="button"]:hover  {
+			line-height:14px !important;
+			padding:4px 7px !important;
+		}
+	}

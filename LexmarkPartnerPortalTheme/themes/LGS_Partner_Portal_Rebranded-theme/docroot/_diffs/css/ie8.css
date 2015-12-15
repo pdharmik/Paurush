@@ -1,0 +1,39 @@
+/* IE8 Specific Stylesheet                   */
+/*                                           */
+/* Buttons and input fields receive CSS3 PIE */
+/* styling to achieve rounded corners        */
+
+.button, .all_button, .star_button, .button_cancel, #loginCancelBtn, input[type="text"], input[type="password"], input[type="button"], input[type="submit"] {
+	position: relative;
+	behavior: url(/LGS_Partner_Portal_Rebranded-theme/css/PIE.htc);
+}
+
+.button_cancel input[type="button"], .button_cancel input[type="button"]:hover {
+	padding:4px 7px !important;
+}
+
+.simpleDeviceFinderTableRow td{
+	position: relative;
+}
+
+.simpleDeviceFinderTableRow #txtSearchValue{
+	position: absolute; 
+	top: -3px; 
+	left: 185px;
+	width: 140px;
+}
+
+.simpleDeviceFinderTableRow #btnSearch{
+	position: absolute; 
+	top: -3px; 
+	left: 356px;
+}
+.uni-form input[type="submit"] {
+	padding-left:10px;
+	padding-right:10px;
+}
+/*----- Fix for Defect for 2416 -----*/
+#EditButton .button {
+	padding:2px 7px !important;
+}
+

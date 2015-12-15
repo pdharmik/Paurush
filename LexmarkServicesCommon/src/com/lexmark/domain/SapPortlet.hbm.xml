@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.lexmark.domain">
+	<class name="SapPortlet" table="SAP_PORTLET" lazy="false">
+	   	<id name="id" column="URL_ID" type="integer" unsaved-value="null">
+   			<generator class="native"/>
+   		</id>
+	   	<property name="headerType" column="HEADER_TYPE" type="string" length="10" not-null="false"/>
+		<property name="maxLinksAllowed" column="MAX_LINKS_ALLOWED" type="string" length="10" not-null="false"/>
+		<property name="height" column="HEIGHT" type="string" length="10" not-null="false"/>
+		<property name="width" column="WIDTH" type="string" length="10" not-null="false"/>
+		<property name="languageSupport" column="LANGUAGE_SUPPORT" type="string" length="1" not-null="false"/>
+		<property name="gridFunctionalityName" column="GRID_FUNCTIONALITY_NAME" type="string" length="10" not-null="false"/>
+		<property name="gridFunctionalityURL" column="GRID_FUNCTIONALITY_URL" type="string" length="10" not-null="false"/>
+		<bag name="sapPortletURLs" lazy="false" cascade="all-delete-orphan" inverse="true" >
+			<key column="URL_ID"></key>
+			<one-to-many class="SapPortletURL"></one-to-many>
+		</bag>		
+	</class>
+	
+	<class name="SapPortletURL" table="SAP_PORTLET_URL" lazy="false">
+		<id name="id" column="ID" type="integer" unsaved-value="null">
+   			<generator class="native"/>
+   		</id>
+   		<property name="functionalityName" column="FUNCTIONALITY_NAME" length="255" type="string" not-null="false"/>	
+		<property name="functionalityURL" column="FUNCTIONALITY_URL" length="255" type="string" not-null="false"/>
+		<property name="language" column="LANGUAGE" length="20" type="string" not-null="false"/>
+		<many-to-one name="urls" class="SapPortlet" lazy="false">
+			<column name="URL_ID" not-null="true"/>
+		</many-to-one>
+	</class>
+</hibernate-mapping>			

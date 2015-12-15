@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+<taglib>
+	<tlib-version>1.0</tlib-version>
+	<jsp-version>1.1</jsp-version>
+	<short-name>util</short-name>
+	<uri>http://lexmark.com/tld/util</uri>
+	<tag>
+		<name>dateFormat</name>
+		<tag-class>com.lexmark.taglib.DateFormat</tag-class>
+		<attribute>
+			<name>value</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>The date will to format</description>
+		</attribute>
+		<attribute>
+			<name>showTime</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>indicates whether to show time, defaults to not show</description>
+		</attribute>
+		<attribute>
+			<name>showSecond</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>indicates whether to show second, defaults to not show</description>
+		</attribute>
+		<attribute>
+			<name>timezoneOffset</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>timezone offset of client side</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>addressOutput</name>
+		<tag-class>com.lexmark.taglib.GenericAddressOutput</tag-class>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>The address will to output</description>
+		</attribute>
+		<!-- Changes mps 2.1 to show address in constant format -->
+		<attribute>
+			<name>displayInDivs</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+			<description>The address will be shown in divs same as ServicesPortal</description>
+		</attribute>
+		
+		<!--Ends Changes mps 2.1 to show address in constant format -->
+	</tag>
+	<!-- Changes mps 2.1 to show address in constant format -->
+	<!-- Changes mps 2.1 to generate Inputs for address -->
+	<tag>
+		<name>generateAddressInputFields</name>
+		<tag-class>com.lexmark.taglib.GenerateAddressInputFields</tag-class>
+		<attribute>
+			<name>value</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Address Object </description>
+		</attribute>
+		<attribute>
+			<name>index</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>index of the input fields</description>
+		</attribute>
+		<attribute>
+			<name>preName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Pre text for the attribute name in input tag </description>
+		</attribute>
+		<attribute>
+			<name>postName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Post text for the attribute name in input tag</description>
+		</attribute>
+	</tag>
+	<!--Ends Changes mps 2.1 to generate Inputs for address -->
+	<tag>
+		<name>replaceNextLineAndSpace</name>
+		<tag-class>com.lexmark.taglib.ReplaceNextLineSpace</tag-class>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>replace the \n and space to none </description>
+		</attribute>
+	</tag>
+	<!--Ends Changes mps 2.1 to show address in constant format -->
+	<tag>
+		<name>replaceRN</name>
+		<tag-class>com.lexmark.taglib.ReplaceRN</tag-class>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>replace the \n \r to </description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>requestActionLink</name>
+		<tag-class>com.lexmark.taglib.RequestActionLink</tag-class>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>The Activuty subStatus</description>
+		</attribute>
+		<attribute>
+			<name>type</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>update or debrief</description>
+		</attribute>
+		<attribute>
+			<name>activityType</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Activity Type</description>
+		</attribute>
+		<attribute>
+			<name>debriefStatus</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Debrief Status</description>
+		</attribute>
+	</tag>
+	<tag>
+		<name>convertToGenericAddress</name>
+		<tag-class>com.lexmark.taglib.ConvertToGenericAddress</tag-class>
+		<attribute>
+			<name>addressString</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>The Address String value</description>
+		</attribute>
+		<attribute>
+			<name>attrName</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+			<description>Attribute name for which the value object will be saved</description>
+		</attribute>
+		
+	</tag>
+</taglib>

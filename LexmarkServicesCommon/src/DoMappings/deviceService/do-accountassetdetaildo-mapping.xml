@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="AccountAssetDetailDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>Siebel BO</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>Asset Management</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>Asset Mgmt - Asset</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+        <map>
+
+            <!--Input  Data-->
+
+            <entry>
+                <key><value>id</value></key>
+                <value>Id</value>
+            </entry>
+            <entry>
+                <key><value>assetId</value></key>
+                <value>Asset Id</value>
+            </entry>
+            <entry>
+                <key><value>contactId</value></key>
+                <value>Primary Contact Id</value>
+            </entry>
+
+            <!--Result Data to Populate-->
+
+            <entry>
+                <key><value>serialNumber</value></key>
+                <value>Serial Number</value>
+            </entry>
+            <entry>
+                <key><value>assetTag</value></key>
+                <value>Owner Asset Number</value>
+            </entry>
+            <entry>
+                <key><value>modelNumber</value></key>
+                <value>LXK C MTM Name</value>
+            </entry>
+            <entry>
+                <key><value>ipAddress</value></key>
+                <value>IP Address</value>
+            </entry>
+            <entry>
+                <key><value>hostName</value></key>
+                <value>Host Name</value>
+            </entry>
+            <entry>
+                <key><value>deviceTagCustomer</value></key>
+                <value>Device Tag Customer</value>
+            </entry>
+            <entry>
+                <key><value>productTLI</value></key>
+                <value>Product Name</value>
+            </entry>
+            <entry>
+                <key><value>productLine</value></key>
+                <value>LXK Product Model Name</value>
+            </entry>
+            <entry>
+                <key><value>devicePhase</value></key>
+                <value>Device Phase</value>
+            </entry>
+            <entry>
+                <key><value>macAddress</value></key>
+                <value>MAC Address</value>
+            </entry>
+            <entry>
+                <key><value>customerCostCode</value></key>
+                <value>Asset Cost Center</value>
+            </entry>
+            <entry>
+                <key><value>installDate</value></key>
+                <value>Install Date</value>
+            </entry>
+             <entry>
+                <key><value>physicalLocation1</value></key>
+                <value>Physical Location 1</value>
+            </entry>
+            <entry>
+                <key><value>physicalLocation2</value></key>
+                <value>Physical Location 2</value>
+            </entry>
+            <entry>
+                <key><value>physicalLocation3</value></key>
+                <value>Physical Location 3</value>
+            </entry>
+
+            <!--GenericAddress installAddress-->
+
+            <entry>
+                <key><value>addressName</value></key>
+                <value>Install Address Name</value>
+            </entry>
+            <entry>
+                <key><value>address1</value></key>
+                <value>LXK UP Install Address Line 1</value>
+            </entry>
+            <entry>
+                <key><value>address2</value></key>
+                <value>Install Address Line 2</value>
+            </entry>
+            <entry>
+                <key><value>address3</value></key>
+                <value>Install Address Line 3</value>
+            </entry>
+            <entry>
+                <key><value>installCity</value></key>
+                <value>Install City</value>
+            </entry>
+            <entry>
+                <key><value>installState</value></key>
+                <value>Install State</value>
+            </entry>
+            <entry>
+                <key><value>installProvince</value></key>
+                <value>Install Province</value>
+            </entry>
+            <entry>
+                <key><value>installPostalCode</value></key>
+                <value>Install Postal Code</value>
+            </entry>
+            <entry>
+                <key><value>installCountry</value></key>
+                <value>Install Country</value>
+            </entry>
+            <entry>
+                <key><value>addressId</value></key>
+                <value>Install Address ID</value>
+            </entry>
+            <entry>
+                <key><value>storeFrontName</value></key>
+                <value>LXK MPS Store Front Name</value>
+            </entry>
+
+    
+
+            <!--AccountContact  assetContact-->
+
+            <entry>
+                <key><value>contactFirstName</value></key>
+                <value>LXK SW Primary Contact First Name</value>
+            </entry>
+            <entry>
+                <key><value>contactLastName</value></key>
+                <value>LXK SW Primary Contact Last Name</value>
+            </entry>
+            <entry>
+                <key><value>contactEmailAddress</value></key>
+                <value>LXK SW Primary Contact Email</value>
+            </entry>
+            <entry>
+                <key><value>contactWorkPhone</value></key>
+                <value>LXK SW Primary Contact Work Phone</value>
+            </entry>
+            <!--Account account-->
+
+            <entry>
+                <key><value>accountId</value></key>
+                <value>Owner Account Id</value>
+            </entry>
+            <entry>
+                <key><value>accountName</value></key>
+                <value>Account Name</value>
+            </entry>
+			<!-- Missing fields -->
+			<entry>
+                <key><value>hierarchyNodeValue</value></key>
+                <value>LXK CustHierLevel Name</value>
+            </entry>
+			<entry>
+                <key><value>hierarchyNodeId</value></key>
+                <value>CHL ID</value>
+            </entry>
+            <entry>
+                <key><value>consumableAssetFlag</value></key>
+                <value>LXK MPS Consumable Flag</value>
+            </entry>
+          	<entry>
+	      		<key><value>entitlements</value></key>
+	       		<value>com.lexmark.service.impl.real.domain.ServiceAgreementProductDo</value>
+			</entry>
+			<entry>
+        		<key><value>meterReads</value></key>
+         		<value>com.lexmark.service.impl.real.domain.AssetMeasurementCharacteristicsBCDo</value>
+			</entry>
+			
+			<entry>
+				<key><value>county</value></key>
+				<value>Install County</value>
+			</entry>
+			<entry>
+				<key><value>district</value></key>
+				<value>LXK MPS Install District</value>
+			</entry>
+			<entry>
+				<key><value>officeNumber</value></key>
+				<value>LXK MPS Install House Number</value>
+			</entry>
+
+        </map>
+		</property>
+        <property name="doJoinDefsMap">
+			<map> 
+				<entry>
+					<key><value>entitlements</value></key>
+					<map>
+						<entry>
+							<key><value>assetId</value></key>  <!-- Parent ID field -->
+							<value>id</value> <!-- Child ID field-->
+						</entry>    
+					</map>
+				</entry>
+				<entry>
+					<key><value>meterReads</value></key>
+					<map>
+						<entry>
+							<key><value>assetId</value></key> 
+							<value>id</value>
+						</entry>    
+					</map>
+				</entry>
+			</map>
+		</property>     
+    </bean>  
+</beans>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="CHLAccountDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Account CHL</value>
+        </property>
+         <property name="dsTargetComponentName">
+			<value>LXK SW Account</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>name</value></key>
+	         		<value>Name</value>
+				</entry>
+			<!--	<entry>
+	         		<key><value>parentChain</value></key>
+	         		<value>Parent Chain</value>
+				</entry> -->
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>LXK SW Account Global DUNS Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>LXK SW Account Domestic DUNS Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXK SW MDM Legal Entity ID #</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXK SW MDM Account #</value>
+				</entry> 
+				<entry>
+	         		<key><value>location</value></key>
+	         		<value>Location</value>
+				</entry> 
+			<!--	<entry>
+	         		<key><value>parentAccountId</value></key>
+	         		<value>Parent Account Id</value> 
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>LXK A Top Level Account Id</value>
+				</entry> -->
+				<entry>
+	         		<key><value>chlList</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.CHLAccountCHLDo</value>
+				</entry>
+				
+			</map>
+		</property>
+		
+		<!-- join defs for contained component class refs that are from a different Data Object--> 
+	   <property name="doJoinDefsMap">
+	     	<map> 
+
+ 	       		<entry>
+	         		<key><value>chlList</value></key>
+	         		<map>
+	         			<entry>
+	         				<key><value>parentAccountId</value></key>
+	         				<value>mdmLevel5AccountId</value>
+	       	 			</entry>	
+	       	 		</map>
+	       		</entry>
+			</map>
+	   </property>
+    </bean>  
+</beans>

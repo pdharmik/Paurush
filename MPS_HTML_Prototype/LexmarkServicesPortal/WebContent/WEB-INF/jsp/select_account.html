@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Select an Account Agrrement</title>
+<link href="../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../js/util.js"></script>
+<script src="../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../js/tree/dhtmlxtree.js"></script>
+<script src="../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../js/jQuery/jquery.min.js"></script>
+<script src="../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../js/mps.js"></script>
+</head>
+<body>
+<div class="portletBlock bgSolid">
+  <div class="columnsOne">
+    <div class="columnInner">
+    <p class="info">Please select an account agreement to continue</p>
+      <div class="portlet-wrap rounded">
+        <div class="portlet-wrap-inner">
+          <div id="mygrid_container" class="gridbox gridbox_light "></div>
+        </div>
+      </div>
+      <div class="pagination"><span id="pagingArea"></span><span id="infoArea"></span></div>
+      <div class="buttonContainer" id="buttonContact">
+        <button class="button_cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+		var mygrid;  
+		var headerString = "Country,Account Name,Agreement Name,&nbsp;";
+        var ar = [["CountryName","AccountName","AgreementName",
+						"<button class=\"button\">Select</button>" ],
+						["CountryName","AccountName","AgreementName",
+						"<button class=\"button\">Select</button>" ],
+						["CountryName","AccountName","AgreementName",
+						"<button class=\"button\">Select</button>" ],
+						["CountryName","AccountName","AgreementName",
+						"<button class=\"button\">Select</button>" ],
+						["CountryName","AccountName","AgreementName",
+						"<button class=\"button\">Select</button>" ],
+						["CountryName","AccountName","AgreementName",
+						"<button class=\"button\">Select</button>" ]]; 
+		mygrid = new dhtmlXGridObject('mygrid_container');
+		mygrid.setImagePath("../../images/gridImgs/");
+		mygrid.setHeader(headerString);
+		mygrid.attachHeader("#select_filter,#text_filter,#text_filter");
+		mygrid.setInitWidths("130,130,*,80");
+		//mygrid.setColumnMinWidth("30,200,200,100,100,250,60,60,1");
+		mygrid.setColAlign("left,left,left,left");
+		mygrid.setSkin("light");
+		mygrid.setColTypes("ro,ro,ro,ro");
+		mygrid.enableAutoHeight(true);
+		mygrid.enableMultiline(true);
+		mygrid.enableColumnMove(true);
+		mygrid.init();
+		mygrid.enablePaging(true, 5, 2, "pagingArea", true, "infoArea");
+		mygrid.setPagingSkin("bricks");
+		mygrid.parse(ar, "jsarray");
+</script>
+</html>

@@ -1,0 +1,27 @@
+/**
+ * ServiceRequestWS_PortType.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
+ */
+
+package com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client;
+
+public interface ServiceRequestWS_PortType extends java.rmi.Remote {
+    public void cancelServiceAppointmentOnReschedule(com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.CancelServiceAppointmentReschedule cancelServiceAppointmentReschedule, javax.xml.rpc.holders.StringHolder errorCode, javax.xml.rpc.holders.StringHolder message) throws java.rmi.RemoteException;
+    public void cancelServiceAppointmentRequestList(com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.CancelServiceAppointmentRequest cancelServiceAppointmentRequest, javax.xml.rpc.holders.StringHolder errorCode, javax.xml.rpc.holders.StringHolder message) throws java.rmi.RemoteException;
+    public void cancelServiceRequestAppointment(com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.CancelServiceAppointment cancelServiceAppointment, javax.xml.rpc.holders.StringHolder errorCode, javax.xml.rpc.holders.StringHolder message) throws java.rmi.RemoteException;
+    public void confirmServiceAppointment(com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.ConfirmServiceAppointment2 confirmServiceAppointment, javax.xml.rpc.holders.StringHolder errorCode, com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.holders.ServiceRequestDetailsOutputHolder serviceRequestDetailsOutput, javax.xml.rpc.holders.StringHolder message) throws java.rmi.RemoteException;
+    public void getServiceAppointment(com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.ServiceAppointment serviceAppointment, java.lang.String debug, com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.holders.ServiceAppointmentTimeSlotsHolder serviceAppointmentTimeSlots, javax.xml.rpc.holders.StringHolder sessionRequestId, javax.xml.rpc.holders.StringHolder errorCode, javax.xml.rpc.holders.StringHolder message) throws java.rmi.RemoteException;
+    public void getSRAndActivityDetails(java.lang.String debug, com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.ServiceRequestAndActivityDetailsInput getServiceRequestAndActivityDetails, com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.holders.ServiceRequestDetailsOutputHolder serviceRequestDetailsOutput, javax.xml.rpc.holders.StringHolder errorCode, javax.xml.rpc.holders.StringHolder message) throws java.rmi.RemoteException;
+    public java.lang.String updateServiceRequestActivity(java.lang.String debug, java.lang.String synchOrAsynch, com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.UpdateServiceRequestActivityInput updateServiceRequestActivityInput) throws java.rmi.RemoteException;
+    public java.lang.String debriefServiceRequestActivity(java.lang.String debug, java.lang.String synchOrAsynch, com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.DebriefServiceRequestActivityInput debriefServiceRequestActivityInput) throws java.rmi.RemoteException;
+    public java.lang.String cancelServiceRequest(com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.CancelServiceRequestWSInput cancelServiceRequestWSInput, java.lang.String debug) throws java.rmi.RemoteException;
+    public com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.StatusServiceRequestWSOutput getServiceRequestStatus(com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.GetServiceRequestStatusInput getServiceRequestStatus, java.lang.String debug) throws java.rmi.RemoteException;
+    public void createServiceRequest(java.lang.String debug, com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.ConsumablesServiceRequestWSInput consumablesServiceRequestWSInput) throws java.rmi.RemoteException;
+    public void createChangeManagementServiceRequest(java.lang.String debug, com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.ChangeManagementServiceRequestWSInput changeManagementServiceRequestWSInput, java.lang.String synchOrAsynch, com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.holders.ServiceRequestDetailsOutputHolder serviceRequestDetails, javax.xml.rpc.holders.StringHolder srRowId, javax.xml.rpc.holders.StringHolder srNumber) throws java.rmi.RemoteException;
+    public java.lang.String escalateServiceRequest(com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.EscalateServiceRequestWSInput escalateServiceRequestWSInput, java.lang.String debug) throws java.rmi.RemoteException;
+    public void createConsumablesServiceRequest(java.lang.String debug, com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.ConsumablesServiceRequestWSInput consumablesServiceRequestWSInput, java.lang.String synchOrAsynch, com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.holders.ServiceRequestDetailsOutputHolder serviceRequestDetailsOutput, javax.xml.rpc.holders.StringHolder sRNumber, javax.xml.rpc.holders.StringHolder sRRowId) throws java.rmi.RemoteException;
+    public void updateConsumablesServiceRequest(java.lang.String debug, com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.ConsumablesServiceRequestWSInput consumablesServiceRequestWSInput) throws java.rmi.RemoteException;
+    public com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.AddressCleanseWSOutput addressCleanse(com.lexmark.SiebelShared.lgs.cm.createServiceRequest.client.AddressCleanseWSInput addressCleanseWSInput) throws java.rmi.RemoteException;
+}

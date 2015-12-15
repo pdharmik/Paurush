@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * Copyright 2005-2008 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" version="2.0">
+	<portlet>
+		<portlet-name>claimRequest</portlet-name>
+		<display-name>claimRequest</display-name>
+		<display-name xml:lang="en">claimRequest</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/claimRequest.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!-- <expiration-cache>-1</expiration-cache> -->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<portlet-info>
+			<title>Claim Request</title>
+			<short-title>Claim Request</short-title>
+			<keywords>ClaimRequest</keywords>
+		</portlet-info>
+	</portlet>
+	<portlet>
+		<portlet-name>ServiceOrders</portlet-name>
+		<display-name>Service Orders</display-name>
+		<display-name xml:lang="en">Service Orders</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/serviceOrders.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<portlet-info>
+			<title>Service Orders</title>
+			<short-title>Service Orders</short-title>
+			<keywords>ServiceOrders</keywords>
+		</portlet-info>
+	</portlet>
+	<portlet>
+		<portlet-name>PartnerPayments</portlet-name>
+		<display-name>Partner Payments</display-name>
+		<display-name xml:lang="en">Partner Payments</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/partnerPayments.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<portlet-info>
+			<title>Partner Payments</title>
+			<short-title>Partner Payments</short-title>
+			<keywords>PartnerPayments</keywords>
+		</portlet-info>
+	</portlet>
+	<portlet>
+		<portlet-name>paymentRequest</portlet-name>
+		<display-name>paymentRequest</display-name>
+		<display-name xml:lang="en">paymentRequest</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/paymentRequest.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!-- <expiration-cache>-1</expiration-cache> -->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<portlet-info>
+			<title>Payment Request</title>
+			<short-title>Payment Request</short-title>
+			<keywords>Payment Request</keywords>
+		</portlet-info>
+	</portlet>
+	<portlet>
+		<portlet-name>EmployeeAccountSelection</portlet-name>
+		<display-name>Employee Account Selection</display-name>
+		<display-name xml:lang="en">Employee Account Selection</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/employeeAccountSelection.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!-- <expiration-cache>-1</expiration-cache> -->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.resources.employeeAccountSelector</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>BulkUpload</portlet-name>
+		<display-name>Bulk Upload</display-name>
+		<display-name xml:lang="en">Bulk Upload</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/bulkUpload.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!-- <expiration-cache>-1</expiration-cache> -->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.resources.bulkUpload</resource-bundle>
+	</portlet>
+	<!-- PHASE 2 -->
+	<portlet>
+		<portlet-name>MassUpload</portlet-name>
+		<display-name>Mass Upload</display-name>
+		<display-name xml:lang="en">Mass Upload</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/massUpload.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!-- <expiration-cache>-1</expiration-cache> -->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.resources.massUpload</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>UploadHistory</portlet-name>
+		<display-name>Upload History</display-name>
+		<display-name xml:lang="en">Upload History</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/uploadHistory.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!-- <expiration-cache>-1</expiration-cache> -->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.resources.uploadHistory</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>HardwareInstallation</portlet-name>
+		<display-name>Hardware Installation</display-name>
+		<display-name xml:lang="en">Hardware Installation</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/hardwareInstallation.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!-- <expiration-cache>-1</expiration-cache> -->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.resources.hardwareInstallation</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>OfflineInstallRequest</portlet-name>
+		<display-name>Offline Install Request</display-name>
+		<display-name xml:lang="en">Offline Install Request</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/offlineInstallRequest.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!-- <expiration-cache>-1</expiration-cache> -->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.resources.offlineInstallRequest</resource-bundle>
+	</portlet>
+</portlet-app>

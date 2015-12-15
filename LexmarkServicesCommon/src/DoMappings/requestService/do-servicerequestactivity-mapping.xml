@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="ServiceRequestActivity" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK SW Service Request Detail - Service Web</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW SR Activity - Service Web</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>createdDate</value></key>
+	         		<value>Created</value>
+				</entry>
+				<entry>
+	         		<key><value>activityId</value></key>
+	         		<value>Activity Id</value>
+				</entry>
+				<entry>
+	         		<key><value>status</value></key>
+	         		<value>Status</value>
+				</entry>
+				<entry>
+	         		<key><value>emailAddress</value></key>
+	         		<value>Email Recipient Address</value>
+				</entry>	
+				<entry>
+	         		<key><value>description</value></key>
+	         		<value>Description</value>
+				</entry>	
+				<entry>
+	         		<key><value>overrideDesc</value></key>
+	         		<value>LXK SW Email Activtiy Desc</value>
+				</entry>	
+					
+					<!-- don't need for RequestTypeDetail -->
+				<entry>
+	         		<key><value>activitySRId</value></key>
+	         		<value>Activity SR Id</value>
+				</entry>
+				<entry>
+	         		<key><value>type</value></key>
+	         		<value>Type</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceActivityFlag</value></key>
+	         		<value>LXK C Service Activity</value>
+				</entry>
+				<entry>
+	         		<key><value>contactEmail</value></key>
+	         		<value>LXK SW SR Contact Email Address</value>
+				</entry>
+				<entry>
+                    <key><value>serviceRequestETA</value></key>
+                    <value>LXK R Service Provider ETA</value>
+                </entry>                
+                <entry>
+                    <key><value>serviceRequestSLA</value></key><!-- Changed for the last minute requirement by Donnie making coding standard terrific-->
+                    <value>LXK SD Calculated Commit Time</value>
+                </entry>
+                
+				<entry>
+                    <key><value>comment</value></key>
+                    <value>LXK MPS Comment</value>
+                </entry>                
+                
+	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

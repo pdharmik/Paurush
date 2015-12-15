@@ -1,0 +1,47 @@
+/***************************************************************************************************************************************************************
+								"GLASSY BLUE" dhtmlxGrid Skin
+***************************************************************************************************************************************************************/
+
+/*glassy_blue*/
+
+div.gridbox_light table.hdr {	
+	background-image: none;
+}
+
+div.gridbox_light .xhdr {
+background: url(../../../images/gridImgs/lex/header-bg.png) repeat-x top left;
+}
+
+div.gridbox_light table.hdr td {
+	color:#252d33;
+	font-family: Arial;
+	font-size:11px;
+	font-weight:bold;
+	text-align:left;
+}
+
+
+div.gridbox_light table.hdr td {
+	border: 0 none;	
+}
+
+
+div.gridbox_light table.hdr td div.hdrcell {
+	background: url(/LexmarkPartnerPortal/images/gridImgs/lex/hdr_divider.gif) no-repeat center left;
+}
+
+div.gridbox_light {
+	border:0 none;
+}
+
+div.gridbox_light .odd_light {
+	background-color:#f1f1f1;
+}
+
+div.gridbox_light table.obj td {
+	font-size: 10px;
+	color: #333;
+	border-left: 0 none;
+	border-right: 0 none;
+	font-family: Arial,Verdana,sans-serif;	
+}

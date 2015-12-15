@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="SapAccountDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK SAP Account Addr Portal IO</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SAP Account</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping -->
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>
+	     		<entry>
+	         		<key><value>soldTo</value></key>
+	         		<value>LXK SoldTo#</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryAddressId</value></key>
+	         		<value>Primary Address Id</value>
+				</entry>
+				<entry>
+					<key><value>billToNumber</value></key>
+					<value>LXK BillTo#</value>
+				</entry>
+				<entry>
+	         		<key><value>country</value></key>
+	         		<value>LXK MPS Country</value>
+				</entry>
+				<entry>
+	         		<key><value>city</value></key>
+	         		<value>LXK MPS City</value>
+				</entry>
+				<entry>
+	         		<key><value>state</value></key>
+	         		<value>LXK MPS State</value>
+				</entry>
+				<entry>
+	         		<key><value>addressName</value></key>
+	         		<value>LXK MPS Primary Address Name</value>
+				</entry>
+				<entry>
+	         		<key><value>streetAddress</value></key>
+	         		<value>LXK MPS Street Address</value>
+				</entry>
+				<entry>
+	         		<key><value>streetAddress2</value></key>
+	         		<value>LXK MPS Street Address 2</value>
+				</entry>
+				<entry>
+	         		<key><value>postalCode</value></key>
+	         		<value>LXK MPS Zipcode</value>
+				</entry>
+				<entry>
+	         		<key><value>province</value></key>
+	         		<value>LXK MPS Province</value>
+				</entry>	
+				<entry>
+					<key><value>county</value></key>
+					<value>LXK MPS County</value>
+				</entry>
+				<entry>
+					<key><value>district</value></key>
+					<value>LXK MPS District</value>
+				</entry>
+				<entry>
+					<key><value>officeNumber</value></key>
+					<value>LXK MPS House Number</value>
+				</entry>
+				<entry>
+					<key><value>countryIsoCode</value></key>
+					<value>LXK MPS ISO Country Code</value>
+				</entry>
+				<entry>
+					<key><value>region</value></key>
+					<value>LXK MPS Region</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

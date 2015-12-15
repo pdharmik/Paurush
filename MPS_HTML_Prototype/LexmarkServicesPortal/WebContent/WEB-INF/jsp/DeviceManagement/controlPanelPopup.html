@@ -1,0 +1,23 @@
+<html>
+<body>
+<div id="controlPanelPopup">
+<div style="text-align: left">
+    <span>You are being directed to a specific Printer Control Panel, which may require that you have access to your internal company network.</span>
+    <br>
+    <div style="text-align: right">	    <button onclick="closePopup()" class="button_cancel">CANCEL</button>&nbsp;&nbsp;<button onclick="gotoControlPanel()" class="button">OK</button>
+    </div></div>
+</div> 
+
+<script>
+function closePopup() {
+	dialog.dialog('close');			
+	dialog=null;		
+}
+function gotoControlPanel() {
+	window.open("Lexmark X945e.htm");
+	dialog.dialog('close');			
+	dialog=null;
+}
+</script>
+</body>
+<html>

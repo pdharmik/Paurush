@@ -1,0 +1,21 @@
+insert into supported_locale (supported_locale_id, supported_locale_name, supported_locale_code) values (1,  'English',  'en'); 
+insert into supported_locale (supported_locale_id, supported_locale_name, supported_locale_code) values(2,  'Spanish',  'es'); 
+insert into supported_locale (supported_locale_id, supported_locale_name, supported_locale_code) values(3,  'German',  'de'); 
+INSERT INTO supported_locale (supported_locale_id, supported_locale_name, supported_locale_code) VALUES(4,  'French',  'fr'); 
+insert into supported_locale (supported_locale_id, supported_locale_name, supported_locale_code) values(5,  'Chinese Simplified',  'zh_CN'); 
+insert into supported_locale (supported_locale_id, supported_locale_name, supported_locale_code) values(6,  'Chinese Traditional',  'zh_TW'); 
+insert into supported_locale (supported_locale_id, supported_locale_name, supported_locale_code) values(7,  'Portuguese Brazil',  'pt_BR'); 
+insert into supported_locale (supported_locale_id, supported_locale_name, supported_locale_code) values(8,  'Portuguese Portugal',  'pt_PT'); 
+insert into supported_locale (supported_locale_id, supported_locale_name, supported_locale_code) values(9,  'Italian',  'it'); 
+insert into supported_locale (supported_locale_id, supported_locale_name, supported_locale_code) values(10,  'Japanese',  'ja'); 
+insert into supported_locale (supported_locale_id, supported_locale_name, supported_locale_code) values(11,  'Korean',  'ko'); 
+
+insert into ROLE(ROLE_ID, NAME) values(1, 'Standard Access');
+insert into ROLE(ROLE_ID, NAME) values(2, 'Account Management');
+insert into ROLE(ROLE_ID, NAME) values(3, 'Billing');
+insert into ROLE(ROLE_ID, NAME) values(4, 'Service and Support');
+insert into ROLE(ROLE_ID, NAME) values(5, 'Project Management');
+insert into ROLE(ROLE_ID, NAME) values(6, 'Analyst');
+insert into ROLE(ROLE_ID, NAME) values(7, 'Account Administrator');
+insert into ROLE(ROLE_ID, NAME) values(8, 'Services Portal Administrator');
+insert into ROLE(ROLE_ID, NAME) values(9, 'Publishing');

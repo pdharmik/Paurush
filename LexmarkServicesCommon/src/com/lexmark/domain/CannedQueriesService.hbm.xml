@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!--
+Mapping file for the Canned Queries  class of Lexmark Service.
+-->
+
+<hibernate-mapping package="com.lexmark.domain">
+
+<class name="CannedQuery"
+       table="CANNED_QUERIES"
+       lazy="false">
+     <id name="id" type="int" column="CANNED_ID"></id>
+ 	  	  			
+     <property   name="name"
+                column="CANNED_NAME"
+                type="string"
+                length="200"
+                not-null="false"
+                /> 
+    <property   name="jsonString"
+                column="CANNED_JSON"
+                type="string"
+                length="200"
+                not-null="false"
+                />  
+                                                         
+</class>
+</hibernate-mapping>

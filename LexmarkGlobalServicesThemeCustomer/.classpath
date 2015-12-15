@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="hooks/FooterVelocityVariableHook/docroot/WEB-INF/classes" path="hooks/FooterVelocityVariableHook/docroot/WEB-INF/src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/activation.jar"/>
+	<classpathentry kind="lib" path="lib/ant-contrib.jar"/>
+	<classpathentry kind="lib" path="lib/antelope.jar"/>
+	<classpathentry kind="lib" path="lib/ecj.jar"/>
+	<classpathentry kind="lib" path="lib/jalopy.jar"/>
+	<classpathentry kind="lib" path="lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="lib/log4j.jar"/>
+	<classpathentry kind="lib" path="lib/mail.jar"/>
+	<classpathentry kind="lib" path="lib/qdox.jar"/>
+	<classpathentry kind="lib" path="lib/serializer.jar"/>
+	<classpathentry kind="lib" path="lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="lib/xalan.jar"/>
+	<classpathentry kind="lib" path="lib/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="lib/xml-apis.jar"/>
+	<classpathentry kind="var" path="LIFERAY_HOME"/>
+	<classpathentry kind="var" path="LIFERAY_HOME/tomcat-6.0.18/lib/ext/portal-kernel.jar"/>
+	<classpathentry kind="var" path="LIFERAY_HOME/tomcat-6.0.18/lib/ext/portlet.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

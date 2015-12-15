@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+#parse ($init)
+
+<html class="$root_css_class" dir="#language ("lang.dir")" lang="$w3c_language_id">
+
+<head>
+	<title>$company_name - $the_title</title>
+
+	<meta content="initial-scale=1.0, width=device-width" name="viewport" />
+
+	$theme.include($top_head_include)
+	<script type="text/javascript" src="/lexmark-partner-portal-theme/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/lexmark-partner-portal-theme/js/jquery-ui.min.js"></script>
+	#css ($css_main_file)
+	<script type="text/javascript">
+		// <![CDATA[
+			$page_javascript_1
+			$page_javascript_2
+			$page_javascript_3
+		// ]]>
+	</script>
+	
+	
+		
+		<!-- IE8 specific fixes (PIE) -->
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="/lexmark-services-portal-theme/css/ie8.css" />
+<![endif]-->
+
+<!-- IE7 specific fixes (PIE) -->
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" href="/lexmark-services-portal-theme/css/ie7.css" />
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery('#emailValidateDiv #validateEmail').parent().css('position', 'static');
+		jQuery('#portlet-wrapper-CreateAndEditUserPortlet_WAR_DA_INSTANCE_ywE1 form table tr td').css('position', 'static');
+		jQuery('.uni-form .button-holder input[type="submit"]').wrap('<span></span>');
+	});
+</script>
+<![endif]-->
+
+<!-- IE6 specific fixes (DD_Roundies) -->
+<!--[if IE 6]> 
+<link rel="stylesheet" type="text/css" href="/lexmark-services-portal-theme/css/ie6.css" />
+<script type="text/javascript" src="/lexmark-services-portal-theme/js/DD_roundies_0.0.2a.js"></script>
+<script type="text/javascript">
+	DD_roundies.addRule('.button', '12px');
+	DD_roundies.addRule('.all_button', '12px');
+	DD_roundies.addRule('.star_button', '12px');
+	DD_roundies.addRule('.button_cancel', '12px');
+	DD_roundies.addRule('#loginCancelBtn', '12px');
+	DD_roundies.addRule('.ie6 input.text', '12px');
+	DD_roundies.addRule('.ie6 input.password', '12px');
+	DD_roundies.addRule('.ie6 input.submit', '12px');
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery('#formReportDefinitionDetail table tbody tr td a').click(function(){
+			jQuery(this).parent().parent().siblings().children().children('a').removeClass('selected');
+			jQuery(this).addClass('selected');
+		});
+	});
+</script>
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery('.button_anchor, .cancel_button_anchor').css('text-decoration', 'none');
+	});
+</script>
+<script language="JavaScript" type="text/javascript">
+	#if ($LGS-CUSTOMER-userAuthenticated)
+		var loginTest = true;
+	#else
+		var loginTest = false;
+	#end
+
+var field = 'p_p_id'; 
+var url = window.location.href; 
+var urlPath=window.location.pathname;
+if (urlPath.indexOf('/web/partner-portal/login') == 0){
+if(url.indexOf('?' + field + '=') == -1){
+window.location.replace( '/web/partner-portal/login?p_p_id=58&p_p_lifecycle=0&_58_redirect=%2Fgroup%2Fpartner-portal%2F' );
+}
+if(url.indexOf('_58_redirect=') > 0 && loginTest){
+window.location.replace( '/group/partner-portal' );
+}
+}
+
+var allPortlets = "";
+var portletName;
+var pageTitle = "";
+var pageNameSelected;
+var companyName = "$LGS-CUSTOMER-ldapUserCompanyName";
+var mdmId = "$LGS-CUSTOMER-ldapUserMdmId";
+var mdmLevel = "$LGS-CUSTOMER-ldapUserMdmLevel";
+var userType = "$LGS-CUSTOMER-ldapUserSegment";
+var pageTypeDisplayed = "";
+
+function addPortlet(portletSingle) {
+allPortlets = allPortlets + "," + portletSingle;
+
+
+}
+function markDirectCall(targetSystem){
+	var userLocale = "$themeDisplay.getLocale()";
+	var mdHost = "$LGS-CUSTOMER-markDirectHost";
+	var userCountry = "$LGS-CUSTOMER-ldapUserCountry";
+	var localeFirst = userLocale.substr(0,2);
+	var localeLast = userLocale.substr(3);
+	var fullURL = mdHost + targetSystem + "&ctry=" + localeLast + "&lang=" + localeFirst;
+	window.open(fullURL,'_blank');
+}
+
+function callOmnitureAction(portlet, type){
+	var s=s_gi('lxmpartnerqa'); 
+	s.linkTrackVars='prop1,eVar1,prop6,eVar6,events'; 
+	s.linkTrackEvents='event1'; 
+	s.prop1=portlet; 
+	s.eVar1=portlet; 
+	s.prop6=type; 
+	s.eVar6=type; 
+	s.events='event1'; 
+	s.tl(this,'o',type);
+}
+function callOmnitureCreateClaimAction(){
+	var s=s_gi('lxmpartnerqa'); 
+	s.linkTrackVars='events'; 
+	s.events='event2'; 
+	s.t();
+}
+function callOmnitureCompleteClaimAction(elapsedTime){
+	var s=s_gi('lxmpartnerqa'); 
+	s.linkTrackVars='prop7,eVar7,products,events'; 
+	s.linkTrackEvents='event3,event4';
+	s.prop7=elapsedTime; 
+	s.eVar7=elapsedTime; 
+	s.events='event3,event4'; 
+	s.products=";;;;event4=" + elapsedTime;
+	s.t();
+}
+function callOmnitureFieldErrorAction(fieldName){
+    var s=s_gi('lxmpartnerqa'); 
+    s.linkTrackVars='prop8,eVar8'; 
+    s.prop8=fieldName;
+    s.eVar8=fieldName;  
+    s.t();
+}
+function callOmnitureReportRunAction(reportName){
+    var s=s_gi('lxmpartnerqa'); 
+    s.linkTrackVars='prop9,eVar9'; 
+    s.prop9=reportName;
+    s.eVar9=reportName;  
+    s.t();
+}
+
+</script>	
+</head>
+
+<body class="$css_class">
+
+<a href="#main-content" id="skip-to-content">#language ("skip-to-content")</a>
+
+$theme.include($body_top_include)
+
+$theme.include($top_messages_include)
+#parse ("$full_templates_path/nav_bar.vm")
+
+#dockbar()
+
+<div class="container-fluid" id="wrapper">
+	<header id="banner" role="banner">
+		<div id="heading">
+			<h1 class="logo">
+			<a href="$company_url"><img class="png" src="/lexmark-partner-portal-theme/images/custom/lexmark_logo.png" alt="Lexmark"></a>
+
+			</h1>
+
+			<div id="bottom-header">
+
+<div id="bottom-header-navigation" class="sort-pages modify-pages">
+	<ul>
+		#foreach ($nav_item in $nav_items)
+			#if ($nav_item.hasChildren())
+			#if ($nav_item.getName() == "BottomHeader")
+					#foreach ($nav_child in $nav_item.getChildren())
+
+						#if ($nav_child.isSelected())
+							#set ($nav_item_class = "selected")
+						#else
+							#set ($nav_item_class = "")
+						#end
+
+			<li class="$nav_item_class">
+				<a href="$nav_child.getURL()" $nav_child.getTarget()><span>$nav_child.getName()</span></a>
+
+			</li>
+					#end
+				#end
+
+
+			#end
+		#end
+
+	</ul>
+</div>
+
+
+		</div>
+			
+		</div>
+		
+	</header>
+	
+	#if ($has_navigation || $is_signed_in)
+			#parse ("$full_templates_path/top_navigation.vm")
+		#end
+
+	<div id="content">
+		
+
+		#if ($selectable)
+			$theme.include($content_include)
+		#else
+			$portletDisplay.recycle()
+
+			$portletDisplay.setTitle($the_title)
+
+			$theme.wrapPortlet("portlet.vm", $content_include)
+		#end
+	</div>
+
+	$footer.get("$themeDisplay.getLocale()")
+	 
+</div>
+
+$theme.include($body_bottom_include)
+
+$theme.include($bottom_include)
+
+<script type="text/javascript">
+function autoResizeDiv()
+{
+       var min_height=window.innerHeight;
+       if ( $( "#banner" ).length ) {
+               min_height=min_height-$("#banner").height();
+       }
+       if ( $( "#topnavigation" ).length ) {
+               min_height=min_height-$("#topnavigation").height();
+       }  
+       if ( $( "#footer" ).length ) {
+               min_height=min_height-$("#footer").height();
+       }                	   
+       $("#content").css({"min-height":(min_height)+"px"});
+}
+window.onresize =autoResizeDiv;
+autoResizeDiv();
+</script>
+
+</body>
+<!-- Nov 9 2012 9:00 PM v1.46 (GlobalServices Partner Build Version) -->
+<!-- ONLY USED IF AUTHENTICATED - SiteCatalyst code version: H.22.1.
+Copyright 1996-2010 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="/lexmark-partner-portal-theme/js/s_code.js"></script>
+<script language="JavaScript" type="text/javascript"><!--
+/* You may give each page an identifying name, server, and channel on
+the next lines. */
+#if ($LGS-CUSTOMER-userAuthenticated)
+s.pageName=pageNameSelected
+s.server=""
+s.channel="Lexmark Global Services Customer Portal"
+s.pageType=pageTypeDisplayed
+s.prop1=allPortlets
+s.prop2=companyName
+s.prop3=companyName + " - " + mdmId
+s.prop4=mdmLevel
+s.prop5=userType
+/* Conversion Variables */
+s.campaign=""
+s.state=""
+s.zip=""
+s.events=""
+s.products=""
+s.purchaseID=""
+s.eVar1=allPortlets
+s.eVar2=companyName
+s.eVar3=companyName + " - " + mdmId
+s.eVar4=mdmLevel
+s.eVar5=userType
+#else
+s.pageName="login"
+s.server=""
+s.channel="Lexmark Global Services Customer Portal"
+s.pageType=pageTypeDisplayed
+s.prop1=""
+s.prop2=""
+s.prop3=""
+s.prop4=""
+s.prop5=""
+/* Conversion Variables */
+s.campaign=""
+s.state=""
+s.zip=""
+s.events=""
+s.products=""
+s.purchaseID=""
+s.eVar1=""
+s.eVar2=""
+s.eVar3=""
+s.eVar4=""
+s.eVar5=""
+#end
+
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script><noscript><img src="http://lexmark.122.2o7.net/b/ss/lxmpartnerdev/1/H.22.1--NS/0?[AQB]&cdp=3&[AQE]"
+height="1" width="1" border="0" alt="" /></noscript><!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.22.1. -->
+</html>

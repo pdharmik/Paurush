@@ -1,0 +1,422 @@
+<!DOCTYPE HTML>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Page Count</title>
+<link href="../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<style type="text/css">
+#banner .logo {
+	background: url("../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/images/custom/logoLex.png") no-repeat scroll left top transparent;
+	display: block;
+	margin: 0;
+	padding: 0 !important;
+	width: 168px;
+	height: 56px;
+	position: absolute;
+	top: 13px;
+	left: 20px;
+	text-indent: -9999em;
+}
+</style>
+
+<script src="../../../js/util.js"></script>
+<script src="../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../js/grid/dhtmlxgrid_srnd.js"></script>
+
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_srnd.js"></script>
+
+<script src="../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+
+<script src="../../../js/tree/dhtmlxtree.js"></script>
+
+<script src="../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../../js/expand.js"></script>
+<script src="../../../js/mps.js"></script>
+<script type="text/javascript">
+var global_paging_message={results:"Results",records:"Records from &nbsp;",to:" to ",page:"page ",perpage:"rows per page",first:"To first Page",previous:"Previous Page",found:"Found records",next:"Next Page",last:"To last Page",of:" of ",notfound:"No Records Found"};
+var global_button_message={close:"CLOSE",ok:"OK",cancel:"CANCEL",selectColumns:"SELECT COLUMNS"};
+</script>
+</head>
+<body>
+<div id="wrapper">
+  <div id="banner">
+    <h1 class="logo"><a href="https://tportal.lexmark.com/web/guest" title="Lexmark Global Services">tportal.lexmark.com</a></h1>
+    <div id="top-header">
+      <div id="top-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><b><span>Welcome Jason Filarky!</span></b></li>
+          <li><a href="../Home/preferences.html">Preferences</a></li>
+          <li><a href="#">User Administration</a></li>
+          <li><a href="../Home/login.html">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="bottom-header">
+      <div id="bottom-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><a href="http://www.lexmark.com">Lexmark.com</a></li>
+          <li><a href="../Home/FAQ.html">FAQ</a></li>
+          <li><a href="../Home/getHelp.html">Get Help</a></li>
+          <li><a href="../Home/contact_Lexmark.html">Contact Lexmark</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sort-pages modify-pages" id="topnavigation">	
+  <ul>	
+	  <li>	<a href="../Home/home.html"><span>Home</span></a>	</li>
+	  <li class="">	<a href="../DeviceManagement/all_devices.html"><span>Device Finder</span></a>	</li>
+	  <li class="selected">	<a href="../pageCounts/defaltPageCount.html"><span>Page Counts</span></a>	</li>
+	  <li class="">	<a href="../HistoryAndDetails/history_allRequest.html"><span>Requests</span></a>	</li>
+	  <li class="">	<a target="_blank" href="https://services.lexmark.com/sso4/site/extlogin.html"><span>Order Supplies</span></a>	</li>
+	  <li class="">	<a href="../Reports/defaltReportView.html"><span>Reports</span></a>	</li>
+	  <li class="">	<a href="../DocumentLibrary/docLibrary_landingPage.html"><span>Document Library</span></a>	</li>
+  </ul>
+  </div>
+  
+ 
+  <div id="content-wrapper">
+  
+	<div class="portlet-topper">	<div class="portlet-topper-inner">	<span class="portlet-title">
+ Page Counts	</span>	<div id="portlet-small-icon-bar_PageCounts_WAR_LexmarkServicesPortal" class="portlet-icons">	</div><!-- portlet-icons -->	</div><!-- portlet-topper-inner -->	</div>
+  
+  
+  <div class="portlet-content">
+  <div class="portlet-content-container">
+  
+	<table width="1000px">	<tbody><tr><td>
+	<div class="main-wrap">	
+		<div style="margin-top:15px;"/>	
+	<div class="content">	
+	  <a name="scrollTo"></a>
+        <div class="left-nav">
+          <div class="left-nav-inner"> 
+            <!-- LEFT COLUMN CONTENT GOES HERE -->
+            <div class="left-nav-header">
+              <h3>Filters</h3>
+            </div>
+            <ul class="filters">
+              <li ><a href="#" id="BookMarked" onclick="reLoadGrid('BookMarked');">Bookmarked Devices</a></li>
+              <li><a href="#" id="Manual" onclick="reLoadGrid('Manual');" >Manual Reads</a></li>		  		  			  		  
+            </ul> 
+				<br>
+				<div id="location_tree_container" style="display: block"></div>
+				<br/>				
+				<div id="chl_node_tree_container" style="display: block"></div>
+                
+         </div>
+          <div class="left-nav-footer"> 
+            <!-- NO CONTENT HERE PLS --> 
+          </div>
+        </div>
+        
+        <div class="right-column" id="MannualReadsId">          
+          <div class="grid-controls"> 
+            <!-- Utilities Start -->
+            <div class="utilities">
+              <ul>
+                <li class="first"><a href="#" onclick="downloadFile('xls')"><img src="../../../images/xls.png" alt="Export to Excel" title="Export to Excel"></a></li>
+                <li ><a href="#"  onclick="downloadFile('pdf')" target="_blank"><img src="../../../images/pdf.png" alt="Export to PDF" title="Export to PDF" /></a></li>
+                <li><a href="pageCountListPrint.html" target="_blank"><img src="../../../images/print.jpg" alt="Print" title="Print"></a></li>
+              </ul>
+            </div>
+            <!-- utilities End --> 
+            <!-- Expand-min Start -->
+            <div class="expand-min">
+              <ul>
+				  <li class="first"> 
+				  <img src="../../../images/minimize_all.png"  title="Minimize All"  onclick="minimizeAll()" /> <a href="#grid" onclick="minimizeAll()">Minimize All</a> </li>
+				  <li class="first"> <img src="../../../images/expand_all.png" title="Expand All" onclick="expandAll()"/> <a href="#grid" onclick="expandAll()">Expand All</a> </li>
+                <li class="first"> <img src="../../../images/customize.png" alt="Customize Grid" title="Customize Grid" /> <a href="#grid" id='headerMenuButton'>Customize Columns</a> </li>
+                <li> <img src="../../../images/reset.png" alt="Reset Grid" title="Reset Grid" /> <a href="javascript:resetGrid();">Reset</a> </li>
+              </ul>
+            </div>
+            <!-- Expand-min End --> 
+            <!-- Customize Coulmns Popup Start -->
+			
+			
+			
+            <div class="dhx_header_cmenu rounded shadow" style="height: auto; display: none; position: absolute; z-index: 999; left: 611px; top: 207px;" id="grid_menu"><table><tbody><tr><td colspan="2"><div><h4><a style="cursor: pointer" onclick="document.getElementById(&quot;grid_menu&quot;).style.display=&quot;none&quot;">CLOSE</a><label>SELECT COLUMNS</label></h4></div></td></tr><tr>
+			<td>
+				<div class="dhx_header_cmenu_item2">
+					<input type="checkbox" column="1" len="1" checked="true" >&nbsp; Serial Number
+				</div>
+			</td>
+			<td>
+				<div class="dhx_header_cmenu_item">
+					<input type="checkbox" column="2" len="1" checked="true">&nbsp; Product Model
+				</div>
+			</td></tr><tr><td><div class="dhx_header_cmenu_item2"><input type="checkbox" column="3" len="1" checked="true">&nbsp; Asset Tag</div></td><td><div class="dhx_header_cmenu_item"><input type="checkbox" column="4" len="1" checked="true">&nbsp; IP Address</div></td></tr><tr><td><div class="dhx_header_cmenu_item2"><input type="checkbox" column="5" len="1" checked="true">&nbsp; Address Name</div></td><td><div class="dhx_header_cmenu_item"><input type="checkbox" column="6" len="1" checked="true" disabled="">&nbsp; Last Read Date</div></td></tr><tr><td><div class="dhx_header_cmenu_item2"><input type="checkbox" column="7" len="1" checked="true" disabled="">&nbsp; Read Date</div></td><td><div class="dhx_header_cmenu_item"><input type="checkbox" column="8" len="1" checked="true" disabled="">&nbsp; Last Lifetime Count</div></td></tr><tr><td><div class="dhx_header_cmenu_item2"><input type="checkbox" column="9" len="1" checked="true" disabled="">&nbsp; New Lifetime Count</div></td><td><div class="dhx_header_cmenu_item"><input type="checkbox" column="10" len="1" checked="true" disabled="">&nbsp; Last Color Count</div></td></tr><tr><td><div class="dhx_header_cmenu_item2"><input type="checkbox" column="11" len="1" checked="true" disabled="">&nbsp; New Color Count</div></td><td><div class="dhx_header_cmenu_item"><input type="checkbox" column="13" len="1" checked="true">&nbsp; City</div></td></tr><tr><td><div class="dhx_header_cmenu_item2"><input type="checkbox" column="14" len="1" checked="true">&nbsp; State</div></td><td><div class="dhx_header_cmenu_item"><input type="checkbox" column="15" len="1" checked="true">&nbsp; Province</div></td></tr><tr><td><div class="dhx_header_cmenu_item2"><input type="checkbox" column="16" len="1" checked="true">&nbsp; Country</div></td><td><div class="dhx_header_cmenu_item"><input type="checkbox" column="17" len="1" checked="true">&nbsp; Hostname</div></td></tr><tr><td><div class="dhx_header_cmenu_item2"><input type="checkbox" column="18" len="1" checked="true">&nbsp; MAC Address</div></td><td><div class="dhx_header_cmenu_item"><input type="checkbox" column="19" len="1" checked="true">&nbsp; Customer Device Tag</div></td></tr><tr><td><div class="dhx_header_cmenu_item2"><input type="checkbox" column="20" len="1" checked="true">&nbsp; Machine Type Model</div></td><td><div class="dhx_header_cmenu_item"><input type="checkbox" column="21" len="1" checked="true">&nbsp; Product PN/TLI </div></td></tr><tr><td><div class="dhx_header_cmenu_item2"><input type="checkbox" column="22" len="1" checked="true">&nbsp; Physical Location</div></td><td><div class="dhx_header_cmenu_item"><input type="checkbox" column="23" len="1" checked="true">&nbsp; Primary Contact</div></td></tr></tbody></table></div>
+            <!-- Customize Coulmns Popup End --> 
+          </div>
+          <!-- grid-controls -->
+          <div class="portlet-wrap rounded">
+            <div class="portlet-wrap-inner">
+              <div id="mygrid_container" class="gridbox gridbox_light "></div>
+            </div>
+          <div class="pagination"><span id="pagingArea"></span><span id="infoArea"></span></div>
+			</div>
+          <!-- mygrid_container --> 
+        </div>
+	
+	</div><!-- content-->		
+	</div><!-- main-wrap-->	
+	</td></tr></tbody></table>
+  
+  </div>
+  </div>
+  
+  </div>
+  
+  <div id="footer" class="round_top">
+<div id="footer-nav-container">
+<ul id="footer-nav-ul">
+  <li><a href="http://www1.lexmark.com/en_US/about-us/index.shtml">About 
+  Lexmark </a></li><li><a href="http://www1.lexmark.com/en_US/terms/privacy-security.shtml">Privacy 
+  Policy</a> </li><li><a href="http://www1.lexmark.com/en_US/terms/terms-and-conditions.shtml">Terms 
+  &amp; Conditions </a></li><li><a href="http://www1.lexmark.com/en_US/nav/sitemap.shtml">Sitemap 
+  </a></li><li><a href="http://www1.lexmark.com/en_US/about-us/company/contact-us.shtml">Contact 
+  Lexmark </a></li></ul><br>
+<p align="left">&copy; Copyright 2012 
+Lexmark<!--extra added align center>--></p></div></div>
+</div>
+</body>
+
+<script>
+var arMannual = [
+			[
+					"<table cellspacing=\"5\" cellpadding=\"0\" class=\"grid-inner-body\" width=\"900px\"><tr valign=\"top\" height=\"150px\"><td width=\"20%\">			<table><tbody><tr><td width=\"100%\" align=\"center\" class=\"labelBold\">Lexmark X852e</td></tr><tr><td align=\"center\" height=\"76px\"><img src=\"../../../images/dummy_printer.jpg\" class=\"printer\"></td></tr><tr><td align=\"left\" height=\"22px\"><img id=\"starIMG_1-1LZ4-545\" style=\"cursor:Hand;cursor:pointer\" src=\"../../../images/favorite.png\" name=\"favorite.png\">&nbsp;<a href=\"#\" >Bookmark This Device</a></td></tr></tbody></table></td><td width=\"80%\"><table width=\"100%\"><tbody><tr><td width=\"15%\"><a href=\"#\">&gt;&gt;Control Panel</a></td><td width=\"28%\" class=\"labelBold\" align=\"left\">Installed Location:</td><td width=\"28%\" class=\"labelBold\" align=\"left\">Physical Location:</td><td width=\"28%\" class=\"labelBold\" align=\"left\">Primary Contact:</td></tr><tr><td>&nbsp;</td><td>Ilot de la Râpe</td><td>6eme étage</td><td>Dominique.Blomme</td></tr><tr><td>&nbsp;</td><td>Immeuble Orleans Plaza</td><td>CENTRE</td><td>CENTRE</td></tr><tr><td>&nbsp;</td><td></td><td></td><td>doblomme@lexmark.com</td></tr><tr><td>&nbsp;</td><td>France</td><td colspan=\"3\"></td></tr></tbody></table></td></tr></table>",
+					"sdfsdfsdf",					
+					"Lexmark X852e",
+					"0642636",
+					"10.184.56.12",
+					"Orleans Plaza",
+					"03/29/2013",
+					"",
+					"45877",
+					"<input type='text'/>",
+					"---",
+					"---",
+					"<button name='btn_save' type='button' class='button' id='btn_save0' value='save'><span>SAVE</span></button>",
+					"Orleans",
+					"",
+					"",
+					"France",
+					"FRNA0206.emea.lexmark.com",
+					"",
+					"13534",
+					"7500-100",
+					"15R0125",
+					"6eme étage",
+					"Dominique.Blomme"
+			] 			
+		];			
+
+    var ar = [
+			[
+					"<table cellspacing=\"5\" cellpadding=\"0\" class=\"grid-inner-body\" width=\"900px\"><tr valign=\"top\" height=\"150px\"><td width=\"20%\">			<table><tbody><tr><td width=\"100%\" align=\"center\" class=\"labelBold\">Lexmark X852e</td></tr><tr><td align=\"center\" height=\"76px\"><img src=\"../../../images/dummy_printer.jpg\" class=\"printer\"></td></tr><tr><td align=\"left\" height=\"22px\"><img id=\"starIMG_1-1LZ4-545\" style=\"cursor:Hand;cursor:pointer\" src=\"../../../images/favorite.png\" name=\"favorite.png\">&nbsp;<a href=\"#\" >Bookmark This Device</a></td></tr></tbody></table></td><td width=\"80%\"><table width=\"100%\"><tbody><tr><td width=\"15%\"><a href=\"#\">&gt;&gt;Control Panel</a></td><td width=\"28%\" class=\"labelBold\" align=\"left\">Installed Location:</td><td width=\"28%\" class=\"labelBold\" align=\"left\">Physical Location:</td><td width=\"28%\" class=\"labelBold\" align=\"left\">Primary Contact:</td></tr><tr><td>&nbsp;</td><td>Ilot de la Râpe</td><td>6eme étage</td><td>Dominique.Blomme</td></tr><tr><td>&nbsp;</td><td>Immeuble Orleans Plaza</td><td>CENTRE</td><td>CENTRE</td></tr><tr><td>&nbsp;</td><td></td><td></td><td>doblomme@lexmark.com</td></tr><tr><td>&nbsp;</td><td>France</td><td colspan=\"3\"></td></tr></tbody></table></td></tr></table>",
+					"0642636",					
+					"Lexmark X852e",
+					"0642636",
+					"10.184.56.12",
+					"Orleans Plaza",
+					"03/29/2013",
+					"",
+					"45877",
+					"<input type='text'/>",
+					"---",
+					"---",
+					"<button name='btn_save' type='button' class='button' id='btn_save0' value='save'><span>SAVE</span></button>",
+					"Orleans",
+					"",
+					"",
+					"France",
+					"FRNA0206.emea.lexmark.com",
+					"",
+					"13534",
+					"7500-100",
+					"15R0125",
+					"6eme étage",
+					"Dominique.Blomme"
+			] ,
+			[
+					"<table cellspacing=\"5\" cellpadding=\"0\" class=\"grid-inner-body\" width=\"100%\"><tr valign=\"top\" height=\"150px\"><td width=\"20%\">			<table><tbody><tr><td width=\"100%\" align=\"center\" class=\"labelBold\">Lexmark C792de</td></tr><tr><td align=\"center\" height=\"76px\"><img src=\"../../../images/dummy_printer.jpg\" class=\"printer\"></td></tr><tr><td align=\"left\" height=\"22px\"><img id=\"starIMG_1-1LZ4-545\" style=\"cursor:Hand;cursor:pointer\" src=\"../../../images/favorite.png\" name=\"favorite.png\">&nbsp;<a href=\"#\" >Bookmark This Device</a></td></tr></tbody></table></td><td width=\"80%\"><table width=\"100%\"><tbody><tr><td width=\"15%\"><a href=\"#\">&gt;&gt;Control Panel</a></td><td width=\"28%\" class=\"labelBold\" align=\"left\">Installed Location:</td><td width=\"28%\" class=\"labelBold\" align=\"left\">Physical Location:</td><td width=\"28%\" class=\"labelBold\" align=\"left\">Primary Contact:</td></tr><tr><td>&nbsp;</td><td>	Rua do Rocio 430</td><td></td><td></td></tr><tr><td>&nbsp;</td><td>1o e 4o Andares, Vila Olimpia </td><td></td><td></td></tr><tr><td>&nbsp;</td><td>SP</td><td></td><td></td></tr><tr><td>&nbsp;</td><td>Brazil</td><td colspan=\"3\"></td></tr></tbody></table></td></tr></table>",
+					"50620194000K2",					
+					"Lexmark X852e",
+					"50620194000K2",
+					"",
+					"Lexmark International Inc Brasil",
+					"",
+					"",
+					"",
+					"<input type=\"text\" style=\"height: 15px; padding: 0px\"/>",
+					"---",
+					"---",
+					"<button name='btn_save' type='button' class='button' id='btn_save0' value='save'><span>SAVE</span></button>",
+					"Sao Paulo",
+					"",
+					"",
+					"Brazil",
+					"",
+					"",
+					"",
+					"5062-230",
+					"47B0001",
+					"",
+					""
+			] 			
+		];
+		
+	var headerString = "&nbsp;, Serial Number, Product Model, Asset Tag, IP Address, Address Name, Last Read Date, Read Date, Last Lifetime Count, New Lifetime Count, Last Color Count, New Color Count,&nbsp;, City, State, Province, Country, Hostname, MAC Address, Customer Device Tag, Machine Type Model, Product PN/TLI , Physical Location, Primary Contact";
+	
+	var mygrid;				
+	mygrid = new dhtmlXGridObject('mygrid_container');
+	mygrid.setImagePath("../../../images/gridImgs/");
+	mygrid.setHeader(autoAppendPlaceHolder(headerString));
+	mygrid.attachHeader(",#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,,,,,,,,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
+	mygrid.setInitWidths("30,90,90,80,80,90,100,160,80,80,80,80,90,60,60,60,60,60,90,90,90,90,90,90");
+	mygrid.setColAlign("left,left,left,left,left,left,left,left,center,left,left,left,left,left,left,left,left,left,left,left,left,left");
+	mygrid.setSkin("light");
+	mygrid.setLockColVisibility("true,false,false,false,false,false,true,true,true,true,true,true,true,false,false,false,false,false,false");
+	mygrid.enableColumnMove(true,"false,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,true,true,true,true,true,true,true");
+	
+	mygrid.setColSorting("na,str,str,str,str,str,na,na,na,na,na,na,na,str,str,str,str,str,str,str,str,str,str,str");
+	mygrid.setColTypes("sub_row,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
+	mygrid.enableAutoHeight(true);
+	mygrid.enableMultiline(true);
+	mygrid.enableColumnMove(true);
+	mygrid.enableAlterCss("even_row","odd_row");
+	mygrid.init();
+	mygrid.prftInit();
+	mygrid.enableHeaderMenuForButton("headerMenuButton");
+	mygrid.enablePaging(true, 6, 2, "pagingArea", true, "infoArea");
+	mygrid.setPagingSkin("bricks");
+	mygrid.parse(ar, "jsarray");
+	setDefaultHiddenColumns();
+	
+	function setDefaultHiddenColumns(){
+	    mygrid.setColumnHidden(12,true);
+		mygrid.setColumnHidden(13,true);
+		mygrid.setColumnHidden(14,true);
+		mygrid.setColumnHidden(15,true);
+		mygrid.setColumnHidden(16,true);
+		mygrid.setColumnHidden(17,true);
+		mygrid.setColumnHidden(18,true);
+		mygrid.setColumnHidden(19,true);
+		mygrid.setColumnHidden(20,true);
+		mygrid.setColumnHidden(21,true);
+		mygrid.setColumnHidden(22,true);
+		mygrid.setColumnHidden(23,true);
+   }
+	function resetGrid() {
+		setDefaultHiddenColumns();
+	};
+	
+	
+	function downloadFile(extnsn){	
+		if(document.getElementById('Manual').style.fontWeight == 'bold'){		
+			if(extnsn=='xls'){
+				location.href="MeterReadList.csv";
+			}else
+			if(extnsn=='pdf'){
+				var anchors = document.getElementById('pdfId').getElementsByTagName('a');
+				anchors.setAttribute('target', '_blank');		
+			    location.href="MeterReadList.pdf";				
+			}
+		}else{		
+			if(extnsn=='xls'){
+				location.href="BookMarkedList.csv";
+			}else
+			if(extnsn=='pdf'){				
+				window.location="BookMarkedList.pdf";
+			}
+		}		
+	}
+	function minimizeAll() {		
+		mygrid.forEachRow(function(id) {
+			var cell = mygrid.cellById(id, 0);
+			cell.close();
+			subRowOpenFlag = false;
+		});
+	};
+	function expandAll() {
+		mygrid.forEachRow(function(id) {
+			var cell = mygrid.cellById(id, 0);			
+			cell.open();
+			subRowOpenFlag = true;
+		});
+	};
+	
+	function doReset() {
+	};
+	
+	function reLoadGrid(gridName){		
+		if(gridName=='BookMarked'){
+			document.getElementById('BookMarked').style.fontWeight = 'bold';
+			document.getElementById('Manual').style.fontWeight = 'normal';	
+			mygrid.clearAll();
+			mygrid.parse(ar, "jsarray");
+			setDefaultHiddenColumns();
+		}else
+		if(gridName=='Manual'){
+			document.getElementById('Manual').style.fontWeight = 'bold';
+			document.getElementById('BookMarked').style.fontWeight = 'normal';	
+			mygrid.clearAll();
+			mygrid.parse(arMannual, "jsarray");
+			setDefaultHiddenColumns();
+		}else{
+			document.getElementById('BookMarked').style.fontWeight = 'normal';
+			document.getElementById('Manual').style.fontWeight = 'normal';
+		}		
+	}	
+</script>
+
+<script>
+		var locationTree = new dhtmlXTreeObject("location_tree_container","100%","100%",0);
+		locationTree.setSkin('dhx_skyblue');
+		locationTree.setImagePath("../../../images/treeImgs/");
+		//locationTree.enableTreeLines(true);
+		locationTree.enableSmartXMLParsing(true);
+		if(jQuery.browser.ie) {
+			locationTree.enableIEImageFix(true);
+		}
+		locationTree.loadXML("\locationItems.xml");
+		
+		var customerTree = new dhtmlXTreeObject("chl_node_tree_container","100%","100%",0);
+		customerTree.setSkin('dhx_skyblue');
+		customerTree.setImagePath("../../../images/treeImgs/");
+		//locationTree.enableTreeLines(true);
+		customerTree.enableSmartXMLParsing(true);
+		if(jQuery.browser.ie) {
+			customerTree.enableIEImageFix(true);
+		}
+		customerTree.loadXML("\customerItems.xml");
+</script>
+
+</html>

@@ -1,0 +1,33 @@
+#set ($parent = "f")
+#foreach ($topnav in $nav_items)
+ #if($topnav.isSelected())
+ #set ($parent = $topnav)
+  #foreach ($nav_item in $topnav.getChildren())
+   #if($nav_item.isSelected())
+    #set ($parent = $topnav)
+   #end
+   #foreach ($child in $nav_item.getChildren())
+    #if($child.isSelected())
+     #set ($parent = $nav_item)
+     #set ($show = "t")
+    #end
+   #end
+  #end
+ #end
+#end
+#if ($parent.hasChildren() && $parent.getName() != "BottomHeader" && $parent.getName() != "TopHeader" && !$parent.getName.startsWith("_"))
+    <div id="topnavigation" class="sort-pages modify-pages">
+	    <ul>
+            #foreach ($child in $parent.getChildren())
+                #if ($child.isSelected())
+		            #set ($nav_item_class = "selected")
+    	        #else
+	    		    #set ($nav_item_class = "")
+		        #end
+        	    <li class="$nav_item_class">
+		            <a href="$child.getURL()" $child.getTarget()><span>$child.getName()</span></a>
+        	    </li>
+            #end
+	    </ul>
+    </div>
+#end

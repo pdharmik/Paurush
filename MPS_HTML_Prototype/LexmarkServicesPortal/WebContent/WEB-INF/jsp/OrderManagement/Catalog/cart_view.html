@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Cart View</title>
+<link href="../../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../../../js/util.js"></script>
+<script src="../../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/tree/dhtmlxtree.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../../../js/mps.js"></script>
+</head>
+<body>
+<div class="portletBlock bgSolid">
+  <div class="columnsOne">
+    <div class="columnInner">
+      <p>The following items have been placed in your cart.</p>
+      <p>To change the quantity for an item, enter the new quantity and click on Update Cart button below.<br>
+        To remove an item, click on the X button for that item.</p>
+      <div class="columnInner">
+        <table class="displayGrid rounded shadow wFull">
+          <thead>
+            <tr>
+              <th class="w15"></th>
+              <th class="w100">Part No.</th>
+              <th>Description</th>
+              <th class="w100">Part Type</th>
+              <th class="w100">Yield</th>
+              <th class="w100">Order Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="w15"><img src="../../../../images/delete.gif" width="16" height="16" alt="Remove" title="Remove"></td>
+              <td class="w100">123456SDFGH</td>
+              <td>Description of the item goes here</td>
+              <td class="w100">Part Type</td>
+              <td class="w100">Yield</td>
+              <td class="w100"><input type="text" class="w90 right" value="10" /></td>
+            </tr>
+            <tr class="altRow">
+              <td class="w15"><img src="../../../../images/delete.gif" width="16" height="16" alt="Remove" title="Remove"></td>
+              <td class="w100">123456SDFGH</td>
+              <td>Description of the item goes here</td>
+              <td class="w100">Part Type</td>
+              <td class="w100">Yield</td>
+              <td class="w100"><input type="text" class="w90 right" value="10" /></td>
+            </tr>
+            <tr>
+              <td class="w15"><img src="../../../../images/delete.gif" width="16" height="16" alt="Remove" title="Remove"></td>
+              <td class="w100">123456SDFGH</td>
+              <td>Description of the item goes here</td>
+              <td class="w100">Part Type</td>
+              <td class="w100">Yield</td>
+              <td class="w100"><input type="text" class="w90 right" value="10" /></td>
+            </tr>
+            <tr class="altRow">
+              <td class="w15"><img src="../../../../images/delete.gif" width="16" height="16" alt="Remove" title="Remove"></td>
+              <td class="w100">123456SDFGH</td>
+              <td>Description of the item goes here</td>
+              <td class="w100">Part Type</td>
+              <td class="w100">Yield</td>
+              <td class="w100"><input type="text" class="w90 right" value="10" /></td>
+            </tr>
+            <tr>
+              <td class="w15"><img src="../../../../images/delete.gif" width="16" height="16" alt="Remove" title="Remove"></td>
+              <td class="w100">123456SDFGH</td>
+              <td>Description of the item goes here</td>
+              <td class="w100">Part Type</td>
+              <td class="w100">Yield</td>
+              <td class="w100"><input type="text" class="w90 right" value="10" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="buttonContainer" id="buttonContact">
+        <button class="button">Update Cart</button>
+        <button class="button">Continue Shopping</button>
+        <button class="button">Check Out</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

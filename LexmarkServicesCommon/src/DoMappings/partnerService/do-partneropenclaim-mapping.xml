@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerOpenClaimDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Open Claims Activity Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW Claim Activity - Partner Portal</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>assetId</value></key>
+	         		<value>Asset Id</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>LXK SW SP Global Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>LXK SW SP Domestic Ultimate DUNS</value>
+				</entry> 
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXK SW SP Legal Entity Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXK SW SP MDM Account Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>LXK R Service Provider Id</value>
+				</entry>
+				<entry>
+	         		<key><value>activityId</value></key>
+	         		<value>Activity UID</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestId</value></key>
+	         		<value>Activity SR Id</value>
+				</entry> 
+				<entry>
+	         		<key><value>serviceRequestNumber</value></key>
+	         		<value>SR Number</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestDate</value></key>
+	         		<value>LXK SW SR Created Date</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceProviderReferenceNumber</value></key>
+	         		<value>LXK SD SP Reference</value>
+				</entry>
+				<entry>
+	         		<key><value>accountName</value></key>
+	         		<value>LXK R Service Provider Name</value>
+				</entry> 
+				<entry>
+	         		<key><value>actualFailureCode</value></key>
+	         		<value>LXK SD Actual Failure Code</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel</value></key>
+	         		<value>LXK SW SP Account Level</value>
+				</entry>
+				<entry>
+	         		<key><value>activityDate</value></key>
+	         		<value>Created</value>
+				</entry>
+				<entry>
+	         		<key><value>activityStatus</value></key>
+	         		<value>Status</value>
+				</entry>
+				
+	     	</map>
+		</property>
+    </bean>  
+</beans>

@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>IDM Popup Unit Test</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td width="20px" size="10" align="right">operid:&nbsp;</td>
+            <td><input type="text" id="operId" name="operId"  
+              value="623"></td>
+        </tr>
+        <tr>
+            <td width="20px">jsession_num:&nbsp;</td>
+            <td><input type="text" size="60" id="jSessionNum" name="jSessionNum"
+               value="EC11B6DEFAF739E12E21554AEBA89AB1.portal2"> </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right">
+                <input class="submit" type="reset" value="Cancel" >&nbsp;&nbsp;
+                <input class="submit" type="submit" value="Submit" onClick="openIDMPopUp();">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right">
+                 <input class="submit" type="submit" value="Submit Modal" onClick="openModal();">
+            </td>
+        </tr>
+    </table>
+   
+
+    <script language="javascript">
+<!--
+   var today = new Date();
+   var hostname = window.location.hostname;
+
+   document.write("<br><br>Running on Hostname: ");
+   document.write(hostname);
+   document.write("<br>November 09 2012 9.00pm v1.46 (GlobalServices Build Version)");
+   document.write("<br>Date/Time: ");
+   document.write(today);
+
+ //-->
+ </script>
+    
+
+
+</body>
+<script type="text/javascript">
+    function openIDMPopUp(){
+        var jSessionNum = document.getElementById('jSessionNum').value;
+        var operId = document.getElementById('operId').value;
+        var url = "accountCHLView.jsp?operid=" + operId + "&jsession_num=" + jSessionNum;
+        window.open(url, "UserAuthorization", "height=400,width=400,top=0,left=0,toolbar=no,menubar=no,scrollbars=yes,resizable=yes,location=no,status=no");
+    }
+    function openModal()
+    {
+        var jSessionNum = document.getElementById('jSessionNum').value;
+        var operId = document.getElementById('operId').value;
+        var url = "accountCHLView.jsp?operid=" + operId + "&jsession_num=" + jSessionNum;
+    	var args = new Object;
+    	args.window = window;
+    	showModalDialog(url, args);
+    }
+        
+</script>
+</html>

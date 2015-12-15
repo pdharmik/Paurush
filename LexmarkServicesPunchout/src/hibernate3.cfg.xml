@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+
+		<!-- Don't forget to copy your JDBC driver to the lib/ directory! -->
+
+		<!-- Settings for a local HSQL (testing) database. -->
+  <!-- 		
+  	<property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+		<property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+		<property name="connection.url">jdbc:hsqldb:data/performanceTracking</property>
+		<property name="connection.username">sa</property>
+		<property name="connection.password"></property>
+		-->
+
+		<!-- Settings for GDC Oracle environment. -->
+  <!-- 		 
+       <property name="hibernate.connection.url">jdbc:oracle:thin:@10.2.13.109:1521:lexmark</property>
+       <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+       <property  name="hibernate.connection.username">lexmark</property>
+       <property name="hibernate.connection.password">lexmark</property>
+ 	   <property name="hibernate.connection.pool_size">10</property>
+       <property name="dialect">org.hibernate.dialect.OracleDialect</property>
+		-->
+
+ 		<!-- Settings for Lexmark Development Oracle environment. -->
+ 
+  <!-- 		
+       <property name="hibernate.connection.url">jdbc:oracle:thin:@dlxk2db6.lex.lexmark.com:1586:eprtden1</property>
+       <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+       <property  name="hibernate.connection.username">LGSPORTAL</property>
+       <property name="hibernate.connection.password">Lex#1234</property>
+ 	   <property name="hibernate.connection.pool_size">10</property>
+       <property name="dialect">org.hibernate.dialect.OracleDialect</property>
+    -->    
+
+
+ 		<!-- Settings for Lexmark QA  Oracle environment.
+		     Using jndi data source to support load-balance database -->
+		
+ 	    <property name="hibernate.connection.datasource">java:comp/env/jdbc/ObieeImpersonateDB</property>
+	    <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+	 
+		<!-- Print SQL to stdout. -->
+		<property name="show_sql">false</property>
+
+        <!-- Create the tables for initial deployment to new environment
+        <property name="hibernate.hbm2ddl.auto">create</property>
+        -->
+        <!-- After initial deployment -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+		<!-- CaveatEmptor mapping files. -->
+		<mapping resource="com/lexmark/domain/ObieeImpersonate.hbm.xml"/>
+	</session-factory>
+
+</hibernate-configuration>

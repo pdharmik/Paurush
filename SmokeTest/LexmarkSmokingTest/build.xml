@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="SmokingTest" default="junit" basedir=".">
+  <property name="run.classpath" value="bin" /> 
+  <property name="run.srcpath" value="src" /> 
+  <property name="test.xml" value="Report/xmlReports" /> 
+  <property name="test.report" value="Report/reports" /> 
+  <property name="lib.dir" value="./lib" /> 
+  <property name="selenium.home" value="C:/selenium"/>
+  
+<path id="compile.path">
+  <pathelement location="${lib.dir}/junit.jar" /> 
+  <pathelement location="${lib.dir}/org.apache.log4j_1.2.15.v201012070815.jar" /> 
+  <pathelement location="${lib.dir}/selenium-java-client-driver.jar" /> 
+  <dirset dir="${run.classpath}" />
+</path>
+
+
+<target name="start-server">
+        <java jar="${selenium.home}/selenium-server.jar" fork="true" spawn="true">
+			<!--jvmarg value="-Dcatlina.home=${selenium.home}"-->
+    	</java>
+	
+           <!--use chrome to run server-arg line=" -googlechromeProfileTemplate ${selenium.home}/profiles/googlechromeProfile" />-->
+        <waitfor maxwait="5" maxwaitunit="minute" checkevery="3" checkeveryunit="second">
+     <and>
+        <socket server="localhost" port="4444" />
+     </and>
+      </waitfor>
+</target>
+
+  
+<target name="init" depends="start-server">
+  <delete dir="${test.report}" /> 
+  <mkdir dir="${test.report}" /> 
+  <delete dir="${test.xml}" /> 
+  <mkdir dir="${test.xml}" /> 
+  <delete dir="${run.classpath}"/>
+  <mkdir dir="${run.classpath}"/>
+</target>
+  
+<target name="compile" depends="init">
+  <javac srcdir="${run.srcpath}" destdir="${run.classpath}" > 
+    <classpath refid="compile.path" />
+  </javac>
+</target>
+
+  
+<target name="junit" depends="compile">
+
+<junit printsummary="true">
+  <classpath>
+	<path refid="compile.path" />
+  </classpath>
+
+  <formatter type="plain"/>
+   <batchtest todir="${run.classpath}">
+	<fileset dir="${run.classpath}" includes="*Test.class"/>
+	        	<formatter type="xml"/>
+   </batchtest>
+</junit>
+  
+<junitreport todir="${test.xml}">
+  <fileset dir="${run.classpath}">
+     <include name="*.xml" /> 
+  </fileset>
+   <report format="frames" todir="${test.report}" /> 
+   </junitreport>
+</target>
+  
+<target name="stop-server" depends="junit">
+    <get taskname="selenium-shutdown" src="http://localhost:4444/selenium-server/driver/?cmd=shutDown" dest="${testng.report.dir}/result.txt" ignoreerrors="true" />
+    <echo taskname="selenium-shutdown" message="Some errors during shutdown are expected" />
+</target>
+
+
+  </project>

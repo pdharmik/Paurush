@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Update Page Count</title>
+<link href="../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../../js/expand.js"></script>
+<script src="../../../js/mps.js"></script>
+<script>
+function closePageCount(){
+	dialog.dialog('close');			
+	dialog=null;
+}
+</script>
+</head>
+<body>
+<div id="contentPageCount">
+  <div class="portletBlock bgSolid">
+        <div class="portletBlock infoBox rounded shadow split">
+          <div class="columnsTwo">
+            <div class="columnInner">
+              <h4>Current Page Counts</h4>
+              <ul class="form">
+                <li>
+                  <label for="ltpc">LTPC: </label>
+                  <span>XXXXXX</span></li>
+                <li>
+                  <label for="date1">Date &amp; Time: </label>
+                  <span>MM/DD/YY hh:mm:ss AM</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="columnsTwo">
+            <div class="columnInner">
+              <h4>&nbsp;</h4>
+              <ul class="form">
+                <li>
+                  <label for="color">Color: </label>
+                  <span>XXXXXX</span></li>
+                <li>
+                  <label for="date2">Date &amp; Time: </label>
+                  <span>MM/DD/YY hh:mm:ss AM</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="portletBlock infoBox rounded shadow split">
+          <div class="columnsTwo">
+            <div class="columnInner">
+              <h4>Enter New Page Counts</h4>
+              <ul class="form">
+                <li>
+                  <label for="ltpc">LTPC: </label>
+                  <span>
+                  <input type="text" id="ltpc" class="w150" />
+                  <img src="../../../images/help.png" class="helpIcon" title="Enter Life Time Page Count for this asset" width="18" height="18"/></span></li>
+                <li>
+                  <label for="date1">Date &amp; Time: </label>
+                  <span>
+                  <input type="date" id="date1" class="w150" />
+                  <img src="../../../images/ic_cal.png" title="Select a Date" width="23" height="23"/></span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="columnsTwo">
+            <div class="columnInner">
+              <h4>&nbsp;</h4>
+              <ul class="form">
+                <li>
+                  <label for="color">Color: </label>
+                  <span>
+                  <input type="text" id="color" class="w150" />
+                  <img src="../../../images/help.png" class="helpIcon" title="Enter Color Page Count for the asset" width="18" height="18"/></span></li>
+                <li>
+                  <label for="date2">Date &amp; Time: </label>
+                  <span>
+                  <input type="date" id="date2" class="w150" />
+                  <img src="../../../images/ic_cal.png" title="Select a Date" width="23" height="23"/></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="buttonContainer">
+          <button class="button_cancel" onclick="closePageCount();">Cancel</button>
+          <button class="button" onclick="closePageCount();">Submit</button>
+        </div>
+      </div>
+</div>	  
+</body>
+</html>

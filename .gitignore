@@ -1,0 +1,44 @@
+# Subprojects we aren't moving to git
+AutoLogin-hook/
+AutoLogin-hook-6.2/
+DA/
+#DctmWebServiceClient/
+#ExternalLib/
+#ReportScheduler/
+
+# random war files left in the project root
+lexmark-punchout-theme-5.2.3.1.war
+lexmark-services-portal-theme-6.2.0.1.war
+LexmarkServicesPunchOutTemplate-layouttpl-5.2.3.1.war
+newtheme_LexmarkPartnerPortalTheme.zip
+PunchoutLayout-layouttpl-6.2.0.1.1.war
+
+# subversion directory
+**/.svn/
+
+# Build Objects that should not ever be committed
+**/build
+**/dist
+**/*.class
+
+# Random temporary stuff
+**/*.tmp
+**/*.bak
+**/*.swp
+**/*~.nib
+**/tmp/
+**/*.old
+
+
+# Eclipse files
+#**/.project
+#**/.classpath
+#**/.settings
+#**/.loadpath
+
+
+# IDEA files
+**/\*.iml
+**/\*.eml
+**/.idea
+

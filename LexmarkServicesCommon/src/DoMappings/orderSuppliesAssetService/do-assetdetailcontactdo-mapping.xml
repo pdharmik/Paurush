@@ -1,0 +1,133 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="AssetDetailContactDo" class="com.amind.data.service.DomainObjMapping">
+
+       <property name="dataSourceName">
+            <value>EAI Siebel Adapter</value>
+        </property>
+        
+       <property name="dsTargetObjectName">
+            <value>LXK MPS Consumable Asset Detail - Service Web</value>
+       </property>
+
+        <property name="dsTargetComponentName">
+<!--             <value>LXK Contact SCB</value> -->
+            <value>LXK MPS Asset Contact</value>
+        </property>
+        <property name="packageName">
+            <value>com.lexmark.service.impl.real.domain</value>
+        </property>
+
+       <!-- field mapping -->
+       <property name="doFieldNameToDsFieldNameMap">
+           <map>
+			  <entry>
+                 <key><value>firstName</value></key>
+                 <value>LXK MPS First Name</value>
+			   </entry> 
+			   <entry>
+                 <key><value>lastName</value></key>
+                 <value>LXK MPS Last Name</value>
+			  </entry>  
+			   <entry>
+                 <key><value>workPhone</value></key>
+				 <value>LXK MPS Work Phone #</value>
+			  </entry>  
+			   <entry>
+                 <key><value>emailAddress</value></key>
+ 				 <value>LXK MPS Email Address</value>
+			  </entry>  
+			   <entry>
+                 <key><value>homePhone</value></key>
+                 <value>Home Phone #</value>
+			  </entry> 
+			   <entry>
+                 <key><value>deviceContactType</value></key>
+ 				 <value>LXK MPS Job Role</value>
+			  </entry>  
+			  <entry>
+                 <key><value>addressLine1</value></key>
+                 <value>LXK Primary Personal Address</value>
+			  </entry>
+			  <entry>
+                 <key><value>addressLine2</value></key>
+                 <value>LXK Primary Personal Address 2</value>
+			  </entry>
+			  <entry>
+                 <key><value>addressLine3</value></key>
+                 <value>LXK Primary Personal Address 3</value>
+			  </entry>
+			  <entry>
+                 <key><value>city</value></key>
+                 <value>LXK Primary Personal City</value>
+			  </entry>
+			  <entry>
+                 <key><value>state</value></key>
+                 <value>LXK Primary Personal State</value>
+			  </entry>
+			  <entry>
+                 <key><value>postalCode</value></key>
+                 <value>LXK Primary Personal Postal Code</value>
+			  </entry>
+			  <entry>
+                 <key><value>province</value></key>
+                 <value>LXK Primary Personal Province</value>
+			  </entry>
+			  <entry>
+                 <key><value>country</value></key>
+                 <value>LXK Primary Personal Country</value>
+			  </entry>
+			  <entry>
+                 <key><value>addressName</value></key>
+                 <value></value>
+			  </entry>
+			  <entry>
+                 <key><value>contactId</value></key>
+                 <value>Contact Id</value>
+			  </entry>
+			  <entry>
+                 <key><value>addressId</value></key>
+                 <value>LXK MPS Primary Personal Address Id</value>
+			  </entry>
+			  <entry>
+                 <key><value>storeFrontName</value></key>
+                 <value></value>
+			  </entry>
+			  <entry>
+                 <key><value>county</value></key>
+                 <value>LXK Primary Personal County</value>
+			  </entry>
+			  <entry>
+                 <key><value>district</value></key>
+                 <value>LXK Primary Personal District</value>
+			  </entry>
+			  <entry>
+                 <key><value>officeNumber</value></key>
+                 <value>LXK Primary Personal Office#</value>
+			  </entry>
+			  <entry>
+                 <key><value>countryIsoCode</value></key>
+                 <value>LXK Primary Personal Country Code</value>
+			  </entry>
+			  <entry>
+                 <key><value>region</value></key>
+                 <value>LXK Primary Personal Region</value>
+			  </entry>
+			  <entry>
+                 <key><value>building</value></key>
+                 <value></value>
+			  </entry>
+			  <entry>
+                 <key><value>floor</value></key>
+                 <value></value>
+			  </entry>
+			  <entry>
+                 <key><value>primaryRole</value></key>
+                 <value>LXK MPS  Primary Role</value>
+			  </entry>
+           </map>
+       </property>
+    </bean>
+</beans>

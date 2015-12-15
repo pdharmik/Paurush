@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [myTestNG]">
+  <test name="my_test(failed)">
+    <classes>
+      <class name="TestNGsuite.Trial">
+        <methods>
+          <include name="DeviceFinderTest"/>
+        </methods>
+      </class> <!-- TestNGsuite.Trial -->
+      <class name="TestNGsuite.TestNG_Login">
+        <methods>
+          <include name="DeviceDinderPage"/>
+          <include name="Login"/>
+          <include name="signoff"/>
+          <include name="SetUp"/>
+        </methods>
+      </class> <!-- TestNGsuite.TestNG_Login -->
+      <class name="TestNGsuite.NewTest">
+        <methods>
+          <include name="SetUp"/>
+          <include name="Login"/>
+        </methods>
+      </class> <!-- TestNGsuite.NewTest -->
+    </classes>
+  </test> <!-- my_test(failed) -->
+</suite> <!-- Failed suite [myTestNG] -->

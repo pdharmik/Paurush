@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="CatalogEntitlementAccountDo" class="com.amind.data.service.DomainObjMapping">
+  
+		<!-- data source info -->
+       	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS Entitlement - Portal2.1</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Entitlement - Portal</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>LXK Account Id</value>
+				</entry>				
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>Global Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>Domestic Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>level</value></key>
+	         		<value>LXK SW MDM Account Level</value>
+				</entry>				
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXM MDM Legal Entity ID #</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXM MDM Account #</value>
+				</entry>				
+				<entry>
+	         		<key><value>agreementStatus</value></key>
+	         		<value>LXK C Agreement Header Status</value>
+				</entry>				
+				<entry>
+	         		<key><value>catalogEntitlementFlag</value></key>
+	         		<value>LXK MPS Catalog Flag</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementId</value></key>
+	         		<value>Parent Agreement Id</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementName</value></key>
+	         		<value>Parent Agreement Name</value>
+				</entry>
+				<entry>
+	         		<key><value>catalogExpediteFlag</value></key>
+	         		<value>LXK MPS Expedite Service</value>
+				</entry>
+				<entry>
+	         		<key><value>accountId</value></key>
+	         		<value>Agreement Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>accountName</value></key>
+	         		<value>LXK MPS Account Name</value>
+				</entry>		
+				<entry>
+	         		<key><value>accountCountry</value></key>
+	         		<value>LXK MPS Act Pr Addr Country</value>
+				</entry>	
+				<entry>
+	         		<key><value>accountSplitterFlag</value></key>
+	         		<value>LXK MPS Catalog From SAP Flag</value>
+				</entry>
+				<entry>
+	         		<key><value>entitlementType</value></key>
+	         		<value>Entitlement Type</value>
+				</entry>
+				
+				<entry>	
+					 <key><value>suppliesCatalogDo</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.SuppliesSAPCatalogDo</value>
+				</entry>
+				
+				 <entry>
+                    <key><value>paymentMethod</value></key>
+                    <value>LXK MPS Payment Method</value>
+               	 </entry>  	
+               	  <entry>
+                    <key><value>showPrice</value></key>
+                    <value>LXK MPS Show Price</value>
+               	 </entry>  
+               	 
+               	 <entry>
+                    <key><value>organizationName</value></key>
+                    <value>LXK MPS Organization Name</value>
+               	 </entry>  	
+               	 <entry>	
+					 <key><value>agreementRelatedAccounts</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.AgreementRelatedAccountsDO</value>
+				</entry>
+				<entry>
+                    <key><value>mpsQuantity</value></key>
+                    <value>LXK MPS Quantity</value>
+               	 </entry>
+			
+	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+#parse ($init)
+
+<html class="$root_css_class" dir="#language ("lang.dir")" lang="$w3c_language_id">
+
+<head>
+	<title>$the_title</title>
+
+	$theme.include($top_head_include)
+	<script type="text/javascript" src="/lexmark-services-portal-theme/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/lexmark-services-portal-theme/js/jquery-ui.min.js"></script>
+<script type="text/javascript">
+	var allPortlets = "";
+var portletName="";
+var pageTitle = "";
+var pageNameSelected;
+var companyName = "$LGS-CUSTOMER-ldapUserCompanyName";
+var mdmId = "$LGS-CUSTOMER-ldapUserMdmId";
+var mdmLevel = "$LGS-CUSTOMER-ldapUserMdmLevel";
+var userType = "$LGS-CUSTOMER-ldapUserSegment";
+var pageTypeDisplayed = "";
+
+function addPortlet(portletSingle) {
+allPortlets = allPortlets + "," + portletSingle;
+
+
+}
+
+function callOmnitureAction(portlet, type){
+	var s=s_gi('%omniture.account%'); 
+	s.linkTrackVars='prop1,eVar1,prop6,eVar6,events'; 
+	s.linkTrackEvents='event1'; 
+	s.prop1=portlet; 
+	s.eVar1=portlet; 
+	s.prop6=type; 
+	s.eVar6=type; 
+	s.events='event1'; 
+	s.tl(this,'o',type);
+}
+
+</script>
+</head>
+
+<body class="portal-popup $css_class">
+
+$theme.include($content_include)
+
+$theme.include($bottom_ext_include)
+
+</body>
+
+<!-- November 9 2012 9:00PM v1.46 (GlobalServices Build Version) -->
+<!-- ONLY USED IF AUTHENTICATED - SiteCatalyst code version: H.22.1.
+Copyright 1996-2010 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="/lexmark-services-portal-theme/js/s_code.js"></script>
+<script language="JavaScript" type="text/javascript"><!--
+/* You may give each page an identifying name, server, and channel on
+the next lines. */
+#if ($LGS-CUSTOMER-userAuthenticated)
+s.pageName=pageNameSelected
+s.server=""
+s.channel="Lexmark Global Services Customer Portal"
+s.pageType=pageTypeDisplayed
+s.prop1=allPortlets
+s.prop2=companyName
+s.prop3=companyName + " - " + mdmId
+s.prop4=mdmLevel
+s.prop5=userType
+s.prop7="$LGS-CUSTOMER-instanceName"
+s.prop8="$LGS-CUSTOMER-serverName"
+/* Conversion Variables */
+s.campaign=""
+s.state=""
+s.zip=""
+s.events=""
+s.products=""
+s.purchaseID=""
+s.eVar1=allPortlets
+
+s.eVar2=companyName
+s.eVar3=companyName + " - " + mdmId
+s.eVar4=mdmLevel
+s.eVar5=userType
+#else
+s.pageName="login"
+s.server=""
+s.channel="Lexmark Global Services Customer Portal"
+s.pageType=pageTypeDisplayed
+s.prop1=""
+s.prop2=""
+s.prop3=""
+s.prop4=""
+s.prop5=""
+s.prop7=""
+s.prop8=""
+/* Conversion Variables */
+s.campaign=""
+s.state=""
+s.zip=""
+s.events=""
+s.products=""
+s.purchaseID=""
+s.eVar1=""
+s.eVar2=""
+s.eVar3=""
+s.eVar4=""
+s.eVar5=""
+#end
+
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script><noscript><img src="http://lexmark.122.2o7.net/b/ss/%omniture.account%/1/H.22.1--NS/0?[AQB]&cdp=3&[AQE]"
+height="1" width="1" border="0" alt="" /></noscript><!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.22.1. -->
+</html>

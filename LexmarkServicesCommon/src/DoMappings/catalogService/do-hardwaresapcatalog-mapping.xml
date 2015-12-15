@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="HardwareSapCatalogDo" class="com.amind.data.service.DomainObjMapping">
+
+		<!-- data source info -->
+		<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+		</property>
+
+		<property name="dsTargetObjectName">
+			<value>LXK MPS Hardware Catalog Portal</value>
+		</property>
+
+		<property name="dsTargetComponentName">
+			<value>LXK MPS Hardware Catalog Portal</value>
+		</property>
+
+		<property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+		</property>
+
+		<!-- field mapping -->
+		<property name="doFieldNameToDsFieldNameMap">
+			<map>
+				<entry>
+					<key>
+						<value>id</value>
+					</key>
+					<value>Id</value>
+				</entry>
+				<entry>
+					<key>
+						<value>agreementId</value>
+					</key>
+					<value>LXK MPS Agreement Id</value>
+				</entry>
+				<entry>
+					<key>
+						<value>billingModel</value>
+					</key>
+					<value>LXK MPS Billing Model</value>
+				</entry>
+				<entry>
+					<key>
+						<value>sapContract</value>
+					</key>
+					<value>LXK MPS SAP Contract #</value>
+				</entry>
+				<entry>
+					<key>
+						<value>contractLineItemId</value>
+					</key>
+					<value>LXK MPS Sol Id</value>
+				</entry>
+				<entry>
+					<key>
+						<value>sapLine</value>
+					</key>
+					<value>LXK MPS SAP Line #</value>
+				</entry>
+				<entry>
+					<key>
+						<value>sapSalesOrg</value>
+					</key>
+					<value>LXK MPS SAP Sales Org</value>
+				</entry>
+				<entry>
+					<key>
+						<value>sapSoldTo</value>
+					</key>
+					<value>LXK MPS SAP Sold To #</value>
+				</entry>
+				<entry>
+					<key>
+						<value>partDescription</value>
+					</key>
+					<value>LXK MPS Part Description</value>
+				</entry>
+
+				<entry>
+					<key>
+						<value>implicitFlag</value>
+					</key>
+					<value>LXK MPS Implicit Flag</value>
+				</entry>
+				<entry>
+					<key>
+						<value>portalFlag</value>
+					</key>
+					<value>LXK MPS Portal Flag</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bundleProductId</value>
+					</key>
+					<value>LXK MPS Config Name</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bundleId</value>
+					</key>
+					<value>LXK MPS Id</value>
+				</entry>
+
+				<entry>
+					<key>
+						<value>componentPart</value>
+					</key>
+					<value>LXK MPS Component Part #</value>
+				</entry>
+
+				<entry>
+					<key>
+						<value>partType</value>
+					</key>
+					<value>LXK MPS Part Type</value>
+				</entry>
+				<entry>
+					<key>
+						<value>productType</value>
+					</key>
+					<value>LXK MPS Product Type</value>
+				</entry>
+
+				<entry>
+					<key>
+						<value>productModel</value>
+					</key>
+					<value>LXK MPS Product Model</value>
+				</entry>
+				<entry>
+					<key>
+						<value>quantity</value>
+					</key>
+					<value>LXK MPS Quantity</value>
+				</entry>
+				<entry>
+					<key>
+						<value>pickSapCatalogPaymentType</value>
+					</key>
+					<value>com.lexmark.service.impl.real.domain.HardwareCatalogPaymentTypeDo</value>
+				</entry>
+				<entry>
+					<key>
+						<value>bundleMaterialID</value>
+					</key>
+					<value>LXK MPS Component Part Id</value>
+				</entry>
+				<entry>
+					<key>
+						<value>type</value>
+					</key>
+					<value>LXK MPS Type</value>
+				</entry>
+				<entry>
+					<key>
+						<value>materialLine</value>
+					</key>
+					<value>LXK MPS Material Line</value>
+				</entry>
+				<entry>
+					<key>
+						<value>modelColor</value>
+					</key>
+					<value>LXK MPS Model Color</value>
+				</entry>
+				<entry><key><value>sapStatus</value></key>
+					<value>LXK MPS Status</value>
+				</entry>
+				<entry>
+					<key>
+						<value>assetId</value>
+					</key>
+					<value>LXK MPS Asset Id</value>
+				</entry>
+				<entry>
+					<key>
+						<value>mpsDescription</value>
+					</key>
+					<value>LXK MPS Description</value>
+				</entry>
+				<entry>
+					<key>
+						<value>PartTypeB2b</value>
+					</key>
+					<value>LXK MPS B2B Part Type</value>
+				</entry>
+				<entry>
+	         		<key><value>configId</value></key>
+	         		<value>LXK MPS Config ID</value>
+				</entry>
+			</map>
+		</property>
+
+	</bean>
+</beans>

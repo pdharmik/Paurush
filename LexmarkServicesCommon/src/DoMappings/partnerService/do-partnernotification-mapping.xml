@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerNotificationDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>Siebel BO</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Partner Portal BO</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW SR Email Activity - Partner Portal</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>activityId</value></key>
+	         		<value>Activity Id</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestId</value></key>
+	         		<value>Activity SR Id</value>
+				</entry>	
+				<entry>
+	         		<key><value>activityDate</value></key>
+	         		<value>LXK SW Activity Created Date</value>
+				</entry>
+				<entry>
+	         		<key><value>recipientEmail</value></key>
+	         		<value>Email Recipient Address</value>
+				</entry>	
+				<entry>
+	         		<key><value>activityDescription</value></key>
+	         		<value>LXK SW Email Activtiy Desc</value>
+				</entry>
+				<entry>
+	         		<key><value>message</value></key>
+	         		<value>Comments</value>
+				</entry>																																		
+	     	</map>
+		</property>
+    </bean>  
+</beans>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+
+
+<hibernate-mapping package="com.lexmark.domain">
+
+<class name="UserFieldsViewSetting"
+       table="USER_FIELD_PREFERENCES"
+       lazy="false">
+       
+       <composite-id>
+    	<key-property name="userNumber"   type="string" column="USERID"/>
+    	
+    	<key-property name="portalName"   type="string" column="PORTAL_NAME"/>
+	</composite-id>
+       
+    
+	 <property   name="prefId"
+                column="PREF_ID"
+                type="string"
+                length="50"
+                not-null="false"
+                />         
+       
+	 <property   name="fieldsDisplayed"
+                column="FIELDS"
+                type="string"
+                length="100"
+                not-null="false"
+                />         
+                                                                          
+</class>
+</hibernate-mapping>

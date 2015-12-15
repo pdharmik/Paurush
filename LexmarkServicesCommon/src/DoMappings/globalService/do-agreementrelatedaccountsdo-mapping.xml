@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="AgreementRelatedAccountsDO" class="com.amind.data.service.DomainObjMapping">
+  
+		<!-- data source info -->
+       	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS Entitlement - Portal2.1</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Entitlement - Portal_Account MVG</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>accountId</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>accountName</value></key>
+	         		<value>Name</value>
+				</entry>		
+				<entry>
+	         		<key><value>accountCountry</value></key>
+	         		<value>LXK Primary Account Country</value>
+				</entry>	
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>LXK Account Id</value>
+				</entry>				
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>Global Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>Domestic Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>level</value></key>
+	         		<value>LXK SW MDM Account Level</value>
+				</entry>				
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXM MDM Legal Entity ID #</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

@@ -1,0 +1,125 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="OrderSuppliesAssetPartDetailDo" class="com.amind.data.service.DomainObjMapping">
+
+    <!-- data source info -->
+       <property name="dataSourceName">
+            <value>EAI Siebel Adapter</value>
+        </property>
+        
+       <property name="dsTargetObjectName">
+            <value>LXK MPS Consumable Asset Detail - Service Web</value>
+       </property>
+
+        <property name="dsTargetComponentName">
+            <value>LXK MPS Pick Supplies</value>
+        </property>
+        <property name="packageName">
+            <value>com.lexmark.service.impl.real.domain</value>
+        </property>
+
+           <!-- field mapping -->
+           <property name="doFieldNameToDsFieldNameMap">
+             <map>
+                <entry>
+                     <key><value>id</value></key>
+                     <value>Id</value>
+                </entry>
+                
+                <entry>
+                	<key><value>partNumber</value></key>
+                	<value>LXK MPS Supply Part#</value>
+                </entry>
+                <entry>
+                	<key><value>description</value></key>
+                	<value>LXK MPS Supply Part Description Explicit</value>
+                </entry>
+                	<!-- swap values for Part Type and Consumable Type for Portal UI-->
+	            <entry>
+                    <key><value>partType</value></key>
+                     <value>LXK MPS Consumable Type Implicit</value>
+                </entry>
+                <entry>
+                    <key><value>implicitFlag</value></key>
+                     <value>LXK MPS Implicit Flag</value>
+                </entry>
+                <entry>
+                    <key><value>catalogId</value></key>
+                     <value>LXK MPS Id</value>
+                </entry>
+                <entry>
+                    <key><value>printerPartNumber</value></key>
+                     <value>LXK MPS Printer Material #</value>
+                </entry>
+                <entry>
+                    <key><value>assetUsageType</value></key>
+                     <value>LXK MPS Asset Usage Level</value>
+                </entry>
+                <entry>
+                    <key><value>assetSerialNumber</value></key>
+                     <value>LXK MPS Serial #</value>
+                </entry>
+                	<!-- swap values for Part Type and Consumable Type for Portal UI-->
+                <entry>
+                    <key><value>consumableType</value></key>
+                     <value>LXK MPS Part Type</value>
+                </entry>
+                <entry>
+                    <key><value>yield</value></key>
+                     <value>LXK MPS Standard Yield</value>
+                </entry>
+                 <entry>
+                    <key><value>supplyId</value></key>
+                     <value>LXK MPS Supply Id</value>
+                </entry>
+                <entry>
+                    <key><value>productId</value></key>
+                     <value>LXK MPS Product Id</value>
+                </entry>               
+                
+               <entry>
+                    <key><value>assetId</value></key>
+                    <value></value>
+               </entry> 
+               <entry>
+                    <key><value>area</value></key>
+                    <value></value>
+               </entry> 
+               <entry>
+                    <key><value>subArea</value></key>
+                    <value></value>
+               </entry> 
+               <entry>
+                    <key><value>specialUsage</value></key>
+                    <value></value>
+               </entry> 
+               <entry>
+                    <key><value>printerMaterialNumber</value></key>
+                    <value></value>
+               </entry>
+               <entry>
+                    <key><value>partPaymentList</value></key>
+                    <value>com.lexmark.service.impl.real.domain.OrderSuppliesAssetPartPaymentDetailDo</value>
+               </entry>
+               <entry>
+                    <key><value>effectiveEndDate</value></key>
+                     <value>LXK MPS Effective End Date</value>
+               </entry> 
+               <entry>
+                    <key><value>preferenceExplicit</value></key>
+                     <value>LXK MPS Preference_Explicit</value>
+               </entry> 
+               <entry>
+                    <key><value>providerOrderNumber</value></key>
+                     <value>LXK MPS Provider Contract/Order #</value>
+               </entry> 
+               <entry>
+                    <key><value>vendorPartNumber</value></key>
+                     <value>LXK MPS Vendor Part No</value>
+               </entry> 
+             </map>
+        </property>
+    </bean>
+</beans>

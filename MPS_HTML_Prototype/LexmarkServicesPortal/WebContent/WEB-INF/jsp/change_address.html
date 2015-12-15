@@ -1,0 +1,221 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Change Address</title>
+<link href="../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../js/util.js"></script>
+<script src="../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../js/tree/dhtmlxtree.js"></script>
+<script src="../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../js/jQuery/jquery.min.js"></script>
+<script src="../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../js/mps.js"></script>
+<script>
+function hideAddAddress() {
+document.getElementById('buttonContact').style.display = "block";
+document.getElementById('update').style.display = "none";
+}
+function showAddAddress() {
+	document.getElementById('buttonContact').style.display = "none";
+	document.getElementById('update').style.display = "block";
+}
+function hideCleansedaddress() {
+document.getElementById('cleansedAddress').style.display = "none";
+}
+function showCleansedaddress() {
+	document.getElementById('button').style.display = "none";
+	document.getElementById('cleansedAddress').style.display = "block";
+}
+</script>
+</head>
+<body onload="javascript:hideAddAddress();hideCleansedaddress();">
+<div class="portletBlock bgSolid">
+<div class="columnsOne">
+<div class="columnInner">
+<div class="grid-controls">
+  <div class="filterLinks">
+    <ul>
+      <li class="first">All Acount Addresses</li>
+      <li><img src="../../images/favorite.png" width="15" height="15"><a href="javascript:void(0);">My Bookmarked Addresses</a></li>
+    </ul>
+  </div>
+</div>
+<div class="portlet-wrap rounded">
+  <div class="portlet-wrap-inner">
+    <div id="mygrid_container" class="gridbox gridbox_light "></div>
+  </div>
+</div>
+<div class="pagination"><span id="pagingArea"></span><span id="infoArea"></span></div>
+<div class="buttonContainer" id="buttonContact">
+  <button class="button_cancel">Cancel</button>
+  <button class="button" onclick="javascript:showAddAddress();">Create A New Address</button>
+</div>
+<!-- CREATE NEW ADDRESS FORM START -->
+<div class="oneblock" id="update">
+<h3 class="pageTitle">Create New Address <span>[Fields marked <span class="req">*</span> are required]</span></h3>
+        <p class="info">Please enter the following information to add a new address:</p>
+  <div class="portletBlock rounded shadow split">
+        <div class="columnsTwo">
+          <div class="columnInner">
+            <ul class="form">
+              <li>
+                <label for="storeName">Store-front Name: </label>
+                <span>
+                <input type="text" id="storeName" />
+                <img src="../../images/help.png" class="helpIcon" alt="Store-front Name" width="18" height="18"></span></li>
+              <li>
+                <label for="addrLine1">Address Line 1: <span class="req">*</span></label>
+                <span>
+                <input type="text" id="addrLine1" />
+                </span> </li>
+              <li>
+                <label for="addrLine2">Address Line 2: </label>
+                <span>
+                <input type="text" id="addrLine2" />
+                </span> </li>
+              <li>
+                <label for="addrLine3">Address Line 3: </label>
+                <span>
+                <input type="text" id="addrLine3" />
+                </span> </li>
+            </ul>
+          </div>
+        </div>
+        <div class="columnsTwo">
+          <div class="columnInner">
+            <ul class="form">
+              <li>
+                <label for="city">City: <span class="req">*</span></label>
+                <span>
+                <input type="text" id="city" />
+                </span> </li>
+              <li>
+                <label for="country">Country: <span class="req">*</span></label>
+                <span>
+                <select name="country" id="country">
+                  <option>-Select-</option>
+                  <option value="">India</option>
+                  <option value="">US</option>
+                  <option value="">UK</option>
+                </select>
+                </span> </li>
+              <li>
+                <label for="state">State / Province: <span class="req">*</span></label>
+                <span>
+                <select name="state" id="state">
+                  <option>-Select-</option>
+                  <option value="">state1</option>
+                  <option value="">state2</option>
+                  <option value="">state3</option>
+                </select>
+                </span> </li>
+              <li>
+                <label for="zipCode">Zip / Postal Code: <span class="req">*</span></label>
+                <span>
+                <input type="text" id="zipCode" class="w100" />
+                </span> </li>
+            </ul>
+          </div>
+        </div>
+  </div>
+  <div class="columnInner">
+  <p class="check">
+  <input type="checkbox" id="modAddress" />
+  <label for="modAddress">Use the modified address</label>
+  </p>
+  </div>
+
+  <div class="buttonContainer" id="button">
+	
+  <input type="checkbox" id="modAddress" />
+  <label for="modAddress">Use the modified address</label>
+  
+    <button class="button_cancel" onclick="javascript:hideAddAddress();">Cancel</button>
+    <button class="button" onclick="javascript:showCleansedaddress();">Save New Address</button>
+  </div>
+</div>
+<!-- CREATE NEW ADDRESS FORM END --> 
+
+<!-- CLEANSED ADDRESS START -->
+<div id="cleansedAddress">
+<hr class="separator" />
+<p class="info banner">The address you entered has been modified to meet Lexmark data verification standards. Please verify.</p>
+<div class="portletBlock infoBox">
+<div class="columnsOne">
+<div class="columnInner">
+<ul class="roDisplay">
+  <li><span>Store-front Name<br>
+Address Line 1<br />
+    Address Line 2<br />
+    Address Line 3<br />
+    City, State / Province XXXXX<br />
+    Country</span> </li>
+</ul>
+<p class="check">
+  <input type="checkbox" id="modAddress" />
+  <label for="modAddress">Use the modified address</label>
+</p>
+</div>
+</div>
+</div>
+<div class="buttonContainer">
+  <button class="button_cancel" onclick="hideadd();">Cancel</button>
+  <button class="button">Save New Address</button>
+</div>
+</div>
+<!-- CLEANSED ADDRESS END -->
+</div>
+</div>
+</div>
+</body>
+<script>
+   var mygrid;
+   var headerString = "&nbsp;,Address Name,Store-front Name,Address line1,Address line2,Address line3,City,State,Province,Zip/Postal Code,Country,&nbsp;,&nbsp;";
+         var ar = [["<img src=\"../../images/favorite.png\" width=\"15\" height=\"15\">","Kolkata","tanmoy" ,"wipro kdc","salt lake","kolkata","kolkata","West Bengal","province","700054","India","<button  class=\"button\">Select</button>"],["<img src=\"../../images/favorite.png\" width=\"15\" height=\"15\">","Bangalore","Kumar" ,"wipro bdc","EC","bangalore","banglore","Karnataka", ,"800054","India","<button class=\"button\">Select</button>"],["<img src=\"../../images/favorite.png\" width=\"15\" height=\"15\">","Kolkata","Arup" ,"wipro kdc","salt lake","kolkata","kolkata","West Bengal", ,"700054","India","<button class=\"button\">Select</button>"],["<img src=\"../../images/favorite.png\" width=\"15\" height=\"15\">","Kolkata","tanmoy" ,"wipro kdc","salt lake","kolkata","kolkata","West Bengal", ,"700054","India","<button class=\"button\">Select</button>"],["<img src=\"../../images/favorite.png\" width=\"15\" height=\"15\">","Kolkata","tanmoy" ,"wipro kdc","salt lake","kolkata","kolkata","West Bengal", ,"700054","India","<button class=\"button\">Select</button>"]];
+             mygrid = new dhtmlXGridObject('mygrid_container');
+		     mygrid.setImagePath("../../images/gridImgs/");
+		     mygrid.setHeader(headerString);
+			 mygrid.attachHeader(",#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
+            mygrid.setInitWidths("30,100,110,100,100,100,85,85,85,100,85,60,*");
+			mygrid.setColumnMinWidth("30,100,110,100,100,100,85,85,85,100,85,60,1");
+			mygrid.enableResizing("false,true,true,true,true,true,true,true,true,true,true,false,true");
+   			mygrid.setColAlign("left,left,left,left,left,left,left,left,left,left,left,left,left");
+ 		    mygrid.setSkin("light");
+  		    mygrid.setColTypes("ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
+  			mygrid.setColSorting("na,str,str,str,str,str,str,str,str,str,str,na,na");
+			mygrid.enableAutoHeight(true);
+			mygrid.enableMultiline(true);
+			mygrid.enableColumnMove(true);
+			mygrid.init();
+			mygrid.enablePaging(true, 5, 2, "pagingArea", true, "infoArea");
+			mygrid.setPagingSkin("bricks"); 
+   			mygrid.parse(ar,"jsarray");
+</script>
+</html>

@@ -1,0 +1,987 @@
+.journal-content-article {
+	margin:0 0 0 20px;
+	width:96.5%;
+	border: none;
+	background-color:#fff !important;
+	height:25px !important;
+	//padding-top: 5px !important;
+}
+.journal-content-article h2{
+background:none;
+padding-left:0 !important;
+color:#000;
+padding: 0px !important;
+margin:0px !important;
+height: auto;
+line-height:20px !important;
+}
+#ActionsMenu {
+	border:1px solid #c9c9d1;
+	background:#fff;
+	margin-top: 0px;
+	border-radius:5px;
+	box-shadow:2px 2px rgba(100,100,100,0.2);
+	color:#464243;
+	padding:5px;
+	width:160px;
+	z-index:1000;
+	position:absolute;
+	right:60px;
+}
+.createRequestMenu div:hover, #ActionsMenu div:hover, #FiltersMenu div:hover {
+	color:#1e68bc;
+}
+.popup_arrow {
+	display: block;
+	position: absolute;
+	border-color: transparent transparent #c9c9d1;
+	border-image: none;
+	border-style: solid;
+	border-width: 10px;
+	top: -20px;
+	right:5%;
+}
+.popup_arrow-inner {
+	border-color: transparent transparent #ffffff;
+	border-image: none;
+	border-style: solid;
+	border-width: 8px;
+	position: absolute;
+	right:auto;
+	bottom: -10px;
+    left: -8px;
+}
+.popup_arrow_low {
+    border-color: #c9c9d1 transparent transparent;
+    border-image: none;
+    border-style: solid;
+    border-width: 10px;
+    bottom: -20px;
+    display: block;
+    position: absolute;
+    right: 50%;
+}
+.popup_arrow-inner_low {
+ border-color: #ffffff transparent transparent;
+    border-image: none;
+    border-style: solid;
+    border-width: 8px;
+    bottom: -4px;
+    left: -8px;
+    position: absolute;
+    right: auto;
+}
+.leftOverlay1 {
+	position:absolute;
+	z-index:1000;
+	background:#fff;
+	width:202px;
+	min-width: 202px;
+	max-width:350px;
+	height:auto;
+	min-height:560px;
+	max-height:600px;
+	vertical-align:top;
+	margin:0;
+	 
+}
+.leftOverlay1 .columnInner .buttonContainerIn {
+	position:absolute;
+	bottom:10px;
+	right:0;
+	left:0;
+	border-top:1px dotted #c9c9d1;
+	padding-top:10px
+}
+.chlModal {
+	margin:0 -10px;
+	background-color:#fff
+}
+.chlModal .chlInner {
+	height:500px;
+	overflow:auto;
+}
+#breadCrumpMap{
+clear: both;
+float: left;
+font-family: "ProximaNova",Arial,sans-serif !important;
+font-size: 13px;
+margin-left: 20px;
+padding-left:2px;
+margin-bottom:5px;
+}
+#breadCrumpMap a:hover {
+	text-decoration:none;
+}
+a:active {
+	font-weight: bold;
+}
+#View{
+float:right;
+height:30px;
+cursor:pointer;
+padding-right: 25px;
+}
+#viewImage{
+width:30px;
+height:30px;
+float:right;
+}
+#viewText{
+background-repeat:no-repeat;
+    color: #3181c5;
+    float: right;
+    font-family: "ProximaNova",Arial,sans-serif !important;
+    font-size: 13px;
+    line-height: 12px;
+    margin-right: 26px;
+    padding: 3px 0;
+    text-align: right;
+    width: auto;
+    cursor:pointer;
+}
+.filterLBS{
+background:#eff0f6;
+margin: 0px 0px 5px 20px;
+height:auto;
+width: 94%;
+border:1px solid #c9c9d1;
+float: left;
+position:relative;
+padding: 3px 15px;
+color:#1d1d25!important;
+}
+#divFilter
+{
+width:100%;
+cursor:pointer;
+font-weight:bold;
+float:left;
+}
+#divFilter span{
+font-size: 18px; 
+font-weight:normal;
+}
+#divFilter img{
+margin-top:3px;
+padding-right: 9px;
+}
+#arrow{float:right;}
+
+#filterDivs{
+ 
+width:99.95%;
+height:auto;
+}
+#filterDivs li,#editPreferencesPopup li{
+//margin : 3px 0;
+list-style-type:none;
+}
+#filterLocation,#customerHierarchy,.customerHierarchyPref,.filterLocationPref{
+clear:both;
+float:left;
+width:33.33%;
+//height:99%;
+margin-top:2px;
+}
+#customerHierarchy{
+ 
+}
+#filterCountryStateCity{
+float:left;width:50%;
+
+}
+#filterDivs ul{
+margin-left:0em;
+}
+#filterCountryStateCity select{
+width:97% !important;
+margin-top: 2px;
+padding:0px;
+}
+.filterHeader{
+background:#eff0f6;
+    height: 35px;
+    line-height:35px;
+    margin: 0 5px 0 0;
+    padding: 0 5px;
+}
+.filterHeader h3{
+float: left;
+    font-family: "ProximaNova",Arial,sans-serif !important !important;
+    font-size: 15px !important;
+    margin: 0;
+    padding: 0 0 0 10px;
+    line-height: 35px !important;
+}
+#bookmarkedDevicesDiv{background:#d8d8d8;width:100%;height:40px;border-top:1px solid #c9c9d1}
+#bookmarkedDevicesDiv h3{background:#d8d8d8;margin: 5px;padding:5px;float:left;}
+#bookmarkedDevicesDiv a{float:right;margin:5px;clear: right;}
+
+.filterHeader div{
+float:right;
+}
+#customerHierarchyDir{
+margin-left:5px;
+}
+#selectAddress{
+float:left;
+}
+#selectAddress span{
+color:#00f;
+text-decoration: underline;
+}
+#selectLocalAddress{
+text-align:center;
+float:left;
+width:49%;
+}
+
+#selectLocalAddress select{
+width:97% !important;
+margin-top: 2px;
+padding:0px;
+}
+#selectLocalAddress ul{
+width:100%;
+float:right;
+margin:0;
+padding:0;
+}
+#selectLocalAddress ul li{
+float:right;
+width:95%;
+}
+#filterDevice{
+float:left;
+width:33.33%;
+margin-top:2px;
+}
+#DeviceProperties{
+float:left;
+width:103%;
+}
+#DeviceProperties ul {
+    margin: 0;
+    padding: 0;
+    width:100%;
+}
+#DeviceProperties ul li {
+    list-style-type: none;
+    margin: 0;
+    float:left;
+    width:50%;
+}
+#DeviceProperties input{
+width:85%;
+margin:2px 2px 0 1px !important;
+height:13px;
+line-height:13px !important;
+font-size:12px;
+}
+#DeviceProperties input:focus{
+padding:4px !important;
+}
+#DeviceProperties select{
+float:left;
+margin: 1% 0 0 0% !important;
+width:90% !important;
+height:20px;
+}
+#assetInstallDateDiv input{
+width:70%;
+}
+#filterRequestsDiv{
+float:left;
+width:33.33%;
+//height:99%;
+margin-top:2px;
+}
+#RequestDetails{
+ border: 1px solid #fff;
+    height: auto;
+    width: 102%;
+    
+}
+#RequestDetails ul {
+    padding: 0;
+    width: 100%;
+}
+#RequestDetails ul li {
+float: left;
+padding: 0;
+margin: 0!important;
+width: 50%;
+}
+#RequestDetails input{
+width:86%;
+margin: 1px 0 0 !important;
+height:14px;
+font-size:12px;
+}
+#RequestDetails select{
+float:left;
+margin: 3% 0 0 4% !important;
+width:44%;padding:2px
+}
+#dateRangeFilterContainer{	
+width:100%;
+}
+#dateRangeFilterContainer input{
+width:70%;
+margin: 2px 2px 0 0 !important;
+}
+
+.Request{
+position:relative;
+top:100px;
+}
+#preferenceAndFilter{
+clear: both;
+width:100%;
+}
+
+#preferenceAndFilter input{
+border:0px;
+margin:0 5px;
+border-radius:0px;
+width:10%;
+float:right;
+}
+/*#clearFilter{
+background:#D5D1D0;
+}
+#applyFilter{
+background:#3182C4;
+color:#fff;font-weight: bold;
+}*/
+.buttonGrey {
+    background: none repeat scroll 0 0 #c9c9d1;
+    border: 0 none;
+    border-radius: 0 !important;
+    color: #000000;
+    margin-left: 3px;
+}
+.buttonGrey:hover{
+background:#e6e6f0;
+}
+.buttonGrey:active{
+background:#a5a5aa;
+}
+.buttonGrey:focus{
+background:#BDBDBD;
+padding:0px !important;
+}
+.buttonBlue{
+margin-left:3px;
+font-weight: bold;
+border: 0 none;
+border-radius:0px !important;
+color: #ffffff;
+background-color: #1e68bc;
+
+}
+.buttonBlue:hover{
+background:#5c8ec7;
+}
+.buttonBlue:active{
+background:#164c89 !important;
+}
+.buttonBlue:focus{
+background:#5c8ec7;
+padding:0px !important;
+}
+
+
+/*edit*/
+#content-wrapper-inner {
+	overflow:hidden;
+	border:none;
+	margin-bottom:2px;
+	clear:both
+}
+#content-wrapper {
+	font-size: 12px;
+	*padding-top:5px !important;
+}
+#actionsDiv ,#Filters{
+width:300px;
+float:right;
+padding:0px;
+margin:0;
+font-size:14px;
+cursor:pointer;
+color:#1e68bc;
+}
+#actionsDiv:hover ,#Filters:hover{
+	color:#5c8ec7;
+
+	}
+#actionsDiv:active ,#Filters:active{
+	color:#164c89;
+
+	}
+#actionsDiv span,#Filters span{
+float:right;
+}
+
+#actionsDiv img,#Filters img{
+float:right;
+position:relative;
+top:8px;
+}
+.map,.map1{
+margin-left:20px;
+width:96.5%;
+height:100%;
+}
+#model,#type,#requestType,#requestStatus,#areaDrop,#subAreaDrop{
+/*height:60px !important;*/
+margin:0;
+width: 100%;
+}
+.red{
+color:red;
+}
+.map img,.map1 img{
+width:100%;height: 100%;
+}
+.clearBoth{clear:both}
+
+#fleetCHL{
+top:300px;
+left:45px;
+ 
+}
+.popupContactInfo{ 
+ background:#FFFFFF;
+ clear:both;
+ border:1px solid #c9c9d1;
+ border-radius:5px;
+ margin:0px;
+ padding:5px;
+ box-shadow:2px 2px rgba(100,100,100,0.5);
+ left: 1px;
+ margin: 0;
+ position: absolute;
+ top: -125px;
+ width: 170px;
+ z-index: 1000;
+}
+
+.popupContactDetailsDiv img{
+width:20px;
+height:20px;
+margin-bottom:2px;
+margin-right:3px;
+}
+.popupContactDetailsDiv{
+padding:5px;
+}
+.popupContactInfoHeader{
+padding:3% 0px 3px 3px;
+color:#e06b36;
+width: 97%;
+font-family:Tahoma;
+font-size:12px;
+float:left;
+}
+#prefPopcustomizepop {
+  top: 75px;
+}
+#popupCustomize,.customizePopup{
+  background: none repeat scroll 0 0 #ffffff;
+    border: 1px solid #c9c9d1;
+    border-radius: 5px;
+    box-shadow: 1px 1px rgba(100, 100, 100, 0.5);
+    margin: 0;
+    padding: 5px;
+    position: absolute;
+    top: 85px;
+    width: auto;
+    color:#1d1d25;
+}
+
+
+.customizeDeviceLeft{
+	left:45%;
+	}
+.customizeRequestLeft{
+	left:85%;
+	}
+.customizeLocationLeft{
+	left:25%;
+	}
+#left-nav-Div{
+margin-left:20px;
+}
+#thirdpartyDevicesDiv{
+height:25px;
+}
+
+#thirdpartyDevicesDiv span{
+vertical-align: sub;
+margin-left:5px;
+}
+
+#thirdPartyDevices{
+width:auto !important;
+
+}
+.popupHeader{
+padding:3px 0px 3px 3px;width:195px;font-family:Tahoma;font-size:12px;float:left;color:#1d1d25;
+width:auto;
+
+}
+#popupHeader span{
+float:left;
+}
+#popupCustomize div img,.customizePopup div img{
+width:15px;height:15px;float:right;cursor:pointer;
+}
+#loadCustomizeSelectors{
+background:#fff;
+clear:both;
+padding:5px;
+//width:auto;
+}
+#loadCustomizeSelectors input{
+margin: -2px 5px 0 0 !important;
+}
+#loadCustomizeSelectors tr{
+border-bottom: none !important;
+}
+#loadCustomizeSelectors ul li{
+	float:left;
+	list-style-type:none;
+}
+#assetEntitlement,#requestStatus,#dateRange,#orderStatus,#activityStatus{
+ 
+}
+
+#customizeCustomerHierarchy, #customizeDevice, #customizeRequests, #customizeLocation{
+cursor:pointer;
+width:120px;
+}
+
+#customizeCustomerHierarchy img, #customizeDevice img, #customizeRequests img, #customizeLocation img,#prefPopcustomizeLocation img,#prefPopcustomizeCustomerHierarchy img,#prefPopcustomizeDevice img,#prefPopcustomizeRequests img{
+vertical-align:middle;
+    float: right;
+    margin-top: 5px;
+}
+#customizeCustomerHierarchy a, #customizeDevice a, #customizeRequests a, #customizeLocation a,#prefPopcustomizeLocation a,#prefPopcustomizeCustomerHierarchy a,#prefPopcustomizeDevice a,#prefPopcustomizeRequests a{
+	float: right;
+	}
+#mapWithLeftNav{
+height:600px;
+width:100%;
+margin-top: 5px;
+ 
+
+}
+
+#leftNavDevices #firstBlock{
+float: left;
+width:97%;
+min-height: 130px;
+height:auto;
+background-color:#fff;
+border:1px solid #c9c9d1;
+color:#1d1d25;
+margin-bottom: 5px;
+position:relative;
+}
+/*
+#rightMap{
+float:right;
+width:70%;
+height:100%;
+}
+#rightMap img{
+width:100%;
+height:100%;
+}*/
+#leftNavDevices #installedAdd{
+    float: left;
+    padding: 5px 0 5px 5px;
+    width: 48%;
+}
+#installedAdd u{
+	font-size:15px;
+}
+#leftNavDevices #totalDiv{
+ 	bottom: 0;
+	padding: 5px 5px 5px 0;
+    position: absolute;
+    right: 0;
+	max-width:48%;
+}
+
+#deviceDetailsList{
+height:100%;
+width:98%;
+border:1px solid #E1E1E1;
+padding:0px;
+}
+#deviceHeader{
+    background:#c9c9d1;
+    color: #1d1d25;
+    font-size: 15px;
+    font-weight: bold;
+    height: 25px;
+    line-height: 24px;
+    width:auto;
+    padding: 5px 0 5px 15px;
+}
+
+#deviceContent{
+height: 92.5%;
+overflow-y:scroll;
+width:100%;
+}
+.deviceDetailsDiv{
+border-bottom:1px solid #E1E1E1;
+padding:4px;
+width:97%;
+}
+.bookmarkFavouriteImage{
+cursor:pointer;
+margin-top: -7px;
+vertical-align:middle;
+}
+bookmark span{
+vertical-align:middle;
+}
+.deviceInfoDiv{
+position:relative;
+width:100%;
+float:left;
+margin-top: 20px;
+}
+
+.deviceRequests{
+padding-right: 0;
+width: 100%;
+float:right; 
+margin: 0 0 5px;
+}
+.additionalInfo{
+border:1px solid #c9c9d1;
+margin:5px 7px 10px 7px ;
+}
+.additionalInfoHeader{
+    background: none repeat scroll 0 0 #eff0f6;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px;
+}
+.additionalInfoHeader img{
+vertical-align:middle;
+padding: 5px;
+float:right;
+}
+.printerImage{
+float:left;
+width:30%;
+}
+/*.printerImage img{
+height:90%;
+width:90%;
+}*/
+
+.bookmark, .additionalInfo, .clearDiv{
+clear:both;
+}
+.bookmark{
+margin: 5px 0 5px 0;
+}
+.bookmark span{
+color:#7e7e85;
+}
+.deviceDetailedInfo{
+font-size: 13px;
+float:left;
+margin-bottom: 20px;
+width:70%;
+}
+.additionalInfoContent{
+font-size:11px;
+position:relative;
+height:auto;
+}
+.additionalInfoContent table{
+width:90%;
+border: 1px solid #e3e3e3;
+margin: 0 5%;
+clear: both;
+}
+.tableRowShade{
+background-color:#e6e6f0; !important;
+}
+.additionalInfoContent li{
+list-style-type:none;
+line-height: 22px !important;
+}
+.printerDetails{
+font-weight:12px;
+}
+
+.additionalInfoContentLeft{
+float:left;
+font-size: 13px;
+margin: 10px 0 10px 10px;
+width: 35%;
+}
+.additionalInfoContentRight{
+float:left;
+font-size: 13px;
+}
+.additionalInfoContentRight a{
+padding:2px;
+}
+.openRequestsDiv{
+}
+.openRequestsContent td{
+padding:5px 1px;
+display: inline;
+}
+.openRequestsContent tr{
+	border-bottom:1px solid #c9c9d1;
+}
+.openRequestsHeader{
+font-weight:bold;
+padding:5px;
+font-size:13px;
+border-bottom:1px solid #c9c9d1;
+}
+.columnsOne tr{
+/*border-bottom:1px solid #A5A5A5;*/
+}
+
+img{vertical-align:middle;}
+table{width:100%}
+
+
+#FiltersMenu{
+border:1px solid #c9c9d1;
+background:#fff;
+border-radius:5px;
+color:#1d1d25;
+padding:5px;
+width:200px;
+z-index:1000;
+box-shadow:2px 2px rgba(100,100,100,0.2);
+position:absolute;
+margin-top: 10px!important;
+right:8px!important;
+}
+
+#FiltersMenu div {
+    padding-left: 10px;
+}
+.createRequestMenu div,#ActionsMenu div,#FiltersMenu div{
+cursor:pointer;
+}
+#FilterDetails{
+width:100%;
+height:auto;
+clear: both;
+}
+#actionChangeAccount,#actionCreateRequest,#filtersSetPreference,#filtersLoadPreference,#filterBookmarkedDevices,.padding5{
+margin:5px;
+}
+
+.createRequestMenu{
+position:absolute;
+border:1px solid #c9c9d1;
+box-shadow:2px 2px rgba(100,100,100,0.2);
+border-radius:5px;
+padding:5px;
+margin:0px;
+width:120px;
+z-index:1000;
+position:absolute;
+background:#FFFFFF;
+top:90%;
+left:58%;
+clear:both;
+}
+
+#leftNavDevices{
+float: left;
+width: 29.5%;
+}
+#leftNavDevices #secondBlock{
+float: left;
+clear:both;
+width:98%;
+height: 464px;
+background-color:#ffffff;
+}
+#deviceDetailsList{
+height:100%;
+width:99%;
+border:1px solid #c9c9d1;
+padding:0px;
+}
+
+#deviceContent1{
+overflow-y:auto;
+width:100%;
+}
+.deviceDetailsDiv1{
+padding:1.35%;
+width:96%;
+}
+.deviceRequests{
+padding-right: 0px;
+ width: 100%;
+float:right;
+margin: 5px 0;
+}
+.deviceDetailedInfo{
+font-size: 13px;
+float:left;
+margin-bottom: 0;
+width:70%;
+}
+
+.rightMap{
+float:right;
+width:70%;
+height:100%;
+position:relative;
+}
+.rightMap img{
+width:100%;
+height:100%;
+}
+.deviceID{
+color: #008a44;
+font-weight:bold;
+font-size: 15px;
+}
+.bookmarkFavouriteImage{
+cursor:pointer;
+margin-top: -7px;
+vertical-align:middle;
+}
+/* For createMove pendingMove html*/
+#moveAddressDetails{
+border-top:1px solid #c9c9d1;
+float: left;
+width:100%;
+}
+.installedAddress,#moveToAddress{
+padding: 10px;
+width: 44%;
+float: left;
+}
+#moveToAddress{
+border-left:1px dotted #c9c9d1;
+}
+.printerImage1{
+float:left;
+width:30%;
+}
+
+.mapCloseCreateMove{
+  left: 85%;
+   position: absolute;
+    top: 4%;
+}
+.mapDropdown{
+    left: 5%;
+    position: absolute;
+    top: 5%;
+}
+
+#mapEnterAddress{
+left: 5%;
+    position: absolute;
+    top: 12%;
+}
+#mapApplyMove{
+left: 5%;
+    position: absolute;
+    top: 19%;
+}
+.greenBackground{
+	background-color:#EBFEEB;
+}
+.LBS_installedAddress {
+   float: left;
+   padding: 10px;
+   width: 36%;
+}
+#LBS_moveToAddress {
+   float: right;
+   padding: 10px;
+   width: 44%;
+}
+#cancelMoveRequest,#cfrmMoveHidden{
+	display: none; 
+	position: relative;
+	border: 1px solid #c9c9d1;
+    bottom: 59px;
+    right: 160px;
+    float: right;
+    font-size: 14px !important;
+    padding: 6px 12px;
+}
+#cancelMoveRequest:focus{
+	padding: 6px 12px !important;
+	
+}
+.selectedTab{
+	background-color:#fff !important;
+	}
+	.tabbed{
+	background-color:#ededed;
+	}
+#popUpRequestTab{
+	border-bottom: 1px solid c9c9d1;
+	position:relative;
+	}
+#popUpRequestTab li{
+	width: auto; float: left; margin-left: 5px; padding: 5px;
+	position:relative;
+	top:1px;
+	}
+#popUpRequestTab .selectedTab{
+	border-bottom:1px solid #fff;
+}
+#popUpRequestTab li a{
+	cursor:pointer;
+	}
+.cancelIconCalendar{
+	margin-top:5px !important;
+	background-position: 1px -1001px !important;
+}
+#mapWithLocationhistory{
+	clear:both;
+}
+.LBS_installedAddress_locHistry{
+	padding: 10px;
+}
+.btnpopupPref{
+float:right;
+}
+
+.clearDivHeight{
+	height:110px !important;
+}
+
+.popupSubHeader{
+	 font-size: 11px;
+}
+.popupDate{
+	width:67% !important;
+}
+#RequestDetails input:hover {
+   cursor: auto;
+}
+#DeviceProperties input:hover {
+   cursor: auto;
+}
+

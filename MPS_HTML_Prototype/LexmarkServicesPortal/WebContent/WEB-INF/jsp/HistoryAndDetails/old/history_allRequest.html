@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Request History - All Requests</title>
+<link href="../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../../js/util.js"></script>
+<script src="../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/tree/dhtmlxtree.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../js/jQuery/jquery.qtip.min.js"></script>
+<script src="../../../js/mps.js"></script>
+</head>
+<body>
+<div id="wrapper">
+  <div id="banner">
+    <h1 class="logo"> <a href="https://tportal.lexmark.com/web/guest" title="Lexmark Global Services">tportal.lexmark.com</a> </h1>
+    <div id="top-header">
+      <div id="top-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><b><span>Welcome Firstname Lastname!</span></b></li>
+          <li><a href="#">Preferences</a></li>
+          <li><a href="#">User Administration</a></li>
+          <li><a href="#">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="bottom-header">
+      <div id="bottom-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li>
+            <select>
+              <option>English (US)</option>
+            </select>
+          </li>
+          <li><a href="#">Lexmark.com</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Get Help</a></li>
+          <li><a href="#">Contact Lexmark</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="tabNavigation">
+    <ul class="tab">
+      <li><a href="#"><img src="../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/images/common/home.png" alt="Home" title="Home" class="home" /></a></li>
+      <li><a href="" title="">Device Finder</a></li>
+      <li class="selected"><a href="" title="">Requests</a></li>
+      <li><a href="" title="">Page Counts</a></li>
+      <li><a href="" title="">Documents</a></li>
+    </ul>
+  </div>
+  <!-- #include file="details_suppliesRequest.html" -->  
+  <div id="subnavigation">
+    <ul>
+      <li class="selected"><a href="javascript:void(0);"><span>Request History</span></a></li>
+      <li><a href="../create_new_request2.html" class="lightbox" title="Create New Request"><span>Create New Request</span></a></li>
+    </ul>
+  </div>
+  <div id="content-wrapper">
+    <div class="journal-content-article">
+      <h2>Request History</h2>
+      <span class="step">All Requests</span> </div>
+    <div class="main-wrap">
+      <div class="content"><a name="scrollTo"></a>
+        <div class="left-nav">
+          <div class="left-nav-inner"> 
+            <!-- LEFT COLUMN CONTENT GOES HERE -->
+            <div class="left-nav-header">
+              <h3>Request Type:</h3>
+            </div>
+            <ul class="filters">
+              <li class="selected"><a href="history_allRequest.html">All Request Types</a></li>
+              <li><a href="history_suppliesRequest.html">Supplies Requests</a></li>
+              <li><a href="history_changeRequest.html">Change Requests</a></li>
+              <li><a href="#">Service Requests</a></li>
+			  <li><a href="history_hardwareRequest.html">Hardware Requests</a></li>
+            </ul>
+            <div class="left-nav-header inlineTitle">
+              <h3>Filter by View:</h3>
+            </div>
+            <ul class="filters radio">
+              <li> <span>
+                <input type="radio" name="viewBy" id="myReq" checked="checked" />
+                </span>
+                <label for="myReq">My Requests</label>
+              </li>
+              <li> <span>
+                <input type="radio" id="bookAssetReq" name="viewBy" />
+                </span>
+                <label for="bookAssetReq">Bookmarked Asset Requests</label>
+              </li>
+              <li> <span>
+                <input type="radio" id="allReq" name="viewBy" />
+                </span>
+                <label for="allReq">Show All</label>
+              </li>
+            </ul>
+            <div class="left-nav-header inlineTitle">
+              <h3>Filter by Date Range:</h3>
+            </div>
+            <ul class="filters">
+              <li>
+                <label for="fromDate">From:</label>
+                <span>
+                <input type="date" id="fromDate" class="w100"/>
+                <img src="../../../images/ic_cal.png" title="Select a Date" width="23" height="23"/></span></li>
+              <li>
+                <label for="toDate">To:</label>
+                <span>
+                <input type="date" id="toDate" class="w100"/>
+                <img src="../../../images/ic_cal.png" title="Select a Date" width="23" height="23"/></span></li>
+            </ul>
+            <div class="buttonContainerIn">
+              <button class="button">Go</button>
+            </div>
+            <div class="left-nav-header">
+              <h3>Filter by:</h3>
+            </div>
+            <ul class="filters">
+              <li><a href="#scrollTo" class="chl">Device Location</a></li>
+              <li><a href="#scrollTo" class="chl">Customer Hierarchy</a></li>
+            </ul>
+          </div>
+          <div class="left-nav-footer"> 
+            <!-- NO CONTENT HERE PLS --> 
+          </div>
+        </div>
+        <div class="leftOverlay rounded shadow">
+          <div class="columnInner">
+            <h4><a href="javascript:void(0);" class="chlClose"><strong>Close</strong></a>CHL / Location</h4>
+            The CHL / Location Tree structure goes here
+            <div class="buttonContainerIn">
+              <button class="button_cancel chlClose">Cancel</button>
+              <button class="button chlClose">Select</button>
+            </div>
+          </div>
+        </div>
+        <div class="right-column">
+          <h3 class="pageTitle">All Request Types</h3>
+          <div class="grid-controls"> 
+            <!-- Utilities Start -->
+            <div class="utilities">
+              <ul>
+                <li class="first"><a href="#"><img src="../../../images/xls.png" alt="Export to Excel" title="Export to Excel"></a></li>
+                <li><a href="#"><img src="../../../images/pdf.png" alt="Export to PDF" title="Export to PDF" /></a></li>
+                <li><a href="#"><img src="../../../images/print.png" alt="Print" title="Print"></a></li>
+              </ul>
+            </div>
+            <!-- utilities End --> 
+            <!-- Expand-min Start -->
+            <div class="expand-min">
+              <ul>
+                <li class="first"> <img src="../../../images/customize.png" alt="Customize Grid" title="Customize Grid" /> <a href="#grid" id='headerMenuButton'>Customize Columns</a> </li>
+                <li> <img src="../../../images/reset.png" alt="Reset Grid" title="Reset Grid" /> <a href="javascript:doReset();">Reset</a> </li>
+              </ul>
+            </div>
+            <!-- Expand-min End --> 
+            <!-- Customize Coulmns Popup Start -->
+            <div id="grid_menu" class="dhx_header_cmenu rounded shadow">
+              <div class="columnInner">
+                <h4><a href="javascript:void(0);" class="customizeClose">Close</a>Customize Columns</h4>
+                <ul>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA1">
+                      <input type="checkbox" checked="checked" id="columnA1" disabled="disabled" />
+                      Request No.</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA2">
+                      <input type="checkbox" checked="checked" id="columnA2" />
+                      Date / Time Created</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA3">
+                      <input type="checkbox" checked="checked" id="columnA3" />
+                      Request Type</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA4">
+                      <input type="checkbox" checked="checked" id="columnA4" />
+                      Area</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA5">
+                      <input type="checkbox" checked="checked" id="columnA5" />
+                      Status</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA6">
+                      <input type="checkbox" id="columnA6" />
+                      Serial No.</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA7">
+                      <input type="checkbox" id="columnA7" />
+                      PO Number</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA8">
+                      <input type="checkbox" id="columnA8" />
+                      Cost Center</label>
+                  </li>
+                </ul>
+                <ul>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB1">
+                      <input type="checkbox" id="columnB1" />
+                      Primary Contact First Name</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB2">
+                      <input type="checkbox" id="columnB2" />
+                      Primary Contact Last Name</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB3">
+                      <input type="checkbox" id="columnB3" />
+                      Primary Contact Email</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB4">
+                      <input type="checkbox" id="columnB4" />
+                      Primary Contact Phone</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB5">
+                      <input type="checkbox" id="columnB5" />
+                      Requestor First Name</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB6">
+                      <input type="checkbox" id="columnB6" />
+                      Requestor Last Name</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB7">
+                      <input type="checkbox" id="columnB7" />
+                      Requestor Email</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB8">
+                      <input type="checkbox" id="columnB8" />
+                      Requestor Phone</label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- Customize Coulmns Popup End --> 
+          </div>
+          <!-- grid-controls -->
+          <div class="portlet-wrap rounded">
+            <div class="portlet-wrap-inner">
+              <div id="mygrid_container" class="gridbox gridbox_light "></div>
+            </div>
+          </div>
+          <div class="pagination"><span id="pagingArea"></span><span id="infoArea"></span></div>
+          <!-- mygrid_container --> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer">Footer</div>
+</div>
+</body>
+<script>
+	var mygrid;
+	var headerString = "Request No.,Date/Time Created,Request Type,Area,Status,&nbsp;";
+	var ar = [
+			[
+					"<a href=\"details_suppliesRequest.html\">123456</a>",
+					"MM/DD/YY",
+					"Supplies",
+					"Area",
+					"Status" ],
+			[
+					"<a href=\"details_changeRequest.html\">123456</a>",
+					"MM/DD/YY",
+					"Change",
+					"Area",
+					"Status" ],
+			[
+					"<a href=\"details_suppliesRequest.html\">123456</a>",
+					"MM/DD/YY",
+					"Supplies",
+					"Area",
+					"Status" ],
+			[
+					"<a href=\"details_hardwareRequest.html\">123456</a>",
+					"MM/DD/YY",
+					"Hardware",
+					"Area",
+					"Status" ] ];
+	mygrid = new dhtmlXGridObject('mygrid_container');
+	mygrid.setImagePath("../../../images/gridImgs/");
+	mygrid.setHeader(headerString);
+	mygrid.attachHeader("#text_filter,,#select_filter,#select_filter,#select_filter");
+	mygrid.setInitWidths("140,160,160,160,160,*");
+	mygrid.setColumnMinWidth("140,160,160,160,160,1");
+	mygrid.setColAlign("left,left,left,left,left");
+	mygrid.setSkin("light");
+	mygrid.setColSorting("str,str,str,str,str,na");
+	mygrid.setColTypes("ro,ro,ro,ro,ro,ro,ro");
+	mygrid.enableAutoHeight(true);
+	mygrid.enableMultiline(true);
+	mygrid.enableColumnMove(true);
+	mygrid.enableAlterCss("even_row","odd_row");
+	mygrid.init();
+	mygrid.enablePaging(true, 6, 2, "pagingArea", true, "infoArea");
+	mygrid.setPagingSkin("bricks");
+	mygrid.parse(ar, "jsarray");
+	function doReset() {
+	};
+</script>
+</html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="AccountPayableDetailActivityDo" class="com.amind.data.service.DomainObjMapping">
+  
+    <!-- data source info -->
+       <property name="dataSourceName">
+            <value>EAI Siebel Adapter</value>
+        </property>
+
+       <property name="dsTargetObjectName">
+            <value>LXK SR Partner Portal Detail</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+            <value>LXK SW FS Activity Recommended Parts - Partner Portal</value>
+        </property>
+
+        <property name="packageName">
+            <value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+        <!-- field mapping --> 
+        <property name="doFieldNameToDsFieldNameMap">
+            <map>
+                <entry>
+                    <key><value>id</value></key>
+                    <value>Id</value>
+                </entry>
+                
+                <entry>
+                    <key><value>partNumber</value></key>
+                    <value>Product Name</value>
+                </entry> 
+                <entry>
+                    <key><value>partDescription</value></key>
+                    <value>Part #</value>
+                </entry> 
+                <entry>
+                    <key><value>quantity</value></key>
+                    <value>LXK MPS Fulfilled Qty Calc</value>
+                </entry> 
+                <entry>
+                    <key><value>partFee</value></key>
+                    <value>LXK MPS Partner Fee</value>
+                </entry> 
+                <entry>
+                    <key><value>fulfillmentFee</value></key>
+                    <value>LXK MPS Labor Total</value>
+                </entry> 
+                <entry>
+                    <key><value>eligibilityStatus</value></key>
+                    <value>LXK R Payable</value>
+                </entry> 
+                <entry>
+                    <key><value>partnerFee</value></key>
+                    <value>LXK SD Partner Fee</value>
+                </entry> 
+                <entry>
+                    <key><value>recommendedQuantity</value></key>
+                    <value>Recommended Quantity</value>
+                </entry> 
+            </map>
+        </property>
+    </bean>  
+</beans>

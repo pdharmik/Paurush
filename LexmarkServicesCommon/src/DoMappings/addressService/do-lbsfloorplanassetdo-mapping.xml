@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- AmindServiceRequestService::retrieveAddressList -->
+	<!-- SAMPLE QUERY: SELECT X_ADDR_STATUS FROM SIEBEL.S_ADDR_PER WHERE X_ADDR_STATUS <> 'Marked For Deletion' OR X_ADDR_STATUS IS NULL -->
+	<bean id="LBSFloorPlanAssetDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+
+        <property name="dsTargetObjectName">
+			<value>LXK LBS Asset Detail</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK LBS Asset Detail</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>accountName</value></key>
+	         		<value>Account Name</value>
+				</entry>	
+				<entry>
+	         		<key><value>assetCostCenter</value></key>
+	         		<value>Asset Cost Center</value>
+				</entry>
+				<entry>
+	         		<key><value>assetNumber</value></key>
+	         		<value>Asset Number</value>
+				</entry>
+				<entry>
+	         		<key><value>brandMFGProduct</value></key>
+	         		<value>Brand_MFG Product</value>
+				</entry>
+				<entry>
+	         		<key><value>devicePhase</value></key>
+	         		<value>Device Phase</value>
+				</entry>
+				<entry>
+	         		<key><value>hostName</value></key>
+	         		<value>Host Name</value>
+				</entry>
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>LXK LBS Id</value>
+				</entry>
+				<entry>
+	         		<key><value>installDate</value></key>
+	         		<value>Install Date</value>
+				</entry>
+				<entry>
+	         		<key><value>departmentName</value></key>
+	         		<value>LXK MPS Department Name</value>
+				</entry>
+				<entry>
+	         		<key><value>productFamily</value></key>
+	         		<value>LXK MPS Product Family</value>
+				</entry>
+				<entry>
+	         		<key><value>productModel</value></key>
+	         		<value>LXK MPS Product Model</value>
+				</entry>
+				<entry>
+	         		<key><value>productSeries</value></key>
+	         		<value>LXK MPS Product Series</value>
+				</entry>
+				<entry>
+	         		<key><value>materialPartType</value></key>
+	         		<value>LXK Material Part Type</value>
+				</entry>
+				<entry>
+	         		<key><value>productModelName</value></key>
+	         		<value>LXK Product Model Name</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactFirstName</value></key>
+	         		<value>LXK SW Primary Contact First Name</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactLastName</value></key>
+	         		<value>LXK SW Primary Contact Last Name</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactWorkPhone</value></key>
+	         		<value>LXK SW Primary Contact Work Phone</value>
+				</entry>
+				<entry>
+	         		<key><value>meterSource</value></key>
+	         		<value>Meter Source</value>
+				</entry>
+				<entry>
+	         		<key><value>ownership</value></key>
+	         		<value>Ownership</value>
+				</entry>
+				<entry>
+	         		<key><value>productName</value></key>
+	         		<value>Product Name</value>
+				</entry>
+				<entry>
+	         		<key><value>productType</value></key>
+	         		<value>Product Type</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactAlternatePhone</value></key>
+	         		<value>LXK MPS Primary Contact Alternate Phone</value>
+				</entry>	
+				<entry>
+	         		<key><value>primaryContactEmail</value></key>
+	         		<value>LXK SW Primary Contact Email</value>
+				</entry>
+				<entry>
+	         		<key><value>assetTag</value></key>
+	         		<value>Device Tag Customer</value>
+				</entry>					
+				<entry>
+	         		<key><value>lxkAssetTag</value></key>
+	         		<value>Owner Asset Number</value>
+				</entry>					
+				<entry>
+	         		<key><value>assetLifeCycle</value></key>
+	         		<value>LXK MPS Asset Life Cycle</value>
+				</entry>					
+				<entry>
+	         		<key><value>hardwareStatus</value></key>
+	         		<value>LXK MPS Hardware Acceptance Status</value>
+				</entry>					
+				<entry>
+	         		<key><value>partType</value></key>
+	         		<value>LXK Material Part Type</value>
+				</entry>					
+	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

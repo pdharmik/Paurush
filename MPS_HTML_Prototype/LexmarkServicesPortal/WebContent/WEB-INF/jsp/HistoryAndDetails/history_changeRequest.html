@@ -1,0 +1,313 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Request History - Change Requests</title>
+<link href="../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../../js/util.js"></script>
+<script src="../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/tree/dhtmlxtree.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../js/mps.js"></script>
+<script type="text/javascript">
+var global_paging_message={results:"Results",records:"Records from  ",to:" to ",page:"page ",perpage:"rows per page",first:"To first Page",previous:"Previous Page",found:"Found records",next:"Next Page",last:"To last Page",of:" of ",notfound:"No Records Found"};
+var global_button_message={close:"CLOSE",ok:"OK",cancel:"CANCEL",selectColumns:"SELECT COLUMNS"};
+</script>
+<style>
+#banner .logo {
+	background: url("../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/images/custom/logoLex.png") no-repeat scroll left top transparent;
+	display: block;
+	margin: 0;
+	padding: 0 !important;
+	width: 168px;
+	height: 56px;
+	position: absolute;
+	top: 13px;
+	left: 20px;
+	text-indent: -9999em;
+}
+</style>
+</head>
+<body>
+<div id="wrapper">
+   <div id="banner">
+    <h1 class="logo"><a href="https://tportal.lexmark.com/web/guest" title="Lexmark Global Services">tportal.lexmark.com</a></h1>
+    <div id="top-header">
+      <div id="top-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><b><span>Welcome Jason Filarky!</span></b></li>
+          <li><a href="../Home/preferences.html">Preferences</a></li>
+          <li><a href="#">User Administration</a></li>
+          <li><a href="login.html">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="bottom-header">
+      <div id="bottom-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><a href="http://www.lexmark.com">Lexmark.com</a></li>
+          <li><a href="../Home/FAQ.html">FAQ</a></li>
+          <li><a href="../Home/getHelp.html">Get Help</a></li>
+          <li><a href="../Home/contact_Lexmark.html">Contact Lexmark</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+    <div class="sort-pages modify-pages" id="topnavigation">	
+  <ul>	
+	  <li>	<a href="../Home/home.html"><span>Home</span></a>	</li>
+	  <li class="">	<a href="../DeviceManagement/all_devices.html"><span>Device Finder</span></a>	</li>
+	  <li class="">	<a href="../pageCounts/defaltPageCount.html"><span>Page Counts</span></a>	</li>
+	  <li class="selected">	<a href="../HistoryAndDetails/history_allRequest.html"><span>Requests</span></a>	</li>
+	  <li class="">	<a target="_blank" href="https://services.lexmark.com/portal/site"><span>Order Supplies</span></a>	</li>
+	  <li class="">	<a href="../Reports/defaltReportView.html"><span>Reports</span></a>	</li>
+	  <li class="">	<a href="../DocumentLibrary/docLibrary_landingPage.html"><span>Document Library</span></a>	</li>
+  </ul>
+  </div>
+  <div id="subnavigation">
+    <ul>
+      <li class="selected"><a href="javascript:void(0);"><span>Request History</span></a></li>
+      <li><a href="../create_new_request.html" class="lightbox" title="Create New Request"><span>Create New Request</span></a></li>
+    </ul>
+  </div>
+  <div id="content-wrapper">
+    <div class="journal-content-article">
+      <h2>Request History</h2>
+      <span class="step">Change Requests</span> </div>
+    <div class="main-wrap">
+      <div class="content"><a name="scrollTo"></a>
+        <div class="left-nav">
+          <div class="left-nav-inner"> 
+            <!-- LEFT COLUMN CONTENT GOES HERE -->
+            <div class="left-nav-header">
+              <h3>Request Type:</h3>
+            </div>
+            <ul class="filters">
+              <li><a href="history_allRequest.html">All Request Types</a></li>
+              <li><a href="history_suppliesRequest.html">Supplies Requests</a></li>
+              <li class="selected"><a href="history_changeRequest.html">Change Requests</a></li>
+              <li><a href="history_serviceRequest.html">Service Requests</a></li>
+              
+            </ul>
+            <div class="left-nav-header inlineTitle">
+              <h3>Filter by View:</h3>
+            </div>
+            <ul class="filters radio">
+              <li> <span>
+                <input type="radio" name="viewBy" id="myReq" checked="checked" />
+                </span>
+                <label for="myReq">My Requests</label>
+              </li>
+              <li> <span>
+                <input type="radio" id="bookAssetReq" name="viewBy" />
+                </span>
+                <label for="bookAssetReq">Bookmarked Asset Requests</label>
+              </li>
+              <li> <span>
+                <input type="radio" id="allReq" name="viewBy" />
+                </span>
+                <label for="allReq">Show All</label>
+              </li>
+            </ul>
+            <div class="left-nav-header inlineTitle">
+              <h3>Filter by Date Range:</h3>
+            </div>
+            <ul class="filters">
+              <li>
+                <label for="fromDate">From:</label>
+                <span>
+                <input type="date" id="fromDate" class="w100"/>
+                <img src="../../../images/ic_cal.png" title="Select a Date" width="23" height="23"/></span></li>
+              <li>
+                <label for="toDate">To:</label>
+                <span>
+                <input type="date" id="toDate" class="w100"/>
+                <img src="../../../images/ic_cal.png" title="Select a Date" width="23" height="23"/></span></li>
+            </ul>
+            <div class="buttonContainerIn">
+              <button class="button">Go</button>
+            </div>
+            <div class="left-nav-header">
+              <h3>Filter by:</h3>
+            </div>
+            <ul class="filters">
+              <li><a href="#scrollTo" class="chl">Device Location</a></li>
+              <li><a href="#scrollTo" class="chl">Customer Hierarchy</a></li>
+            </ul>
+          </div>
+          <div class="left-nav-footer"> 
+            <!-- NO CONTENT HERE PLS --> 
+          </div>
+        </div>
+        <div class="leftOverlay rounded shadow">
+          <div class="columnInner">
+            <h4><a href="javascript:void(0);" class="chlClose"><strong>Close</strong></a>CHL / Location</h4>
+            The CHL / Location Tree structure goes here
+            <div class="buttonContainerIn">
+              <button class="button_cancel chlClose">Cancel</button>
+              <button class="button chlClose">Select</button>
+            </div>
+          </div>
+        </div>
+        <div class="right-column">
+          <h3 class="pageTitle">Change Requests</h3>
+          <div class="grid-controls"> 
+            <!-- Utilities Start -->
+           <div class="utilities">
+              <ul>
+                <li class="first"><a href="#" onclick="downloadFile('xls')"><img src="../../../images/xls.png" alt="Export to Excel" title="Export to Excel"></a></li>
+                <li><a href="#" onclick="downloadFile('pdf')" target="_blank"><img src="../../../images/pdf.png" alt="Export to PDF" title="Export to PDF" /></a></li>
+                 <li><a href="ChangeRequestListPrint.html" target="_blank"><img src="../../../images/print.jpg" alt="Print" title="Print"></a></li>
+              </ul>
+            </div>
+            <!-- utilities End --> 
+            <!-- Expand-min Start -->
+            <div class="expand-min">
+              <ul>
+				<li class="first"> <img src="../../../images/customize.png" alt="Customize Grid" title="Customize Grid" /> <a href="#grid" id='headerMenuButton'>Customize Columns</a> </li>
+                <li> <img src="../../../images/reset.png" alt="Reset Grid" title="Reset Grid" /> <a href="#"onclick= "reloadGrid()">Reset</a> </li>
+              </ul>
+            </div>
+            <!-- Expand-min End --> 
+            <!-- Customize Coulmns Popup Start -->
+          
+            <!-- Customize Coulmns Popup End --> 
+          </div>
+          <!-- grid-controls -->
+          <div class="portlet-wrap rounded">
+            <div class="portlet-wrap-inner">
+              <div id="mygrid_container" class="gridbox gridbox_light "></div>
+            </div>
+          </div>
+          <div class="pagination"><span id="pagingArea"></span><span id="infoArea"></span></div>
+          <!-- mygrid_container --> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer-nav-container">
+<ul id="footer-nav-ul">
+  <li><a href="http://www1.lexmark.com/en_US/about-us/index.shtml">About 
+  Lexmark </a></li><li><a href="http://www1.lexmark.com/en_US/terms/privacy-security.shtml">Privacy 
+  Policy</a> </li><li><a href="http://www1.lexmark.com/en_US/terms/terms-and-conditions.shtml">Terms 
+  &amp; Conditions </a></li><li><a href="http://www1.lexmark.com/en_US/nav/sitemap.shtml">Sitemap 
+  </a></li><li><a href="http://www1.lexmark.com/en_US/about-us/company/contact-us.shtml">Contact 
+  Lexmark </a></li></ul><br>
+<p align="left">&copy; Copyright 2012 
+Lexmark<!--extra added align center>--></p></div></div>
+</div>
+</body>
+<script>
+	var mygrid;
+	var headerString = "Request No.,Date/Time Created,Area,Sub Area,Serial No,Status,Product Model,Helpdesk Reference No.,Cost Center,Address Name,Store-front Name,Address Line 1,City,State,Province,Country,ZIP/Postal Code,Primary Contact First Name,Primary Contact Last Name,Primary Contact Email,Primary Contact Phone,Requester First Name,Requester Last Name,Requester Contact Email,Requester Contact Phone,&nbsp;";
+	var ar = [
+			[
+					"<a href=\"details_changeRequest.html?request_id=1-11358756171&src_page=changeRequest\">1-11358756171</a>",
+					"2/21/2013  2:48:54 AM",
+					"Change Asset",
+					"Change Asset Data",
+					"",
+					"Inprocess",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"",
+					"Joanne",
+					"Lovell",
+					"jlovell@lexmark.com",
+					"1628518693",
+					"Joanne",
+					"Lovell",
+					"jlovell@lexmark.com",
+					"1628518693"
+					],
+			 ];
+	mygrid = new dhtmlXGridObject('mygrid_container');
+	mygrid.setImagePath("../../../images/gridImgs/");
+	mygrid.setHeader(headerString);
+	mygrid.attachHeader("#text_filter,,#text_filter,#text_filter,#text_filter,#select_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
+	mygrid.setLockColVisibility("true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false");
+	mygrid.setInitWidths("140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,*");
+	mygrid.setColumnMinWidth("140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,140,1");
+	mygrid.setColAlign("left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left");
+	mygrid.setSkin("light");
+	mygrid.setColSorting("str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str");
+	mygrid.setColTypes("ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
+	mygrid.enableAutoHeight(true);
+	mygrid.enableMultiline(true);
+	mygrid.enableColumnMove(true);
+	mygrid.enableHeaderMenuForButton("headerMenuButton");
+	mygrid.enableAlterCss("even_row","odd_row");
+	mygrid.init();
+	mygrid.enablePaging(true, 20, 2, "pagingArea", true, "infoArea");
+	mygrid.setPagingSkin("bricks");
+	mygrid.parse(ar, "jsarray");
+	setDefaultHiddenColumns();
+	
+	function setDefaultHiddenColumns(){
+	    mygrid.setColumnHidden(12,true);
+		mygrid.setColumnHidden(13,true);
+		mygrid.setColumnHidden(14,true);
+		mygrid.setColumnHidden(15,true);
+		mygrid.setColumnHidden(16,true);
+		mygrid.setColumnHidden(17,true);
+		mygrid.setColumnHidden(18,true);
+		mygrid.setColumnHidden(19,true);
+		mygrid.setColumnHidden(20,true);
+		mygrid.setColumnHidden(21,true);
+		mygrid.setColumnHidden(22,true);
+		mygrid.setColumnHidden(23,true);
+		mygrid.setColumnHidden(24,true);
+   }
+	function reloadGrid() {
+		setDefaultHiddenColumns();
+	};
+
+	
+	function downloadFile(extnsn){	
+	
+			if(extnsn=='xls'){
+				location.href="ChangeRequestList.csv";
+			}else
+			if(extnsn=='pdf'){
+				window.location="ChangeRequestList.pdf";
+			}
+			}
+
+</script>
+</html>

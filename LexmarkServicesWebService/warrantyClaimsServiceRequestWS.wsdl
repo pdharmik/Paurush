@@ -1,0 +1,441 @@
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://dlxkswmis1.lex.lexmark.com/ServiceRequest/warrantyClaimsServiceRequestWS" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" name="warrantyClaimsServiceRequestWS" targetNamespace="http://dlxkswmis1.lex.lexmark.com/ServiceRequest/warrantyClaimsServiceRequestWS">
+<wsdl:types>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://dlxkswmis1.lex.lexmark.com/ServiceRequest/warrantyClaimsServiceRequestWS" targetNamespace="http://dlxkswmis1.lex.lexmark.com/ServiceRequest/warrantyClaimsServiceRequestWS">
+<xsd:complexType name="debriefWarrantyClaim">
+<xsd:sequence>
+<xsd:element name="debug" nillable="true" type="xsd:string"/>
+<xsd:element name="synchOrAsynch" nillable="true" type="xsd:string" minOccurs="0"/>
+<xsd:element name="debriefClaimsServiceRequestInput" nillable="true" type="tns:debriefClaimsServiceRequestInput"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="debriefClaimsServiceRequestInput">
+<xsd:sequence>
+<xsd:element name="debriefClaimsServiceRequestWSInput" type="tns:debriefClaimsServiceRequestWSInput"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="debriefClaimsServiceRequestWSInput">
+<xsd:sequence>
+<xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+<xsd:element name="ClaimsServiceRequestData" type="tns:ClaimsServiceRequestData" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="WebServiceDocumentMetaData">
+<xsd:sequence>
+<xsd:element name="SenderId" type="xsd:string"/>
+<xsd:element name="SenderName" type="xsd:string"/>
+<xsd:element name="OriginalPartnerId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="OriginalPartnerName" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ReceiverId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ReceiverName" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="ClaimsServiceRequestData">
+<xsd:sequence>
+<xsd:element name="ClaimId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ActivityId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ClaimDate" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ClaimStatus" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ClaimSource" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceRequestType" type="xsd:string" minOccurs="0"/>
+<xsd:element name="Requester" nillable="true" type="tns:SiebelContact"/>
+<xsd:element name="PrimaryContact" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+<xsd:element name="AssetInformation" nillable="true" type="tns:SiebelAssetInformation" minOccurs="0"/>
+<xsd:element name="ServiceProviderInformation" nillable="true" type="tns:SiebelServiceProviderInformation" minOccurs="0"/>
+<xsd:element name="ClaimDetails" nillable="true" type="tns:SiebelServiceRequestDetails" minOccurs="0"/>
+<xsd:element name="Technician" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+<xsd:element name="RecommendPartsList" nillable="true" type="tns:SiebelRecommendedPartsList" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="ReturnPartsList" nillable="true" type="tns:SiebelReturnPartsList" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="ActivityNotes" nillable="true" type="tns:SiebelActivityNotes" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="RepairCompleteFlag" type="xsd:string" minOccurs="0"/>
+<xsd:element name="DebriefInformation" nillable="true" type="tns:SiebelDebriefInformation" minOccurs="0"/>
+<xsd:element name="PaymentRequestList" nillable="true" type="tns:SiebelPaymentRequestList" minOccurs="0" maxOccurs="unbounded"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SiebelContact">
+<xsd:sequence>
+<xsd:element name="ContactId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="FirstName" type="xsd:string" minOccurs="0"/>
+<xsd:element name="LastName" type="xsd:string" minOccurs="0"/>
+<xsd:element name="Department" type="xsd:string" minOccurs="0"/>
+<xsd:element name="WorkPhone" type="xsd:string" minOccurs="0"/>
+<xsd:element name="AlternatePhone" type="xsd:string" minOccurs="0"/>
+<xsd:element name="EmailAddress" type="xsd:string" minOccurs="0"/>
+<xsd:element name="TimeZone" type="xsd:string" minOccurs="0"/>
+<xsd:element name="Country" type="xsd:string" minOccurs="0"/>
+<xsd:element name="Language" type="xsd:string" minOccurs="0"/>
+<xsd:element name="SendRelatedInfoFlag" type="xsd:string" minOccurs="0"/>
+<xsd:element name="UpdateContactFlag" type="xsd:string" minOccurs="0"/>
+<xsd:element name="NewContactFlag" type="xsd:string" minOccurs="0"/>
+<xsd:element name="UserFavoriteFlag" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ContactType" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SiebelAssetInformation">
+<xsd:sequence>
+<xsd:element name="AssetId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="SerialNumber" type="xsd:string"/>
+<xsd:element name="AssetTag" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ProductModel" type="xsd:string"/>
+<xsd:element name="ProductNumber" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ProductLine" type="xsd:string" minOccurs="0"/>
+<xsd:element name="MachineTypeModel" type="xsd:string" minOccurs="0"/>
+<xsd:element name="AssetType" type="xsd:string" minOccurs="0"/>
+<xsd:element name="InstalledAtAddress" nillable="true" type="tns:SiebelAddress" minOccurs="0"/>
+<xsd:element name="Entitlement" type="tns:Entitlement" minOccurs="0"/>
+<xsd:element name="AssetContact" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+<xsd:element name="Account" type="tns:Account" minOccurs="0"/>
+<xsd:element name="IPAddress" type="xsd:string" minOccurs="0"/>
+<xsd:element name="SupportURL" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ControlPanelURL" type="xsd:string" minOccurs="0"/>
+<xsd:element name="KnowledgeBaseURL" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ProductImageURL" type="xsd:string" minOccurs="0"/>
+<xsd:element name="HostName" type="xsd:string" minOccurs="0"/>
+<xsd:element name="OperatingSystem" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ConnectivityType" type="xsd:string" minOccurs="0"/>
+<xsd:element name="DeviceTag" type="xsd:string" minOccurs="0"/>
+<xsd:element name="CartridgeDateCode" type="xsd:string" minOccurs="0"/>
+<xsd:element name="NewMeterReadDate" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ColorCapableIndicator" type="xsd:string" minOccurs="0"/>
+<xsd:element name="LastMonoPageReadDate" type="xsd:string" minOccurs="0"/>
+<xsd:element name="LastPageCount" type="xsd:string" minOccurs="0"/>
+<xsd:element name="NewPageCount" type="xsd:string" minOccurs="0"/>
+<xsd:element name="LastColorPageReadDate" type="xsd:string" minOccurs="0"/>
+<xsd:element name="LastColorPageCount" type="xsd:string" minOccurs="0"/>
+<xsd:element name="NewColorPageCount" type="xsd:string" minOccurs="0"/>
+<xsd:element name="NotMyPrinterFlag" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SiebelAddress">
+<xsd:sequence>
+<xsd:element name="AddressId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="AddressName" type="xsd:string" minOccurs="0"/>
+<xsd:element name="AddressLine1" type="xsd:string"/>
+<xsd:element name="AddressLine2" type="xsd:string" minOccurs="0"/>
+<xsd:element name="OfficeNumber" type="xsd:string" minOccurs="0"/>
+<xsd:element name="City" type="xsd:string"/>
+<xsd:element name="StateCode" type="xsd:string" minOccurs="0"/>
+<xsd:element name="Province" type="xsd:string" minOccurs="0"/>
+<xsd:element name="District" type="xsd:string" minOccurs="0"/>
+<xsd:element name="County" type="xsd:string" minOccurs="0"/>
+<xsd:element name="Region" type="xsd:string" minOccurs="0"/>
+<xsd:element name="Country" type="xsd:string" minOccurs="0"/>
+<xsd:element name="CountryCode" type="xsd:string" minOccurs="0"/>
+<xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+<xsd:element name="PhysicalLocation1" type="xsd:string" minOccurs="0"/>
+<xsd:element name="PhysicalLocation2" type="xsd:string" minOccurs="0"/>
+<xsd:element name="PhysicalLocation3" type="xsd:string" minOccurs="0"/>
+<xsd:element name="StateFullName" type="xsd:string" minOccurs="0"/>
+<xsd:element name="Latitude" type="xsd:string" minOccurs="0"/>
+<xsd:element name="Longitude" type="xsd:string" minOccurs="0"/>
+<xsd:element name="AddressCleansedFlag" type="xsd:string" minOccurs="0"/>
+<xsd:element name="AddressMessage" type="xsd:string" minOccurs="0"/>
+<xsd:element name="NewAddressFlag" nillable="true" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Entitlement">
+<xsd:sequence>
+<xsd:element name="EntitlementId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="EntitlementName" type="xsd:string"/>
+<xsd:element name="EntitlementServiceDetails" type="tns:EntitlementServiceDetails" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="EntitlementServiceDetails">
+<xsd:sequence>
+<xsd:element name="ServiceDetailId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceDetailsDescription" type="xsd:string" minOccurs="0"/>
+<xsd:element name="PrimaryFlag" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="Account">
+<xsd:sequence>
+<xsd:element name="AccountId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="AccountName" type="xsd:string"/>
+<xsd:element name="AccountAddress" nillable="true" type="tns:SiebelAddress" minOccurs="0"/>
+<xsd:element name="AccountPriority" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SiebelServiceProviderInformation">
+<xsd:sequence>
+<xsd:element name="ServiceProviderAccountId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceProviderName" type="xsd:string"/>
+<xsd:element name="ServiceProviderAgreement" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceProviderOrganization" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceProviderInstructions" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceProviderReferenceNumber" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceProviderTimeOfArrival" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceProviderRequestedResponseDate" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceProviderStatus" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceProviderStatusAsOfDate" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceProviderComments" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SiebelServiceRequestDetails">
+<xsd:sequence>
+<xsd:element name="FailureCode" type="xsd:string"/>
+<xsd:element name="ProblemDescription" type="xsd:string"/>
+<xsd:element name="RequestLexmarkReviewFlag" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ReviewComments" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SiebelRecommendedPartsList">
+<xsd:sequence>
+<xsd:element name="LineItemId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="OrderDate" type="xsd:string" minOccurs="0"/>
+<xsd:element name="Quantity" type="xsd:string"/>
+<xsd:element name="PartInformation" type="tns:PartInformation"/>
+<xsd:element name="ReturnRequiredFlag" type="xsd:string"/>
+<xsd:element name="ExpediteShipmentFlag" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ShipToAddress" nillable="true" type="tns:SiebelAddress"/>
+<xsd:element name="Status" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ErrorCode1" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ErrorCode2" type="xsd:string" minOccurs="0"/>
+<xsd:element name="Carrier" type="xsd:string" minOccurs="0"/>
+<xsd:element name="PartSource" nillable="true" type="xsd:string"/>
+<xsd:element name="ReturnTrackingNumber" type="xsd:string" minOccurs="0"/>
+<xsd:element name="RecommendedPartUpdatedFlag" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="PartInformation">
+<xsd:sequence>
+<xsd:element name="PartNumber" type="xsd:string" minOccurs="0"/>
+<xsd:element name="PartId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="PartName" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SiebelReturnPartsList">
+<xsd:sequence>
+<xsd:element name="LineItemId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="PartInfromation" type="tns:PartInfromation"/>
+<xsd:element name="Carrier" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ReturnTrackingNumber" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ReturnPartUpdatedFlag" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="PartInfromation">
+<xsd:sequence>
+<xsd:element name="PartNumber" type="xsd:string" minOccurs="0"/>
+<xsd:element name="PartId" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SiebelActivityNotes">
+<xsd:sequence>
+<xsd:element name="NoteId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="NoteDate" type="xsd:string"/>
+<xsd:element name="NoteAuthor" type="tns:NoteAuthor"/>
+<xsd:element name="NoteDetails" type="xsd:string"/>
+<xsd:element name="NoteUpdateFlag" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="NoteAuthor">
+<xsd:sequence>
+<xsd:element name="ContactId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="FirstName" type="xsd:string" minOccurs="0"/>
+<xsd:element name="LastName" type="xsd:string" minOccurs="0"/>
+<xsd:element name="EmailAddress" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SiebelDebriefInformation">
+<xsd:sequence>
+<xsd:element name="RepairDescription" type="xsd:string"/>
+<xsd:element name="ResolutionCode" type="xsd:string"/>
+<xsd:element name="ServiceRequestedDate" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceStartDate" type="xsd:string"/>
+<xsd:element name="ServiceEndDate" type="xsd:string"/>
+<xsd:element name="DebriefPartStatus" type="xsd:string"/>
+<xsd:element name="PageCount" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SiebelPaymentRequestList">
+<xsd:sequence>
+<xsd:element name="PaymentRequestId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="PaymentType" type="xsd:string"/>
+<xsd:element name="Quantity" type="xsd:string"/>
+<xsd:element name="UnitPrice" type="xsd:string"/>
+<xsd:element name="TotalAmount" type="xsd:string"/>
+<xsd:element name="Currency" type="xsd:string"/>
+<xsd:element name="Description" type="xsd:string"/>
+<xsd:element name="PaymentRequestUpdateFlag" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="debriefWarrantyClaimResponse">
+<xsd:sequence>
+<xsd:element name="status" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="updateWarrantyClaim">
+<xsd:sequence>
+<xsd:element name="debug" nillable="true" type="xsd:string" minOccurs="0"/>
+<xsd:element name="synchOrAsynch" nillable="true" type="xsd:string" minOccurs="0"/>
+<xsd:element name="updateClaimsServiceRequestInput" nillable="true" type="tns:updateClaimsServiceRequestInput"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="updateClaimsServiceRequestInput">
+<xsd:sequence>
+<xsd:element name="updateClaimsServiceRequestWSInput" type="tns:updateClaimsServiceRequestWSInput"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="updateClaimsServiceRequestWSInput">
+<xsd:sequence>
+<xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+<xsd:element name="ClaimsServiceRequestData" type="tns:ClaimsServiceRequestData2" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="ClaimsServiceRequestData2">
+<xsd:sequence>
+<xsd:element name="ClaimId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ActivityId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ClaimDate" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ClaimStatus" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ClaimSource" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceRequestType" type="xsd:string" minOccurs="0"/>
+<xsd:element name="Requester" nillable="true" type="tns:SiebelContact"/>
+<xsd:element name="PrimaryContact" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+<xsd:element name="AssetInformation" nillable="true" type="tns:SiebelAssetInformation" minOccurs="0"/>
+<xsd:element name="ServiceProviderInformation" nillable="true" type="tns:SiebelServiceProviderInformation" minOccurs="0"/>
+<xsd:element name="ClaimsDetails" nillable="true" type="tns:SiebelServiceRequestDetails" minOccurs="0"/>
+<xsd:element name="Technician" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+<xsd:element name="RecommendedPartsList" nillable="true" type="tns:SiebelRecommendedPartsList" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="ReturnPartsList" nillable="true" type="tns:SiebelReturnPartsList" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="ActivityNotes" nillable="true" type="tns:SiebelActivityNotes" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="RepairCompleteFlag" type="xsd:string" minOccurs="0"/>
+<xsd:element name="DebriefInformation" nillable="true" type="tns:SiebelDebriefInformation" minOccurs="0"/>
+<xsd:element name="PaymentRequestList" nillable="true" type="tns:SiebelPaymentRequestList" minOccurs="0" maxOccurs="unbounded"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="updateWarrantyClaimResponse">
+<xsd:sequence>
+<xsd:element name="status" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="createWarrantyClaim">
+<xsd:sequence>
+<xsd:element name="debug" nillable="true" type="xsd:string" minOccurs="0"/>
+<xsd:element name="synchOrAsynch" nillable="true" type="xsd:string" minOccurs="0"/>
+<xsd:element name="createClaimsServiceRequestInput" nillable="true" type="tns:createClaimsServiceRequestInput"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="createClaimsServiceRequestInput">
+<xsd:sequence>
+<xsd:element name="createClaimsServiceRequestWSInput" type="tns:createClaimsServiceRequestWSInput"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="createClaimsServiceRequestWSInput">
+<xsd:sequence>
+<xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+<xsd:element name="ClaimsServiceRequestData" type="tns:ClaimsServiceRequestData3" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="ClaimsServiceRequestData3">
+<xsd:sequence>
+<xsd:element name="ClaimId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ActivityId" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ClaimDate" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ClaimStatus" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ClaimSource" type="xsd:string" minOccurs="0"/>
+<xsd:element name="ServiceRequestType" type="xsd:string" minOccurs="0"/>
+<xsd:element name="Requester" nillable="true" type="tns:SiebelContact"/>
+<xsd:element name="CustomerInformation" nillable="true" type="tns:SiebelMDMCustomerInformation" minOccurs="0"/>
+<xsd:element name="PrimaryContact" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+<xsd:element name="AssetInformation" nillable="true" type="tns:SiebelAssetInformation" minOccurs="0"/>
+<xsd:element name="ServiceProviderInformation" nillable="true" type="tns:SiebelServiceProviderInformation" minOccurs="0"/>
+<xsd:element name="ClaimsDetails" nillable="true" type="tns:SiebelServiceRequestDetails" minOccurs="0"/>
+<xsd:element name="Technician" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+<xsd:element name="RecommendedPartsList" nillable="true" type="tns:SiebelRecommendedPartsList" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="ReturnPartsList" nillable="true" type="tns:SiebelReturnPartsList" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="ActivityNotes" nillable="true" type="tns:SiebelActivityNotes" minOccurs="0" maxOccurs="unbounded"/>
+<xsd:element name="RepairCompleteFlag" type="xsd:string" minOccurs="0"/>
+<xsd:element name="DebriefInformation" nillable="true" type="tns:SiebelDebriefInformation" minOccurs="0"/>
+<xsd:element name="PaymentRequestList" nillable="true" type="tns:SiebelPaymentRequestList" minOccurs="0" maxOccurs="unbounded"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="SiebelMDMCustomerInformation">
+<xsd:sequence>
+<xsd:element name="MDMId" type="xsd:string"/>
+<xsd:element name="MDMLevel" type="xsd:string" minOccurs="0"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:complexType name="createWarrantyClaimResponse">
+<xsd:sequence>
+<xsd:element name="claimNumber" nillable="true" type="xsd:string"/>
+<xsd:element name="claimId" nillable="true" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:element name="debriefWarrantyClaim" type="tns:debriefWarrantyClaim"/>
+<xsd:element name="debriefWarrantyClaimResponse" type="tns:debriefWarrantyClaimResponse"/>
+<xsd:element name="updateWarrantyClaim" type="tns:updateWarrantyClaim"/>
+<xsd:element name="updateWarrantyClaimResponse" type="tns:updateWarrantyClaimResponse"/>
+<xsd:element name="createWarrantyClaim" type="tns:createWarrantyClaim"/>
+<xsd:element name="createWarrantyClaimResponse" type="tns:createWarrantyClaimResponse"/>
+</xsd:schema>
+</wsdl:types>
+<wsdl:message name="warrantyClaimsServiceRequestWS_PortType_createWarrantyClaimResponse">
+<wsdl:part name="parameters" element="tns:createWarrantyClaimResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="warrantyClaimsServiceRequestWS_PortType_debriefWarrantyClaim">
+<wsdl:part name="parameters" element="tns:debriefWarrantyClaim"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="warrantyClaimsServiceRequestWS_PortType_updateWarrantyClaimResponse">
+<wsdl:part name="parameters" element="tns:updateWarrantyClaimResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="warrantyClaimsServiceRequestWS_PortType_createWarrantyClaim">
+<wsdl:part name="parameters" element="tns:createWarrantyClaim"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="warrantyClaimsServiceRequestWS_PortType_debriefWarrantyClaimResponse">
+<wsdl:part name="parameters" element="tns:debriefWarrantyClaimResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="warrantyClaimsServiceRequestWS_PortType_updateWarrantyClaim">
+<wsdl:part name="parameters" element="tns:updateWarrantyClaim"></wsdl:part>
+</wsdl:message>
+<wsdl:portType name="warrantyClaimsServiceRequestWS_PortType">
+<wsdl:operation name="debriefWarrantyClaim">
+<wsdl:input message="tns:warrantyClaimsServiceRequestWS_PortType_debriefWarrantyClaim"></wsdl:input>
+<wsdl:output message="tns:warrantyClaimsServiceRequestWS_PortType_debriefWarrantyClaimResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="updateWarrantyClaim">
+<wsdl:input message="tns:warrantyClaimsServiceRequestWS_PortType_updateWarrantyClaim"></wsdl:input>
+<wsdl:output message="tns:warrantyClaimsServiceRequestWS_PortType_updateWarrantyClaimResponse"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="createWarrantyClaim">
+<wsdl:input message="tns:warrantyClaimsServiceRequestWS_PortType_createWarrantyClaim"></wsdl:input>
+<wsdl:output message="tns:warrantyClaimsServiceRequestWS_PortType_createWarrantyClaimResponse"></wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="ServiceRequest_warrantyClaimsServiceRequestWS_Binder" type="tns:warrantyClaimsServiceRequestWS_PortType">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="debriefWarrantyClaim">
+<soap:operation soapAction="ServiceRequest_warrantyClaimsServiceRequestWS_Binder_debriefWarrantyClaim" style="document"/>
+<wsdl:input>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="updateWarrantyClaim">
+<soap:operation soapAction="ServiceRequest_warrantyClaimsServiceRequestWS_Binder_updateWarrantyClaim" style="document"/>
+<wsdl:input>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="createWarrantyClaim">
+<soap:operation soapAction="ServiceRequest_warrantyClaimsServiceRequestWS_Binder_createWarrantyClaim" style="document"/>
+<wsdl:input>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body parts="parameters" use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="warrantyClaimsServiceRequestWS">
+<wsdl:port name="ServiceRequest_warrantyClaimsServiceRequestWS_Port" binding="tns:ServiceRequest_warrantyClaimsServiceRequestWS_Binder">
+<soap:address location="http://dlexrwmis002.lex.lexmark.com:8700/ws/ServiceRequest:warrantyClaimsServiceRequestWS/ServiceRequest_warrantyClaimsServiceRequestWS_Port"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

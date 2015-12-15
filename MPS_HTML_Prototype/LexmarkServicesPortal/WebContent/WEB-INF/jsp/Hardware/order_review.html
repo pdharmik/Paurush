@@ -1,0 +1,446 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Order Review</title>
+<link href="../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../../js/util.js"></script>
+<script src="../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/tree/dhtmlxtree.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../../js/mps.js"></script>
+<script src="../../../js/expand.js"></script>
+
+<script type="text/javascript">
+////Toggle Containers
+	jQuery(function() {
+	    jQuery("h4.expand").toggler();
+	});
+</script>
+
+</head>
+<body onload="javascript:hideAddiContacts();">
+<div id="wrapper">
+  <div id="banner">
+    <h1 class="logo"><a href="https://tportal.lexmark.com/web/guest" title="Lexmark Global Services">tportal.lexmark.com</a></h1>
+    <div id="top-header">
+      <div id="top-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><b><span>Welcome Firstname Lastname!</span></b></li>
+          <li><a href="#">Preferences</a></li>
+          <li><a href="#">User Administration</a></li>
+          <li><a href="#">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="bottom-header">
+      <div id="bottom-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li>
+            <select>
+              <option>English (US)</option>
+            </select>
+          </li>
+          <li><a href="#">Lexmark.com</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Get Help</a></li>
+          <li><a href="#">Contact Lexmark</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="tabNavigation">
+    <ul class="tab">
+      <li><a href="#"><img src="../../../images/home.png" alt="Home" title="Home" class="home" /></a></li>
+      <li><a href="" title="">Device Finder</a></li>
+      <li class="selected"><a href="" title="">Requests</a></li>
+      <li><a href="" title="">Page Counts</a></li>
+      <li><a href="" title="">Documents</a></li>
+    </ul>
+  </div>
+  <div id="subnavigation">
+    <ul>
+      <li><a href="javascript:void(0);"><span>Request History</span></a></li>
+      <li><a href="create_new_request.html" class="lightbox" title="Create New Request"><span>Create New Request</span></a></li>
+    </ul>
+  </div>
+  <div id="content-wrapper">
+    <div class="journal-content-article">
+      <h2>Hardware Request</h2>
+      <span class="step">Order Hardware</span>
+      </div>
+    <div class="main-wrap">
+      <div class="content"> 
+        <!-- PROCESS STEPS START -->
+        <div class="portletBlock center">
+          <ul class="processSteps shadow">
+            <li class="active"><a href="#" title="Step 1: Select Asset"><span>1</span>Select Items</a></li>
+            <li class="active"><a href="#" title="Step 2: Order Details"><span>2</span>Order Details</a></li>
+            <li class="selected"><a href="#" title="Step 3: Review"><span>3</span>Review</a></li>
+            <li class="last"><a href="#" title="Step 4: Confirmation"><span>4</span>Confirmation</a></li>
+          </ul>
+        </div>
+        <!-- PROCESS STEPS END -->
+        <h3 class="pageTitle">Review Order</h3>
+        <p><span class="strong">Please review the details for this request.</span> Once confirmed, click on the SUBMIT button below.</p>
+        <div class="portletBlock">
+          <div class="columnsTwo">
+          <!-- CONTACT BLOCK STARTS -->
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Primary Contact for this Request</h4>
+              <ul class="form">
+                <li>
+                  <label>Name:</label>
+                  <span>FirstName LastName</span></li>
+                <li>
+                  <label>Phone Number:</label>
+                  <span>XXXXXXXXXX</span></li>
+                <li>
+                  <label>Email Address</label>
+                  <span>firstname.lastname@domain.com</span></li>
+				
+              </ul>
+              
+            </div>
+           
+            <div class="infoBox columnInner rounded shadow" id="addiContact">
+              <h4>Secondary Contact for this Request</h4>
+              <ul class="form">
+                <li>
+                  <label>Name:</label>
+                  <span>FirstName LastName</span></li>
+                <li>
+                  <label>Phone Number:</label>
+                  <span>XXXXXXXXXX</span></li>
+                <li>
+                  <label>Email Address:</label>
+                  <span>firstname.lastname@domain.com</span></li>
+              </ul>
+            </div>
+            <!-- CONTACT BLOCK END -->
+          </div>
+          <!-- ADDITIONAL INFORMATION BLOCK STARTS -->
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Additional Information for this Request</h4>
+              <ul class="form">
+                <li>
+                  <label for="refId">Customer Reference ID:</label>
+                  <span>
+                  &ltCustomer Reference ID&gt</span></li>
+                <li>
+                  <label for="costCntr">Cost Center:</label>
+                  <span>
+                  &ltCost Center&gt</span></li>
+                <li>
+                  <label for="desc">Description:</label>
+                  <span class="multiLine">
+                   &ltLorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa. Sed eleifend nonummy diam. Praesent mauris ante, elementum et, bibendum at, posuere sit amet, nibh. Duis tincidunt lectus quis dui viverra vestibulum. Suspendisse vulputate aliquam dui. Nulla elementum dui ut augue. Aliquam vehicula mi at mauris. Maecenas placerat, nisl at consequat rhoncus, sem nunc gravida justo, quis eleifend arcu velit .&gt</span></li>
+              </ul>
+            </div>
+          </div>
+          <!-- ADDITIONAL INFORMATION BLOCK ENDS -->
+        </div>
+        <hr class="separator" />
+        <!-- ASSET INFO BLOCK START -->
+      <p class="inlineTitle">Items in your order</p>
+		<div class="portletBlock infoBox rounded shadow">
+        <div class="columnsOne">
+	        <div class="columnInner">
+	          <h4 class="expand">Bundle</h4>
+	          <div class="collapse">
+	          <div id="mygrid_container2"></div> 
+  		<div class="pagination"> <span id="pagingArea2"></span><span id="infoArea"></span> </div>
+	        </div>
+	        </div>
+	    </div>
+	    </div>
+	    
+	    <div class="portletBlock infoBox rounded shadow">
+        <div class="columnsOne">
+	        <div class="columnInner">
+	          <h4 class="expand">Accessories</h4>
+	          <div class="collapse">
+	          <div id="mygrid_container"></div> 
+  		<div class="pagination"> <span id="pagingArea"></span><span id="infoArea"></span> </div> 	          
+	        </div>
+	        </div>
+	    </div>
+	    </div>
+	    
+	    <div class="columnInner floatR">
+	    <table>
+	    <tr>
+	    	<td class="right">Sub-total:</td>
+	    	<td class="right">XXXXX</td>
+	    </tr>
+	    <tr>
+	    	<td class="right">Taxes:</td>
+	    	<td class="right">XX.XX</td>
+	    </tr>
+	    <tr>
+	    	<td class="right strong">Total Amount Payable:</td>
+	    	<td class="right strong">XXX.XXX</td>
+	    </tr>
+	    </table>
+	    </div>
+        <!-- ASSET INFO BLOCK END -->
+        <!-- SHIPPING INFORMATION STARTS -->
+        <p class="inlineTitle">Shipping Information</p>
+        <div class="portletBlock">
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4><a href="javascript:void();" class="lightboxLarge" title="Select an Address">Select a different address</a>Ship-to Address</h4>
+              <ul class="roDisplay">
+                <li><span>
+                  Store-front Name<br/>
+                  Address Line 1<br />
+                  Address Line 2<br />
+                  City, State / Province XXXXX<br />
+                  Country</span> </li>
+              </ul>
+              <ul class="form">
+                <li>
+                  <label for="building">Building:</label>
+                  <span>
+                  &ltBuilding&gt
+                  </span>
+                <li>
+                  <label for="floor">Floor:</label>
+                  <span>
+                  &ltFloor&gt
+                  </span>
+                <li>
+                  <label for="office">Office:</label>
+                  <span>
+                  &ltOffice&gt
+                  </span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Order Instructions</h4>
+              <ul class="form">
+                <li>
+                  <label for="desc">Special Instructions:</label>
+                  <span class="multiLine">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa
+                  </span> </li>
+                <li>
+                  <label for="">Default Special Instructions:</label>
+                  <span>Default Special Instructions</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- SHIPPING INFORMATION ENDS -->
+        <!-- PAYMENT DETAILS BLOCK STARTS -->
+        <div class="portletBlock">
+          <div class="columnsOne">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Payment Details</h4>
+              <ul class="form">
+                <li>
+                  <label>PO Number:</label>
+                  <span>XXXXXX</span></li>
+                  <li>
+                  <label>Credit Card Token Number:</label>
+                  <span>XXXX-XXXX-XXXX-5278</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <p class="inlineTitle">Payment Information</p>
+        <div class="portletBlock">
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Choose Payment Method</h4>          
+              <div> 
+                  <span class="radio columnsTwo">
+                  <input type="radio" name="purchaseOrder" id="purchaseOrder" value="purchaseOrder" />
+                  <label for="purchaseOrder">Pay by Purchase Order</label>                  
+                  </span>
+                  <span class="radio columnsTwo">
+                  <input type="radio" name="creditCard" id="creditCard" value="creditCard" />
+                  <label for="creditCard">Pay by Credit Card</label>                  
+                  </span>
+              </div> 
+              <div class="lineClear"></div>
+              <ul class="form">
+                <li>
+                  <label for="poNo">PO Number:</label>
+                  <span>
+                  <input type="text" id="poNo" />
+                  <img src="../../../images/help.png" class="helpIcon" alt="To use a different PO Number, enter it here." width="18" height="18"></span></li>
+              </ul>
+            </div>
+            <div class="infoBox columnInner rounded shadow">
+              <h4><a href="javascript:void();" class="lightboxLarge" title="Select an Address">Add New Card / Update</a>Pay By Credit Card</h4>
+              <ul class="form">
+                <li>
+                  <label>Credit Card Token Number: *</label>
+                  <span>XXXX-XXXX</span>
+              </ul>
+            </div>
+          </div>
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4><a href="javascript:void();" class="lightboxLarge" title="Select an Address">Select a different address</a>Bill-to Address</h4>
+              <ul class="roDisplay">              	
+                 <li>
+                  <div id="sameAsShipto" align="left">
+                    <input type="checkBox" id="sameAsShiptoCheckBox"/>
+					Same as Ship-To Address<br/>
+                  </div></li>
+                <li><span>
+                  Store-front Name<br/>
+                  Address Line 1<br />
+                  Address Line 2<br />
+                  City, State / Province XXXXX<br />
+                  Country</span> </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- PAYMENT DETAILS BLOCK ENDS -->
+        <!-- COVERED SERVICES BLOCK STARTS -->
+        <div class="portletBlock">
+          <div class="columnsOne">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Covered Service</h4>
+              <ul class="form">
+                <li>
+                  <label for="poNo">Do you want Lexmark to install:</label>
+                  <span>
+                  &ltYes/No&gt</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- COVERED SERVICES BLOCK ENDS -->
+        
+        <!-- NOTES - Start -->
+        <div class="portletBlock infoBox rounded shadow">
+          <div class="columnsOne">
+            <div class="columnInner">
+              <h4>Notes &amp; Attachments</h4>
+              <div class="infoBox columnInner rounded shadow">
+              <h4>Notes</h4>
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa. Sed eleifend nonummy diam. Praesent mauris ante, elementum et, bibendum at, posuere sit amet
+            </div>
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Attachments</h4>
+              <a href="#">Document1</a><br>
+              <a href="#">Document1</a>
+            </div>
+            </div>
+          </div>
+        </div>
+        <!-- NOTES - End -->
+        <div class="buttonContainer">
+          <button class="button">Back</button>
+          <button class="button">Save as Draft</button>
+          <button class="button_cancel">Cancel</button>
+          <button class="button">Continue</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer">Footer</div>
+</div>
+</body>
+<script>
+var mygrid;
+var headerString = ",,,";
+var ar = [[ "<img src=\"../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Description:</label><span>XXXXXXXXXX</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Device Type:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Color/Mono:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Product Model:</label><span>Model Name</span></li></ul>", "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"],
+          [ "<img src=\"../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Description:</label><span>XXXXXXXXXX</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Device Type:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Color/Mono:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Product Model:</label><span>Model Name</span></li></ul>", "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"],
+          [ "<img src=\"../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Description:</label><span>XXXXXXXXXX</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Device Type:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Color/Mono:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Product Model:</label><span>Model Name</span></li></ul>", "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"],
+          [ "<img src=\"../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Description:</label><span>XXXXXXXXXX</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Device Type:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Color/Mono:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Product Model:</label><span>Model Name</span></li></ul>", "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"],
+          [ "<img src=\"../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Description:</label><span>XXXXXXXXXX</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Device Type:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Color/Mono:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Product Model:</label><span>Model Name</span></li></ul>", "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"],
+          [ "<img src=\"../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Description:</label><span>XXXXXXXXXX</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Device Type:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Color/Mono:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Product Model:</label><span>Model Name</span></li></ul>", "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"],
+          [ "<img src=\"../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Description:</label><span>XXXXXXXXXX</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Device Type:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Color/Mono:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Product Model:</label><span>Model Name</span></li></ul>", "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"],
+          [ "<img src=\"../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Description:</label><span>XXXXXXXXXX</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Device Type:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Color/Mono:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Product Model:</label><span>Model Name</span></li></ul>", "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"],
+          [ "<img src=\"../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Description:</label><span>XXXXXXXXXX</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Device Type:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Color/Mono:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Product Model:</label><span>Model Name</span></li></ul>", "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"]];
+mygrid = new dhtmlXGridObject('mygrid_container');
+mygrid.setImagePath("../../../../images/gridImgs/");
+mygrid.setHeader(headerString);
+
+mygrid.setInitWidths("175,*,450,295");
+mygrid.setColumnMinWidth("110,110,110,110");
+mygrid.enableResizing("false,false,false,false");
+mygrid.setColAlign("left,left,left,left");
+mygrid.setSkin("light");
+mygrid.setNoHeader("true");
+mygrid.setColTypes("ro,ro,ro,ro");
+mygrid.enableAutoHeight(true);
+mygrid.enableMultiline(true);
+mygrid.enableColumnMove(true);
+mygrid.init();
+mygrid.enablePaging(true, 4, 3, "pagingArea", true, "infoArea");
+mygrid.setPagingSkin("bricks"); 	 
+mygrid.parse(ar,"jsarray");
+
+
+
+
+var mygrid2;
+var headerString = ", ,";
+var ar = [[ "Lexmark Printer", "<div><table class=\"displayGrid rounded shadow wFull\"><thead><tr><th class=\"w100\">Part No.</th><th>Description</th><th class=\"w100\">Qty</th></tr></thead><tbody><tr><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr><tr class=\"altRow\"><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr></tbody></table></div>",  "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"], 
+          [ "Lexmark Printer", "<div><table class=\"displayGrid rounded shadow wFull\"><thead><tr><th class=\"w100\">Part No.</th><th>Description</th><th class=\"w100\">Qty</th></tr></thead><tbody><tr><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr><tr class=\"altRow\"><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr></tbody></table></div>",  "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"],
+          [ "Lexmark Printer", "<div><table class=\"displayGrid rounded shadow wFull\"><thead><tr><th class=\"w100\">Part No.</th><th>Description</th><th class=\"w100\">Qty</th></tr></thead><tbody><tr><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr><tr class=\"altRow\"><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr></tbody></table></div>",  "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"],
+          [ "Lexmark Printer", "<div><table class=\"displayGrid rounded shadow wFull\"><thead><tr><th class=\"w100\">Part No.</th><th>Description</th><th class=\"w100\">Qty</th></tr></thead><tbody><tr><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr><tr class=\"altRow\"><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr></tbody></table></div>",  "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"],
+          [ "Lexmark Printer", "<div><table class=\"displayGrid rounded shadow wFull\"><thead><tr><th class=\"w100\">Part No.</th><th>Description</th><th class=\"w100\">Qty</th></tr></thead><tbody><tr><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr><tr class=\"altRow\"><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr></tbody></table></div>",  "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"],
+          [ "Lexmark Printer", "<div><table class=\"displayGrid rounded shadow wFull\"><thead><tr><th class=\"w100\">Part No.</th><th>Description</th><th class=\"w100\">Qty</th></tr></thead><tbody><tr><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr><tr class=\"altRow\"><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr></tbody></table></div>",  "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"],
+          [ "Lexmark Printer", "<div><table class=\"displayGrid rounded shadow wFull\"><thead><tr><th class=\"w100\">Part No.</th><th>Description</th><th class=\"w100\">Qty</th></tr></thead><tbody><tr><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr><tr class=\"altRow\"><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr></tbody></table></div>",  "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"],
+          [ "Lexmark Printer", "<div><table class=\"displayGrid rounded shadow wFull\"><thead><tr><th class=\"w100\">Part No.</th><th>Description</th><th class=\"w100\">Qty</th></tr></thead><tbody><tr><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr><tr class=\"altRow\"><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr></tbody></table></div>",  "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"],
+          [ "Lexmark Printer", "<div><table class=\"displayGrid rounded shadow wFull\"><thead><tr><th class=\"w100\">Part No.</th><th>Description</th><th class=\"w100\">Qty</th></tr></thead><tbody><tr><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr><tr class=\"altRow\"><td class=\"w100\">123456SDFGH</td><td>Description of the item goes here</td><td class=\"w100\">1</td></tr></tbody></table></div>",  "<div class=\"f150 right\">Qty:1</div><div class=\"f200 right\">$1,199.00</div>"]];
+mygrid2 = new dhtmlXGridObject('mygrid_container2');
+mygrid2.setImagePath("../../../../images/gridImgs/");
+mygrid2.setHeader(headerString);
+
+mygrid2.setInitWidths("305,*,295");
+mygrid2.setColumnMinWidth("110,110,110");
+mygrid2.enableResizing("true,true,true");
+mygrid2.setColAlign("left,left,left");
+mygrid2.setSkin("light");
+mygrid2.setNoHeader("true");
+mygrid2.setColTypes("ro,ro,ro");
+mygrid2.enableAutoHeight(true);
+mygrid2.enableMultiline(true);
+mygrid2.enableColumnMove(true);
+mygrid2.init();
+mygrid2.enablePaging(true, 4, 3, "pagingArea2", true, "infoArea");
+mygrid2.setPagingSkin("bricks"); 	 
+mygrid2.parse(ar,"jsarray");
+
+</script>
+</html>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            

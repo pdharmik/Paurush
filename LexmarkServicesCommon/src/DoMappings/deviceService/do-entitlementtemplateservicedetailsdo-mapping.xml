@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- S_ENTMPL_ACTTYP -->
+	<bean id="EntitlementTemplateServiceDetailsDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>Siebel BO</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>Entitlement Templates</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>Entitlement Template Service Details</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>description</value></key>
+	         		<value>Activity Type</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryFlag</value></key>
+	         		<value>SSA Primary Field</value>
+				</entry>
+				<entry>
+	         		<key><value>entitlementId</value></key>
+	         		<value>Entitlement Tpl Id</value>
+				</entry>
+				<entry>
+	         		<key><value>customerShowFlag</value></key>
+	         		<value>LXK SD Customer Show Flag</value>
+				</entry>
+				<!-- added by ragesree -2098 -->
+				<entry>
+	         		<key><value>partnerShowFlag</value></key>
+	         		<value>LXK SD Claim Service Flag</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

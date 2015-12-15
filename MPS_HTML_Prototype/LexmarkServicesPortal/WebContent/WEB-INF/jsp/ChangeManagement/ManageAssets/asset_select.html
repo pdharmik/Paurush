@@ -1,0 +1,332 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Select Asset</title>
+<link href="../../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../../../js/util.js"></script>
+<script src="../../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/tree/dhtmlxtree.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../../../js/mps.js"></script>
+</head>
+<body>
+<div id="wrapper" >
+  <div id="banner">
+    <h1 class="logo"><a href="https://tportal.lexmark.com/web/guest" title="Lexmark Global Services">tportal.lexmark.com</a></h1>
+    <div id="top-header">
+      <div id="top-header-navigation" class="sort-pages modify-pages" >
+        <ul>
+          <li><b><span>Welcome Firstname Lastname!</span></b></li>
+          <li><a href="#">Preferences</a></li>
+          <li><a href="#">User Administration</a></li>
+          <li><a href="#">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="bottom-header">
+      <div id="bottom-header-navigation" class="sort-pages modify-pages" >
+        <ul>
+          <li>
+            <select>
+              <option>English (US)</option>
+            </select>
+          </li>
+          <li><a href="#">Lexmark.com</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Get Help</a></li>
+          <li><a href="#">Contact Lexmark</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="tabNavigation">
+    <ul class="tab">
+      <li><a href="#"><img src="../../../../images/home.png" alt="Home" title="Home" class="home" /></a></li>
+      <li><a href="" title="">Device Finder</a></li>
+      <li class="selected"><a href="" title="">Requests</a></li>
+      <li><a href="" title="">Page Counts</a></li>
+      <li><a href="" title="">Documents</a></li>
+    </ul>
+  </div>
+  <div id="subnavigation">
+    <ul>
+      <li><a href="javascript:void(0);"><span>Request History</span></a></li>
+      <li><a href="../ManageAddresses/create_new_request.html" class="lightbox" title="Create New Request"><span>Create New Request</span></a></li>
+    </ul>
+  </div>
+  <div id="content-wrapper">
+    <div class="journal-content-article">
+      <h2>Change Request</h2>
+      <span class="step">Assets</span> </div>
+    <div class="main-wrap">
+      <div class="content"> 
+        <!-- MAIN CONTENT GOES HERE -->
+        <div class="portletBlock bgSolid rounded shadow">
+          <div class="columnsTwo w70p">
+            <div class="columnInner">
+              <p class="info add">To manage a single asset, select below; <br />
+                or select a link to the right to manage more than one asset.</p>
+              <p>
+                <button class="button">Add a new Asset</button>
+              </p>
+            </div>
+          </div>
+          <div class="columnsTwo splitter w30p">
+            <div class="columnInner">
+              <h4>Manage Multiple Assets</h4>
+              <ul class="link">
+                <li><a href="javascript:void(0);">Add Multiple Assets</a></li>
+                <li><a href="javascript:void(0);">Change Multiple Assets</a></li>
+                <li><a href="javascript:void(0);">Decommission Multiple Assets</a></li>
+                <li><a href="javascript:void(0);">Swap Assets</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <h3 class="pageTitle">Asset List</h3>
+        <div class="grid-controls">
+          <div class="filterLinks">
+            <ul>
+              <li class="first">All Assets</li>
+              <li><img src="../../../../images/favorite.png" width="15" height="15"><a href="javascript:void(0);">My Bookmarked Assets</a></li>
+            </ul>
+          </div>
+          <!-- Expand-min Start -->
+          <div class="expand-min">
+            <ul>
+              <li class="first"> <img src="../../../../images/minimize_all.png" alt="Minimize All" title="Minimize All" /> <a href="javascript:void(0)" onClick="minimizeAll()";>Minimize All</a> </li>
+              <li> <img src="../../../../images/expand_all.png" alt="Expand All" title="Expand All" /> <a href="javascript:void(0)" onClick="expandAll()";>Expand All</a> </li>
+              <li> <img src="../../../../images/customize.png" alt="Customize Grid" title="Customize Grid" /> <a href="#grid" id='headerMenuButton'>Customize Columns</a> </li>
+              <li> <img src="../../../../images/reset.png" alt="Reset Grid" title="Reset Grid" /> <a href="javascript:doReset();">Reset</a> </li>
+            </ul>
+          </div>
+          <!-- Expand-min End --> 
+          <!-- Customize Coulmns Popup Start -->
+          <div id="grid_menu" class="dhx_header_cmenu rounded shadow">
+            <div class="columnInner">
+              <h4><a href="javascript:void(0);" class="customizeClose">Close</a>Customize Columns</h4>
+              <ul>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnA1">
+                    <input type="checkbox" checked="checked" id="columnA1" />
+                    Serial Number</label>
+                </li>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnA2">
+                    <input type="checkbox" checked="checked" id="columnA2" />
+                    Product Model</label>
+                </li>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnA3">
+                    <input type="checkbox" checked="checked" id="columnA3" />
+                    Asset Tag</label>
+                </li>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnA4">
+                    <input type="checkbox" checked="checked" id="columnA4" />
+                    Device Host Name</label>
+                </li>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnA5">
+                    <input type="checkbox" checked="checked" id="columnA5" />
+                    IP Address</label>
+                </li>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnA6">
+                    <input type="checkbox" checked="checked" id="columnA6" />
+                    Address Name</label>
+                </li>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnA7">
+                    <input type="checkbox" id="columnA7" />
+                    Contract Type</label>
+                </li>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnA8">
+                    <input type="checkbox" id="columnA8" />
+                    Device Phase</label>
+                </li>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnA9">
+                    <input type="checkbox" id="columnA9" />
+                    Address Line 1</label>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnB1">
+                    <input type="checkbox" id="columnB1" />
+                    City</label>
+                </li>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnB2">
+                    <input type="checkbox" id="columnB2" />
+                    State</label>
+                </li>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnB3">
+                    <input type="checkbox" id="columnB3" />
+                    Province</label>
+                </li>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnB4">
+                    <input type="checkbox" id="columnB4" />
+                    Country</label>
+                </li>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnB5">
+                    <input type="checkbox" id="columnB5" />
+                    ZIP / Postal Code</label>
+                </li>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnB6">
+                    <input type="checkbox" id="columnB6" />
+                    Primary Contact First Name</label>
+                </li>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnB7">
+                    <input type="checkbox" id="columnB7" />
+                    Primary Contact Last Name</label>
+                </li>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnB8">
+                    <input type="checkbox" id="columnB8" />
+                    Primary Contact Email</label>
+                </li>
+                <li>
+                  <label class="dhx_header_cmenu_item" for="columnB9">
+                    <input type="checkbox" id="columnB9" />
+                    Primary Contact Phone</label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Customize Coulmns Popup End --> 
+        </div>
+        <div class="portlet-wrap rounded">
+          <div class="portlet-wrap-inner">
+            <div id="mygrid_container" class="gridbox gridbox_light"></div>
+          </div>
+        </div>
+        <div class="pagination"> <span id="pagingArea"></span><span id="infoArea"></span> </div>
+        <!-- mygrid_container -->
+        <div class="buttonContainer">
+          <button class="button_cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer">Footer</div>
+</div>
+</body>
+<script>
+	var mygrid;
+	var headerString = "&nbsp;,#cspan,#cspan,Serial No.,Product Model,Asset Tag,Customer Device Tag,Device Host Name,IP Address,Address Name,&nbsp;";
+	var ar = [[
+					"<img src=\"../../../../images/edit.gif\" alt=\"Change\" title=\"Change\" class=\"gridIcon\" />",
+					"<img src=\"../../../../images/delete.gif\" alt=\"Remove\" title=\"Remove\" class=\"gridIcon\" />",
+					"<table cellspacing=\"0\" cellpadding=\"0\" class=\"grid-inner-body\"><tr><td class=\"pModel\"><ul><li class=\"strong\">Lexmark 2312</li><li><img width=\"100\" height=\"100\" src=\"../../../../images/dummy_printer.jpg\" /></li></ul></td><td width=\"30%\"><ul><li class=\"strong\">Installed Address</li><li>Address Line1</li><li>Address Line2</li><li>Lexington, KY 40505</li><li>USA</li><li class=\"fav\"><img src=\"../../../../images/favorite.png\" width=\"15\" height=\"15\" /><a href=\"javascript:void(0);\">Remove from Bookmark</a></li></ul></td><td><ul><li class=\"strong\">Primary Contact</li><li>FirstName LastName</li><li>Phone: 1234567890</li></ul></td><td class=\"actionLinks\"><ul class=\"link\"><li><a href=\"#\">Change Asset Information</a></li><li><a href=\"#\">Decommission this Asset</a></li></ul></td></tr></table>",
+					"<a href=\"javascript:void(0);\">123456</a>",
+					"Lexmark 2312", "123ABC", "ASDXXX", "ASDXXX", "10.255.255.255",
+					"US.COL.COM" ],
+			[
+					"<img src=\"../../../../images/edit.gif\" alt=\"Change\" title=\"Change\" class=\"gridIcon\" />",
+					"<img src=\"../../../../images/delete.gif\" alt=\"Remove\" title=\"Remove\" class=\"gridIcon\" />",
+					"<table cellspacing=\"0\" cellpadding=\"0\" class=\"grid-inner-body\"><tr><td class=\"pModel\"><ul><li class=\"strong\">Lexmark 2312</li><li><img width=\"100\" height=\"100\" src=\"../../../../images/dummy_printer.jpg\" /></li></ul></td><td width=\"30%\"><ul><li class=\"strong\">Installed Address</li><li>Address Line1</li><li>Address Line2</li><li>Lexington, KY 40505</li><li>USA</li><li class=\"fav\"><img src=\"../../../../images/favorite.png\" width=\"15\" height=\"15\" /><a href=\"javascript:void(0);\">Remove from Bookmark</a></li></ul></td><td><ul><li class=\"strong\">Primary Contact</li><li>FirstName LastName</li><li>Phone: 1234567890</li></ul></td><td class=\"actionLinks\"><ul class=\"link\"><li><a href=\"#\">Change Asset Information</a></li><li><a href=\"#\">Decommission this Asset</a></li></ul></td></tr></table>",
+					"<a href=\"javascript:void(0);\">123456</a>",
+					"Lexmark 2312", "124ABC", "ASDXXX", "ASDXXX", "10.255.255.255",
+					"US.COL.COM" ],
+			[
+					"<img src=\"../../../../images/edit.gif\" alt=\"Change\" title=\"Change\" class=\"gridIcon\" />",
+					"<img src=\"../../../../images/delete.gif\" alt=\"Remove\" title=\"Remove\" class=\"gridIcon\" />",
+					"<table cellspacing=\"0\" cellpadding=\"0\" class=\"grid-inner-body\"><tr><td class=\"pModel\"><ul><li class=\"strong\">Lexmark 2312</li><li><img width=\"100\" height=\"100\" src=\"../../../../images/dummy_printer.jpg\" /></li></ul></td><td width=\"30%\"><ul><li class=\"strong\">Installed Address</li><li>Address Line1</li><li>Address Line2</li><li>Lexington, KY 40505</li><li>USA</li><li class=\"fav\"><img src=\"../../../../images/favorite.png\" width=\"15\" height=\"15\" /><a href=\"javascript:void(0);\">Remove from Bookmark</a></li></ul></td><td><ul><li class=\"strong\">Primary Contact</li><li>FirstName LastName</li><li>Phone: 1234567890</li></ul></td><td class=\"actionLinks\"><ul class=\"link\"><li><a href=\"#\">Change Asset Information</a></li><li><a href=\"#\">Decommission this Asset</a></li></ul></td></tr></table>",
+					"<a href=\"javascript:void(0);\">123456</a>",
+					"Lexmark 2312", "123ABC", "ASDXXX", "ASDXXX", "10.255.255.255",
+					"US.COL.COM" ],
+			[
+					"<img src=\"../../../../images/edit.gif\" alt=\"Change\" title=\"Change\" class=\"gridIcon\" />",
+					"<img src=\"../../../../images/delete.gif\" alt=\"Remove\" title=\"Remove\" class=\"gridIcon\" />",
+					"<table cellspacing=\"0\" cellpadding=\"0\" class=\"grid-inner-body\"><tr><td class=\"pModel\"><ul><li class=\"strong\">Lexmark 2312</li><li><img width=\"100\" height=\"100\" src=\"../../../../images/dummy_printer.jpg\" /></li></ul></td><td width=\"30%\"><ul><li class=\"strong\">Installed Address</li><li>Address Line1</li><li>Address Line2</li><li>Lexington, KY 40505</li><li>USA</li><li class=\"fav\"><img src=\"../../../../images/favorite.png\" width=\"15\" height=\"15\" /><a href=\"javascript:void(0);\">Remove from Bookmark</a></li></ul></td><td><ul><li class=\"strong\">Primary Contact</li><li>FirstName LastName</li><li>Phone: 1234567890</li></ul></td><td class=\"actionLinks\"><ul class=\"link\"><li><a href=\"#\">Change Asset Information</a></li><li><a href=\"#\">Decommission this Asset</a></li></ul></td></tr></table>",
+					"<a href=\"javascript:void(0);\">123456</a>",
+					"Lexmark 2312", "125ABC", "ASDXXX", "ASDXXX", "10.255.255.255",
+					"US.COL.COM" ],
+			[
+					"<img src=\"../../../../images/edit.gif\" alt=\"Change\" title=\"Change\" class=\"gridIcon\" />",
+					"<img src=\"../../../../images/delete.gif\" alt=\"Remove\" title=\"Remove\" class=\"gridIcon\" />",
+					"<table cellspacing=\"0\" cellpadding=\"0\" class=\"grid-inner-body\"><tr><td class=\"pModel\"><ul><li class=\"strong\">Lexmark 2312</li><li><img width=\"100\" height=\"100\" src=\"../../../../images/dummy_printer.jpg\" /></li></ul></td><td width=\"30%\"><ul><li class=\"strong\">Installed Address</li><li>Address Line1</li><li>Address Line2</li><li>Lexington, KY 40505</li><li>USA</li><li class=\"fav\"><img src=\"../../../../images/favorite.png\" width=\"15\" height=\"15\" /><a href=\"javascript:void(0);\">Remove from Bookmark</a></li></ul></td><td><ul><li class=\"strong\">Primary Contact</li><li>FirstName LastName</li><li>Phone: 1234567890</li></ul></td><td class=\"actionLinks\"><ul class=\"link\"><li><a href=\"#\">Change Asset Information</a></li><li><a href=\"#\">Decommission this Asset</a></li></ul></td></tr></table>",
+					"<a href=\"javascript:void(0);\">123456</a>",
+					"Lexmark 2312", "123ABC", "ASDXXX", "ASDXXX", "10.255.255.255",
+					"US.COL.COM" ],
+			[
+					"<img src=\"../../../../images/edit.gif\" alt=\"Change\" title=\"Change\" class=\"gridIcon\" />",
+					"<img src=\"../../../../images/delete.gif\" alt=\"Remove\" title=\"Remove\" class=\"gridIcon\" />",
+					"<table cellspacing=\"0\" cellpadding=\"0\" class=\"grid-inner-body\"><tr><td class=\"pModel\"><ul><li class=\"strong\">Lexmark 2312</li><li><img width=\"100\" height=\"100\" src=\"../../../../images/dummy_printer.jpg\" /></li></ul></td><td width=\"30%\"><ul><li class=\"strong\">Installed Address</li><li>Address Line1</li><li>Address Line2</li><li>Lexington, KY 40505</li><li>USA</li><li class=\"fav\"><img src=\"../../../../images/favorite.png\" width=\"15\" height=\"15\" /><a href=\"javascript:void(0);\">Remove from Bookmark</a></li></ul></td><td><ul><li class=\"strong\">Primary Contact</li><li>FirstName LastName</li><li>Phone: 1234567890</li></ul></td><td class=\"actionLinks\"><ul class=\"link\"><li><a href=\"#\">Change Asset Information</a></li><li><a href=\"#\">Decommission this Asset</a></li></ul></td></tr></table>",
+					"<a href=\"javascript:void(0);\">123456</a>",
+					"Lexmark 2312", "123ABC", "ASDXXX", "ASDXXX", "10.255.255.255",
+					"US.COL.COM" ] ];
+	mygrid = new dhtmlXGridObject('mygrid_container');
+	mygrid.setImagePath("../../../../images/gridImgs/");
+	mygrid.setHeader(headerString);
+	mygrid.attachHeader(",#cspan,#cspan,#text_filter,#text_filter,#select_filter,#text_filter,#text_filter,#text_filter,#text_filter");
+	mygrid.setInitWidths("30,30,30,120,120,140,140,140,120,120,*");
+	mygrid.setColumnMinWidth("30,30,30,120,120,140,140,140,120,120,1");
+	mygrid.enableResizing("false,false,false,true,true,true,true,true,true,true,true");
+	mygrid.setColAlign("left,left,left,left,left,left,left,left,left,left,left");
+	mygrid.setSkin("light");
+	mygrid.setColSorting("na,na,na,str,str,str,str,str,str,str,na");
+	mygrid.setColTypes("ro,ro,sub_row,ro,ro,ro,ro,ro,ro,ro,ro");
+	mygrid.enableAutoHeight(true);
+	mygrid.enableMultiline(true);
+	mygrid.enableColumnMove(true);
+	mygrid.enableAlterCss("even_row","odd_row");
+	mygrid.init();
+	mygrid.enablePaging(true, 6, 2, "pagingArea", true, "infoArea");
+	mygrid.setPagingSkin("bricks");
+	mygrid.parse(ar, "jsarray");
+	function minimizeAll() {
+		mygrid.forEachRow(function(id) {
+			var cell = mygrid.cellById(id, 1);
+			cell.close();
+			subRowOpenFlag = false;
+		});
+	};
+	function expandAll() {
+		mygrid.forEachRow(function(id) {
+			var cell = mygrid.cellById(id, 1);
+			cell.open();
+			subRowOpenFlag = true;
+		});
+	};
+	function doReset() {
+	};
+</script>
+</html>

@@ -1,0 +1,30 @@
+.columnsTwo { width:49.99% }
+.columnsThree { width:33.30% }
+.splitter { width:49.9%; }
+ul.processSteps { display:inline!important; }
+.banner { background-position:12px 9px; }
+ul.form li label { margin-left:-44%; }
+.assetDetail .infoDsiplay ul.form li label { }
+.check input { margin-top:0; }
+.check label { padding-top:3px }
+.button, .button_cancel {
+	overflow:visible;
+	padding: .3em 1em .2em;
+}
+.dhx_header_cmenu ul li input { margin-top:0 }
+.displayGrid tr td { padding:5px; }
+.dhx_sub_row .displayGrid tr td { padding:5px; }
+.inlineTitle { height:20px }
+div.left-nav-inner ul.radio li input { margin-top:0 }
+.left-nav .buttonContainerIn { padding:5px }
+.gridbox .button { padding: .2em .7em; }
+.ui-dialog-content { height:auto!important }
+
+/* Added by offshore */
+div.error {
+ 	padding-left: 0px;
+}
+
+.columnsOne ul.form li label {
+ 	width: 200px;
+}

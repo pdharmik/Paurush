@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerPaymentDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Partner Invoice - Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW Partner Invoice - Partner Portal</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+	     		<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>LXK Global DUNS Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>LXK Domestic DUNS Number</value>
+				</entry> 
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXK Legal Account Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXK MDM Account Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel</value></key>
+	         		<value>LXK Account Level</value>
+				</entry>	
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>dateCreated</value></key>
+	         		<value>Created</value>
+				</entry>
+				<entry>
+	         		<key><value>paymentNumber</value></key>
+	         		<value>Invoice Number</value>
+				</entry>
+				<entry>
+	         		<key><value>paymentStatus</value></key>
+	         		<value>Status</value>
+				</entry>
+				<entry>
+	         		<key><value>partnerAgreement</value></key>
+	         		<value>Agreement Name</value>
+				</entry>
+					<entry>
+	         		<key><value>checkNumber</value></key>
+	         		<value>LXK SD EBuyer Transaction Id</value>
+				</entry>
+				<entry>
+	         		<key><value>paymentTotal</value></key>
+	         		<value>Total Amount</value>
+				</entry>
+					<entry>
+	         		<key><value>payableToName</value></key>
+	         		<value>Payable To Account</value>
+				</entry>
+				<entry>
+	         		<key><value>partnerAccountId</value></key>
+	         		<value>LXK C Agreement Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>partnerAccountName</value></key>
+	         		<value>LXK  Agreement Account Name</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine2</value></key>
+	         		<value>Payable To Address2</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine3</value></key>
+	         		<value>Payable To Address3</value>
+				</entry>
+				<entry>
+	         		<key><value>city</value></key>
+	         		<value>Payable To City</value>
+				</entry>
+				<entry>
+	         		<key><value>province</value></key>
+	         		<value>Payable To Province</value>
+				</entry>
+					<entry>
+	         		<key><value>postalCode</value></key>
+	         		<value>Payable To Postal Code</value>
+				</entry>
+				<entry>
+	         		<key><value>country</value></key>
+	         		<value>Payable To Country</value>
+				</entry>
+				<entry>
+	         		<key><value>state</value></key>
+	         		<value>Payable To State</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>addressId</value></key>
+	         		<value>Payable To Address Id</value>
+				</entry>
+				<entry>
+	         		<key><value>addressName</value></key>
+	         		<value>Payable To Address Name</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine1</value></key>
+	         		<value>Payable To Address</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

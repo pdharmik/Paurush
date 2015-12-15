@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="LexmarkPartnerPortal" default="deploy" basedir=".">
+	<property file="build.${user.name}.properties" />
+	<property file="build.${env.COMPUTERNAME}.properties" />
+	<property file="build.properties" />
+	<property name="configurationFolder" location="../LexmarkPartnerBuild/environment" />
+	<property name="ant-contrib.jar" location="..\ExternalLib\ant\ant-contrib-1.0b3.jar"></property>
+	<import file="test-common.xml" />
+	<path id="build.classpath">
+		<fileset dir="${tomcat.home}/lib" includes="*.jar" />
+		<fileset dir="${tomcat.home}/lib/ext" includes="*.jar" />
+		<fileset dir="${lib.dir}" includes="*.jar" />
+		<fileset dir="${lexmark.common.project.home}/lib" includes="*.jar" />
+	</path>
+	<path id="runtime.classpath">
+		<fileset dir="${lib.dir}" includes="*.jar" />
+	</path>
+	<target name="init">
+	       <taskdef resource="net/sf/antcontrib/antcontrib.properties" classpath="${ant-contrib.jar}"/>
+		<mkdir dir="${classes.dir}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+
+	<target name="common-jar">
+		<ant antfile="build.xml" dir="${lexmark.common.project.home}" inheritall="false" inheritrefs="false" target="dist" />
+		<copy todir="${lib.dir}">
+			<fileset dir="${lexmark.common.project.home}/dist/lib" includes="*.jar" />
+		</copy>
+	</target>
+
+	<target name="webService-jar">
+		<ant antfile="build.xml" dir="${lexmark.webService.project.home}" inheritall="false" inheritrefs="false" target="dist" />
+		<copy todir="${lib.dir}">
+			<fileset dir="${lexmark.webService.project.home}/dist/lib" includes="*.jar" />
+		</copy>
+	</target>
+
+	<target name="compile" depends="init,common-jar,webService-jar">
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="build.classpath" debug="true" target="1.6" source="1.6"/>
+		<copy todir="${classes.dir}/com/lexmark/resources">
+			<fileset dir="${src.dir}/com/lexmark/resources">
+				<include name="*.properties" />
+				<include name="font/*.TTF" />
+			</fileset>
+		</copy>
+		<copy todir="${classes.dir}">
+			<fileset dir="${src.dir}">
+				<include name="*.xml" />
+				<include name="*.properties" />
+			</fileset>
+		</copy>
+		<copy todir="${classes.dir}/com/lexmark/util/massUploadTemplate">
+			<fileset dir="${src.dir}/com/lexmark/util/massUploadTemplate">
+				<include name="*.xml" />				
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="war" depends="compile">
+		<if>
+			<isset property="build.env"/>
+			<then>
+			  	 <echo> copy properties from ${configurationFolder}/${build.env} </echo>
+			  	<copy todir="${dist.dir}/${project}/WEB-INF/classes" file="${configurationFolder}/${build.env}/amindweb.properties" overwrite="true"/>
+			    <copy todir="${dist.dir}/${project}/WEB-INF/classes" file="${configurationFolder}/${build.env}/mail.properties" overwrite="true"/>
+				<copy todir="${dist.dir}/${project}/WEB-INF/classes" file="${configurationFolder}/${build.env}/SessionObject.xml" overwrite="true"/>
+			    <copy todir="${dist.dir}/${project}/WEB-INF/classes" file="${configurationFolder}/${build.env}/ApplicationObject.xml" overwrite="true"/>
+				<copy todir="${dist.dir}/${project}/WEB-INF/classes" file="${configurationFolder}/${build.env}/siebel.properties" overwrite="true"/>
+				<copy todir="${dist.dir}/${project}/WEB-INF/classes" file="${configurationFolder}/${build.env}/attachment.properties" overwrite="true"/>
+				<copy todir="${dist.dir}/${project}/WEB-INF/classes" file="${configurationFolder}/${build.env}/log4j2.xml" overwrite="true"/>
+			    <copy todir="${dist.dir}/${project}/WEB-INF/context" file="${configurationFolder}/${build.env}/webservice.properties" overwrite="true"/>				
+			</then>
+		</if>
+
+		<delete dir="${dist.dir}/${project}.war" />
+		<mkdir dir="${dist.dir}/${project}" />
+
+		<copy todir="${dist.dir}/${project}">
+			<fileset dir="${web.basedir}" />
+		</copy>
+		<copy todir="${dist.dir}/${project}/WEB-INF/lib">
+			<fileset dir="${lexmark.common.project.home}/lib" />
+		</copy>
+
+		<zip basedir="${dist.dir}/${project}" destfile="${dist.dir}/${project}.war" />
+
+	</target>
+
+	<target name="deploy" depends="war">
+		<move todir="${deploy.dir}">
+			<fileset dir="${dist.dir}">
+				<include name="*.war" />
+			</fileset>
+		</move>
+		<ant target="clean">
+		</ant>
+	</target>
+
+	<target name="clean">
+		<delete dir="${classes.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
+	
+	<!-- Deploy GDC test with real aMind implementation   -->		
+		
+	<target name="copyReal">
+		<delete file="${dist.dir}/${project}/WEB-INF/context/applicationContext.xml"/>
+	   	<move file="${dist.dir}/${project}/WEB-INF/context/applicationContext_gdc_real.xml" tofile="${dist.dir}/${project}/WEB-INF/context/applicationContext.xml" />
+	  	<delete file="${dist.dir}/${project}/WEB-INF/classes/hibernate.cfg.xml"/>
+	   	<move file="${dist.dir}/${project}/WEB-INF/classes/hibernate_gdc_real.cfg.xml" tofile="${dist.dir}/${project}/WEB-INF/classes/hibernate.cfg.xml" />
+		<delete file="${dist.dir}/${project}/WEB-INF/classes/amindweb.proprties"/>
+	    <move file="${dist.dir}/${project}/WEB-INF/classes/amindweb_gdc_real.properties" tofile="${dist.dir}/${project}/WEB-INF/classes/amindweb.properties" />
+	</target>
+	
+	<target name="warReal" depends="compile">
+		<delete dir="${dist.dir}/${project}.war" />
+		<mkdir dir="${dist.dir}/${project}" />
+			<copy todir="${dist.dir}/${project}">
+			<fileset dir="${web.basedir}" />
+		</copy>
+		<copy todir="${dist.dir}/${project}/WEB-INF/lib">
+		<fileset dir="${lexmark.common.project.home}/lib" />
+		</copy>
+		<antcall target="copyReal"/>
+		<zip basedir="${dist.dir}/${project}" destfile="${dist.dir}/${project}.war" />
+	</target>
+
+	<target name="deployReal" depends="warReal,deploy"/>
+
+</project>
+

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	 http://www.springframework.org/schema/util 
+	 http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<context:annotation-config/>
+   <!-- Controllers -->
+
+	<bean id="massUploadController" class="com.lexmark.portlet.MassUploadController" />
+	<bean id="gridSettingController" class="com.lexmark.portlet.GridSettingController" />
+	<bean id="attachmentController" class="com.lexmark.portlet.common.AttachmentController" />
+	<bean id="accountSelectionController" class="com.lexmark.portlet.common.AccountSelectionController" />
+	<bean id="hardwareDebriefController" class="com.lexmark.portlet.HardwareDebriefController" />
+	<bean id="lbsLocationService" class="com.lexmark.service.impl.real.AmindLBSLocationService"></bean>	
+	<bean id="orderRequestController" class="com.lexmark.portlet.source.OrderRequestController" />
+	 <bean id="propertyConfigurer"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+        	<list>
+               <value>classpath:attachment.properties</value>
+            </list>  
+        </property>
+    </bean>
+	
+	 <bean id="fileUploadFormValidator"
+		class="com.lexmark.form.validator.FileUploadFormValidator">
+		<property name="maxFileCount">
+			<value>${massUpload.attachment.maxcount}</value>
+		</property>
+		<property name="maxFileSize">
+			<value>${massUpload.attachment.maxsize}</value>
+		</property>
+		<property name="fileTypeList">
+			<value>${massUpload.attachmentFileType.list}</value>
+		</property>
+		
+	</bean>
+	
+	
+	<!-- Handler Mappings -->
+
+	<bean class="org.springframework.web.portlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="order" value="10"/>
+		<property name="interceptors">
+			<list>
+				<ref bean="userInfoInterceptor" />
+				<ref bean="accountAssociateInterceptor" />
+				<ref bean="performanceInterceptor" />
+			</list>
+      	</property> 	
+	</bean>
+	
+	<bean id="portletMultipartResolver"
+		class="org.springframework.web.portlet.multipart.CommonsPortletMultipartResolver">
+		<!-- <property name="maxUploadSize" value="1048576" /> -->
+	</bean>
+	<!-- below map is used for WEb service call for SErvice ORder-->
+	<util:map id ="webServiceCallValuesSO" key-type="java.lang.String" value-type="java.lang.String" >			
+		<entry key="area" value="Update Request" />
+		<entry key="subArea" value="Consumable Mass Order Upload" />		
+		<entry key="requesterType" value="Partner" />
+		<entry key="serviceRequestType" value="Fleet Management" />
+	</util:map>
+	<!-- below map is used for WEb service call for Hardware ORder-->
+	<util:map id ="webServiceCallValuesHW" key-type="java.lang.String" value-type="java.lang.String" >			
+		<entry key="area" value="Update Request" />
+		<entry key="subArea" value="Mass Update of HW Install" />		
+		<entry key="requesterType" value="Partner" />
+		<entry key="serviceRequestType" value="Fleet Management" />
+	</util:map>
+
+	
+	
+	<!-- Exceptions Handlers -->
+
+	<bean id="defaultExceptionHandler" parent="defaultExceptionHandlerTemplate"/>
+
+</beans>

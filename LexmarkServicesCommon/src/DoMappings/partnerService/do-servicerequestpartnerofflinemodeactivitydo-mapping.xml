@@ -1,0 +1,293 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="ServiceRequestPartnerOfflineModeActivityDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SD Service Request_Offline</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SD Service Request Portal Offline</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>LXK SW SP Global Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>LXK SW SP Domestic Ultimate DUNS</value>
+				</entry> 
+<!-- 				<entry> -->
+<!-- 	         		<key><value>mdmLevel3AccountId</value></key> -->
+<!-- 	         		<value>LXK SW SP Legal Entity Number</value> -->
+<!-- 				</entry> -->
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXK SW SP MDM Account Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>LXK R Service Provider Id</value>
+				</entry>
+				<entry>
+	         		<key><value>technicianContactId</value></key>
+	         		<value>LXK R Tech Id</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestType</value></key>
+	         		<value>LXK SW Service Request Type</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestId</value></key>
+	         		<value>Activity SR Id</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestNumber</value></key>
+	         		<value>SR Number</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceAddressLine1</value></key>
+	         		<value>Service Street Address</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceAddressLine2</value></key>
+	         		<value>Service Street Address Line 2</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceAddressLine3</value></key>
+	         		<value>Service Street Address Line 3</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceCity</value></key>
+	         		<value>Service City</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceState</value></key>
+	         		<value>Service State</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceProvince</value></key>
+	         		<value>Service Province</value>
+				</entry>
+				<entry>
+	         		<key><value>servicePostalCode</value></key>
+	         		<value>Service Postal Code</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceCountry</value></key>
+	         		<value>Service Country</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactFirstName</value></key>
+	         		<value>LXK SW SR Primary Contact First Name</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactLastName</value></key>
+	         		<value>LXK SW SR Primary Contact Last Name</value>
+				</entry>
+				<entry>
+	         		<key><value>assetSerialNumber</value></key>
+	         		<value>Serial Number</value>
+				</entry>	
+				<entry>
+	         		<key><value>assetSerialNumberOverride</value></key>
+	         		<value>LXK SD Serial Number</value>
+				</entry>																																			
+				<entry>
+	         		<key><value>assetProductLine</value></key>
+	         		<value>LXK R SR Product Line</value>
+				</entry>				
+				<entry>
+	         		<key><value>assetMachineTypeModel</value></key>
+	         		<value>LXK SD SR Product MTM Name</value>
+				</entry>																																				
+																																			
+<!-- 				<entry> -->
+<!-- 	         		<key><value>activityType</value></key> -->
+<!-- 	         		<value>Type</value> -->
+<!-- 				</entry>		 -->
+<!-- 				<entry> -->
+<!-- 	         		<key><value>activityStatus</value></key> -->
+<!-- 	         		<value>Status</value> -->
+<!-- 				</entry>																																				 -->
+				<entry>
+	         		<key><value>activitySubStatus</value></key>
+	         		<value>LXK R Substatus</value>
+				</entry>	
+<!-- 				<entry> -->
+<!-- 	         		<key><value>activityDateWithOutMarker</value></key> -->
+<!-- 	         		<value>LXK SW Activity Created</value> -->
+<!-- 				</entry>		 -->
+				<entry>
+	         		<key><value>serviceProviderReferenceNumber</value></key>
+	         		<value>LXK SD SP Reference</value>
+				</entry>																																				
+				<entry>
+	         		<key><value>partnerAccountName</value></key>
+	         		<value>LXK R Service Provider Name</value>
+				</entry>	
+	
+				<entry>
+	         		<key><value>customerAccountName</value></key>
+	         		<value>Account Name</value>
+				</entry>																																				
+				<entry>
+	         		<key><value>technicianContactFirstName</value></key>
+	         		<value>LXL SW Activity Technician First Name</value>
+				</entry>		
+				<entry>
+	         		<key><value>technicianContactLastName</value></key>
+	         		<value>LXK SW Activity Technician Last Name</value>
+				</entry>																																				
+				<entry>
+	         		<key><value>activityId</value></key>
+	         		<value>Id</value>
+				</entry>	
+				<entry>
+	         		<key><value>responseMatric</value></key>
+	         		<value>LXK SW Response Metric Calc</value>
+				</entry>			
+				<entry>
+	         		<key><value>customerRequestedResponseDateWithOutMarker</value></key>
+	         		<value>LXK C New Intervention Date</value>
+				</entry>	
+				<entry>
+	         		<key><value>accountId</value></key>
+	         		<value>Account Id</value>
+				</entry>	
+				
+				<entry>
+	         		<key><value>serviceAddressName</value></key>
+	         		<value>Service Address Name</value>
+				</entry>
+				<entry>
+	         		<key><value>assetProductTLI</value></key>
+	         		<value>LXK SD SR Product TLI</value>
+				</entry>		
+<!-- 				<entry> -->
+<!-- 	         		<key><value>mdmLevel</value></key> -->
+<!-- 	         		<value>LXK SW SP Account Level</value> -->
+<!-- 				</entry>	 -->
+				<entry>
+	         		<key><value>debriefStatus</value></key>
+	         		<value>LXK R Debrief Status</value>
+				</entry>
+				<entry>
+	         		<key><value>machineTypeModelOverride</value></key>
+	         		<value>LXK SW Customer MTM</value>
+				</entry>
+				<entry>
+	         		<key><value>overridecustomerAccountName</value></key>
+	         		<value>LXK SD New Customer Acct Name</value>
+				</entry>
+				<entry>
+	         		<key><value>partnerAccountTypes</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.ServiceRequestPartnerOfflineModeActivityAccountTypeDo</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>overrideOffering</value></key>
+	         		<value>LXK MPS Override Offering</value>
+				</entry>
+				
+				<entry>
+					<key><value>county</value></key>
+					<value>Service County</value>
+				</entry>
+				<entry>
+					<key><value>district</value></key>
+					<value>Service District</value>
+				</entry>
+				<entry>
+					<key><value>officeNumber</value></key>
+					<value>Service Office #</value>
+				</entry>
+				<entry>
+					<key><value>serviceRequestDate</value></key>
+					<value>LXK SW SR Created Date</value>
+				</entry>
+				<entry>
+					<key><value>serviceRequestStatus</value></key>
+					<value>SR Status</value>
+				</entry>
+				<entry>
+					<key><value>partsList</value></key>
+					<value>com.lexmark.service.impl.real.domain.ServiceRequestPartnerOfflineModeActivityListPartDo</value>
+				</entry>
+				<entry>
+					<key><value>assetActivityNumber</value></key>
+					<value>Activity UID</value>
+				</entry>
+                <entry>
+					<key><value>statusDetail</value></key>
+					<value>LXK MPS SR Sub Area</value>
+				</entry>
+				<entry>
+					<key><value>customerRequestedResponseDate</value></key>
+					<value>LXK MPS Customer Requested Date</value>
+				</entry>
+				<entry>
+					<key><value>assetInstallDate</value></key>
+					<value>LXK MPS Install Date PreDebriefRFV</value>
+				</entry>
+				<entry>
+					<key><value>projectName</value></key>
+					<value>LXK MPS Project</value>
+				</entry>
+				<entry>
+					<key><value>projectStartDate</value></key>
+					<value>LXK R Project Item Actual Start</value>
+				</entry>
+				<entry>
+					<key><value>storeFrontName</value></key>
+					<value>LXK MPS Store Front Name</value>
+				</entry>
+				<entry>
+					<key><value>claimStatusDate</value></key>
+					<value>LXK R Sub Status Update</value>
+				</entry>
+				<entry>
+					<key><value>customerReportingName</value></key>
+					<value>LXK Customer Reporting Name</value>
+				</entry>
+				<entry>
+					<key><value>offlineModeAttachments</value></key>
+					<value>com.lexmark.service.impl.real.domain.ServiceRequestOfflineModeRequestAttachmentDO</value>
+				</entry>
+				<entry>
+					<key><value>productModelNumber</value></key>
+					<value>LXK HW Install Model</value>
+				</entry>
+				<entry>
+					<key><value>madcProductTLI</value></key>
+					<value>LXK HW Install Product Name</value>
+				</entry>
+				<entry>
+					<key><value>madcProductLine</value></key>
+					<value>LXK HW Install Product Line</value>
+				</entry>
+				<entry>
+					<key><value>serviceRequestWebStatus</value></key>
+					<value>LXK SW Web SR Status</value>
+				</entry>
+				<entry>
+					<key><value>rfvErrors</value></key>
+					<value>LXK C Debrief RFV Errors</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

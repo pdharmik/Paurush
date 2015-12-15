@@ -1,0 +1,62 @@
+div.gridLoading{
+	width:100%;
+	padding: 25px 0;
+	margin-bottom:10px;
+	background-color:silver;
+	opacity:0.3;
+	-moz-opacity:0.3;
+	filter:alpha(opacity=30);
+	font-size:20pt;
+	text-align:center;	
+}
+.doLine{
+	border-top:1px dashed #cccccc;
+	margin:2px 0px 2px 0px;
+	height: 1px;
+	overflow:hidden
+}
+div.radioCss{
+	padding-left:10px;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+div.colmuns_sixty{
+    width:60%;
+}
+.serviceSuccess {
+	color: green;
+	list-style: none !important;
+}
+.serviceError {
+	color: red;
+	list-style: none !important;
+}
+
+
+#overlay {
+	background: #FFF;
+	opacity: 0.5;
+	z-index: 1000;
+	filter: alpha(opacity = 50);
+	position: absolute;
+	cursor:wait
+}
+#processingHint {
+	position: absolute;
+	width: 300px;
+	height: 50px;
+	overflow:visible;
+	outline-width: 0px;
+	outline-style: initial;
+	outline-color: initial;
+	top: 150px;
+	background:#ffffff;
+	font-size: 23px;
+	font-weight:bold;
+	display: block;
+	z-index: 1001;
+	margin-left:5px;
+	margin-top:5px;
+	border: double 1px;
+	display: none;
+}

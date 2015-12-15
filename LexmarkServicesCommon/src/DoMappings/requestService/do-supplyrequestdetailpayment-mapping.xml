@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="SupplyRequestDetailPaymentDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS HW Service Request Detail - Service Web</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS SR Payments</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<!-- <entry>
+	         		<key><value>tax</value></key>
+	         		<value>LXK MPS Tax Amount</value>
+				</entry>
+                <entry>
+                    <key><value>total</value></key>
+                    <value>LXK MPS Total Amount</value>
+                </entry>	 -->
+                <entry>
+                	<key><value>creditCardToken</value></key>
+                	<value>Verification Number</value> 
+                </entry>
+                <entry>
+                	<key><value>creditCardType</value></key>
+                	<value>Payment Type</value> 
+                </entry>
+	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

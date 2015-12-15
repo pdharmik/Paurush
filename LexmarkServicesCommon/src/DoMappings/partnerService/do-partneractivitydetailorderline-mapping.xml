@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerActivityDetailOrderLineDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Request Detail Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW Order Line - Partner Portal</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>  
+				<entry>
+	         		<key><value>partOrderedDate</value></key>
+	         		<value>Created</value>
+				</entry> 	
+				<entry>
+	         		<key><value>quantity</value></key>
+	         		<value>Quantity Requested</value>
+				</entry> 	
+				<entry>
+	         		<key><value>partNumber</value></key>
+	         		<value>Product</value>
+				</entry> 
+				<entry>
+	         		<key><value>partName</value></key>
+	         		<value>Part Number</value>
+				</entry> 
+				<entry>
+	         		<key><value>lineStatus</value></key>
+	         		<value>Status</value>
+				</entry> 							
+				<entry>
+	         		<key><value>serialNumber</value></key>
+	         		<value>Serial Number</value>
+				</entry> 
+				<entry>
+	         		<key><value>shipDate</value></key>
+	         		<value>LXK R Shipped Date</value>
+				</entry> 	
+				<entry>
+	         		<key><value>carrier</value></key>
+	         		<value>Carrier Code</value>
+				</entry> 
+				<entry>
+	         		<key><value>trackingNumber</value></key>
+	         		<value>LXK R Tracking Number</value>
+				</entry> 	
+				<entry>
+	         		<key><value>shipToAddressId</value></key>
+	         		<value>LXK SD SP Primary Ship To Address Id</value>
+				</entry> 	
+				<entry>
+	         		<key><value>shipToAddressLine1</value></key>
+	         		<value>LXK SW SP ShipTo Addr</value>
+				</entry> 	
+				<entry>
+	         		<key><value>shipToAddressLine2</value></key>
+	         		<value>LXK SW SP ShipTo Addr2</value>
+				</entry> 													
+				<entry>
+	         		<key><value>shipToAddressLine3</value></key>
+	         		<value>LXK SW SP ShipTo Addr3</value>
+				</entry> 	
+				<entry>
+	         		<key><value>shipToCity</value></key>
+	         		<value>LXK SW SP ShipTo City</value>
+				</entry> 
+				<entry>
+	         		<key><value>shipToProvince</value></key>
+	         		<value>LXK SW SP ShipTo Province</value>
+				</entry> 	
+				<entry>
+	         		<key><value>shipToPostalCode</value></key>
+	         		<value>LXK SW SP ShipTo Postal Code</value>
+				</entry> 
+				<entry>
+	         		<key><value>shipToCountry</value></key>
+	         		<value>LXK SW SP ShipTo Country</value>
+				</entry> 	
+				<entry>
+	         		<key><value>shipToState</value></key>
+	         		<value>LXK SW SP ShipTo State</value>
+				</entry> 
+				
+				<entry>
+	         		<key><value>customerAddressId</value></key>
+	         		<value>LXK SW Customer Ship to Address Id</value>
+				</entry> 	
+				<entry>
+	         		<key><value>customerAddressLine1</value></key>
+	         		<value>LXK SW Customer ShipTo Addr</value>
+				</entry> 	
+				<entry>
+	         		<key><value>customerAddressLine2</value></key>
+	         		<value>LXK SW Customer ShipTo Addr2</value>
+				</entry> 													
+				<entry>
+	         		<key><value>customerAddressLine3</value></key>
+	         		<value>LXK SW Customer ShipTo Addr3</value>
+				</entry> 	
+				<entry>
+	         		<key><value>customerAddressCity</value></key>
+	         		<value>LXK SW Customer ShipTo City</value>
+				</entry> 
+				<entry>
+	         		<key><value>customerAddressProvince</value></key>
+	         		<value>LXK SW Customer ShipTo Province</value>
+				</entry> 	
+				<entry>
+	         		<key><value>customerAddressPostalCode</value></key>
+	         		<value>LXK SW Customer ShipTo Postal Code</value>
+				</entry> 
+				<entry>
+	         		<key><value>customerAddressCountry</value></key>
+	         		<value>LXK SW Customer ShipTo Country</value>
+				</entry> 	
+				<entry>
+	         		<key><value>customerAddressState</value></key>
+	         		<value>LXK SW Customer ShipTo State</value>
+				</entry> 
+									
+				<entry>
+	         		<key><value>returnAddressId</value></key>
+	         		<value>LXK SW Destination Inventory Loc Ship Addr Id</value>
+				</entry> 
+				<entry>
+	         		<key><value>returnAddressName</value></key>
+	         		<value>LXK SW Return ShipTo Addr Name</value>
+				</entry> 
+				<entry>
+	         		<key><value>returnAddressLine1</value></key>
+	         		<value>LXK SW Return ShipTo Addr</value>
+				</entry> 	
+				<entry>
+	         		<key><value>returnAddressLine2</value></key>
+	         		<value>LXK SW Return ShipTo Addr2</value>
+				</entry> 													
+				<entry>
+	         		<key><value>returnAddressLine3</value></key>
+	         		<value>LXK SW Return ShipTo Addr3</value>
+				</entry> 	
+				<entry>
+	         		<key><value>returnAddressCity</value></key>
+	         		<value>LXK SW Return ShipTo City</value>
+				</entry> 
+				<entry>
+	         		<key><value>returnAddressProvince</value></key>
+	         		<value>LXK SW Return ShipTo Province</value>
+				</entry> 	
+				<entry>
+	         		<key><value>returnAddressPostalCode</value></key>
+	         		<value>LXK SW Return ShipTo PostalCode</value>
+				</entry> 
+				<entry>
+	         		<key><value>returnAddressCountry</value></key>
+	         		<value>LXK SW Return ShipTo Country</value>
+				</entry> 	
+				<entry>
+	         		<key><value>returnAddressState</value></key>
+	         		<value>LXK SW Return ShipTo State</value>
+				</entry> 	
+				<entry>
+	         		<key><value>lineType</value></key>
+	         		<value>LXK R Line Type</value>
+				</entry> 	
+				<entry>
+	         		<key><value>partReceivedDate</value></key>
+	         		<value>LXK R Received Date</value>
+				</entry> 	
+				<entry>
+	         		<key><value>modelNumber</value></key>
+	         		<value>LXK SD New Asset MTM Name</value>
+				</entry> 	
+				<entry>
+	         		<key><value>shippingMethod</value></key>
+	         		<value>LXK Expediate Shipping Flg</value>
+				</entry>	
+				<entry>
+					<key><value>shipToCounty</value></key>
+					<value>LXK SW Customer ShipTo County</value>
+				</entry>
+				<entry>
+					<key><value>shipToDistrict</value></key>
+					<value>LXK SW Customer ShipTo District</value>
+				</entry>
+				<entry>
+					<key><value>shipToOfficeNumber</value></key>
+					<value>LXK SW SP ShipTo House #</value>
+				</entry>		
+				<entry>
+					<key><value>customerAddressCounty</value></key>
+					<value>LXK SW Customer ShipTo County</value>
+				</entry>
+				<entry>
+					<key><value>customerAddressDistrict</value></key>
+					<value>LXK SW Customer ShipTo District</value>
+				</entry>
+				<entry>
+					<key><value>customerAddressOfficeNumber</value></key>
+					<value>LXK SW Customer ShipTo House #</value>
+				</entry>		
+					
+				<entry>
+	         		<key><value>shipData</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerActivityShipmentDataDo</value>
+				</entry>	
+				<entry>
+	         		<key><value>returnCarrierCode</value></key>
+	         		<value>LXK Parts Return Carrier Code</value>
+				</entry>		
+				<entry>
+	         		<key><value>returnTrackingNumber</value></key>
+	         		<value>LXK Parts Return AirBill</value>
+				</entry>		
+				<entry>
+	         		<key><value>partStatus</value></key>
+	         		<value>LXK R Part Disposition</value>
+				</entry>		
+	     	</map>
+		</property>
+    </bean>  
+</beans>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PickSapCatalogDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS Hardware Catalog</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Hardware Catalog</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	  
+	     		<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry> 
+				<entry>
+	         		<key><value>agreementId</value></key>
+	         		<value>LXK MPS Agreement Id</value>
+				</entry>     
+				<entry>
+	         		<key><value>billingModel</value></key>
+	         		<value>LXK MPS Billing Model</value>
+				</entry>
+				<entry>
+	         		<key><value>sapContract</value></key>
+	         		<value>LXK MPS SAP Contract #</value>
+				</entry>
+				<entry>
+	         		<key><value>sapLine</value></key>
+	         		<value>LXK MPS SAP Line #</value>
+				</entry>		
+				<entry>
+	         		<key><value>sapSalesOrg</value></key>
+	         		<value>LXK MPS SAP Sales Org</value>
+				</entry>
+				<entry>
+	         		<key><value>sapSoldTo</value></key>
+	         		<value>LXK MPS SAP Sold To #</value>
+				</entry>
+
+				<entry>
+	         		<key><value>partDescription</value></key>
+	         		<value>LXK MPS Part Description</value>
+				</entry>
+
+				<entry>
+	         		<key><value>partNumber</value></key>
+	         		<value>LXK MPS Supply Part #</value>
+				</entry>	
+				<entry>
+	         		<key><value>implicitFlag</value></key>
+	         		<value>LXK MPS Implicit Flag</value>
+				</entry>	
+				<entry>
+	         		<key><value>portalFlag</value></key>
+	         		<value>LXK MPS Portal Flag</value>
+				</entry>	
+				<entry>
+	         		<key><value>bundleProductId</value></key>
+	         		<value>LXK MPS Component Part #</value>
+				</entry>	
+				<entry>
+	         		<key><value>pickSapCatalogPaymentType</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PickSapCatalogPaymentTypeDo</value>
+				</entry>		
+		     </map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

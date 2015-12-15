@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerPaymentRequestDO" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Partner Payment Details - Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW Partner Payment Details - Partner Portal</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	   
+				<entry>
+	         		<key><value>activityId</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>eligibleToPay</value></key>
+	         		<value>LXK R Payable</value>
+				</entry>
+				<entry>
+	         		<key><value>payEligiblityOverride</value></key>
+	         		<value>LXK SD Pay Eligibility Override</value>
+				</entry>
+					<entry>
+	         		<key><value>partnerAgreementName</value></key>
+	         		<value>Agreement Name</value>
+				</entry>
+				<entry>
+	         		<key><value>activityDate</value></key>
+	         		<value>Creation Date</value>
+				</entry>
+					<entry>
+	         		<key><value>paymentServiceType</value></key>
+	         		<value>Type</value>
+				</entry>
+				<entry>
+	         		<key><value>laborPayment</value></key>
+	         		<value>LXK SD Labor Total</value>
+				</entry>
+					<entry>
+	         		<key><value>partsPayment</value></key>
+	         		<value>LXK SD Extended Line Total</value>
+				</entry>
+				<entry>
+	         		<key><value>partnerFee</value></key>
+	         		<value>LXK SD Partner Fee</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceProviderReferenceNumber</value></key>
+	         		<value>LXK R SP Reference #</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestId</value></key>
+	         		<value>Activity SR Id</value>
+				</entry>
+					<entry>
+	         		<key><value>serviceRequestNumber</value></key>
+	         		<value>SR Number</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestStatus</value></key>
+	         		<value>SR Status</value>
+				</entry>
+					<entry>
+	         		<key><value>assetId</value></key>
+	         		<value>LXK SD SR Asset Id</value>
+				</entry>
+				<entry>
+	         		<key><value>serialNumber</value></key>
+	         		<value>LXK R Serial Number</value>
+				</entry>
+				<entry>
+	         		<key><value>productTLI</value></key>
+	         		<value>LXK R SR Product Name</value>
+				</entry>
+				<entry>
+	         		<key><value>modelNumber</value></key>
+	         		<value>LXK R SR Model</value>
+				</entry>
+				<entry>
+	         		<key><value>productLine</value></key>
+	         		<value>LXK R SR Product Line</value>
+				</entry>
+					<entry>
+	         		<key><value>partnerAccountId</value></key>
+	         		<value>Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>partnerAccountName</value></key>
+	         		<value>Account Name</value>
+				</entry>
+					<entry>
+	         		<key><value>customerAccountId</value></key>
+	         		<value>Customer Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>customerAccountName</value></key>
+	         		<value>Customer Account Name</value>
+				</entry>
+				<entry>
+	         		<key><value>paymentStatus</value></key>
+	         		<value>LXK R Payment Status</value>
+				</entry>
+				<entry>
+	         		<key><value>paymentId</value></key>
+	         		<value>LXK SD Invoice Id</value>
+				</entry>
+				<entry>
+	         		<key><value>paymentNumber</value></key>
+	         		<value>LXK SD Invoice Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>LXK Global DUNS Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>LXK Domestic DUNS Number</value>
+				</entry> 
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXK MDM Legal Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXK MDM Account Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel</value></key>
+	         		<value>LXK Account Level</value>
+				</entry>  
+				<entry>
+	         		<key><value>lineItems</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerPaymentRequestExpenseDO</value>
+				</entry>
+				<entry>
+	         		<key><value>supplyAgreementFee</value></key>
+	         		<value>LXK MPS Fulfillment Fee</value>
+				</entry>
+				 
+	     	</map>
+		</property>
+    </bean>  
+</beans>

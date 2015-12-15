@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerActivityHistoryParts" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Service History Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW FS Activity Recommended Parts - Partner Portal</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+	     		<entry>
+	         		<key><value>serviceRequestId</value></key>
+	         		<value>Activity SR Id</value>
+				</entry>
+	     		<entry>
+	         		<key><value>quantity</value></key>
+	         		<value>Recommended Quantity</value>
+				</entry>
+	     		<entry>
+	         		<key><value>partNumber</value></key>
+	         		<value>Product Name</value>
+				</entry>
+				<entry>
+	         		<key><value>partName</value></key>
+	         		<value>Part #</value>
+				</entry>	
+				<entry>
+	         		<key><value>errorCode1</value></key>
+	         		<value>LXK R Service Error Code</value>
+				</entry>
+				<entry>
+	         		<key><value>errorCode2</value></key>
+	         		<value>LXK R Service Error Code 2</value>
+				</entry>
+				<entry>
+	         		<key><value>partDisposition</value></key>
+	         		<value>LXK R Part Disposition</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

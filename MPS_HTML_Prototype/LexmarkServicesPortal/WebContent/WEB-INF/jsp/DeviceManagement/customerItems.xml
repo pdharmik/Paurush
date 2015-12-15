@@ -1,0 +1,151 @@
+<?xml version="1.0" ?>	
+<tree id="0">
+ <item id="p2" text="Customer Hierarchy">
+	  <item id="H1" text="Lexmark (Schweiz) AG">
+		 <item id="H1-1" text="H1G7008 - EMEA Sales">
+			<item id="H1-1-1" text="Lausanne">
+				<item id="H1-1-1-1" text="LAW"/>
+			 </item>
+			 <item id="H1-1-2" text="Thalwil">
+				<item id="H1-1-2-1" text="LAW"/>
+			 </item>
+		 </item>
+	  </item>
+	  <item id="H2" text="Lexmark Bilgi Islem Urunleri Ltd. Sti.">
+		 <item id="H2-1" text="H1G7008 - EMEA Sales">
+			<item id="H2-1-1" text="Ankara">
+				<item id="H2-1-1-1" text="LAW"/>
+			</item>
+			<item id="H2-1-2" text="Istanbul">
+				<item id="H2-1-2-1" text="LAW"/>
+			</item>
+			<item id="H2-1-3" text="Izmir">
+				<item id="H2-1-3-1" text="LAW"/>
+			</item>
+		 </item>
+	  </item>
+	  
+	<item id="H3" text="Lexmark Canada Inc.">
+		 <item id="H3-1" text="USS1000 - NA Sales">			
+			<item id="H3-1-2" text="Burnaby">
+				<item id="H3-1-2-1" text="LAW" />
+				<item id="H3-1-2-1" text="Solution Center" />
+			</item>
+			<item id="H3-1-3" text="Calgary">
+				<item id="H3-1-3-1" text="LAW" />
+				<item id="H3-1-3-1" text="Solution Center" />
+			</item>
+			<item id="H3-1-4" text="Edmonton">
+				<item id="H3-1-4-1" text="LAW" />
+				<item id="H3-1-4-1" text="Solution Center" />
+			</item>
+			<item id="H3-1-5" text="Montreal">
+				<item id="H3-1-5-1" text="LAW" />
+				<item id="H3-1-5-1" text="Solution Center" />
+			</item>
+			<item id="H3-1-6" text="Ottawa">
+				<item id="H3-1-6-1" text="LAW" />
+				<item id="H3-1-6-1" text="Solution Center" />
+			</item>
+			<item id="H3-1-7" text="Toronto">
+				<item id="H3-1-7-1" text="LAW" />
+				<item id="H3-1-7-1" text="Solution Center" />
+			</item>
+			<item id="H3-1-8" text="Winnipeg">
+				<item id="H3-1-8-1" text="LAW" />
+				<item id="H3-1-8-1" text="Solution Center" />
+			</item>
+		 </item>
+	  </item> 
+	  <item id="H4" text="Lexmark Danmark, filial af Lexmark Nordic L.L.C. USA">
+		 <item id="H4-1" text="H1G7008 - EMEA Sales">
+			<item id="H4-1-1" text="Birkerod">
+				<item id="H4-1-1-1" text="LAW"/>
+			</item>			
+		 </item>
+	  </item>
+	  <item id="H5" text="'Lexmark Deutschland GmbH">
+		 <item id="H5-1" text="H1G7008 - EMEA Sales">
+			<item id="H5-1-1" text="Berlin">
+				<item id="H5-1-1-1" text="LAW"/>
+			</item>
+			<item id="H5-1-1" text="Dietzenbach">
+				<item id="H5-1-1-1" text="LAW"/>
+			</item>	
+			<item id="H5-1-1" text="Humburg">
+				<item id="H5-1-1-1" text="LAW"/>
+			</item>	
+			<item id="H5-1-1" text="Stuttgart">
+				<item id="H5-1-1-1" text="LAW"/>
+			</item>
+		 </item>
+	  </item>
+	  <item id="H6" text="Lexmark Finland">
+		 <item id="H6-1" text="H1G7008 - EMEA Sales">
+			<item id="H6-1-1" text="Espoo">
+				<item id="H6-1-1-1" text="LAW"/>
+			</item>			
+		 </item>
+	  </item>
+	  <item id="H7" text="Lexmark Handelsges.m.b.H.">
+		 <item id="H7-1" text="H1G7008 - EMEA Sales">
+			<item id="H7-1-1" text="Wien">
+				<item id="H7-1-1-1" text="LAW"/>
+			</item>			
+		 </item>
+	  </item>
+	  <item id="H8" text="Lexmark Internacional, Inc. ECUADOR">
+		 <item id="H8-1" text="H3S1111 - LA Ops">
+			<item id="H8-1-1" text="Quito">
+				<item id="H8-1-1-1" text="LAW"/>
+			</item>			
+		 </item>
+	  </item>
+	  <item id="H9" text="Lexmark Internacional, Inc. PERU">
+		 <item id="H9-1" text="H3S1111 - LA Ops">
+			<item id="H9-1-1" text="Lima">
+				<item id="H9-1-1-1" text="LAW"/>
+			</item>			
+		 </item>
+	  </item>
+	  <item id="H10" text="Lexmark International (Australia) Pty Limited">
+		 <item id="H10-1" text="H3S1111 - LA Operations">
+			<item id="H10-1-1" text="Belrose">
+				<item id="H10-1-1-1" text="LAW"/>
+			</item>	
+			<item id="H10-1-2" text="Brisbane">
+				<item id="H10-1-2-1" text="LAW"/>
+			</item>	
+			<item id="H10-1-3" text="North Ryde">
+				<item id="H10-1-3-1" text="LAW"/>
+			</item>	
+			<item id="H10-1-4" text="Sydney">
+				<item id="H10-1-4-1" text="LAW"/>
+			</item>	
+		 </item>
+		 <item id="H10-2" text="Z-Reserved">
+			<item id="H10-2-1" text="AP Operations">
+				<item id="H10-2-1-1" text="H7S1111"/>
+			</item>	
+			<item id="H10-2-2" text="AP Operations-">
+				<item id="H10-2-2-1" text="H7S1111"/>
+				<item id="H10-2-2-2" text="H7S1111-"/>
+				<item id="H10-2-2-3" text="LAW"/>				
+			</item>	
+			<item id="H10-2-3" text="H7S1111"/>
+			<item id="H10-2-4" text="H7S1111-"/>
+			<item id="H10-2-5" text="LAW"/>
+			<item id="H10-2-6" text="Level 2">
+				<item id="H10-2-6-1" text="AP Operations">
+					<item id="H10-2-6-1-1" text="H7S1111"/>
+				</item>
+			</item>	
+			<item id="H10-2-7" text="Lower Ground">
+				<item id="H10-2-7-1" text="AP Operations">
+					<item id="H10-2-7-1-1" text="H7S1111"/>
+				</item>
+			</item>	
+		 </item>
+	  </item>
+</item> 
+</tree>

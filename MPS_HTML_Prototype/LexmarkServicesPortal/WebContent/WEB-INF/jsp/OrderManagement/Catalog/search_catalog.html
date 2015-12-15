@@ -1,0 +1,373 @@
+<!DOCTYPE HTML>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Search Catalog</title>
+<link href="../../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../../../js/util.js"></script>
+<script src="../../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/tree/dhtmlxtree.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../../../js/mps.js"></script>
+<script>
+	function abc(){
+		document.getElementById('buttonU').innerHTML="Update Cart";
+		}
+			
+</script>
+<style type="text/css">
+#banner .logo {
+	background: url("../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/images/custom/logoLex.png") no-repeat scroll left top transparent;
+	display: block;
+	margin: 0;
+	padding: 0 !important;
+	width: 168px;
+	height: 56px;
+	position: absolute;
+	top: 13px;
+	left: 20px;
+	text-indent: -9999em;
+}
+</style>
+</head>
+<body onLoad="hide1();">
+<div id="wrapper">
+   <div id="banner">
+    <h1 class="logo"><a href="https://tportal.lexmark.com/web/guest" title="Lexmark Global Services">tportal.lexmark.com</a></h1>
+    <div id="top-header">
+      <div id="top-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><b><span>Welcome Jason Filarky!</span></b></li>
+          <li><a href="../Home/preferences.html">Preferences</a></li>
+          <li><a href="#">User Administration</a></li>
+          <li><a href="#">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="bottom-header">
+      <div id="bottom-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><a href="http://www.lexmark.com">Lexmark.com</a></li>
+          <li><a href="../Home/FAQ.html">FAQ</a></li>
+          <li><a href="../Home/getHelp.html">Get Help</a></li>
+          <li><a href="../Home/contact_Lexmark.html">Contact Lexmark</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sort-pages modify-pages" id="topnavigation">	
+  <ul>	
+	  <li>	<a href="../Home/home.html"><span>Home</span></a>	</li>
+	  <li class="">	<a href="../DeviceManagement/all_devices.html"><span>Device Finder</span></a>	</li>
+	  <li class="">	<a href="../pageCounts/defaltPageCount.html"><span>Page Counts</span></a>	</li>
+	  <li class="selected"> <a href="../HistoryAndDetails/history_allRequest.html"><span>Requests</span></a>	</li>
+	  <li class="">	<a target="_blank" href="https://services.lexmark.com/portal/site"><span>Order Supplies</span></a>	</li>
+	  <li class="">	<a href="../Reports/defaltReportView.html"><span>Reports</span></a>	</li>
+	  <li class="">	<a href="../DocumentLibrary/docLibrary_landingPage.html"><span>Document Library</span></a>	</li>
+  </ul>
+  </div>
+  <div id="subnavigation">
+    <ul>
+      <li><a href="javascript:void(0);"><span>Request History</span></a></li>
+      <li class="selected"><a href="create_new_request.html" class="lightbox" title="Create New Request"><span>Create New Request</span></a></li>
+    </ul>
+  </div>
+  <div id="content-wrapper">
+    <div class="journal-content-article">
+    <!-- CART BEGIN -->
+      <div class="cart">
+      <a class="rounded" href="javascript:void();">Order:<span>0</span>Items</a>
+      </div>
+        <!-- CART END -->
+      <h2>Supplies Request</h2>
+      <span class="step">Order Supplies</span>
+      </div>
+    <div class="main-wrap">
+      <div class="content"> 
+        <!-- PROCESS STEPS START -->
+        <div class="portletBlock center">
+          <ul class="processSteps shadow">
+            <li class="selected"><a href="#" title="Step 1: Select Items"><span>1</span>Select Items</a></li>
+            <li><a href="#" title="Step 2: Order Details"><span>2</span>Order Details</a></li>
+            <li><a href="#" title="Step 3: Review"><span>3</span>Review</a></li>
+            <li class="last"><a href="#" title="Step 4: Confirmation"><span>4</span>Confirmation</a></li>
+          </ul>
+        </div>
+        <!-- PROCESS STEPS END -->
+        <h3 class="pageTitle">Catalog for AEGON UK<a href="javascript:void();" class="edit">Change Account</a></h3>
+        <div class="portletBlock infoBox rounded shadow split">
+          <div class="columnsTwo">
+            <div class="columnInner">
+              <h4>Search</h4>
+              <ul class="form">
+                <li>
+                  <label for="prodType">Product Type: </label>
+                  <span>
+                  <select id="prodType" onchange="selectTypes();">
+                    <option>-Select-</option>
+                    <option>Laser</option>
+                  </select>
+                  </span></li>
+                <li>
+                  <label for="prodModel">Product Model: </label>
+                  <span>
+                  <select id="prodModel">
+                  <option>-Select-</option>
+                  </select>
+                  </span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="columnsTwo">
+            <div class="columnInner">
+              <h4>&nbsp;</h4>
+              <ul class="form">
+                <li>
+                  <label for="partType">Part Type: </label>
+                  <span>
+                  <select id="partType">
+                    <option >-Select-</option>
+                  </select>
+                  </span></li>
+                <li>
+                  <label for="partNo">Part Number: </label>
+                  <span>
+                  <input type="text" id="partNo" class="w200" />
+                  <img src="../../../../images/help.png" class="helpIcon" title="Part Number help" width="18" height="18"/></span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="buttonContainer inPortlet">
+            <button class="button" onClick="show1();">Search</button>
+          </div>
+        </div>
+        <!-- SEARCH RESULT BEGIN -->
+        <div id="show">
+        <!-- Catalog Table BEGIN -->
+        <p class="info inlineTitle"> Results found for Laser</p>
+        <div class="columnInner">
+          <div id="mygrid_container"></div> 
+  		      <div class="pagination"> <span id="pagingArea"></span><span id="infoArea"></span> </div>
+        </div>
+        <div class="pagination"> <span id="pagingArea"></span><span id="infoArea"></span> </div>
+        <!-- Catalog Table End -->
+        <div class="buttonContainer">
+          <button class="button_cancel" onClick="window.location.href='#'">Cancel</button>
+          <button class="button" onClick="window.location.href='order_details.html'">Continue</button>
+        </div>
+        </div>
+        <!-- SEARCH RESULT END -->
+      </div>
+    </div>
+  </div>
+     <div id="footer" class="round_top">
+<div id="footer-nav-container">
+<ul id="footer-nav-ul">
+  <li><a href="http://www1.lexmark.com/en_US/about-us/index.shtml">About 
+  Lexmark </a></li><li><a href="http://www1.lexmark.com/en_US/terms/privacy-security.shtml">Privacy 
+  Policy</a> </li><li><a href="http://www1.lexmark.com/en_US/terms/terms-and-conditions.shtml">Terms 
+  &amp; Conditions </a></li><li><a href="http://www1.lexmark.com/en_US/nav/sitemap.shtml">Sitemap 
+  </a></li><li><a href="http://www1.lexmark.com/en_US/about-us/company/contact-us.shtml">Contact 
+  Lexmark </a></li></ul><br>
+<p align="left">&copy; Copyright 2012 
+Lexmark<!--extra added align center>--></p></div>
+
+</div>
+</body>
+<script>
+
+var mygrid;
+var headerString = ",,,";
+var ar = [[ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>X792X1MG</span></li><li><label for=\"refId\">Description:</label><span>X792 Magenta XHY LRP AM Print Cartridge</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Magenta Cartridge</span></li><li><label for=\"refId\">Yield:</label><span>Extra High</span></li><li><label for=\"refId\">Model:</label><span>X792dte</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"], 
+          [ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>C925H2CG</span></li><li><label for=\"refId\">Description:</label><span>C925 Cyan High Yield Toner Cartridge</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Cyan Cartridge</span></li><li><label for=\"refId\">Yield:</label><span>High</span></li><li><label for=\"refId\">Model:</label><span>C925de</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"],
+          [ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>C925X72G</span></li><li><label for=\"refId\">Description:</label><span>C925/X925 Black Imaging Unit</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Imaging Unit Black</span></li><li><label for=\"refId\">Yield:</label><span>Standard</span></li><li><label for=\"refId\">Model:</label><span>C925de</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"],
+          [ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>40X7101</span></li><li><label for=\"refId\">Description:</label><span>220V</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Maintenance Kit,Fuse</span></li><li><label for=\"refId\">Yield:</label><span>XXXXXXXXXX</span></li><li><label for=\"refId\">Model:</label><span>X792de</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"],
+          [ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>C792X77G</span></li><li><label for=\"refId\">Description:</label><span>C79X / X79X Waste Toner Container</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Waste Bottle</span></li><li><label for=\"refId\">Yield:</label><span>Standard</span></li><li><label for=\"refId\">Model:</label><span>X792de</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"],
+          [ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>C925H2YG</span></li><li><label for=\"refId\">Description:</label><span>C925 Yellow High Yield Toner Cartridge</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Yellow Cartridge</span></li><li><label for=\"refId\">Yield:</label><span>High</span></li><li><label for=\"refId\">Model:</label><span>C925dte</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"],
+          [ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>C925X76G</span></li><li><label for=\"refId\">Description:</label><span>C925/X925 Waste Toner Bottle</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Waste Bottle</span></li><li><label for=\"refId\">Yield:</label><span>Standard</span></li><li><label for=\"refId\">Model:</label><span>C925de</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"],
+          [ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>C540H1YG</span></li><li><label for=\"refId\">Description:</label><span>C54X HY Return Tnr Ctg</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Yellow Cartridge</span></li><li><label for=\"refId\">Yield:</label><span>High</span></li><li><label for=\"refId\">Model:</label><span>C543dn</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"],
+          [ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>C540X34G</span></li><li><label for=\"refId\">Description:</label><span>C54X Yellow Developer</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Developer Yellow</span></li><li><label for=\"refId\">Yield:</label><span>Standard</span></li><li><label for=\"refId\">Model:</label><span>X544dn</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"]];
+mygrid = new dhtmlXGridObject('mygrid_container');
+mygrid.setImagePath("../../../../images/gridImgs/");
+mygrid.setHeader(headerString);
+
+mygrid.setInitWidths("175,320,*,295");
+mygrid.setColumnMinWidth("110,110,110,110");
+mygrid.enableResizing("true,true,true,true");
+mygrid.setColAlign("left,left,left,left");
+mygrid.setSkin("light");
+mygrid.setNoHeader("true");
+mygrid.setColTypes("ro,ro,ro,ro");
+mygrid.enableAutoHeight(true);
+mygrid.enableMultiline(true);
+mygrid.enableColumnMove(true);
+mygrid.init();
+mygrid.enablePaging(true, 3, 3, "pagingArea", true, "infoArea");
+mygrid.setPagingSkin("bricks"); 	 
+mygrid.parse(ar,"jsarray");
+
+	function show() {
+		//alert(document.getElementById('prodType').value);
+		if(document.getElementById('prodType').value !== "select") { 
+			document.getElementById('showBundle').style.display = "block";
+			document.getElementById('showOther').style.display = "none";
+		}
+		else {
+			document.getElementById('showOther').style.display = "block";
+			document.getElementById('showBundle').style.display = "none";
+		}
+	}
+var mygrid1;	
+var headerString1 = ",,,";
+var ar1 = [[ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>C540H1YG</span></li><li><label for=\"refId\">Description:</label><span>C54X HY Return Tnr Ctg</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Yellow Cartridge</span></li><li><label for=\"refId\">Yield:</label><span>High</span></li><li><label for=\"refId\">Model:</label><span>C543dn</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"], 
+          [ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>C540H1CG</span></li><li><label for=\"refId\">Description:</label><span>C54X Cyan HY Return Tnr Ctg</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Cyan Cartridge</span></li><li><label for=\"refId\">Yield:</label><span>High</span></li><li><label for=\"refId\">Model:</label><span>C543dn</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"],
+          [ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>C540X31G</span></li><li><label for=\"refId\">Description:</label><span>C54X Black Developer</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Developer Black</span></li><li><label for=\"refId\">Yield:</label><span>Standard</span></li><li><label for=\"refId\">Model:</label><span>C543dn</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"],
+          ];
+mygrid1 = new dhtmlXGridObject('mygrid_container2');
+mygrid1.setImagePath("../../../../images/gridImgs/");
+mygrid1.setHeader(headerString1);
+
+mygrid1.setInitWidths("175,320,*,295");
+mygrid1.setColumnMinWidth("110,110,110,110");
+mygrid1.enableResizing("true,true,true,true");
+mygrid1.setColAlign("left,left,left,left");
+mygrid1.setSkin("light");
+mygrid1.setNoHeader("true");
+mygrid1.setColTypes("ro,ro,ro,ro");
+mygrid.enableAutoHeight(true);
+mygrid1.enableMultiline(true);
+mygrid1.enableColumnMove(true);
+mygrid1.init();
+mygrid1.setPagingSkin("bricks"); 	 
+mygrid1.parse(ar1,"jsarray");
+
+var mygrid2;	
+var headerString2 = ",,,";
+var ar2 = [[ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>C780H1CG</span></li><li><label for=\"refId\">Description:</label><span>C78X MY LRP AM PC C</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Cyan Cartridge</span></li><li><label for=\"refId\">Yield:</label><span>High</span></li><li><label for=\"refId\">Model:</label><span>C782dn</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"], 
+          [ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>C780H2CG</span></li><li><label for=\"refId\">Description:</label><span>C78X MY REG AM PC C</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Cyan Cartridge</span></li><li><label for=\"refId\">Yield:</label><span>High</span></li><li><label for=\"refId\">Model:</label><span>C782dn</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"],
+          [ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>10B3100</span></li><li><label for=\"refId\">Description:</label><span>C750 WASTE TONER</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Waste Bottle</span></li><li><label for=\"refId\">Yield:</label><span>Standard</span></li><li><label for=\"refId\">Model:</label><span>C782dn</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"],
+          ];
+mygrid1 = new dhtmlXGridObject('mygrid_container3');
+mygrid1.setImagePath("../../../../images/gridImgs/");
+mygrid1.setHeader(headerString2);
+
+mygrid1.setInitWidths("175,320,*,295");
+mygrid1.setColumnMinWidth("110,110,110,110");
+mygrid1.enableResizing("true,true,true,true");
+mygrid1.setColAlign("left,left,left,left");
+mygrid1.setSkin("light");
+mygrid1.setNoHeader("true");
+mygrid1.setColTypes("ro,ro,ro,ro");
+mygrid.enableAutoHeight(true);
+mygrid1.enableMultiline(true);
+mygrid1.enableColumnMove(true);
+mygrid1.init();
+mygrid1.setPagingSkin("bricks"); 	 
+mygrid1.parse(ar2,"jsarray");
+
+var mygrid3;	
+var headerString3 = ",,,";
+var ar2 = [[ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>10B3100</span></li><li><label for=\"refId\">Description:</label><span>C750 WASTE TONER</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Waste Bottle</span></li><li><label for=\"refId\">Yield:</label><span>Standard</span></li><li><label for=\"refId\">Model:</label><span>C782dtn</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"], 
+          [ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>40X0343</span></li><li><label for=\"refId\">Description:</label><span>ITU Maintenance Kit for C78x</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Maintenance Kit, </span></li><li><label for=\"refId\">Yield:</label><span>High</span></li><li><label for=\"refId\">Model:</label><span>C782dtn</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"],
+          [ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>40X1832</span></li><li><label for=\"refId\">Description:</label><span>220 VOLT</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Maintenance Kit, </span></li><li><label for=\"refId\">Yield:</label><span>Standard</span></li><li><label for=\"refId\">Model:</label><span>C782dtn</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"],
+          ];
+mygrid1 = new dhtmlXGridObject('mygrid_container4');
+mygrid1.setImagePath("../../../../images/gridImgs/");
+mygrid1.setHeader(headerString3);
+
+mygrid1.setInitWidths("175,320,*,295");
+mygrid1.setColumnMinWidth("110,110,110,110");
+mygrid1.enableResizing("true,true,true,true");
+mygrid1.setColAlign("left,left,left,left");
+mygrid1.setSkin("light");
+mygrid1.setNoHeader("true");
+mygrid1.setColTypes("ro,ro,ro,ro");
+mygrid.enableAutoHeight(true);
+mygrid1.enableMultiline(true);
+mygrid1.enableColumnMove(true);
+mygrid1.init();
+mygrid1.setPagingSkin("bricks"); 	 
+mygrid1.parse(ar3,"jsarray");
+
+var mygrid4;	
+var headerString4= ",,,";
+var ar2 = [[ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>C782X2CG</span></li><li><label for=\"refId\">Description:</label><span>C78X HY REG AM PC C</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Cyan Cartridge</span></li><li><label for=\"refId\">Yield:</label><span>Extra High</span></li><li><label for=\"refId\">Model:</label><span>C782n</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"], 
+          [ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>C782X2KG</span></li><li><label for=\"refId\">Description:</label><span>C78X HY REG AM PC K8x</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Black Cartridge </span></li><li><label for=\"refId\">Yield:</label><span>Extra High</span></li><li><label for=\"refId\">Model:</label><span>C782n</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"],
+          [ "<img src=\"../../../../images/dummy_printer.jpg\" alt=\"Change\">", "<ul class=\"form\"><li><label for=\"refId\">Part No.:</label><span>C782X2MG</span></li><li><label for=\"refId\">Description:</label><span>C78X HY REG AM PC M</span></li></ul>", "<ul class=\"form\"><li><label for=\"refId\">Part Type:</label><span>Magenta Cartridge</span></li><li><label for=\"refId\">Yield:</label><span>Extra High</span></li><li><label for=\"refId\">Model:</label><span>C782n</span></li></ul>", "<div class=\"lineClear\"><input class=\"w50\" type=\"text\" name=\"quantity1\"><span class=\"spaceClear\"/><button class=\"button w120 \" id=\"buttonU \" onClick=\"abc()\">Add to Order</button></div>"],
+          ];
+mygrid1 = new dhtmlXGridObject('mygrid_container');
+mygrid1.setImagePath("../../../../images/gridImgs/");
+mygrid1.setHeader(headerString4);
+
+mygrid1.setInitWidths("175,320,*,295");
+mygrid1.setColumnMinWidth("110,110,110,110");
+mygrid1.enableResizing("true,true,true,true");
+mygrid1.setColAlign("left,left,left,left");
+mygrid1.setSkin("light");
+mygrid1.setNoHeader("true");
+mygrid1.setColTypes("ro,ro,ro,ro");
+mygrid.enableAutoHeight(true);
+mygrid1.enableMultiline(true);
+mygrid1.enableColumnMove(true);
+mygrid1.init();
+mygrid1.setPagingSkin("bricks"); 	 
+mygrid1.parse(ar4,"jsarray");
+
+
+</script>
+<script>
+
+var options = ["C543dn", "C782db", "C782dtn", "C782n"]; 
+
+
+function appendOption(selectObj){
+		
+	for(var i = 0; i < options.length; i++) {
+		var opt = options[i];
+		var el = document.createElement("option");
+		el.textContent = opt;
+		el.value = opt;
+		selectObj.appendChild(el);
+	}
+}
+function selectTypes(){
+	var select = document.getElementById("prodModel"); 
+	var val = document.getElementById("prodType").value;
+	jQuery('#prodModel').empty();
+	jQuery('#prodModel').append('<option>-Select-</option>');
+	if(val != "-Select-")
+		appendOption(select);
+		//if()	
+}
+</script>
+
+</html>

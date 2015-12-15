@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+
+<project name="FooterVelocityVariableHook" basedir="." default="deploy">
+	<property name="plugin.version" value="1"/>
+	<import file="../build-common-hook.xml" />
+</project>

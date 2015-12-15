@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- BC: FS Asset Measurement Characteristics, TABLE: S_ASSET_MEAS -->
+	<bean id="AssetMeasurementCharacteristicsBCDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>Siebel BO</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>Asset Management</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>FS Asset Measurement Characteristics</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+	     		<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>name</value></key>
+	         		<value>Name</value>
+				</entry>
+				<entry>
+	         		<key><value>assetId</value></key>
+	         		<value>Asset Id</value>
+				</entry>
+				<entry>
+	         		<key><value>latestReading</value></key>
+	         		<value>LXK SD Asset Reading Latest</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>assetReading</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.AssetReadingLatestBcDo</value>
+				</entry>
+	     	</map>
+		</property>
+		<property name="doJoinDefsMap">
+			<map> 
+				<entry>
+					<key><value>assetReading</value></key>
+					<map>
+						<entry>
+							<key><value>assetMeasurementId</value></key>  <!-- Parent ID field -->
+							<value>id</value> <!-- Child ID field-->
+						</entry>    
+					</map>
+				</entry>
+			</map>
+		</property> 
+    </bean>  
+</beans>

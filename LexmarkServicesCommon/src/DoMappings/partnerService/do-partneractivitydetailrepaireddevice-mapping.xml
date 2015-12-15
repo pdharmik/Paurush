@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerActivityDetailRepairedDeviceDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Request Detail Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW Request Detail - Partner Portal_DeInstalled Asset Reading</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	   
+	     		<entry>
+	         		<key><value>pageCount</value></key>
+	         		<value>LXK SW DeInstalled Page Count</value>
+				</entry>  
+				<entry>
+	         		<key><value>primaryFlag</value></key>
+	         		<value>IsPrimaryMVG</value>
+				</entry>  
+				 <entry>
+	         		<key><value>pageCountDate</value></key>
+	         		<value>LXK MPS DeInstalled Page Count Created</value>
+				</entry>  
+				<entry>
+	         		<key><value>pageCountType</value></key>
+	         		<value>LXK MPS DeInstalled Page Count Type</value>
+				</entry>  
+	     	</map>
+		</property>
+    </bean>  
+</beans>

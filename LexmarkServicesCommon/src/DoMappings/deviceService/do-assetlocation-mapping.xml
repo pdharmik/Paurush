@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- AmindDeviceService::retrieveAssetLocations-->
+	<!-- SAMPLE QUERY: SELECT X_ADDR_STATUS FROM SIEBEL.S_ADDR_PER WHERE X_ADDR_STATUS <> 'Marked For Deletion' OR X_ADDR_STATUS IS NULL -->
+	<bean id="AssetLocation" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>Siebel BO</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Service Address - Service Web</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW Asset Service Address - Service Web</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>LXK SW Asset Account Global DUNS Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>LXK SW Asset Account Domestic DUNS Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXK SW Asset Account MDM Legal Entity ID #</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXK SW Asset Account MDM Account #</value>
+				</entry>
+<!--				<entry>-->
+<!--	         		<key><value>mdmLevel5AccountId</value></key>-->
+<!--	         		<value></value>-->
+<!--				</entry>-->
+				<entry>
+	         		<key><value>accountTransFlag</value></key>
+	         		<value>LXK SW Asset L5 Account Transactable Flag</value>
+				</entry>
+				<entry>
+	         		<key><value>chlNodeId</value></key>
+	         		<value>LXK SW Asset CHL Parent Chain</value>
+				</entry>		
+				<entry>
+	         		<key><value>addressName</value></key>
+	         		<value>Address Name</value>
+				</entry>	
+				<entry>
+	         		<key><value>city</value></key>
+	         		<value>City</value>
+				</entry>	
+				<entry>
+	         		<key><value>postalCode</value></key>
+	         		<value>Postal Code</value>
+				</entry>
+				<entry>
+	         		<key><value>province</value></key>
+	         		<value>Province</value>
+				</entry>
+				<entry>
+	         		<key><value>state</value></key>
+	         		<value>State</value>
+				</entry>		
+				<entry>
+	         		<key><value>streetAddress</value></key>
+	         		<value>Street Address</value>
+				</entry>	
+				<entry>
+	         		<key><value>streetAddress2</value></key>
+	         		<value>Street Address 2</value>
+				</entry>	
+				<entry>
+	         		<key><value>country</value></key>
+	         		<value>Country</value>
+				</entry>								
+												
+	     	</map>
+		</property>
+    </bean>  
+</beans>

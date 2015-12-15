@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="RequestLocationDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS Service Address - Service Web</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Service Address - Service Web</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping  --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>
+	     		<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+                     <value>LXK MPS Service Account Global DUNS Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+                     <value>LXK MPS Service Account Domestic DUNS Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+                     <value>LXK MPS Service Account Legal Entity Id</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+                     <value>LXK MPS Service Account MDM #</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+                     <value>LXK MPS Service Account Id</value>
+				</entry>
+				
+				 <entry>
+                    <key><value>vendorMdmLevel1AccountId</value></key>
+                     <value>LXK MPS Vendor Account Domestic DUNS Number</value>
+                </entry>
+				 <entry>
+                    <key><value>vendorMdmLevel2AccountId</value></key>
+                     <value>LXK MPS Vendor Account Global DUNS Number</value>
+                </entry>
+				 <entry>
+                    <key><value>vendorMdmLevel3AccountId</value></key>
+                     <value>LXK MPS Vendor Account Legal Entity Id</value>
+                </entry>
+				 <entry>
+                    <key><value>vendorMdmLevel4AccountId</value></key>
+                     <value>LXK MPS Vendor Account MDM #</value>
+                </entry>
+				 <entry>
+                    <key><value>vendorMdmLevel5AccountId</value></key>
+                     <value>LXK MPS Vendor Account Id</value>
+                </entry>
+				 <entry>
+                    <key><value>vendorMdmLevel</value></key>
+                     <value>LXK MPS Vendor Account Level</value>
+                </entry>
+				
+				<entry>
+	         		<key><value>chlNodeId</value></key>
+	         		<value>LXK MPS CHL Id</value>
+				</entry>	     	
+				<entry>
+	         		<key><value>chlNodeName</value></key>
+	         		<value>LXK MPS CHL Name</value>
+				</entry>
+				
+				<!-- result data -->
+				<entry>
+	         		<key><value>addressName</value></key>
+	         		<value>Address Name</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine1</value></key>
+	         		<value>Street Address</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine2</value></key>
+	         		<value>Street Address 2</value>
+				</entry>		
+				<entry>
+	         		<key><value>addressLine3</value></key>
+	         		<value></value>
+				</entry>		
+				<entry>
+	         		<key><value>city</value></key>
+	         		<value>City</value>
+				</entry>		
+				<entry>
+	         		<key><value>state</value></key>
+	         		<value>State</value>
+				</entry>		
+				<entry>
+	         		<key><value>province</value></key>
+	         		<value>Province</value>
+				</entry>		
+				<entry>
+	         		<key><value>postalCode</value></key>
+	         		<value>Postal Code</value>
+				</entry>		
+				<entry>
+	         		<key><value>country</value></key>
+	         		<value>Country</value>
+				</entry>	
+				<entry>
+	         		<key><value>agreementMdmLevel1AccountId</value></key>
+	         		<value>LXK MPS SVC Agree Account Global DUNS#</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementMdmLevel2AccountId</value></key>
+	         		<value>LXK MPS SVC Agree Account Domestic DUNS#</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementMdmLevel3AccountId</value></key>
+	         		<value>LXK MPS SVC Account Legal Entity#</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementMdmLevel4AccountId</value></key>
+	         		<value>LXK MPS SVC Agree Account MDM#</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementMdmLevel5AccountId</value></key>
+	         		<value>LXK MPS SVC Agreement Account Id</value>
+				</entry>  
+				
+				<entry>
+					<key><value>county</value></key>
+					<value>LXK County</value>
+				</entry>
+				<entry>
+					<key><value>district</value></key>
+					<value>LXK District</value>
+				</entry>
+				<entry>
+					<key><value>officeNumber</value></key>
+					<value>LXK MPS House #</value>
+				</entry>   	
+	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

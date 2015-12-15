@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+
+
+<hibernate-mapping package="com.lexmark.domain">
+
+<class name="ObieeReportParameter" table="OBIEE_REPORT_PARAMETER" >
+   <composite-id>
+        <key-property name="reportParameterId"
+				column="REPORT_PARAMETER_ID"
+				type="integer" />
+        <key-property name="contactId"
+				column="CONTACT_ID"
+				type="string" />
+   </composite-id>
+	<property name="parameterValue" column="PARAM_VALUE" type="string" length="400" not-null="false"/>	
+	<property name="parameterValue2" column="PARAM_VALUE2" type="string" length="400" not-null="false"/>	
+</class>
+</hibernate-mapping>

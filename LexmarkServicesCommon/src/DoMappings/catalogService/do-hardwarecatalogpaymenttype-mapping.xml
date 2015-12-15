@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="HardwareCatalogPaymentTypeDo" class="com.amind.data.service.DomainObjMapping">
+  
+		<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS Hardware Catalog Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Hardware Catalog Portal_LXK MPS Child Catalog</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>quantity</value></key>
+	         		<value>LXK MPS Quantity MVF</value>
+				</entry>
+				<entry>
+	         		<key><value>componentPart</value></key>
+	         		<value>LXK MPS Component Part #</value>
+				</entry>	
+				
+				<entry>
+	         		<key><value>partDescription</value></key>
+	         		<value>LXK MPS Part Description MVF</value>
+				</entry>
+				<entry>
+	         		<key><value>productType</value></key>
+	         		<value>LXK MPS Product Type MVF</value>
+				</entry>	
+													
+				<entry>
+	         		<key><value>productModel</value></key>
+	         		<value>LXK MPS Product Model MVF</value>
+				</entry>	
+				<entry>
+	         		<key><value>partType</value></key>
+	         		<value>LXK MPS Part Type MVF</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>billingModel</value></key>
+	         		<value>LXK MPS Billing Model MVF</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>partNumber</value></key>
+	         		<value>LXK MPS Supply Part# MVF</value>
+				</entry>
+ 
+				<entry>
+	         		<key><value>colorMono</value></key>
+	         		<value>LXK MPS Model Color MVF</value>
+				</entry>	
+				
+				<entry>
+	         		<key><value>catalogId</value></key>
+	         		<value>LXK MPS Id MVF</value>
+				</entry>	
+				
+				<entry>
+	         		<key><value>materialId</value></key>
+	         		<value>LXK MPS Supply Id</value>
+				</entry>		
+				<entry>
+	         		<key><value>parentLineItemNumber</value></key>
+	         		<value>LXK MPS SAP Line MVF</value>
+				</entry>
+				<entry>
+					<key>
+						<value>PartTypeMVFB2b</value>
+					</key>
+					<value>LXK MPS B2B Part Type MVF</value>
+				</entry>
+		     </map>
+		</property>
+
+	   	     	  
+    </bean>  
+</beans>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerActivityNoteInstructionDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Request Detail Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>FS Instruction</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>
+	     		<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>      
+				<entry>
+	         		<key><value>created</value></key>
+	         		<value>Created</value>
+				</entry> 
+				<entry>
+	         		<key><value>instruction</value></key>
+	         		<value>Instruction</value>
+				</entry> 
+				<entry>
+	         		<key><value>instructionType</value></key>
+	         		<value>Instruction Type</value>
+				</entry>  
+				<entry>
+	         		<key><value>authorId</value></key>
+	         		<value>LXK Notes Author Id</value>
+				</entry>  
+				<entry>
+	         		<key><value>authorFirstName</value></key>
+	         		<value>LXK Notes Author First Name</value>
+				</entry> 
+				<entry>
+	         		<key><value>authorLastName</value></key>
+	         		<value>LXK Notes Author Last Name</value>
+				</entry>  
+	     	</map>
+		</property>
+    </bean>  
+</beans>

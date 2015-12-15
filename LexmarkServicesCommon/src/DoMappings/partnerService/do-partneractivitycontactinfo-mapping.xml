@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerActivityContactInfoDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Request Detail Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>Contact</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>
+	     		<entry>
+	         		<key><value>firstName</value></key>
+	         		<value>First Name</value>
+				</entry>      
+				<entry>
+	         		<key><value>lastName</value></key>
+	         		<value>Last Name</value>
+				</entry> 
+				<entry>
+	         		<key><value>emailAddress</value></key>
+	         		<value>Email Address</value>
+				</entry> 
+				<entry>
+	         		<key><value>primaryPersonalAddress</value></key>
+	         		<value>LXK Primary Personal Address</value>
+				</entry>  
+				<entry>
+	         		<key><value>primaryPersonalAddress2</value></key>
+	         		<value>LXK Primary Personal Address 2</value>
+				</entry>  
+				<entry>
+	         		<key><value>primaryPersonalCity</value></key>
+	         		<value>LXK Primary Personal City</value>
+				</entry> 
+				<entry>
+	         		<key><value>primaryPersonalCountry</value></key>
+	         		<value>LXK Primary Personal Country</value>
+				</entry> 
+				<entry>
+	         		<key><value>primaryPersonalCounty</value></key>
+	         		<value>LXK Primary Personal County</value>
+				</entry> 
+				<entry>
+	         		<key><value>primaryPersonalPostalCode</value></key>
+	         		<value>LXK Primary Personal Postal Code</value>
+				</entry> 
+				<entry>
+	         		<key><value>primaryPersonalProvince</value></key>
+	         		<value>LXK Primary Personal Province</value>
+				</entry> 
+				<entry>
+	         		<key><value>primaryPersonalState</value></key>
+	         		<value>LXK Primary Personal State</value>
+				</entry> 
+				<entry>
+	         		<key><value>workPhone</value></key>
+	         		<value>LXK SD Work Phone #</value>
+				</entry>  
+				<entry>
+	         		<key><value>addressId</value></key>
+	         		<value>Primary Personal Address Id</value>
+				</entry>  
+				<entry>
+	         		<key><value>jobRole</value></key>
+	         		<value>LXK MPS Job Role</value>
+				</entry>  
+				<entry>
+	         		<key><value>physicalLocation1</value></key>
+	         		<value>LXK UP Physical Location 1</value>
+				</entry>  
+				<entry>
+	         		<key><value>physicalLocation2</value></key>
+	         		<value>LXK UP Physical Location 2</value>
+				</entry>  
+				
+				<entry>
+	         		<key><value>physicalLocation3</value></key>
+	         		<value>LXK UP Physical Location 3</value>
+				</entry>  
+	     	</map>
+		</property>
+    </bean>  
+</beans>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+		<bean id="dataSource" class="com.amind.data.source.SiebelDataSource"/>
+	
+		
+	<bean id="boDataService" class="com.amind.data.service.SiebelBODataService">
+		<property name="dataSource"><ref bean="dataSource"/></property>
+		<property name="domainObjectBrokerDao"><ref bean="doBrokerDao"/></property>
+	</bean>
+	<bean id="eaiDataService" class="com.amind.data.service.SiebelEAIDataService">
+		<property name="dataSource"><ref bean="dataSource"/></property>
+		<property name="domainObjectBrokerDao"><ref bean="doBrokerDao"/></property>
+	</bean>
+		
+	<bean id="dataManager" class="com.amind.data.service.DataManager">
+		<property name="domainObjectBrokerDao"><ref bean="doBrokerDao"/></property>
+	</bean>
+	
+	<bean id="doBrokerDao" class="com.amind.data.service.DomainObjBrokerDao">
+		<property name="dataServiceMap">
+			<map>
+				<entry key="Siebel BO">
+					<ref local="boDataService"/>
+				</entry>	             
+				<entry key="EAI Siebel Adapter">
+					<ref local="eaiDataService"/>
+				</entry>
+			</map>
+		</property>	
+			
+		<property name="fieldValueConverters">
+			<map>
+				<entry key="Default Field Value Converter">
+					<ref local="fieldValueConverter"/>
+				</entry>	             
+			</map>
+		</property>			
+	</bean>
+			
+	<bean id="fieldValueConverter" class="com.amind.data.service.FieldValueConverter"/>    
+	
+	<bean id="siebelBusServiceProxy" class="com.amind.common.service.SiebelBusinessServiceProxy">
+		<property name="dataSource"><ref bean="dataSource"/></property>
+		<property name="dataManager"><ref bean="dataManager"/></property>		
+	</bean>
+	
+	<bean id="attachmentManager" class="com.amind.data.service.AttachmentService">
+            <property name="dataSource"><ref bean="dataSource"/></property>
+            <property name="busObjectName"><value>Employee</value></property>
+            <property name="busCompName"><value>Contact Attachment</value></property>
+            <property name="dataManager"><ref bean="dataManager"/></property>
+            <property name="bcFileNameFieldName"><value>ContactFileName</value></property>
+			<property name="bcFileNameExtensionFieldName"><value>ContactFileExt</value></property>	
+			<property name="bcParentIdFieldName"><value>Contact Id</value></property>
+			<property name="bcPrefix"><value>Contact Attachment</value></property>
+			<property name="fileDestination"><value>/siebelftp_svcsweb/SWPORTAL/MRIMPORT/</value></property>
+			<property name="siebelFileDestination"><value>\\PASHVGMPFS001\siebelftpPRD\SWPORTAL\MRIMPORT\</value></property>
+			<property name="doClassName"><value>com.lexmark.service.impl.real.domain.MeterReadStatus</value></property>
+	 </bean>
+	
+</beans>

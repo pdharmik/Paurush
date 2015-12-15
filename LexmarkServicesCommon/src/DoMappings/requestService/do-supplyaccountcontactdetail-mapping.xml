@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="SupplyAccountContactDetailDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS HW Service Request Detail - Service Web_New</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Contact</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				
+                <entry>
+                    <key><value>serialNumber</value></key>
+                    <value>LXK MPS Serial Number</value>
+                </entry>				
+                
+                <entry>
+                    <key><value>lastName</value></key>
+                    <value>Last Name</value>
+                </entry>				
+                
+                <entry>
+                    <key><value>emailAddress</value></key>
+                    <value>Email Address</value>
+                </entry>
+                
+                <entry>
+                    <key><value>homePhone</value></key>
+                    <value>Home Phone #</value>
+                </entry>
+                
+                <entry>
+                    <key><value>workPhone</value></key>
+                    <value>Work Phone #</value>
+                </entry>
+   	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

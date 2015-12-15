@@ -1,0 +1,13 @@
+/**
+ * ServiceRequestWS_PortType.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
+ */
+
+package com.lexmark.srHistory;
+
+public interface ServiceRequestWS_PortType extends java.rmi.Remote {
+    public com.lexmark.srHistory.AssetServiceRequestHistory[] getServiceRequestHistory(java.lang.String debug, com.lexmark.srHistory.ServiceRequestHistoryWSInput serviceRequestHistoryWSInput) throws java.rmi.RemoteException;
+    public com.lexmark.srHistory.ServiceRequestHistory getServiceRequestDetails(java.lang.String debug, com.lexmark.srHistory.ServiceRequestDetailsWSInput serviceRequestDetailsWSInput) throws java.rmi.RemoteException;
+}

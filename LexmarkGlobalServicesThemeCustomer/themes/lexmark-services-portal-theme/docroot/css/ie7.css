@@ -1,0 +1,205 @@
+
+/* IE7 Specific Stylesheet                   */
+/*                                           */
+/* Buttons and input fields receive CSS3 PIE */
+/* styling to achieve rounded corners        */
+
+.button, .all_button, .star_button, .button_cancel, #loginCancelBtn, input[type="text"], input[type="password"], input[type="button"], input[type="submit"] {
+	position: relative;
+	behavior: url(/lexmark-services-portal-theme/css/PIE.htc);
+}
+
+.button, .button_cancel {
+	padding: 2px 0px;
+	width:auto;
+}
+
+#loginCancelBtn{
+	padding: 2px 2px;
+	width:auto;
+}
+
+.star_button{
+	padding: 2px 4px 2px 21px !important;
+}
+
+.loginWrapper, .inputRegWrapper{
+	background:url(/lexmark-services-portal-theme/images/custom/inputBg_reg.png) left top no-repeat;
+	padding:5px 7px;
+    width:142px;
+    height:17px;
+}
+
+.loginWrapper .loginName, .loginWrapper .loginPass, .inputRegWrapper .inputReg{
+	border:none;
+	border-radius: 0;
+	-moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    position:static;
+    behavior:url(/lexmark-services-portal-theme/css/blank.htc);
+    width:142px;
+    height:17px;
+    padding:0;
+}
+
+.inputLgWrapper{
+	background:url(/lexmark-services-portal-theme/images/custom/inputBg_lg.png) left top no-repeat;
+	padding:5px 7px;
+    width:279px;
+    height:17px;
+    margin:2px 0;
+}
+
+.inputLgWrapper input.inputLg{
+	border:none;
+	border-radius: 0;
+	-moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    position:static;
+    behavior:url(/lexmark-services-portal-theme/css/blank.htc);
+    width:279px;
+    height:17px;
+    padding:0;
+    margin:0 !important;
+}
+
+.inputMedWrapper{
+	background:url(/lexmark-services-portal-theme/images/custom/inputBg_med.png) left top no-repeat;
+	padding:5px 7px;
+    width:126px;
+    height:17px;
+    margin:2px 0;
+}
+
+.inputMedWrapper input.inputMed{
+	border:none;
+	border-radius: 0;
+	-moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    position:static;
+    behavior:url(/lexmark-services-portal-theme/css/blank.htc);
+    width:126px;
+    height:17px;
+    padding:0;
+    margin:0 !important;
+}
+
+input.inputSm{
+	border:none;
+	border-radius: 0;
+	-moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    position:static;
+    behavior:url(/lexmark-services-portal-theme/css/blank.htc);
+    background:url(/lexmark-services-portal-theme/images/custom/inputBg_sm.png) left top no-repeat;
+    padding:5px 5px;
+    width:64px;
+    height:17px;
+}
+
+.inputXLgWrapper{
+	background:url(/lexmark-services-portal-theme/images/custom/inputBg_xlg.png) left top no-repeat;
+	padding:5px 7px;
+    width:529px;
+    height:17px;
+    margin:2px 0;
+}
+
+.inputXLgWrapper input.inputXLg{
+	border:none;
+	border-radius: 0;
+	-moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    position:static;
+    behavior:url(/lexmark-services-portal-theme/css/blank.htc);
+    width:529px;
+    height:17px;
+    padding:0;
+    margin:0 !important;
+}
+
+.inputLgWrapperNoDisplay{
+	
+}
+
+.journal-content-article div, #noRecordFoundBtnTD, .tdUpload, 
+#formNotificationDetail table tr td, .contactsTD{
+	position:relative;
+}
+
+.uni-form .button-holder span{
+	position: static !important;
+	behavior: url(/lexmark-services-portal-theme/css/blank.htc) !important;
+	width:auto; 
+	height:24px; 
+	padding:0 8px 0 0; 
+	background:url(../images/custom/btn_blue_right.gif) right no-repeat;
+	z-index:2000;
+}
+
+.uni-form .button-holder input[type="submit"]{
+	height:24px;
+	width:auto;
+	line-height:24px;
+	padding:0 0 0 8px;
+	background:url(../images/custom/btn_blue_left.gif) left no-repeat;
+	color:#fff;
+	postion:static;
+	behavior:url(/lexmark-services-portal-theme/css/blank.htc);
+}
+
+.journal-content-article h2{
+	left:12px;
+}
+
+#globalSerachResultContainer .button {
+	padding:0 2px 0 0;  
+}
+
+.left-nav-inner .button{
+	padding: 2px 0;
+	margin-left:-4px;
+}
+
+#noRecordFoundBtnTD .button{
+	position:absolute;
+	left:20px;
+}
+
+#fileContent{
+	position:absolute;
+	top:-27px;
+	left:638px;
+	cursor:pointer;
+}
+
+#topnavigation {
+	height:auto;
+	min-height:34px;
+}
+
+#topnavigation ul {
+	height:auto;
+	min-height:34px;
+}
+
+#topnavigation li a{
+	border-bottom:1px solid #9998a1;
+}
+
+#topnavigation li.selected a {
+	border-bottom:1px solid #fff;
+}
+
+/*----- Defect Fix #2847 -----*/
+#uploadFileInput .manualReport input[type="file"] {
+	left:640px !important;
+	top:340px !important;
+}
+
+.button {
+	padding:1px 2px;
+}
+.button_cancel {
+	padding:3px 2px 2px 2px;	
+}

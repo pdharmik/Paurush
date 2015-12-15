@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerActivityDetailPartDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Request Detail Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW FS Activity Recommended Parts - Partner Portal</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>  
+				<entry>
+	         		<key><value>partNumber</value></key>
+	         		<value>Product Name</value>
+				</entry> 	
+				<entry>
+	         		<key><value>partName</value></key>
+	         		<value>Part #</value>
+				</entry> 
+				<entry>
+	         		<key><value>productDescription</value></key>
+	         		<value>Product Description</value>
+				</entry> 
+				<entry>
+	         		<key><value>quantity</value></key>
+	         		<value>Recommended Quantity</value>
+				</entry> 	
+				<entry>
+	         		<key><value>returnRequiredFlag</value></key>
+	         		<value>LXK SD Return If Defective</value>
+				</entry> 
+				<entry>
+	         		<key><value>productId</value></key>
+	         		<value>Product Id</value>
+				</entry> 
+				<entry>
+	         		<key><value>lineStatus</value></key>
+	         		<value>LXK R Part Disposition</value>
+				</entry> 
+				<entry>
+	         		<key><value>errorCode1</value></key>
+	         		<value>LXK R Service Error Code</value>
+				</entry> 		
+				<entry>
+	         		<key><value>errorCode2</value></key>
+	         		<value>LXK R Service Error Code 2</value>
+				</entry> 
+				<entry>
+	         		<key><value>trackingNumber</value></key>
+	         		<value>LXK UP Return AirBill Num</value>
+				</entry> 	
+				<entry>
+	         		<key><value>orderFlag</value></key>
+	         		<value>LXK SD Order Created Flag</value>
+				</entry> 	
+				<entry>
+	         		<key><value>carrier</value></key>
+	         		<value>LXK SW Return Carrier Code</value>
+				</entry> 	
+				<entry>
+	         		<key><value>orderLineItemId</value></key>
+	         		<value>Primary Order Item Id</value>
+				</entry> 
+				<entry>
+	         		<key><value>recommendedType</value></key>
+	         		<value>LXK R Recommended Type</value>
+				</entry> 
+				<entry>
+	         		<key><value>orderLineStatus</value></key>
+	         		<value>Order Line Status</value>
+				</entry> 
+				<entry>
+	         		<key><value>source</value></key>
+	         		<value>LXK UP Source</value>
+				</entry>
+				<entry>
+	         		<key><value>machineTypeModel</value></key>
+	         		<value>LXK SD Machine Type Model</value>
+				</entry> 
+				<entry>
+	         		<key><value>relationType</value></key>
+	         		<value>Relation Type</value>
+				</entry> 	
+				<entry>
+	         		<key><value>usedQuantity</value></key>
+	         		<value>LXK MPS Used Qty</value>
+				</entry> 	
+				<entry>
+	         		<key><value>notUsedQuantity</value></key>
+	         		<value>LXK MPS Not Used Qty</value>
+				</entry> 	
+				<entry>
+	         		<key><value>doaQuantity</value></key>
+	         		<value>LXK MPS DOA Qty</value>
+				</entry> 	
+				
+	     	</map>
+		</property>
+    </bean>  
+</beans>

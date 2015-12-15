@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerClaimDetailServiceRequestAttachmentDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Claim Detail Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>Service Request Attachment</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>activityId</value></key>
+	         		<value>Activity Id</value>
+				</entry> 	
+				<entry>
+	         		<key><value>attachmentName</value></key>
+	         		<value>ActivityFileName</value>
+				</entry>
+				 <entry>
+	         		<key><value>activityFileExt</value></key>
+	         		<value>ActivityFileExt</value>
+				</entry>	
+				<entry>
+	         		<key><value>identifier</value></key>
+	         		<value>Activity Id</value>
+				</entry>	
+				<entry>
+	         		<key><value>displayFileName</value></key>
+	         		<value>LXK MPS Portal Disp</value>
+				</entry>		
+				<entry>
+	         		<key><value>fileSize</value></key>
+	         		<value>ActivityFileSize</value>
+				</entry>
+			</map>
+		</property>
+    </bean>  
+</beans>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="MadcRequestDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK LBS MADC Request</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK LBS MADC Request</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping -->
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>
+	     		<entry>
+	         		<key><value>requestNumber</value></key>
+	         		<value>SR Number</value>
+				</entry>
+	     		<entry>
+	         		<key><value>dateCreated</value></key>
+	         		<value>SR Created</value>
+				</entry>
+	     		<entry>
+	         		<key><value>area</value></key>
+	         		<value>LXK MPS SR Area</value>
+				</entry>
+	     		<entry>
+	         		<key><value>subarea</value></key>
+	         		<value>LXK MPS SR Subarea</value>
+				</entry>
+	     		<entry>
+	         		<key><value>serialNumber</value></key>
+	         		<value>LXK MPS Serial Number PreDebriefRFV</value>
+				</entry>
+	     		<entry>
+	         		<key><value>deviceTag</value></key>
+	         		<value>LXK Customer Device Tag</value>
+				</entry>
+	     		<entry>
+	         		<key><value>status</value></key>
+	         		<value>LXK SR Web Status</value>
+				</entry>
+	     		<entry>
+	         		<key><value>productModel</value></key>
+	         		<value>Product Model</value>
+				</entry>
+	     		<entry>
+	         		<key><value>referenceNumber</value></key>
+	         		<value>Customer Ref Number</value>
+				</entry>
+	     		<entry>
+	         		<key><value>costCenter</value></key>
+	         		<value>LXK MPS MADC Cost Center</value>
+				</entry>
+	     		<entry>
+	         		<key><value>accountName</value></key>
+	         		<value>Account Name</value>
+				</entry>
+	     		<entry>
+	         		<key><value>addressName</value></key>
+	         		<value>LXK R Service Address Name</value>
+				</entry>
+	     		<entry>
+	         		<key><value>storeFrontName</value></key>
+	         		<value>LXK MPS Store Front Name</value>
+				</entry>
+	     		<entry>
+	         		<key><value>addressLine1</value></key>
+	         		<value>LXK R Account Service Address 1</value>
+				</entry>
+	     		<entry>
+	         		<key><value>houseNumber</value></key>
+	         		<value>Service Address Office#</value>
+				</entry>
+	     		<entry>
+	         		<key><value>city</value></key>
+	         		<value>LXK R Account Service City</value>
+				</entry>
+	     		<entry>
+	         		<key><value>state</value></key>
+	         		<value>LXK R Account Service State</value>
+				</entry>
+	     		<entry>
+	         		<key><value>province</value></key>
+	         		<value>LXK R Account Service Province</value>
+				</entry>
+	     		<entry>
+	         		<key><value>county</value></key>
+	         		<value>LXK R Account Service County</value>
+				</entry>
+	     		<entry>
+	         		<key><value>district</value></key>
+	         		<value>Service Address District</value>
+				</entry>
+	     		<entry>
+	         		<key><value>country</value></key>
+	         		<value>LXK R Account Service Country</value>
+				</entry>
+	     		<entry>
+	         		<key><value>zipCode</value></key>
+	         		<value>LXK R Account Service Postal Code</value>
+				</entry>
+	     		<entry>
+	         		<key><value>primaryContactFirstName</value></key>
+	         		<value>LXK SW SR Primary Contact First Name</value>
+				</entry>
+	     		<entry>
+	         		<key><value>primaryContactLastName</value></key>
+	         		<value>LXK SW SR Primary Contact Last Name</value>
+				</entry>
+	     		<entry>
+	         		<key><value>primaryContactEmail</value></key>
+	         		<value>LXK SW SR Primary Contact Email Addr</value>
+				</entry>
+	     		<entry>
+	         		<key><value>primaryContactPhone</value></key>
+	         		<value>LXK SW SR Primary Contact Phone</value>
+				</entry>
+	     		<entry>
+	         		<key><value>requesterFirstName</value></key>
+	         		<value>LXK SW SR Contact First Name</value>
+				</entry>
+	     		<entry>
+	         		<key><value>requesterLastName</value></key>
+	         		<value>LXK SW SR Contact Last Name</value>
+				</entry>
+	     		<entry>
+	         		<key><value>requesterContactEmail</value></key>
+	         		<value>LXK SW SR Contact Email Addr</value>
+				</entry>
+	     		<entry>
+	         		<key><value>requesterContactPhone</value></key>
+	         		<value>LXK SW SR Contact Phone</value>
+				</entry>
+	     		<entry>
+	         		<key><value>coveredServices</value></key>
+	         		<value>LXK C Covered Services</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

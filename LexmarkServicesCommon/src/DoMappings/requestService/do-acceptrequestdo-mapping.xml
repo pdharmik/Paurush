@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="AcceptRequestDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS_Install Debrief Action</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>Action</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping -->
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>
+	     		<entry>
+	         		<key><value>requestNumber</value></key>
+	         		<value>Activity UID</value>
+				</entry>
+				<entry>
+	         		<key><value>status</value></key>
+	         		<value>LXK R Substatus</value>
+				</entry>
+				<entry>
+	         		<key><value>comment</value></key>
+	         		<value>LXK R Action Narrative</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

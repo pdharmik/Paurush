@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="CHLDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW CHL</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW CHL</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>name</value></key>
+	         		<value>Name</value>
+				</entry>
+				<entry>
+	         		<key><value>parentChain</value></key>
+	         		<value>Parent Chain</value>
+				</entry>
+				<entry>
+	         		<key><value>topLevelAccountId</value></key>
+	         		<value>LXK A Top Level Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>parentAccountId</value></key>
+	         		<value>Parent Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>hasChild</value></key>
+	         		<value>LXK SW HasChild</value>
+				</entry>
+				<entry>
+      				<key><value>activeFlag</value></key>
+            		<value>LXK A Active Flag</value>
+				</entry>		
+	     	</map>
+		</property>
+    </bean>  
+</beans>

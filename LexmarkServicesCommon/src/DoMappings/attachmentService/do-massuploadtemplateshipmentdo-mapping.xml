@@ -1,0 +1,51 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="MassUploadTemplateShipmentDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK MPS Order Mass Upload - Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Shipment Import</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+	     		<entry>
+	         		<key><value>shippedQuantity</value></key>
+	         		<value>Shipment Quantity</value>
+				</entry>
+	     		<entry>
+	         		<key><value>shippedDate</value></key>
+	         		<value>Shipment Date</value>
+				</entry>
+	     		<entry>
+	         		<key><value>trackingNumber</value></key>
+	         		<value>LXK MPS Tracking #</value>
+				</entry>
+				<entry>
+	         		<key><value>carrier</value></key>
+	         		<value>LXK MPS Carrier</value>
+				</entry>
+				<entry>
+	         		<key><value>shipmentStatus</value></key>
+	         		<value>Status</value>
+				</entry>
+				<entry>
+	         		<key><value>deliveryDate</value></key>
+	         		<value>Delivery Date</value>
+				</entry>				
+	     	</map>
+		</property>
+    </bean>  
+</beans>

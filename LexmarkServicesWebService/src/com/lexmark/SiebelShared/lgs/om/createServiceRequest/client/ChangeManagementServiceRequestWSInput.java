@@ -1,0 +1,119 @@
+/**
+ * ChangeManagementServiceRequestWSInput.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
+ */
+
+package com.lexmark.SiebelShared.lgs.om.createServiceRequest.client;
+
+public class ChangeManagementServiceRequestWSInput  implements java.io.Serializable {
+    private com.lexmark.SiebelShared.lgs.om.createServiceRequest.client.ChangeManagementServiceRequestWSInput2 changeManagementServiceRequestWSInput;
+
+    public ChangeManagementServiceRequestWSInput() {
+    }
+
+    public ChangeManagementServiceRequestWSInput(
+           com.lexmark.SiebelShared.lgs.om.createServiceRequest.client.ChangeManagementServiceRequestWSInput2 changeManagementServiceRequestWSInput) {
+           this.changeManagementServiceRequestWSInput = changeManagementServiceRequestWSInput;
+    }
+
+
+    /**
+     * Gets the changeManagementServiceRequestWSInput value for this ChangeManagementServiceRequestWSInput.
+     * 
+     * @return changeManagementServiceRequestWSInput
+     */
+    public com.lexmark.SiebelShared.lgs.om.createServiceRequest.client.ChangeManagementServiceRequestWSInput2 getChangeManagementServiceRequestWSInput() {
+        return changeManagementServiceRequestWSInput;
+    }
+
+
+    /**
+     * Sets the changeManagementServiceRequestWSInput value for this ChangeManagementServiceRequestWSInput.
+     * 
+     * @param changeManagementServiceRequestWSInput
+     */
+    public void setChangeManagementServiceRequestWSInput(com.lexmark.SiebelShared.lgs.om.createServiceRequest.client.ChangeManagementServiceRequestWSInput2 changeManagementServiceRequestWSInput) {
+        this.changeManagementServiceRequestWSInput = changeManagementServiceRequestWSInput;
+    }
+
+    private java.lang.Object __equalsCalc = null;
+    public synchronized boolean equals(java.lang.Object obj) {
+        if (!(obj instanceof ChangeManagementServiceRequestWSInput)) return false;
+        ChangeManagementServiceRequestWSInput other = (ChangeManagementServiceRequestWSInput) obj;
+        if (obj == null) return false;
+        if (this == obj) return true;
+        if (__equalsCalc != null) {
+            return (__equalsCalc == obj);
+        }
+        __equalsCalc = obj;
+        boolean _equals;
+        _equals = true && 
+            ((this.changeManagementServiceRequestWSInput==null && other.getChangeManagementServiceRequestWSInput()==null) || 
+             (this.changeManagementServiceRequestWSInput!=null &&
+              this.changeManagementServiceRequestWSInput.equals(other.getChangeManagementServiceRequestWSInput())));
+        __equalsCalc = null;
+        return _equals;
+    }
+
+    private boolean __hashCodeCalc = false;
+    public synchronized int hashCode() {
+        if (__hashCodeCalc) {
+            return 0;
+        }
+        __hashCodeCalc = true;
+        int _hashCode = 1;
+        if (getChangeManagementServiceRequestWSInput() != null) {
+            _hashCode += getChangeManagementServiceRequestWSInput().hashCode();
+        }
+        __hashCodeCalc = false;
+        return _hashCode;
+    }
+
+    // Type metadata
+    private static org.apache.axis.description.TypeDesc typeDesc =
+        new org.apache.axis.description.TypeDesc(ChangeManagementServiceRequestWSInput.class, true);
+
+    static {
+        typeDesc.setXmlType(new javax.xml.namespace.QName("http://dlxkswmis1.lex.lexmark.com/ServiceRequest/serviceRequestWS", "ChangeManagementServiceRequestWSInput"));
+        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("changeManagementServiceRequestWSInput");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "ChangeManagementServiceRequestWSInput"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://dlxkswmis1.lex.lexmark.com/ServiceRequest/serviceRequestWS", "ChangeManagementServiceRequestWSInput2"));
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+    }
+
+    /**
+     * Return type metadata object
+     */
+    public static org.apache.axis.description.TypeDesc getTypeDesc() {
+        return typeDesc;
+    }
+
+    /**
+     * Get Custom Serializer
+     */
+    public static org.apache.axis.encoding.Serializer getSerializer(
+           java.lang.String mechType, 
+           java.lang.Class _javaType,  
+           javax.xml.namespace.QName _xmlType) {
+        return 
+          new  org.apache.axis.encoding.ser.BeanSerializer(
+            _javaType, _xmlType, typeDesc);
+    }
+
+    /**
+     * Get Custom Deserializer
+     */
+    public static org.apache.axis.encoding.Deserializer getDeserializer(
+           java.lang.String mechType, 
+           java.lang.Class _javaType,  
+           javax.xml.namespace.QName _xmlType) {
+        return 
+          new  org.apache.axis.encoding.ser.BeanDeserializer(
+            _javaType, _xmlType, typeDesc);
+    }
+
+}

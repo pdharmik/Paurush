@@ -1,0 +1,33 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="OrderSuppliesAssetEntitlementDetailDo" class="com.amind.data.service.DomainObjMapping">
+
+       <property name="dataSourceName">
+            <value>EAI Siebel Adapter</value>
+        </property>
+        
+       <property name="dsTargetObjectName">
+            <value>LXK MPS Consumable Asset Detail - Service Web</value>
+       </property>
+
+        <property name="dsTargetComponentName">
+            <value>FS Agreement Entitlement Service Detail</value>
+        </property>
+
+        <property name="packageName">
+            <value>com.lexmark.service.impl.real.domain</value>
+        </property>
+
+           <!-- field mapping -->
+           <property name="doFieldNameToDsFieldNameMap">
+             <map>
+                <entry>
+                     <key><value>activityType</value></key>
+                     <value>Activity Type</value>
+                </entry>
+             </map>
+        </property>
+    </bean>
+</beans>

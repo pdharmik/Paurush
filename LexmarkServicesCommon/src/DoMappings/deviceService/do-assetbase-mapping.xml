@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="AssetBase" class="com.amind.data.service.DomainObjMapping">
+        
+        <property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+        <property name="dsTargetObjectName">
+			<value>LXK SW Contracted Asset - Service Web</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW Contracted Asset - Service Web</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>assetId</value></key>
+	         		<value>Asset Id</value>
+				</entry>
+				<entry>
+	         		<key><value>assetTag</value></key>
+	         		<value>LXK C Asset Tag</value>
+				</entry>
+				<entry>
+	         		<key><value>deviceTagCustomer</value></key>
+	         		<value>Device Tag Customer</value>
+				</entry>
+				<entry>
+	         		<key><value>hostName</value></key>
+	         		<value>Host Name</value>
+				</entry>
+				<entry>
+	         		<key><value>ipAddress</value></key>
+	         		<value>IP Address</value>
+				</entry>
+				<entry>
+	         		<key><value>productLine</value></key>
+	         		<value>LXK C Assignment Product Line</value>
+				</entry>
+				<entry>
+	         		<key><value>productName</value></key>
+	         		<value>Product Name</value>
+				</entry>
+				<entry>
+	         		<key><value>serialNumber</value></key>
+	         		<value>Serial Number</value>
+				</entry>
+				<entry>
+	         		<key><value>addressId</value></key>
+	         		<value>Install Address ID</value>
+				</entry>
+				<entry>
+	         		<key><value>address1</value></key>
+	         		<value>LXK UP Install Address Line 1</value>
+				</entry>
+				<entry>
+	         		<key><value>address2</value></key>
+	         		<value>Install Address Line 2</value>
+				</entry>
+				<entry>
+	         		<key><value>addressName</value></key>
+	         		<value>Install Address Name</value>
+				</entry>
+				<entry>
+	         		<key><value>installCity</value></key>
+	         		<value>Install City</value>
+				</entry>
+				<entry>
+	         		<key><value>installCountry</value></key>
+	         		<value>Install Country</value>
+				</entry>
+				<entry>
+	         		<key><value>installProvince</value></key>
+	         		<value>Install Province</value>
+				</entry>
+				<entry>
+	         		<key><value>installState</value></key>
+	         		<value>Install State</value>
+				</entry>
+				<entry>
+	         		<key><value>installPostalCode</value></key>
+	         		<value>Install Postal Code</value>
+				</entry>
+				<entry>
+	         		<key><value>productTLI</value></key>
+	         		<value>Product Name</value>
+				</entry>
+				<entry>
+	         		<key><value>machineTypeModel</value></key>
+	         		<value>LXK Machine Type Model</value>
+				</entry>
+				
+				<entry>
+					<key><value>county</value></key>
+					<value>LXK Install County</value>
+				</entry>
+				<entry>
+					<key><value>district</value></key>
+					<value>LXK Install District</value>
+				</entry>
+				<entry>
+					<key><value>officeNumber</value></key>
+					<value>LXK Install Address House #</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

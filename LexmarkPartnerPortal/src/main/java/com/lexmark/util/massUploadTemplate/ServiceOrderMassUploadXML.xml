@@ -1,0 +1,137 @@
+<templateInformation>
+	<fileName>requestInfo.massUploadTemplate.serviceOrder.fileName</fileName>
+	<field>
+		<name>orderNumber</name>
+		<csvHeader>serviceOrder.massUploadTemplate.OrderNumber</csvHeader>
+		<siebelHeader># LXK MPS Order Line Item Import.Order Number</siebelHeader>
+		<editable>false</editable>
+		<columnNumber>0</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>lineNumber</name>
+		<csvHeader>serviceOrder.massUploadTemplate.LineNumber</csvHeader>
+		<siebelHeader>LXK MPS Order Line Item Import.Line Number</siebelHeader>
+		<editable>false</editable>
+		<columnNumber>1</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>	
+	<field>
+		<name>partNumber</name>
+		<csvHeader>serviceOrder.massUploadTemplate.PartNumber</csvHeader>
+		<siebelHeader>LXK MPS Order Line Item Import.Product</siebelHeader>
+		<editable>false</editable>
+		<columnNumber>2</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>partDescription</name>
+		<csvHeader>serviceOrder.massUploadTemplate.PartDescription</csvHeader>
+		<siebelHeader></siebelHeader>
+		<editable>false</editable>
+		<columnNumber>3</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>quantitiyRequested</name>
+		<csvHeader>serviceOrder.massUploadTemplate.QuantityRequested</csvHeader>
+		<siebelHeader>LXK MPS Order Line Item Import.LXK MPS Quantity Requested</siebelHeader>
+		<editable>false</editable>
+		<columnNumber>4</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>remainingQuantity</name>
+		<csvHeader>serviceOrder.massUploadTemplate.RemainingQuantity</csvHeader>
+		<siebelHeader>LXK MPS Order Line Item Import.LXK MPS Remaining Quantity</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>5</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>backOrderQuantity</name>
+		<csvHeader>serviceOrder.massUploadTemplate.BackOrderQty</csvHeader>
+		<siebelHeader>LXK MPS Order Line Item Import.LXK MPS Back Order Qty</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>6</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>orderStatus</name>
+		<csvHeader>serviceOrder.massUploadTemplate.ShipmentStatus</csvHeader>
+		<siebelHeader>LXK MPS Shipment Import.Status</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>13</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serialNumber</name>
+		<csvHeader>serviceOrder.massUploadTemplate.SerialNumber</csvHeader>
+		<siebelHeader></siebelHeader>
+		<editable>true</editable>
+		<columnNumber>14</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>partnerOrderReferenceNumber</name>
+		<csvHeader>serviceOrder.massUploadTemplate.PartnerOrderRefNumber</csvHeader>
+		<siebelHeader></siebelHeader>
+		<editable>true</editable>
+		<columnNumber>15</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>	
+
+<listFieldDetail beanName="shipments">
+	
+		<field>
+			<name>shippedQuantity</name>
+			<csvHeader>serviceOrder.massUploadTemplate.ShippedQuantity</csvHeader>
+			<siebelHeader>LXK MPS Shipment Import.Shipment Quantity</siebelHeader>
+			<editable>true</editable>
+			<columnNumber>7</columnNumber>
+			<prepopulate>true</prepopulate>
+		</field>
+		<field>
+			<name>shippedDate</name>
+			<csvHeader>serviceOrder.massUploadTemplate.ShippedDate</csvHeader>
+			<siebelHeader>LXK MPS Shipment Import.Delivery Date</siebelHeader>
+			<editable>true</editable>
+			<columnNumber>8</columnNumber>
+			<prepopulate>true</prepopulate>
+		</field>
+		
+		<field>
+			<name></name>
+			<csvHeader>serviceOrder.massUploadTemplate.BackOrderedDate</csvHeader>
+			<siebelHeader></siebelHeader>
+			<editable>true</editable>
+			<columnNumber>9</columnNumber>
+			<prepopulate>false</prepopulate>
+		</field>
+			<field>
+			<name>deliveryDate</name>
+			<csvHeader>serviceOrder.massUploadTemplate.DeliveryDate</csvHeader>
+			<siebelHeader></siebelHeader>
+			<editable>true</editable>
+			<columnNumber>10</columnNumber>
+			<prepopulate>true</prepopulate>
+		</field>
+		<field>
+			<name>trackingNumber</name>
+			<csvHeader>serviceOrder.massUploadTemplate.TrackingNo</csvHeader>
+			<siebelHeader>LXK MPS Shipment Import.LXK MPS Tracking #</siebelHeader>
+			<editable>true</editable>
+			<columnNumber>11</columnNumber>
+			<prepopulate>true</prepopulate>
+		</field>
+		<field>
+			<name>carrier</name>
+			<csvHeader>serviceOrder.massUploadTemplate.Carrier</csvHeader>
+			<siebelHeader>LXK MPS Shipment Import.LXK MPS Carrier</siebelHeader>
+			<editable>true</editable>
+			<columnNumber>12</columnNumber>
+			<prepopulate>true</prepopulate>
+		</field>		
+	
+</listFieldDetail>
+</templateInformation>

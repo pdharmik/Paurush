@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="RequestTypeDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK MPS Service Request List</value>
+       </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK C Service Request (EAI)</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	
+	     		<entry>
+	         		<key><value>id</value></key>
+	         		<value>SR Id</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementId</value></key>
+	         		<value>LXK MPS Agreement Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel</value></key>
+	         		<value>LXK MPS Account Level</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>LXK MPS Global Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>LXK MPS Domestic Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXK MPS Legal Entity ID #</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXK MPS MDM Account #</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementMdmLevel1AccountId</value></key>
+	         		<value>LXK MPS Agreement Account Global DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementMdmLevel2AccountId</value></key>
+	         		<value>LXK MPS Agreement Account Domestic DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementMdmLevel3AccountId</value></key>
+	         		<value>LXK MPS Agreement Account Legal Id</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementMdmLevel4AccountId</value></key>
+	         		<value>LXK MPS Agreement Account MDM#</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementMdmLevel5AccountId</value></key>
+	         		<value>LXK MPS Agreement Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>chlNodeId</value></key>
+	         		<value>LXK MPS CHL Id</value>
+				</entry>
+				<entry>
+	         		<key><value>chlNodeName</value></key>
+	         		<value>LXK MPS CHL Name</value>
+				</entry>
+				<entry>
+	         		<key><value>assetId</value></key>
+	         		<value>Asset Id</value>
+				</entry>
+				
+				<!-- result data -->
+				<entry>
+	         		<key><value>requestNumber</value></key>
+	         		<value>SR Number</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestType</value></key>
+	         		<value>LXK MPS SR Type</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestDate</value></key>
+	         		<value>LXK MPS Created Date</value>
+				</entry>
+				<entry>
+	         		<key><value>statusType</value></key>
+	         		<value>LXK MPS Web Status</value>
+				</entry>
+				<entry>
+	         		<key><value>serialNumber</value></key>
+	         		<value>Serial Number</value>
+				</entry>
+				<entry>
+	         		<key><value>productModel</value></key>
+	         		<value>LXK C Customer Reporting Name</value>
+				</entry>
+				<entry>
+	         		<key><value>problemDescription</value></key>
+	         		<value>Abstract</value>
+				</entry>
+				<entry>
+	         		<key><value>expediteOrder</value></key>
+	         		<value>LXK MPS Expedite Order</value>
+				</entry>
+				<entry>
+	         		<key><value>area</value></key>
+	         		<value>LXK MPS SR Area</value>
+				</entry>
+				<entry>
+	         		<key><value>subArea</value></key>
+	         		<value>LXK MPS SR Sub Area</value>
+				</entry>
+				<entry>
+	         		<key><value>helpDeskReferenceNumber</value></key>
+	         		<value>LXK MPS Customer Ref Number</value>
+				</entry>
+				<entry>
+	         		<key><value>eta</value></key>
+	         		<value>Effective Date</value>
+				</entry>
+				<entry>
+					<key><value>poNumber</value></key>
+					<value>LXK MPS Customer PO Number</value>
+				</entry>
+				<entry>
+					<key><value>contractType</value></key>
+					<value>LXK MPS Agreement Type</value>
+				</entry>
+				
+				<!-- AccountContact PrimaryContact -->
+				<entry>
+	         		<key><value>primaryContactFirstName</value></key>
+	         		<value>LXK MPS Primary Contact First Name</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactLastName</value></key>
+	         		<value>LXK MPS Primary Contact Last Name</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactEmailAddress</value></key>
+	         		<value>LXK MPS Primary Contact Email Address</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactWorkPhone</value></key>
+	         		<value>LXK MPS Primary Contact Work Phone</value>
+				</entry>
+				
+				<!-- AccountContact Requestor -->
+				<entry>
+	         		<key><value>requestorContactFirstName</value></key>
+	         		<value>LXK MPS Requester Contact First Name</value>
+				</entry>
+				<entry>
+	         		<key><value>requestorContactLastName</value></key>
+	         		<value>LXK MPS Requester Contact Last Name</value>
+				</entry>
+				<entry>
+	         		<key><value>requestorContactEmailAddress</value></key>
+	         		<value>LXK MPS Requester Contact Email Address</value>
+				</entry>
+				<entry>
+	         		<key><value>requestorContactWorkPhone</value></key>
+	         		<value>LXK MPS Requester Contact Work Phone</value>
+				</entry>
+				
+				<!-- GenericAddress serviceAddress -->
+				<entry>
+	         		<key><value>serviceAddressLine1</value></key>
+	         		<value>Service Address 1</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceAddressLine2</value></key>
+	         		<value>Service Address 2</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceAddressLine3</value></key>
+	         		<value>Service Address 3</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceCity</value></key>
+	         		<value>Service City</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceState</value></key>
+	         		<value>LXK MPS Service State</value>
+				</entry>
+				<entry>
+	         		<key><value>servicePostalCode</value></key>
+	         		<value>Service Postal Code</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceProvince</value></key>
+	         		<value>Service Province</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceCountry</value></key>
+	         		<value>Service Country</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceAddressName</value></key>
+	         		<value>LXK MPS Service Address Name</value>
+				</entry>
+				<entry>
+	         		<key><value>costCenter</value></key>
+	         		<value>LXK MPS Cost center</value>
+				</entry>
+				<entry>
+	         		<key><value>accountName</value></key>
+	         		<value>Account Name</value>
+				</entry>
+				<entry>
+	         		<key><value>vendorAccountId</value></key>
+	         		<value>LXK MPS Vendor Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>updatedSrNumber</value></key>
+	         		<value>LXK MPS Updated SR Number</value>
+				</entry>
+					<entry>
+	         		<key><value>vendorMdmLevel1AccountId</value></key>
+	         		<value>LXK MPS Vendor Global DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>vendorMdmLevel2AccountId</value></key>
+	         		<value>LXK MPS Vendor Domestic DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>vendorMdmLevel3AccountId</value></key>
+	         		<value>LXK MPS Vendor Legal Id</value>
+				</entry>
+				<entry>
+	         		<key><value>vendorMdmLevel4AccountId</value></key>
+	         		<value>LXK MPS Vendor MDM#</value>
+				</entry>
+				<entry>
+	         		<key><value>hostName</value></key>
+	         		<value>LXK MPS Host Name</value>
+				</entry>
+				<entry>
+	         		<key><value>deviceTag</value></key>
+	         		<value>LXK Device Tag Customer</value>
+				</entry>
+				<entry>
+	         		<key><value>contactId</value></key>
+	         		<value>LXK R SR Contact Id</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactId</value></key>
+	         		<value>Contact Id</value>
+				</entry>
+				<entry>
+	         		<key><value>alternateContactId</value></key>
+	         		<value>LXK MPS Alternate Contact Id</value>
+				</entry>
+				<entry>
+	         		<key><value>assetCostCenter</value></key>
+	         		<value>LXK Asset Cost Center</value>
+				</entry>
+				<entry>
+	         		<key><value>orderId</value></key>
+	         		<value>LXK MPS Order Id</value>
+				</entry>
+				<entry>
+                    <key><value>serviceRequestSLA</value></key>
+                    <value>LXK SD Calculated Commit Time</value>
+                </entry>
+                <entry>
+                    <key><value>serviceRequestETA</value></key>
+                    <value>LXK R Service Provider ETA</value>
+                </entry>  
+                <entry>
+                	<key><value>resolutionCode</value></key>
+                	<value>LXK R Resolution Code</value>
+                </entry>
+				<entry>
+	         		<key><value>parts</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.RequestTypePartDo</value>
+				</entry>
+				
+				<entry>
+					<key><value>county</value></key>
+					<value>LXK MPS Service County</value>
+				</entry>
+				<entry>
+					<key><value>district</value></key>
+					<value>LXK MPS District</value>
+				</entry>
+				<entry>
+					<key><value>officeNumber</value></key>
+					<value>LXK MPS House Number</value>
+				</entry>
+				
+				<entry>
+					<key><value>storeFrontName</value></key>
+					<value>LXK MPS Store Front Name</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>customerReportingName</value></key>
+	         		<value>LXK C Customer Reporting Name</value>
+				</entry> 
+				<entry>
+	         		<key><value>coveredServiceType</value></key>
+	         		<value>Covered Service Type</value>
+				</entry> 
+				<entry>
+	         		<key><value>serviceOverrideType</value></key>
+	         		<value>LXK MPS Override Offering</value>
+				</entry> 
+				<entry>
+	         		<key><value>serviceRequestStatus</value></key>
+	         		<value>LXK MPS SR Status</value>
+				</entry> 
+				
+			<!-- New MPS fields for retrieveRequestList call. USed only if assetid is null -->				
+				<entry>
+	         		<key><value>mpsDeviceTag</value></key>
+	         		<value>LXK MPS SR Customer Asset Tag</value>
+				</entry>
+				<entry>
+	         		<key><value>mpsSerialNumber</value></key>
+	         		<value>LXK MPS SR Serial Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mpsHostName</value></key>
+	         		<value>LXK MPS SR Host Name</value>
+				</entry>
+				<entry>
+	         		<key><value>madcCostCenter</value></key>
+	         		<value>LXK MPS MADC Cost Center</value>
+				</entry>
+				<entry>
+	         		<key><value>installDate</value></key>
+	         		<value>LXK MPS Asset Install Date</value>
+				</entry>
+				<entry>
+	         		<key><value>madcInstallDate</value></key>
+	         		<value>LXK MPS SR Install Date</value>
+				</entry>
+				<entry>
+	         		<key><value>ipAddress</value></key>
+	         		<value>LXK MPS IP Address</value>
+				</entry>
+				<entry>
+	         		<key><value>madcIPAddress</value></key>
+	         		<value>LXK MPS SR IP Address</value>
+				</entry>
+				<entry>
+	         		<key><value>productTLI</value></key>
+	         		<value>Product</value>
+				</entry>
+				<entry>
+	         		<key><value>madcProductTLI</value></key>
+	         		<value>LXK MPS SR Product</value>
+				</entry>
+				<entry>
+	         		<key><value>webOrderNumber</value></key>
+	         		<value>LXK MPS Web Order #</value>
+				</entry>
+				<entry>
+	         		<key><value>subStatus</value></key>
+	         		<value>LXK MPS Sub-Status</value>
+				</entry>
+				<entry>
+	         		<key><value>severity</value></key>
+	         		<value>LXK MPS Severity</value>
+				</entry>
+				<entry>
+	         		<key><value>projectName</value></key>
+	         		<value>LXK MPS Project</value>
+				</entry>
+				<entry>
+	         		<key><value>projectPhase</value></key>
+	         		<value>LXK MPS Project Phase</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementName</value></key>
+	         		<value>LXK MPS Agreement Name</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementNumber</value></key>
+	         		<value>Agreement Number</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

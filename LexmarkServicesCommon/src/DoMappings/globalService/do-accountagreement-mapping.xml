@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="AccountAgreementDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS SW Account Agreement - Service Web</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK Account - Service Web</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>name</value></key>
+	         		<value>Name</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>Global Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>Domestic Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXM MDM Legal Entity ID #</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXM MDM Account #</value>
+				</entry>		
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>Id</value>
+				</entry>
+				
+				<!-- result data -->
+				<entry>
+	         		<key><value>accountId</value></key>
+	         		<value>Id</value>
+				</entry>		
+				<entry>
+	         		<key><value>accountName</value></key>
+	         		<value>LXK MPS Account Name</value>
+				</entry>		
+				<entry>
+	         		<key><value>accountOrganization</value></key>
+	         		<value>LXK MPS Account Name</value>
+				</entry>		
+				<entry>
+	         		<key><value>location</value></key>
+	         		<value>Location</value>
+				</entry>
+				<!-- list of agreements -->
+				<entry>
+	         		<key><value>agreements</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.AgreementDo</value>
+				</entry>
+								
+	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

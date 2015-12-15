@@ -1,0 +1,9 @@
+<suite name = "myTestNG">
+<test name= "my_test">
+<classes>
+<class name = "TestNGsuite.Hello" />
+<class name="TestNGsuite.TestNG_Login" />
+<class name="TestNGsuite.Trial" />
+</classes>
+</test>
+</suite>

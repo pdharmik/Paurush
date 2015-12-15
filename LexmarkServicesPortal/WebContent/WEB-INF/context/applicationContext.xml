@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!--
+		* Copyright 2005-2008 the original author or authors. * * Licensed
+		under the Apache License, Version 
+2.0 (the "License"); * you may not
+		use this file except in compliance with the License. * You may obtain
+		
+a copy of the License at * *
+		http://www.apache.org/licenses/LICENSE-2.0 * * Unless required by
+		applicable 
+law or agreed to in writing, software * distributed under
+		the License is distributed on an "AS IS" 
+BASIS, * WITHOUT WARRANTIES
+		OR CONDITIONS OF ANY KIND, either express or implied. * See the
+		License 
+for the specific language governing permissions and *
+		limitations under the License.
+	-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:context="http://www.springframework.org/schema/context" xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring" 
+xmlns:task="http://www.springframework.org/schema/task" xmlns:util="http://www.springframework.org/schema/util"
+ xsi:schemaLocation="
+	 http://www.springframework.org/schema/task
+	 
+http://www.springframework.org/schema/task/spring-task-3.0.xsd
+     http://www.springframework.org/schema/context
+     
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     http://www.springframework.org/schema/beans 
+
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring
+     
+http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.0.xsd http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	<context:annotation-config/>
+	<ehcache:annotation-driven cache-manager="ehCacheManager"/>
+	<task:annotation-driven executor="executorService"/>
+	<bean id="executorService" class="java.util.concurrent.Executors" factory-method="newFixedThreadPool">
+		<constructor-arg value="10"/>
+	</bean>
+	<!--
+ <task:annotation-driven executor="taskExecutor"/>
+ 	
+ 	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="5" />
+		<property name="maxPoolSize" value="10" />
+		<property name="queueCapacity" value="25" />
+	</bean> 
+	-->
+	<!--
+ <task:executor id="threadPoolTaskExecutor" pool-size="10" /> 
+	-->
+	<bean id="ehCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation">
+			<value>/WEB-INF/context/cache/lexmarkservicesportlets-ehcache.xml</value>
+		</property>
+	</bean>
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/context/webservice.properties</value>
+				<value>/WEB-INF/context/common.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="performanceInterceptor" class="com.lexmark.services.intercepter.PerformanceInterceptor"/>
+	<bean id="userInfoInterceptor" class="com.lexmark.services.intercepter.UserInfoInterceptor">
+		<property name="userService" ref="userService"/>
+	</bean>
+	<bean id="accountAssociateInterceptor" class="com.lexmark.services.intercepter.AccountAssociateInterceptor"/>
+	<bean id="myKeyGenerator" class="com.googlecode.ehcache.annotations.key.StringCacheKeyGenerator">
+		<property name="includeMethod" value="false"/>
+	</bean>
+	<!-- Message Source -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:com/lexmark/services/resources/location</value>
+				<value>classpath:com/lexmark/services/resources/hostConfig</value>
+				<value>classpath:com/lexmark/services/resources/messages</value>
+				<!-- (localized "messages_xx.properties" files) -->
+				<!-- Added by Sourav for cm validation messages -->
+				<value>classpath:com/lexmark/services/resources/validationMessages</value>
+			</list>
+		</property>
+		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+	<!-- Default View Resolver -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="cache" value="false"/>
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	<!-- Abstract Default Exception Handler -->
+	<bean id="defaultExceptionHandlerTemplate" class="org.springframework.web.portlet.handler.SimpleMappingExceptionResolver" abstract="true">
+		<property name="defaultErrorView" value="defError"/>
+		<property name="exceptionMappings">
+			<props>
+				<prop key="javax.portlet.PortletSecurityException">notAuthorized</prop>
+				<prop key="javax.portlet.UnavailableException">notAvailable</prop>
+				<prop key="com.lexmark.services.exception.LoginException">loginException</prop>
+				<prop key="com.lexmark.services.exception.AccountNotAssociatedException">accountNotAssociatedException</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- Domain Services -->
+	<!--
+		<bean id="agreementDetailsService"
+		class="com.lexmark.claims.service.AgreementDetailsServiceImpl" />
+	-->
+	<!--
+ Amind Integration
+	-->
+	<bean name="serviceRequestService" class="com.lexmark.service.impl.real.AmindContractedServiceRequestService">
+		<property name="sessionFactory">
+			<ref bean="statelessSessionFactory"/>
+		</property>
+	</bean>
+	<bean name="contactService" class="com.lexmark.service.impl.real.AmindContactService">
+		<property name="sessionFactory">
+			<ref bean="statelessSessionFactory"/>
+		</property>
+	</bean>
+	<bean name="deviceService" class="com.lexmark.service.impl.real.AmindContractedDeviceService">
+		<property name="sessionFactory">
+			<ref bean="statelessSessionFactory"/>
+		</property>
+	</bean>
+	<bean id="globalService" class="com.lexmark.service.impl.real.AmindGlobalService">
+		<property name="statelessSessionFactory">
+			<ref bean="statelessSessionFactory"/>
+		</property>
+		<property name="statefulSessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="contactInformationService" class="com.lexmark.service.impl.real.AmindContactInformationService">
+		<property name="statelessSessionFactory">
+			<ref bean="statelessSessionFactory"/>
+		</property>
+	</bean>
+	<bean id="meterReadService" class="com.lexmark.service.impl.real.AmindContractedMeterReadService"/>
+	<bean id="sessionFactory" class="com.amind.session.StatefulSessionFactory"/>
+	<bean name="statelessSessionFactory" class="com.amind.session.StatelessSessionFactory">
+		<property name="statelessSessionTimeout" value="1200000"/>
+		<property name="statelessWaitTime" value="1000"/>
+		<property name="maxConnections" value="200"/>
+	</bean>
+	<bean id="serviceRequestLocale" class="com.lexmark.service.impl.real.jdbc.ServiceRequestLocaleImpl"/>
+	<!--
+ Mock Integration
+	<bean id="serviceRequestService" class="com.lexmark.service.impl.mock.ServiceRequestServiceImpl" /> 
+	<bean id="contactService" class="com.lexmark.service.impl.mock.ContactServiceImpl" />
+	<bean id="deviceService" class="com.lexmark.service.impl.mock.DeviceServiceImpl" />
+	<bean id="globalService" class="com.lexmark.service.impl.mock.GlobalServiceImpl" />
+	<bean id="contactInformationService" class="com.lexmark.service.impl.mock.ContactInformationServiceImpl" />
+	<bean id="meterReadService" class="com.lexmark.service.impl.mock.MeterReadServiceImpl" />
+	-->
+	<bean id="userService" class="com.lexmark.service.impl.real.jdbc.UserServiceImpl"/>
+	<bean id="notificationService" class="com.lexmark.service.impl.real.jdbc.NotificationServiceImpl"/>
+	<bean id="serviceRequestLocaleService" class="com.lexmark.service.impl.real.jdbc.ServiceRequestLocaleImpl"/>
+	<bean id="documentListService" class="com.lexmark.service.impl.real.jdbc.DocumentListServiceImpl"/>
+	<bean id="documentManagementService" class="com.lexmark.service.impl.real.jdbc.DocumentManagementServiceImpl">
+		<property name="documentListService">
+			<ref bean="documentListService"/>
+		</property>
+	</bean>
+	<bean id="customerReportService" class="com.lexmark.service.impl.real.jdbc.CustomerReportServiceImpl"/>
+	<bean id="emailNotificationService" class="com.lexmark.service.impl.real.jdbc.EmailNotificationServiceImpl"/>
+	<bean id="productImageService" class="com.lexmark.service.impl.real.file.ProductImageServiceImpl"/>
+	<bean id="roleService" class="com.lexmark.service.impl.real.jdbc.RoleServiceImpl"/>
+	<bean id="sharedPortletController" class="com.lexmark.services.portlet.SharedPortletController"/>
+	<bean id="sharedObieeController" class="com.lexmark.services.portlet.SharedObieeController"/>
+	<bean id="serviseRequestHistoryController" class="com.lexmark.services.portlet.common.ServiseRequestHistoryController"/>
+	
+	<bean id="geographyService" class="com.lexmark.service.impl.real.jdbc.GeographyServiceImpl"/>
+	<bean id="reportNotifierService" class="com.lexmark.services.servlet.ReportNotifierServletService">
+		<property name="reportScheduleService">
+			<ref bean="reportScheduleService"/>
+		</property>
+		<property name="emailNotificationService">
+			<ref bean="emailNotificationService"/>
+		</property>
+	</bean>
+	<bean id="reportScheduleService" class="com.lexmark.service.impl.real.jdbc.ReportScheduleServiceImp"/>
+	<bean id="attachmentService" class="com.lexmark.service.impl.real.AmindAttachmentService">
+		<property name="statelessSessionFactory">
+			<ref bean="statelessSessionFactory"/>
+		</property>
+	</bean>
+	<bean id="billerDirectService" class="com.lexmark.service.impl.real.billerDirect.BillerDirectServiceImpl"/>
+	<!-- Lexmark Dev for WebMethods-->
+	<!--
+	<bean id="createServiceRequest" class="com.lexmark.services.mock.CreateServiceRequestImpl">
+		<property name="address" value="http://dlxkswmis1.lex.lexmark.com:9300/ws/ServiceRequest:serviceRequestWS" />
+		<property name="username" value="ServicesWebPortal" />
+		<property name="password" value="Services@123" />
+		<property name="senderId" value= "LXK_ServicesWeb"/> 
+		<property name="senderName" value="Services Web Portal"/>
+		<property name="receiverId" value="LXK_SIEBEL"/>
+	</bean>
+	-->
+	<!--
+ Lexmark Test for WebMethods
+	-->
+	<!--
+		<property name="address" value="http://dlxkswmis1.lex.lexmark.com:9300/ws/ServiceRequest:serviceRequestWS" />
+		<property name="address" value="http://tlxkswmis6.lex.lexmark.com:7300/ws/ServiceRequest:serviceRequestWS" />
+		<property name="address" value="https://b2bpreprod.lexmark.com:9905/ws/ServiceRequest:serviceRequestWS" />
+		<property name="address" value="https://a2aqa.lex.lexmark.com:9301/ws/LXKCustomerContact.webServices.provider:processCustomerContactWS" />
+		
+	-->
+	<bean id="createServiceRequest" class="com.lexmark.services.webService.CreateServiceRequestImpl">
+		<property name="address">
+			<value>${createServiceRequest.address}</value>
+		</property>
+		<property name="senderId">
+			<value>${createServiceRequest.senderId}</value>
+		</property>
+		<property name="senderName">
+			<value>${createServiceRequest.senderName}</value>
+		</property>
+		<property name="receiverId">
+			<value>${createServiceRequest.receiverId}</value>
+		</property>
+		<property name="userName">
+			<value>${createServiceRequest.userName}</value>
+		</property>
+		<property name="password">
+			<value>${createServiceRequest.password}</value>
+		</property>
+	</bean>
+	<bean id="processCustomerContact" class="com.lexmark.services.webService.ProcessCustomerContactImpl">
+		<property name="address">
+			<value>${processCustomerContact.address}</value>
+		</property>
+		<property name="userName">
+			<value>${processCustomerContact.userName}</value>
+		</property>
+		<property name="password">
+			<value>${processCustomerContact.password}</value>
+		</property>
+		<property name="sourceSystem">
+			<value>${processCustomerContact.sourceSystem}</value>
+		</property>
+		<property name="businessProcess">
+			<value>${processCustomerContact.businessProcess}</value>
+		</property>
+		<property name="integrationFrequency">
+			<value>${processCustomerContact.integrationFrequency}</value>
+		</property>
+		<property name="objectChangeActionType">
+			<value>${processCustomerContact.objectChangeActionType}</value>
+		</property>
+		<property name="synchOrAsynch">
+			<value>${processCustomerContact.synchOrAsynch}</value>
+		</property>
+	</bean>
+	<!-- Domain Validator -->
+	<!--
+	<bean id="processCustomerContact" class="com.lexmark.services.mock.ProcessCustomerContactImpl">
+		<property 
+name="address" value="https://a2aqa.lex.lexmark.com:9301/ws/LXKCustomerContact.webServices.provider:processCustomerContactWS" 
+/>
+		<property name="userName" value="ServicesWebPortal"/>
+		<property name="password" value="Services@123"/>
+		
+<property name="sourceSystem" value="ServicesWebPortal"/>
+		<property name="businessProcess" value="CustomerContact"/>
+		
+<property name="integrationFrequency" value="RealTime"/>
+		<property name="objectChangeActionType" value="NEW"/>
+		
+<property name="synchOrAsynch" value="Synch"/>
+	</bean>
+	-->
+	<bean name="globalLegalEntityService" class="com.lexmark.service.impl.real.GlobalLegalEntityServiceImpl">
+		<property name="globalService">
+			<ref bean="globalService"/>
+		</property>
+	</bean>
+	<task:scheduler id="scheduler" pool-size="1"/>
+	<task:scheduled-tasks>
+		<task:scheduled ref="globalLegalEntityService" method="refresh" fixed-delay="3600000"/>
+	</task:scheduled-tasks>
+	
+  <bean id="requestTypeService" class="com.lexmark.service.impl.real.AmindRequestTypeService" /> 
+
+	<bean id="commonController" class="com.lexmark.services.portlet.common.CommonController"/>
+	<bean id="contactController" class="com.lexmark.services.portlet.common.ContactController"> </bean> <!-- Added for MPS2.1 -->
+	
+	<bean id="dateEditor" class="org.springframework.beans.propertyeditors.CustomDateEditor">
+		<constructor-arg>
+			<bean class="java.text.SimpleDateFormat">
+				<constructor-arg value="MM/dd/yyyy HH:mm:ss"/>
+			</bean>
+		</constructor-arg>
+		<constructor-arg value="true" index="1"/>
+	</bean>
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="java.util.Date">
+					<ref local="dateEditor"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<!-- asset based order start -->
+    <!-- <bean id="orderSuppliesAssetService" class="com.lexmark.service.impl.mock.OrderSuppliesAssetServiceImpl" /> -->
+    <bean id="orderSuppliesAssetService" class="com.lexmark.service.impl.real.AmindOrderSuppliesAssetService">
+    	<property name="statelessSessionFactory">
+			<ref bean="statelessSessionFactory"/>
+		</property>
+    </bean>
+    <bean id="assetDetailPageFormValidator" class="com.lexmark.services.form.validator.AssetDetailPageFormValidator" scope="prototype"/>
+    <!-- asset based order completed -->
+    <!-- catalog based order started -->
+<!--    	<bean id="orderSuppliesCatalogService" class="com.lexmark.service.impl.mock.OrderSuppliesCatalogServiceImpl"/> -->
+	<bean id="orderSuppliesCatalogService" class="com.lexmark.service.impl.real.AmindOrderSuppliesCatalogService"/>
+	
+<!-- 	<bean id="orderHardwareService" class="com.lexmark.service.impl.mock.OrderHardwareServiceImpl"/> -->
+	<bean id="orderHardwareService" class="com.lexmark.service.impl.real.AmindOrderHardwareService"/>
+		<!-- <property name="statelessSessionFactory">
+			<ref bean="statelessSessionFactory"/>
+		</property>
+	</bean> -->
+	
+	<!-- Added fpr LBS -->
+	<bean id="filterFieldService" class="com.lexmark.service.impl.real.UserFilterSettingServiceImpl" />
+	
+	<bean id="catalogDetailPageFormValidator" class="com.lexmark.services.form.validator.CatalogDetailPageFormValidator" scope="prototype"/>
+	<bean id="hardwareDetailPageFormValidator" class="com.lexmark.services.form.validator.HardwareDetailPageFormValidator" scope="prototype"/>
+	<!-- catalog based order completed -->
+    <bean id="commonValidator" class="com.lexmark.services.form.validator.CommonValidator" scope="prototype"/>
+	<bean id="manageAssetService" class="com.lexmark.services.webService.cm.ManageAssetServiceImpl">	
+    		<property name="senderId" >
+    			<value>${createServiceRequest.senderId}</value>
+    		</property>                                                                                     
+    		<property name="senderName">
+    			<value>${createServiceRequest.senderName}</value>
+    		</property>                                                                                 
+    		<property name="receiverId" >
+    			<value>${createServiceRequest.receiverId}</value>
+    		</property>
+    		<property name="address">
+    			<value>${createServiceRequest.address}</value>
+    		</property>
+    		<property name="userName">
+				<value>${createServiceRequest.userName}</value>
+			</property>
+			<property name="password">
+				<value>${createServiceRequest.password}</value>
+			</property>
+	</bean>
+	<bean id="manageContactService" class="com.lexmark.services.webService.cm.ManageContactServiceImpl">
+			<property name="senderId" >
+    			<value>${createServiceRequest.senderId}</value>
+    		</property>                                                                                     
+    		<property name="senderName">
+    			<value>${createServiceRequest.senderName}</value>
+    		</property>                                                                                 
+    		<property name="receiverId" >
+    			<value>${createServiceRequest.receiverId}</value>
+    		</property>
+    		<property name="address">
+    			<value>${createServiceRequest.address}</value>
+    		</property>
+    		<property name="userName">
+				<value>${createServiceRequest.userName}</value>
+			</property>
+			<property name="password">
+				<value>${createServiceRequest.password}</value>
+			</property>
+			
+			<!-- Added for MPS 2 -->
+			<property name="addUpdateContactURL">
+				<value>${processCustomerContact.address}</value>
+			</property>
+			<property name="customerName">
+				<value>${changeManagement.addUpdateContact.customerName}</value>
+			</property>
+			<property name="contactType">
+				<value>${changeManagement.addUpdateContact.contactType}</value>
+			</property>
+			<property name="businessProcess">
+				<value>${changeManagement.addUpdateContact.businessProcess}</value>
+			</property>
+			<property name="integrationFrequency">
+				<value>${processCustomerContact.integrationFrequency}</value>
+			</property>
+			<property name="objectChangeActionTypeNew">
+				<value>${changeManagement.addUpdateContact.objectActionTypeNew}</value>
+			</property>
+			<property name="objectChangeActionTypeChange">
+				<value>${changeManagement.addUpdateContact.objectActionTypeChange}</value>
+			</property>
+			<property name="synchOrAsynch">
+				<value>${processCustomerContact.synchOrAsynch}</value>
+			</property>
+			<property name="sourceSystem">
+				<value>${processCustomerContact.sourceSystem}</value>
+			</property>
+				<property name="debug">
+				<value>${debug}</value>
+			</property>
+			<!-- Ends -->
+			
+			
+			
+	</bean>	
+	<bean id="manageAddressCreateService" class="com.lexmark.services.webService.cm.ManageAddressServiceImpl">
+			<property name="senderId" >
+    			<value>${createServiceRequest.senderId}</value>
+    		</property>                                                                                     
+    		<property name="senderName">
+    			<value>${createServiceRequest.senderName}</value>
+    		</property>                                                                                 
+    		<property name="receiverId" >
+    			<value>${createServiceRequest.receiverId}</value>
+    		</property>
+    		<property name="address">
+    			<value>${createServiceRequest.address}</value>
+    		</property>
+    		<property name="userName">
+				<value>${createServiceRequest.userName}</value>
+			</property>
+			<property name="password">
+				<value>${createServiceRequest.password}</value>
+			</property>
+	</bean>
+	<bean id="createConsumableRequest" class="com.lexmark.services.webService.CreateConsumableRequestImpl">
+			<property name="address">
+				<value>${createServiceRequest.address}</value>
+			</property>
+    		<property name="senderId" >
+    			<value>${createServiceRequest.senderId}</value>
+    		</property>                                                                                     
+    		<property name="senderName">
+    			<value>${createServiceRequest.senderName}</value>
+    		</property>                                                                                 
+    		<property name="receiverId" >
+    			<value>${createServiceRequest.receiverId}</value>
+    		</property>
+    		<property name="userName">
+				<value>${createServiceRequest.userName}</value>
+			</property>
+			<property name="password">
+				<value>${createServiceRequest.password}</value>
+			</property>
+	</bean>
+	<bean id="createHardwareRequest" class="com.lexmark.services.webService.CreateHardwareRequestImpl">
+			<property name="address">
+				<value>${createServiceRequest.address}</value>
+			</property>
+    		<property name="senderId" >
+    			<value>${createServiceRequest.senderId}</value>
+    		</property>                                                                                     
+    		<property name="senderName">
+    			<value>${createServiceRequest.senderName}</value>
+    		</property>                                                                                 
+    		<property name="receiverId" >
+    			<value>${createServiceRequest.receiverId}</value>
+    		</property>
+    		<property name="userName">
+				<value>${createServiceRequest.userName}</value>
+			</property>
+			<property name="password">
+				<value>${createServiceRequest.password}</value>
+			</property>
+	</bean>
+	<bean id="entitlementRoleMappingService" class="com.lexmark.service.impl.real.jdbc.EntitlementRoleMappingServiceImpl" />
+    <bean id="fileUploadFormValidator"
+		class="com.lexmark.services.form.validator.FileUploadFormValidator">
+		<property name="maxFileCount">
+			<value>${attachment.maxcount}</value>
+		</property>
+		<property name="maxFileSize">
+			<value>${attachment.maxsize.oneMb}</value>
+		</property>
+		<property name="acceptMaxSize">
+			<value>${attachment.maxsize.twoMb}</value>
+		</property>
+		<property name="acceptMaxCount">
+			<value>${attachment.acceptmaxcount}</value>
+		</property>
+		<property name="fileTypeList">
+			<value>${attachment.fileType.list}</value>
+		</property>
+		<property name="tempMaxCount">
+			<value>${chl.template.maxcount}</value>
+		</property>
+		<property name="fileTypeListMaps">
+			<value>${attachment.fileType.mapList}</value>
+		</property>
+	</bean>
+
+
+	<util:map id="serviceRequestsTypeMap" key-type="java.lang.String" value-type="java.lang.String">
+		<entry key="ASSET" value="CREATE CHANGE MGMT REQUEST" />
+		<entry key="ASSET_ACCEPTANCE" value="CREATE CHANGE MGMT REQUEST" />
+		<entry key="MAPS_REQUEST" value="CREATE CHANGE MGMT REQUEST" />
+		<entry key="ADDRESS" value="CREATE CHANGE MGMT REQUEST" />
+		<entry key="CONTACT" value="CREATE CHANGE MGMT REQUEST" />
+		<entry key="CUSTOMER_HIERARCHY" value="CREATE CHANGE MGMT REQUEST" />
+		<entry key="OTHERS" value="CREATE CHANGE MGMT REQUEST" />
+		<entry key="REQUEST_SERVICE" value="CREATE CHANGE MGMT REQUEST" />
+	</util:map>
+	
+	
+		<util:map id="templateNameMap" key-type="java.lang.String" value-type="java.lang.String">
+		<entry key="Add_Assets" value="RFC_Template_Add.xls" />
+		<entry key="Change_Assets" value="RFC_Template_Move_or_Change.xls" />
+		<entry key="Decommission_Assets" value="RFC_Template_Delete.xls" />
+		<entry key="Swap_Assets" value="RFC_Template_Move_or_Change.xls" />
+		<entry key="Add_Contacts" value="RFC_Template_Add.xls" />
+		<entry key="Change_Contacts" value="RFC_Template_Move_or_Change.xls" />
+		<entry key="Remove_Contacts" value="RFC_Template_Delete.xls" />
+		<entry key="Add_Addresses" value="RFC_Template_Add.xls" />
+		<entry key="Change_Addresses" value="RFC_Template_Move_or_Change.xls" />
+		<entry key="Remove_Addresses" value="RFC_Template_Delete.xls" />
+	</util:map>
+		
+	 <bean id="createLgsServiceRequest" class="com.lexmark.services.webService.CreateLgsRequestImpl">                                          
+    		<property name="address">
+    			<value>${createServiceRequest.address}</value>
+    		</property>
+    		<property name="senderId" >
+    			<value>${createServiceRequest.senderId}</value>
+    		</property>                                                                                     
+    		<property name="senderName">
+    			<value>${createServiceRequest.senderName}</value>
+    		</property>                                                                                 
+    		<property name="receiverId" >
+    			<value>${createServiceRequest.receiverId}</value>
+    		</property>   
+    		<property name="userName">
+				<value>${createServiceRequest.userName}</value>
+			</property>
+			<property name="password">
+				<value>${createServiceRequest.password}</value>
+			</property>                                                                                      
+    	</bean> 
+    
+    <bean id="manageCHLOthersService" class="com.lexmark.services.webService.cm.ManageCHLOthersServiceImpl">
+			<property name="address">
+    			<value>${createServiceRequest.address}</value>
+    		</property>
+    		<property name="senderId" >
+    			<value>${createServiceRequest.senderId}</value>
+    		</property>                                                                                     
+    		<property name="senderName">
+    			<value>${createServiceRequest.senderName}</value>
+    		</property>                                                                                 
+    		<property name="receiverId" >
+    			<value>${createServiceRequest.receiverId}</value>
+    		</property>
+    		<property name="userName">
+				<value>${createServiceRequest.userName}</value>
+			</property>
+			<property name="password">
+				<value>${createServiceRequest.password}</value>
+			</property>
+	</bean>
+	
+	 <bean id="returnOrderService" class="com.lexmark.services.webService.ReturnOrderServiceImpl">
+			<property name="address">
+    			<value>${createServiceRequest.address}</value>
+    		</property>
+    		<property name="senderId" >
+    			<value>${createServiceRequest.senderId}</value>
+    		</property>                                                                                     
+    		<property name="senderName">
+    			<value>${createServiceRequest.senderName}</value>
+    		</property>                                                                                 
+    		<property name="receiverId" >
+    			<value>${createServiceRequest.receiverId}</value>
+    		</property>
+    		<property name="userName">
+				<value>${createServiceRequest.userName}</value>
+			</property>
+			<property name="password">
+				<value>${createServiceRequest.password}</value>
+			</property>
+	</bean>
+	
+	 <bean id="cmTemplateFormValidator" class="com.lexmark.services.form.validator.CMTemplateFormValidator">
+	 		<property name="fileCount"><value>${templatebasedSR.upload.fileCount}</value></property>
+    		<property name="fileSize"><value>${templatebasedSR.upload.fileSize}</value></property>                                                                                     
+    		<property name="customerReferenceIdRegEx"><value>${templatebasedSR.customerReferenceIdRegEx}</value></property>                                                                                 
+    		<property name="costCenterRegEx"><value>${templatebasedSR.costCenterRegEx}</value></property>
+    		<property name="addtionalDescMaxLength"><value>${templatebasedSR.addtionalDescMaxLength}</value></property>
+	 </bean>
+
+	<!-- quartz scheduler -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+			<list>
+				<ref bean="uploadArchiveAttachmentsJob"/>
+			</list>
+		</property>
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger"/>
+			</list>
+		</property>
+	</bean>
+	
+	<bean name="uploadArchiveAttachmentsJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass"
+			value="com.lexmark.service.impl.real.quartzjobs.UploadArchiveAttachmentsJob" />
+		<property name="JobDataAsMap">
+			<map>
+				<entry key="attachmentService" value-ref="attachmentService"></entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="uploadArchiveAttachmentsJob"/>
+		<property name="cronExpression" value="0 0 22 * * ?"/>
+	</bean>
+	
+    <bean id="addressCleanseService" class="com.lexmark.service.impl.real.AddressCleansing.AddressCleansingServiceImpl">
+		<property name="address">
+			<value>${addressCleanseService.address}</value>
+		</property>
+		<property name="senderId">
+			<value>${createServiceRequest.senderId}</value>
+		</property>
+		<property name="senderName">
+			<value>${createServiceRequest.senderName}</value>
+		</property>
+		<property name="receiverId">
+			<value>${createServiceRequest.receiverId}</value>
+		</property>
+		<property name="userName">
+				<value>${createServiceRequest.userName}</value>
+		</property>
+		<property name="password">
+			<value>${createServiceRequest.password}</value>
+		</property>
+	</bean>
+	
+<!-- 	<bean id="retrieveTaxService" class="com.lexmark.services.mock.RetrieveTaxServiceImplMock"> -->
+<!-- 	</bean> -->
+	
+	<bean id="retrieveTaxService" class="com.lexmark.services.webService.om.RetrieveTaxServiceImpl">
+		<property name="address">
+			<value>${taxService.address}</value>
+		</property>
+		<property name="senderId">
+			<value>${taxService.senderId}</value>
+		</property>
+		<property name="senderName">
+			<value>${taxService.senderName}</value>
+		</property>
+		<property name="receiverId">
+			<value>${taxService.receiverId}</value>
+		</property>
+		<property name="userName">
+			<value>${taxService.userName}</value>
+		</property>
+		<property name="password">
+			<value>${taxService.password}</value>
+		</property>
+		<property name="accountType">
+            <value>${taxService.accountType}</value>
+        </property>
+	</bean>
+	
+	<bean id="retrievePriceService" class="com.lexmark.services.webService.om.RetrievePriceServiceImpl">
+			<property name="endpointURL">
+    			<value>${priceService.address}</value>
+    		</property>
+    		<property name="userName">
+				<value>${priceService.userName}</value>
+			</property>
+			<property name="password">
+				<value>${priceService.password}</value>
+			</property>
+	</bean>
+	
+	<bean id="retrieveTonerPriceService" class="com.lexmark.services.webService.om.RetrieveTonerPriceServiceImpl">
+			<property name="address">
+    			<value>${tonerPriceService.address}</value>
+    		</property>
+    		<property name="userName">
+				<value>${tonerPriceService.userName}</value>
+			</property>
+			<property name="password">
+				<value>${tonerPriceService.password}</value>
+			</property>
+	</bean>
+	<bean id="assetAcceptanceService" class="com.lexmark.services.webService.cm.AssetAcceptanceServiceImpl">
+			<property name="address">
+    			<value>${createServiceRequest.address}</value>
+    		</property>
+    		<property name="senderId" >
+    			<value>${createServiceRequest.senderId}</value>
+    		</property>                                                                                     
+    		<property name="senderName">
+    			<value>${createServiceRequest.senderName}</value>
+    		</property>                                                                                 
+    		<property name="receiverId" >
+    			<value>${createServiceRequest.receiverId}</value>
+    		</property>
+    		<property name="userName">
+				<value>${createServiceRequest.userName}</value>
+			</property>
+			<property name="password">
+				<value>${createServiceRequest.password}</value>
+			</property>
+	</bean>
+	
+	<bean id="mapsRequestService" class="com.lexmark.services.webService.cm.MapsRequestServiceImpl">
+			<property name="address">
+    			<value>${createServiceRequest.address}</value>
+    		</property>
+    		<property name="senderId" >
+    			<value>${createServiceRequest.senderId}</value>
+    		</property>                                                                                     
+    		<property name="senderName">
+    			<value>${createServiceRequest.senderName}</value>
+    		</property>                                                                                 
+    		<property name="receiverId" >
+    			<value>${createServiceRequest.receiverId}</value>
+    		</property>
+    		<property name="userName">
+				<value>${createServiceRequest.userName}</value>
+			</property>
+			<property name="password">
+				<value>${createServiceRequest.password}</value>
+			</property>
+	</bean>
+
+<util:map id="allStateMap" map-class="java.util.LinkedHashMap" key-type="java.lang.String" value-type="com.lexmark.contract.GeographyStateContract" />
+<util:list id="allCountryList" value-type="com.lexmark.result.GeographyListResult" />    	
+
+<!--added for customerARInvoice-Parth start -->
+	<bean id="customerPaymentsService" class="com.lexmark.service.impl.real.customerPaymentService.AmindCustomerPaymentService" >
+		<property name="statelessSessionFactory"><ref bean="statelessSessionFactory"/></property> 
+	</bean>
+	
+	<bean id="invoiceService" class="com.lexmark.services.webService.CustomerInvoiceServiceImpl">
+		<property name="endpointInvoice">
+			<value>${APPaymentService.endpointInvoice}</value>
+		</property>
+		<property name="userName">
+			<value>${APPaymentService.userName}</value>
+		</property>
+		<property name="password">
+			<value>${APPaymentService.password}</value>
+		</property>
+	</bean>
+	<!--added for customerARInvoice-Parth end -->
+	<bean id="applicationContextProvider" class="com.lexmark.services.listner.ApplicationContextProvider"></bean>
+	<bean id="lBSCHLMappingService" class="com.lexmark.service.impl.real.AmindCHLMappingService"></bean>
+</beans>

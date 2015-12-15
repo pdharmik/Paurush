@@ -1,0 +1,32 @@
+/* IE8 Specific Stylesheet                   */
+/*                                           */
+/* Buttons and input fields receive CSS3 PIE */
+/* styling to achieve rounded corners        */
+
+.button, .all_button, .star_button, .button_cancel, #loginCancelBtn, input[type="text"], input[type="password"], input[type="button"], input[type="submit"] {
+	position: relative;
+	/*behavior: url(/lexmark-services-portal-theme/css/PIE.htc);*/
+}
+
+.simpleDeviceFinderTableRow td{
+	position: relative;
+}
+
+.simpleDeviceFinderTableRow #txtSearchValue{
+	position: absolute; 
+	top: -3px; 
+	left: 185px;
+	width: 140px;
+}
+
+.simpleDeviceFinderTableRow #btnSearch{
+	position: absolute; 
+	/*top: -3px;*/ 
+	left: 356px;
+}
+
+/*----- Defect Fix #2847 -----*/
+#uploadFileInput .manualReport {
+	left: 655px !important;
+	top: 340px !important;
+}

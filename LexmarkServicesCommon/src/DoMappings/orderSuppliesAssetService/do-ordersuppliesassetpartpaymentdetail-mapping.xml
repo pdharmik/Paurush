@@ -1,0 +1,49 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="OrderSuppliesAssetPartPaymentDetailDo" class="com.amind.data.service.DomainObjMapping">
+
+    <!-- data source info -->
+       <property name="dataSourceName">
+            <value>EAI Siebel Adapter</value>
+        </property>
+        
+       <property name="dsTargetObjectName">
+            <value>LXK MPS Consumable Asset Detail - Service Web</value>
+       </property>
+
+        <property name="dsTargetComponentName">
+            <value>LXK MPS SAP Catalog</value>
+        </property>
+        <property name="packageName">
+            <value>com.lexmark.service.impl.real.domain</value>
+        </property>
+
+           <!-- field mapping -->
+           <property name="doFieldNameToDsFieldNameMap">
+             <map>
+ 				<entry>
+	         		<key><value>salesOrg</value></key>
+	         		<value>LXK MPS SAP Sales Org</value>
+				</entry>
+				<entry>
+	         		<key><value>soldToNumber</value></key>
+	         		<value>LXK MPS SAP Sold To #</value>
+				</entry>	
+               <entry>
+                    <key><value>paymentType</value></key>
+                    <value>LXK MPS Billing Model</value>
+               </entry>
+                <entry>
+                    <key><value>contractNumber</value></key>
+                    <value>LXK MPS SAP Contract #</value>
+               </entry>
+                <entry>
+                    <key><value>contractLineItem</value></key>
+                    <value>LXK MPS SAP Line #</value>
+               </entry>
+              </map>
+        </property>
+    </bean>
+</beans>

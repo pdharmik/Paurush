@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartTypeDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS Supplies Catalog - Consumable Part Type_POC</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Supplies Catalog - Consumable Part Type_POC</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>agreementId</value></key>
+	         		<value>LXK MPS Agreement Id</value>
+				</entry>
+				<entry>
+	         		<key><value>productType</value></key>
+	         		<value>LXK MPS Product Type</value>
+				</entry>
+				<entry>
+	         		<key><value>productModel</value></key>
+	         		<value>LXK MPS Catalog Product Model</value>
+				</entry>
+				<entry>
+	         		<key><value>partType</value></key>
+	         		<value>LXK MPS Catalog Consumable Type Explicit</value>
+				</entry>
+				<entry>
+	         		<key><value>catalogPartType</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.SuppliesCatalogConsumablePartTypeDo</value>
+				</entry>
+	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

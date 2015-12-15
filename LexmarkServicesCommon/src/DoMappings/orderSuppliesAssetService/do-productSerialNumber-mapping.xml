@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="ProductSerialNumberDetailDo" class="com.amind.data.service.DomainObjMapping">
+  
+		<!-- data source info -->
+      
+        <property name="dataSourceName">
+    		<value>Siebel BO</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>Asset Management - Complex</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>Asset Mgmt - Asset - Header</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+			
+				<entry>
+	         		<key><value>serialNumber</value></key>
+	         		<value>Serial Number</value>
+				</entry>			
+				
+				  <entry>
+                    <key><value>productNo</value></key>
+                    <value>Product Name</value>
+                </entry>
+					
+			</map>
+		</property>
+    </bean>  
+</beans>

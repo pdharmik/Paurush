@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="RequestTypeFavoriteAssetDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK MPS Bookmark Asset Service Request</value>
+       </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Bookmark Asset Service Request</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	   
+	     		<entry>
+	         		<key><value>agreementId</value></key>
+	         		<value>LXK MPS Agreement Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel</value></key>
+	         		<value>LXK MPS Account Level</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>LXK MPS Global Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>LXK MPS Domestic Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXK MPS Legal Entity ID #</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXK MPS MDM Account #</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementMdmLevel1AccountId</value></key>
+	         		<value>LXK MPS Agreement Account Global DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementMdmLevel2AccountId</value></key>
+	         		<value>LXK MPS Agreement Account Domestic DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementMdmLevel3AccountId</value></key>
+	         		<value>LXK MPS Agreement Account Legal Id</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementMdmLevel4AccountId</value></key>
+	         		<value>LXK MPS Agreement Account MDM#</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementMdmLevel5AccountId</value></key>
+	         		<value>LXK MPS Agreement Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>chlNodeId</value></key>
+	         		<value>LXK MPS CHL Id</value>
+				</entry>
+				<entry>
+	         		<key><value>chlNodeName</value></key>
+	         		<value>LXK MPS CHL Name</value>
+				</entry>
+				<entry>
+	         		<key><value>assetId</value></key>
+	         		<value>Asset Id</value>
+				</entry>
+	     	
+	     		<entry>
+	         		<key><value>requestNumber</value></key>
+	         		<value>SR Number</value>
+				</entry>
+				<entry>
+	         		<key><value>vendorAccountId</value></key>
+	         		<value>LXK MPS Vendor Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestType</value></key>
+	         		<value>LXK MPS SR Type</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestDate</value></key>
+	         		<value>LXK MPS Created Date</value>
+				</entry>
+				<entry>
+	         		<key><value>statusType</value></key>
+	         		<!-- could be not correct -->
+	         		<value>LXK MPS SR Status</value>
+				</entry>
+				<entry>
+	         		<key><value>serialNumber</value></key>
+	         		<value>Serial Number</value>
+				</entry>
+				<entry>
+	         		<key><value>productModel</value></key>
+	         		<value>Model</value>
+				</entry>
+				<entry>
+	         		<key><value>problemDescription</value></key>
+	         		<value>LXK MPS Abstract</value>
+				</entry>
+				<entry>
+	         		<key><value>expediteOrder</value></key>
+	         		<value>LXK MPS Expedite Order</value>
+				</entry>
+				<entry>
+	         		<key><value>area</value></key>
+	         		<value>LXK MPS SR Area</value>
+				</entry>
+				<entry>
+	         		<key><value>subArea</value></key>
+	         		<value>LXK MPS SR Sub Area</value>
+				</entry>
+				<entry>
+	         		<key><value>helpDeskReferenceNumber</value></key>
+	         		<value>LXK MPS Customer Ref Number</value>
+				</entry>
+				<entry>
+	         		<key><value>eta</value></key>
+	         		<value>Effective Date</value>
+				</entry>
+				<entry>
+					<key><value>poNumber</value></key>
+					<value>LXK MPS Customer PO Number</value>
+				</entry>
+				<entry>
+					<key><value>contractType</value></key>
+					<value>LXK MPS Agreement Type</value>
+				</entry>
+				
+				<!-- AccountContact PrimaryContact -->
+				<entry>
+	         		<key><value>primaryContactFirstName</value></key>
+	         		<value>LXK MPS Primary Contact First Name</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactLastName</value></key>
+	         		<value>LXK MPS Primary Contact Last Name</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactEmailAddress</value></key>
+	         		<value>LXK MPS Primary Contact Email Address</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactWorkPhone</value></key>
+	         		<value>LXK MPS Primary Contact Work Phone</value>
+				</entry>
+				
+				<!-- AccountContact Requestor -->
+				<entry>
+	         		<key><value>requestorContactFirstName</value></key>
+	         		<value>LXK MPS Requester Contact First Name</value>
+				</entry>
+				<entry>
+	         		<key><value>requestorContactLastName</value></key>
+	         		<value>LXK MPS Requester Contact Last Name</value>
+				</entry>
+				<entry>
+	         		<key><value>requestorContactEmailAddress</value></key>
+	         		<value>LXK MPS Requester Contact Email Address</value>
+				</entry>
+				<entry>
+	         		<key><value>requestorContactWorkPhone</value></key>
+	         		<value>LXK MPS Requester Contact Work Phone</value>
+				</entry>
+				
+				<!-- GenericAddress serviceAddress -->
+				<entry>
+	         		<key><value>serviceAddressLine1</value></key>
+	         		<value>Service Address 1</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceAddressLine2</value></key>
+	         		<value>Service Address 2</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceAddressLine3</value></key>
+	         		<value>Service Address 3</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceCity</value></key>
+	         		<value>Service City</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceState</value></key>
+	         		<value>LXK MPS Service State</value>
+				</entry>
+				<entry>
+	         		<key><value>servicePostalCode</value></key>
+	         		<value>Service Postal Code</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceProvince</value></key>
+	         		<value>Service Province</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceCountry</value></key>
+	         		<value>Service Country</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceAddressName</value></key>
+	         		<value>LXK MPS Service Address Name</value>
+				</entry>
+				<entry>
+	         		<key><value>costCenter</value></key>
+	         		<value>LXK MPS Cost center</value>
+				</entry>
+				<entry>
+	         		<key><value>accountName</value></key>
+	         		<value>Account Name</value>
+				</entry>
+				<entry>
+	         		<key><value>hostName</value></key>
+	         		<value>LXK MPS Host Name</value>
+				</entry>
+				<entry>
+	         		<key><value>deviceTag</value></key>
+	         		<value>LXK Device Tag Customer</value>
+				</entry>
+				<entry>
+	         		<key><value>assetParts</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.RequestTypeAssetPartDo</value>
+				</entry>
+				
+				<entry>
+					<key><value>county</value></key>
+					<value></value>
+				</entry>
+				<entry>
+					<key><value>district</value></key>
+					<value></value>
+				</entry>
+				<entry>
+					<key><value>officeNumber</value></key>
+					<value></value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

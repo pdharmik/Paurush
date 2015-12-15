@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+  Collection of all mapping definitions for aMmindSolutions domain objects.
+  -->
+
+<beans>
+<!-- ***************************Start phase 1 ************************ -->
+  <import resource="contactService/do-accountcontactdo-mapping.xml"/>
+  <import resource="deviceService/do-assetFavorites-mapping.xml"/>
+  <import resource="deviceService/do-consumableassetbase-mapping.xml"/>
+
+
+  <import resource="addressService/do-favoriteaddressdo-mapping.xml"/>
+  <import resource="addressService/do-userfavoriteaddressdo-mapping.xml"/>
+  <import resource="contactService/do-accountfavouritecontactdo-mapping.xml"/>
+  <import resource="contactService/do-userfavoritecontactdo-mapping.xml"/>
+  <import resource="deviceService/do-userfavoriteasset-mapping.xml"/>
+
+  <import resource="requestService/do-servicerequestactivity-mapping.xml"/>
+  <import resource="requestService/do-servicerequestorderlineItems-mapping.xml"/>
+  <import resource="requestService/do-servicerequestdetailcontactdo-mapping.xml"/>
+  <import resource="requestService/do-madcrequestdo-mapping.xml"/>
+
+	  
+  <import resource="requestService/do-supplyrequestdetailpayment-mapping.xml" />
+	
+
+  <import resource="requestService/do-supplyrequestdetail-mapping.xml"/>
+  <import resource="requestService/do-supplyrequestrecommendedpartsdo-mapping.xml"/>
+  <import resource="requestService/do-supplyeequestorderedpartsdo-mapping.xml"/>
+  <import resource="requestService/do-supplyrequestdetailpagecount-mapping.xml"/>
+  <import resource="requestService/do-supplyrequestdetailattachment-mapping.xml"/>
+  <import resource="requestService/do-supplyrequestdetailactivity-mapping.xml"/>
+  <import resource="requestService/do-supplyrequestdetailpendingshipment-mapping.xml"/>
+  <import resource="requestService/do-supplyrequestdetailorderlineshipmentitem-mapping.xml"/>
+  <import resource="requestService/do-supplyrequestdetailorderlineshipmentitemorderentry-mapping.xml"/>
+  <import resource="requestService/do-servicerequestactivitiesattachmentdo-mapping.xml"/>
+
+  <import resource="requestService/do-supplyrequestdetailshipment-mapping.xml"/>
+  <import resource="requestService/do-supplyrequestdetailshipmentitem-mapping.xml"/>
+  <import resource="requestService/do-supplyrequestdetailshipmentitemorderentry-mapping.xml"/>
+  <import resource="requestService/do-supplyrequestdetailcustomerorderitem-mapping.xml"/>
+  <import resource="requestService/do-supplyrequestdetailcustomerorderitembundlepart-mapping.xml"/>
+  
+  <import resource="requestService/do-activitypartlistdo-mapping.xml"/>
+  <import resource="requestService/do-requesttypeactivitiesdo-mapping.xml"/>  
+  <import resource="requestService/do-acceptrequestdo-mapping.xml"/>
+  <import resource="requestService/do-supplyaccountcontactdetail-mapping.xml"/>
+  <import resource="requestService/do-supplyrequestlbslineitemsdo-mapping.xml"/>
+  
+
+<!-- ServiceRequestHistory -->
+ <import resource="requestService/do-servicerequestHistory-mapping.xml"/>
+
+<!-- CONTRACTED  -->
+  <import resource="requestService/do-contractedservicerequest-mapping.xml"/>
+
+
+<!-- CONTRACTED AND ENTITLED -->
+  <import resource="deviceService/do-contractedassetlocation-mapping.xml"/>
+  <import resource="deviceService/do-vendorassetlocationdo-mapping.xml" />
+
+  <!-- AmindDeviceService : retrieveDeviceList -->
+
+   <import resource="deviceService/do-contractedasset-mapping.xml"/>
+
+    <!--  AmindServiceRequestService:retrieveSiebelAccountList -->
+  <import resource="globalService/do-accountdo-mapping.xml"/>
+  <import resource="globalService/do-accountbyvendorid-mapping.xml"/>
+  <import resource="deviceService/do-accountassetreadingdo-mapping.xml"/>
+  <import resource="globalService/do-accountserviceagreement-mapping.xml"/>  
+  <import resource="globalService/do-accountEntitlement-mapping.xml"/>  
+    
+
+  <!-- AmindDeviceService::retrieveDeviceDetail -->
+  <import resource="deviceService/do-accountassetdetaildo-mapping.xml"/>
+  <import resource="deviceService/do-serviceagreementproductdo-mapping.xml"/>
+  <import resource="deviceService/do-entitlementtemplateservicedetailsdo-mapping.xml"/>
+  <import resource="deviceService/do-assetmeasurementcharacteristicsbcdo-mapping.xml"/>
+
+   <!-- retrieveMeterReadAssetList -->
+  <import resource="deviceService/do-assetreadinglatestbcdo-mapping.xml"/>
+
+<!-- CONTRACTED  -->
+  <import resource="meterreadService/do-contractedmeterreadassetdo-mapping.xml"/>
+  <import resource="meterreadService/do-contractedassetreadinglatestdo-mapping.xml"/>
+  <import resource="deviceService/do-contractedassetmeasurementcharacteristicsdo-mapping.xml"/>
+
+  <import resource="meterreadService/do-meterreadfavoriteassetdo-mapping.xml"/>
+  <import resource="meterreadService/do-assetmeasurementcharfavoritesdo-mapping.xml"/>
+  <import resource="meterreadService/do-assetreadinglatestfavoritedo-mapping.xml"/>
+  <import resource="meterreadService/do-internalproductdo-mapping.xml"/>
+  <import resource="meterreadService/do-meterreadassetlocation-mapping.xml" />
+
+
+  <import resource="chlService/do-chldo-mapping.xml"/>
+  <import resource="chlService/do-chliodo-mapping.xml"/>
+  <import resource="deviceService/do-assetbase-mapping.xml"/>
+  <import resource="addressService/do-addressdo-mapping.xml"/>
+  <import resource="chlService/do-chlaccountdo.xml"/>
+  <import resource="chlService/do-chlaccountchldo.xml"/>
+  <!-- ***************************End phase 1 ************************ -->
+  
+  
+  <!-- ***************************Start LBS 1 ************************ --> 
+  <import resource="addressService/do-lbslocationdo-mapping.xml"/>
+  <import resource="addressService/do-lbsfloorplanassetdo-mapping.xml"/>  
+  <import resource="addressService/do-lbschlmappingdo-mapping.xml"/> 
+
+  <!-- ***************************End LBS 1 ************************ --> 
+	
+	
+  <!-- ***************************Start phase 2 ************************ -->
+  <import resource="partnerService/do-partneractivity-mapping.xml"/>
+  <import resource="partnerService/do-partneractivitylistpart-mapping.xml"/>
+  <import resource="partnerService/do-partneractivityaccounttype-mapping.xml"/>
+  <import resource="partnerService/do-partneraccount-mapping.xml"/>
+  <import resource="partnerService/do-partneraccountflag-mapping.xml"/>
+  <import resource="partnerService/do-partneraccounttype-mapping.xml"/>
+  <import resource="partnerService/do-partnerasset-mapping.xml"/>
+  <import resource="partnerService/do-partnerassetflag-mapping.xml"/>
+  <import resource="partnerService/do-partnercustomeraccount-mapping.xml"/>
+  <import resource="partnerService/do-partneropenclaim-mapping.xml"/>
+  <import resource="partnerService/do-partnerdirectaccount-mapping.xml"/>
+  <import resource="partnerService/do-partnerdirectaccountflag-mapping.xml"/>
+  <import resource="partnerService/do-partnerdirectaccounttype-mapping.xml"/>
+  <import resource="partnerService/do-partneractivityhistory-mapping.xml"/>
+  <import resource="partnerService/do-partneractivityhistorypart-mapping.xml"/>
+  <import resource="partnerService/do-partnerfrupart-mapping.xml"/>
+  <import resource="partnerService/do-partnerfrupartlocation-mapping.xml"/>
+  <import resource="partnerService/do-partnerfrupartdetail-mapping.xml"/>
+  <import resource="partnerService/do-partnerfrupartdetaillocation-mapping.xml"/>
+  <import resource="partnerService/do-partnertechnician-mapping.xml"/>
+  <import resource="partnerService/do-partneractivityemployeeaccount-mapping.xml"/>
+  <import resource="partnerService/do-partneractivityupdate-mapping.xml"/>
+  <import resource="partnerService/do-lov-mapping.xml"/>
+  <import resource="partnerService/do-partnernotification-mapping.xml"/>
+  <import resource="partnerService/do-partnerfrupartlist-mapping.xml"/>
+  <import resource="partnerService/do-PartnerActivityListMassUploadDebrief-mapping.xml"/>      <!-- added for 12032 -->
+  <import resource="partnerService/do-partneractivitygrid-mapping.xml"/>      <!-- added for partner portal performance/ Grid loading  -->
+  
+  
+  <!-- Activity Detail -->
+  <import resource="partnerService/do-partneractivitydetail-mapping.xml"/>
+  <import resource="partnerService/do-partneractivitydetailexpense-mapping.xml"/> 
+  <import resource="partnerService/do-partneractivitydetailflag-mapping.xml"/>
+  <import resource="partnerService/do-partneractivitydetailinstalleddevice-mapping.xml"/>
+  <import resource="partnerService/do-partneractivitydetailinstruction-mapping.xml"/>
+  <import resource="partnerService/do-partneractivitydetailnote-mapping.xml"/>
+  <import resource="partnerService/do-partneractivitydetailorderline-mapping.xml"/>
+  <import resource="partnerService/do-partneractivitydetailpart-mapping.xml"/>
+  <import resource="partnerService/do-partneractivitydetailpartoptions-mapping.xml"/>
+  <import resource="partnerService/do-partneractivitydetailrepaireddevice-mapping.xml"/>
+  <import resource="partnerService/do-partneractivityshipmentdata-mapping.xml"/>
+  <import resource="partnerService/do-partneractivityassetreading-mapping.xml"/>
+  <import resource="partnerService/do-partneractivitynoteinstruction-mapping.xml"/>
+  <import resource="partnerService/do-partneractivitycontactinfo-mapping.xml"/>
+  <import resource="partnerService/do-partneractivitycustomerprofile-mapping.xml"/>
+  
+  <!-- Activity Detail SR Attachemtns -->
+  <import resource="partnerService/do-servicerequestactivityattachmentsdo-mapping.xml"/>
+  
+
+  <!-- Claim Detail -->
+  <import resource="partnerService/do-partnerclaimdetail-mapping.xml"/>
+  <import resource="partnerService/do-partnerclaimdetailexpense-mapping.xml"/>
+  <import resource="partnerService/do-partnerclaimdetailflag-mapping.xml"/>
+  <import resource="partnerService/do-partnerclaimdetailnote-mapping.xml"/>
+  <import resource="partnerService/do-partnerclaimdetailorderline-mapping.xml"/>
+  <import resource="partnerService/do-partnerclaimdetailpart-mapping.xml"/>
+  <import resource="partnerService/do-partnerclaimdetailservicerequestattachment-mapping.xml"/>
+
+  <!-- Attachment -->
+  <import resource="partnerService/do-partnerclaimdetailattachment-mapping.xml"/>
+  <import resource="partnerService/do-partnerservicerequestdetailattachment-mapping.xml"/>
+  <import resource="partnerService/do-partnerclaimcreateid-mapping.xml"/>
+   <!-- Page Count For Claims -->
+  <import resource="partnerService/do-partnerclaimdetailpagecount-mapping.xml"/>
+
+  <!-- Payment -->
+  <import resource="partnerService/do-partnerpayment-mapping.xml"/>
+  <import resource="partnerService/do-partnerpaymentrequest-mapping.xml"/>
+  <import resource="partnerService/do-partnerclaimdetailnote-mapping.xml"/>
+  <import resource="partnerService/do-partnerclaimdetailorderline-mapping.xml"/>
+  <import resource="partnerService/do-partnerclaimdetailpart-mapping.xml"/>
+  <import resource="partnerService/do-partneragreement-mapping.xml"/>
+  <import resource="partnerService/do-partnerpaymentrequestexpense-mapping.xml"/>
+  <import resource="partnerService/do-accountpayable-mapping.xml"/>
+  <import resource="partnerService/do-accountpayabledetail-mapping.xml"/>
+  <import resource="partnerService/do-accountpayabledetailactivity-mapping.xml"/>
+  <import resource="partnerService/do-accountreceivable-mapping.xml"/>
+  <import resource="partnerService/do-meterreadstatus-mapping.xml"/>
+
+  <!-- Request -->
+  <import resource="requestService/do-requesttype-mapping.xml"/>
+  <import resource="requestService/do-requesttypepart-mapping.xml"/>
+  <import resource="requestService/do-requesttypeassetpart-mapping.xml"/>
+  <import resource="requestService/do-requesttypefavoriteasset-mapping.xml" />
+  <import resource="requestService/do-requestlocation-mapping.xml"/>
+
+  <!-- Attachment -->
+  <import resource="attachmentService/do-attachment-mapping.xml"/>
+  <import resource="attachmentService/do-massuploadtemplateorderlineitemdo-mapping.xml"/>
+  <import resource="attachmentService/do-massuploadtemplateshipmentdo-mapping.xml"/>
+  
+  <import resource="requestService/do-servicerequestattachment-mapping.xml"/>
+  <import resource="requestService/do-servicerequestdetailattachment-mapping.xml"/>
+  <import resource="requestService/do-supplyrequestdetailorderitem-mapping.xml" />
+  <import resource="requestService/do-requestattachment-mapping.xml"/>
+  
+  <import resource="requestService/do-requestattachmentdetailsdo-mapping.xml"/>
+
+  <!-- Consumable Assets -->
+  <import resource="orderSuppliesAssetService/do-ordersuppliesassetdo-mapping.xml" />
+  <import resource="orderSuppliesAssetService/do-ordersuppliesassetfavoritedo-mapping.xml" />
+  <import resource="orderSuppliesAssetService/do-ordersuppliesassetdetaildo-mapping.xml" />
+  <import resource="orderSuppliesAssetService/do-ordersuppliesassetpagecount-mapping.xml" />
+  <import resource="orderSuppliesAssetService/do-ordersuppliesassetpagecountreading-mapping.xml" />
+  <import resource="orderSuppliesAssetService/do-assetdetailcontactdo-mapping.xml" />
+
+  <import resource="orderSuppliesAssetService/do-contractedandentitledasset-mapping.xml" />
+  <import resource="orderSuppliesAssetService/do-contractedandentitleddevice-mapping.xml" />
+  
+  <import resource="orderSuppliesAssetService/do-soldtonumberdo-mapping.xml" />
+  <import resource="orderSuppliesAssetService/do-agreementsoldtonumberdo-mapping.xml" />
+ 
+  <import resource="orderSuppliesAssetService/do-productSerialNumber-mapping.xml" />
+ 
+  
+  <!-- Catalog Orders-->
+  <import resource="catalogService/do-catalogpartslist-mapping.xml" />
+  <import resource="catalogService/do-producttype-mapping.xml" />
+  <import resource="catalogService/do-productmodel-mapping.xml" />
+  <import resource="catalogService/do-parttype-mapping.xml" />
+  <import resource="catalogService/do-agreementaccount-mapping.xml" />  
+
+  <import resource="catalogService/do-hardwaresapcatalog-mapping.xml"/>
+  <import resource="catalogService/do-hardwarecatalogpaymenttype-mapping.xml"/>
+  <import resource="catalogService/do-suppliescatalogconsumableparttypedo-mapping.xml"/>
+  <import resource="catalogService/do-suppliescatalogproductmodeldo-mapping.xml"/>
+  <import resource="catalogService/do-suppliescatalogproducttypedo-mapping.xml"/>
+  <import resource="catalogService/do-suppliescatalogdo-mapping.xml"/>
+  
+  <import resource="catalogService/do-cataloglistdo-mapping.xml"/>
+  <import resource="catalogService/do-cataloglistwithcontractnumberdo-mapping.xml"/>
+  <import resource="catalogService/do-suppliessplittercatalogdo-mapping.xml"/>
+  <!-- **************** End Phase 2 ************  -->
+
+  <!-- **************** OrderManagement ************  -->
+  <import resource="partnerOrderService/do-acceptorder-mapping.xml" />
+  <import resource="partnerOrderService/do-acceptorderlineitem-mapping.xml" />
+  <import resource="partnerOrderService/do-partnerrequestorder-mapping.xml" />
+  <import resource="partnerOrderService/do-orderlineitem-mapping.xml" />
+
+  <import resource="orderSuppliesAssetService/do-ordersuppliesassetpartdetail-mapping.xml" />
+  <import resource="orderSuppliesAssetService/do-mpsmeterread-mapping.xml" />
+  <import resource="orderSuppliesAssetService/do-consumableassettype-mapping.xml" />
+  <import resource="orderSuppliesAssetService/do-consumabledevicetype-mapping.xml" />
+  <import resource="orderSuppliesAssetService/do-ordersuppliesassetagreemententitlement-mapping.xml" />
+  <import resource="orderSuppliesAssetService/do-ordersuppliesassetentitlementdetail-mapping.xml" />
+  <import resource="orderSuppliesAssetService/do-ordersuppliesassetorderpart-mapping.xml" />
+  <import resource="orderSuppliesAssetService/do-ordersuppliesassetpartpaymentdetail-mapping.xml" />
+  
+  	<!-- globalService misc -->
+  <import resource="globalService/do-dunsnumberdo-mapping.xml" />
+  <import resource="globalService/do-globalLegalEntity-mapping.xml" />
+  <import resource="do-globalcontactdo-mapping.xml"/>
+  <import resource="do-importEmployeeDo-mapping.xml"/>
+
+  <import resource="globalService/do-accountagreement-mapping.xml" />
+  <import resource="globalService/do-agreement-mapping.xml" />
+  <import resource="globalService/do-agreementFlagsdo-mapping.xml" />
+  
+  <import resource="globalService/do-catalogentitlement-mapping.xml" />
+  
+  <import resource="globalService/do-paymenttypedo-mapping.xml" />
+  <import resource="globalService/do-agreementFlagsdo-mapping.xml" />
+  
+  <import resource="globalService/do-sapaccountdo-mapping.xml" />
+  <import resource="globalService/do-sapaccountbusinessaddress-mapping.xml" />
+
+  <import resource="globalService/do-suppliessapcatalogdo-mapping.xml" />
+  <import resource="globalService/do-agreementrelatedaccountsdo-mapping.xml" />
+  
+  <import resource="customerService/do-accountcustomerreceivabledo-mapping.xml"/>
+  <import resource="customerService/do-customersapaccountbusinessaddressdo-mapping.xml"/>
+  <import resource="customerService/do-customersapaccountdo-mapping.xml"/>
+  <import resource="customerService/do-companycodedo-mapping.xml"/>
+  <import resource="customerService/do-accountagreementsoldtodo-mapping.xml"/>
+
+  <import resource="orderSuppliesAssetService/do-assetdetailspagecountsdo-mapping.xml"/>
+  <import resource="orderSuppliesAssetService/do-assetdetailspagecountsreadingsdo-mapping.xml"/>
+  <import resource="orderSuppliesAssetService/do-ordersuppliesassetdetailspagecountsdo-mapping.xml"/>
+  
+  <import resource="partnerService/do-offlinemoderequestattachment-mapping.xml"/>
+  <import resource="partnerService/do-offlinemodeservicerequestattachmentdo-mapping.xml"/>
+  <import resource="partnerService/do-partnerofflinemodeactivityaccounttypedo-mapping.xml"/>
+  <import resource="partnerService/do-partnerofflinemodeactivitydo-mapping.xml"/>
+  <import resource="partnerService/do-partnerofflinemodeactivitylistpartdo-mapping.xml"/>
+  <import resource="partnerService/do-partneractivitylistrecommpartdo-mapping.xml"/>
+  
+  <import resource="partnerService/do-partnerofflinemodeactivitylistpartdo-mapping.xml"/>
+  <import resource="partnerService/do-servicerequestpartnerofflinemodeactivitydo-mapping.xml"/>
+  <import resource="partnerService/do-servicerequestpartnerofflinemodeactivitylistpartdo-mapping.xml"/>
+  <import resource="partnerService/do-srpartnerofflinemodeactivityattachmenttypedo-mapping.xml"/>
+  <import resource="partnerService/do-servicerequestpartnerofflinemodeactivityaccounttypedo-mapping.xml"/>
+  
+  
+  <import resource="partnerService/do-partnerfruhardwarepartdetail-mapping.xml"/>
+  <import resource="partnerService/do-partnerfruhardwarepartdetaillocation-mapping.xml"/>
+  <import resource="partnerService/do-partnerfruhardwarepartlist-mapping.xml"/>
+  
+</beans>

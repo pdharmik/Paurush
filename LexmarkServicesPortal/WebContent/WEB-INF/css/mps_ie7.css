@@ -1,0 +1,114 @@
+.columnsTwo { width:49.95% }/*Changed on 28 Sep for browser shrink issue*/
+.columnsThree { width:33.30% }
+.splitter { width:49.9%; }
+ul.processSteps { display:inline!important; }
+.banner { background-position:12px 9px; }
+ul.form li label { margin-left:-44%; }
+.assetDetail .infoDsiplay ul.form li label { }
+.check input { margin-top:0; }
+.check label { padding-top:3px }
+.button, .button_cancel {overflow:visible;padding: .3em 1em .3em!important;}
+.buttonContainerIn .button_cancel, .buttonContainerIn .button {
+	padding-left: .4em!important;
+	padding-right: .4em!important;	
+}
+.dhx_header_cmenu ul li input { margin-top:0 }
+.displayGrid tr td { padding:5px; }
+.dhx_sub_row .displayGrid tr td { padding:5px; }
+.inlineTitle { height:20px }
+div.left-nav-inner ul.radio li input { margin-top:0 }
+.left-nav .buttonContainerIn { padding:5px }
+.gridbox .button { padding: .2em .7em; }
+.ui-dialog-content { height:auto!important }
+
+/* Added by offshore */
+div.error {padding-left: 0px;}
+
+.columnsOne ul.form li label {width: 200px;}
+
+/*
+.requestsUploader {
+	margin-left: -95px!important;
+	width: 80px!important;}*/
+.img_for_combo{margin-left: 222px; margin-top: -19px;}
+	
+ul.form li img {position:static;}
+input[type='text'], input[type="date"], textarea, select{position:static;}
+
+/* Added for popup button alignment issue */
+.oneblock{ overflow:visible}
+
+/* Added for address popup tooltip icon alignment issue */
+#content_addr .oneblock ul li label{margin-left:0;width:180px;clear:both;}
+#content_addr .oneblock ul li {padding-left:0;}
+
+/* Added for supplies request UI issue fix in IE7 */
+#suppliesShipment .columnsOne ul.form li label {
+	width: 78%;
+}
+#suppliesShipment .columnsOne h4 a.tracking{
+	margin-top: -25px; margin-right: 10px;
+}
+#productModelPanel .columnsOne ul.form {width:78.5%;}
+#productModelPanel .columnsOne ul.form li {padding-left:0;}
+#productModelPanel .columnsOne ul.form li label{margin-left:0;width:180px;clear:both;}
+.ui-dialog-container #pageCountPopupCont .button,.ui-dialog-container #pageCountPopupCont .button_cancel{position:relative;}
+
+/* For ok Button in saveAsDraft in OM */
+.popupBtnCont{clear:both;margin-top: 0;padding: 5px 0 0;}/* Change Done for CI BRD 13-10-14 */
+/* for find button in CatalogOrder */
+.inPortlet{
+	padding-left:0px;
+}
+div.wAutoContainer{
+width:auto!important;
+float:none;
+}
+.detailInfoList table .infoDsiplay ul.form li {width:100%;padding-left:0;}
+.detailInfoList table .infoDsiplay ul.form li label {width:40%;}
+.detailInfoList table .infoDsiplay ul.form li span{width:60%;}
+
+.gridPosition .xhdr {
+       position: static!important;
+}
+.gridPosition .objbox {
+       position: static!important;
+}
+
+#div_inprocessGridContainer_Popup .xhdr {
+	position: static!important;
+}
+#div_inprocessGridContainer_Popup .objbox {
+	position: static;
+}
+
+#contactGridbox {
+	width: 100% !important;
+}
+.ie7_fix_margin {
+	margin:0px 9px 0 0 !important
+	}
+.columnInnerTable table {
+	border-collapse:collapse;
+}
+
+/*Added on 28 Sep for browser shrink issue*/
+.gridbox {
+	width: 100% !important;
+}
+.w30p { width:29.80%!important; } /*One Third width*/
+.positionUp{position:relative;top:-23px;}/*Added on June11,2013*/
+.button_subrow2{margin-left:5px;padding: 0.25em 0.7em 0.32em!important;}
+/*Changes for defect 7960 MPS 2.1 */
+.relativeR{position:relative!important;}
+.autoWidth{width:auto!important;}
+.margin70{margin-left:70%!important;}
+/* Ends Changes for defect 7960 MPS 2.1 */
+.margin_asset_move_type{margin-left:-24% !important;} /*--Added for CI7 Defect 7853 --*/
+.radio_confirm {
+       padding-left: 8px!important;
+}
+/* changes for space issue in address , defect 8387*/
+.dBlock{margin-right:0px!important;display:inline;}
+/*Added on Nov 20,2013 for defect 10286*/
+.positionUp2{position:relative;top:-80px;}

@@ -1,0 +1,1130 @@
+<?xml version="1.0"?>
+
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" version="2.0">
+	<portlet>
+		<portlet-name>LexmarkServicesPortal</portlet-name>
+		<display-name>Lexmark Services Portal</display-name>
+		<portlet-class>com.liferay.util.bridges.mvc.MVCPortlet</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>/view.jsp</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<portlet-info>
+			<title>Lexmark Services Portal</title>
+			<short-title>Lexmark Services Portal</short-title>
+			<keywords>Lexmark Services Portal</keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+	<portlet>
+		<portlet-name>ServiceRequest</portlet-name>
+		<display-name>Service Request</display-name>
+		<display-name xml:lang="en">Service Request</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/serviceRequest.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.serviceRequest</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>DeviceFinder</portlet-name>
+		<display-name>Device Finder</display-name>
+		<display-name xml:lang="en">Device Finder</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/deviceFinder.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.deviceFinder</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>ServiceRequestPreview</portlet-name>
+		<display-name>Service Request Summary</display-name>
+		<display-name xml:lang="en">Service Request Summary</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/simpleServiceRequest.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.serviceRequestSummary</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>PageCounts</portlet-name>
+		<display-name>Page Counts</display-name>
+		<display-name xml:lang="en">Page Count</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/PageCounts.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.pageCounts</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>EmployeeAccountSelection</portlet-name>
+		<display-name>Employee Account Selection</display-name>
+		<display-name xml:lang="en">Employee Account Selection</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/employeeAccountSelection.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.employeeAccountSelector</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>NotificationAdmin</portlet-name>
+		<display-name>Notifications Administration</display-name>
+		<display-name xml:lang="en">Notifications Administration</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/notificationAdmin.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.notificationsAdministration</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>Notifications</portlet-name>
+		<display-name>Notifications</display-name>
+		<display-name xml:lang="en">Notifications</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/simpleShowNotification.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.notifications</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>SRLocaleAdministration</portlet-name>
+		<display-name>SR Locale Administration</display-name>
+		<display-name xml:lang="en">SR Locale Administration</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/srLocaleAdministration.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.srLocaleAdministration</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>Contacts</portlet-name>
+		<display-name>Contacts</display-name>
+		<display-name xml:lang="en">LexmarkContacts</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/contactInformation.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.lexmarkContacts</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>SimpleDeviceFinder</portlet-name>
+		<display-name>Device Finder Search</display-name>
+		<display-name xml:lang="en">Device Finder Search</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/simpleDeviceFinder.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.deviceFinderSimple</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>DocumentView</portlet-name>
+		<display-name>Document View</display-name>
+		<display-name xml:lang="en">Document View</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/documentView.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.documentView</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>DocumentAdmin</portlet-name>
+		<display-name>Document Library Administration</display-name>
+		<display-name xml:lang="en">Document Library Administration</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/documentAdmin.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.documentAdministration</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>DocumentUser</portlet-name>
+		<display-name>Document Library - User</display-name>
+		<display-name xml:lang="en">Document Library – User</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/documentUser.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.documentUser</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>CustomerReportsAdmin</portlet-name>
+		<display-name>Customer Reports Administration</display-name>
+		<display-name xml:lang="en">Customer Reports Administration</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/customerReportsAdmin.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.reportAdministration</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>CustomerReports</portlet-name>
+		<display-name>Customer Reports</display-name>
+		<display-name xml:lang="en">Customer Reports</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/customerReports.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.reportUser</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>EmailAdministration</portlet-name>
+		<display-name>Email Administration</display-name>
+		<display-name xml:lang="en">Email Administration</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/emailAdministration.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.emailAdministration</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>Banner</portlet-name>
+		<display-name>Banner</display-name>
+		<display-name xml:lang="en">Banner</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/banner.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.banner</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>ReportSchedulerMaintenance</portlet-name>
+		<display-name>Report Scheduler Maintenance</display-name>
+		<display-name xml:lang="en">Report Scheduler Maintenance</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/reportSchedulerMaintenance.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.reportScheduler</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>Chart</portlet-name>
+		<display-name>Chart</display-name>
+		<display-name xml:lang="en">Chart</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/chart.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.obieeChart</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>DownloadConsole</portlet-name>
+		<display-name>Download Console</display-name>
+		<display-name xml:lang="en">Download Console</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/downloadConsole.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.downloadConsole</resource-bundle>
+	</portlet>
+	<!-- LGS Portal Phase 3 portlets - start -->
+	<!-- Change Management -->
+	<portlet>
+		<portlet-name>ManageAssets</portlet-name>
+		<display-name>Manage Assets</display-name>
+		<display-name xml:lang="en">Manage Assets</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/manageAssets.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.manageAssets</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>ManageAddresses</portlet-name>
+		<display-name>Manage Addresses</display-name>
+		<display-name xml:lang="en">Manage Addresses</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/manageAddresses.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.manageAddresses</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>ManageContacts</portlet-name>
+		<display-name>Manage Contacts</display-name>
+		<display-name xml:lang="en">Manage Contacts</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/manageContacts.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.manageContacts</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>ManageCHLOthers</portlet-name>
+		<display-name>Manage CHL Others</display-name>
+		<display-name xml:lang="en">Manage CHL Others</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/manageCHLOthers.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.manageCHLOthers</resource-bundle>
+	</portlet>
+	<!-- Order Management -->
+	<portlet>
+		<portlet-name>OrderSuppliesCatalogOrder</portlet-name>
+		<display-name>OrderSupplies CatalogOrder</display-name>
+		<display-name xml:lang="en">OrderSupplies CatalogOrder</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/orderSuppliesCatalogOrder.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ <expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.orderSuppliesCatalogOrder</resource-bundle>
+	</portlet>
+	<!-- All Request History -->
+	<portlet>
+		<portlet-name>AllRequestsHistory</portlet-name>
+		<display-name>All Requests History</display-name>
+		<display-name xml:lang="en">All Requests History</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/allRequestsHistory.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.allRequestsHistory</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>OrderSuppliesAssetOrder</portlet-name>
+		<display-name>Order Supplies Asset Order</display-name>
+		<display-name xml:lang="en">Order Supplies Asset</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/orderSuppliesAssetOrder.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!-- <expiration-cache>-1</expiration-cache> -->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.orderSuppliesAssetOrder</resource-bundle>
+	</portlet>
+	<!-- Portlet declaration for Asset Acceptance Starts -->
+	<portlet>
+		<portlet-name>AssetAcceptance</portlet-name>
+		<display-name>Asset Acceptance</display-name>
+		<display-name xml:lang="en">Asset Acceptance</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/assetAcceptance.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.assetAcceptance</resource-bundle>
+	</portlet>
+	<!-- Portlet declaration for Manage Returns Starts -->
+	<portlet>
+		<portlet-name>ManageReturns</portlet-name>
+		<display-name>Manage Returns</display-name>
+		<display-name xml:lang="en">Manage Returns</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/manageReturns.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.manageReturns</resource-bundle>
+	</portlet>
+	<!-- LGS Portal Phase 3 portlets - end -->
+	<!-- CI-6 Changes Start -->
+	<portlet>
+		<portlet-name>CustomizeChart</portlet-name>
+		<display-name>Customize Chart</display-name>
+		<display-name xml:lang="en">Customize Chart</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/customizeChart.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.customizeChart</resource-bundle>
+	</portlet>
+	<!-- CI-6 Changes End -->
+	<!-- Biller Direct POC Start -->
+	<portlet>
+		<portlet-name>BillerDirect</portlet-name>
+		<display-name>Biller Direct</display-name>
+		<display-name xml:lang="en">Biller Direct</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/billerDirect.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+			<portlet-mode>edit</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.billerDirect</resource-bundle>
+	</portlet>
+	<!-- Biller Direct POC End -->
+	<!-- MPS Phase 2 Starts -->
+	<portlet>
+		<portlet-name>OrderHardware</portlet-name>
+		<display-name>Order Hardware</display-name>
+		<display-name xml:lang="en">Order Hardware</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/orderHardware.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ 			<expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.orderHardware</resource-bundle>
+	</portlet>
+	<portlet>
+		<portlet-name>CreditCard</portlet-name>
+		<display-name>Credit Card</display-name>
+		<display-name xml:lang="en">Credit Card</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/creditCard.xml</value>
+		</init-param>
+		<!-- for development environment, disable cache -->
+		<!--
+ 			<expiration-cache>-1</expiration-cache>
+		-->
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.creditCard</resource-bundle>
+	</portlet>
+	<!-- 	MPS Phase 2 Ends -->
+	<!-- added for customerARInvoice-Parth start -->
+	<portlet>
+		<portlet-name>CustomerInvoice</portlet-name>
+		<display-name>Customer Invoice</display-name>
+		<display-name xml:lang="en">Customer Invoice</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/customerInvoice.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.customerInvoice</resource-bundle>
+	</portlet>
+	<!-- added for LBS start -->
+	<portlet>
+		<portlet-name>MapView</portlet-name>
+		<display-name>Map View</display-name>
+		<display-name xml:lang="en">Map View</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/mapview.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.mapview</resource-bundle>
+	</portlet>
+	<!-- added for LBS end -->
+	<portlet>
+		<portlet-name>MapsRequest</portlet-name>
+		<display-name>Maps Request</display-name>
+		<display-name xml:lang="en">Maps Request</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/mapsRequest.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<supported-locale>de</supported-locale>
+		<supported-locale>es</supported-locale>
+		<supported-locale>fr</supported-locale>
+		<supported-locale>it</supported-locale>
+		<supported-locale>ja</supported-locale>
+		<supported-locale>ko</supported-locale>
+		<supported-locale>pt_BR</supported-locale>
+		<supported-locale>pt_PT</supported-locale>
+		<supported-locale>ru</supported-locale>
+		<supported-locale>zh_CN</supported-locale>
+		<supported-locale>zh_TW</supported-locale>
+		<supported-locale>tr_TR</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.mapsRequest</resource-bundle>
+	</portlet>
+	<!-- added for LBS end -->
+</portlet-app>

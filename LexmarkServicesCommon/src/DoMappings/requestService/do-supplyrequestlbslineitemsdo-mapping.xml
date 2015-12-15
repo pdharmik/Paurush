@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="SupplyRequestLbsLineItemsDo" class="com.amind.data.service.DomainObjMapping">
+  
+		<!-- data source info -->
+      
+        <property name="dataSourceName">
+    		<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS HW Service Request Detail - Service Web</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK LBS SR Order Line - Service Web</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>carrierCode</value></key>
+	         		<value>Carrier Code</value>
+				</entry>
+				<entry>
+	         		<key><value>expediateShippingFlg</value></key>
+	         		<value>LXK Expediate Shipping Flg</value>
+				</entry>
+				<entry>
+	         		<key><value>partDisposition</value></key>
+	         		<value>LXK R Part Disposition</value>
+				</entry>
+				<entry>
+	         		<key><value>shippedDate</value></key>
+	         		<value>LXK R Shipped Date</value>
+				</entry>
+				<entry>
+	         		<key><value>trackingNumber</value></key>
+	         		<value>LXK R Tracking Number</value>
+				</entry>
+				<entry>
+	         		<key><value>partNumber</value></key>
+	         		<value>Part Number</value>
+				</entry>
+				<entry>
+	         		<key><value>product</value></key>
+	         		<value>Product</value>
+				</entry>
+				<entry>
+	         		<key><value>quantityRequested</value></key>
+	         		<value>Quantity Requested</value>
+				</entry>
+				<entry>
+	         		<key><value>serialNumber</value></key>
+	         		<value>Serial Number</value>
+				</entry>
+				<entry>
+	         		<key><value>status</value></key>
+	         		<value>Status</value>
+				</entry>
+				<entry>
+	         		<key><value>parentPropductId</value></key>
+	         		<value>LXK MPS Parent Product Id</value>
+				</entry>
+				<entry>
+	         		<key><value>productId</value></key>
+	         		<value>Product Id</value>
+				</entry>
+				<entry>
+	         		<key><value>sourceInventoryLocation</value></key>
+	         		<value>Source Inventory Location</value>
+				</entry>
+				<entry>
+	         		<key><value>destinationInventoryLocation</value></key>
+	         		<value>Destination Inventory Location</value>
+				</entry>
+			</map>
+		</property>
+	</bean>	
+</beans>

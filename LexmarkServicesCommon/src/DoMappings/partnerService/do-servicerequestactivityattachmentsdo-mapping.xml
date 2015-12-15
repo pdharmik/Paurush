@@ -1,0 +1,72 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="ServiceRequestActivityAttachmentsDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Request Detail Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>Service Request Attachment</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	  	     		
+				<entry>
+	         		<key><value>activityFileExt</value></key>
+	         		<value>ActivityFileExt</value>
+				</entry> 
+				<entry>
+	         		<key><value>activityFileSrcPath</value></key>
+	         		<value>ActivityFileSrcPath</value>
+				</entry> 
+				<entry>
+	         		<key><value>visibility</value></key>
+	         		<value>LXK MPS Visibility</value>
+				</entry> 
+				<entry>
+	         		<key><value>activityFileName</value></key>
+	         		<value>ActivityFileName</value>
+				</entry> 
+				<entry>
+	         		<key><value>attachmentName</value></key>
+	         		<value>LXK MPS Portal Disp</value>
+				</entry>
+				<entry>
+	         		<key><value>activityComments</value></key>
+	         		<value>ActivityComments</value>
+				</entry>
+				<entry>
+	         		<key><value>activityFileDate</value></key>
+	         		<value>ActivityFileDate</value>
+				</entry> 
+				<entry>
+	         		<key><value>activityFileSize</value></key>
+	         		<value>ActivityFileSize</value>
+				</entry> 
+				<entry>
+	         		<key><value>activityId</value></key>
+	         		<value>Activity Id</value>
+				</entry> 
+				<entry>
+	         		<key><value>attachmentId</value></key>
+	         		<value>Attachment Id</value>
+				</entry>
+				<entry>
+	         		<key><value>type</value></key>
+	         		<value>Type</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

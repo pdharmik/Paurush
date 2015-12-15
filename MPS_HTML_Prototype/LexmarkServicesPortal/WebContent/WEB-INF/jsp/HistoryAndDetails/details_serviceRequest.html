@@ -1,0 +1,787 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Request Detail - Service Request</title>
+<link href="../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/custom.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../../js/util.js"></script>
+<script src="../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/tree/dhtmlxtree.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../../js/expand.js"></script>
+<script src="../../../js/mps.js"></script>
+<style type="text/css">
+#banner .logo {
+	background: url("../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/images/custom/logoLex.png") no-repeat scroll left top transparent;
+	display: block;
+	margin: 0;
+	padding: 0 !important;
+	width: 168px;
+	height: 56px;
+	position: absolute;
+	top: 13px;
+	left: 20px;
+	text-indent: -9999em;
+}
+</style>
+<style>
+div.portlet-header h3{margin:0}
+div.portlet-footer, div.portlet-footer-inner{background-image:none}
+div.portlet-header{margin:0 !important}
+
+.displayGrid tr th{
+
+    background: url("../../../images/gridImgs/lex/header-bg.png") repeat-x scroll left top transparent;
+    filter: none;
+	color: #000!important;
+
+
+}
+
+</style>
+<script type="text/javascript">
+////Toggle Containers
+	jQuery(function() {
+	    jQuery("h4.expand").toggler();
+	});
+</script>
+<script type="text/javascript">
+function qs(search_for) {
+		var query = window.location.search.substring(1);
+		var parms = query.split('&');
+		for (var i=0; i<parms.length; i++) {
+			var pos = parms[i].indexOf('=');
+			if (pos > 0  && search_for == parms[i].substring(0,pos)) {
+				return parms[i].substring(pos+1);;
+			}
+		}
+		return "";
+	}
+</script>
+</head>
+<body>
+<div id="wrapper">
+
+ <div id="banner">
+    <h1 class="logo"><a href="https://tportal.lexmark.com/web/guest" title="Lexmark Global Services">tportal.lexmark.com</a></h1>
+    <div id="top-header">
+      <div id="top-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><b><span>Welcome Jason Filarky!</span></b></li>
+          <li><a href="../Home/preferences.html">Preferences</a></li>
+          <li><a href="#">User Administration</a></li>
+          <li><a href="login.html">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="bottom-header">
+      <div id="bottom-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><a href="http://www.lexmark.com">Lexmark.com</a></li>
+          <li><a href="../Home/FAQ.html">FAQ</a></li>
+          <li><a href="../Home/getHelp.html">Get Help</a></li>
+          <li><a href="../Home/contact_Lexmark.html">Contact Lexmark</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+ <div class="sort-pages modify-pages" id="topnavigation">	
+  <ul>	
+	  <li>	<a href="../Home/home.html"><span>Home</span></a>	</li>
+	  <li class="">	<a href="../DeviceManagement/all_devices.html"><span>Device Finder</span></a>	</li>
+	  <li class="">	<a href="../pageCounts/defaltPageCount.html"><span>Page Counts</span></a>	</li>
+	  <li class="selected">	<a href="../HistoryAndDetails/history_allRequest.html"><span>Requests</span></a>	</li>
+	  <li class="">	<a target="_blank" href="https://services.lexmark.com/portal/site"><span>Order Supplies</span></a>	</li>
+	  <li class="">	<a href="../Reports/defaltReportView.html"><span>Reports</span></a>	</li>
+	  <li class="">	<a href="../DocumentLibrary/docLibrary_landingPage.html"><span>Document Library</span></a>	</li>
+  </ul>
+  </div>
+  <div id="subnavigation">
+    <ul>
+      <li class="selected"><a href="javascript:void(0);"><span>Request History</span></a></li>
+      <li><a href="../ChangeManagement/ManageOthers/create_new_request.html" class="lightbox" title="Create New Request"><span>Create New Request</span></a></li>
+    </ul>
+  </div>
+ 
+	  
+   <div class="main-wrap">
+      <div class="content"> 
+	  
+  <div style="float:left;width:98.3%;border-bottom: 1px dotted #AAAAAA;margin:5px 25px 5px 5px;background-color:white !important">
+     <div style="float:left;width:40%;background-color:white !important">
+    		<img src="../../../images/email.jpg" height="23px" width="23px" onClick="loadGridDataForEmail()"; style="cursor:pointer";/> 
+       		<img src="../../../images/print.jpg" height="23px" width="23px" onClick="loadGridDataForPrint()"; style="cursor:pointer" />
+    </div>
+	
+	<div style="float:right;width:40%;padding:0 0 8px 8px;text-align:right;background-color:white !important">
+   		<button class="button" type="button" onclick="backToHistory();">Back</button>
+ 
+		   				
+    				<a class="button" style="color:#fff" href='<portlet:renderURL windowState="XXX">
+			      		<portlet:param name="action" value="createNewRequestPopUp"></portlet:param>
+						</portlet:renderURL>' class='createNewRequestPopUp' title='Create New Request' onclick="return popupDialog();">
+						<span>Create New Request</span>
+					</a>
+    			
+ 	</div>
+	
+</div>
+ <div id="div_dillDownHead" class="sr-header">
+      <h2>Service Request Detail - 
+	  <script>
+		document.write(qs("request_id"));
+	  </script>
+	  </h2>
+	   </div>
+<!--<div style="float:left;width: 98.3%;background-color:white !important">-->
+
+<div id="content-wrapper">
+		
+		
+		
+		<div id="div_problemInfoPrint">
+		<div id="tab_problemInfo" class="portlet-wrap rounded">
+			<div class="portlet-header">
+				<h3>Problem Information</h3>
+			</div><!-- portlet-header -->
+			<div class="portlet-wrap-inner">
+				<div class="columns two">
+					<div id="problemDescription" class="first-column">
+						<dl>
+							<dt>Problem Description:</dt>
+							<dd>Arena iade .Fatura no:826578</dd>
+							<!-- added by nelson for CI5 -->
+							<br />
+							<dt>Resolution:</dt>
+							<dd>Scrapped</dd>
+							<!-- end of addition by nelson for CI5 -->
+						</dl>
+					</div><!-- first-column -->
+					<div id="typeOfServiceNeeded" class="second-column">
+						<dl>
+							<dt>Type of Service Needed:</dt>
+							<dd>Return to Base</dd>
+										
+					<br/>
+							<!-- partha added start -->
+							
+								<dt>Helpdesk Reference #</dt>
+								<dd></dd><br>
+							
+							<!-- partha added end -->
+						</dl>
+					</div><!-- second-column -->
+					
+					<!-- partha added start-->
+					<div id="eta" class="third-column">
+						<dl>
+							<dt>ETA</dt>							
+							
+								
+									<dd></dd>
+									
+						</dl>
+					</div>
+					<!-- partha added end-->
+					
+				</div>
+			
+			<div class="div-left">	
+			<table>
+				<tr>
+					<td style="display:block;">
+						<img id="img_tab_associatedTicketsGrid"  src="../../../images/expand.jpg" onClick="expandCollapesGrid('tab_associatedTicketsGrid');" style="cursor:pointer;" />
+					</td>
+					<td>
+						<a href="#" onClick="expandCollapesGrid('tab_associatedTicketsGrid');">Associated Service Tickets</a>
+					</td>
+				</tr>
+			</table>
+			</div>
+			<div id="div_problemInfoPrintTable">
+				<div id="tab_associatedTicketsGrid"  style="display:none;">
+        			<div id="div_SRAssociatedContainer" style="width:100%;"></div>
+        			<div id="div_associatedLoadingNotification" class='gridLoading'>
+        				<br>
+    				</div>
+        			<div id="div_associatedPagingArea"></div>
+    			</div>
+			</div>
+			</div><!-- portlet-wrap-inner -->	
+			<div class="portlet-footer">
+				<div class="portlet-footer-inner">
+				</div><!-- portlet-footer-inner -->
+			</div><!-- portlet-footer -->
+			</div>
+	</div>
+	
+	<div id="div_deviceInfoPrint">
+    <div id="tab_deviceInfo" class="portlet-wrap rounded">
+    	<div class="portlet-header">
+				<h3>Device Information</h3>
+		</div>
+		<div class="portlet-wrap-inner">
+			<div class="columns two">
+					<div class="first-column">
+						</div><!-- first-column -->
+					<div id="deviceSecondColumn" class="second-column">
+						<dl>
+							<dd><label>Product Model:</label>Lexmark X364dn</dd>
+							<dd><label>Serial Number:</label>350H6T6</dd>
+   						
+   							<dd><label>Asset Tag:</label>
+   								
+   									
+   									
+   								
+   							</dd>
+							<dd><label>IP Address:<label>
+							
+									
+   									
+   									
+   									
+   							
+   							</dd>
+   						
+						</dl>
+					</div><!-- second-column -->
+					<div id="devicethirdColumn" class="third-column">
+						<dl>
+							<dt>Service Address:<br /><br />
+								
+							</dt>
+							<dd><label>Piyalepasa Bulvari FAMAS Plaza B Blok, Kat: 4<label></dd>
+							<dd>Okmeydani</dd>
+							<dd>ISTANBUL	  IB	  34384
+							</dd>
+							<dd>Turkey</dd>
+						</dl>
+					</div><!-- third-column --> 
+				</div><!-- columns -->
+				<div>
+				<table>
+				<tr>
+					<td style="display:block;">
+						<img id="img_tab_historyGrid" src="../../../images/expand.jpg" onClick="expandCollapesGrid('tab_historyGrid');" style="cursor:pointer;" />
+					</td>
+					<td>
+						<a href="#div_deviceInfoPrintTable" onClick="expandCollapesGrid('tab_historyGrid');">Past service requests on this device</a>
+					</td>
+					</tr>
+				</table>
+				</div>
+			
+				<div id="div_deviceInfoPrintTable">
+				<div id="tab_historyGrid" style="display:none;">
+					<div>
+						<table width="100%">
+						<td align="right">
+							<div class="expand-min">
+				      			<ul>
+				      				<li class="first">
+				   						<img src="../../../images/wrench.png"  style="cursor:pointer"; />
+				   						<a  href="###" id='headerMenuButton'>Customize Columns</a>
+				   					</li>
+				   					<li>
+				   						<img src="../../../images/reset.png" height="25" width="25" />
+				   						<a href="javascript:doReset();" id="resetGridSetting" >Reset</a>
+				   					</li>
+				   				</ul>
+				   			</div>
+				   			</td>
+				   			</table>
+				   		</div>
+        			<div id="servicesHistoryGrid"  style="*width:100%;" ></div>
+        			<div id="div_historyLoadingNotification" class='gridLoading'>
+        				
+    				</div>
+    			    <div id="div_historyPagingArea"></div>
+    			</div>
+    			</div>
+				</div>
+				<div class="portlet-footer">
+				<div class="portlet-footer-inner"></div><!-- portlet-footer-inner -->
+			</div>
+			</div>
+	</div>
+
+	
+	<div id="div_statusPrint">
+	<div id="tab_status" class="portlet-wrap rounded">
+		<div class="portlet-header">
+				<h3>Status</h3>
+		</div>
+		<div class="portlet-wrap-inner">
+		<div>
+			<table>
+				<tr>
+					<td style="display:block;">
+						<img id="img_tab_statusGrid" src="../../../images/expand.jpg" onClick="expandCollapesGrid('tab_statusGrid');" style="cursor:pointer;"/>
+					</td>
+					<td id="serviceRequestStatus" class="labelBold">
+						Service Request Status: Completed
+					</td>
+				</tr>
+			</table>
+			</div>
+			<div id="div_statusPrintTable">
+				<div id="tab_statusGrid" style="display:none;">
+				<div id="div_status_container" style="background-color: white;width:100%;"></div>
+    				<div id="div_statusPagingArea"></div>
+				</div>
+			</div>
+			<div class="status-wrap">
+			
+			<div class="status-block">
+						<h4>Technician</h4>
+						<div class="status-info" style="display:block;">
+							<div class="icon" id="manImage" style="width:50px">
+								<img src="../../../images/technician.png" alt="technician" />
+							</div><!-- icon -->
+							<div class="status">
+							<div id="div_technicianProgressBar" style="float: left;position: relative;top: 40px;left: 220px;"></div>
+							</div><!-- status-bar -->
+														
+									<table width="480" style="float: left;position: relative;left: 330px;">
+									<tr height="30">
+										<td width="33%">In Process</td>
+										<td width="33%">Assigned</td>
+										<td width="33%">Complete</td>
+									</tr>
+								</table>
+								
+						</div><!-- status-info -->
+						<div style="display:block;">
+						
+						</div>
+		
+						
+						<div style="display:block;">
+						
+						<table>
+							<tr>
+								<td>
+								<img id="img_tab_technicianGrid" src="../../../images/expand.jpg" onClick="expandCollapesGrid('tab_technicianGrid');" style="cursor:pointer;"/>
+								</td>
+								<td>
+									Show Detail
+								</td>
+							</tr>
+						</table>
+						
+						</div>
+						<div id="div_technicianPrintTable">
+							<div id="tab_technicianGrid" style="display:none;">
+								<div id="div_technicianContainer" style="background-color: white;width:100%;"></div>
+    							<div id="div_technicianPagingArea"></div>
+    						</div>
+    						
+    				</div><!-- mygrid_container -->
+    				
+			 </div><!-- status-block -->
+					
+	</div>
+	</div>
+	<div class="portlet-footer">
+		<div class="portlet-footer-inner"></div><!-- portlet-footer-inner -->
+    </div><!-- portlet-footer -->
+	</div>
+	<!--</div>--->
+	<!-- end of status part -->
+   <div id="div_contactInfoPrint">
+   <div id="tab_contactInfo" class="portlet-wrap rounded">
+			<div class="portlet-header">
+				<h3>Contact Info</h3>
+			</div><!-- portlet-header -->
+			<div class="portlet-wrap-inner">
+				<div class="columns two">
+					<div id="contactInfoFirstColum" class="first-column">
+						<dl>
+							<dt>Requester Information</dt>
+							<dd><label>Name:</label>Yeşim Tuncer</dd>
+							<dd><label>Phone:</label> +90212 220 04 40 </dd>
+							<dd style="word-break:break-all;"><label>Email:</label>yesim.tuncer@lexmark.com.tr </dd>
+						</dl>
+					</div><!-- first-column -->
+					<div id="contactInfoSecondColum" class="second-column">
+						<dl>
+							<dt>Primary Contact Information</dt>
+							<dd><label>Name:</label> Yeşim Tuncer </dd>
+							<dd><label>Phone:</label> +90212 220 04 40 </dd>
+							<dd style="word-break:break-all;"><label>Email:</label>yesim.tuncer@lexmark.com.tr </dd>
+						</dl>
+					</div><!-- second-column -->
+					
+					<div id="contactInfoThirdColum" class="third-column">
+						<dl>
+							<dt>Secondary Contact Information</dt>
+							<dd><label>Name:</label></dd>
+							<dd><label>Phone:</label></dd>
+					        <dd style="word-break:break-all;"><label>Email:</label></dd>
+						</dl>
+					</div><!-- third-column --> 
+					
+				</div><!-- columns -->
+			</div><!-- portlet-wrap-inner -->	
+			<div class="portlet-footer">
+				<div class="portlet-footer-inner"></div><!-- portlet-footer-inner -->
+			</div><!-- portlet-footer -->
+		</div><!-- portlet-wrap -->
+	</div>
+	
+	<div id="div_notificationsPrint">
+	
+    <div id="tab_notifications"  class="portlet-wrap">
+    <div class="portlet-wrap rounded">
+			<div class="portlet-header">
+			<h3>Notifications</h3>
+			</div><!-- portlet-header -->
+			<div class="portlet-wrap-inner">
+				<div id="div_notificationsPrintTable">
+					<div id="notificationsGrid" style="display:block;">
+						<div id="div_notifications_container" style="width:100%;"></div>
+    					<div id="div_notificationsPagingArea"></div>
+    				</div>
+    			</div>
+			</div><!-- portlet-wrap-inner -->	
+			<div class="portlet-footer">
+				<div class="portlet-footer-inner">
+				</div><!-- portlet-footer-inner -->
+			</div><!-- portlet-footer -->
+		</div><!-- portlet-wrap -->
+	</div>
+	
+	</div>
+	
+     
+    <div class="portlet-wrap" style="width:50%">
+    <div class="portlet-wrap rounded">
+			<div class="portlet-header">
+			<h3>Attachments</h3>
+			</div><!-- portlet-header -->
+			<div class="portlet-wrap-inner">
+				<div id="fileListDiv" >
+							
+							<table class="displayGrid rounded shadow" id="fileListTable">
+							<tr>
+							<td>File name</td>
+							<td>Size(KB)</td>
+							</tr>
+							</table>
+							</div>
+												
+						  </div>
+			</div><!-- portlet-wrap-inner -->	
+		</div><!-- portlet-wrap -->
+
+     <!-- **********************Download Attachments END******************************* -->
+	</div>
+		</div>
+	
+
+<table width="100%">
+	<tr><td align="right" width="80%">
+ 	</td>
+ 	<td width="20%" style="text-align:right;padding-right:25px">
+ 		<button class="button" type="button" onclick="backToHistory();">Back</button>
+ 	</td></tr>
+</table>
+</div>
+</div>
+</div>
+  <div id="footer-nav-container">
+<ul id="footer-nav-ul">
+  <li><a href="http://www1.lexmark.com/en_US/about-us/index.shtml">About 
+  Lexmark </a></li><li><a href="http://www1.lexmark.com/en_US/terms/privacy-security.shtml">Privacy 
+  Policy</a> </li><li><a href="http://www1.lexmark.com/en_US/terms/terms-and-conditions.shtml">Terms 
+  &amp; Conditions </a></li><li><a href="http://www1.lexmark.com/en_US/nav/sitemap.shtml">Sitemap 
+  </a></li><li><a href="http://www1.lexmark.com/en_US/about-us/company/contact-us.shtml">Contact 
+  Lexmark </a></li></ul><br>
+<p align="left">&copy; Copyright 2012 
+Lexmark<!--extra added align center>--></p></div>
+</body>
+<script>
+ var mygrid1;
+	var headerString1 = "RequestNumber,Date Opened,Serial Number,Machine Type Model,Address Name";
+	var ar1 = [
+			[
+					"",
+					"",
+					""]
+		];
+	mygrid1 = new dhtmlXGridObject('div_SRAssociatedContainer');
+	mygrid1.setImagePath("../../../images/gridImgs/");
+	mygrid1.setHeader(headerString1);	
+	mygrid1.setInitWidths("200,260,260");
+	mygrid1.setColumnMinWidth("200,260,260");
+	mygrid1.setColAlign("left,left,left");
+	mygrid1.setSkin("light");
+	mygrid1.setColSorting("str,str,str");
+	mygrid1.setColTypes("ro,ro,ro");
+	mygrid1.enableAutoHeight(true);
+	mygrid1.enableMultiline(true);
+	mygrid1.enableColumnMove(true);
+	mygrid1.enableAlterCss("even_row","odd_row");
+	mygrid1.init();
+	mygrid1.enablePaging(true, 3, 2, "pagingArea", true, "infoArea");
+	mygrid1.setPagingSkin("bricks");
+	mygrid1.setSortImgState(true, 0, 'asc');
+	mygrid1.parse(ar1, "jsarray");
+ </script>
+ <script>
+	var mygrid;
+	var headerString = "RequestNumber,Date/Time created,Serial Number,Product Model,Resolution,Status,Address Name,City,State,Province,Postal Code,Country";
+	var ar = [
+			[
+					"",
+					"",
+					""]
+		];
+	mygrid = new dhtmlXGridObject('servicesHistoryGrid');
+	mygrid.setImagePath("../../../images/gridImgs/");
+	mygrid.setHeader(headerString);	
+	mygrid.setInitWidths("120,120,120,120,120,120,120,120,120,120,120,120");
+	mygrid.setColumnMinWidth("120,120,120,120,120,120,120,120,120,120,120,120");
+	mygrid.setColAlign("left,left,left");
+	mygrid.setSkin("light");
+	mygrid.setColSorting("str,str,str");
+	mygrid.setColTypes("ro,ro,ro");
+	mygrid.enableAutoHeight(true);
+	mygrid.enableMultiline(true);
+	mygrid.enableColumnMove(true);
+	mygrid.enableAlterCss("even_row","odd_row");
+	mygrid.init();
+	mygrid.enablePaging(true, 3, 2, "pagingArea", true, "infoArea");
+	mygrid.setPagingSkin("bricks");
+	mygrid.setSortImgState(true, 0, 'asc');
+	mygrid.parse(ar, "jsarray");
+	
+	
+	</script>
+	<script>
+	var mygrid;
+	var headerString = "Date,Status,Description";
+	var ar = [
+			[
+					"03/04/2013 8:56:33 AM",
+					"Archive",
+					"Your Service Request is Inprocess"
+					
+					],
+			[
+					"03/04/2013 2:16:40 AM",
+					"Archive",
+					"Your Request for Service has been Completed."
+					
+					]
+		];
+	mygrid = new dhtmlXGridObject('div_status_container');
+	mygrid.setImagePath("../../../images/gridImgs/");
+	mygrid.setHeader(headerString);	
+	mygrid.setInitWidths("200,260,260");
+	mygrid.setColumnMinWidth("200,260,260");
+	mygrid.setColAlign("left,left,left");
+	mygrid.setSkin("light");
+	mygrid.setColSorting("str,str,str");
+	mygrid.setColTypes("ro,ro,ro");
+	mygrid.enableAutoHeight(true);
+	mygrid.enableMultiline(true);
+	mygrid.enableColumnMove(true);
+	mygrid.enableAlterCss("even_row","odd_row");
+	mygrid.init();
+	mygrid.enablePaging(true, 3, 2, "pagingArea", true, "infoArea");
+	mygrid.setPagingSkin("bricks");
+	mygrid.setSortImgState(true, 0, 'asc');
+	mygrid.parse(ar, "jsarray");
+	
+	
+	</script>
+	<script>
+	var mygrid;
+	var headerString = "Date,Recipient,Description";
+	var ar = [
+			[
+					"",
+					"",
+					""]
+		];
+	mygrid = new dhtmlXGridObject('div_notifications_container');
+	mygrid.setImagePath("../../../images/gridImgs/");
+	mygrid.setHeader(headerString);	
+	mygrid.setInitWidths("200,260,260");
+	mygrid.setColumnMinWidth("200,260,260");
+	mygrid.setColAlign("left,left,left");
+	mygrid.setSkin("light");
+	mygrid.setColSorting("str,str,str");
+	mygrid.setColTypes("ro,ro,ro");
+	mygrid.enableAutoHeight(true);
+	mygrid.enableMultiline(true);
+	mygrid.enableColumnMove(true);
+	mygrid.enableAlterCss("even_row","odd_row");
+	mygrid.init();
+	mygrid.enablePaging(true, 3, 2, "pagingArea", true, "infoArea");
+	mygrid.setPagingSkin("bricks");
+	mygrid.setSortImgState(true, 0, 'asc');
+	mygrid.parse(ar, "jsarray");
+	
+	</script>
+	<script>
+ var mygrid1;
+	var headerString1 = "Date ,Status,Description";
+	var ar1 = [
+			[
+					"03/04/2013 1:37:28 AM",
+					"",
+					"Your Service Request has been completed."]
+		];
+	mygrid1 = new dhtmlXGridObject('div_technicianContainer');
+	mygrid1.setImagePath("../../../images/gridImgs/");
+	mygrid1.setHeader(headerString1);	
+	mygrid1.setInitWidths("200,260,260");
+	mygrid1.setColumnMinWidth("200,260,260");
+	mygrid1.setColAlign("left,left,left");
+	mygrid1.setSkin("light");
+	mygrid1.setColSorting("str,str,str");
+	mygrid1.setColTypes("ro,ro,ro");
+	mygrid1.enableAutoHeight(true);
+	mygrid1.enableMultiline(true);
+	mygrid1.enableColumnMove(true);
+	mygrid1.enableAlterCss("even_row","odd_row");
+	mygrid1.init();
+	mygrid1.enablePaging(true, 3, 2, "pagingArea", true, "infoArea");
+	mygrid1.setPagingSkin("bricks");
+	mygrid1.setSortImgState(true, 0, 'asc');
+	mygrid1.parse(ar1, "jsarray");
+ </script>
+	<script>
+   function backToHistory(){
+				var page_type = qs('src_page');
+				if(page_type == 'serviceRequest'){
+	  			window.location.href="history_serviceRequest.html";
+	  	}
+		else{
+			window.location.href="history_allRequest.html";
+		}
+  		
+  	}
+	</script>
+	<script>
+	/**
+		****************progressBars configration  end*******************
+	*/	 
+	var sraFirstLode = true;
+    function expandCollapesGrid(gridId){	
+        var isDisplay = document.getElementById(gridId).style.display;
+        var showImg = document.getElementById("img_"+gridId);
+    	if(isDisplay=='none'){
+    		document.getElementById(gridId).style.display = '';
+    		showImg.setAttribute("src", "../../../images/collapsed.jpg");     		
+        }else{
+    		document.getElementById(gridId).style.display = 'none';
+        	showImg.setAttribute("src", "../../../images/expand.jpg");
+        }    	
+    }
+	
+  	function hideSelect(){   
+		var selects = document.getElementsByTagName('select');
+		for (var i=0; i < selects.length; i++){
+			var select = selects[i];
+			select.style.visibility = "hidden";
+		}      
+	}  
+
+	function showSelect(){   
+		var selects = document.getElementsByTagName('select');
+		for (var i=0; i < selects.length; i++){
+			var select = selects[i];
+			select.style.visibility = "visible";
+		} 
+	} 
+	 function closeCustomizedWindow(){
+			if(document.getElementById('grid_menu')!=null)
+			{
+		   	  document.getElementById('grid_menu').style.display = 'none';
+			}
+	}
+	 
+</script>
+<script type="text/javascript">
+function outPutFile(attachmentName,activityId,displayAttachmentName){
+	        window.open("${displayAttachmentURLBreakFix}&attachmentName=" + attachmentName + "&activityId=" + activityId+ "&displayAttachmentName=" + displayAttachmentName, "");
+       
+       
+};
+/*Method gotoControlPanel added for Defect 3924- Jan Release*/
+       function gotoControlPanel(url) {
+			    new Liferay.Popup({
+			        title: "",
+			        position: [400,150], 
+			        modal: true,
+			        width: 400, 
+			        height: 150,
+			        xy: [100, 100],
+			        onClose: function() {showSelect();},
+			        url:"<portlet:renderURL 
+			             windowState='<%= LiferayWindowState.POP_UP.toString() %>'>
+			            <portlet:param name='action' value='gotoControlPanel' />
+			            </portlet:renderURL>&controlPanelURL=" + url
+        			});
+		};
+		
+	
+</script>
+<script type="text/javascript">
+//---- Ominture script 
+     portletName = "Service Request";
+     addPortlet(portletName);
+     pageTitle="Service request Drilldown";
+	 
+	 	function loadGridDataForPrint(){
+	alert("here");
+	var url="	file:///F:/Annesha/MPS_Prototype_28032013/LexmarkServicesPortal/WebContent/WEB-INF/jsp/HistoryAndDetails/print.html";
+	var iWidth=1000;
+	    var iHeight=600;
+	    var iTop = (window.screen.availHeight-30-iHeight)/2;
+	    var iLeft = (window.screen.availWidth-10-iWidth)/2;
+	    window.open(url,
+	    		'historyList',
+			    'height='+iHeight+
+			    ',innerHeight='+
+			    iHeight+',width='+
+			    iWidth+',innerWidth='+
+			    iWidth+',top='+iTop+
+			    ',left='+iLeft+
+			    ',status=no,toolbar=yes,menubar=no,location=no,resizable=yes,scrollbars=yes,titlebar=no');
+	};
+</script>
+

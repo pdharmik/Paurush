@@ -1,0 +1,778 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Request Detail - Supplies Request</title>
+<link href="../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../../js/util.js"></script>
+<script src="../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/tree/dhtmlxtree.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../../js/expand.js"></script>
+<script src="../../../js/mps.js"></script>
+<style>
+#banner .logo {
+	background: url("../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/images/custom/logoLex.png") no-repeat scroll left top transparent;
+	display: block;
+	margin: 0;
+	padding: 0 !important;
+	width: 168px;
+	height: 56px;
+	position: absolute;
+	top: 13px;
+	left: 20px;
+	text-indent: -9999em;
+}
+</style>
+<style type="text/css">
+div.hide_pending{
+}
+div.hide_activity{
+}
+</style>
+<script type="text/javascript">
+function qs(search_for) {
+		var query = window.location.search.substring(1);
+		var parms = query.split('&');
+		for (var i=0; i<parms.length; i++) {
+			var pos = parms[i].indexOf('=');
+			if (pos > 0  && search_for == parms[i].substring(0,pos)) {
+				return parms[i].substring(pos+1);;
+			}
+		}
+		return "";
+	}
+</script>
+<script type="text/javascript">
+function showHide(){
+    var theDiv = document.getElementById('hide_pending');
+	var theDiv1 = document.getElementById('hide_activity');
+		var status = qs('status');
+	  if(status == 'inprocess'){
+	  	  theDiv.style.display = 'block';
+		  theDiv1.style.display = 'block';
+		}else{
+	        theDiv.style.display = 'none';
+			theDiv1.style.display = 'none';
+		}   
+}
+</script>
+
+<script type="text/javascript">
+////Toggle Containers
+	jQuery(function() {
+	    jQuery("h4.expand").toggler();
+	});
+</script>
+
+</head>
+<body onload="showHide()">
+<div id="wrapper" >
+  <div id="banner">
+    <h1 class="logo"><a href="https://tportal.lexmark.com/web/guest" title="Lexmark Global Services">tportal.lexmark.com</a></h1>
+    <div id="top-header">
+      <div id="top-header-navigation" class="sort-pages modify-pages" >
+        <ul>
+          <li><b><span>Welcome Firstname Lastname!</span></b></li>
+          <li><a href="#">Preferences</a></li>
+          <li><a href="#">User Administration</a></li>
+          <li><a href="#">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="bottom-header">
+      <div id="bottom-header-navigation" class="sort-pages modify-pages" >
+        <ul>
+          <li>
+            <select>
+              <option>English (US)</option>
+            </select>
+          </li>
+          <li><a href="#">Lexmark.com</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Get Help</a></li>
+          <li><a href="#">Contact Lexmark</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sort-pages modify-pages" id="topnavigation">	
+  <ul>	
+	  <li>	<a href="../Home/home.html"><span>Home</span></a>	</li>
+	  <li class="">	<a href="../DeviceManagement/all_devices.html"><span>Device Finder</span></a>	</li>
+	  <li class="">	<a href="../pageCounts/defaltPageCount.html"><span>Page Counts</span></a>	</li>
+	  <li class="">	<a href="../HistoryAndDetails/history_allRequest.html"><span>Requests</span></a>	</li>
+	  <li class="">	<a target="_blank" href="https://services.lexmark.com/portal/site"><span>Order Supplies</span></a>	</li>
+	  <li class="selected">	<a href="../Reports/defaltReportView.html"><span>Reports</span></a>	</li>
+	  <li class="">	<a href="../DocumentLibrary/docLibrary_landingPage.html"><span>Document Library</span></a>	</li>
+  </ul>
+  </div>
+  <div id="subnavigation">
+    <ul>
+      <li class="selected"><a href="javascript:void(0);"><span>Request History</span></a></li>
+      <li><a href="../ChangeManagement/ManageOthers/create_new_request.html" class="lightbox" title="Create New Request"><span>Create New Request</span></a></li>
+    </ul>
+  </div>
+  <div id="content-wrapper">
+    <div class="journal-content-article">
+      <h2>Supplies Request Details</h2>
+      <span class="step">Request No.:
+	  <script>
+		document.write(qs("request_id"));
+	  </script>
+	  </span> </div>
+    <div class="main-wrap">
+      <div class="content"> 
+        <!-- MAIN CONTENT BEGIN -->
+        <div class="portletBlock infoBox rounded shadow split">
+          <div class="columnsTwo">
+            <div class="columnInner">
+              <ul class="form">
+                <li>
+                  <label>Area: </label>
+                  <span> Consumables Supplies Request</span></li>
+                <li>
+                  <label>Sub Area: </label>
+                  <span>Proactive - Detected</span></li>
+                <li>
+                  <label>Order Source: </label>
+                  <span>Portal / Siebel</span></li>
+                <li>
+                  <label>Status: </label>
+                  <span>Status</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="columnsTwo">
+            <div class="columnInner">
+              <ul class="form">
+                <li>
+                  <label>Date / Time Created: </label>
+                  <span>03/13/2013 11:15:00 PM</span></li>
+                <li>
+                  <label>Requestor Name: </label>
+                  <span>Consumables   Contact</span></li>
+                <li>
+                  <label>PO Number: </label>
+                  <span>XXXXXXXXXXXXXXXX</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Request Status History - Start -->
+        <div class="portletBlock infoBox rounded shadow">
+          <div class="columnsOne">
+            <div class="columnInner">
+              <h4 class="expand">Request Status History</h4>
+              <div  class="collapse">
+                <table class="displayGrid rounded wFull">
+                  <thead>
+                    <tr>
+                      <th class="w100">Date</th>
+                      <th class="w150">Status</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>03/15/2013 2:47:15 PM</td>
+                      <td>Archive</td>
+                      <td>Your Request for Service has been Completed</td>
+                    </tr>
+                    <tr class="altRow">
+                      <td>MM/DD/YY</td>
+                      <td>Status</td>
+                      <td>Description of the status goes here</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Request Status History - End -->
+        <p class="inlineTitle">Selected Asset</p>
+        <!-- ASSET INFO BLOCK START -->
+        <div class="portletBlock infoBox rounded shadow"> 
+          <!-- Outter table: 1 row & 2 colums -->
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="assetDetail">
+            <tr> 
+              <!-- Outter Table > column 1: Product image & Name -->
+              <td class="pModel"><ul>
+                  <li class="center"><img src="../../../images/dummy_printer.jpg" /></li>
+                  <li class="pModelName">Lexmark X650e</li>
+                </ul></td>
+              <!-- Outter Table > Column 2: Inner table for details -->
+              <td class="pDetail"><!-- Inner table: 4 row2 & 2 colums -->
+                
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td class="h4">Asset Information</td>
+                    <td class="h4 separatorV">Service Address</td>
+                  </tr>
+                  <tr>
+                    <td class="infoDsiplay"><ul class="form">
+                        <li>
+                          <label>Serial Number:</label>
+                          <span>98B0MTY</span></li>
+                        <li>
+                          <label>Product:</label>
+                          <span>26C0411 </span></li>
+                        <li>
+                          <label>Install Date: </label>
+                          <span>07/28/2012</span></li>
+                        <li>
+                          <label>IP Address:</label>
+                          <span>10.184.126.32</span></li>
+                        <li>
+                          <label>Host Name:</label>
+                          <span></span></li>
+                        <li>
+                          <label>Customer Asset Tag: </label>
+                          <span></span></li>
+                      </ul></td>
+                    <td class="separatorV"><ul class="roDisplay">
+                        <li><span>8 Roxborough Way<br />
+                          Foundation Park<br />
+                          United Kingdom<br />
+                          SL6 3UD<br />
+                          Country</span> </li>
+                        <li>
+                          <label>Building:</label>
+                          <span></span></li>
+                        <li>
+                          <label>Floor:</label>
+                          <span></span></li>
+                        <li>
+                          <label>Office:</label>
+                          <span></span></li>
+                      </ul></td>
+                  </tr>
+                </table></td>
+            </tr>
+          </table>
+        </div>
+        <!-- ASSET INFO BLOCK END -->
+        <div class="portletBlock infoBox rounded shadow split">
+          <div class="columnsTwo">
+            <div class="columnInner">
+              <h4>Page Counts</h4>
+              <ul class="form">
+                <li>
+                  <label for="ltpc">LTPC: </label>
+                  <span>39072</span></li>
+                <li>
+                  <label for="date1">Date &amp; Time: </label>
+                  <span>03/13/2013 17:18:08</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="columnsTwo">
+            <div class="columnInner">
+              <h4>&nbsp;</h4>
+              <ul class="form">
+                <li>
+                  <label for="color">Color: </label>
+                  <span>25909</span></li>
+                <li>
+                  <label for="date2">Date &amp; Time: </label>
+                  <span>03/13/2013 17:18:08</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Associated Requests - Start -->
+        <div class="portletBlock infoBox rounded shadow">
+          <div class="columnsOne">
+            <div class="columnInner">
+              <h4 class="expand">Associated Requests</h4>
+              <div class="collapse"> 
+                <!-- GRID 1 BEGIN -->
+                <div class="portlet-wrap rounded">
+                  <div class="portlet-wrap-inner staticPos">
+                    <div id="mygrid_container" class="gridbox gridbox_light "></div>
+                  </div>
+                </div>
+                <div class="pagination"><span id="pagingArea"></span><span id="infoArea"></span></div>
+                <!-- GRID 1 END --> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Associated Requests - End --> 
+        <!-- Past Requests - Start -->
+        <div class="portletBlock infoBox rounded shadow">
+          <div class="columnsOne">
+            <div class="columnInner">
+              <h4 class="expand">Past Requests on this Asset</h4>
+              <div class="collapse"> 
+                <!-- GRID 2 BEGIN -->
+                <div class="portlet-wrap rounded">
+                  <div class="portlet-wrap-inner staticPos">
+                    <div id="mygrid_container2" class="gridbox gridbox_light "></div>
+                  </div>
+                </div>
+                <div class="pagination"><span id="pagingArea2"></span><span id="infoArea2"></span></div>
+                <!-- GRID 2 END --> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Past Requests - End -->
+        <hr class="separator" />
+        <div class="portletBlock">
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Primary Contact for this Request</h4>
+              <ul class="form">
+                <li>
+                  <label>Name:</label>
+                  <span> Consumables  Contact</span></li>
+                <li>
+                  <label>Phone Number:</label>
+                  <span>8592322000</span></li>
+                <li>
+                  <label>Email Address:</label>
+                  <span></span></li>
+              </ul>
+            </div>
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Secondary Contact for this Request</h4>
+              <ul class="form">
+                <li>
+                  <label>Name:</label>
+                  <span>FirstName LastName</span></li>
+                <li>
+                  <label>Phone Number:</label>
+                  <span>XXXXXXXXXX</span></li>
+                <li>
+                  <label>Email Address:</label>
+                  <span>firstname.lastname@domain.com</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Additional Information for this Request</h4>
+              <ul class="form">
+                <li>
+                  <label>Customer Reference ID:</label>
+                  <span></span></li>
+                <li>
+                  <label>Cost Center:</label>
+                  <span></span></li>
+                <li>
+                  <label>Description:</label>
+                  <span class="multiLine"></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr class="separator" />
+        <!-- PENDING SHIPMENT BLOCK - START -->
+		<div id= "hide_pending">
+        <div class="portletBlock infoBox rounded shadow">
+          <div class="columnsOne">
+            <div class="columnInner">
+              <h4>Pending Shipment</h4>
+              <div class="icon"><img src="../../../images/inProcess.png" width="100" height="100" /></div>
+              <div class="columnInner separatorV">
+                <table class="displayGrid rounded shadow wFull">
+                  <thead>
+                    <tr>
+                      <th class="w100">Part No.</th>
+                      <th>Description</th>
+                      <th class="w100">Vendor Part No.</th>
+                      <th class="w50">Quantity</th>
+                      <th class="w100">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="w100">123456SDFGH</td>
+                      <td>Description of the item goes here</td>
+                      <td class="w100">123456SDFGH</td>
+                      <td class="w50 right">10</td>
+                      <td class="w100">Status</td>
+                    </tr>
+                    <tr class="altRow">
+                      <td>123456SDFGH</td>
+                      <td>Description of the item goes here</td>
+                      <td>123456SDFGH</td>
+                      <td class="right">10</td>
+                      <td>Status</td>
+                    </tr>
+                    <tr>
+                      <td>123456SDFGH</td>
+                      <td>Description of the item goes here</td>
+                      <td>123456SDFGH</td>
+                      <td class="right">10</td>
+                      <td>Status</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+	</div>
+        <!-- PENDING SHIPMENT BLOCK - END --> 
+        <!-- SHIPMENT BLOCK - START -->
+        <div class="portletBlock infoBox rounded shadow">
+          <div class="columnsOne">
+            <div class="columnInner">
+              <h4>Shipment:<a class="shipment_link" href="#" target="_blank">15502770077935</a></h4>
+              <div class="icon"><img src="../../../images/shipped.png" width="100" height="100" /></div>
+              <div class="columnInner separatorV">
+                <table class="shipment wFull">
+                  <tr>
+                    <td class="w70p"><div class="status">
+                        <div id="div_technicianProgressBar"><!-- PROGRESS BAR WILL COME HERE --></div>
+                        <table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td>In Process</td>
+                            <td>Shipped</td>
+                            <td>Delivered</td>
+                          </tr>
+                        </table>
+                      </div></td>
+                    <td><ul class="form wFull">
+                        <li>
+                          <label>Carrier Name:</label>
+                          <span>DPD UK</span></li>
+                        <li>
+                          <label>ETA:</label>
+                          <span></span></li>
+                        <li>
+                          <label>Actual Delivery Date:</label>
+                          <span>03/15/2013 16:44:00</span></li>
+                      </ul></td>
+                  </tr>
+                </table>
+                <table class="displayGrid rounded shadow wFull">
+                  <thead>
+                    <tr>
+                      <th class="w100">Part No.</th>
+                      <th>Description</th>
+                      <th class="w100">Part Type</th>
+                      <th class="w100">Vendor Part No.</th>
+                      <th class="w50 right">Quantity</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="w100">C540H1KG</td>
+                      <td>C54X K HY Return Tnr Ctg</td>
+                      <td class="w100">Black Cartidge</td>
+                      <td class="w100"></td>
+                      <td class="w50 right">1</td>
+                    </tr>
+                   </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- SHIPMENT BLOCK - END --> 
+        <!-- ACTIVITY BLOCK - START -->
+		<div id = "hide_activity">
+        <div class="portletBlock infoBox rounded shadow">
+          <div class="columnsOne">
+            <div class="columnInner">
+              <h4>Activity</h4>
+              <div class="icon"><img src="../../../images/technician.png" width="100" height="100" /></div>
+              <div class="columnInner separatorV">
+                <table class="shipment wFull">
+                  <tr>
+                    <td class="w70p"><div class="status">
+                        <div id="div_technicianProgressBar"><!-- PROGRESS BAR WILL COME HERE --></div>
+                        <table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td>In Process</td>
+                            <td>Assigned</td>
+                            <td>Complete</td>
+                          </tr>
+                        </table>
+                      </div></td>
+                    <td>&nbsp;</td>
+                  </tr>
+                </table>
+                <table class="displayGrid rounded shadow wFull">
+                  <thead>
+                    <tr>
+                      <th class="w100">Date</th>
+                      <th class="w100">Status</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="w100">MM/DD/YY</td>
+                      <td class="w100">MStatus</td>
+                      <td>Description of the item goes here</td>
+                    </tr>
+                    <tr class="altRow">
+                      <td class="w100">MM/DD/YY</td>
+                      <td class="w100">MStatus</td>
+                      <td>Description of the item goes here</td>
+                    </tr>
+                    <tr>
+                      <td class="w100">MM/DD/YY</td>
+                      <td class="w100">MStatus</td>
+                      <td>Description of the item goes here</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+	</div>
+        <!-- ACTIVITY BLOCK - END -->
+        <p class="inlineTitle">Shipping Information</p>
+        <div class="portletBlock">
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Ship-to Address</h4>
+              <ul class="roDisplay">
+                <li><span>Lexmark International (UK) Ltd<br />
+                  8 Roxborough Way<br />
+                  Foundation Park<br />
+                  Maidenhead <br />
+                  United Kingdom</br>
+				  SL6 3UD</span></li>
+                <li><span>Building: </span></li>
+                <li><span>Floor: </span></li>
+                <li><span>Office: </span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Order Instructions</h4>
+              <ul class="form">
+                <li>
+                  <label for="desc">Special Instructions:</label>
+                  <span class="multiLine"></span></li>
+                <!--<li>
+                  <label for="date1">Special Instructions:</label>
+                  <span>No</span></li>-->
+                <li>
+                  <label for="expOrder">Request Expedite Order:</label>
+                  <span>No</span></li>
+                <li>
+                  <label for="date1">Requested Delivery Date:</label>
+                  <span>03/19/2013</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="portletBlock">
+          <div class="columnsOne">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Payment Details</h4>
+              <ul class="form">
+                <li>
+                  <label for="poNo">PO Number:</label>
+                  <span>XXXXXXXXXXXXXXXXXXXXXX</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p class="inlineTitle">Notes &amp; Attachments</p>
+        <div class="portletBlock">
+          <div class="columnsOne">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Notes</h4>
+              <p class="w70p multiLine">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse consequat bibendum ligula.  Phasellus dignissim eleifend volutpat. Proin tempor velit eget dui sollicitudin a vehicula odio feugiat.</p>
+            </div>
+          </div>
+        </div>
+        <div class="portletBlock">
+          <div class="columnInner">
+            <table class="displayGrid rounded shadow wHalf">
+              <thead>
+                <tr>
+                  <th>Attachments</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>DocumentName1</td>
+                </tr>
+                <tr class="altRow">
+                  <td>DocumentName2</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="buttonContainer">
+          <button class="button" onclick="backToHistory();">Back</button>
+          <!--<button class="button">Update Request</button>
+          <button class="button">Cancel Request</button>-->
+        </div>
+      </div>
+      <!-- MAIN CONTENT END --> 
+    </div>
+  </div>
+    <div id="footer-nav-container">
+<ul id="footer-nav-ul">
+  <li><a href="http://www1.lexmark.com/en_US/about-us/index.shtml">About 
+  Lexmark </a></li><li><a href="http://www1.lexmark.com/en_US/terms/privacy-security.shtml">Privacy 
+  Policy</a> </li><li><a href="http://www1.lexmark.com/en_US/terms/terms-and-conditions.shtml">Terms 
+  &amp; Conditions </a></li><li><a href="http://www1.lexmark.com/en_US/nav/sitemap.shtml">Sitemap 
+  </a></li><li><a href="http://www1.lexmark.com/en_US/about-us/company/contact-us.shtml">Contact 
+  Lexmark </a></li></ul><br>
+<p align="left">&copy; Copyright 2012 
+Lexmark<!--extra added align center>--></p></div>
+</div>
+</body>
+<script>
+	var mygrid;
+	var headerString = "Request No.,Date/Time Created,Request Type,Area,Status,&nbsp;";
+	var ar = [
+			[
+					"<a href=\"javascript:void(0);\">123456</a>",
+					"MM/DD/YY",
+					"Supplies",
+					"Area",
+					"Status" ],
+			[
+					"<a href=\"javascript:void(0);\">123456</a>",
+					"MM/DD/YY",
+					"Supplies",
+					"Area",
+					"Status" ],
+			[
+					"<a href=\"javascript:void(0);\">123456</a>",
+					"MM/DD/YY",
+					"Supplies",
+					"Area",
+					"Status" ],
+					[
+					"<a href=\"javascript:void(0);\">123456</a>",
+					"MM/DD/YY",
+					"Supplies",
+					"Area",
+					"Status" ],
+			[
+					"<a href=\"javascript:void(0);\">123456</a>",
+					"MM/DD/YY",
+					"Supplies",
+					"Area",
+					"Status" ],
+			[
+					"<a href=\"javascript:void(0);\">123456</a>",
+					"MM/DD/YY",
+					"Supplies",
+					"Area",
+					"Status" ] ];
+	mygrid = new dhtmlXGridObject('mygrid_container');
+	mygrid.setImagePath("../../../images/gridImgs/");
+	mygrid.setHeader(headerString);
+	mygrid.attachHeader("#text_filter,,#select_filter,#select_filter,#select_filter");
+	mygrid.setInitWidths("140,160,160,160,160,*");
+	mygrid.setColumnMinWidth("140,160,160,160,160,1");
+	mygrid.setColAlign("left,left,left,left,left,left");
+	mygrid.setSkin("light");
+	mygrid.setColSorting("str,str,str,str,str,na");
+	mygrid.setColTypes("ro,ro,ro,ro,ro,ro,ro");
+	mygrid.enableAutoHeight(true);
+	mygrid.enableMultiline(true);
+	mygrid.enableColumnMove(true);
+	mygrid.enableAlterCss("even_row","odd_row");
+	mygrid.init();
+	mygrid.enablePaging(true, 3, 2, "pagingArea", true, "infoArea");
+	mygrid.setPagingSkin("bricks");
+	mygrid.parse(ar, "jsarray");
+	
+	var mygrid2;
+	var headerString2 = "Request No.,Date/Time Created,Request Type,Area,Status,&nbsp;";
+	var ar2 = [
+			[
+					"<a href=\"javascript:void(0);\">1-10598079182</a>",
+					"12/13/2012 11:21:24 AM",
+					"Supplies Request",
+					"Consumables Supplies Request",
+					"Completed" ],
+			[
+					"<a href=\"javascript:void(0);\">1-10825459252</a>",
+					"12/31/2012 10:26:17 AM",
+					"Supplies Request",
+					"Consumables Supplies Request",
+					"Completed" ],
+			[
+					"<a href=\"javascript:void(0);\">1-10823541382</a>",
+					"12/31/2012 10:27:30 AM",
+					"Supplies Request",
+					"Consumables Supplies Request",
+					"Completed" ] ,
+			[
+					"<a href=\"javascript:void(0);\">1-10785506431</a>",
+					"01/24/2013 3:21:01 AM",
+					"Supplies Request",
+					"Consumables Supplies Request",
+					"Completed" ] 		
+					
+					];
+	mygrid2 = new dhtmlXGridObject('mygrid_container2');
+	mygrid2.setImagePath("../../../images/gridImgs/");
+	mygrid2.setHeader(headerString2);
+	mygrid2.attachHeader("#text_filter,,#select_filter,#select_filter,#select_filter");
+	mygrid2.setInitWidths("140,160,160,160,160,*");
+	mygrid2.setColumnMinWidth("140,160,160,160,160,1");
+	mygrid2.setColAlign("left,left,left,left,left,left");
+	mygrid2.setSkin("light");
+	mygrid2.setColSorting("str,str,str,str,str,na");
+	mygrid2.setColTypes("ro,ro,ro,ro,ro,ro,ro");
+	mygrid2.enableAutoHeight(true);
+	mygrid2.enableMultiline(true);
+	mygrid2.enableColumnMove(true);
+	mygrid2.enableAlterCss("even_row","odd_row");
+	mygrid2.init();
+	mygrid2.enablePaging(true, 6, 2, "pagingArea2", true, "infoArea2");
+	mygrid2.setPagingSkin("bricks");
+	mygrid2.parse(ar2, "jsarray");
+</script>
+<script>
+   function backToHistory(){
+				var page_type = qs('src_page');
+				if(page_type == 'supplyRequest'){
+	  			window.location.href="history_suppliesRequest.html";
+	  	}
+		else{
+			window.location.href="history_allRequest.html";
+		}
+  		
+  	}
+	</script>
+</html>

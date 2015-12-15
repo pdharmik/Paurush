@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!--
+Mapping file for the ObieeImpersonate class of Lexmark Service.
+-->
+
+<hibernate-mapping package="com.lexmark.domain">
+
+<class name="ObieeImpersonate"
+       table="PORTAL_ENTRY"
+       lazy="false">
+     
+    <id name="userId"
+        type="string"
+		length="50"
+        column="USER_ID">
+    </id>           
+ 
+    <property   name="siebelAccountId"
+                column="ACCOUNT_ID"
+                type="string"
+                length="50"
+                not-null="false"
+                /> 
+</class>
+</hibernate-mapping>

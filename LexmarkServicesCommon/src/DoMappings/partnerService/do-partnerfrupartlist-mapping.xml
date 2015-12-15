@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerFruPartListDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW FRU Part List Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW FRU Part List - Partner Portal</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>modelNumber</value></key>
+	         		<value>LXK Machine Type Model</value>
+				</entry>
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>		
+				<entry>
+	         		<key><value>partNumber</value></key>
+	         		<value>Part Name</value>
+				</entry>
+				<entry>
+	         		<key><value>partName</value></key>
+	         		<value>Part Number</value>
+				</entry>
+	    	</map>
+		</property>
+    </bean>  
+</beans>

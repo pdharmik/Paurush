@@ -1,0 +1,231 @@
+/* IE6 Specific Stylesheet                   */
+
+.button, .all_button, .button_cancel, #loginCancelBtn{
+	padding:2px 0;
+	width:auto;
+}
+
+.star_button{
+	padding: 2px 2px 2px 21px !important;
+}
+
+.ui-dialog-content .button{
+	padding:1px 6px;
+	border: 1px solid #286898;	
+}
+
+.ui-dialog-content .button_cancel{
+	padding:1px 3px;
+	border: 1px solid #286898;	
+}
+
+.portlet-login div.portlet-topper-inner .portlet-title {
+	position: absolute;
+	top: 8px;
+	left: 0px;
+}
+
+.ctrl-holder input[type="checkbox"] {
+	background: none !important;
+}
+
+.journal-content-article div{
+	position:relative;
+}
+
+.journal-content-article h2{
+	left:12px;
+	z-index:1;
+}
+
+/*----- Fix for portlet heading issue in IE6  -----*/
+.portlet-topper-inner .portlet-title {
+	position:relative;
+}
+
+/*----- Fix for defect 1173  -----*/
+.portlet-header, .portlet-wrap-inner table{
+	position:relative;
+}
+/*----- End fix for defect 1173  -----*/
+
+#globalSerachResultContainer .button {
+	padding:0 2px 0 0;
+}
+
+.left-nav-inner .button{
+	padding: 2px 0;
+	margin-left:-4px;
+}
+
+#divUpload, #divUpload button, .manualSerialTD, #noRecordFoundInputTD{
+	position:relative;
+}
+
+.manualSerialTD #add, #noRecordFoundBtnTD #btnGlobalSearch{
+	display:block;
+	cursor: pointer;
+	text-align:center;
+	background:url(../images/custom/grid_button.gif) left top no-repeat;
+	width:80px;
+	height:23px;
+	line-height:23px;
+	padding:0;
+	border: 0;
+	color: #fff;
+	font-size: 11px;
+	text-transform: uppercase;
+	border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    position: static !important;
+	behavior: url(/lexmark-partner-portal-theme/css/blank.htc) !important;
+	-pie-lazy-init:true;
+    zoom:1;
+}
+
+#fileContent{
+	position:absolute;
+	top:1px !important;
+	left:-150px !important;
+	cursor:pointer;
+}
+
+#machineType, #productTLI{
+	position:absolute;
+	top:23px;
+	left:0;
+}
+
+#noRecordFoundInputTD #serialNumber, .manualSerialTD #add{
+	border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    position: static !important;
+	behavior: url(/lexmark-partner-portal-theme/css/blank.htc) !important;
+	background: url(../images/custom/ie6_rounded_input.png) left top no-repeat;
+	width:151px;
+	height:16px;
+	padding: 4px 7px;
+	margin-right:15px;
+	border:none;
+	-pie-lazy-init:true;
+    zoom:1;
+}
+
+#globalSerachResultContainer{
+	position:relative;
+}
+
+#divManualAsset .ie6_spacer{
+	display:block;
+	height:20px;
+}
+
+#div_statusPrint .portlet-wrap-inner{
+	width:96%;
+}
+
+#topnavigation li a{
+	border-bottom:1px solid #9998a1;
+}
+
+#topnavigation li.selected a {
+	border-bottom:1px solid #fff;
+}
+
+#accountSelection #btnSubmit{
+	position:absolute !important;
+	top:10px !important;
+	left:20px !important;
+}
+
+#accountSelection table tr td {
+	position: relative;
+}
+
+#wrapper {
+	overflow-x:hidden;
+}
+.portlet-wrap-inner {
+	overflow-x:auto;
+	overflow-y:hidden;
+}
+
+#banner .logo a {
+	text-indent:0px;
+}
+
+.uni-form .button-holder span{
+	position: static !important;
+	behavior: url(/lexmark-partner-portal-theme/css/blank.htc) !important;
+	width:auto; 
+	height:24px; 
+	padding:0 8px 0 0; 
+	background:url("../images/custom/btn_selected.gif") right no-repeat;
+	z-index:2000;
+}
+
+.uni-form .button-holder input[type="submit"]{
+	height:24px;
+	width:auto;
+	line-height:11px;
+	padding:0 0 0 8px;
+	background:url("../images/custom/btn_selected.gif") left no-repeat;
+	color:#fff;
+	postion:static;
+	behavior:url(/lexmark-partner-portal-theme/css/blank.htc);
+	
+}
+  
+.new_button, .button_anchor {
+	background: url(../images/custom/btn_selected.gif) right no-repeat white; 
+	padding-left:-10px;
+	margin-left:0px;
+	}
+.new_button span, .button_anchor span {
+	 background: url(../images/custom/btn_selected.gif) left no-repeat white;
+	 margin-left: 0px;
+}
+/*----- Fix for Defect #2380 -----*/
+.odd_light .new_button span, .odd_light .button_anchor span, .odd_light .new_button, .odd_light .button_anchor {
+	background-color:#f1f1f1 !important;
+}
+
+/*----- Fix for Defect for 2416 -----*/
+#EditButton .button {
+	padding:0 !important;
+	line-height:20px;
+}
+
+.inputMed {
+	zoom:1;
+}
+/*----- Fix for  Defect #2448 -----*/
+input[type="submit"], input[type="submit"]:hover, input[type="button"], input[type="button"]:hover  {
+	line-height:23px !important;
+	padding:4px 7px !important;
+}
+ input[type="button"] .button_cancel .button {
+	margin-top:2px;
+}
+/*----- Fix for Defect #2592 -----*/
+.button_anchor span {
+	background-position-y:top;
+	overflow-y:hidden;
+}
+
+.portlet-wrap {
+	margin-bottom:10px;
+}
+
+div.portlet-wrap {
+	background: url(../images/custom/portlet-borderleft.png) repeat-y top left;
+}
+
+div.portlet-wrap-inner {
+	background: url(../images/custom/portlet-borderright.png) repeat-y top 99%;
+	float:left;
+	margin-left:1px;
+	}
+	

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerActivityDetailInstructionDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Request Detail Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>FS Instruction</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>instructionId</value></key>
+	         		<value>Id</value>
+				</entry> 
+				<entry>
+	         		<key><value>instructionDate</value></key>
+	         		<value>Created</value>
+				</entry> 			
+				<entry>
+	         		<key><value>instructionType</value></key>
+	         		<value>Instruction Type</value>
+				</entry> 
+				<entry>
+	         		<key><value>actualInstruction</value></key>
+	         		<value>Instruction</value>
+				</entry> 
+	     	</map>
+		</property>
+    </bean>  
+</beans>

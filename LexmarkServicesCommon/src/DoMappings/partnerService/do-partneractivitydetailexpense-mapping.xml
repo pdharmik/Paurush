@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerActivityDetailExpenseDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Request Detail Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW Action Expense Item - Partner Portal</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>  
+				<entry>
+	         		<key><value>paymentType</value></key>
+	         		<value>Expense Item Type</value>
+				</entry> 	
+				<entry>
+	         		<key><value>quantity</value></key>
+	         		<value>LXK UP Quantity</value>
+				</entry> 
+				<entry>
+	         		<key><value>unitPrice</value></key>
+	         		<value>LXK UP Unit Price</value>
+				</entry> 	
+				<entry>
+	         		<key><value>totalAmount</value></key>
+	         		<value>LXK UP Amount</value>
+				</entry> 
+				<entry>
+	         		<key><value>description</value></key>
+	         		<value>Description</value>
+				</entry> 
+				<entry>
+	         		<key><value>paymentCurrency</value></key>
+	         		<value>Currency Code</value>
+				</entry> 
+	     	</map>
+		</property>
+    </bean>  
+</beans>

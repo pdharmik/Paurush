@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+
+
+<hibernate-mapping package="com.lexmark.domain">
+
+<class name="UserFilterSetting"
+       table="USER_FILTER_PREFERENCES"
+       lazy="false">
+     
+      
+	   <id name="rowId" type="string" column="FILTER_ID"
+			unsaved-value="null">
+			<generator class="sequence" />
+		</id>
+		<property   name="userId"
+                column="USERID"
+                type="string"
+                length="100"
+                not-null="false"
+                /> 
+	 <property   name="address"
+                column="ADDRESS"
+                type="string"
+                length="1000"
+                not-null="false"
+                /> 
+     <property   name="device"
+                column="DEVICE"
+                type="string"
+                length="1000"
+                not-null="false"
+                /> 
+    <property   name="serviceRequest"
+                column="SERVICE_REQUEST"
+                type="string"
+                length="1000"
+                not-null="false"
+                />  
+   <property   name="prefName"
+                column="PREF_NAME"
+                type="string"
+                length="100"
+                not-null="false"
+                />  
+     <property   name="defaultPref"
+                column="ISDEFAULT"
+                type="char"
+                length="1"
+                not-null="false"
+                />                                                                     
+</class>
+</hibernate-mapping>

@@ -1,0 +1,1792 @@
+@charset "utf-8";
+
+/* @charset "utf-8";
+CSS Document
+@import url('http://www.lexmark-emea.com/CVP/css/DefaultPartnerStyles_2011.css');
+ */
+
+
+/* CSS Document */
+/*
+#####################################################################################################################################################################################
+#####################################################################################################################################################################################
+#########################################################################                                         ###################################################################
+########################################################################      CODE MODIFIDE BY INDIA TEAM         ################################################################### ####################################################################### ALL LINK SHOULD BE CHANGE WHEN SITE LIVE ####################################################################
+#####################################################################################################################################################################################
+#####################################################################################################################################################################################
+*/
+/* == Reset of elements for browser compatibility =========================== */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+	margin: 0;
+	padding: 0;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+fieldset, img {
+	border: 0;
+}
+address, caption, cite, code, dfn, em, th, var {
+	font-style: normal;
+	font-weight: normal;
+}
+li {
+	list-style: none;
+}
+caption, th {
+	text-align: left;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+input, textarea, select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	width: 180px!important;
+}
+#ElementLinkListContentBoldLink img {
+	behavior: url("http://www.reseller.lexmark.com/content/styles/iepngfix.htc")
+}
+/* == Generic styles ======================================================== */
+body {
+	font: normal 12px arial, helvetica, sans-serif;
+	/*background: #FF0000;*/
+	background:url(/lexmark-partnernet-theme/images/prm_backgr.gif) repeat-x;
+	color: #474747;
+}
+table {
+	font: normal 12px arial, helvetica, sans-serif;
+}
+a:link, a:visited, a:active {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+.noborder {
+	border: 0px;
+}
+.uppercase {
+	text-transform: uppercase;
+}
+.italic {
+	font-style: italic;
+}
+.required, .messagetext {
+	color: #cc0000;
+}
+.hidden {
+	display:none;
+}
+#borderouterdiv {
+/*background: #ebebeb url("http://www.reseller.lexmark.com/borders/assets/bgmain.gif") repeat-y; ##################### BACKGROUND SHED AND BORDER FOR OUT SIDE ##############################*/ 
+}
+.bullet {
+	margin: 10px;
+}
+.bullet li {
+	list-style-type: disc;
+	margin:10px;
+}
+/* == Header (borderHeaderDiv) ============================================== */
+/* header */
+#borderheaderdiv {
+	/*background: #a7a8a4;   ##################### BACKGROUND SHED AND BORDER FOR HEADER ##############################*/
+}
+#menu {
+	width: 815px;
+	float: right;
+	margin-top:20px;
+	z-index:50;
+	
+}
+#nav, #nav ul {
+	font: normal 10px arial, helvetica, sans-serif;
+	float: left;
+	list-style: none;
+/*	line-height: 1;*/
+	font-weight: bold;
+	padding: 0; padding-bottom:1px;
+	margin: 0;
+	z-index:100;
+	text-transform: uppercase;
+	
+}
+#nav li a {
+	display: block;
+	color: #FFF;
+	text-decoration: none;
+	padding: 3px; 
+	padding-left:1px; 
+	padding-right:1px;
+	/*height: 28px;*/
+	margin-top: 8px;
+	text-align: left;
+	margin-left: 11px; 
+	font-weight:bold;
+	text-transform: uppercase;
+	height:27px; padding-bottom:2px; padding-top:2px;
+}
+
+* html > body #nav li a {
+	display: block;
+	color: #FFF;
+	text-decoration: none;
+	padding: 3px; 
+	padding-left:1px; 
+	padding-right:1px;
+	/*height: 28px;*/
+	margin-top: 18px;
+	text-align: left;
+	margin-left: 11px; 
+	font-weight:bold;
+	text-transform: uppercase;
+	height:35px; padding-bottom:2px; padding-top:2px;
+}
+
+#nav li.first a, #nav li.firstselected a {
+	color: #FFF;	
+}
+#nav li li a {
+	/*padding:7px;*/
+	margin: 0px; text-transform: uppercase; padding:0px; padding-top:7px !important; padding-left:5px; color:#b5b5b5;
+	/*background:url(http://www.reseller.lexmark.com/content/smb/newpartnerdesign/tab_down_shed.gif) repeat-x;*/
+	
+}
+#nav li li a:hover {
+	background: #9a0509;
+	margin: 0px; color:#FFF;
+	/*height:28px;*/
+}
+#nav li.first li a, #nav li.firstselected li a {
+	color: #b5b5b5;
+}
+
+#nav a.daddy {
+	background: url(http://www.reseller.lexmark.com/content/smb/newpartnerdesign/rightarrow.gif) center right no-repeat;
+}
+#nav li {
+	float: left;
+	padding: 0;
+	width: 203px;
+	text-transform: uppercase;
+	background-image: url(http://www.reseller.lexmark.com/content/smb/newpartnerdesign/tab-light_new.gif); background-repeat:no-repeat;
+	
+}
+#nav li.first {
+	background-image: url(http://www.reseller.lexmark.com/content/smb/newpartnerdesign/tab-light_new.gif); background-repeat:no-repeat;
+	/*height:34px;*/
+}
+#nav li ul {
+	position: absolute;
+	left: -999em;
+	width: 200px;
+	font-weight: normal;
+	margin: 0;
+	/*removed border to overcome ie bug
+	border-top: 5px solid #363636;
+	border-right: 5px solid #363636;  
+	border-left: 5px solid #363636; border-top:1px solid #777; background:#333;*/
+
+}
+
+#nav li li {
+	margin-left: 0px;
+	margin-right: 0px;
+	width: 200px;
+	text-transform: none;
+	background:#333;
+	border: 1px solid #777; border-top:none;
+	padding-bottom:1px; 
+	padding-top:1px;
+	
+}
+
+html > body #nav li ul {
+	/*border-right: 1px solid #363636;*/height:29px; padding-bottom:1px; padding-top:1px;
+}
+#nav li ul a {
+}
+#nav li ul ul {
+	margin: -3em 0 0 20em;
+	margin: -2.7em 0 0 20em;
+	
+}
+
+#nav li:hover ul ul, #nav li:hover ul ul ul, #nav li.sfhover ul ul, #nav li.sfhover ul ul ul {
+	left: -999em;
+}
+#nav li:hover ul, #nav li li:hover ul, #nav li li li:hover ul, #nav li.sfhover ul, #nav li li.sfhover ul, #nav li li li.sfhover ul {
+	left: auto;
+}
+#nav li.first:hover, #nav li.first.sfhover, #nav li.firstselected, #nav li.selected {
+	background-image: url(http://www.reseller.lexmark.com/content/smb/newpartnerdesign/tab-light_new_hov.gif); background-repeat:no-repeat;
+}
+/* ############################## TOP NAVIGATION BUTTON HOVER IMAGE ###################################################*/
+#nav li:hover, #nav li.sfhover {
+	background-image: url(http://www.reseller.lexmark.com/content/smb/newpartnerdesign/tab-light_new_hov.gif); background-repeat:no-repeat;
+}
+#nav li:hover li, #nav li.sfhover li {
+	background-image: none; color:#FFF
+	/*background: #cdcec8;*/
+}
+/* Support for the "iehover-fix.js" */
+ul.nav iframe {
+	position: absolute;
+	/* account for the border */
+	left: -1px;
+	top: -10px;
+	z-index: -1;
+ filter: progid:DXImageTransform.Microsoft.Alpha(style=0, opacity=0);
+}
+* html ul.nav li {
+	z-index: 201;
+}
+/* == SubHeader (borderSubHeaderDiv) ======================================== */
+#subheadertitle {
+	padding-left: 10px;
+	margin: 0px;
+	float: left;
+	width: 815px; /*background:#639*/
+	
+}
+html > body #subheadertitle {
+	width: 804px;
+}
+#subheadertitle h1 {
+	font: normal 24px arial, helvetica, sans-serif;
+	color: #646464;
+	text-transform: uppercase;
+	line-height: 1em;
+	padding-top: 4px;
+	padding-bottom: 2px;
+}
+#breadcrumb {
+	padding: 3px 0 10px 10px;
+	float: left;
+	font-size: 9px;
+}
+#breadcrumb a:link, #breadcrumb a:visited, #breadcrumb a:active {
+	text-transform: uppercase;
+	color: #646464;
+	font-style: italic;
+}
+#printableversion {
+	padding: 3px 10px 0 0;
+	float: right;
+}
+#printableversion a {
+	text-transform: uppercase;
+	color: #646464;
+	font-style: italic;
+}
+/* == Left border (borderLeftDiv) =========================================== */
+#borderleftdiv {
+	/*background: #cccec8 url("http://www.reseller.lexmark.com/content/smb/newpartnerdesign/left_nav_back.gif") repeat-x; font-size: 10px; min-height:500px; font-family:Arial, Helvetica, sans-serif; font-size:12px;*/
+	
+	 background:url(http://www.reseller.lexmark.com/content/smb/newpartnerdesign/left_nav_back.gif) repeat-x; width:180px; padding-top:7px; padding-bottom:20px; min-height:480px; font-family:Arial, Helvetica, sans-serif !important; font-size:12px;}
+
+* html #borderleftdiv { _height:650px !important; min-height:480px !important;}
+
+#menuspace {
+	/*height: 30px;
+	padding: 10px 0 5px 10px;*/ padding-left:10px; padding-bottom:8px;
+/*	background: #eee;
+	border-left: 5px solid #A7A8A4; */
+}
+html > body #menuspace {
+	/*height: 15px;*/ padding-left:10px; padding-bottom:8px;
+}
+#welcome {
+	color: #bb0010;
+	font-weight: normal; font-family:Arial, Helvetica,; font-size:11px; font-weight:bold;
+}
+#searchform {
+	white-space: nowrap;
+	margin-top: 20px;
+}
+#searchform .formsubmit {
+	height: 20px;
+	color: #fff;
+	font: normal 10px arial, helvetica, sans-serif;
+	text-transform: uppercase;
+	/*margin: 0 3px 0 0;*/
+	width: 39px;
+	vertical-align: middle;
+	border:1px solid #cacccb;
+	/*#################################### ALL LINK SHOULD BE CHANGE WHEN SITE LIVE ###########################background: url("../borders/assets/searchbutton.gif") no-repeat;*/
+	background: url("http://www.reseller.lexmark.com/content/smb/newpartnerdesign/red_btn_bk.gif") no-repeat;
+}
+#searchform .formfield {
+	height: 20px;
+	border: 1px solid #cacccb;
+/*	margin: 0 3px 0 5px;*/
+	width: 125px;
+	vertical-align: middle;
+	color: #474747;
+	font: normal 10pt arial, helvetica, sans-serif;
+}
+#points {
+	height: 75px;
+	width: 185;
+	background: #701819 url("http://www.reseller.lexmark.com/borders/assets/points.gif");
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-top: 40px;
+}
+#target {
+	position: relative;
+	top: 7px;
+	left: 7px;
+}
+#bonus {
+	position: relative;
+	top: 36px;
+	left: 7px;
+}
+#login {
+	margin: 10px;
+	font-size: 10px;
+}
+#login .text {
+	margin-bottom: 5px;
+	font-size: 10px;
+	width: 165px;
+}
+#login a {
+	color: #848484;
+	text-decoration: underline;
+}
+#login .formsubmit {
+	height: 20px;
+	border: 0px;
+	color: #fff;
+	font: normal 10px arial, helvetica, sans-serif;
+	text-transform: uppercase;
+	margin: 0 3px 5px 0;
+	width: 45px;
+	vertical-align: middle;
+	background: url("http://www.reseller.lexmark.com/borders/assets/searchbutton.gif") no-repeat;
+}
+#registerbox {
+	border: 1px solid #A7A8A4;
+	width: 165px;
+	margin-left: 10px;
+	background: #fff;
+}
+html > body #registerbox {
+	padding-bottom: 5px;
+}
+#registerbox a {
+	padding:5px;
+	width: 150px;
+}
+#registerbox .registertext {
+	padding: 5px;
+}
+#registerbox .registerbutton {
+	background: #fff url("http://www.reseller.lexmark.com/borders/assets/registerbutton.gif") no-repeat;
+	padding-left: 3px;
+	padding-top: 3px;
+	height: 20px;
+	width: 155px;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: bold;
+	/*border-right: 0px solid #000;*/
+}
+/* == Main content (bordercontentDiv) ======================================= */
+/*##################### BACKGROUND SHED AND BORDER FOR CENTER PANEL ##############################*/
+
+#bordercontentdiv {
+	/*background: #fff url("http://www.reseller.lexmark.com/borders/assets/bgcontent.gif") repeat-y;*/
+	padding: 10px 0 10px 0;
+	font-size: 12px;
+	font: arial, helvetica, sans-serif;
+	background: #fff;
+}
+
+* html #bordercontentdiv { width:630px }
+
+#bordercontentdiv table {
+	font-size: 12px;
+}
+#bordercontentdiv a:link, #bordercontentdiv a:visited, #bordercontentdiv a:active {
+	color: #000;
+	text-decoration: none;
+}
+#bordercontentdiv a:hover {
+	text-decoration: underline;
+}
+#bordercontentdiv p, ul.Loyalty {
+	color: #333;
+	line-height: 18px;
+	margin-bottom: 1em;
+}
+#bordercontentdiv .tabs {
+	font-size: 10px;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: bold;
+	text-align: center;
+}
+#bordercontentdiv .tab1 {
+	width: 213px;
+	height: 15px;
+	background-image: url("http://www.reseller.lexmark.com/borders/assets/tab1.gif");
+	background-repeat: no-repeat;
+}
+#bordercontentdiv .tab2 {
+	width: 213px;
+	height: 15px;
+	background-image: url("http://www.reseller.lexmark.com/borders/assets/tab2.gif");
+	background-repeat: no-repeat;
+}
+#bordercontentdiv .tab3 {
+	width: 213px;
+	height: 15px;
+	background-image: url("http://www.reseller.lexmark.com/borders/assets/tab3.gif");
+	background-repeat: no-repeat;
+}
+#bordercontentdiv .tabcontent {
+	height: 360px;
+	background: #cccfc8;
+	color: #fff;
+	border-left: 0px solid #A7A8A4;
+	border-bottom: 0px solid #A7A8A4;
+}
+/* form styling */
+#bordercontentdiv select {
+	color: #000;
+	margin: 2px;
+}
+#bordercontentdiv select.small {
+	font-size: 9pt
+}
+#bordercontentdiv input.smallButton {
+	width: 22px;
+}
+#bordercontentdiv input.radio {
+	width: 20px;
+	/*border: 0 none;*/
+	vertical-align: top;
+}
+#bordercontentdiv input.checkbox {
+	width: 17px;
+	border: 0 none;
+	vertical-align: top;
+}
+/* Headings */
+#bordercontentdiv h1, h2, h3, h4 {
+	color: #333;
+}
+#bordercontentdiv h1 {
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0 0 6px 0;
+}
+#bordercontentdiv h2 {
+	font-size: 12px;
+	font-weight: bold;
+	margin: 11px 0 11px 0;
+	line-height: 16px;
+}
+#bordercontentdiv h3 {
+	font-size: 11px;
+	font-weight: bold;
+	margin: 11px 0 11px 0;
+}
+#bordercontentdiv h4 {
+	font-size: 11px;
+	font-weight: normal;
+	margin: 0 0 1px 0;
+}
+#bordercontentdiv h1.red-underline {
+	padding-bottom: 5px;
+	border-bottom: 1px solid #cc0000;
+}
+#bordercontentdiv h1.black-underline {
+	padding-bottom: 5px;
+	border-bottom: 1px solid #000000;
+}
+/* == Right border (borderRightDiv) ========================================= */
+
+/*##################### BACKGROUND SHED AND BORDER FOR RIGHT PANEL ##############################*/
+#borderrightdiv {
+	/*background: #cccec8 url("http://www.reseller.lexmark.com/borders/assets/bgright.gif") repeat;
+	border-top: 1px solid #fff;*/
+	background:url(http://www.reseller.lexmark.com/content/smb/newpartnerdesign/left_nav_back.gif) repeat-x; padding-top:20px; padding-bottom:20px; min-height:500px; font-family:Arial, Helvetica, sans-serif !important; font-size:11px;
+}
+
+* html #borderrightdiv { height:500px; }
+
+#borderrightdiv h3 {
+	font-size: 11px;
+/*	margin: 6px 0 0px 6px;*/
+	text-transform: uppercase; padding-bottom:10px; font-weight:bold !important;color: #bb0010;
+}
+#borderrightdiv select {
+	color: #474747;
+	text-transform: uppercase;
+	font: normal 10px arial, helvetica, sans-serif;
+}
+
+.text_head {}
+.text_head h3{color: #bb0010; font-family:Arial, Helvetica,; font-size:11px; font-weight:bold !important;}
+
+/*##################### BACKGROUND SHED AND BORDER FOR RIGHT SEARCH PANEL ##############################*/
+.simpleProductSearchTablevertical { width:150px;
+/*	background: #cccec8;
+	border-right: 1px solid #A7A8A4;
+	border-bottom: 1px solid #fff;*/
+}
+.simpleProductSearchTablevertical td {border-top:dotted #898e8a 1px; padding-bottom:10px; width:148px; padding-top:9px;}
+#simplesearchByProduct {
+	height: 20px;
+	width: 160px;
+
+}
+#simplesearchByCategory {
+	height: 20px;
+	width: 160px;
+	
+}
+#simplesearchByRange {
+	height: 20px;
+	width: 160px;
+	
+}
+ul.tv {
+	margin: 10px 0 10px 0;
+}
+ul.tv li {
+	border: 0px solid #474747;
+	padding: 3px;
+	margin: 10 3px 0 3px;
+}
+ul.tv a {
+	color: #474747;
+}
+ul.tv a:hover {
+	text-decoration:underline;
+}
+/* == Footer (borderFooterDiv) ============================================== */
+#borderfooterdiv {
+	width:995px !important; border:1px solid #cbcdcc; padding:1px!important; border-top:0px; }
+/*#borderfooterdiv {
+	background: url(http://www.reseller.lexmark.com/content/smb/newpartnerdesign/footer_backg.jpg) repeat-x; padding-top:10px; padding-bottom:7px; height: 20px;
+}*/
+#footertext {
+	color: #777;
+	text-transform: uppercase;
+	text-align: center; width:995px;
+	font-size: 10px; background: url(http://www.reseller.lexmark.com/content/smb/newpartnerdesign/footer_backg.jpg) repeat-x; padding-top:9px; padding-bottom:7px; 
+}
+#borderfooterdiv a {
+	color: #474747;
+	text-decoration: underline;
+}
+#borderfooterdiv a:hover {
+	text-decoration: none;
+}
+/* == Relay Tags () ========================================================= */
+/*table.simpleProductSearchTablehorizontal {
+	background-image: url("http://www.reseller.lexmark.com/borders/assets/selector.jpg");
+}*/
+table.simpleProductSearchTablehorizontal {
+	background-image: url("http://lexmark-emea.com/CVP/product_search.jpg");
+}
+
+td.products {
+	width: 230px;
+	height: 260;
+	padding-top: 160px;
+}
+td.categories {
+	width: 230px;
+	height: 260;
+	padding-top: 160px;
+}
+td.ranges {
+	width: 230px;
+	height: 260;
+	padding-top: 160px;
+}
+/* == Product Section () ==================================================== */
+.categoryProductImage {
+	height: 80px;
+	vertical-align: center;
+}
+td.ImageWithKeyLine {
+	border: 1px solid #000000;
+	height: 100px;
+	text-align: center;
+}
+.SMBproductOverviewTable {
+	padding: 0px;
+}
+.simpleWithIconsProductSearchTable select {
+	width: 200px;
+}
+.simpleWithIconsProductSearchTable td {
+	padding-bottom: 5px;
+}
+.categoryGroupingProductSearchTable select {
+	width: 200px;
+	margin: 5px;
+}
+.categoryGroupingProductSearchTable td.categoryTitle {
+	border: 1px solid #cccccc;
+	background-color: #f5f5f5;
+	font-weight: bold;
+	padding: 5px 5px 5px 5px;
+	color: #cc0000;
+
+	font-size: 11px;
+	line-height: 18px;
+}
+.categoryGroupingProductSearchTable td.categoryImage {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.categoryGroupingProductSearchTable td.spacer {
+	height: 7px;
+}
+.ProductListTable td {
+	padding: 5px;
+}
+.ProductListTable td a.productLink {
+	font-size: 11px;
+}
+.ProductListTable td a.productLink div {
+	padding-bottom: 3px;
+}
+.productLink {
+	color: #cc0000;
+	font-weight: bold;
+}
+a.productLink {
+	font-size: 18px;
+}
+a.productLink:hover {
+	text-decoration: underline;
+}
+.newProductSmall {
+	color: #cc0000;
+	background: #f9f9f9;
+	border: 1px solid #999;
+	font-size: 9px;
+	font-weight: normal;
+	padding: 0px 2px 0px 2px;
+	margin: 0px 0px 0px 1px;
+}
+.productDetail {
+	font-size: 10px;
+	color: #333333;
+	line-height: 16px;
+}
+.taxAndLegal {
+	font-size: 9px;
+	color: #666666;
+	line-height: 14px;
+}
+.printableVersionText a.link2, a.link2, #ServicesPageLinksSummaryText a {
+	color: #cc0000;
+	font-weight: normal;
+	font-size: 10px;
+}
+.printableVersionText a.link2:hover, a.link2:hover {
+	text-decoration: underline;
+}
+a.textSectionNames {
+	color: #6e6e63;
+}
+a.textSectionNames:hover {
+	text-decoration: underline;
+}
+.subContentAttribute {
+	font-weight: bold;
+	color: #333333;
+	font-size: 11px;
+	line-height: 18px;
+}
+.subContentValue {
+	color: #333333;
+	font-size: 11px;
+	line-height: 18px;
+}
+.productInfoTable td.line {
+	border-bottom: 1px solid #e2e2e2;
+	width: 1px;
+	line-height: 1px;
+	height: 1px;
+}
+.productSuppliesTable {
+	color: #333333;
+	font-size: 11px;
+	line-height: 18px;
+}
+.productSuppliesTable td.heading {
+	background-color: #e2e2e2;
+	font-weight: bold;
+	font-size: 12px;
+	color: #333333;
+}
+.productSuppliesTable td.heading a {
+	font-weight: bold;
+	color: #333333;
+	font-size: 12px;
+	cursor: default;
+}
+.productSuppliesTable td.heading a:hover {
+	text-decoration: none;
+	cursor: default;
+}
+.subHeading {
+	background-color: #f2f2f2;
+}
+.subHeading div {
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.grayBox {
+	border: 1px solid #cccccc;
+	background-color: #f5f5f5;
+	padding: 5px 5px 5px 5px;
+	color: #333333;
+	line-height: 18px;
+}
+div.grayBox {
+	border: 1px solid #333333;
+	background-color: #f5f5f5;
+	padding: 5px 5px 5px 5px;
+	color: #333333;
+	line-height: 18px;
+}
+.grayBoxBold {
+	border: 1px solid #cccccc;
+	background-color: #f5f5f5;
+	font-weight: bold;
+	padding: 5px 5px 5px 5px;
+	color: #333333;
+	line-height: 18px;
+}
+.redHeader {
+	border: 1px solid #cccccc;
+	background-color: #f5f5f5;
+	font-weight: bold;
+	padding: 5px 5px 5px 5px;
+	color: #cc0000;
+	line-height: 18px;
+}
+.redBox {
+	color: #ffffff;
+	background-color: #cc0000;
+	padding: 10px;
+	font-weight: bold;
+	font-size: 16px;
+}
+.RedBodyContent {
+	color: #CC0001;
+}
+.elementViewerTable {
+	padding: 5px;
+}
+table.elementViewerTable td a {
+	color: #333333;
+	font-size: 11px;
+	line-height: 18px;
+	font-weight: bold;
+}
+table.elementViewerTable td.active a {
+	text-decoration: underline;
+	color: #666666;
+}
+.elementViewerTable td a:hover {
+	color: #333333;
+	font-size: 11px;
+	text-decoration: underline;
+	line-height: 18px;
+	font-weight: bold;
+}
+.trSectionDivider {
+	border-top: 1px solid #cccccc;
+}
+.withTopPadding {
+	padding-top: 10px
+}
+form.submit {
+	background-image: url(http://www.reseller.lexmark.com/content/borders/images/lexmark-button_rounded_red.gif);
+	background-repeat: no-repeat;
+}
+/* Element Link List */
+#ElementLinkListContentBoldElement {
+	height: 80px;
+	margin: 5px;
+	position: relative;
+}
+.off {
+	border: 1px solid #ccc;
+}
+.on {
+	border: 1px solid #333;
+	background-color: #CCCEC8;
+}
+#ElementLinkListContentBoldLink {
+	/*	display: block; */
+	height: 80px;
+}
+#ElementLinkListContentBold a:link, #ElementLinkListContentBold a:visited, #ElementLinkListContentBold a:active {
+	text-transform: uppercase;
+	color: #333;
+	font-size: 12px
+}
+#ElementLinkListContentBold a:hover {
+	text-decoration: underline;
+}
+#ElementLinkListContentBoldHeaderText {
+	text-align: right;
+	padding: 5px;
+	cursor: hand;
+	height: 80px;/*	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	width: 65%; */
+}
+.smbproductoverviewtable {
+	float:right;
+	width: 805px;
+}
+.smbproductoverviewtable select {
+	color: #474747;
+	text-transform: uppercase;
+	font: normal 10px arial, helvetica, sans-serif;
+}
+.smbproductoverviewtable h2 {
+	font-size: 22px!important;
+	color: #646464;
+	line-height: 105%!important;
+}
+h1.producttitle {
+	font-size: 32px!important;
+	color: #646464!important;
+	font-weight: normal!important;
+/*	text-indent: 8px;*/
+	margin-top: 25px!important;
+	margin-bottom: 0px!important;
+	padding-left: 8px;
+}
+#productintro {
+	border: 1px solid #97978a;
+	margin-right: 10px;
+/*	height: 95px;*/
+	height:auto;
+}
+td.introtd {
+	vertical-align:top;
+}
+td.productmain {
+	margin-right: 10px;
+}
+.productreference {
+	width: 610px;
+	background-color: #97978a!important;
+	text-transform: uppercase!important;
+	color: #fff;
+	text-indent: 10px;
+	font-size: 10px;
+	padding: 1px;
+	margin:0px;
+	margin-bottom:8px;
+}
+.productrelated {
+	text-indent: 10px;
+	font-size: 12px;
+	margin: 0px;
+	padding: 1px;
+	bottom: 0px;
+	text-transform: uppercase!important;
+	color: #646464!important;
+}
+a.link1 {
+	text-transform: capitalize!important;
+	color: #646464!important;
+}
+table.productRightBorder {
+	text-transform: uppercase;
+	font-size: 10px;
+}
+table.productavailability {
+	width: 165px;
+	text-transform: uppercase;
+	font-size: 10px!important;
+	border-left: 1px solid #97978a;
+}
+.productavailability td {
+	border-right: 1px solid #97978a;
+	border-bottom: 1px solid #97978a;
+	padding: 2px;
+	text-align: center;
+}
+th.productinfotitle {
+	background-color: #97978a;
+	color: #fff;
+	padding: 1px;
+	text-indent: 10px;
+	font-size: 10px;
+}
+.productavailability th {
+	background-color: #97978a;
+	color: #fff;
+	padding: 1px;
+	font-size: 10px;
+	text-align: center;
+}
+a.textsectionnames {
+	font-size: 10px;
+}
+table .productrightborder {
+	font-size: 10px;
+	width: 185px;
+}
+.productrightborder a:link, .productrightborder a:visited {
+	font-size: 10px;
+	color: #6e6e63!important;
+}
+.productrightborder ul li {
+	list-style: none;
+	padding: 5px 10px 5px 35px;
+	border-top: 1px solid #ccc;
+}
+a.textSectionNames {
+	color: #333333;
+}
+a.availabilityLink {
+	color: #333333!important;
+}
+ul.bulletInfo {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	font-weight: bold;
+}
+ul.bulletInfo li {
+	background-image: url("http://www.reseller.lexmark.com/content/borders/assets/productlist.gif");
+	background-repeat: no-repeat;
+	background-position: 0 0em;
+	padding-left: 30px;
+	line-height: 150%;
+}
+ul.printerconfigure {
+	width: 165px;
+}
+ul.printerconfigure li {
+	list-style: none;
+	padding: 5px 0px 5px 35px;
+	margin-top: 15px;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/configure1.gif") no-repeat 0;
+	background-color: #eee;
+	font-size: 10px;
+}
+td.productleftborder {
+	padding-top: 10px;
+}
+td.productdescription {
+	padding-left: 40px;
+	padding-right: 30px;
+}
+ul.printerconfigure a {
+	color:#333333!important;
+}
+.productrightborder ul li.TechSpec {
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/product/icp_search.gif") no-repeat 0;
+}
+.productrightborder ul li.CPRES {
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/product/icp-productpresentation.gif") no-repeat 0;
+}
+.productrightborder ul li.supplies {
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/product/icp-supplies.gif") no-repeat 0;
+}
+.productrightborder ul li.options {
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/product/icp-options.gif") no-repeat 0;
+}
+.productrightborder ul li.services {
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/product/icp-services.gif") no-repeat 0;
+}
+.productrightborder ul li.WBANN {
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/product/icp-webbanner.gif") no-repeat 0;
+}
+.productrightborder ul li.keyse {
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/product/icp_keyselling.gif") no-repeat 0;
+}
+.productrightborder ul li.BROCH {
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/product/icp-brochure.gif") no-repeat 0;
+}
+.productrightborder ul li.ITOUR {
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/product/icp-flash.gif") no-repeat 0;
+}
+.productrightborder ul li.productimage {
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/product/icp-product.gif") no-repeat 0;
+}
+.productrightborder ul li.marketingdescription {
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/product/icp-text.gif") no-repeat 0;
+}
+
+.productrightborder ul li.productpdf {
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/product/icp-brochure.gif") no-repeat 0;
+}
+.productrightborder ul li.productjpg {
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/product/icp-product.gif") no-repeat 0;
+}
+.productrightborder ul li.productexe {
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/product/icp-flash.gif") no-repeat 0;
+}
+.productrightborder ul li.productzip {
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/product/icp-zip.gif") no-repeat 0;
+}
+.productrightborder ul li.productwmv {
+	background: url("http://www.reseller.lexmark.com/content/borders/assets/product/icp_wmv.gif") no-repeat 0;
+}
+.productrightborder ul li.productmp4 {
+	background: url("/content/borders/assets/product/icp-demo.gif") no-repeat 0;
+}
+.productrightborder ul li.producthtml {
+	background: url("/content/borders/assets/product/icp-html.gif") no-repeat 0;
+}
+.categoryTitle {
+	font-size:14px;
+	color:#cc0000;
+	font-weight:bold;
+}
+.categoryGroupingProductSearchTablevertical {
+	margin: 20px 0 0 30px;
+}
+table.whatsNew a {
+	text-transform: uppercase;
+	color: #333!important;
+	font-size: 12px;
+}
+/* for Redemption Form */
+table.redemption {border-bottom: 0px solid #eee; border-right: 0px solid #eee; width:100%;}
+table.redemption td {border-top: 0px solid #eee; border-left: 0px solid #eee;padding: 2px;}
+form.order_display_form {padding-left: 15px; padding-right: 15px; width:100%;}
+table.order_top_summary td, table.order_details_summary td {padding-right: 15px;}
+table.orders_request_confirm {margin-top: 30px;}
+table.orders_request_confirm td {padding-right: 15px; padding-left: 15px;}
+div.order_closing_message {padding-left: 15px; } 
+/* trying to fix in FF */
+table.order_details {width: 100%}
+form.order_display_form {text-align: left;}
+
+td.ChangePA_submitTD {padding-left: 20px;} 
+table.changePAform td {text-align: left;}
+#frmProspectivePointsAdmin {width:250px;}
+
+ul.Loyalty {margin-left: 0px; padding-top: 0px;}
+ul.Loyalty li {list-style-type:disc; margin-left: 30px;}
+
+/* e-Learning table */
+#lmsTrainingResultsDisplay .withBorder {width:100%;}
+#lmsTrainingResultsDisplay .oddRow {background-color:#eee;}
+#lmsTrainingResultsDisplay .withBorder td, .withBorder th {padding:2px;}
+
+/* == Tooltip ========-====================================================== */
+#qTip {padding:3px;border:1px solid #8EAACE;display:none;background:#f5f5f5;text-align:left;position:absolute;z-index:1000;font:normal 11px tahoma,arial,helvetica,sans-serif #444;}
+
+/* this is for the Buy Now button on the redemption form */
+input.buynow {
+	border:#000 1px solid;
+	background:#cc0000;
+	color:#fff;
+	font-family:arial,helvetica,sans-serif;
+	font-size:10px;
+	text-transform:uppercase;
+}
+input.buynow:hover {
+	background:#fff;
+	color:#000;
+}
+/* end buy now */
+
+
+
+/*################################ CLASS DEVELOPED BY PRM INDIA TEAM #########################*/
+
+.padi_T20 { padding-top:20px;}
+.padi_T15 { padding-top:15px;}
+.padi_T10 { padding-top:10px;}
+.padi_T5 { padding-top:5px;}
+.padi_B10 { padding-bottom:10px;}
+.padi_B15 { padding-bottom:15px;}
+.padi_B20 { padding-bottom:20px;}
+.padi_L5 { padding-left:5px;}
+.padi_L10 { padding-left:10px;}
+.padi_R10 {padding-right:10px;}
+.padi_all_10 {padding:10px;}
+.font_10px{ font-size:10px;}
+.font_11px{ font-size:11px;}
+.fl_L { float:left}
+.color1 { color:#747975}
+.head_wrap { width:auto; padding-bottom:22px;}
+.center_wrap {width:995px; border:1px solid #cbcdcc; padding:1px; background:#ebebeb}
+.center_hig{ height:580px;}
+
+.all_bor_lft_pnl {border-left:1px solid #cbcdcc; border-top:1px solid #cbcdcc; padding:1px; padding-right:0px; padding-bottom:0px; background:#ebebeb}
+
+.left_wrap { background:url(http://www.reseller.lexmark.com/content/smb/newpartnerdesign/left_nav_back.gif) repeat-x; width:157px; padding-top:20px; padding-left:10px; padding-right:13px; padding-bottom:20px;}
+.left_wrap a{ text-decoration:none; color:#747975}
+.lgin_txt {background:url(http://www.reseller.lexmark.com/content/smb/newpartnerdesign/black-aro.gif) 0px 4px no-repeat; padding-left:8px; padding-bottom:3px;}
+.lgin_input { width:159px; height:16px; font-size:10px; border:0px !important; border:1px solid #c3c3c3}
+.search_input { width:120px; min-height:20px; max-height:20px; font-size:12px; border:0px; border:1px solid #cacccb!important;}
+.redbtn { padding:2px; background:url(http://www.reseller.lexmark.com/content/smb/newpartnerdesign/red_btn_bk.gif); text-transform:uppercase; color:#FFF; font-size:10px; padding-left:11px; border:1px solid #FFF; font-family:Arial, Helvetica, sans-serif !important; padding-right:5px; padding-bottom:2px;}
+.regisbtn { padding:3px; background:url(http://www.reseller.lexmark.com/content/smb/newpartnerdesign/red_btn_bk.gif); text-transform:uppercase; color:#FFF; font-size:10px; padding-left:11px; border:1px solid #FFF; font-family:Arial, Helvetica, sans-serif !important; padding-right:5px; padding-bottom:2px; float:left}
+.regisbtn a { color:#FFFFFF}
+.dt_bor_B { border-bottom:dotted #898e8a 1px; padding-bottom:10px; width:150px;}
+.dt_bor_T { border-top:dotted #898e8a 1px; padding-bottom:10px; width:150px;}
+
+
+#borderMiddleDiv{ border:1px solid #cbcdcc; padding:1px; border-bottom:none; float:left; background:#FFF}
+
+#content-wrapper {
+	background: #fff!important;
+	padding: 0 0 20px 0 !important;
+	border:1px solid #cbcdcc;
+}
+
+.byProductRow{text-align:left}
+.bordercontentDivCustomised {float:left; padding:0px !important; border:0px !important}
+
+
+/* ################################################# FOR NEW REGISTRATION PAGE ###########################################################*/
+
+.sec_wrap {width:790px; float:left; padding-bottom:20px; padding-top:10px; font-family:Arial, Helvetica, sans-serif !important; font-size:12px !important;}
+
+.cnt_wrap {width:790px; float:left;} 
+.cnt_wrap a{ color:#454744; text-transform:none; text-decoration:none}
+.cnt_wrap a:hover{ color:#000;text-decoration:underline}
+.country_head {font-family:Arial, Helvetica, sans-serif; font-size:18px; text-transform:uppercase; color:#ff333a; margin-left:5px; padding-top:10px; padding-bottom:8px; float:left; width:780px;}
+
+.cnt_wrap_sml {width:380px; float:left;}
+.cnt_wrap_sml a{ color:#454744; text-transform:none; text-decoration:none}
+.cnt_wrap_sml a:hover{ color:#000;text-decoration:underline}
+.country_head_sml {font-family:Arial, Helvetica, sans-serif; font-size:18px; text-transform:uppercase; color:#ff333a; margin-left:5px; padding-top:10px; padding-bottom:8px; float:left; width:350px;}
+
+
+.padi { padding:5px;}
+.padi_T {padding-top:5px; padding-bottom:10px;}
+
+#flagBox_new {margin-left:8px; margin-bottom:8px; width:148px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#454744; float:left}
+.off_new {border: 1px solid #d5d5d5;  background-image:url(http://www.lexmark-emea.com/CVP/css_image/off_back.gif)}
+.on_new {border: 1px solid #ffd4b2; background-image:url(http://www.lexmark-emea.com/CVP/css_image/on_back.gif) }
+
+
+
+/* ################################################# FOR NEW LOYALTY PAGE ###########################################################*/
+
+.loy_wrap { float:left; width:790px; height:330px; background:url(http://www.lexmark-emea.com/CVP/css_image/LOYALTY_back.jpg);}
+.loy_tp_txt {font-family:Arial, Helvetica, sans-serif; font-size:27px; padding:10px; padding-left:50px; padding-right:170px; color:#015356}
+.loy_tp_txt_1 {font-family:Arial, Helvetica, sans-serif; font-size:22px; padding:10px; padding-left:50px; padding-right:170px; color:#015356}
+
+.loy_tp_txt2 {font-family:Arial, Helvetica, sans-serif; font-size:20px; padding-left:5px; float:left}
+.loy_tp_txt2_2 {font-family:Arial, Helvetica, sans-serif; font-size:17px; padding-top:6px; padding-left:15px; float:left}
+
+.loy_tp_txt2_3 {font-family:Arial, Helvetica, sans-serif; font-size:13px; padding-top:6px; padding-left:15px; float:left; color:#000}
+
+.loy_tp_txt3 {font-family:Arial, Helvetica, sans-serif; font-size:20px; color:#353535; padding-top:3px; padding-left:8px; float:left}
+.loy_tp_txt3_3 {font-family:Arial, Helvetica, sans-serif; padding-top:6px; padding-left:8px; float:left; color:#000}
+
+.c_b_wrap {width:auto; float:left; font-size:20px; color:#015356}
+.c_b_wrap_1 {width:auto; float:left; color:#000}
+.c_b_L { width:11px; height:31px; float:left}
+.text_bold {font-weight:bold}
+
+*html .c_b_M {padding-top:3px; height:31px; background:url(http://www.lexmark-emea.com/CVP/css_image/bot_M.png) repeat-x; float:left}
+*html .c_b_M_1 {padding-top:6px; height:31px; background:url(http://www.lexmark-emea.com/CVP/css_image/bot_M.png) repeat-x; float:left}
+
+
+
+
+.c_b_M { padding-top:3px; height:28px; background:url(http://www.lexmark-emea.com/CVP/css_image/bot_M.png) repeat-x; float:left}
+.c_b_M a{ color:#000 !important}
+.c_b_M a:hover{ color:#000 !important; text-decoration:none !important}
+
+.c_b_M_1 { padding-top:7px; height:26px; background:url(http://www.lexmark-emea.com/CVP/css_image/bot_M.png) repeat-x; float:left}
+.c_b_M_1 a{ color:#000 !important}
+.c_b_M_1 a:hover{ color:#000 !important; text-decoration:none !important}
+
+.c_b_R { width:12px; height:31px; float:left}
+.b_text { background:url(http://www.lexmark-emea.com/CVP/css_image/bot_M.png) repeat-x; font-size:20px; color:#000; text-align:center}
+
+/*################################ CLASS DEVELOPED BY PRM INDIA TEAM FOR WHATS NEW SECTION #########################*/
+
+.whatsnew {padding-left:10px; background:#FFF}
+.whatsnew h2 {font-size:12px; padding:5px; padding-left:10px; background:#c7cdc9; margin:1px; color:#bb0010}
+
+.whatsnew_home {width:165px; margin-top:10px; border:1px solid #cbcdcc; padding-left:10px; background:#FFF; margin-left:8px;}
+.whatsnew_home a{ color:#000; font-size:11px; text-transform:uppercase}
+.whatsnew_home a:hover{ color:#000; font-size:11px; text-transform:uppercase; text-decoration:underline}
+.whatsnew_home h2 {font-size:12px; padding:5px; padding-left:10px; background:#c7cdc9; margin:1px; color:#bb0010}
+
+.quickLinks { padding:5px; font-size:10px !important;}
+ul.quickLinks li { background:url(http://www.reseller.lexmark.co.uk/content/smb/newpartnerdesign/black-aro.gif) no-repeat 0px 4px; padding-left:10px; line-height:18px; font-size:10px !important}
+
+.screenTable{border:1px solid #000}
+
+
+#opportunityTable th,#dealreg th{
+color: #CC0000;
+font-size: 14px;
+font-weight: bold;
+padding-top:20px;
+padding-bottom:10px;
+margin-left: 20px;
+margin-right: 20px;
+border-top: 2px solid #eee;
+}
+
+#opportunityTable tr,#dealreg tr{
+color: #474747;
+font-size: 12px;
+font-weight: normal;
+}
+
+#td_no_fieldname_label, #td_currency_label, .competitorLabel{
+font-weight: bold;
+}
+
+#dealReg td{
+padding-bottom:10px;
+}
+
+#BidDeskDiv td{
+padding-bottom:10px;
+}
+
+#opportunityTable td{
+padding-bottom:10px;
+}
+
+#opportunityTable, #dealreg {margin-left: 10px;}
+#opportunityTable h1, #dealreg  h1{margin-top: 10px;}
+
+#td_contactpersonid_label, #td_distilocationid_label, #td_detail_label, #td_currentsituation_label, #td_expectedclosedate_label, #td_stageid_label{
+font-size: 12px;
+color: #474747;
+margin-top: 10px;
+vertical-align: top;
+font-weight: bold;
+}
+
+#addContactCountryButton, #frmShowLanguageID, #td_inscountryid_value, #td_frmshowlanguageid_label, #td_inscountryid_label, #td_insaddress5_label, #td_insaka_label, #td_insmobilephone_label, #td_insofficephone_label, #td_insjobdesc_label, #contactPersonID, #distiLocationID, #td_detail_value, #td_currentsituation_value, #td_expectedclosedate_value, #td_stageid_value {
+font-size: 12px;
+color: #474747;
+margin-top: 10px;
+vertical-align: top;
+font-weight: normal;
+}
+
+#addContactCountryButton{
+color: #000000;
+}
+#opportunityTable input#frmButton{
+float: none;
+margin-top: 0px;
+cursor: pointer;
+}
+
+
+#frmAddProductBtn, #opportunityTable input#frmApplyForDealReg, #opportunityTable input#frmSave, #opportunityTable input#frmSaveOpportunity, #opportunityTable input#frmEditCompetitorBtn, #opportunityTable input#frmDeleteCompetitorBtn, #opportunityTable input#frmCancel, #opportunityTable input#frmSaveCompetitorBtn, #opportunityTable input#frmButton, #opportunityTable input#frmAddBtn, #opportunityTable input#frmDeleteBtn,  #dealreg input[type=button]{
+padding:10px;
+padding-top:2px;
+padding-bottom: 2px;
+text-decoration:none;
+display:inline-block;
+border-radius: 4px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+background: #CC0000;
+color:#FFFFFF !important;
+border: 1px solid #CC0000;
+margin-top: 10px;
+margin-bottom: 10px;
+margin-right: 10px;
+font-weight: bold;
+font-family:Arial, Helvetica, sans-serif;
+font-size: 12px;
+text-transform:uppercase;
+float: right;
+cursor: pointer;
+}
+
+#opportunityTable input#frmButton{
+margin-top: 0px;
+width: 130px;
+margin-right: 150px;
+}
+
+
+
+
+
+.dealRegSecondDiv{
+    float: right;
+    margin-right: 5px;
+    width: 220px;
+	background-color: #fff;
+	padding-left: 5px;
+}
+
+.BidDeskSecondDiv{
+    float: right;
+    margin-right: 5px;
+    width: 220px;
+	background-color: #fff;
+	padding-left: 5px;
+}
+
+#dealReg table.withBorder, #opportunityTable{
+width: 100%;
+float: left;
+}
+
+#BidDeskDiv table.withBorder, #opportunityTable{
+width: 490px;
+float: left;
+}
+
+.dealRegSecondDiv ol.dealRegList li{
+font-size: 10px;
+list-style-type: decimal !important;
+list-style-position: inside;
+margin-bottom: 10px;
+}
+
+.BidDeskSecondDiv ol.BidDeskList li{
+font-size: 10px;
+list-style-type: decimal !important;
+list-style-position: inside;
+margin-bottom: 10px;
+}
+
+.dealRegSecondDiv h1{
+font-size: 14px !important;
+margin-bottom: 10px !important;
+}
+
+.BidDeskSecondDiv h1{
+font-size: 14px !important;
+margin-bottom: 10px !important;
+}
+
+
+
+#distiLocationID, #contactPersonID, #detail, #stageID{
+width: 298px;
+    margin-bottom: 10px !important;
+}
+
+#opportunityForm{
+padding-top:20px;
+}
+
+tr#tr_currency{
+    color: #474747;
+    font-size: 12px;
+}
+
+#td_currency_value, select#currency{
+font-weight: normal;
+}
+
+
+#oppCompetitorsDiv tr td , #oppProductsDiv tr td {
+    color: #474747;
+    font-size: 11px;
+    font-weight: normal;
+    padding: 5px;
+    text-align: center !important;
+        vertical-align: middle;
+}
+
+#oppCompetitorsDiv tr td b, #oppProductsDiv tr td b{
+    color: #333333;
+ font-size: 12px;
+    vertical-align: top;}
+
+#oppCompetitorsDiv tr:first-child, #oppProductsDiv tr:first-child{
+ background-color: #eeeeee;
+border: 2px solid #eeeeee;
+}
+
+#oppCompetitorsDiv td:first-child, #oppProductsDiv td:first-child{
+padding-bottom: 4px !important;
+
+}
+
+#oppProductsDiv input[type="button"]{
+margin: 0px !important; 
+float: left !important;
+cursor: pointer;
+margin-bottom: 10px !important;
+}
+
+#oppCompetitorsDiv input[type="button"]{
+margin: 0px !important; 
+float: left !important;
+cursor: pointer;
+margin-bottom: 3px !important;
+}
+
+
+#oppButtonDiv input[type="button"]{
+float: left !important;
+cursor: pointer;
+}
+
+#frmDeleteCompetitorBtn, #frmDeleteBtn{
+padding-left: 0px !important;
+padding-right: 0px !important;
+}
+
+#frmEditCompetitorBtn{
+padding-left: 9px !important;
+padding-right: 9px !important;
+}
+
+#oppCompetitorsDiv, #oppProductsDiv {
+width: 700px;
+}
+
+#oppButtonDiv{
+margin-left: 5px;
+float: left;
+}
+
+#productRow1 select#frmProduct, #productGroupRow1 select{
+float: left;
+}
+
+#frmProductQty, #frmRequestedDiscount{
+margin-top: 2px;
+}
+#oppCompetitorsDiv tr.competitorRow, #oppProductsDiv tr.productRow{
+border: 2px solid #eeeeee;
+}
+
+.productRow td:first-child{padding-bottom: 0px !important;}
+
+.competitorTable tr td{
+color: #333333 !important;
+font-size: 12px !important;
+}
+
+.competitorTable input, .competitorTable textarea, .competitorTable select {
+font-weight: normal !important;
+color: #333333 !important;
+font-size: 12px !important;
+margin-bottom: 5px;
+}
+
+#frmProductCompetitorProductTypeID, #frmProductCompetitorID{
+margin: 0px !important;
+margin-bottom: 5px !important;
+width: 285px !important;
+}
+
+.competitorTable input#frmSaveCompetitorBtn{
+font-weight: bold !important;
+}
+
+.competitorTable tr td:first-child + td + td{
+    color: #333333;
+    font-size: 12px;
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+.competitorTable tr td:first-child + td{
+    color: #333333;
+    font-size: 12px;
+    font-weight: normal;
+    padding-left: 10px;
+}
+
+#frmUserProductCompetitor, #frmModel, #frmUnitCost, #frmNotes, #frmDescription{
+width: 285px !important;
+margin-right: 10px;
+}
+
+.competitorTable{margin-top: -30px;}
+.competitorTable td{min-width: 180px;}
+
+#td_currentsituation_value textarea{
+width: 298px;
+}
+
+.competitorLabel{
+width: 180px;
+}
+
+#competitorHeading, #productHeading{
+background-color: #eeeeee !important;
+border: 2px solid #eee !important;
+
+}
+
+.top_cntr_bx, .right_bx_home{
+background-color:#a7a8a3; 
+padding-right: 10px;
+padding-left: 10px;
+margin-right: 10px;
+width: 100%;
+    color: #FFFFFF;
+    font-family: Geneva,Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+	vertical-align: middle;
+	height: 100px;
+}
+
+.mar10pxB{
+width: 785px;
+}
+
+#dealRegNotes, #demoNotes, #bidDeskNotes{
+    background-color: #FFFFFF;
+    margin-top: 300px;
+    padding-right: 20px;
+    position: absolute;
+    right: 2px;
+    width: 250px;
+}
+
+#opportunityTable {
+    float: left;
+    width: 100%;
+}
+
+#td_contactpersonid_value{
+
+}
+
+#tfqo_aReport{
+width: 80%;
+}
+
+#tfqo_aReport th a{
+    color: #CC0000 !important;
+    font-size: 14px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    padding-top: 20px;
+	text-align: left;
+}
+
+#tfqo_aReport th{
+    padding-bottom: 10px;
+    padding-top: 20px;
+	padding-left: 10px;
+width: 30%;
+border-bottom: 2px solid #999;
+}
+
+#tfqo_aReport td{
+text-align: left;
+ padding: 5px 10px 5px;
+}
+
+#tfqo_aReport .oddrow{
+background-color: #eee;
+}
+
+#EndUserAccount, #OpportunityDetails, #PartnerDetails{
+float: left;
+width: 33%;
+}
+#PartnerDetails{
+float: right;
+width: 33%;
+}
+#EndUserAccount table, #OpportunityDetails table, #PartnerDetails table{
+float: left;
+width: 90%;
+}
+
+#CompetitorsDetails th, #Products th, #EndUserAccount th, #OpportunityDetails th, #PartnerDetails th, #SalesSituation th, #DemoDetails th, #DealsDetails th{
+    color: #CC0000;
+    font-size: 14px;
+    font-weight: bold;
+		padding-bottom: 10px;
+
+}
+
+#CompetitorsDetails th, #Products th, #BidDeskReviewDetailPanels, #SalesSituation th, #DemoDetails th, #DealsDetails th{
+	border-top: 2px solid #eee;
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+
+#EndUserAccount td, #OpportunityDetails td, #PartnerDetails td, #SalesSituation td{
+color: #474747;
+    font-size: 11px;
+    font-weight: normal;
+    padding-right: 5px;
+    padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: left;
+}
+
+#CompetitorsDetails td, #Products td, #DemoDetails td, #DealsDetails td{
+color: #474747;
+    font-size: 11px;
+    font-weight: normal;
+    padding-right: 5px;
+    padding-top: 5px;
+	text-align: left;
+	background-color: #FFFFFF;
+}
+
+
+#CompetitorsDetails , #Products, #SalesSituation, #DemoDetails, #DealsDetails{
+float: left;
+width: 100%;
+
+margin-top: 20px;
+}
+
+#CompetitorsDetails table, #Products table, #DemoDetails table, #DealsDetails table{
+    width: 100%;
+}
+
+.oppReviewLabel{
+font-weight: bold !important;
+vertical-align: top;
+}
+
+#ContentDisplayArea {
+    margin-left: 30px;
+}
+
+#currentSituation1charsleft{
+display: none;
+}
+
+#td_detail_label{
+width: 25%;
+}
+
+#oppCompetitorsDiv table{
+border-spacing: 0 !important;
+}
+
+.opportunity_id{
+width: 50px;
+}
+
+
+/* Added from JSP */
+
+			html, body {
+				text-align: center; /*for IE stupidity*/
+			}
+			#borderOuterDiv{
+				width:1000px;
+				overflow:visible;
+				position:relative; 
+				margin:0 auto; /*GCC this is vital for center aligning to work cross-browser*/
+				text-align:left;
+				border: 0px solid #000000;
+			}
+			body{ 
+				margin-left:0px;
+				margin-top:0px;
+				margin-bottom:0px;
+			}
+			
+			.borderHeaderDivCustomised{
+				clear: both;
+				width: 1000px;
+				height: 130px; 
+				padding-top:0px;
+				padding-left:0px;
+				padding-right:0px;
+				border: 0px solid #000000;
+			}
+			
+			.borderLeftDivCustomised {
+				float:left; 
+				width: 185px;
+				height:auto; 
+				padding-top:0px;
+				padding-left:0px;
+				padding-right:0px;
+				border: 0px solid #000000;
+				overflow:hidden; /* NJH 14/06/06 */
+			}
+			.borderRightDivCustomised{
+				float:right;
+				width: 0px;
+				height:auto; 
+				padding-top:0px;
+				padding-left:0px;
+				padding-right:0px;
+				border: 0px solid #000000;
+			}
+			.borderContentAreaCustomised{
+				/* RND - Float element moved from sub-level to allow correct div alignment  - this float is vital for when hideRightBorder=yes!!!*/
+				/* 2011/08/04 PPB REL109 - we changed the width from "auto" to contentWidth to solve the problem with the login box dropping down the page in FF */
+				float:left;
+				padding: 0px 0px 0px 0px; 
+				width:815px;
+				height:auto;
+				border:0px solid #FF0000;
+			}
+			.borderSubHeaderDivCustomised{
+				width:815px;
+				height:auto; 
+				padding-top:0px;
+				padding-left:0px;
+				padding-right:0px;
+				border: 0px solid #000000;
+			}
+			
+			#bordercontentDiv.bordercontentDivCustomised{
+				/* RD - Removed float element into higher level ContentAreaDiv */
+				width:815px;
+				height:auto; 
+				/*overflow:visible;*/
+				padding-top:0px;
+				padding-left:0px;
+				padding-right:0px;
+				border: 0px solid #000000;
+			}
+			.borderFooterDivCustomised{
+				clear: both;
+				width: 1000px;
+				height: auto; 
+				padding-top:0px;
+				padding-left:0px;
+				padding-right:0px;
+				border: 0px solid #000000;
+			}
+			
+/* Added extra */
+input[type="text"], input[type="password"], input[type="date"], textarea, textarea.dhx_combo_edit {
+	padding: 0px!important;	
+}			
+input:focus, input.ieFocusHack, input.focus, .form input:focus, .form input.ieFocusHack, textarea:focus, .form textarea:focus, .form textarea.ieFocusHack, .form select:focus, .form select.ieFocusHack, .displayGrid input:focus, .displayGrid input.ieFocusHack {
+	background-color:lightyellow;
+}
+
+.width100p {
+	width: 60%;
+}
+.portlet-content {
+	padding: 10px;
+}

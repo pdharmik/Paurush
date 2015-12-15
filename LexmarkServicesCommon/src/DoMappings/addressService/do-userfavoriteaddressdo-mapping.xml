@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="UserFavoriteAddressDo" class="com.amind.data.service.DomainObjMapping">
+
+		<!-- data source info -->
+		<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+		</property>
+
+		<property name="dsTargetObjectName">
+			<value>LXK SW Contact Favorite Addresses</value>
+		</property>
+
+		<property name="dsTargetComponentName">
+			<value>LXK SW Contact Favorite Addresses</value>
+		</property>
+
+		<property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+		</property>
+
+		<!-- field mapping -->
+		<property name="doFieldNameToDsFieldNameMap">
+			<map>
+				<entry>
+					<key>
+						<value>contactId</value>
+					</key>
+					<value>Contact Id</value>
+				</entry>
+				<entry>
+					<key>
+						<value>favoriteAddressId</value>
+					</key>
+					<value>Favorite Address Id</value>
+				</entry>
+				<entry>
+					<key>
+						<value>relationshipType</value>
+					</key>
+					<value>Relationship Type</value>
+				</entry>
+				<entry>
+					<key>
+						<value>accountId</value>
+					</key>
+					<value>Favorite Address Account Id</value>
+				</entry>
+				<entry>
+					<key>
+						<value>status</value>
+					</key>
+					<value>LXK Status</value>
+				</entry>
+				<entry>
+					<key>
+						<value>id</value>
+					</key>
+					<value>Id</value>
+				</entry>
+			</map>
+		</property>
+
+	</bean>
+</beans>

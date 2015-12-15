@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="SupplyRequestDetailOrderLineShipmentItemDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS HW Service Request Detail - Service Web</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Shipment Item</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+                <entry>
+                    <key><value>id</value></key>
+                    <value>LXK SD Order Item Id</value>
+                </entry>
+                <entry>
+                    <key><value>carrier</value></key>
+                    <value>LXK MPS Carrier</value>
+                </entry>
+                <entry>
+                    <key><value>actualDeliveryDate</value></key>
+                    <value>Delivery Date</value>
+                </entry>
+                <entry>
+                    <key><value>partName</value></key>
+                    <value>LXK MPS Product Description</value>
+                </entry>
+                <entry>
+                    <key><value>vendorProduct</value></key>
+                    <value>LXK MPS Vendor Product</value>
+                </entry>
+                <entry>
+                    <key><value>trackingNumber</value></key>
+                    <value>LXK MPS Tracking #</value>
+                </entry>
+                <entry>
+                    <key><value>actualShipDate</value></key>
+                    <value>Shipment Date</value>
+                </entry>
+                <entry>
+                    <key><value>shippedQuantity</value></key>
+                    <value>Shipment Quantity</value>
+                </entry>
+                <entry>
+                    <key><value>status</value></key>
+                    <value>Status</value>
+                </entry>
+                <entry>
+                    <key><value>partType</value></key>
+                    <value>LXK MPS Consumable Type</value>
+                </entry>
+                <entry>
+                    <key><value>partNumber</value></key>
+                    <value>LXK SD Order Item Product Name</value>
+                </entry>
+                <entry>
+                    <key><value>shipmentOrderLineItems</value></key>
+                    <value>com.lexmark.service.impl.real.domain.SupplyRequestDetailOrderLineShipmentItemOrderEntryDo</value>
+                </entry>	
+	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

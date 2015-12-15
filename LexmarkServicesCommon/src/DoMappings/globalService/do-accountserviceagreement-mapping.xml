@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="AccountServiceAgreementDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK Service Web Portal Account IO</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>Service Agreement</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Agreement Id</value>
+				</entry>
+                
+				<entry>
+	         		<key><value>assetEntitlementFlag</value></key>
+<!-- 	         		<value>LXK MPS EntitlementCriteria</value> -->
+	         		<value>LXK MPS EntlmntCriteria</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>expediteOrderCount</value></key>
+	         		<value>LXK MPS EntitlementCriteria_Expedite</value>
+				</entry>
+                
+				<entry>
+	         		<key><value>catalogEntitlementFlag</value></key>
+<!-- 	         		<value>LXK MPS SupplyCatalog</value> -->
+	         		<value>LXK MPS SupplyCtlg</value>
+				</entry>
+				
+                <entry>
+                    <key><value>catalogExpediteOrderCount</value></key>
+                    <value>LXK MPS SupplyCatalog_Expedite</value>
+                </entry>
+				
+                <entry>
+                    <key><value>agreementStatus</value></key>
+                    <value>Agreement Status</value>
+                </entry>		
+                 <entry>
+                    <key><value>accountEntitlements</value></key>
+                    <value>com.lexmark.service.impl.real.domain.AccountEntitlementDo</value>
+                </entry>		
+	     	</map>
+		</property>
+    </bean>  
+</beans>

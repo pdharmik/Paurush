@@ -1,0 +1,77 @@
+.options{
+display:none !important;
+}
+.multiSelectBody{
+	//width:300px;
+	margin-bottom: 1px;
+	height:24px;
+	display:inline-block;
+	position:relative;
+	vertical-align:middle;
+}
+.contentZone{
+	background-color:#fff;
+	border:1px solid #ccc;
+	border-radius:2px;
+	display:block;
+	height:20px;
+	line-height:21px;
+	text-align:left;
+	width:100%;
+	margin-top:2px;
+}
+.placeholderContent{
+	display: block;
+    height: 100%;
+    margin: 0 20px 0 0;
+    overflow: hidden;
+    padding-left: 5px;
+    position: absolute;
+}
+.dropimg{
+	background-image: url('/LexmarkServicesPortal/images/multiselect/drop-up-down.png');
+	background-position: 100% 100%;
+	background-repeat: no-repeat;
+	height: 20px;
+	width: 20px;
+	display:block;
+	position:absolute;
+	//margin:4px 0;
+	right:0;
+	color: transparent;
+	vertical-align: top;
+}
+.up{
+	background-position: 0px 0px;
+}
+.down{
+	background-position: -20px 0px;
+}
+.dropZone{
+	background-color:#fff;
+	border:1px solid #ccc;
+	position:absolute;
+	top:-1;
+	width:100%;
+	z-index:1000;
+	padding:0;
+	overflow:hidden;
+	display:none;
+}
+.dropZone ul{
+	max-height: 100px;
+	margin:0;
+	 padding-left: 5px !important;
+    width: auto !important;
+	list-style:outside none none;
+	overflow:auto;
+}
+.dropZone ul li{
+width:100% !important;		
+}
+.listValue{
+width:auto !important;
+}
+.dropZone input,.dropimg{
+	cursor:pointer;
+}

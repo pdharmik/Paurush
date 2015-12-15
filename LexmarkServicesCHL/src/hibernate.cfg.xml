@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   hibernate.cfg.xml for the CHL Project 
+    Change History 
+    11-3-2010 R Benzell - Added Stanza for QA Deployment -
+ -->
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+
+		<!-- Don't forget to copy your JDBC driver to the lib/ directory! -->
+
+		<!-- Settings for a local HSQL (testing) database. -->
+  <!-- 		
+  	<property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+		<property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+		<property name="connection.url">jdbc:hsqldb:data/performanceTracking</property>
+		<property name="connection.username">sa</property>
+		<property name="connection.password"></property>
+    -->    
+	
+		<!-- Settings for GDC Oracle environment. -->
+<!-- 
+       <property name="hibernate.connection.url">jdbc:oracle:thin:@10.2.13.109:1521:lexmark</property>
+       <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+       <property  name="hibernate.connection.username">lexmark</property>
+       <property name="hibernate.connection.password">lexmark</property>
+ 	   <property name="hibernate.connection.pool_size">10</property>
+       <property name="dialect">org.hibernate.dialect.OracleDialect</property>
+ -->
+ 		
+                <!-- Settings for Lexmark Development Oracle environment. -->
+<!--
+ 
+       <property name="hibernate.connection.url">jdbc:oracle:thin:@dlxk2db6.lex.lexmark.com:1586:eprtden1</property>
+       <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+       <property  name="hibernate.connection.username">LGSPORTAL</property>
+       <property name="hibernate.connection.password">Lex#1234</property>
+ 	   <property name="hibernate.connection.pool_size">10</property>
+       <property name="dialect">org.hibernate.dialect.OracleDialect</property>
+-->
+
+ 		<!-- Settings for Lexmark QA Oracle environment. -->
+<!--
+       <property name="hibernate.connection.url">jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=tlxkrc2db7-vip.lex.lexmark.com)(PORT=1630))(ADDRESS=(PROTOCOL=TCP)(HOST=tlxkrc2db8-vip.lex.lexmark.com)(PORT=1630))(ADDRESS=(PROTOCOL=TCP)(HOST=tlxkrc2db9-vip.lex.lexmark.com)(PORT=1630))(LOAD_BALANCE=yes))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=eprtten1_taf.lex.lexmark.com)(FAILOVER_MODE=(TYPE=SELECT)(METHOD=BASIC)(RETRIES=180)(DELAY=5))))</property>
+       <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+       <property  name="hibernate.connection.username">LGSPORTAL</property>
+       <property name="hibernate.connection.password">lex#1234</property>
+       <property name="hibernate.connection.pool_size">10</property>
+       <property name="dialect">org.hibernate.dialect.OracleDialect</property>
+-->
+
+		<!-- Use the Hibernate c3p0 connection pool. -->
+<!--
+		<property name="c3p0.min_size">5</property> 
+		<property name="c3p0.max_size">30</property> 
+		<property name="c3p0.time_out">1800</property> 
+		<property name="c3p0.max_statement">0</property> 
+		<property name="c3p0.acquire_increment">1</property> 
+		<property name="c3p0.idle_test_period">100</property> 
+-->
+ 	    <property name="hibernate.connection.datasource">java:comp/env/jdbc/PortalDB</property>
+	    <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+
+		<!-- Print SQL to stdout. -->
+		<property name="show_sql">false</property>
+
+        <!-- Create the tables for initial deployment to new environment
+        <property name="hibernate.hbm2ddl.auto">create</property>
+        -->
+        <!-- After initial deployment -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+		<!-- CaveatEmptor mapping files. -->
+        <mapping resource="com/lexmark/domain/ServicesUser.hbm.xml"/>
+	</session-factory>
+
+</hibernate-configuration>

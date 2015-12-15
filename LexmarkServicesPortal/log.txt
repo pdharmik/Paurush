@@ -1,0 +1,30 @@
+2010-08-30 10:49:45,453 [main] DEBUG com.lexmark.util.CollectionFilter - Search Criteria is{}
+2010-08-30 10:49:45,453 [main] DEBUG com.lexmark.util.CollectionFilter - Filter Criteria is{assetId=3456789}
+2010-08-30 10:49:45,468 [main] DEBUG com.lexmark.util.CollectionFilter - Search Criteria is{}
+2010-08-30 10:49:45,468 [main] DEBUG com.lexmark.util.CollectionFilter - Filter Criteria is{userFavorite=true}
+2010-08-30 10:49:45,468 [main] DEBUG com.lexmark.util.CollectionFilter - Search Criteria is{}
+2010-08-30 10:49:45,468 [main] DEBUG com.lexmark.util.CollectionFilter - Filter Criteria is{userFavorite=TRUE}
+2010-08-30 10:49:45,468 [main] DEBUG com.lexmark.util.CollectionFilter - Search Criteria is{}
+2010-08-30 10:49:45,468 [main] DEBUG com.lexmark.util.CollectionFilter - Filter Criteria is{userFavorite=ALSE}
+2010-08-30 11:15:49,890 [main] DEBUG com.lexmark.util.CollectionFilter - Search Criteria is{}
+2010-08-30 11:15:49,890 [main] DEBUG com.lexmark.util.CollectionFilter - Filter Criteria is{assetId=3456789}
+2010-08-30 11:15:49,890 [main] DEBUG com.lexmark.util.CollectionSorter - Sorter = [assetId:desc]
+2010-08-30 11:15:49,890 [main] DEBUG com.lexmark.util.CollectionSorter - Sorter = null
+2010-08-30 11:15:49,890 [main] DEBUG com.lexmark.util.CollectionSorter - Sorter = [assetId:DESCENDING]
+2010-08-30 11:15:49,890 [main] DEBUG com.lexmark.util.CollectionFilter - Search Criteria is{}
+2010-08-30 11:15:49,890 [main] DEBUG com.lexmark.util.CollectionFilter - Filter Criteria is{userFavorite=true}
+2010-08-30 11:15:49,890 [main] DEBUG com.lexmark.util.CollectionFilter - Search Criteria is{}
+2010-08-30 11:15:49,890 [main] DEBUG com.lexmark.util.CollectionFilter - Filter Criteria is{userFavorite=TRUE}
+2010-08-30 11:15:49,890 [main] DEBUG com.lexmark.util.CollectionFilter - Search Criteria is{}
+2010-08-30 11:15:49,890 [main] DEBUG com.lexmark.util.CollectionFilter - Filter Criteria is{userFavorite=ALSE}
+2010-08-30 11:16:31,375 [main] DEBUG com.lexmark.util.CollectionFilter - Search Criteria is{}
+2010-08-30 11:16:31,375 [main] DEBUG com.lexmark.util.CollectionFilter - Filter Criteria is{assetId=3456789}
+2010-08-30 11:16:31,375 [main] DEBUG com.lexmark.util.CollectionSorter - Sort Criteria is [assetId:desc]
+2010-08-30 11:16:31,375 [main] DEBUG com.lexmark.util.CollectionSorter - Sort Criteria is null
+2010-08-30 11:16:31,375 [main] DEBUG com.lexmark.util.CollectionSorter - Sort Criteria is [assetId:DESCENDING]
+2010-08-30 11:16:31,375 [main] DEBUG com.lexmark.util.CollectionFilter - Search Criteria is{}
+2010-08-30 11:16:31,375 [main] DEBUG com.lexmark.util.CollectionFilter - Filter Criteria is{userFavorite=true}
+2010-08-30 11:16:31,375 [main] DEBUG com.lexmark.util.CollectionFilter - Search Criteria is{}
+2010-08-30 11:16:31,390 [main] DEBUG com.lexmark.util.CollectionFilter - Filter Criteria is{userFavorite=TRUE}
+2010-08-30 11:16:31,390 [main] DEBUG com.lexmark.util.CollectionFilter - Search Criteria is{}
+2010-08-30 11:16:31,390 [main] DEBUG com.lexmark.util.CollectionFilter - Filter Criteria is{userFavorite=ALSE}

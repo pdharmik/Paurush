@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!--
+Mapping file for the ChartDetails class of Lexmark Service.
+-->
+
+<hibernate-mapping package="com.lexmark.domain">
+
+<class name="ChartWindow"
+       table="PORTLET_INSTANCE_POSITION"
+       lazy="false">
+
+ 	<id name="portletInstanceId" type="string" length="100" column="PORTLET_INSTANCE_ID" />
+			
+    <property   name="windowPosition"
+                column="WINDOW_POSITION"
+                type="string"
+                length="2"
+                /> 
+</class>
+</hibernate-mapping>

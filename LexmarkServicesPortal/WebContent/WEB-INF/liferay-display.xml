@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE display PUBLIC "-//Liferay//DTD Display 6.2.0//EN" "http://www.liferay.com/dtd/liferay-display_6_2_0.dtd">
+
+<display>
+	<category name="Lexmark Services">
+		<portlet id="LexmarkServicesPortal"></portlet>
+		<portlet id="ServiceRequest"></portlet>
+		<portlet id="DeviceFinder"></portlet>
+		<portlet id="ServiceRequestPreview"></portlet>
+		<portlet id="PageCounts"></portlet>
+		<portlet id="EmployeeAccountSelection"></portlet>
+		<portlet id="NotificationAdmin"></portlet>
+		<portlet id="Notifications"></portlet>
+		<portlet id="SRLocaleAdministration"></portlet>
+		<portlet id="Contacts"></portlet>
+		<portlet id="SimpleDeviceFinder"></portlet>
+		<portlet id="DocumentView"></portlet>
+		<portlet id="DocumentAdmin"></portlet>
+		<portlet id="DocumentUser"></portlet>
+		<portlet id="CustomerReportsAdmin"></portlet>
+		<portlet id="CustomerReports"></portlet>
+		<portlet id="EmailAdministration"></portlet>
+		<portlet id="Banner"></portlet>
+		<portlet id="ReportSchedulerMaintenance"></portlet>
+		<portlet id="Chart"></portlet>
+		<portlet id="DownloadConsole"></portlet>
+		<!-- LGS Portal Phase 3 portlet start -->
+		<!-- Change Management -->
+		<portlet id="ManageAssets"></portlet>
+		<portlet id="AssetAcceptance"></portlet>
+		<portlet id="MapsRequest"></portlet>
+		<portlet id="ManageAddresses"></portlet>
+		<portlet id="ManageContacts"></portlet>
+		<portlet id="ManageCHLOthers"></portlet>
+		<!-- Order Management -->
+		<portlet id="OrderSuppliesCatalogOrder"></portlet>
+		<portlet id="ConsumableOrder"></portlet>
+		<!-- All Request History -->
+		<portlet id="AllRequestsHistory"></portlet>
+		<portlet id="OrderSuppliesAssetOrder"></portlet>
+		<portlet id="ManageReturns"></portlet>
+		<portlet id="BillerDirect"></portlet>
+		<!-- LGS Portal Phase 3 portlet end -->
+		<portlet id="OrderHardware"></portlet>
+		<portlet id="CreditCard"></portlet>
+		<!-- added for customerARInvoice-Parth -->
+		<portlet id="CustomerInvoice"></portlet>
+		<!-- added for LBS start -->
+		<portlet id="MapView"></portlet>
+	</category>
+</display>

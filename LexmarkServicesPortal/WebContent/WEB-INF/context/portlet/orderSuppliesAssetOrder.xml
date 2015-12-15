@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- History Controller Bean added for CI defect 8217 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+    <context:annotation-config/>
+    <bean id="propertyConfigurerCHLOthers" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+       		 <list>
+               <value>/WEB-INF/context/common.properties</value> 
+        	 </list>    
+        </property>
+	</bean>
+    <!-- Controllers -->
+    <bean id="orderSuppliesAssetOrderController" class="com.lexmark.services.portlet.OrderSuppliesAssetOrderController">
+    	<property name="maxPartsToBeOrdered"><value>${assetOrderParts.numberOfParts}</value></property>
+    	<property name="listOfFileTypes">
+    			<value>${attachment.fileType.list}</value>
+    	</property>
+   		<property name="attMaxCount">
+    			<value>${attachment.maxcount}</value>
+    	</property>
+    </bean>
+    <bean id="attachmentController" class="com.lexmark.services.portlet.common.CommonAttachmentController"/>
+<!--    Added for CI Defect # 8217 START-->
+    <bean id="serviceRequestController" class="com.lexmark.services.portlet.ServiceRequestController">	</bean>
+<!--    Added for CI Defect # 8217 ENDS-->
+    <bean id="commonController" class="com.lexmark.services.portlet.common.CommonController"> </bean>
+    <bean id="contactController" class="com.lexmark.services.portlet.common.ContactController"> </bean> <!-- Added for MPS2.1 -->
+	<bean id="addressCleansing" class="com.lexmark.services.portlet.common.AddressCleansingController"> </bean>
+    <bean id="commonValidator" class="com.lexmark.services.form.validator.CommonValidator"/>
+    <!-- History Controller Bean added for CI defect 8217 -->
+    <bean id="historyController" class="com.lexmark.services.portlet.common.HistoryController"> </bean>
+    <util:map id ="historyPageMap" key-type="java.lang.String" value-type="java.lang.String" >			
+		<entry key="ALL_REQUESTS" value="allRequestHistory" />
+		<entry key="SUPPLY_REQUESTS" value="supplyRequestHistory" />
+		<entry key="CHANGE_REQUESTS" value="changeRequestHistory" />
+		<!-- <entry key="SERVICE_REQUESTS" value="serviceRequestHistory" />-->
+		<entry key="SERVICE_REQUESTS" value="serviceRequestListPage" />
+	</util:map>
+	
+	<util:map id ="historyPageAccessRoleMap" key-type="java.lang.String" value-type="java.lang.String" >			
+		<entry key="ALL_REQUESTS" value="SHOW REQUEST HISTORY" />
+		<entry key="SUPPLY_REQUESTS" value="SHOW SUPPLIES REQUEST" />
+		<entry key="CHANGE_REQUESTS" value="SHOW CHANGE MGMT REQUEST" />
+		<entry key="SERVICE_REQUESTS" value="SHOW SERVICE REQUEST" />
+	</util:map>
+    <!-- Handler Mappings -->
+
+	<bean class="org.springframework.web.portlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="order" value="10"/>
+		<property name="interceptors">
+			<list>
+				<ref bean="userInfoInterceptor" />
+				<ref bean="accountAssociateInterceptor" />
+				<ref bean="performanceInterceptor" />
+			</list>
+      	</property>
+	</bean>
+	
+	<bean id="portletMultipartResolver"
+		class="org.springframework.web.portlet.multipart.CommonsPortletMultipartResolver">
+		<!-- <property name="maxUploadSize" value="1048576" /> -->
+	</bean>
+	
+    <!-- Exceptions Handlers -->
+
+    <bean id="defaultExceptionHandler" parent="defaultExceptionHandlerTemplate"/>
+    
+</beans>

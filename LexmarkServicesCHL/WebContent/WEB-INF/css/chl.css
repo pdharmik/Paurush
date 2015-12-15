@@ -1,0 +1,9 @@
+div.treeLoading {
+    width:90%;
+    position:relative;
+    top:0px;
+    left:0px;
+    height:100px;
+    text-align:center;
+    vertical-align:middle;
+}

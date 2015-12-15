@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="RequestTypePartDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK MPS Service Request List</value>
+       </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Consumables Supplies BC</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>LXK MPS SR Id</value>
+				</entry>
+				
+				<entry>
+					<key><value>partNumber</value></key>
+					<value>LXK MPS Product Name</value>
+				</entry>
+				<entry>
+					<key><value>vendorPartNumber</value></key>
+					<value>LXK MPS Vendor Part No</value>
+				</entry>
+				<entry>
+					<key><value>partDescription</value></key>
+					<value>LXK MPS Supply Part Description Explicit</value>
+				</entry>
+				<entry>
+					<key><value>partType</value></key>
+					<value>LXK MPS Consumable Type</value>
+				</entry>
+				<entry>
+					<key><value>partOrderQuantity</value></key>
+					<value>LXK MPS Quantity</value>
+				</entry>
+				<entry>
+					<key><value>partName</value></key>
+					<value>LXK MPS Supply part Name</value>
+				</entry>
+				<entry>
+					<key><value>implicitFlag</value></key>
+					<value>LXK MPS Implicit Flag</value>
+				</entry>
+				
+	     	</map>
+		</property>
+
+    </bean>  
+</beans>

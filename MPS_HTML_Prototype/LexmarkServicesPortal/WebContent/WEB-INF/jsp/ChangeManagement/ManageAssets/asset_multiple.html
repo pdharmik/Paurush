@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Manage Multiple Assets</title>
+<link href="../../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../../../js/util.js"></script>
+<script src="../../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/tree/dhtmlxtree.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../../../js/mps.js"></script>
+</head>
+<body onload="hideAddiContacts()">
+<div id="wrapper" >
+  <div id="banner">
+    <h1 class="logo"><a href="https://tportal.lexmark.com/web/guest" title="Lexmark Global Services">tportal.lexmark.com</a></h1>
+    <div id="top-header">
+      <div id="top-header-navigation" class="sort-pages modify-pages" >
+        <ul>
+          <li><b><span>Welcome Firstname Lastname!</span></b></li>
+          <li><a href="#">Preferences</a></li>
+          <li><a href="#">User Administration</a></li>
+          <li><a href="#">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="bottom-header">
+      <div id="bottom-header-navigation" class="sort-pages modify-pages" >
+        <ul>
+          <li>
+            <select>
+              <option>English (US)</option>
+            </select>
+          </li>
+          <li><a href="#">Lexmark.com</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Get Help</a></li>
+          <li><a href="#">Contact Lexmark</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="tabNavigation">
+    <ul class="tab">
+      <li><a href="#"><img src="../../../../images/home.png" alt="Home" title="Home" class="home" /></a></li>
+      <li><a href="" title="">Device Finder</a></li>
+      <li class="selected"><a href="" title="">Requests</a></li>
+      <li><a href="" title="">Page Counts</a></li>
+      <li><a href="" title="">Documents</a></li>
+    </ul>
+  </div>
+  <div id="subnavigation">
+    <ul>
+      <li><a href="javascript:void(0);"><span>Request History</span></a></li>
+      <li><a href="create_new_request.html" class="lightbox" title="Create New Request"><span>Create New Request</span></a></li>
+    </ul>
+  </div>
+  <div id="content-wrapper">
+    <div class="journal-content-article">
+      <h2>Change Request</h2>
+      <span class="step">Assets</span> </div>
+    <div class="main-wrap">
+      <div class="content"> 
+        <!-- MAIN CONTENT BEGIN -->
+        <h3 class="pageTitle">&lt;Add / Change / Decommission&gt; Multiple Assets / Swap Assets</h3>
+        <div class="portletBlock">
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4><a href="javascript:void(0);">Select a different contact</a>Primary Contact for this Request</h4>
+              <ul class="form">
+                <li>
+                  <label>Name:</label>
+                  <span>FirstName LastName</span></li>
+                <li>
+                  <label>Phone Number:</label>
+                  <span>XXXXXXXXXX</span></li>
+                <li>
+                  <label>Email Address</label>
+                  <span>firstname.lastname@domain.com</span></li>
+              </ul>
+            </div>
+            <div class="buttonContainerIn" id="buttonContact">
+              <button class="button" onclick="javascript:showAddiContacts();">Add an Additional Contact</button>
+            </div>
+            <div class="infoBox columnInner rounded shadow" id="addiContact">
+              <h4><a href="javascript:hideAddiContacts();">Remove</a>Secondary Contact for this Request</h4>
+              <ul class="form">
+                <li>
+                  <label>Name:</label>
+                  <span>FirstName LastName</span></li>
+                <li>
+                  <label>Phone Number:</label>
+                  <span>XXXXXXXXXX</span></li>
+                <li>
+                  <label>Email Address:</label>
+                  <span>firstname.lastname@domain.com</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Additional Information for this Request</h4>
+              <ul class="form">
+                <li>
+                  <label for="refId">Customer Reference ID:</label>
+                  <span><input type="text" id="refId" />
+                  <img src="../../../../images/help.png" class="helpIcon" title="Customer Reference ID." width="18" height="18"/></span></li>
+                <li>
+                  <label for="costCntr">Cost Center:</label>
+                  <span><input type="text" id="costCntr" />
+                  <img src="../../../../images/help.png" class="helpIcon" title="Cost Center." width="18" height="18"/></span></li>
+                <li>
+                  <label for="desc">Description:</label>
+                  <span><textarea id="desc" rows="3"></textarea>
+                  <img src="../../../../images/help.png" class="helpIcon" title="Description." width="18" height="18"/></span></li>
+                <li>
+                  <label for="date1">Requested effective date of change:</label>
+                  <span><input type="date" id="datepicker" class="w100" />
+                  <img src="../../../../images/ic_cal.png" title="Select a Date" width="23" height="23"/></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <p class="inlineTitle">Request Details</p>
+        <p>Please download the <a href="javascript:void(0);">request form here</a>. Fill in the details and attach the template below.</p>
+        <div class="columnInner">
+          <input type="text" size="70" name="txtFilePath" id="txtFilePath" readonly="readonly">
+          <button id="btnUpload" type="button" class="button">Browse...</button>
+          <button class="button">Attach</button>
+          <p class="note">Note: Only 1 .csv file of max. 1mb can be attached.</p>
+          <table class="displayGrid rounded shadow wHalf">
+            <thead>
+              <tr>
+                <th class="w15"></th>
+                <th>File Name</th>
+                <th class="w80 right">Size (bytes)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><img src="../../../../images/delete.gif" width="16" height="16" alt="Remove" title="Remove"></td>
+                <td>DocumentName1</td>
+                <td class="right">678</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="buttonContainer">
+          <button class="button">Back</button>
+          <button class="button_cancel">Cancel</button>
+          <button class="button">Submit</button>
+        </div>
+        <!-- MAIN CONTENT END --> 
+      </div>
+    </div>
+  </div>
+  <div id="footer">Footer</div>
+</div>
+</body>
+</html>

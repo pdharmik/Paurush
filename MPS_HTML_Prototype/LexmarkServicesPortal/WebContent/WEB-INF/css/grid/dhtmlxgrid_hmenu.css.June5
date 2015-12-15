@@ -1,0 +1,37 @@
+.dhx_header_cmenu{
+   background-color:#ffffff;
+   border:2px outset silver;
+   z-index:2;
+   text-align:left;
+  }
+ .dhx_header_cmenu_item{
+  white-space:nowrap;
+ }
+ 
+ /* Added for new customize column UI */
+ 
+ .dhx_header_cmenu_item {
+    width: 140px;
+    padding-left: 10px;
+    
+}
+.dhx_header_cmenu_item2 {
+    width: 140px;
+    float:left;
+    padding: 0 0 0 5px;
+}
+
+.dhx_header_cmenu h4, .h4 {
+	color: #000;
+	font-size: 12px;
+	font-weight:bold;
+	height: auto;
+	padding: 3px 10px!important;
+	border-bottom:1px dotted #aaa;
+	margin:-5px 0px 5px 0px;
+	background:#e7e7e7 url(/LexmarkServicesPortal/images/bg_off.gif) repeat-x 0 0;
+}
+.dhx_header_cmenu h4 a, .h4 a {
+	float:right;
+	font-weight:normal
+}

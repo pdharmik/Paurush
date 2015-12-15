@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="AccountPayableDo" class="com.amind.data.service.DomainObjMapping">
+  
+    <!-- data source info -->
+       <property name="dataSourceName">
+            <value>EAI Siebel Adapter</value>
+        </property>
+
+       <property name="dsTargetObjectName">
+            <value>LXKSAPVendorDetails</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+<!--             <value>Channel Partner</value> -->
+            <value>LXK Company Codes</value>
+        </property>
+
+        <property name="packageName">
+            <value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+        <!-- field mapping --> 
+        <property name="doFieldNameToDsFieldNameMap">
+            <map>
+                <entry>
+                    <key><value>id</value></key>
+                    <value>Id</value>
+                </entry>
+                
+                <entry>
+                    <key><value>mdmLevel1AccountId</value></key>
+                    <value>LXK Partner Global DUNS</value>
+                </entry>
+                <entry>
+                    <key><value>mdmLevel2AccountId</value></key>
+                    <value>LXK Partner Dom DUNS</value>
+                </entry>
+                <entry>
+                    <key><value>mdmLevel3AccountId</value></key>
+                    <value>LXK SAP Vendor MDM Id</value>
+                </entry>
+                <entry>
+                    <key><value>mdmLevel4AccountId</value></key>
+                    <value>LXK SAP Vendor MDM Account#</value>
+                </entry>
+                <entry>
+                    <key><value>mdmLevel5AccountId</value></key>
+                    <value>LXK Partner DUNS</value>
+                </entry>
+                <entry>
+                    <key><value>vendorClass</value></key>
+                    <value>LXK SAP Vendor Class</value>
+                </entry>
+                <entry>
+                    <key><value>vendorAccountType</value></key>
+                    <value>LXK SAP Vendor Account Type</value>
+                </entry>                
+                
+                <entry>
+                    <key><value>vendorId</value></key>
+                    <value>LXK SAP Vendor Number</value>
+                </entry>
+                <entry>
+                    <key><value>vendorName</value></key>
+                    <value>LXK Partner Name</value>
+                </entry>
+                
+                <entry> 
+                    <key><value>companyCodeDescription</value></key>
+                    <value>LXK Company Description</value>
+                </entry>
+                <entry>
+                    <key><value>companyCode</value></key>
+                    <value>LXK Value</value>
+                </entry>
+                <entry>
+                    <key><value>payeeName</value></key>
+                    <value>LXK SAP Vendor Name</value>
+                </entry>
+                
+                <entry>
+                    <key><value>addressLine1</value></key>
+                    <value>LXK SAP Vendor AddrLine1</value>
+                </entry>
+                <entry>
+                    <key><value>addressLine2</value></key>
+                    <value>LXK SAP Vendor AddrLine2</value>
+                </entry>
+                <entry>
+                    <key><value>city</value></key>
+                    <value>LXK SAP Vendor City</value>
+                </entry>
+                <entry>
+                    <key><value>state</value></key>
+                    <value>LXK SAP Vendor State</value>
+                </entry>
+                <entry>
+                    <key><value>province</value></key>
+                    <value>LXK SAP Vendor Province</value>
+                </entry>
+                <entry>
+                    <key><value>country</value></key>
+                    <value>LXK SAP Vendor Country</value>
+                </entry>
+                <entry>
+                    <key><value>postalCode</value></key>
+                    <value>LXK SAP Vendor PostalCode</value>
+                </entry>
+                
+            </map>
+        </property>
+    </bean>  
+</beans>

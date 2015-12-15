@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerActivityHistory" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Service History Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW Service Request History - Partner Portal</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	    
+	     		 <entry>
+	         		<key><value>serviceRequestId</value></key>
+	         		<value>Id</value>
+				</entry> 
+	     		<entry>
+	         		<key><value>assetId</value></key>
+	         		<value>Asset Id</value>
+				</entry>
+	     		<entry>
+	         		<key><value>activityId</value></key>
+	         		<value>Activity Id</value>
+				</entry>
+				<entry>
+	         		<key><value>activityStatus</value></key>
+	         		<value>Activity Status</value>
+				</entry>	
+				<entry>
+	         		<key><value>serviceRequestType</value></key>
+	         		<value>LXK SW Service Request Type</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestNumber</value></key>
+	         		<value>SR Number</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestDateWithOutMarker</value></key>
+	         		<value>LXK SW SR Created Date</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestor</value></key>
+	         		<value>LXK SD Repeat Type</value>
+				</entry>
+				<entry>
+	         		<key><value>activityType</value></key>
+	         		<value>Activity Type</value>
+				</entry>	
+				<entry>
+	         		<key><value>actualFailureCode</value></key>
+	         		<value>LXK SW Activity Actual Failure Code</value>
+				</entry>
+				<entry>
+	         		<key><value>activitySubStatus</value></key>
+	         		<value>LXK R Activity SubStatus</value>
+				</entry>	
+				<entry>
+	         		<key><value>repairDescription</value></key>
+	         		<value>LXK SW Action Narrative</value>
+				</entry>	
+				<entry>
+	         		<key><value>resolutionCode</value></key>
+	         		<value>LXK R Resolution Code</value>
+				</entry>	
+				<entry>
+	         		<key><value>assetSerialNumber</value></key>
+	         		<value>Serial Number</value>
+				</entry>	
+				<entry>
+	         		<key><value>assetMachineTypeModel</value></key>
+	         		<value>LXK SD Product MTM Name</value>
+				</entry>	
+				<entry>
+	         		<key><value>assetProductTLI</value></key>
+	         		<value>Product Part Name</value>
+				</entry>	
+				<entry>
+	         		<key><value>assetProductLine</value></key>
+	         		<value>LXK SD Product Line</value>
+				</entry>	
+				<entry>
+	         		<key><value>problemDescription</value></key>
+	         		<value>LXK SW SR Problem Details</value>
+				</entry>	
+				<entry>
+	         		<key><value>startDate</value></key>
+	         		<value>LXK R Project Item Actual Start</value>
+				</entry>	
+				<entry>
+	         		<key><value>endDate</value></key>
+	         		<value>LXK R Project Item Actual End</value>
+				</entry>
+				<entry>
+	         		<key><value>parts</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerActivityHistoryParts</value>
+				</entry>
+				
+				<entry>
+					<key><value>county</value></key>
+					<value></value>
+				</entry>
+				<entry>
+					<key><value>district</value></key>
+					<value></value>
+				</entry>
+				<entry>
+					<key><value>officeNumber</value></key>
+					<value></value>
+				</entry>
+				<entry>
+					<key><value>customerReportingName</value></key>
+					<value>LXK Customer Reporting Name</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

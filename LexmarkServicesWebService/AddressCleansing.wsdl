@@ -1,0 +1,1457 @@
+<wsdl:definitions xmlns:aw_RT_BT_MATCH_Output_Realtime_Batch_DQ_Siebel_account_match_Output="http://businessobjects.com/service/RT_BT_MATCH/output" xmlns:aw_RT_SIEBEL_ADDR2_SIEBEL_ADDR_OUTPUT_Output="http://businessobjects.com/service/RT_SIEBEL_ADDR2/output" xmlns:aw_RT_SIEBEL_SIEBEL_ADDR_INPUT_Input="http://businessobjects.com/service/RT_SIEBEL/input" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:aw_Service_Realtime_Batch_DQ_Siebel_account_match_Output_Realtime_Batch_DQ_Siebel_account_match_Output="http://businessobjects.com/service/Service_Realtime_Batch_DQ_Siebel_account_match/output" xmlns:aw_RT_BT_MATCH_Input_Realtime_Batch_DQ_Siebel_account_match_Input="http://businessobjects.com/service/RT_BT_MATCH/input" xmlns:aw_Service_Realtime_Batch_DQ_Siebel_account_match_Input_Realtime_Batch_DQ_Siebel_account_match_Input="http://businessobjects.com/service/Service_Realtime_Batch_DQ_Siebel_account_match/input" xmlns:aw_RT_ADDRESS_Address_Output_Output="http://businessobjects.com/service/RT_ADDRESS/output" xmlns:aw_Service_Realtime_DQ_Siebel_business_address_datacleanse_SIEBEL_ADDR_INPUT_Input="http://businessobjects.com/service/Service_Realtime_DQ_Siebel_business_address_datacleanse/input" xmlns:aw_RT_SIEBEL_SIEBEL_ADDR_OUTPUT_Output="http://businessobjects.com/service/RT_SIEBEL/output" xmlns:localtypes="http://www.businessobjects.com/DataServices/ServerX.xsd" xmlns:aw_Service_Realtime_DQ_Siebel_business_address_datacleanse_SIEBEL_ADDR_OUTPUT_Output="http://businessobjects.com/service/Service_Realtime_DQ_Siebel_business_address_datacleanse/output" xmlns:aw_Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse_SIEBEL_ADDR_INPUT_Input="http://businessobjects.com/service/Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse/input" xmlns:aw_RT_SIEBEL_ADDR2_SIEBEL_ADDR_INPUT_Input="http://businessobjects.com/service/RT_SIEBEL_ADDR2/input" xmlns:tns="http://www.businessobjects.com" xmlns:aw_RT_ADDRESS_Address_Input_Input="http://businessobjects.com/service/RT_ADDRESS/input" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:aw_RT_Service_Admin="http://www.businessobjects.com/rtServiceAdmin" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:aw_Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse_SIEBEL_ADDR_OUTPUT_Output="http://businessobjects.com/service/Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse/output" name="DataServices_Server" targetNamespace="http://www.businessobjects.com">
+<tns:documentation>
+Web Services published by SAP BusinessObjects Data Services version 14.1.1.338, using Apache Axis2/Java 1.3The following errors and warnings were found during WSDL generation. Please refer to the Data Services Administrator for detailed explanations. *** Unable to create WSDL for service: Service_Realtime_DQ_Siebel_account_match.
+</tns:documentation>
+<wsdl:types>
+<xs:schema xmlns="http://businessobjects.com/service/Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse/input" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://businessobjects.com/service/Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse/input">
+<xs:element name="DataSet">
+<xs:complexType>
+<xs:choice maxOccurs="1">
+<xs:element name="Record">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="City" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.Country" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.County" type="xs:string"/>
+<xs:element minOccurs="0" name="ISOCountryCode" type="xs:string"/>
+<xs:element minOccurs="0" name="RegionCode" type="xs:string"/>
+<xs:element minOccurs="0" name="SavedErrorMessage" type="xs:string"/>
+<xs:element minOccurs="0" name="StateFullName" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.District" type="xs:string"/>
+<xs:element minOccurs="0" name="OfficeNo" type="xs:string"/>
+<xs:element minOccurs="0" name="Latitude" type="xs:string"/>
+<xs:element minOccurs="0" name="Longitude" type="xs:string"/>
+<xs:element minOccurs="0" name="PostalCode" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.Province" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.State" type="xs:string"/>
+<xs:element minOccurs="0" name="StreetAddress" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.Street_spcAddress_spc2" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:choice>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns="http://businessobjects.com/service/Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse/output" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://businessobjects.com/service/Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse/output">
+<xs:element name="DataSet">
+<xs:complexType>
+<xs:choice maxOccurs="1">
+<xs:element name="Record">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="1" name="StreetAddress" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.Street_spcAddress_spc2" type="xs:string"/>
+<xs:element minOccurs="1" name="OfficeNo" type="xs:string"/>
+<xs:element minOccurs="1" name="City" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.State" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.Province" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.District" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.County" type="xs:string"/>
+<xs:element minOccurs="1" name="StateFullName" type="xs:string"/>
+<xs:element minOccurs="1" name="RegionCode" type="xs:string"/>
+<xs:element minOccurs="1" name="Latitude" type="xs:string"/>
+<xs:element minOccurs="1" name="Longitude" type="xs:string"/>
+<xs:element minOccurs="1" name="PostalCode" type="xs:string"/>
+<xs:element minOccurs="1" name="ISOCountryCode" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.Country" type="xs:string"/>
+<xs:element minOccurs="0" name="FaultCode" type="xs:string"/>
+<xs:element minOccurs="0" name="ErrorMessage" type="xs:string"/>
+<xs:element minOccurs="0" name="SavedErrorMessage" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:choice>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns="http://businessobjects.com/service/Service_Realtime_Batch_DQ_Siebel_account_match/input" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://businessobjects.com/service/Service_Realtime_Batch_DQ_Siebel_account_match/input">
+<xs:element name="DataSet">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="BatchID" type="xs:integer"/>
+<xs:element minOccurs="0" name="Action" type="xs:string"/>
+<xs:element minOccurs="0" name="StartingRecordNumber" type="xs:integer"/>
+<xs:element minOccurs="0" name="EndingRecordNumber" type="xs:integer"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Record">
+<xs:complexType>
+<xs:all>
+<xs:element minOccurs="0" name="Id" type="xs:string"/>
+<xs:element minOccurs="0" name="Location" type="xs:string"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+<xs:element minOccurs="0" name="City" type="xs:string"/>
+<xs:element minOccurs="0" name="Country" type="xs:string"/>
+<xs:element minOccurs="0" name="PostalCode" type="xs:string"/>
+<xs:element minOccurs="0" name="State" type="xs:string"/>
+<xs:element minOccurs="0" name="StreetAddress" type="xs:string"/>
+<xs:element minOccurs="0" name="StreetAddress2" type="xs:string"/>
+<xs:element minOccurs="0" name="Organization" type="xs:string"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns="http://businessobjects.com/service/Service_Realtime_Batch_DQ_Siebel_account_match/output" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://businessobjects.com/service/Service_Realtime_Batch_DQ_Siebel_account_match/output">
+<xs:element name="DataSet">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Action" type="xs:string"/>
+<xs:element minOccurs="0" name="BatchID" type="xs:integer"/>
+<xs:element minOccurs="0" name="Status" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Record">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="DQ.MasterRecordsRowID" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="DuplicateRecord">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Account.Id" type="xs:string"/>
+<xs:element minOccurs="0" name="DQ.MatchScore" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns="http://businessobjects.com/service/RT_SIEBEL/input" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://businessobjects.com/service/RT_SIEBEL/input">
+<xs:element name="DataSet">
+<xs:complexType>
+<xs:choice maxOccurs="1">
+<xs:element name="Record">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="City" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.Country" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.County" type="xs:string"/>
+<xs:element minOccurs="0" name="ISOCountryCode" type="xs:string"/>
+<xs:element minOccurs="0" name="RegionCode" type="xs:string"/>
+<xs:element minOccurs="0" name="SavedErrorMessage" type="xs:string"/>
+<xs:element minOccurs="0" name="StateFullName" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.District" type="xs:string"/>
+<xs:element minOccurs="0" name="OfficeNo" type="xs:string"/>
+<xs:element minOccurs="0" name="Latitude" type="xs:string"/>
+<xs:element minOccurs="0" name="Longitude" type="xs:string"/>
+<xs:element minOccurs="0" name="PostalCode" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.Province" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.State" type="xs:string"/>
+<xs:element minOccurs="0" name="StreetAddress" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.Street_spcAddress_spc2" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:choice>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns="http://businessobjects.com/service/RT_SIEBEL/output" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://businessobjects.com/service/RT_SIEBEL/output">
+<xs:element name="DataSet">
+<xs:complexType>
+<xs:choice maxOccurs="1">
+<xs:element name="Record">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="1" name="StreetAddress" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.Street_spcAddress_spc2" type="xs:string"/>
+<xs:element minOccurs="1" name="OfficeNo" type="xs:string"/>
+<xs:element minOccurs="1" name="City" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.State" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.Province" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.District" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.County" type="xs:string"/>
+<xs:element minOccurs="1" name="StateFullName" type="xs:string"/>
+<xs:element minOccurs="1" name="RegionCode" type="xs:string"/>
+<xs:element minOccurs="1" name="Latitude" type="xs:string"/>
+<xs:element minOccurs="1" name="Longitude" type="xs:string"/>
+<xs:element minOccurs="1" name="PostalCode" type="xs:string"/>
+<xs:element minOccurs="1" name="ISOCountryCode" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.Country" type="xs:string"/>
+<xs:element minOccurs="0" name="FaultCode" type="xs:string"/>
+<xs:element minOccurs="0" name="ErrorMessage" type="xs:string"/>
+<xs:element minOccurs="0" name="SavedErrorMessage" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:choice>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns="http://businessobjects.com/service/Service_Realtime_DQ_Siebel_business_address_datacleanse/input" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://businessobjects.com/service/Service_Realtime_DQ_Siebel_business_address_datacleanse/input">
+<xs:element name="DataSet">
+<xs:complexType>
+<xs:choice maxOccurs="1">
+<xs:element name="Record">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="City" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.Country" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.County" type="xs:string"/>
+<xs:element minOccurs="0" name="ISOCountryCode" type="xs:string"/>
+<xs:element minOccurs="0" name="RegionCode" type="xs:string"/>
+<xs:element minOccurs="0" name="SavedErrorMessage" type="xs:string"/>
+<xs:element minOccurs="0" name="StateFullName" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.District" type="xs:string"/>
+<xs:element minOccurs="0" name="OfficeNo" type="xs:string"/>
+<xs:element minOccurs="0" name="Latitude" type="xs:string"/>
+<xs:element minOccurs="0" name="Longitude" type="xs:string"/>
+<xs:element minOccurs="0" name="PostalCode" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.Province" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.State" type="xs:string"/>
+<xs:element minOccurs="0" name="StreetAddress" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.Street_spcAddress_spc2" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:choice>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns="http://businessobjects.com/service/Service_Realtime_DQ_Siebel_business_address_datacleanse/output" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://businessobjects.com/service/Service_Realtime_DQ_Siebel_business_address_datacleanse/output">
+<xs:element name="DataSet">
+<xs:complexType>
+<xs:choice maxOccurs="1">
+<xs:element name="Record">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="1" name="StreetAddress" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.Street_spcAddress_spc2" type="xs:string"/>
+<xs:element minOccurs="1" name="OfficeNo" type="xs:string"/>
+<xs:element minOccurs="1" name="City" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.State" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.Province" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.District" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.County" type="xs:string"/>
+<xs:element minOccurs="1" name="StateFullName" type="xs:string"/>
+<xs:element minOccurs="1" name="RegionCode" type="xs:string"/>
+<xs:element minOccurs="1" name="Latitude" type="xs:string"/>
+<xs:element minOccurs="1" name="Longitude" type="xs:string"/>
+<xs:element minOccurs="1" name="PostalCode" type="xs:string"/>
+<xs:element minOccurs="1" name="ISOCountryCode" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.Country" type="xs:string"/>
+<xs:element minOccurs="0" name="FaultCode" type="xs:string"/>
+<xs:element minOccurs="0" name="ErrorMessage" type="xs:string"/>
+<xs:element minOccurs="0" name="SavedErrorMessage" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:choice>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns="http://businessobjects.com/service/RT_SIEBEL_ADDR2/input" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://businessobjects.com/service/RT_SIEBEL_ADDR2/input">
+<xs:element name="DataSet">
+<xs:complexType>
+<xs:choice maxOccurs="1">
+<xs:element name="Record">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="City" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.Country" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.County" type="xs:string"/>
+<xs:element minOccurs="0" name="ISOCountryCode" type="xs:string"/>
+<xs:element minOccurs="0" name="RegionCode" type="xs:string"/>
+<xs:element minOccurs="0" name="SavedErrorMessage" type="xs:string"/>
+<xs:element minOccurs="0" name="StateFullName" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.District" type="xs:string"/>
+<xs:element minOccurs="0" name="OfficeNo" type="xs:string"/>
+<xs:element minOccurs="0" name="Latitude" type="xs:string"/>
+<xs:element minOccurs="0" name="Longitude" type="xs:string"/>
+<xs:element minOccurs="0" name="PostalCode" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.Province" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.State" type="xs:string"/>
+<xs:element minOccurs="0" name="StreetAddress" type="xs:string"/>
+<xs:element minOccurs="0" name="Business_spcAddress.Street_spcAddress_spc2" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:choice>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns="http://businessobjects.com/service/RT_SIEBEL_ADDR2/output" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://businessobjects.com/service/RT_SIEBEL_ADDR2/output">
+<xs:element name="DataSet">
+<xs:complexType>
+<xs:choice maxOccurs="1">
+<xs:element name="Record">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="1" name="StreetAddress" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.Street_spcAddress_spc2" type="xs:string"/>
+<xs:element minOccurs="1" name="OfficeNo" type="xs:string"/>
+<xs:element minOccurs="1" name="City" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.State" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.Province" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.District" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.County" type="xs:string"/>
+<xs:element minOccurs="1" name="StateFullName" type="xs:string"/>
+<xs:element minOccurs="1" name="RegionCode" type="xs:string"/>
+<xs:element minOccurs="1" name="Latitude" type="xs:string"/>
+<xs:element minOccurs="1" name="Longitude" type="xs:string"/>
+<xs:element minOccurs="1" name="PostalCode" type="xs:string"/>
+<xs:element minOccurs="1" name="ISOCountryCode" type="xs:string"/>
+<xs:element minOccurs="1" name="Business_spcAddress.Country" type="xs:string"/>
+<xs:element minOccurs="0" name="FaultCode" type="xs:string"/>
+<xs:element minOccurs="0" name="ErrorMessage" type="xs:string"/>
+<xs:element minOccurs="0" name="SavedErrorMessage" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:choice>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns="http://businessobjects.com/service/RT_ADDRESS/input" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://businessobjects.com/service/RT_ADDRESS/input">
+<xs:simpleType name="DIType-varchar-200">
+<xs:restriction base="xs:string"/>
+</xs:simpleType>
+<xs:element name="STREET1" type="DIType-varchar-200"/>
+<xs:element name="STREET2" type="DIType-varchar-200"/>
+<xs:element name="CITY" type="DIType-varchar-200"/>
+<xs:element name="REGION" type="DIType-varchar-200"/>
+<xs:element name="POSTCODE" type="DIType-varchar-200"/>
+<xs:element name="COUNTRY" type="DIType-varchar-200"/>
+<xs:element name="ROOT">
+<xs:complexType>
+<xs:sequence>
+<xs:element ref="STREET1"/>
+<xs:element ref="STREET2"/>
+<xs:element ref="CITY"/>
+<xs:element ref="REGION"/>
+<xs:element ref="POSTCODE"/>
+<xs:element ref="COUNTRY"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns="http://businessobjects.com/service/RT_ADDRESS/output" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://businessobjects.com/service/RT_ADDRESS/output">
+<xs:simpleType name="DIType-varchar-200">
+<xs:restriction base="xs:string"/>
+</xs:simpleType>
+<xs:element name="STREET1" type="DIType-varchar-200"/>
+<xs:element name="STREET2" type="DIType-varchar-200"/>
+<xs:element name="CITY" type="DIType-varchar-200"/>
+<xs:element name="REGION" type="DIType-varchar-200"/>
+<xs:element name="POSTCODE" type="DIType-varchar-200"/>
+<xs:element name="COUNTRY" type="DIType-varchar-200"/>
+<xs:element name="DESC" type="DIType-varchar-200"/>
+<xs:element name="ROOT">
+<xs:complexType>
+<xs:sequence>
+<xs:element ref="STREET1"/>
+<xs:element ref="STREET2"/>
+<xs:element ref="CITY"/>
+<xs:element ref="REGION"/>
+<xs:element ref="POSTCODE"/>
+<xs:element ref="COUNTRY"/>
+<xs:element ref="DESC"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns="http://businessobjects.com/service/RT_BT_MATCH/input" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://businessobjects.com/service/RT_BT_MATCH/input">
+<xs:element name="DataSet">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="BatchID" type="xs:integer"/>
+<xs:element minOccurs="0" name="Action" type="xs:string"/>
+<xs:element minOccurs="0" name="StartingRecordNumber" type="xs:integer"/>
+<xs:element minOccurs="0" name="EndingRecordNumber" type="xs:integer"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Record">
+<xs:complexType>
+<xs:all>
+<xs:element minOccurs="0" name="Id" type="xs:string"/>
+<xs:element minOccurs="0" name="Location" type="xs:string"/>
+<xs:element minOccurs="0" name="Name" type="xs:string"/>
+<xs:element minOccurs="0" name="City" type="xs:string"/>
+<xs:element minOccurs="0" name="Country" type="xs:string"/>
+<xs:element minOccurs="0" name="PostalCode" type="xs:string"/>
+<xs:element minOccurs="0" name="State" type="xs:string"/>
+<xs:element minOccurs="0" name="StreetAddress" type="xs:string"/>
+<xs:element minOccurs="0" name="StreetAddress2" type="xs:string"/>
+<xs:element minOccurs="0" name="Organization" type="xs:string"/>
+</xs:all>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xs:schema xmlns="http://businessobjects.com/service/RT_BT_MATCH/output" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://businessobjects.com/service/RT_BT_MATCH/output">
+<xs:element name="DataSet">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Action" type="xs:string"/>
+<xs:element minOccurs="0" name="BatchID" type="xs:integer"/>
+<xs:element minOccurs="0" name="Status" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="Record">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="DQ.MasterRecordsRowID" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="DuplicateRecord">
+<xs:complexType>
+<xs:sequence>
+<xs:element minOccurs="0" name="Account.Id" type="xs:string"/>
+<xs:element minOccurs="0" name="DQ.MatchScore" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+<xsd:schema xmlns:localtypes="http://www.businessobjects.com/DataServices/ServerX.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.businessobjects.com/DataServices/ServerX.xsd">
+<xsd:element name="BatchJobResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="pid" type="xsd:int"/>
+<xsd:element name="cid" type="xsd:int"/>
+<xsd:element name="rid" type="xsd:int"/>
+<xsd:element name="repoName" type="xsd:string"/>
+<xsd:element minOccurs="0" name="errorMessage" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="status" type="xsd:string"/>
+<xsd:element name="version" type="xsd:string"/>
+<xsd:element name="LogonRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="username" type="xsd:string"/>
+<xsd:element name="password" type="xsd:string"/>
+<xsd:element name="cms_system" type="xsd:string"/>
+<xsd:element name="cms_authentication">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="secEnterprise"/>
+<xsd:enumeration value="secLDAP"/>
+<xsd:enumeration value="secWinAD"/>
+<xsd:enumeration value="secSAPR3"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="SessionID" type="xsd:string"/>
+<xsd:simpleType name="TracingTypeType">
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="job_trace_all"/>
+<xsd:enumeration value="job_trace_row"/>
+<xsd:enumeration value="job_trace_session"/>
+<xsd:enumeration value="job_trace_workflow"/>
+<xsd:enumeration value="job_trace_dataflow"/>
+<xsd:enumeration value="job_trace_transform"/>
+<xsd:enumeration value="job_trace_usertransform"/>
+<xsd:enumeration value="job_trace_userfunction"/>
+<xsd:enumeration value="job_trace_abapquery"/>
+<xsd:enumeration value="job_trace_sqlfunctions"/>
+<xsd:enumeration value="job_trace_sqlreaders"/>
+<xsd:enumeration value="job_trace_sqlloaders"/>
+<xsd:enumeration value="job_trace_optimized_dataflow"/>
+<xsd:enumeration value="job_trace_table"/>
+<xsd:enumeration value="job_trace_script"/>
+<xsd:enumeration value="job_trace_ascomm"/>
+<xsd:enumeration value="job_trace_rfc_function"/>
+<xsd:enumeration value="job_trace_table_reader"/>
+<xsd:enumeration value="job_trace_idoc_file"/>
+<xsd:enumeration value="job_trace_adapter"/>
+<xsd:enumeration value="job_trace_communication"/>
+<xsd:enumeration value="job_trace_parallel_execution"/>
+<xsd:enumeration value="job_trace_audit"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:complexType name="job_param_type">
+<xsd:sequence>
+<xsd:element minOccurs="0" name="job_system_profile" type="xsd:string"/>
+<xsd:element maxOccurs="1" minOccurs="0" name="sampling_rate" type="xsd:int"/>
+<xsd:element maxOccurs="1" minOccurs="0" name="disableValidationStatisticsCollection" type="xsd:boolean"/>
+<xsd:element maxOccurs="1" minOccurs="0" name="auditing" type="xsd:boolean"/>
+<xsd:element maxOccurs="1" minOccurs="0" name="recovery" type="xsd:boolean"/>
+<xsd:element maxOccurs="1" minOccurs="0" name="job_server" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="trace" type="localtypes:TracingTypeType"/>
+<xsd:element maxOccurs="1" minOccurs="0" name="distribution_level">
+<xsd:simpleType>
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="Job"/>
+<xsd:enumeration value="Data flow"/>
+<xsd:enumeration value="Sub data flow"/>
+</xsd:restriction>
+</xsd:simpleType>
+</xsd:element>
+<xsd:element maxOccurs="1" minOccurs="0" name="substitutionParameters">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" minOccurs="1" name="parameter">
+<xsd:complexType>
+<xsd:simpleContent>
+<xsd:extension base="xsd:string">
+<xsd:attribute name="name" type="xsd:string"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+<xsd:element name="ErrorLogRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="runID" type="xsd:int"/>
+<xsd:element name="repoName" type="xsd:string"/>
+<xsd:element minOccurs="0" name="page" type="xsd:int"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="TraceLogRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="runID" type="xsd:int"/>
+<xsd:element name="repoName" type="xsd:string"/>
+<xsd:element minOccurs="0" name="page" type="xsd:int"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="MonitorLogRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="runID" type="xsd:int"/>
+<xsd:element name="repoName" type="xsd:string"/>
+<xsd:element minOccurs="0" name="page" type="xsd:int"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="batchJobStatusRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="runID" type="xsd:int"/>
+<xsd:element name="repoName" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="stopBatchJobRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="runID" type="xsd:int"/>
+<xsd:element name="repoName" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="batchJobRunIDsRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="jobName" type="xsd:string"/>
+<xsd:element minOccurs="0" name="status" type="xsd:string"/>
+<xsd:element minOccurs="0" name="repoName" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="GetListOfBatchJobsRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element minOccurs="0" name="repoName" type="xsd:string"/>
+<xsd:element minOccurs="0" name="allBatchJobs" type="xsd:boolean"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="RunBatchJobRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="jobName" type="xsd:string"/>
+<xsd:element minOccurs="0" name="repoName" type="xsd:string"/>
+<xsd:choice minOccurs="0">
+<xsd:element name="jobServer" type="xsd:string"/>
+<xsd:element name="serverGroup" type="xsd:string"/>
+</xsd:choice>
+<xsd:element minOccurs="0" name="jobParameters" type="localtypes:job_param_type"/>
+<xsd:element minOccurs="0" name="globalVariables">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="variable">
+<xsd:complexType>
+<xsd:simpleContent>
+<xsd:extension base="xsd:string">
+<xsd:attribute name="name" type="xsd:string"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="GetBatchJobInputFormatRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="jobName" type="xsd:string"/>
+<xsd:element minOccurs="0" name="repoName" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ImportObjectDefinitionRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="definition" type="xsd:string"/>
+<xsd:element name="repoName" type="xsd:string"/>
+<xsd:choice minOccurs="0">
+<xsd:element name="jobServer" type="xsd:string"/>
+<xsd:element name="serverGroup" type="xsd:string"/>
+</xsd:choice>
+<xsd:element minOccurs="0" name="passphrase" type="xsd:string"/>
+<xsd:element minOccurs="0" name="traceOn" type="xsd:boolean"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:simpleType name="DeleteType">
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="BATCH_JOB"/>
+<xsd:enumeration value="REALTIME_JOB"/>
+<xsd:enumeration value="WORKFLOW"/>
+<xsd:enumeration value="DATAFLOW"/>
+<xsd:enumeration value="ABAP_DATAFLOW"/>
+<xsd:enumeration value="DATA_QUALITY_TRANSFORM_CONFIGURATION"/>
+<xsd:enumeration value="DATASTORE"/>
+<xsd:enumeration value="FILE_FORMAT"/>
+<xsd:enumeration value="XML_SCHEMA"/>
+<xsd:enumeration value="DTD"/>
+<xsd:enumeration value="CUSTOM_FUNCTION"/>
+<xsd:enumeration value="EXCEL_WORKBOOK"/>
+<xsd:enumeration value="COBOL_COPYBOOK"/>
+<xsd:enumeration value="SYSTEM_PROFILE"/>
+<xsd:enumeration value="SUBSTITUTION_CONFIGURATION"/>
+<xsd:enumeration value="PROJECT"/>
+<xsd:enumeration value="TABLE"/>
+<xsd:enumeration value="TEMPLATE_TABLE"/>
+<xsd:enumeration value="DOMAIN"/>
+<xsd:enumeration value="HIERARCHY"/>
+<xsd:enumeration value="STORED_PROCEDURE"/>
+<xsd:enumeration value="IDOC"/>
+<xsd:enumeration value="BW_MASTER_TRANSFER_STRUCTURES"/>
+<xsd:enumeration value="BW_MASTER_TEXT_TRANSFER_STRUCTURES"/>
+<xsd:enumeration value="BW_TRANSACTION_TRANSFER_STRUCTURES"/>
+<xsd:enumeration value="BW_HIERARCHY_TRANSFER"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:simpleType name="ValidateType">
+<xsd:restriction base="xsd:string">
+<xsd:enumeration value="BATCH_JOB"/>
+<xsd:enumeration value="REALTIME_JOB"/>
+<xsd:enumeration value="WORKFLOW"/>
+<xsd:enumeration value="DATAFLOW"/>
+<xsd:enumeration value="ABAP_DATAFLOW"/>
+<xsd:enumeration value="DATA_QUALITY_TRANSFORM_CONFIGURATION"/>
+<xsd:enumeration value="CUSTOM_FUNCTION"/>
+</xsd:restriction>
+</xsd:simpleType>
+<xsd:element name="ValidateObjectDefinitionRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="objName" type="xsd:string"/>
+<xsd:element name="objType" type="localtypes:ValidateType"/>
+<xsd:element name="repoName" type="xsd:string"/>
+<xsd:choice minOccurs="0">
+<xsd:element name="jobServer" type="xsd:string"/>
+<xsd:element name="serverGroup" type="xsd:string"/>
+</xsd:choice>
+<xsd:element minOccurs="0" name="systemProfile" type="xsd:string"/>
+<xsd:element minOccurs="0" name="substitutionParameters">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" name="parameter">
+<xsd:complexType>
+<xsd:simpleContent>
+<xsd:extension base="xsd:string">
+<xsd:attribute name="name" type="xsd:string"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element minOccurs="0" name="traceOn" type="xsd:boolean"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="DeleteRepoObjectsRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" name="objName">
+<xsd:complexType>
+<xsd:simpleContent>
+<xsd:extension base="xsd:string">
+<xsd:attribute name="objType" type="localtypes:DeleteType"/>
+</xsd:extension>
+</xsd:simpleContent>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="repoName" type="xsd:string"/>
+<xsd:choice minOccurs="0">
+<xsd:element name="jobServer" type="xsd:string"/>
+<xsd:element name="serverGroup" type="xsd:string"/>
+</xsd:choice>
+<xsd:element minOccurs="0" name="traceOn" type="xsd:boolean"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="CompactRepoRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="repoName" type="xsd:string"/>
+<xsd:choice minOccurs="0">
+<xsd:element name="jobServer" type="xsd:string"/>
+<xsd:element name="serverGroup" type="xsd:string"/>
+</xsd:choice>
+<xsd:element minOccurs="0" name="traceOn" type="xsd:boolean"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ExportDQReportRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="runID" type="xsd:int"/>
+<xsd:element name="repoName" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ErrorLogResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="returnCode" type="xsd:int"/>
+<xsd:element name="error" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="TraceLogResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="returnCode" type="xsd:int"/>
+<xsd:element name="trace" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="MonitorLogResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="returnCode" type="xsd:int"/>
+<xsd:element name="monitor" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="batchJobStatusResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="returnCode" type="xsd:int"/>
+<xsd:element name="status" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="stopBatchJobResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="returnCode" type="xsd:int"/>
+<xsd:element minOccurs="0" name="errorMessage" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="batchJobRunIDsResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="run">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="runID" type="xsd:int"/>
+<xsd:element name="status" type="xsd:string"/>
+<xsd:element name="repoName" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element minOccurs="0" name="errorMessage" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ListOfBatchJobsResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" name="jobName" type="xsd:string"/>
+<xsd:element minOccurs="0" name="errorMessage" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="GetBatchJobInputFormatResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="format" type="xsd:string"/>
+<xsd:element minOccurs="0" name="errorMessage" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="RepoOperationResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="returnCode" type="xsd:int"/>
+<xsd:element minOccurs="0" name="errorMessage" type="xsd:string"/>
+<xsd:element minOccurs="0" name="traceMessage" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ExportDQReportResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="exportStatus" type="xsd:boolean"/>
+<xsd:element minOccurs="0" name="exportPath" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="processMessage" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="report">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="reportName" type="xsd:string"/>
+<xsd:element name="exportFileName" type="xsd:string"/>
+<xsd:element name="reportStatus" type="xsd:int"/>
+<xsd:element name="statusMessage" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="GetListOfRTServicesRequest">
+<xsd:complexType>
+<xsd:sequence></xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="ListOfRealtimeServicesResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element maxOccurs="unbounded" name="serviceName" type="xsd:string"/>
+<xsd:element minOccurs="0" name="errorMessage" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="RunRealtimeServiceRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="serviceName" type="xsd:string"/>
+<xsd:element name="xmlInput" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="RunRealtimeServiceResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="xmlOutput" type="xsd:string"/>
+<xsd:element name="errorMessage" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="GetMsgFormatRequest">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="serviceName" type="xsd:string"/>
+<xsd:element name="selector" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="GetMsgFormatResponse">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="schema" type="xsd:string"/>
+<xsd:element name="rootElement" type="xsd:string"/>
+<xsd:element name="rootElementNS" type="xsd:string"/>
+<xsd:element maxOccurs="unbounded" minOccurs="0" name="dependentFormat">
+<xsd:complexType>
+<xsd:sequence>
+<xsd:element name="schemaName" type="xsd:string"/>
+<xsd:element name="schema" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+<xsd:element name="errorMessage" type="xsd:string"/>
+</xsd:sequence>
+</xsd:complexType>
+</xsd:element>
+</xsd:schema>
+</wsdl:types>
+<wsdl:message name="Get_Trace_Log_Output">
+<wsdl:part name="TraceLogResponse" element="localtypes:TraceLogResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Service_Realtime_Batch_DQ_Siebel_account_match_Input_Realtime_Batch_DQ_Siebel_account_match_Input">
+<wsdl:part name="inputBody" element="aw_Service_Realtime_Batch_DQ_Siebel_account_match_Input_Realtime_Batch_DQ_Siebel_account_match_Input:DataSet"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Logout_Output">
+<wsdl:part name="status" element="localtypes:status"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Run_Realtime_Service_Output">
+<wsdl:part name="RunRealtimeServiceResponse" element="localtypes:RunRealtimeServiceResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_RTService_List_Output">
+<wsdl:part name="ListOfRealtimeServicesResponse" element="localtypes:ListOfRealtimeServicesResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_BatchJob_Status_Input">
+<wsdl:part name="batchJobStatusRequest" element="localtypes:batchJobStatusRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="RT_ADDRESS_Address_Output_Output">
+<wsdl:part name="outputBody" element="aw_RT_ADDRESS_Address_Output_Output:ROOT"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Ping_Input"></wsdl:message>
+<wsdl:message name="RT_SIEBEL_ADDR2_SIEBEL_ADDR_OUTPUT_Output">
+<wsdl:part name="outputBody" element="aw_RT_SIEBEL_ADDR2_SIEBEL_ADDR_OUTPUT_Output:DataSet"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_Error_Log_Output">
+<wsdl:part name="ErrorLogResponse" element="localtypes:ErrorLogResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_Monitor_Log_Input">
+<wsdl:part name="MonitorLogRequest" element="localtypes:MonitorLogRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="SecureConnection">
+<wsdl:part name="sessionID" element="localtypes:SessionID"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="RT_BT_MATCH_Input_Realtime_Batch_DQ_Siebel_account_match_Input">
+<wsdl:part name="inputBody" element="aw_RT_BT_MATCH_Input_Realtime_Batch_DQ_Siebel_account_match_Input:DataSet"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_BatchJob_Status_Output">
+<wsdl:part name="batchJobStatusResponse" element="localtypes:batchJobStatusResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="RT_ADDRESS_Address_Input_Input">
+<wsdl:part name="inputBody" element="aw_RT_ADDRESS_Address_Input_Input:ROOT"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="RT_SIEBEL_SIEBEL_ADDR_OUTPUT_Output">
+<wsdl:part name="outputBody" element="aw_RT_SIEBEL_SIEBEL_ADDR_OUTPUT_Output:DataSet"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_Job_Input_Format_Output">
+<wsdl:part name="GetBatchJobInputFormatResponse" element="localtypes:GetBatchJobInputFormatResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_RTMsg_Format_Input">
+<wsdl:part name="GetMsgFormatRequest" element="localtypes:GetMsgFormatRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Ping_Output">
+<wsdl:part name="version" element="localtypes:version"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="RT_SIEBEL_SIEBEL_ADDR_INPUT_Input">
+<wsdl:part name="inputBody" element="aw_RT_SIEBEL_SIEBEL_ADDR_INPUT_Input:DataSet"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_BatchJob_RunIDs_Input">
+<wsdl:part name="batchJobRunIDsRequest" element="localtypes:batchJobRunIDsRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Validate_Repo_Object_Input">
+<wsdl:part name="ValidateObjectDefinitionRequest" element="localtypes:ValidateObjectDefinitionRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse_SIEBEL_ADDR_INPUT_Input">
+<wsdl:part name="inputBody" element="aw_Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse_SIEBEL_ADDR_INPUT_Input:DataSet"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_RTService_List_Input">
+<wsdl:part name="GetListOfRTServicesRequest" element="localtypes:GetListOfRTServicesRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Compact_Repo_Output">
+<wsdl:part name="RepoOperationResponse" element="localtypes:RepoOperationResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Delete_Repo_Objects_Input">
+<wsdl:part name="DeleteRepoObjectsRequest" element="localtypes:DeleteRepoObjectsRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="RT_BT_MATCH_Output_Realtime_Batch_DQ_Siebel_account_match_Output">
+<wsdl:part name="outputBody" element="aw_RT_BT_MATCH_Output_Realtime_Batch_DQ_Siebel_account_match_Output:DataSet"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Run_Batch_Job_Input">
+<wsdl:part name="RunBatchJobRequest" element="localtypes:RunBatchJobRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_BatchJob_List_Input">
+<wsdl:part name="GetListOfBatchJobsRequest" element="localtypes:GetListOfBatchJobsRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Run_Batch_Job_Output">
+<wsdl:part name="BatchJobResponse" element="localtypes:BatchJobResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Import_Repo_Object_Output">
+<wsdl:part name="RepoOperationResponse" element="localtypes:RepoOperationResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Run_Realtime_Service_Input">
+<wsdl:part name="RunRealtimeServiceRequest" element="localtypes:RunRealtimeServiceRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Compact_Repo_Input">
+<wsdl:part name="CompactRepoRequest" element="localtypes:CompactRepoRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Logon_Output">
+<wsdl:part name="SessionID" element="localtypes:SessionID"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_Monitor_Log_Output">
+<wsdl:part name="MonitorLogResponse" element="localtypes:MonitorLogResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Stop_Batch_Job_Input">
+<wsdl:part name="stopBatchJobRequest" element="localtypes:stopBatchJobRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Stop_Batch_Job_Output">
+<wsdl:part name="stopBatchJobResponse" element="localtypes:stopBatchJobResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse_SIEBEL_ADDR_OUTPUT_Output">
+<wsdl:part name="outputBody" element="aw_Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse_SIEBEL_ADDR_OUTPUT_Output:DataSet"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Service_Realtime_Batch_DQ_Siebel_account_match_Output_Realtime_Batch_DQ_Siebel_account_match_Output">
+<wsdl:part name="outputBody" element="aw_Service_Realtime_Batch_DQ_Siebel_account_match_Output_Realtime_Batch_DQ_Siebel_account_match_Output:DataSet"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Service_Realtime_DQ_Siebel_business_address_datacleanse_SIEBEL_ADDR_INPUT_Input">
+<wsdl:part name="inputBody" element="aw_Service_Realtime_DQ_Siebel_business_address_datacleanse_SIEBEL_ADDR_INPUT_Input:DataSet"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_Error_Log_Input">
+<wsdl:part name="ErrorLogRequest" element="localtypes:ErrorLogRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_Trace_Log_Input">
+<wsdl:part name="TraceLogRequest" element="localtypes:TraceLogRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Import_Repo_Object_Input">
+<wsdl:part name="ImportObjectDefinitionRequest" element="localtypes:ImportObjectDefinitionRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_RTMsg_Format_Output">
+<wsdl:part name="GetMsgFormatResponse" element="localtypes:GetMsgFormatResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Export_DQReport_Output">
+<wsdl:part name="ExportDQReportResponse" element="localtypes:ExportDQReportResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_BatchJob_List_Output">
+<wsdl:part name="ListOfBatchJobsResponse" element="localtypes:ListOfBatchJobsResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Service_Realtime_DQ_Siebel_business_address_datacleanse_SIEBEL_ADDR_OUTPUT_Output">
+<wsdl:part name="outputBody" element="aw_Service_Realtime_DQ_Siebel_business_address_datacleanse_SIEBEL_ADDR_OUTPUT_Output:DataSet"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_BatchJob_RunIDs_Output">
+<wsdl:part name="batchJobRunIDsResponse" element="localtypes:batchJobRunIDsResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Logon_Input">
+<wsdl:part name="LogonRequest" element="localtypes:LogonRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Delete_Repo_Objects_Output">
+<wsdl:part name="RepoOperationResponse" element="localtypes:RepoOperationResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Logout_Input"></wsdl:message>
+<wsdl:message name="RT_SIEBEL_ADDR2_SIEBEL_ADDR_INPUT_Input">
+<wsdl:part name="inputBody" element="aw_RT_SIEBEL_ADDR2_SIEBEL_ADDR_INPUT_Input:DataSet"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Export_DQReport_Input">
+<wsdl:part name="ExportDQReportRequest" element="localtypes:ExportDQReportRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Get_Job_Input_Format_Input">
+<wsdl:part name="GetBatchJobInputFormatRequest" element="localtypes:GetBatchJobInputFormatRequest"></wsdl:part>
+</wsdl:message>
+<wsdl:message name="Validate_Repo_Object_Output">
+<wsdl:part name="RepoOperationResponse" element="localtypes:RepoOperationResponse"></wsdl:part>
+</wsdl:message>
+<wsdl:portType name="Real-time_Services">
+<wsdl:operation name="Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse">
+<wsdl:input message="tns:Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse_SIEBEL_ADDR_INPUT_Input"></wsdl:input>
+<wsdl:output message="tns:Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse_SIEBEL_ADDR_OUTPUT_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Service_Realtime_Batch_DQ_Siebel_account_match">
+<wsdl:input message="tns:Service_Realtime_Batch_DQ_Siebel_account_match_Input_Realtime_Batch_DQ_Siebel_account_match_Input"></wsdl:input>
+<wsdl:output message="tns:Service_Realtime_Batch_DQ_Siebel_account_match_Output_Realtime_Batch_DQ_Siebel_account_match_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="RT_SIEBEL">
+<wsdl:input message="tns:RT_SIEBEL_SIEBEL_ADDR_INPUT_Input"></wsdl:input>
+<wsdl:output message="tns:RT_SIEBEL_SIEBEL_ADDR_OUTPUT_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Service_Realtime_DQ_Siebel_business_address_datacleanse">
+<wsdl:input message="tns:Service_Realtime_DQ_Siebel_business_address_datacleanse_SIEBEL_ADDR_INPUT_Input"></wsdl:input>
+<wsdl:output message="tns:Service_Realtime_DQ_Siebel_business_address_datacleanse_SIEBEL_ADDR_OUTPUT_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="RT_SIEBEL_ADDR2">
+<wsdl:input message="tns:RT_SIEBEL_ADDR2_SIEBEL_ADDR_INPUT_Input"></wsdl:input>
+<wsdl:output message="tns:RT_SIEBEL_ADDR2_SIEBEL_ADDR_OUTPUT_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="RT_ADDRESS">
+<wsdl:input message="tns:RT_ADDRESS_Address_Input_Input"></wsdl:input>
+<wsdl:output message="tns:RT_ADDRESS_Address_Output_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="RT_BT_MATCH">
+<wsdl:input message="tns:RT_BT_MATCH_Input_Realtime_Batch_DQ_Siebel_account_match_Input"></wsdl:input>
+<wsdl:output message="tns:RT_BT_MATCH_Output_Realtime_Batch_DQ_Siebel_account_match_Output"></wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="Repo_Operations">
+<wsdl:operation name="Import_Repo_Object">
+<wsdl:input message="tns:Import_Repo_Object_Input"></wsdl:input>
+<wsdl:output message="tns:Import_Repo_Object_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Validate_Repo_Object">
+<wsdl:input message="tns:Validate_Repo_Object_Input"></wsdl:input>
+<wsdl:output message="tns:Validate_Repo_Object_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Delete_Repo_Objects">
+<wsdl:input message="tns:Delete_Repo_Objects_Input"></wsdl:input>
+<wsdl:output message="tns:Delete_Repo_Objects_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Compact_Repo">
+<wsdl:input message="tns:Compact_Repo_Input"></wsdl:input>
+<wsdl:output message="tns:Compact_Repo_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Export_DQReport">
+<wsdl:input message="tns:Export_DQReport_Input"></wsdl:input>
+<wsdl:output message="tns:Export_DQReport_Output"></wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="Realtime_Service_Admin">
+<wsdl:operation name="Get_RTService_List">
+<wsdl:input message="tns:Get_RTService_List_Input"></wsdl:input>
+<wsdl:output message="tns:Get_RTService_List_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Run_Realtime_Service">
+<wsdl:input message="tns:Run_Realtime_Service_Input"></wsdl:input>
+<wsdl:output message="tns:Run_Realtime_Service_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Get_RTMsg_Format">
+<wsdl:input message="tns:Get_RTMsg_Format_Input"></wsdl:input>
+<wsdl:output message="tns:Get_RTMsg_Format_Output"></wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="Connection_Operations">
+<wsdl:operation name="Logout">
+<wsdl:input message="tns:Logout_Input"></wsdl:input>
+<wsdl:output message="tns:Logout_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Ping">
+<wsdl:input message="tns:Ping_Input"></wsdl:input>
+<wsdl:output message="tns:Ping_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Logon">
+<wsdl:input message="tns:Logon_Input"></wsdl:input>
+<wsdl:output message="tns:Logon_Output"></wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:portType name="Batch_Job_Admin">
+<wsdl:operation name="Get_Error_Log">
+<wsdl:input message="tns:Get_Error_Log_Input"></wsdl:input>
+<wsdl:output message="tns:Get_Error_Log_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Get_Trace_Log">
+<wsdl:input message="tns:Get_Trace_Log_Input"></wsdl:input>
+<wsdl:output message="tns:Get_Trace_Log_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Get_Monitor_Log">
+<wsdl:input message="tns:Get_Monitor_Log_Input"></wsdl:input>
+<wsdl:output message="tns:Get_Monitor_Log_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Get_BatchJob_Status">
+<wsdl:input message="tns:Get_BatchJob_Status_Input"></wsdl:input>
+<wsdl:output message="tns:Get_BatchJob_Status_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Stop_Batch_Job">
+<wsdl:input message="tns:Stop_Batch_Job_Input"></wsdl:input>
+<wsdl:output message="tns:Stop_Batch_Job_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Get_BatchJob_RunIDs">
+<wsdl:input message="tns:Get_BatchJob_RunIDs_Input"></wsdl:input>
+<wsdl:output message="tns:Get_BatchJob_RunIDs_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Get_BatchJob_List">
+<wsdl:input message="tns:Get_BatchJob_List_Input"></wsdl:input>
+<wsdl:output message="tns:Get_BatchJob_List_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Run_Batch_Job">
+<wsdl:input message="tns:Run_Batch_Job_Input"></wsdl:input>
+<wsdl:output message="tns:Run_Batch_Job_Output"></wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Get_Job_Input_Format">
+<wsdl:input message="tns:Get_Job_Input_Format_Input"></wsdl:input>
+<wsdl:output message="tns:Get_Job_Input_Format_Output"></wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="Real-time_Services" type="tns:Real-time_Services">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse">
+<soap:operation soapAction="service=Service_Realtime_Batch_DQ_Siebel_business_address_datacleanse"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Service_Realtime_Batch_DQ_Siebel_account_match">
+<soap:operation soapAction="service=Service_Realtime_Batch_DQ_Siebel_account_match"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="RT_SIEBEL">
+<soap:operation soapAction="service=RT_SIEBEL"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Service_Realtime_DQ_Siebel_business_address_datacleanse">
+<soap:operation soapAction="service=Service_Realtime_DQ_Siebel_business_address_datacleanse"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="RT_SIEBEL_ADDR2">
+<soap:operation soapAction="service=RT_SIEBEL_ADDR2"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="RT_ADDRESS">
+<soap:operation soapAction="service=RT_ADDRESS"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="RT_BT_MATCH">
+<soap:operation soapAction="service=RT_BT_MATCH"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="Repo_Operations" type="tns:Repo_Operations">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="Import_Repo_Object">
+<soap:operation soapAction="repoAdmin=Import_Repo_Object"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Validate_Repo_Object">
+<soap:operation soapAction="repoAdmin=Validate_Repo_Object"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Delete_Repo_Objects">
+<soap:operation soapAction="repoAdmin=Delete_Repo_Objects"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Compact_Repo">
+<soap:operation soapAction="repoAdmin=Compact_Repo"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Export_DQReport">
+<soap:operation soapAction="repoAdmin=Export_DQReport"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="Realtime_Service_Admin" type="tns:Realtime_Service_Admin">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="Get_RTService_List">
+<soap:operation soapAction="serviceAdmin=Get_RTService_List"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Run_Realtime_Service">
+<soap:operation soapAction="serviceAdmin=Run_Realtime_Service"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Get_RTMsg_Format">
+<soap:operation soapAction="serviceAdmin=Get_RTMsg_Format"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="Connection_Operations" type="tns:Connection_Operations">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="Logout">
+<soap:operation soapAction="function=Logout"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Ping">
+<soap:operation soapAction="function=Ping"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Logon">
+<soap:operation soapAction="function=Logon"/>
+<wsdl:input>
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:binding name="Batch_Job_Admin" type="tns:Batch_Job_Admin">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="Get_Error_Log">
+<soap:operation soapAction="jobAdmin=Get_Error_Log"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Get_Trace_Log">
+<soap:operation soapAction="jobAdmin=Get_Trace_Log"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Get_Monitor_Log">
+<soap:operation soapAction="jobAdmin=Get_Monitor_Log"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Get_BatchJob_Status">
+<soap:operation soapAction="jobAdmin=Get_BatchJob_Status"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Stop_Batch_Job">
+<soap:operation soapAction="jobAdmin=Stop_Batch_Job"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Get_BatchJob_RunIDs">
+<soap:operation soapAction="jobAdmin=Get_BatchJob_RunIDs"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Get_BatchJob_List">
+<soap:operation soapAction="jobAdmin=Get_BatchJob_List"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Run_Batch_Job">
+<soap:operation soapAction="jobAdmin=Run_Batch_Job"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+<wsdl:operation name="Get_Job_Input_Format">
+<soap:operation soapAction="jobAdmin=Get_Job_Input_Format"/>
+<wsdl:input>
+<soap:body use="literal"/>
+<soap:header message="tns:SecureConnection" part="sessionID" use="literal"></soap:header>
+</wsdl:input>
+<wsdl:output>
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="DataServices_Server">
+<wsdl:port name="Batch_Job_Admin" binding="tns:Batch_Job_Admin">
+<soap:address location="http://157.184.94.18:8080/DataServices/servlet/webservices"/>
+</wsdl:port>
+<wsdl:port name="Connection_Operations" binding="tns:Connection_Operations">
+<soap:address location="http://157.184.94.18:8080/DataServices/servlet/webservices"/>
+</wsdl:port>
+<wsdl:port name="Repo_Operations" binding="tns:Repo_Operations">
+<soap:address location="http://157.184.94.18:8080/DataServices/servlet/webservices"/>
+</wsdl:port>
+<wsdl:port name="Realtime_Service_Admin" binding="tns:Realtime_Service_Admin">
+<soap:address location="http://157.184.94.18:8080/DataServices/servlet/webservices"/>
+</wsdl:port>
+<wsdl:port name="Real-time_Services" binding="tns:Real-time_Services">
+<soap:address location="http://157.184.94.18:8080/DataServices/servlet/webservices"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>

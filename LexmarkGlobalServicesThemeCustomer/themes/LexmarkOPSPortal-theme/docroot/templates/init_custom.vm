@@ -1,0 +1,10 @@
+#*
+This file allows you to override and define new velocity variables.
+*#
+	#if (!$is_signed_in)
+	#set ($user_greeting = $languageUtil.format($locale, "welcome", ""))
+	#else
+	#set ($user_greeting = $languageUtil.format($company_id, $locale, "welcome"))
+	#set ($user_greeting = $user_greeting +" "+ $user_first_name+" "+$user_last_name)
+	#end
+	#set ($user_greeting = $user_greeting +"!") 

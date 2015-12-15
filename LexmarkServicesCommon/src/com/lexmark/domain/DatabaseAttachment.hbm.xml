@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!--
+Mapping file for the ServicesUser class of Lexmark Service.
+-->
+
+<hibernate-mapping package="com.lexmark.domain">
+
+<class name="DatabaseAttachment"
+       table="DATABASEATTACHMENT"
+       lazy="false">
+     
+    <id name="attachmentid"
+        type="string"
+        column="ATTACHMENTID">
+    </id>         
+ 
+    <property   name="attachment_Name"
+                column="ATTACHMENT_NAME"
+                type="string"
+                not-null="false"
+                /> 
+    <property   name="attachment_size"
+                column="ATTACHMENT_SIZE"
+                type="java.lang.Integer"
+                not-null="false"
+                />  
+    <property   name="sizeForDisplay"
+                column="SIZEFORDISPLAY"
+                type="string"
+                not-null="false"
+                />    
+    <property   name="visibility"
+                column="VISIBILITY"
+                type="string"
+                not-null="false"
+                /> 
+    <property   name="displayAttachmentName"
+                column="DISPLAYATTACHMENTNAME"
+                type="string"
+                not-null="false"
+                /> 
+    <property   name="attch_identifier"
+                column="ATTCH_IDENTIFIER"
+                type="string"
+                not-null="false"
+                /> 
+    <property   name="requestType"
+                column="REQUESTTYPE"
+                type="string"
+                not-null="false"
+                />
+                                                                            
+</class>
+</hibernate-mapping>

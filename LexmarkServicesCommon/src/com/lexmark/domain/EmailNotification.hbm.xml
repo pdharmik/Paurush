@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+
+
+<hibernate-mapping package="com.lexmark.domain">
+
+<class name="EmailNotification"
+	   table="EMAIL_NOTIFICATION"
+	   >
+	   
+	<id name="emailNotificationId"
+		type="integer"
+		column="EMAIL_NOTIFICATION_ID"
+		unsaved-value="null">
+		<generator class="native"/>
+	</id>
+	
+	<property   name="emailName"
+				column="EMAIL_NAME"
+				type="string"
+				length="200"
+				not-null="false"/>	
+				
+	<property   name="emailDescription"
+				column="EMAIL_DESCRIPTION"
+				type="string"
+				length="500"
+				not-null="false"/>	
+				
+   	<bag name="emailNotificationLocaleList" cascade="all" inverse="true" lazy="false">
+           <key column="EMAIL_NOTIFICATION_ID"/>
+           <one-to-many class="EmailNotificationLocale"/>
+    </bag>		
+	
+	   
+</class>
+
+
+<class name="EmailNotificationLocale"
+	   table="EMAIL_NOTIFICATION_LOCALE"
+	   >
+
+	<id name="emailNotificationLocaleId"
+		type="integer"
+		column="EMAIL_NOTIFICATION_LOCALE_ID"
+		unsaved-value="null">
+		<generator class="native"/>
+	</id>
+	   
+	<property   name="emailSubject"
+				column="EMAIL_SUBJECT"
+				type="string"
+				length="200"
+				not-null="false"/>	
+				
+	<property   name="emailHeader"
+				column="EMAIL_HEADER"
+				type="string"
+				length="2000"
+				not-null="false"/>	
+				
+	<property   name="emailBody"
+				column="EMAIL_BODY"
+				type="string"
+				length="4000"
+				not-null="false"/>	
+				
+	<property   name="emailFooter"
+				column="EMAIL_FOOTER"
+				type="string"
+				length="2000"
+				not-null="false"/>
+				
+	<many-to-one name="locale" class="SupportedLocale" column="SUPPORTED_LOCALE_ID"/>	
+	<many-to-one name="emailNotification" class="EmailNotification" column="EMAIL_NOTIFICATION_ID" lazy="false"/>	
+								
+					   
+	   
+</class>
+</hibernate-mapping>

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+	<!--
+		* Copyright 2005-2008 the original author or authors. * * Licensed
+		under the Apache License, Version 2.0 (the "License"); * you may not
+		use this file except in compliance with the License. * You may obtain
+		a copy of the License at * *
+		http://www.apache.org/licenses/LICENSE-2.0 * * Unless required by
+		applicable law or agreed to in writing, software * distributed under
+		the License is distributed on an "AS IS" BASIS, * WITHOUT WARRANTIES
+		OR CONDITIONS OF ANY KIND, either express or implied. * See the
+		License for the specific language governing permissions and *
+		limitations under the License.
+	-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"  
+	xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
+	xsi:schemaLocation="
+	 http://www.directwebremoting.org/schema/spring-dwr 
+     http://www.directwebremoting.org/schema/spring-dwr-2.0.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/aop 
+     http://www.springframework.org/schema/aop/spring-aop-2.5.xsd  
+     http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring
+     http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.0.xsd">
+ 	
+ 	<context:annotation-config/>
+	<ehcache:annotation-driven cache-manager="ehCacheManager" />
+	
+	<bean id="ehCacheManager"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation">
+			<value>/WEB-INF/context/cache/lexmarkpartnerportlets-ehcache.xml
+			</value>
+		</property>
+	</bean>
+	
+	<bean id="propertyConfigurer"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+        	<list>
+        		<value>/WEB-INF/context/webservice.properties</value>    
+           	 	<value>classpath:tracker.properties</value>
+            </list>
+        </property>
+    </bean>	
+
+	<bean id="myKeyGenerator"
+		class="com.googlecode.ehcache.annotations.key.StringCacheKeyGenerator">
+		<property name="includeMethod" value="false" />
+	</bean>
+ 
+
+	<!-- Default View Resolver -->
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="cache" value="false" />
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- Message Source -->
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:com/lexmark/resources/messages</value> <!-- (localized "messages_xx.properties" files) -->
+				<value>classpath:com/lexmark/resources/hostConfig</value>
+			</list>
+		</property>
+		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+	
+	<!-- Abstract Default Exception Handler -->
+
+	<bean id="defaultExceptionHandlerTemplate"
+		class="org.springframework.web.portlet.handler.SimpleMappingExceptionResolver"
+		abstract="true">
+		<property name="defaultErrorView" value="exception/defError" />
+		<property name="exceptionMappings">
+			<props>
+				<prop key="javax.portlet.PortletSecurityException">exception/notAuthorized</prop>
+				<prop key="javax.portlet.UnavailableException">exception/notAvailable</prop>
+				<prop key="com.lexmark.exception.LoginException">exception/loginException</prop>
+				<prop key="com.lexmark.exception.AccountNotAssociatedException">exception/accountNotAssociatedException</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- userInfoInterceptor -->
+    <bean id="userInfoInterceptor" class="com.lexmark.interceptor.UserInfoInterceptor">
+        <property name="userService" ref="userService"/>
+        <property name="globalService" ref="globalService"/>
+    </bean>
+   
+   <bean id="accountAssociateInterceptor" class="com.lexmark.interceptor.AccountAssociateInterceptor">
+	</bean>
+	
+    <aop:aspectj-autoproxy />
+	<bean id="trackingPerformance" class="com.lexmark.util.AOPPerformanceTracker">
+		<property name="flag" value="${status}"/>
+	</bean>
+	<aop:config>
+		<aop:aspect id="check" ref="trackingPerformance">
+			<aop:pointcut id="logAmindServicePerformance"
+				expression="execution(* com.lexmark.service.impl.mock.*.*(..))" />
+			<aop:before method="logBefore" pointcut-ref="logAmindServicePerformance" />
+			<aop:after method="logAfter" pointcut-ref="logAmindServicePerformance" />
+		</aop:aspect>
+	</aop:config>
+	 
+	
+	<!-- Mock Integration -->
+	<!--
+	<bean id="serviceRequestService" class="com.lexmark.service.impl.mock.ServiceRequestServiceImpl"/>
+	<bean id="paymentsService" class="com.lexmark.service.impl.mock.PaymentsServiceImpl" />
+	<bean id="contactInformationService" class="com.lexmark.service.impl.mock.ContactInformationServiceImpl" />
+	<bean id="globalService" class="com.lexmark.service.impl.mock.GlobalServiceImpl" />
+	<bean id="partnerRequestsService" class="com.lexmark.service.impl.mock.PartnerRequestsServiceImpl" />
+	<bean id="userService" class="com.lexmark.service.impl.mock.UserServiceImpl" />
+	<bean id="productImageService" class="com.lexmark.service.impl.mock.ProductImageServiceImpl" />
+	<bean id="serviceRequestLocaleService" class="com.lexmark.service.impl.mock.ServiceRequestLocaleImpl" />
+    <bean id="userGridSettingService" class="com.lexmark.service.impl.mock.UserGridSettingServiceImpl"/>
+	-->
+	
+	<!-- Real Integration 
+	-->
+	<bean id="serviceRequestService" class="com.lexmark.service.impl.real.AmindContractedServiceRequestService">
+		<property name="sessionFactory"><ref bean="statelessSessionFactory"/></property> 
+	</bean>
+	<bean id="paymentsService" class="com.lexmark.service.impl.real.AmindPartnerPaymentService" >
+		<property name="statelessSessionFactory"><ref bean="statelessSessionFactory"/></property> 
+	</bean>
+	<bean id="contactInformationService" class="com.lexmark.service.impl.real.AmindContactInformationService" />
+	<bean id="userService" class="com.lexmark.service.impl.real.jdbc.UserServiceImpl" />
+	<bean id="productImageService" class="com.lexmark.service.impl.real.file.ProductImageServiceImpl" />
+	<bean id="geographyService" class="com.lexmark.service.impl.real.jdbc.GeographyServiceImpl" />
+	<bean id="serviceRequestLocaleService" class="com.lexmark.service.impl.real.jdbc.ServiceRequestLocaleImpl" />
+    <bean id="userGridSettingService" class="com.lexmark.service.impl.real.jdbc.UserGridSettingServiceImpl"/>
+	<!--
+	-->
+	
+	<!-- Amind Integration
+	-->
+	<bean id="sessionFactory" class="com.amind.session.StatefulSessionFactory"></bean>
+
+	<bean name="statelessSessionFactory" class="com.amind.session.StatelessSessionFactory"> 
+		<property name="statelessSessionTimeout" value="300000"/> 
+		<property name="statelessWaitTime" value="120000"/> 
+		<property name="maxConnections" value="80"/> 
+	</bean> 
+	
+	<bean id="globalService" class="com.lexmark.service.impl.real.AmindGlobalService">
+		<property name="statelessSessionFactory"><ref bean="statelessSessionFactory"/></property> 
+		<property name="statefulSessionFactory"><ref bean="sessionFactory"/></property> 
+	</bean>
+
+	<bean id="partnerRequestsService" class="com.lexmark.service.impl.real.AmindPartnerRequestsService" >
+		<property name="statelessSessionFactory"><ref bean="statelessSessionFactory"/></property> 
+	</bean>
+
+ 	<!-- webMethods Integration
+	-->
+ 	<bean id="claimWebService" class="com.lexmark.webservice.impl.real.ClaimServiceImpl">
+    		<!--
+	   		<property name="address">
+	   			<value>http://a2aqa.lex.lexmark.com:8701/ws/ServiceRequest:warrantyClaimsServiceRequestWS</value>
+	   		</property>               
+    		<property name="senderId" >
+    			<value>LXK_ServicesWeb</value>
+    		</property>                                                                                     
+    		<property name="senderName">
+    			<value>Services Web Portal</value>
+    		</property>                                                                                 
+    		<property name="receiverId" >
+    			<value>LXK_SIEBEL</value>
+    		</property>                                                                                         
+    		<property name="claimSource">
+    			<value>SERVICES WEB PORTAL</value>
+    		</property>          
+    		<property name="synchOrAsynch">
+    			<value>asynch</value>
+    		</property>         
+    		DEV = http://dlxkswmis1.lex.lexmark.com:9501/ws/ServiceRequest:warrantyClaimsServiceRequestWS
+    		-->     
+	   		<property name="address">
+	   			<value>${claimWebService.address}</value>
+	   		</property>               
+    		<property name="senderId" >
+    			<value>${claimWebService.senderId}</value>
+    		</property>                                                                                     
+    		<property name="senderName">
+    			<value>${claimWebService.senderName}</value>
+    		</property>                                                                                 
+    		<property name="receiverId" >
+    			<value>${claimWebService.receiverId}</value>
+    		</property>                                                                                         
+    		<property name="claimSource">
+    			<value>${claimWebService.sourceSystem}</value>
+    		</property>          
+    		<property name="synchOrAsynch">
+    			<value>${claimWebService.synchOrAsynch}</value>
+    		</property>    
+	</bean> 
+ 	<bean id="requestWebService" class="com.lexmark.webservice.impl.real.RequestServiceImpl">
+    		<!--
+	   		<property name="address">
+	   			<value>http://a2aqa.lex.lexmark.com:8701/ws/ServiceRequest:warrantyClaimsServiceRequestWS</value>
+	   		</property>               
+    		<property name="senderId" >
+    			<value>LXK_ServicesWeb</value>
+    		</property>                                                                                     
+    		<property name="senderName">
+    			<value>Services Web Portal</value>
+    		</property>                                                                                 
+    		<property name="receiverId" >
+    			<value>LXK_SIEBEL</value>
+    		</property>                                                                                         
+    		<property name="claimSource">
+    			<value>SERVICES WEB PORTAL</value>
+    		</property>          
+    		<property name="synchOrAsynch">
+    			<value>asynch</value>
+    		</property>         
+    		QA = http://dlxkswmis1.lex.lexmark.com:9501/ws/ServiceRequest:warrantyClaimsServiceRequestWS
+    		-->     
+	   		<property name="address">
+	   			<value>${requestWebService.address}</value>
+	   		</property>               
+    		<property name="senderId" >
+    			<value>${requestWebService.senderId}</value>
+    		</property>                                                                                     
+    		<property name="senderName">
+    			<value>${requestWebService.senderName}</value>
+    		</property>                                                                                 
+    		<property name="receiverId" >
+    			<value>${requestWebService.receiverId}</value>
+    		</property>                                                                                         
+    		<property name="claimSource">
+    			<value>${requestWebService.sourceSystem}</value>
+    		</property>          
+    		<property name="synchOrAsynch">
+    			<value>${requestWebService.synchOrAsynch}</value>
+    		</property>    
+	</bean> 
+	
+ 	<bean id="processCustomerContact" class="com.lexmark.webservice.impl.real.ProcessCustomerContactImpl">
+	   		<property name="address">
+	   			<value>${processCustomerContact.address}</value>
+	   		</property>               
+    		<property name="userName">
+    			<value>${processCustomerContact.userName}</value>
+    		</property>              
+    		<property name="password">
+    			<value>${processCustomerContact.password}</value>
+    		</property>              
+    		<property name="sourceSystem">
+    			<value>${processCustomerContact.sourceSystem}</value>
+    		</property>          
+    		<property name="businessProcess">
+    			<value>${processCustomerContact.businessProcess}</value>
+    		</property>       
+    		<property name="integrationFrequency">
+    			<value>${processCustomerContact.integrationFrequency}</value>
+    		</property>  
+    		<property name="objectChangeActionType">
+    			<value>${processCustomerContact.objectChangeActionType}</value>
+    		</property>
+    		<property name="synchOrAsynch">
+    			<value>${processCustomerContact.synchOrAsynch}</value>
+    		</property>         
+	</bean> 
+</beans>

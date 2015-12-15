@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="RequestAttachmentDetailsDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK MPS Partner Service Request (EAI)</value>
+       </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Partner Service Request (EAI)_Attachment</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	
+	     		<entry>
+	         		<key><value>attachmentId</value></key>
+	         		<value>AttachmentId</value>
+				</entry>
+				<entry>
+	         		<key><value>type</value></key>
+	         		<value>ActivityFileSrcType</value>
+				</entry>
+				<entry>
+	         		<key><value>fileName</value></key>
+	         		<value>ActivityFileName</value>
+				</entry>
+	     	</map>
+		</property>
+    
+    </bean>  
+</beans>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- AmindDeviceService::retrieveAssetLocations-->
+	<bean id="AssetLocation" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+
+        <property name="dsTargetObjectName">
+			<value>LXK MPS Contracted Consumable Asset List_Perf</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Contracted Consumable Asset List_Perf</value>
+        </property>
+
+         <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>LXK SW Agreement Account Global DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>LXK SW Agreement Account Domestic DUNS</value>
+				</entry> 
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXK SW Agreement Account LEGAL MDM ID</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXK SW Agreement Account MDM Account</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>LXK SW Agreement Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>chlNodeId</value></key>
+	         		<value>LXK SW Covered Asset CHL Parent Chain</value>
+				</entry>		
+				<entry>
+	         		<key><value>city</value></key>
+	         		<value>Install City</value>
+				</entry>	
+				<entry>
+	         		<key><value>postalCode</value></key>
+	         		<value>Install Postal Code</value>
+				</entry>
+				<entry>
+	         		<key><value>province</value></key>
+	         		<value>Install Province</value>
+				</entry>
+				<entry>
+	         		<key><value>state</value></key>
+	         		<value>Install State</value>
+				</entry>		
+				<entry>
+	         		<key><value>streetAddress</value></key>
+	         		<value>Street Address</value>
+				</entry>	
+				<entry>
+	         		<key><value>streetAddress2</value></key>
+	         		<value>Install Address Line2</value>
+				</entry>	
+				<entry>
+	         		<key><value>country</value></key>
+	         		<value>Install Country</value>
+				</entry>								
+						
+                <entry>
+                    <key><value>entitledMdmLevel1AccountId</value></key>
+                    <value>LXK MPS Ent Global DUNS</value>
+                </entry>
+                <entry>
+                    <key><value>entitledMdmLevel2AccountId</value></key>
+                    <value>LXK MPS Domestic DUNS</value>
+                </entry>
+			    <entry>
+                    <key><value>entitledMdmLevel3AccountId</value></key>
+                    <value>LXK MPS Legal</value>
+                </entry>
+                <entry>
+                    <key><value>entitledMdmLevel4AccountId</value></key>
+                    <value>LXK MPS MDM</value>
+                </entry>
+                <entry>
+                    <key><value>entitledMdmLevel5AccountId</value></key>
+                    <value>LXK MPS Account Id</value>
+                </entry>
+                <entry>
+                    <key><value>entitlementType</value></key>
+                    <value>LXK SW Entitlement Type</value>
+                </entry>
+                <entry>
+                    <key><value>entitlementStartDate</value></key>
+                    <value>LXK MPS Entitlement Start Date</value>
+                </entry>
+                <entry>
+                    <key><value>entitlementEndDate</value></key>
+                    <value>LXK MPS Entitlement End Date</value>
+                </entry>
+                <entry>
+                    <key><value>entitlementParentChain</value></key>
+                    <value>LXK MPS Parent Chain</value>
+                </entry>
+                
+                <entry>
+					<key><value>county</value></key>
+					<value>LXK Install County</value>
+				</entry>
+				<entry>
+					<key><value>district</value></key>
+					<value>LXK Install District</value>
+				</entry>
+				<entry>
+					<key><value>officeNumber</value></key>
+					<value>LXK Install House #</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

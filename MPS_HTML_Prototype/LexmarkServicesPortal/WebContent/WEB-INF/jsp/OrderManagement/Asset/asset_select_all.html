@@ -1,0 +1,571 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Select an Asset</title>
+<link href="../../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../../../js/util.js"></script>
+<script src="../../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../../js/grid/dhtmlxgrid_srnd.js"></script>
+
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_srnd.js"></script>
+
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+
+<script src="../../../../js/tree/dhtmlxtree.js"></script>
+
+<script src="../../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../../../js/expand.js"></script>
+<script src="../../../../js/mps.js"></script>
+<script type="text/javascript">
+var global_paging_message={results:"Results",records:"Records from &nbsp;",to:" to ",page:"page ",perpage:"rows per page",first:"To first Page",previous:"Previous Page",found:"Found records",next:"Next Page",last:"To last Page",of:" of ",notfound:"No Records Found"};
+var global_button_message={close:"CLOSE",ok:"OK",cancel:"CANCEL",selectColumns:"SELECT COLUMNS"};
+</script>
+
+<script>
+ $(function() {
+	 $("#dialog").dialog({
+	        autoOpen: false,
+	        height: 200,
+	        width: 800,
+	        modal: true,
+	        resizable:true,	        
+	 });
+	 
+ $(".opener").click(function() {
+	 $("#dialog").dialog("open");
+	 });
+ });
+</script>
+</head>
+<body>
+<div style="display: none;" id="dialog" title="Recent Order Activity">	
+     Please review the order history for this asset for the last two weeks before placing an order
+     <div class="portletBlock">
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <ul class="form">
+                <li>
+                  <label>Model:</label>
+                  <span>Lexmark C782n</span></li>
+                <li>
+                  <label>Serial Number:</label>
+                  <span>940XMYF</span></li>
+                <li>
+                  <label>IP Address</label>
+                  <span>10.255.34.68</span></li>
+              </ul>
+              
+            </div>
+          </div>
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <ul class="form">
+                <li>
+                  <label for="refId">Asset Tag:</label>
+                  <span>940XMYF</span></li>
+                <li>
+                  <label for="costCntr">Device Tag:</label>
+                  <span>F2</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="portlet-wrap rounded wFull">
+            <div class="portlet-wrap-inner">
+              <div id="mygrid_container_popup" class="gridbox gridbox_light "></div>
+            </div>
+          </div>
+          <div class="pagination"><span id="pagingArea2"></span><span id="infoArea2"></span></div>
+        </div>
+		 <div class="buttonContainer">
+		  <button class="button_cancel" onClick="window.location.href='asset_select_all.html'">Cancel</button>
+          <button class="button" onClick="window.location.href='order_details.html'">Continue</button>
+        </div>
+	</div>
+<div id="wrapper">
+  <div id="banner">
+    <h1 class="logo"> <a href="https://tportal.lexmark.com/web/guest" title="Lexmark Global Services">tportal.lexmark.com</a> </h1>
+    <div id="top-header">
+      <div id="top-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><b><span>Welcome Firstname Lastname!</span></b></li>
+          <li><a href="#">Preferences</a></li>
+          <li><a href="#">User Administration</a></li>
+          <li><a href="#">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="bottom-header">
+      <div id="bottom-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li>
+            <select>
+              <option>English (US)</option>
+            </select>
+          </li>
+          <li><a href="#">Lexmark.com</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Get Help</a></li>
+          <li><a href="#">Contact Lexmark</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="tabNavigation">
+    <ul class="tab">
+      <li><a href="#"><img src="../../../../images/home.png" alt="Home" title="Home" class="home" /></a></li>
+      <li><a href="" title="">Device Finder</a></li>
+      <li class="selected"><a href="" title="">Requests</a></li>
+      <li><a href="" title="">Page Counts</a></li>
+      <li><a href="" title="">Documents</a></li>
+    </ul>
+  </div>
+  <div id="subnavigation">
+    <ul>
+      <li><a href="javascript:void(0);"><span>Request History</span></a></li>
+      <li><a href="create_new_request.html" class="lightbox" title="Create New Request"><span>Create New Request</span></a></li>
+    </ul>
+  </div>
+  <div id="content-wrapper">
+    <div class="journal-content-article">
+      <h2>Supplies Request</h2>
+      <span class="step">Order Supplies</span> </div>
+    <div class="main-wrap">
+      <div class="content">
+        <div class="left-nav">
+          <div class="left-nav-inner"> 
+            
+            <!-- LEFT COLUMN CONTENT GOES HERE -->
+            
+            <div class="left-nav-header">
+              <h3>Select from:</h3>
+            </div>
+            <ul class="filters">
+              <li id="All" class="selected"><a href="#" onclick="reLoadGrid('All');">All Assets</a></li>
+              <li id="BookMarked"><a href="#" onclick="reLoadGrid('BookMarked');">My Bookmarked Assets</a></li>
+              <li><a href="#" class="chl">Device Location</a></li>
+              <li><a href="#" class="chl">Customer Hierarchy</a></li>
+            </ul>
+          </div>
+          <div class="left-nav-footer"> 
+            
+            <!-- NO CONTENT HERE PLS -->
+             
+          </div>
+        </div>
+        <div class="leftOverlay rounded shadow">
+          <div class="columnInner">
+            <h4><a href="javascript:void(0);" class="chlClose"><strong>Close</strong></a>CHL / Location</h4>
+            zz </div>
+        </div>
+        <div class="right-column"> 
+          
+          <!-- PROCESS STEPS START -->
+          
+          <div class="portletBlock center">
+            <ul class="processSteps shadow">
+              <li class="selected"><a href="#" title="Step 1: Select Asset"><span>1</span>Select Asset</a></li>
+              <li><a href="#" title="Step 2: Order Details"><span>2</span>Order Details</a></li>
+              <li><a href="#" title="Step 3: Review"><span>3</span>Review</a></li>
+              <li class="last"><a href="#" title="Step 4: Confirmation"><span>4</span>Confirmation</a></li>
+            </ul>
+          </div>
+          
+          <!-- PROCESS STEPS END -->
+          
+          <h3 class="pageTitle">Select from All Assets</h3>
+          <div class="grid-controls"> 
+            <!-- Utilities Start -->
+            <div class="utilities">
+              <ul>
+                <li class="first"><a href="#"><img src="../../../../images/xls.png" alt="Export to Excel" title="Export to Excel"></a></li>
+                <li><a href="#"><img src="../../../../images/pdf.png" alt="Export to PDF" title="Export to PDF" /></a></li>
+                <li><a href="#"><img src="../../../../images/print.png" alt="Print" title="Print"></a></li>
+              </ul>
+            </div>
+            
+            <!-- utilities End --> 
+            
+            
+            <!-- Expand-min Start -->
+            
+           <div class="expand-min">
+              <ul>
+                <li class="first"> <img src="../../../../images/minimize_all.png" alt="Minimize All" title="Minimize All" /> <a href="javascript:void(0)" onClick="minimizeAll()";>Minimize All</a> </li>
+                <li> <img src="../../../../images/expand_all.png" alt="Expand All" title="Expand All" /> <a href="javascript:void(0)" onClick="expandAll()";>Expand All</a> </li>
+                <li> <img src="../../../../images/customize.png" alt="Customize Grid" title="Customize Grid" /> <a href="#grid" id='headerMenuButton'>Customize Columns</a> </li>
+                <li> <img src="../../../../images/reset.png" alt="Reset Grid" title="Reset Grid" /> <a href="javascript:resetGrid();">Reset</a> </li>
+              </ul>
+            </div>
+            
+            <!-- Expand-min End --> 
+            
+            <!-- Customize Coulmns Popup Start -->
+            
+            <div id="grid_menu" class="dhx_header_cmenu rounded shadow">
+              <div class="columnInner">
+                <h4><a href="javascript:void(0);" class="customizeClose">Close</a>Customize Columns</h4>
+                <ul>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA1">
+                      <input type="checkbox" checked="checked" disabled="disabled" id="columnA1" />
+                      Serial Number</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA2">
+                      <input type="checkbox" checked="checked" id="columnA2" />
+                      Product Model</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA3">
+                      <input type="checkbox" checked="checked" id="columnA3" />
+                      Asset Tag</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA4">
+                      <input type="checkbox" checked="checked" id="columnA4" />
+                      Device Host Name</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA5">
+                      <input type="checkbox" checked="checked" id="columnA5" />
+                      Customer Device Tag</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA6">
+                      <input type="checkbox" checked="checked" id="columnA6" />
+                      IP Address</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA7">
+                      <input type="checkbox" id="columnA7" />
+                      Address Name</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA8">
+                      <input type="checkbox" id="columnA8" />
+                      Device Phase</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA9">
+                      <input type="checkbox" id="columnA9" />
+                      Address Line 1</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA10">
+                      <input type="checkbox" id="columnB1" />
+                      City</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA11">
+                      <input type="checkbox" id="columnB2" />
+                      State</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA12">
+                      <input type="checkbox" id="columnB3" />
+                      Province</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA13">
+                      <input type="checkbox" id="columnB4" />
+                      Country</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA14">
+                      <input type="checkbox" id="columnB5" />
+                      ZIP / Postal Code</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnA15">
+                      <input type="checkbox" id="columnB6" />
+                      Primary Contact First Name</label>
+                  </li>
+                </ul>
+                <ul>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB1">
+                      <input type="checkbox" id="columnB7" />
+                      Primary Contact Last Name</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB2">
+                      <input type="checkbox" id="columnB8" />
+                      Primary Contact Email</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB3">
+                      <input type="checkbox" id="columnB9" />
+                      Primary Contact Phone</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB4">
+                      <input type="checkbox" id="columnB7" />
+                      Physical Location 1</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB5">
+                      <input type="checkbox" id="columnB8" />
+                      Physical Location 2</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB6">
+                      <input type="checkbox" id="columnB9" />
+                      Physical Location 3</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB7">
+                      <input type="checkbox" id="columnB7" />
+                      Special Usage</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB8">
+                      <input type="checkbox" id="columnB8" />
+                      Account Site</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB9">
+                      <input type="checkbox" id="columnB9" />
+                      Area Classification</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB10">
+                      <input type="checkbox" id="columnB7" />
+                      Site Classification</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB11">
+                      <input type="checkbox" id="columnB8" />
+                      Asset Division</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB12">
+                      <input type="checkbox" id="columnB9" />
+                      Department Name</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB13">
+                      <input type="checkbox" id="columnB9" />
+                      Contact Cost Center</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB14">
+                      <input type="checkbox" id="columnB9" />
+                      Contact Division</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB15">
+                      <input type="checkbox" id="columnB9" />
+                      Departments</label>
+                  </li>
+                  <li>
+                    <label class="dhx_header_cmenu_item" for="columnB16">
+                      <input type="checkbox" id="columnB9" />
+                      Region</label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Customize Coulmns Popup End -->
+             
+          </div>
+          <!-- grid-controls -->
+          <div class="portlet-wrap rounded">
+            <div class="portlet-wrap-inner">
+              <div id="mygrid_container" class="gridbox gridbox_light "></div>
+            </div>
+          </div>
+          <div class="pagination"><span id="pagingArea"></span><span id="infoArea"></span></div>
+          <!-- mygrid_container --> 
+          <div class="portletBodyWrap rounded shadow grid-inner-body wFull">
+            
+              <a href="../Catalog/search_catalog.html;" class="lightbox info" title="Select a Country"><span class="info">I want to continue without selecting an asset</span></a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer">Footer</div>
+</div>
+</body>
+<script>
+	var asssetgrid;
+	var headerString = "&nbsp;,&nbsp;,Serial No.,Product Model,Asset Tag,Device Host Name,IP Address,Address Name,Device Name, Address Line1, City, State, Province, Country, Zip/Postal Code, Primary Contact First Name, Primary Contact Last Name,Primary Contact Email, Primary Contact Phone, Physical Location1, Physical Location2, Physical Location3, Special Usage, Account Site, Area Classification, Site Classification, Asset Division, Department Name, Contact Cost Center, Contact Division, Departments, Region;";
+	var arrAll = [
+			[
+					"<input type=\"submit\" value=\"Select\" name=\"selectasset\" class=\"button opener\">",
+					"<table cellspacing=\"0\" cellpadding=\"0\" class=\"grid-inner-body\"><tr><td class=\"pModel\"><ul><li class=\"strong\">Lexmark 2312</li><li><img width=\"100\" height=\"100\" src=\"../../../../images/dummy_printer.jpg\" /></li></ul></td><td width=\"30%\"><ul><li class=\"strong\">Installed Address</li><li>Address Line1</li><li>Address Line2</li><li>Lexington, KY 40505</li><li>USA</li><li class=\"fav\"><img src=\"../../../../images/favorite.png\" width=\"15\" height=\"15\" /><a href=\"javascript:void(0);\">Remove from Bookmark</a></li></ul></td><td><ul><li class=\"strong\">Primary Contact</li><li>FirstName LastName</li><li>Phone: 1234567890</li></ul></td></tr></table>",
+					"<a href=\"javascript:void(0);\">123456</a>",
+					"Lexmark 2312", "123ABC", "ASDXXX", "10.255.255.255",
+					"US.COL.COM","Device Name", "Address Line1", "City", "State", "Province", "Country", "Zip/Postal Code", 
+					"Primary Contact First Name", "Primary Contact Last Name","Primary Contact Email", "Primary Contact Phone", 
+					"Physical Location1", "Physical Location2", "Physical Location3", "Special Usage", "Account Site", "Area Classification", 
+					"Site Classification", "Asset Division", "Department Name", "Contact Cost Center", "Contact Division", "Departments", 
+					"Region" ]
+		     ];
+	
+	var arrBookMarked = [
+			[
+					"<input type=\"submit\" value=\"Select\" name=\"selectasset\" class=\"button opener\">",
+					"<table cellspacing=\"0\" cellpadding=\"0\" class=\"grid-inner-body\"><tr><td class=\"pModel\"><ul><li class=\"strong\">Lexmark 2312</li><li><img width=\"100\" height=\"100\" src=\"../../../../images/dummy_printer.jpg\" /></li></ul></td><td width=\"30%\"><ul><li class=\"strong\">Installed Address</li><li>Address Line1</li><li>Address Line2</li><li>Lexington, KY 40505</li><li>USA</li><li class=\"fav\"><img src=\"../../../../images/favorite.png\" width=\"15\" height=\"15\" /><a href=\"javascript:void(0);\">Remove from Bookmark</a></li></ul></td><td><ul><li class=\"strong\">Primary Contact</li><li>FirstName LastName</li><li>Phone: 1234567890</li></ul></td></tr></table>",
+					"<a href=\"javascript:void(0);\">123456</a>",
+					"---", "--------", "-----------", "10.255.255.255",
+					"US.COL.COM","Device Name", "Address Line1", "City", "State", "Province", "Country", "Zip/Postal Code", 
+					"Primary Contact First Name", "Primary Contact Last Name","Primary Contact Email", "Primary Contact Phone", 
+					"Physical Location1", "Physical Location2", "Physical Location3", "Special Usage", "Account Site", "Area Classification", 
+					"Site Classification", "Asset Division", "Department Name", "Contact Cost Center", "Contact Division", "Departments", 
+					"Region" ]
+		     ];
+	
+	var asssetgrid;				
+	asssetgrid = new dhtmlXGridObject('mygrid_container');
+	asssetgrid.setImagePath("../../../../images/gridImgs/");
+	asssetgrid.setHeader(autoAppendPlaceHolder(headerString));	
+	asssetgrid.setInitWidths("80,30,100,100,100,120,100,100,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50");
+	asssetgrid.setColAlign("left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left");
+	asssetgrid.setSkin("light");
+	asssetgrid.setLockColVisibility("true,false,true,true,true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false");
+	asssetgrid.enableColumnMove(true,"false,true,true,true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false");
+	
+	asssetgrid.setColSorting("na,na,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str");
+	asssetgrid.setColTypes("ro,sub_row,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
+	asssetgrid.enableAutoHeight(true);
+	asssetgrid.enableMultiline(true);
+	asssetgrid.enableColumnMove(true);
+	asssetgrid.enableAlterCss("even_row","odd_row");
+	asssetgrid.init();
+	asssetgrid.prftInit();
+	asssetgrid.enableHeaderMenuForButton("headerMenuButton");
+	asssetgrid.enablePaging(true, 6, 2, "pagingArea", true, "infoArea");
+	asssetgrid.setPagingSkin("bricks");
+	asssetgrid.parse(arrAll, "jsarray");
+	setDefaultHiddenColumns();
+	
+	function setDefaultHiddenColumns(){		
+	    asssetgrid.setColumnHidden(8,true);
+		asssetgrid.setColumnHidden(9,true);
+		asssetgrid.setColumnHidden(10,true);
+		asssetgrid.setColumnHidden(11,true);
+		asssetgrid.setColumnHidden(12,true);
+		asssetgrid.setColumnHidden(13,true);
+		asssetgrid.setColumnHidden(14,true);
+		asssetgrid.setColumnHidden(15,true);	
+		asssetgrid.setColumnHidden(16,true);
+		asssetgrid.setColumnHidden(17,true);
+		asssetgrid.setColumnHidden(18,true);
+		asssetgrid.setColumnHidden(19,true);
+		asssetgrid.setColumnHidden(20,true);
+		asssetgrid.setColumnHidden(21,true);
+		asssetgrid.setColumnHidden(22,true);
+		asssetgrid.setColumnHidden(23,true);	
+		asssetgrid.setColumnHidden(24,true);
+		asssetgrid.setColumnHidden(25,true);
+		asssetgrid.setColumnHidden(26,true);
+		asssetgrid.setColumnHidden(27,true);
+		asssetgrid.setColumnHidden(28,true);
+		asssetgrid.setColumnHidden(29,true);
+		asssetgrid.setColumnHidden(30,true);
+		asssetgrid.setColumnHidden(31,true);		
+   }
+   
+	function resetGrid() {		
+		setDefaultHiddenColumns();
+	};
+	
+	
+	function reLoadGrid(gridName){		
+		if(gridName=='BookMarked'){
+			document.getElementById('BookMarked').style.fontWeight = 'bold';
+			document.getElementById('All').style.fontWeight = 'normal';	
+			asssetgrid.clearAll();
+			asssetgrid.parse(arrBookMarked, "jsarray");
+			//setDefaultHiddenColumns();
+		}else
+		if(gridName=='All'){
+			document.getElementById('All').style.fontWeight = 'bold';
+			document.getElementById('BookMarked').style.fontWeight = 'normal';	
+			asssetgrid.clearAll();
+			asssetgrid.parse(arrAll, "jsarray");
+			//setDefaultHiddenColumns();
+		}else{
+			document.getElementById('BookMarked').style.fontWeight = 'normal';
+			document.getElementById('All').style.fontWeight = 'normal';
+		}		
+	}
+	
+	
+	
+	function minimizeAll() {
+		mygrid.forEachRow(function(id) {
+			var cell = mygrid.cellById(id, 1);
+			cell.close();
+			subRowOpenFlag = false;
+		});
+	};
+	function expandAll() {
+
+		mygrid.forEachRow(function(id) {
+			var cell = mygrid.cellById(id, 1);
+			cell.open();
+			subRowOpenFlag = true;
+		});
+	};
+
+	var mygrid;
+	var headerString = "Part Number,Desc,Type,Last Order,Order No,Qty,Shipped Date";
+	var ar = [
+			[
+					"10B3100",
+					"C750 Waste Container Other Supplies Standard Regul",
+					"Waste Bottle",
+					"04/02/2013",
+					"1-1244414123","1","&nbsp;" ],
+					 ];
+	mygrid = new dhtmlXGridObject('mygrid_container_popup');
+	mygrid.setImagePath("../../../../images/gridImgs/");
+	mygrid.setHeader(headerString);
+	mygrid.setInitWidths("55,50,140,140,170,140,*");
+	mygrid.setColumnMinWidth("55,30,140,140,170,140,140");
+	mygrid.enableResizing("false,false,true,true,true,true,true");
+	mygrid.setColAlign("left,left,left,left,left,left,left");
+	mygrid.setSkin("light");
+	mygrid.setColSorting("na,na,str,str,str,str,str");
+	mygrid.setColTypes("ro,ro,ro,ro,ro,ro,ro,ro");
+	mygrid.enableAutoHeight(true);
+	mygrid.enableMultiline(true);
+	mygrid.enableColumnMove(true);
+	mygrid.enableAlterCss("even_row","odd_row");
+	mygrid.init();
+	mygrid.enablePaging(true, 1, 2, "pagingArea2", true, "infoArea2");
+	mygrid.setPagingSkin("bricks");
+	mygrid.parse(ar, "jsarray");
+	
+</script>
+</html>

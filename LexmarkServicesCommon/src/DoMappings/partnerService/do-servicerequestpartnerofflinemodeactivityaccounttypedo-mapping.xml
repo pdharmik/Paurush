@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="ServiceRequestPartnerOfflineModeActivityAccountTypeDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SD Service Request_Offline</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SD Service Request Portal Offline_LXK SW Action - Partner Portal</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>type</value></key>
+	         		<value>LXK SW Service Provider Type</value>
+				</entry>
+				<entry>
+	         		<key><value>status</value></key>
+	         		<value>Act Status</value>
+				</entry><entry>
+	         		<key><value>legalEntityNumber</value></key>
+	         		<value>LXK SW SP Legal Entity Number</value>
+				</entry><entry>
+	         		<key><value>accountLevel</value></key>
+	         		<value>LXK SW SP Account Level</value>
+				</entry><entry>
+	         		<key><value>overrideOffering</value></key>
+	         		<value>LXK MPS Override Offering</value>
+				</entry><entry>
+	         		<key><value>activity</value></key>
+	         		<value>LXK SW Activity Created</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

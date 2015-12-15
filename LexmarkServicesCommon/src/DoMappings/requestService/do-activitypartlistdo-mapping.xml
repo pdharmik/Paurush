@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="ActivityPartListDo" class="com.amind.data.service.DomainObjMapping">
+  
+		<!-- data source info -->
+      
+        <property name="dataSourceName">
+    		<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS HW Install Service Request IO</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>FS Activity Recommended Parts Tools</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>partNumber</value></key>
+	         		<value>Part #</value>
+				</entry>
+				<entry>
+	         		<key><value>description</value></key>
+	         		<value>Product Description</value>
+				</entry>
+				<entry>
+	         		<key><value>orderQuantity</value></key>
+	         		<value>Recommended Quantity</value>
+				</entry>
+			</map>
+		</property>
+	</bean>	
+</beans>

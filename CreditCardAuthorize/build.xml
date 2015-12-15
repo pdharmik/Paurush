@@ -1,0 +1,47 @@
+<project name="CreditCardAuthorize" default="build-war" basedir=".">
+
+<property name="lib" value="WebContent/WEB-INF/lib"/>
+<property name="web.dir" value="WebContent/WEB-INF"/>
+<property name="webcontent" value="WebContent"/>
+<property name="build.dir" value="WebContent/WEB-INF/"/>
+<property name="src.dir" location="src"/>
+
+<path id="project.jar.path">	
+	  <fileset dir="${lib}" >
+		  <include name="**/*.jar"/>
+	  </fileset>	
+</path>
+	
+<target name="clean" description="removes classes folder" >
+	<delete dir="${build.dir}/classes"/>  
+</target>
+	
+<target name="init" description="creates classes folder" depends="clean">
+	<mkdir dir="${build.dir}/classes"/>	
+</target>
+	
+	
+	
+<!-- Build LexmarkServicesPortal-->
+<target name="compile" depends="init" description="compile the source for CreditCardAuthorize" >
+    <javac srcdir="${src.dir}" destdir="${build.dir}/classes">
+        <classpath>
+           <path refid="project.jar.path" />
+        </classpath>
+    </javac>
+	  <copy todir="${build.dir}/classes"> 
+	      <fileset dir="src" excludes="**/*.java"/> 
+	  </copy> 
+</target>
+	
+	
+<target name="build-war" depends="compile" >
+   <war destfile="CreditCardAuthorize.war" webxml="${web.dir}/web.xml">
+   <fileset dir="${webcontent}">
+      <include name="**/*.*"/>
+   </fileset>
+   
+   <classes dir="${build.dir}/classes"/>
+</war>
+</target>
+</project>

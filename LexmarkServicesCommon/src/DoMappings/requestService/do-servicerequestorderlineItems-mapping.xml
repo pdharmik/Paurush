@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="ServiceRequestOrderLineItem" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK SW Service Request Detail - Service Web</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW SR Order Line - Service Web</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>carrier</value></key>
+	         		<value>Carrier Code</value>
+				</entry>
+				<entry>
+	         		<key><value>trackingNumber</value></key>
+	         		<value>LXK R Tracking Number</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestId</value></key>
+	         		<value>LXK C Service Request Id</value>
+				</entry>
+				<entry>
+	         		<key><value>assetshippedModelNumber</value></key>
+	         		<value>LXK SD New Asset MTM Name</value>
+				</entry>	
+				<entry>
+	         		<key><value>orderLineType</value></key>
+	         		<value>LXK R Line Type</value>
+				</entry>		
+				<entry>
+	         		<key><value>productTLI</value></key>
+	         		<value>Product</value>
+				</entry>		
+				<entry>
+	         		<key><value>description</value></key>
+	         		<value>Product Description</value>
+				</entry>		
+				<entry>
+	         		<key><value>serialNumber</value></key>
+	         		<value>Serial Number</value>
+				</entry>	
+				<entry>
+	         		<key><value>status</value></key>
+	         		<value>Status</value>
+				</entry>
+				<entry>
+	         		<key><value>statusDate</value></key>
+	         		<value>Updated</value>
+				</entry>
+				<entry>
+	         		<key><value>modelNumber</value></key>
+	         		<value>LXK SD New Asset MTM Name</value>
+				</entry>
+				<entry>
+	         		<key><value>orderType</value></key>
+	         		<value>LXK SW Order Type</value>
+				</entry>
+								
+	     	</map>
+	     	
+		</property>
+	   	     	  
+    </bean>  
+</beans>

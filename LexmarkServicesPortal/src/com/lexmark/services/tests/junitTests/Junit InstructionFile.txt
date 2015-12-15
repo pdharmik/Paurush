@@ -1,0 +1,922 @@
+JUnit Test Cases Instruction Manual.
+
+
+1.OrderSuppliesAssetOrderControllerTest
+
+      Controller = "OrderSuppliesAssetOrderController"
+	  
+(i)   showAssetListPageTest()
+    
+   a. Method = "showAssetListPage(Model model, RenderRequest request, RenderResponse response)" 
+   
+   b. "showAssetListPage(Model model, RenderRequest request, RenderResponse response)" calls a method =
+                                          "retrieveGridSetting("consumableAssetlistGrid",request,response,model)"
+      
+      1. Amind Call = "UserGridSettingServiceImpl userGridSettingService = new UserGridSettingServiceImpl();
+                       result = userGridSettingService.retrieveUserGridSettings(contract);"
+
+      2. Mock Call = "OrderSuppliesAssetOrderControllerTest orderSuppliesAssetOrderControllerTest = new OrderSuppliesAssetOrderControllerTest();
+			        result = orderSuppliesAssetOrderControllerTest.retrieveDeviceDetail();" 
+	  
+   c. "showAssetListPage(Model model, RenderRequest request, RenderResponse response)" calls a method = 
+              "showAssetDetailPage (RenderRequest request,RenderResponse response,@RequestParam("assetId") String assetId,Model model)"
+      
+      1. Amind Call = "ProductImageResult productImageResult = productImageService.retrieveProductImageUrl(productImageContract);"
+      2. Mock Call = "ProductImageServiceImpl productImageserviceImpl = new ProductImageServiceImpl();
+			ProductImageResult productImageResult = productImageserviceImpl.retrieveProductImageUrl(productImageContract);"
+	  
+   d."showAssetDetailPage (RenderRequest request,RenderResponse response,@RequestParam("assetId") String assetId,Model model)" calls a method =
+                   
+    
+      1. Amind Call = "LocalizedPageCountNameResult pageCountResult = new LocalizedPageCountNameResult();
+	                  pageCountResult = serviceRequestLocaleService.retrieveLocalizedPageCountName(pageCountContract); "
+      2. Mock Call = "OrderSuppliesAssetOrderControllerTest serviceRequestLocaleImpl = new OrderSuppliesAssetOrderControllerTest();
+				LocalizedPageCountNameResult pageCountResult = serviceRequestLocaleImpl.retrieveLocalizedPageCountName(pageCountContract);"	 
+	
+   NOTE:
+      1. Change "HttpServletRequest httpReq" to "request" as "PortalUtil" methods cannot be accessed for JUnit Test Cases.
+      2. As BaseController is a Super class, so a method of Super class can be called directly.   
+      3. Comment out the statement "contract.setUserNumber(LexmarkUserUtil.getUserId(request));" in BaseController.
+      4. Comment out the Amind Call and Replace it with Mock call.	 
+	  
+(ii) showAssetListPageForPartnerTest()
+
+   a. Method = "showAssetListPageForPartner(Model model, RenderRequest request, RenderResponse response)"
+
+   b. "showAssetListPageForPartner(Model model, RenderRequest request, RenderResponse response)" calls a method = 
+                        "retrieveGridSetting("consumableAssetlistGrid",request,response,model)"     
+   
+      1. Amind Call = "UserGridSettingServiceImpl userGridSettingService = new UserGridSettingServiceImpl();
+                       result = userGridSettingService.retrieveUserGridSettings(contract);"
+
+      2. Mock Call = "OrderSuppliesAssetOrderControllerTest orderSuppliesAssetOrderControllerTest = new OrderSuppliesAssetOrderControllerTest();
+			
+			result = orderSuppliesAssetOrderControllerTest.retrieveDeviceDetail();
+   
+   NOTE:
+      1. As BaseController is a Super class, so a method of Super class can be called directly.   
+      2. Comment out the statement "contract.setUserNumber(LexmarkUserUtil.getUserId(request));" in BaseController.
+      3. Comment out the Amind Call and Replace it with Mock call.	 
+	  
+(iii) getDeviceLocationXMLTest()
+
+    a. Method = "getDeviceLocationXML(ResourceRequest resourceRequest,ResourceResponse resourceResponse,Model model)" 
+	b. "getDeviceLocationXML(ResourceRequest request,ResourceResponse response, Model model)" calls a method =
+	               "retrieveDeviceLocationTreeXML(ResourceRequest request,ResourceResponse response, Model model)"
+				   
+	      1. Real Call = " LocationReportingHierarchyContract contract = ContractFactory
+				                         .getLocationReportingHierarchyContract(request); " 	
+          2. Mock Call = "LocationReportingHierarchyContract contract = new LocationReportingHierarchyContract();"
+
+	c . "getDeviceLocationXML(ResourceRequest request,ResourceResponse response, Model model)" calls a method =
+	               "retrieveDeviceLocationTreeXML(ResourceRequest request,ResourceResponse response, Model model)"
+	    1. Amind Call = "AssetLocationsResult result = deviceService.retrieveAssetLocations(contract);"
+	    2. Mock Call = "DeviceServiceImpl deviceServiceImpl = new DeviceServiceImpl();
+	               	AssetLocationsResult result = deviceServiceImpl.retrieveAssetLocations(contract);"									 
+							
+    NOTE:
+	  1. Comment out the Amind Call and Replace it with Mock call.	 
+	  2. Comment out the Real Call and Replace it with Mock call.	
+	 
+(iv) retrieveContractedDeviceListTest()
+
+    a. Method = "retrieveContractedDeviceList(ResourceRequest request, ResourceResponse response)"
+	  1. Real Call = "AssetListContract contract = ContractFactory.getConsumableAssetListContract(request);"
+	  2.  Mock Call  = "AssetListContract contract = new AssetListContract();"
+
+    NOTE :
+        1. Comment out CrmSessionHAndle.
+           CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));		
+	    2. Comment out the Real Call and Replace it with Mock call.
+	  
+(v) getAssetRequestHistoryTest()
+
+      a. Method = "getAssetRequestHistory(ResourceRequest request, ResourceResponse response)"
+            	  
+(vi) getRetrieveOrderHistoryTest()
+
+      a. Method = "getRetrieveOrderHistory(ResourceRequest resourceRequest,
+			ResourceResponse resourceResponse,@RequestParam("assetId") String assetId,Model model"
+
+(vii) showCatalogOrderPageTest()
+
+      a. Method = "showCatalogOrderPage(ActionRequest request, ActionResponse response, Model model)"
+	  
+(viii) updateUserFavoriteAssetTest()
+
+       a. Method = "updateUserFavoriteAsset(@RequestParam("favoriteAssetId") String favoriteAssetId,
+			@RequestParam("favoriteFlag") boolean favoriteFlag,ResourceRequest request, ResourceResponse response)"	 
+       b. Above method calls a method = "sharedPortletController.updateUserFavoriteAsset(favoriteAssetId, favoriteFlag, request, response);"	
+         1. Amind Call =  "deviceService.updateUserFavoriteAsset(contract).isResult();"
+	     2. Mock Call = "DeviceServiceImpl deviceServiceImpl = new DeviceServiceImpl();
+			success = deviceServiceImpl.updateUserFavoriteAsset(contract).isResult();"
+			
+   NOTE :
+      1. Comment out the Amind Call and Replace it with Mock call.	 
+	  
+
+(ix) submitAssetOrderTest()
+
+      a. Method = "submitAssetOrder(ActionRequest request, ActionResponse response, @ModelAttribute("assetDetailPageForm") 
+	                @Valid AssetDetailPageForm assetDetailPageForm, BindingResult bindingResult, Model model)"
+
+(x) submitAssetOrderRenderTest()
+
+      a. Method = "submitAssetOrderRender(Model model, RenderRequest request, RenderResponse response)"					
+	  
+(xi) confirmAssetOrderTest()
+
+      a. Method = " confirmAssetOrder(RenderRequest request, RenderResponse response,  @ModelAttribute("assetDetailPageForm") AssetDetailPageForm assetDetailPageForm,@ModelAttribute("reviewAssetOrderForm") AssetDetailPageForm reviewAssetOrderForm,Model model)"	  
+	  
+	  
+(xii) populatePartTableTest()
+
+      a. Method = "populatePartTable( Model model, ResourceRequest request, ResourceResponse response)"  
+		
+(xiii)  retrievePriceForPartsTest()
+
+      a. Method = "retrievePriceForParts( Model model, ResourceRequest request, ResourceResponse response)"
+	     1. Real Call = "PriceResult result = retrievePriceService.retrievePriceList(priceContract);"
+	     2. Mock Call = "OrderSuppliesAssetOrderControllerTest orderSuppliesAssetOrderControllerTest = 
+	                                                                new OrderSuppliesAssetOrderControllerTest();
+			PriceResult result = orderSuppliesAssetOrderControllerTest.retrievePriceList(priceContract);"
+	   
+      NOTE :
+	    1. Include this line in the contoller within above method, it throws "IndexOutOfBoundsException" as it shows finalPartList size zero
+		    finalPartList = (List<Part>)portletSession.getAttribute("finalpartList");
+        2. Comment out the Real Call and Replace it with Mock call.	 
+		
+(xiv) displayAttachmentTest() 
+
+      a. Method = "displayAttachment(ResourceRequest request,ResourceResponse response, Model model)"
+	  b. "displayAttachment(ResourceRequest request,ResourceResponse response, Model model)" calls a method = 
+	              "openAttachment(ResourceRequest request, ResourceResponse response,String fileName, String fullPath)"
+				  
+      NOTE:
+          1. Change "HttpServletRequest httpReq" to "request" as "PortalUtil" methods cannot be accessed for Junit Test Cases.			  
+	      2. Have to provide proper file name and path, in accordance with the system on which JUnit testing is done.
+
+(xv) gotoControlPanelTest()
+
+      a. Method = "gotoControlPanel(RenderRequest request, RenderResponse response, Model model)"	
+
+(xvi) goToAddAssetTest()
+
+      a. Method = "goToAddAsset(RenderRequest req, RenderResponse resp, @ModelAttribute("assetDetailPageForm") 
+			AssetDetailPageForm assetDetailPageForm, Model model)" 	
+
+(xvii) downloadAssetListURLTest()
+			
+      a. Method = " downloadAssetListURL(ResourceRequest request,ResourceResponse response, Model model)"
+		  1. Real Call = " AssetListContract contract =  (AssetListContract) session.getAttribute("downLoadContract"); "
+		  2. Mock Call = " AssetListContract contract =  new AssetListContract();"
+     NOTE :
+       1. Comment out the Real Call and Replace it with Mock call.
+	   
+(xviii) showOrderAssetEmailTest()
+
+      a. Method = "showOrderAssetEmail(RenderRequest request, RenderResponse response, Model model) "	
+
+(xix) showOrderConfirmPrintPageTest()	
+ 
+      a. Method = " showOrderConfirmPrintPage(RenderRequest request, RenderResponse response, Model model)"
+	  
+(xx) showPrintAssetListPageTest()
+	  
+	  a. Method = " showPrintAssetListPage(RenderRequest request, RenderResponse response, Model model)"
+
+(xxi) removeAttachmentRenderTest()
+
+       a. Method = " removeAttachmentRender(Model model, RenderRequest request,RenderResponse response) "
+
+(xxii) removeAttachmentTest()
+
+       a. Method = "removeAttachment(ActionRequest request, ActionResponse response,@RequestParam("fileName") String fileName,
+			@ModelAttribute("assetDetailPageForm") AssetDetailPageForm assetDetailPageForm, Model model)"	   
+		1. Real Call = " List<Attachment> attachmentList = (ArrayList<Attachment>) session.getAttribute("attachmentList");"
+		2. Mock Call = " List<Attachment> attachmentList = new ArrayList<Attachment>();"	
+	 NOTE:
+           1. Comment out CrmSessionHAndle.
+             "CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));" 		
+	       2. Comment out the Real Call and Replace it with Mock call.
+	   
+(xxiii) attachDocumentTest()
+
+       a. Method = " attachDocument(Model model, RenderRequest request,RenderResponse response)"
+         
+(xxiv) addAttachmentTest()
+       a. Method = " addAttachment(Model model, ActionRequest request, ActionResponse response,
+			@ModelAttribute("assetDetailPageForm") AssetDetailPageForm assetDetailPageForm,
+			@ModelAttribute("fileUploadForm") @Valid FileUploadForm fileUploadForm, BindingResult result, Object path)"		 
+	 NOTE :
+	    1. i)Comment out :
+			   a. double fileSizeDisplay=assetDetailPageForm.getFileData().getSize();
+			   b. int fileSize = (int)assetDetailPageForm.getFileData().getSize();
+			   c. String inputFileName=returnFileName(fileItem.getName());
+			   d. inputFileName = setTimestampInAttachment(inputFileName);
+			
+		  ii)Replace with :
+			   a. double fileSizeDisplay = 0;
+			   b. int fileSize = 0;
+			   c. String inputFileName = "AllRequestList";	
+			   d. inputFileName = "AllRequestList";		   
+			
+	     2. Comment out :
+		   a. " FileItem fileItem=assetDetailPageForm.getFileData().getFileItem();"
+		   b. " LOGGER.debug("Inside fileUploadmethod fileItem.getFieldName()"+ fileItem.getFieldName()+" fileItem.getName is "+inputFileName);"
+		   c. " if(PortalSessionUtil.getUserType(session).equalsIgnoreCase("Vendor")){
+					fileAttachment.setVisibility("Partner");
+				}else{
+					fileAttachment.setVisibility(PortalSessionUtil.getUserType(session));
+				} "
+	    	d. " LOGGER.debug(" Attaching the File -------------->"+PortalSessionUtil.getUserType(session));"
+						
+2. CatalogControllerTest
+
+      Controller = "OrderSuppliesCatalogController"
+	  
+(i) testShowCatalogOrderList() 
+
+      a. Method = "showCatalogOrderList( RenderRequest request, RenderResponse response,Model model)"
+         redirectCatalogOrderDetailsPage( Model model,RenderRequest request, RenderResponse response)
+	  b. Above method calls = "redirectCatalogOrderDetailsPage( Model model,RenderRequest request, RenderResponse response)"	 
+     NOTE:
+      1. Change "HttpServletRequest httpReq" to "request" as "PortalUtil" methods cannot be accessed for Junit Test Cases.
+      2. Comment out CrmSessionHAndle.
+           " CrmSessionHandle crmSessionHandle =  globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));" 	  
+      3. a. Comment out = " ServiceRequest serviceRequest = requestResult.getServiceRequest();"
+	     b. Replace with = " ServiceRequest serviceRequest = new ServiceRequest();
+		                     request.getAttribute("serviceRequest");
+		                     serviceRequest = (ServiceRequest) session.getAttribute("serviceRequest"); "
+			
+(ii) testGetProductType()
+
+      a. Method = " getProductType(ResourceRequest request, ResourceResponse response, Model model) "  	
+
+(iii) testGetProductModel()
+
+      a. Method = " getProductModel(ResourceRequest request, ResourceResponse response, Model model) "
+
+(iv) testGetPartType()
+
+      a. Method = " getPartType(ResourceRequest request, ResourceResponse response, Model model) "
+
+(v)	 testShowCatalogSelectionPage()
+
+      a. Method = " showCatalogSelectionPage(Model model, RenderRequest request, RenderResponse response) "
+	 
+(vi) testRetriveCatalogList()
+
+      a. Method = " retriveCatalogList( Model model, ResourceRequest request, ResourceResponse response) "
+	  
+	NOTE:
+      1. Comment out CrmSessionHAndle.
+           " CrmSessionHandle crmSessionHandle =   globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));" 
+      2. a. Comment out = " priceResult = retrievePriceService.retrievePriceList(priceContract); "
+	     b. Replace with = " priceResult = (PriceResult) session.getAttribute("priceResult"); "
+	  
+
+(vii) testAddToCart()
+
+       a. Method = " addToCart(@RequestParam("partDesc") String partDescription, 
+			ResourceRequest request, ResourceResponse response, Model model) "
+
+(viii) testShowCatalogDetailPage()
+
+       a. Method = " showCatalogDetailPage (RenderRequest request, RenderResponse response, Model model)"
+     NOTE:
+       1. Comment out CrmSessionHAndle.
+           " CrmSessionHandle crmSessionHandle =   globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));"    
+
+(ix) testSubmitCatalogOrder() 
+
+       a. Method = "submitCatalogOrder(RenderRequest request, RenderResponse response, 
+	   @ModelAttribute("catalogDetailPageForm") @Valid CatalogDetailPageForm catalogDetailPageForm, BindingResult bindingResult,Model model)"
+	   
+(x) testShowCartViewPage() 
+	  
+      a. Method = " showCartViewPage(RenderRequest request, RenderResponse response, Model model) "
+	  
+(xi) testUpdateCartViewURL()
+
+      a. Method = " updateCartViewURL(ResourceRequest request, ResourceResponse response, Model model) "
+	  
+(xii) testUpdateCompleteCartView()
+
+      a. Method = " updateCompleteCartView(ResourceRequest request, ResourceResponse response, Model model)"
+	  
+(xiii) testGoToAddCatalog()	
+  
+	  a. Method = " goToAddCatalog(RenderRequest req, RenderResponse resp, @ModelAttribute("catalogDetailPageForm") 
+			CatalogDetailPageForm catalogDetailPageForm, Model model) "
+			
+(xiv) testDeleteFromCatalogDetail()
+
+      a. Method = "  deleteFromCatalogDetail(ResourceRequest request, ResourceResponse response, Model model) "
+
+(xv) testAddAttachment()
+
+      a. Method = " addAttachment(Model model, ActionRequest request, ActionResponse response,
+			@ModelAttribute("catalogDetailPageForm") CatalogDetailPageForm catalogDetailPageForm,
+			@ModelAttribute("fileUploadForm") @Valid FileUploadForm fileUploadForm, BindingResult result, Object path) " 
+	
+(xvi) testRemoveAttachment()
+
+      a. Method = " removeAttachment(ActionRequest request, ActionResponse response,@RequestParam("fileName") String fileName,
+			@ModelAttribute("catalogDetailPageForm") CatalogDetailPageForm catalogDetailPageForm, Model model)
+	
+      NOTE:
+        1. Comment out CrmSessionHAndle.
+           " CrmSessionHandle crmSessionHandle =    globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));"  
+			
+			
+3. HistoryDetailsTest	  
+
+	  Controller = "HistoryController" 
+	  
+(i)	testShowCMHistoryPage()
+
+          a. Method = " showCMHistoryPage(Model model, RenderRequest request, RenderResponse response) "
+	  b. " showCMHistoryPage(Model model, RenderRequest request, RenderResponse response) " calls a method =
+	                                " showRequestDetails(Model model, RenderRequest request, RenderResponse response) "
+	  c. " showRequestDetails(Model model, RenderRequest request, RenderResponse response) " calls a method = 
+             "populateSupplyRequestDetails(RenderRequest request, RenderResponse response,
+			Model model, RequestDetailForm requestForm, List<String> exceptionList, String source, String timeZoneOffset"	  
+	  d. " showRequestDetails(Model model, RenderRequest request, RenderResponse response) " calls a method = 
+	         " populateChangeRequestDetails(RenderRequest request, Model model, RequestDetailForm requestForm , List<String> exceptionList, String source)" 
+      			 
+       NOTE:
+          1. Change "HttpServletRequest httpReq" to "request" as "PortalUtil" methods cannot be accessed for Junit Test Cases.
+	  2. a) Comment Out :
+	            " requestStatusLOVMap =  
+		        commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.REQUEST_STATUS.getValue(), request.getLocale()); "
+	     b) Replace with :
+				"  HistoryDetailsTest historyDetailsTest = new HistoryDetailsTest();
+				   Map<String, String> LOVMap = null;
+				   requestStatusLOVMap = historyDetailsTest.retrieveLocalizedLOVMap(LOVMap); "
+					 
+	  3.  Comment out CrmSessionHAndle.
+           " CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));"  
+          4. a) Comment out 
+			i). String area = commonController.getLocalizeSiebelValue(requestForm.getServiceRequest().getArea().getValue(),SiebelLocalizationOptionEnum.REQUEST_AREA.getValue(),request.getLocale());
+			
+			ii). String subArea = commonController.getLocalizeSiebelValue(requestForm.getServiceRequest().getSubArea().getValue(),SiebelLocalizationOptionEnum.REQUEST_SUBAREA.getValue(),request.getLocale());
+			
+			iii) String status = commonController.getLocalizeSiebelValue(requestForm.getServiceRequest().getServiceRequestStatus(),SiebelLocalizationOptionEnum.REQUEST_STATUS.getValue(),request.getLocale());
+			
+	      b) Replace with :
+			 i)   String area = new HistoryDetailsTest().getLocalizeSiebelValue(requestForm, "area");	
+			 ii)  String subArea =new HistoryDetailsTest().getLocalizeSiebelValue(requestForm, "subArea");
+			 iii) String status =new HistoryDetailsTest().getLocalizeSiebelValue(requestForm, "status");		 
+			
+	
+(ii) testShowHistoryGrid()
+
+      a. Method = " showHistoryGrid(Model model, RenderRequest request, RenderResponse response)"	
+	
+	NOTE:
+	  1. a) Comment Out :
+	            " requestStatusLOVMap =  
+		        commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.REQUEST_STATUS.getValue(), request.getLocale()); "
+	     b) Replace with :
+				"  HistoryDetailsTest historyDetailsTest = new HistoryDetailsTest();
+				   Map<String, String> LOVMap = null;
+				   requestStatusLOVMap = historyDetailsTest.retrieveLocalizedLOVMap(LOVMap); "
+					 
+(iii) testDownloadHistoryList()
+
+       a. Method = " downloadHistoryList(ResourceRequest request, ResourceResponse response, Model model) "
+	     
+     NOTE:
+         1. Comment out CrmSessionHAndle.
+           " CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));"  
+       
+(iv) testRetrieveServiceRequestHistoryList()
+
+      a. Method = " retrieveServiceRequestHistoryList(ResourceRequest request, ResourceResponse response, Model model) "
+
+     NOTE:
+        1. Comment out CrmSessionHAndle.
+           " CrmSessionHandle crmSessionHandle =  globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));"  
+
+(v) testRetrieveServiceAssociatedRequestHistoryList()
+
+     a. Method = " retrieveServiceAssociatedRequestHistoryList(ResourceRequest request, ResourceResponse response, Model model) "		   
+	     1. Amind Call = " ServiceRequestListResult serviceRequestListResult = serviceRequestService
+			              .retrieveAssociatedServiceRequestList(contract); "
+	     2. Mock Call = " HistoryDetailsTest historyDetailsTest = new HistoryDetailsTest();
+		            	ServiceRequestListResult serviceRequestListResult = historyDetailsTest.retrieveAssociatedServiceRequestList(); "	
+    NOTE:
+      1. Comment out CrmSessionHAndle.
+           " CrmSessionHandle crmSessionHandle =  globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));"  
+      2. Comment out this line in XMLOutputGeneratorUtil =
+     	 " xml.append("<cell><![CDATA[" + localizeServiceRequestType(srType,locale) + "]]></cell>\n"); "
+	  3. Comment out the Amind Call and Replace it with Mock call.	 
+
+4.  DeviceFinderControllerTest
+
+
+(i)   testRetrieveServiceAddressListURL()
+  
+   Controller = "DeviceFinderController" 
+   Method = "retrieveServiceAddressListURL()" 
+
+   Method called within "retrieveServiceAddressListURL()"= "sharedPortletController.retrieveServiceAddressListURL(request, response, model);"
+  
+       Amind Call = "AddressListResult addressListResult = serviceRequestService.retrieveAddressList(addressListContract);"
+       Mock Call = "AddressListResult addressListResult = new ServiceRequestServiceImpl().retrieveAddressList(addressListContract);"
+   
+   NOTE:
+      Comment the Amind Call and Use Mock Call for Junit Test Cases. 
+
+(ii)  testRetrievePrimaryContactListURL()
+
+      Controller = "DeviceFinderController" 
+      Method = "retrievePrimaryContactListURL()"
+
+      Method called within "retrievePrimaryContactListURL()"= "sharedPortletController.retrievePrimaryContactListURL(request, response, model);"
+   
+         Amind Call = ContactListResult contactListResult = contactService.retrieveContactList(contactListContract);		
+         Mock Call = ContactListResult contactListResult =new ContactServiceImpl().retrieveContactList(contactListContract);
+   
+   NOTE:
+      Comment the CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));
+      Comment the Amind Call and Use Mock Call for Junit Test Cases.
+
+(iii) testRetrieveSecondaryContactListURL()
+ 
+      Controller = "DeviceFinderController" 
+      Method = "retrieveSecondaryContactListURL()"
+
+     Method called within "retrieveSecondaryContactListURL()"= "sharedPortletController.retrieveSecondaryContactListURL(request, response, model);"
+
+       Amind Call =ContactListResult contactListResult = contactService.retrieveContactList(contactListContract);;		
+       Mock Call = ContactListResult contactListResult =new ContactServiceImpl().retrieveContactList(contactListContract);
+   
+     NOTE:
+        Comment the Amind Call and Use Mock Call for Junit Test Cases. 
+
+(iv) testRetrieveAssociatedServiceTicketList()
+
+      Controller = "DeviceFinderController" 
+      Method = "retrieveAssociatedServiceTicketList()
+      Method called within retrieveAssociatedServiceTicketList()"="sharedPortletController.retrieveAssociatedServiceTicketList(request, response, model);
+      
+        Amind Call =ServiceRequestListResult serviceRequestListResult = serviceRequestService
+			.retrieveAssociatedServiceRequestList(contract);		
+        Mock Call = ServiceRequestListResult serviceRequestListResult = new ServiceRequestServiceImpl()
+			.retrieveAssociatedServiceRequestList(contract);
+  
+      NOTE:
+         Comment the CrmSessionHandle crmSessionHandle = globalService
+				.initCrmSessionHandle(PortalSessionUtil
+						.getSiebelCrmSessionHandle(request));
+
+         Comment the Amind Call and Use Mock Call for Junit Test Cases. 
+
+(v) testRetrieveServiceRequestListByAssetId()
+
+     Controller = "DeviceFinderController" 
+     Method = "retrieveServiceRequestListByAssetId()"
+
+     Method called within "retrieveServiceRequestListByAssetId()"="sharedPortletController.retrieveServiceRequestHistoryListDrillDown(request, response, model);"
+
+     
+        Amind Call =ServiceRequestListResult serviceRequestListResult = serviceRequestService
+			.retrieveServiceRequestHistoryList(contract)		
+        Mock Call = ServiceRequestListResult serviceRequestListResult = new ServiceRequestServiceImpl()
+			.retrieveServiceRequestHistoryList(contract);
+
+
+     Method called within "retrieveServiceRequestListByAssetId()"=getXmlOutputGenerator(request.getLocale())
+			.convertServiceRequestsToXML(serviceRequestList, totalCount,
+					contract.getStartRecordNumber(), generatorPatterns,
+					false, timezoneOffset);
+
+    
+
+
+     convertServiceRequestsToXML method within XmlOutputGenerator.java called method value= localizeServiceRequestStatus(value, columnPattern, locale);
+  
+
+
+        Amind Call =result = srlocale.retrieveLocalizedServiceStatus(contract);	
+        Mock Call = ServiceRequestLocaleImpl sr=new ServiceRequestLocaleImpl();
+		    result= sr.retrieveLocalizedServiceStatus(contract);
+
+
+    NOTE:
+      1.Comment the CrmSessionHandle crmSessionHandle = globalService
+				.initCrmSessionHandle(PortalSessionUtil
+						.getSiebelCrmSessionHandle(request));
+
+      2.  Comment the Amind Call and Use Mock Call for Junit Test Cases. 
+
+(vi) retrieveHistoryListByAssetId()
+
+      Controller = "DeviceFinderController" 
+      Method = "retrieveHistoryListByAssetId()"
+
+     In  PaginationUtill.java ( serviceportal )add statement = page.setFilterCriteria((Map<String, Object>) request.getAttribute("filterCriteria"));inside  getPainationFromRequest() method
+		  
+
+(vii) showServiceRequestDetailPage()
+      
+        Controller = "DeviceFinderController" 
+        Method = showServiceRequestDetailPage()"
+
+        Method called within "showServiceRequestDetailPage()"= "sharedPortletController.showServiceRequestDrillDownPage(request, response, model);
+   
+
+         Amind Call = "ServiceRequestResult serviceRequestResult = serviceRequestService.retrieveServiceRequest(contract);"
+         Mock Call = " ServiceRequestResult serviceRequestResult = new ServiceRequestServiceImpl().retrieveServiceRequest(contract);"
+ 
+
+
+       Note: comment the CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));
+	Comment the Amind Call and Use Mock Call for Junit Test Cases.
+
+
+(viii) showServiceRequestDrillDownLightBox()
+
+      Controller = "DeviceFinderController" 
+      Method = showServiceRequestDrillDownLightBox()"
+
+      Method called within showServiceRequestDrillDownLightBox()"= "sharedPortletController.showServiceRequestDrillDownPage(request, response, model);"
+
+       Amind Call = "ServiceRequestResult serviceRequestResult = serviceRequestService.retrieveServiceRequest(contract);
+		"
+       Mock Call = "  ServiceRequestResult serviceRequestResult = new ServiceRequestServiceImpl().retrieveServiceRequest(contract);"
+ 
+    
+
+
+     Note: 
+      1.comment the CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));
+      2.Comment the Amind Call and Use Mock Call for Junit Test Cases.
+
+
+ 
+(ix)submitServiceRequest()
+  
+      Controller = "DeviceFinderController" 
+      Method = submitServiceRequest()"
+
+      Method called within submitServiceRequest()"= "sharedPortletController.submitServiceRequest(request, response, serviceRequestConfirmationForm, result, model);
+
+  Note:
+ 
+  1.comment the CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));
+  2. comment the  throw new Exception(errorMessage);inside sharedPortletController ,submitServiceRequest()
+  3. comment the throw new LGSBusinessException(e);inside sharedPortletController ,submitServiceRequest()
+
+
+
+(x)testRetrieveDeviceLocationTreeXML()
+ 
+      Controller = "DeviceFinderController" 
+      Method = "retrieveDeviceLocationTreeXML()"
+
+      Method called within "retrieveDeviceLocationTreeXML()"= "sharedPortletController.retrieveDeviceLocationTreeXML(request, response, model);
+
+       Amind Call = "AssetLocationsResult result = deviceService
+		.retrieveAssetLocations(contract)"
+       Mock Call = " AssetLocationsResult result = new DeviceServiceImpl()
+		.retrieveAssetLocations(contract);"
+
+
+   N ote: Comment the Amind Call and Use Mock Call for Junit Test Cases.
+
+(xi)testShowDeviceListPage()
+
+      Controller = "DeviceFinderController" 
+      Method = "showDeviceListPage()"
+ 
+      inside "showDeviceListPage() comment the HttpServletRequest httpReq = PortalUtil.getOriginalServletRequest(PortalUtil.getHttpServletRequest(request));
+         and replace all httpReq into request.
+
+
+
+(xii)testRetriveDeviceList()
+
+      Controller = "DeviceFinderController" 
+      Method = "retriveDeviceList()"
+
+
+      Amind Call = "AssetListResult deviceListResult = deviceService.retrieveDeviceList(contract);"
+      Mock Call = " AssetListResult deviceListResult = new DeviceFinderControllerTest().mockRetrieveAllDeviceList(contract);"
+
+
+      Amind Call = "ProductImageResult productImageResult = productImageService
+						.retrieveProductImageUrl(productImageContract);"
+      Mock Call = " ProductImageResult productImageResult = new ProductImageServiceImpl()
+				.retrieveProductImageUrl(productImageContract);"
+
+
+  Note:
+       1. Comment the Amind Call and Use Mock Call for Junit Test Cases.
+       2. add deviceListResult=  (AssetListResult)request.getAttribute("deviceListResult");for retrive deviceListResult from junit test class
+
+       3. add deviceList= (List<Asset>) request.getAttribute("deviceList");
+
+       4. Comment the CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));
+
+
+(xiii) testRetrieveServiceRequestHistoryList()
+
+      Controller = "DeviceFinderController" 
+      Method = "retrieveServiceRequestHistoryList()"
+
+      Method called within "retrieveServiceRequestHistoryList()"= "sharedPortletController.retrieveServiceRequestHistoryList(request, response, model);
+
+       Amind Call = ServiceRequestListResult serviceRequestListResult = serviceRequestService
+			.retrieveServiceRequestHistoryList(contract);
+       Mock Call = 	ServiceRequestListResult serviceRequestListResult = new ServiceRequestServiceImpl()
+			.retrieveServiceRequestHistoryList(contract);
+
+
+    Note:
+          1. Comment the Amind Call and Use Mock Call for Junit Test Cases.
+          2. add serviceRequestList= (List<ServiceRequest>) request.getAttribute("serviceRequestList");
+		 
+	
+          3. comment the CrmSessionHandle crmSessionHandle = globalService
+				.initCrmSessionHandle(PortalSessionUtil
+						.getSiebelCrmSessionHandle(request));
+
+
+
+(xiv)testGetState()
+      Controller = "DeviceFinderController" 
+      Method = "getState()"
+
+      Method called within "getState()"= "sharedPortletController.getState(request, response, model);
+
+	Amind Call = GeographyListResult countryListResult = geographyService.getStateDetails(countryCode);
+        Mock Call = GeographyListResult countryListResult=new DeviceFinderControllerTest().mockGetStateDetails(countryCode);
+
+     Note: 
+        Comment the Amind Call and Use Mock Call for Junit Test Cases.
+
+
+(xv) testDownloadDeviceListURL()
+
+      Controller = "DeviceFinderController" 
+      Method = "downloadDeviceListURL()"
+
+       Amind Call = AssetListResult deviceListResult = orderSuppliesAssetService.retrieveAllDeviceList(contract);
+       Mock Call =AssetListResult deviceListResult = new  DeviceFinderControllerTest().mockRetrieveAllDeviceList(contract);
+
+
+   Note:
+     1. Comment the Amind Call and Use Mock Call for Junit Test Cases.
+
+     2.  comment the CrmSessionHandle crmSessionHandle = globalService
+				.initCrmSessionHandle(PortalSessionUtil
+						.getSiebelCrmSessionHandle(request));
+     3. add deviceList= (List<Asset>) request.getAttribute("deviceList");
+
+(xvi)testRetrieveCHLTreeXML()
+
+      Controller = "DeviceFinderController" 
+      Method = "retrieveCHLTreeXML()"
+
+
+
+     Method called within "retrieveCHLTreeXML()"=sharedPortletController.retrieveCHLTreeXML(request, response, model);
+
+
+      Amind Call = AssetReportingHierarchyResult result = deviceService.retrieveAssetReportingHierarchy(contract);
+      Mock Call =AssetReportingHierarchyResult result = new DeviceServiceImpl().retrieveAssetReportingHierarchy(contract);
+
+
+
+   Note: 
+      Comment the Amind Call and Use Mock Call for Junit Test Cases.
+
+(xvii) testRetrieveServiceRequestListByAssetId()
+
+      Controller = "DeviceFinderController" 
+      Method = "retrieveServiceRequestListByAssetId()"
+
+      Method called within "retrieveServiceRequestListByAssetId()"=sharedPortletController.retrieveServiceRequestHistoryListDrillDown(request, response, model);
+
+
+       Amind Call = ServiceRequestListResult serviceRequestListResult = serviceRequestService
+			.retrieveServiceRequestHistoryList(contract);
+       Mock Call =ServiceRequestListResult serviceRequestListResult = new ServiceRequestServiceImpl()
+			.retrieveServiceRequestHistoryList(contract);
+
+   Note:
+
+     1. Comment the Amind Call and Use Mock Call for Junit Test Cases.
+
+     2. comment the CrmSessionHandle crmSessionHandle = globalService
+				.initCrmSessionHandle(PortalSessionUtil
+						.getSiebelCrmSessionHandle(request));
+     3. add serviceRequestList= (List<ServiceRequest>) request.getAttribute("serviceRequestList");
+
+5. ContactControllerTest
+
+(i) retrieveContactListTest()
+  
+     Controller = "ContactController" 
+     Method = "retrieveContactList()" 
+   
+      Amind Call = "ContactListResult contactListResult = contactService.retrieveContactList(contactListContract);"
+      Mock Call = " ContactListResult contactListResult = new ContactServiceImpl().retrieveContactList(contactListContract);"
+
+   NOTE:
+      1. Comment the Amind Call and Use Mock Call for Junit Test Cases. 
+  
+      2. Comment the all CrmSessionHandle statement like CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));
+
+6. PageCountsControllerTest
+
+(i)   pageCountListPageTest()
+      
+      Controller = "PageCountsController" 
+      Method = "pageCountListPage()" 
+      
+       Method called within "pageCountListPage()" = "isManualMeterReadFlag(RenderRequest request)"
+      
+     NOTE:
+      1. Comment out CrmSessionHAndle.
+           CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));		
+	    
+
+(ii)  pageCountListTest()
+
+       Controller = "PageCountsController" 
+       Method = "pageCountList()" 
+      
+      
+      
+(iii) retrieveMeterReadStatusListTest()
+      
+       Controller = "PageCountsController" 
+       Method = "retrieveMeterReadStatusList()" 
+      
+      
+      NOTE:
+      1. Comment out CrmSessionHAndle.
+           CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));		
+	  2. "MeterReadServiceImpl meterReadService = new MeterReadServiceImpl();"  
+    
+ (iv)  getPageCountPopUpTest()
+        Controller = "PageCountsController" 
+        Method = "getPageCountPopUp()" 
+       
+ (v)   updatePageCountsTest()
+        Controller = "PageCountsController" 
+        Method = "updatePageCounts()" 
+        
+      NOTE:
+      1. Comment out CrmSessionHAndle.
+           CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));		
+	  
+        
+(vi)   retriveDeviceListTest()
+     
+       Controller = "PageCountsController" 
+       Method = "retriveDeviceList()" 
+      
+       1. Real Call = "MeterReadAssetListResult meterReadAssetListResult = meterReadService.retrieveMeterReadAssetList(contract);"
+          Mock Call = "MeterReadServiceImpl meterReadServiceImpl = new MeterReadServiceImpl();
+			MeterReadAssetListResult meterReadAssetListResult = meterReadServiceImpl.retrieveMeterReadAssetList(contract);"
+			
+	   2. Real Call = "ProductImageResult productImageResult = productImageService.retrieveProductImageUrl(productImageContract);"
+	      Mock Call = "ProductImageServiceImpl ProductImageServiceImpl = new ProductImageServiceImpl();
+			ProductImageResult productImageResult = ProductImageServiceImpl.retrieveProductImageUrl(productImageContract);"
+			
+      NOTE:
+      1. Comment out CrmSessionHAndle.
+           CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));		
+      2. a. Comment Out :
+            "LexmarkTransaction lexmarkTran = PerformanceTracker.startTracking(LexmarkConstants.TARGET_SYSTEM_SIEBEL, "retrieveMeterReadAssetList", 
+					PortalSessionUtil.getMdmId(session), PortalSessionUtil.getServiceUser(session).getEmailAddress());"
+		 
+		 b. Add :
+		    "LexmarkTransaction lexmarkTran = PerformanceTracker.startTracking(LexmarkConstants.TARGET_SYSTEM_SIEBEL, "retrieveMeterReadAssetList", 
+					"abc", "sdfh@fctgj.com");"		
+					
+(vii) downLoadHelpFileTest()
+
+      Controller = "PageCountsController" 
+      Method = "downLoadHelpFile()" 
+      
+
+(viii)showServiceRequestPrintPageTest()
+
+      Controller = "PageCountsController" 
+      Method = "showServiceRequestPrintPage()" 
+      
+(ix)  retrieveCHLTreeXMLTest()
+
+      Controller = "PageCountsController" 
+      Method = "retrieveCHLTreeXML()" 
+      
+(x)	 retrieveDeviceLocationTreeXMLTest()
+
+       Controller = "PageCountsController" 
+       Method = "retrieveDeviceLocationTreeXML()" 
+      
+(xi) exportPageCountTest()
+       Controller = "PageCountsController" 
+       Method = "exportPageCount()" 
+      
+     NOTE:
+      1. Comment out CrmSessionHAndle.
+           CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));		
+     
+(xii) doFileUploadTest()
+      Controller = "PageCountsController" 
+       Method = "doFileUpload"   
+       
+      NOTE:
+      1. Comment out CrmSessionHAndle.
+           CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));		
+      2. Comment Out
+         a. "contract.setUserFileName(StringUtil.removeSpaces(content.getOriginalFilename().trim()));"
+         b. "if (PortalSessionUtil.getMdmLevel(session).equalsIgnoreCase(LexmarkConstants.GLOBAL)){
+				//Already at the top level
+				topLevelMdmId = PortalSessionUtil.getMdmIdOrDunsBasedOnLevel(session);
+				topLevelMdmLevel = PortalSessionUtil.getMdmLevel(session);
+			}else{
+				//Need to get the top level for this person's MDM ID and Level
+				GlobalLegalEntityContract globalLegalEntityContract = new GlobalLegalEntityContract();
+				globalLegalEntityContract.setMdmId(PortalSessionUtil.getMdmId(session));
+				globalLegalEntityContract.setMdmLevel(PortalSessionUtil.getMdmLevel(session));
+
+				LexmarkTransaction lexmarkTran = PerformanceTracker.startTracking(LexmarkConstants.TARGET_SYSTEM_SIEBEL, "retrieveGlobalLegalEntity", 
+						PortalSessionUtil.getMdmId(session), PortalSessionUtil.getServiceUser(session).getEmailAddress());
+				GlobalLegalEntityResult globalLegalEntityResult = globalService.retrieveGlobalLegalEntity(globalLegalEntityContract);
+				PerformanceTracker.endTracking(lexmarkTran);
+
+				topLevelMdmId = globalLegalEntityResult.getAccount().getMdmId();
+				topLevelMdmLevel = globalLegalEntityResult.getAccount().getMdmLevel();
+				logger.debug("------------- Retrieve Global Legal Entity---------["+topLevelMdmId+"]");
+			}"
+			
+(xiii) outPutCSVFileTest()
+       
+       Controller = "PageCountsController" 
+       Method = "outPutCSVFile"  
+       
+      NOTE:
+      1. Comment out CrmSessionHAndle.
+           CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));		 
+       
+(xiv) pageCountExportTest()
+
+       Controller = "PageCountsController" 
+       Method = "pageCountExport"  
+
+(xv) showSRListAdvancedSearchOptionPageTest()
+       
+       Controller = "PageCountsController" 
+       Method = "showSRListAdvancedSearchOptionPage"  
+       
+       NOTE:
+       1. Comment out :
+          "sharedPortletController.retrieveAdvanceSearchData(request, model);"
+       
+(xvi)showValidateWarningTest()			
+      
+       Controller = "PageCountsController" 
+       Method = "showValidateWarning"
+       
+(xvii)downloadMeterReadTest()
+
+       Controller = "PageCountsController" 
+       Method = "downloadMeterRead"
+      
+      NOTE:
+      1. Comment out CrmSessionHAndle.
+           CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));		 
+      2. Comment out :
+        " if("csv".equals(downloadType)){
+				downloadMeterReadCSV(response,assetList,locale);
+			}else if("pdf".equals(downloadType)){
+				downloadMeterReadPDF(response,assetList,locale);
+			}else{
+				throw new Exception(ServiceStatusErrorMessageUtil.getErrorMessage(LexmarkSPConstants.ERROR_MESSAGE_BUNDLE, "exception.portlet.downloadException", null, request.getLocale()));
+			}" 
+(xviii)gotoControlPanelTest
+       
+       Controller = "PageCountsController" 
+       Method = "gotoControlPanel"
+       
+(xix)updateUserFavoriteAssetTest
+      
+      Controller = "PageCountsController" 
+      Method = "updateUserFavoriteAsset"
+       
+(xx)updateAssetMeterReadTest
+    
+      Controller = "PageCountsController" 
+      Method = "updateAssetMeterRead"
+    
+
+
+       			

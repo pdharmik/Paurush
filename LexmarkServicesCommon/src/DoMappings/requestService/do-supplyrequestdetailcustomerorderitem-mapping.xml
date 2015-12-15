@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="SupplyRequestDetailCustomerOrderItemDo" class="com.amind.data.service.DomainObjMapping">
+  
+        <property name="dataSourceName">
+    		<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS HW Service Request Detail - Service Web</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Consumables Supplies BC - Child</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>
+	     		<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>	     
+				<entry>
+	         		<key><value>catalogId</value></key>
+	         		<value>LXK MPS Catalog Id</value>
+				</entry>
+				<entry>
+	         		<key><value>partDescriptionExplicit</value></key>
+	         		<value>LXK MPS Supply Part Description Explicit</value>
+				</entry>
+				<entry>
+	         		<key><value>productId</value></key>
+	         		<value>LXK MPS Product Id</value>
+				</entry>
+				<entry>
+	         		<key><value>supplyId</value></key>
+	         		<value>LXK MPS Supply Part Id</value>
+				</entry>
+				<entry>
+	         		<key><value>productName</value></key>
+	         		<value>LXK MPS Part #</value>
+				</entry>
+				<entry>
+	         		<key><value>supplyPartId</value></key>
+	         		<value>LXK MPS Supply Part Id</value>
+				</entry>
+				<entry>
+	         		<key><value>partNumber</value></key>
+	         		<value>LXK MPS Product Name</value>
+				</entry>
+				<entry>
+	         		<key><value>printerMaterial</value></key>
+	         		<value>LXK MPS Printer Material #</value>
+				</entry>
+				<entry>
+	         		<key><value>quantity</value></key>
+	         		<value>LXK MPS Quantity</value>
+				</entry>
+				<!-- swap values for Part Type and Consumable Type for Portal UI-->
+				<entry>
+	         		<key><value>consumableType</value></key>
+	         		<value>LXK MPS Part Type</value>
+				</entry>
+				<entry>
+	         		<key><value>implicitFlag</value></key>
+	         		<value>LXK MPS Implicit Flag</value>
+				</entry>
+				<entry>
+	         		<key><value>productModel</value></key>
+	         		<value>LXK MPS Product Model</value>
+				</entry>
+				<entry>
+	         		<key><value>yield</value></key>
+	         		<value>LXK MPS Supply Classification</value>
+				</entry>
+				<!-- swap values for Part Type and Consumable Type for Portal UI-->
+				<entry>
+	         		<key><value>partType</value></key>
+	         		<value>LXK MPS Consumable Type</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementId</value></key>
+	         		<value>LXK MPS Agree Id</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>status</value></key>
+	         		<value>LXK MPS Supply Line Status From OPA</value>
+				</entry>
+				
+				 <entry>
+                    <key><value>orderLineType</value></key>
+                    <value>Order Line Type</value>
+                </entry>
+				<entry>
+                    <key><value>cancellationReason</value></key>
+                    <value>LXK MPS Cancellation Reason</value>
+                </entry>
+                <entry>
+					<key><value>currency</value></key>
+					<value>LXK MPS Currency Code</value>
+				</entry>
+               	<entry>
+	         		<key><value>tax</value></key>
+	         		<value>LXK MPS Tax Amount</value>
+				</entry>
+				<entry>
+                    <key><value>unitPrice</value></key>
+                    <value>LXK MPS Line Unit Price</value>
+                </entry>                
+                <entry>
+                    <key><value>totalLinePrice</value></key>
+                    <value>LXK MPS Line Total Price</value>
+                </entry>
+                <entry>
+                    <key><value>totalPrice</value></key>
+                    <value>LXK MPS Total Price</value>
+                </entry>
+                <entry>
+                    <key><value>deviceType</value></key>
+                    <value>LXK MPS Supply Part Type</value>
+                </entry>
+                
+                <entry>
+                    <key><value>catalogType</value></key>
+                    <value>LXK MPS Catalog Type</value>
+                </entry>
+                
+				 <entry>
+                    <key><value>materialLine</value></key>
+                    <value>LXK MPS Material Line</value>
+                </entry>
+                
+                <entry>
+                    <key><value>sapParentLineNumber</value></key>
+                    <value>LXK MPS Parent Line Id</value>
+                </entry>
+                <entry>
+	         		<key><value>vendorPartNumber</value></key>
+	         		<value>LXK MPS Vendor Part No</value>
+				</entry>
+                <entry>
+	         		<key><value>descriptionLocalLang</value></key>
+	         		<value>LXK MPS Local Lang Description</value>
+				</entry>
+				<entry>
+	         		<key><value>installSerialNumber</value></key>
+	         		<value>LXK MPS Serial Number</value>
+				</entry>
+				<entry>
+	         		<key><value>deinstallSerialNumber</value></key>
+	         		<value>LXK MPS Deinst Serial Number</value>
+				</entry>
+				<entry>
+	         		<key><value>deinstallProduct</value></key>
+	         		<value>LXK MPS Deinst Product</value>
+				</entry>
+				<entry>
+	         		<key><value>deinstallModel</value></key>
+	         		<value>LXK MPS Deinst Model</value>
+				</entry>
+				<entry>
+	         		<key><value>deinstallIPAddr</value></key>
+	         		<value>LXK MPS Deinst IP Addr</value>
+				</entry>
+				<entry>
+	         		<key><value>deinstallAssetTag</value></key>
+	         		<value>LXK MPS Deinst Asset Tag</value>
+				</entry>
+				<entry>
+	      	   		<key><value>deinstallBrand</value></key>
+	         		<value>LXK MPS Deinst Brand</value>
+				</entry>
+				<entry>
+	      	   		<key><value>deinstallComments</value></key>
+	         		<value>LXK MPS Deinst Comments</value>
+				</entry>
+				<entry>
+	      	   		<key><value>deinstallHostName</value></key>
+	         		<value>LXK MPS Deinst Host Name</value>
+				</entry>
+			</map>
+		</property>
+		
+    </bean>  
+</beans>

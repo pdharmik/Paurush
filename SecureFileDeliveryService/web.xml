@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+     version="2.4">
+	<filter>
+		<filter-name>SFDS</filter-name>
+		<filter-class>com.lexmark.sfds.SecureFileDeliveryServlet</filter-class>
+		<init-param>
+			<param-name>key</param-name>
+			<param-value>UeV5DfuEzXsLsTzRP1a3ragNAQRt73GrOK2XZkjm6zIXyNZD66LZt4LvUuVh3O8RUnoZhDPADxu6lXW030i9NSv_dfciMO3JDA-Dm5ePlvVUKW7RMXuVrJG8wjfOiiQQA7VoTXYiYPdTfawRvzaiqrwLD06dKXA4Mww2KLJppGA</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>SFDS</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+</web-app>

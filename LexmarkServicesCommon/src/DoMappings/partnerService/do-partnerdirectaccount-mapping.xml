@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerDirectAccountDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW FSE Account Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW Employee Org Intersection - Partner Portal</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>accountId</value></key>
+	         		<value>LXK SW Employee Org Id</value>
+				</entry>
+				<entry>
+	         		<key><value>accountName</value></key>
+	         		<value>LX SW Org Name</value>
+				</entry>	
+				<entry>
+	         		<key><value>employeeId</value></key>
+	         		<value>LXK SW Contact Id</value>
+				</entry>
+				<entry>
+	         		<key><value>organizationId</value></key>
+	         		<value>LXK SW Partner Primary Org Id</value>
+				</entry>	
+				<entry>
+	         		<key><value>primaryFlag</value></key>
+	         		<value>LXK SW Org Partner Flag</value>
+				</entry>	
+				<entry>
+	         		<key><value>flags</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerDirectAccountFlagDo</value>
+				</entry>	
+				<entry>
+	         		<key><value>accountTypes</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerDirectAccountTypeDo</value>
+				</entry>		
+									
+	     	</map>
+		</property>
+    </bean>  
+</beans>

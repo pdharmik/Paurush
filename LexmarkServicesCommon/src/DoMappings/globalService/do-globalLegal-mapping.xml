@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- SELECT p.ROW_ID FROM SIEBEL.S_PARTY p, SIEBEL.S_ORG_EXT o WHERE p.row_id = o.row_id and (o.INT_ORG_FLG<>'Y' or o.PRTNR_FLG <> 'N')
+	and (X_CUST_HIER_FLG='N' OR X_CUST_HIER_FLG IS NULL) -->
+	<bean id="GlobalLegalEntityDO" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK Service Web Portal Account IO</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK Account Service Web Portal</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>name</value></key>
+	         		<value>Name</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>Global Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>Domestic Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXM MDM Legal Entity ID #</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXM MDM Account #</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>accountLevel</value></key>
+	         		<value>LXK SW MDM Account Level</value>
+				</entry>
+				<entry>
+	         		<key><value>dunsNumber</value></key>
+	         		<value>DUNS Number</value>
+				</entry>
+	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

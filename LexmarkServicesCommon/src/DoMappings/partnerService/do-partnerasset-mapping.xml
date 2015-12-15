@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerAssetDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Asset Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW Asset - Partner Portal</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>serialNumber</value></key>
+	         		<value>Serial Number</value>
+				</entry>
+				<entry>
+	         		<key><value>assetId</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>machineTypeModel</value></key>
+	         		<value>LXK C MTM Name</value>
+				</entry>
+				<entry>
+	         		<key><value>productLine</value></key>
+	         		<value>LXK Product Model Name</value>
+				</entry>
+				<entry>
+	         		<key><value>productTLI</value></key>
+	         		<value>Product Name</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>LXK SW Customer Partner Global DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>LXK SW Customer Partner Domestic DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXK SW Customer Partner MDM Id</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXK SW Customer Partner MDM Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>LXK SW Customer Partner Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>addressId</value></key>
+	         		<value>Install Address ID</value>
+				</entry>
+				<entry>
+	         		<key><value>addressName</value></key>
+	         		<value>Install Address Name</value>
+				</entry>
+				<entry>
+	         		<key><value>address1</value></key>
+	         		<value>LXK UP Install Address Line 1</value>
+				</entry>
+				<entry>
+	         		<key><value>address2</value></key>
+	         		<value>Install Address Line 2</value>
+				</entry>
+				<entry>
+	         		<key><value>address3</value></key>
+	         		<value>Install Address Line 3</value>
+				</entry>
+				<entry>
+	         		<key><value>installCity</value></key>
+	         		<value>Install City</value>
+				</entry>
+				<entry>
+	         		<key><value>installProvince</value></key>
+	         		<value>Install Province</value>
+				</entry>
+				<entry>
+	         		<key><value>installPostalCode</value></key>
+	         		<value>Install Postal Code</value>
+				</entry>	
+				<entry>
+	         		<key><value>installCountry</value></key>
+	         		<value>Install Country</value>
+				</entry>	
+				<entry>
+	         		<key><value>installState</value></key>
+	         		<value>Install State</value>
+				</entry>	
+				<entry>
+	         		<key><value>customerAccountId</value></key>
+	         		<value>Owner Account Id</value>
+				</entry>	
+				<entry>
+	         		<key><value>customerAccountName</value></key>
+	         		<value>Account Name</value>
+				</entry>	
+				<entry>
+	         		<key><value>partnerAccountId</value></key>
+	         		<value>LXK SW Customer Partner Account Id</value>
+				</entry>	
+				<entry>
+	         		<key><value>partnerAccountName</value></key>
+	         		<value>LXK SW Customer Partner Account Name</value>
+				</entry>	
+				<entry>
+	         		<key><value>shipAddressId</value></key>
+	         		<value>LXK SW Partner Primary ShipTo Id</value>
+				</entry>	
+				<entry>
+	         		<key><value>shipAddressName</value></key>
+	         		<value>LXK SW Partner ShipTo Address Name</value>
+				</entry>	
+				<entry>
+	         		<key><value>shipAddress1</value></key>
+	         		<value>LXK SW Partner ShipTo Address 1</value>
+				</entry>
+				<entry>
+	         		<key><value>shipAddress2</value></key>
+	         		<value>LXK SW Partner ShipTo Address 2</value>
+				</entry>	
+				<entry>
+	         		<key><value>shipAddress3</value></key>
+	         		<value>LXK SW Partner ShipTo Address 3</value>
+				</entry>
+				<entry>
+	         		<key><value>shipCity</value></key>
+	         		<value>LXK SW Partner ShipTo City</value>
+				</entry>	
+				<entry>
+	         		<key><value>shipProvince</value></key>
+	         		<value>LXK SW Partner ShipTo Province</value>
+				</entry>
+				<entry>
+	         		<key><value>shipState</value></key>
+	         		<value>LXK SW Partner ShipTo State</value>
+				</entry>	
+				<entry>
+	         		<key><value>shipCountry</value></key>
+	         		<value>LXK SW Partner ShipTo Country</value>
+				</entry>
+				<entry>
+	         		<key><value>shipPostalCode</value></key>
+	         		<value>LXK SW Partner ShipTo Postal Code</value>
+				</entry>	
+				<entry>
+	         		<key><value>flags</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerAssetFlagDo</value>
+				</entry>	
+				<entry>
+	         		<key><value>organizationId</value></key>
+	         		<value>LXK SW Partner Primary Org Id</value>
+				</entry>	
+				<entry>
+	         		<key><value>partQuantityOrderLimit</value></key>
+	         		<value>LXK SD Max Parts Per Activity</value>
+				</entry>
+				<entry>
+	         		<key><value>partnerAccountCurrency</value></key>
+	         		<value>LXK SW Customer Partner Account Currency</value>
+				</entry>
+							
+				<entry>
+					<key><value>county</value></key>
+					<value>LXK Install County</value>
+				</entry>
+				<entry>
+					<key><value>district</value></key>
+					<value>LXK Install District</value>
+				</entry>
+				<entry>
+					<key><value>officeNumber</value></key>
+					<value>LXK Install House No</value>
+				</entry>				
+				<entry>
+					<key><value>customerReportingName</value></key>
+					<value>LXK C Customer Reporting Name</value>
+				</entry>
+				<entry>
+					<key><value>mki</value></key>
+					<value>LXK MKit Install</value>
+				</entry>
+				<entry>
+					<key><value>serviceProvider</value></key>
+					<value>LXK Par Agree SP</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

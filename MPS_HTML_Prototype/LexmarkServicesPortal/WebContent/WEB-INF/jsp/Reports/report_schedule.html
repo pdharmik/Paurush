@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Schedule Report</title>
+<link href="../../../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../css/lexmark.css" rel="stylesheet" type="text/css" />
+
+<script src="../../../js/util.js"></script>
+<script src="../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/tree/dhtmlxtree.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+</head>
+
+<body>
+<div id="contentScheduleReport" class="portletBlock bgSolid">
+<div class="columnsOne">
+
+	<div class="main-wrap">
+	
+	<div class="content">	<div style="height:30px" id="scheduleRptTitle">	<span class="orangeSectionTitles">Run Report	</span>	</div>	<div class="portlet-wrap">	<div class="portlet-header">
+<table class="displayGrid">
+              <thead>
+                <tr><th>Please customize your report by providing your desired parameters.</th>
+                </tr></thead>
+              
+            </table></div><!-- added by nelson -->	<input type="hidden" value="" name="reportScheduleId" id="reportScheduleId">	<input type="hidden" value="320163" name="reportDefinitionId" id="reportDefinitionId">	<!-- end of addition by nelson -->	<div id=" " class="portlet-wrap-inner">	<table>	<tbody><tr><td align="left">	<!-- commented by nelson -->	<!-- form:hidden path="reportScheduleId"/ -->	<!-- form:hidden path="reportDefinitionId"/ -->	<table>	<input type="hidden" value="320168" name="runNowParameters[0].reportParameterId" id="runNowParameters0.reportParameterId">	<input type="hidden" value="Agreement_Type" name="runNowParameters[0].name" id="runNowParameters0.name">	<input type="hidden" value="LIST" name="runNowParameters[0].dataType" id="runNowParameters0.dataType">
+                                     	<tbody><tr><td align="right" id="requiredTd0">*</td><td style="display:none" id="maxLengthTd0"></td><td width="250" align="left" id="displayName0">Agreement Type:</td><td align="left">	&nbsp;	<select name="runNowParameters[0].value" id="listValue0">	<option value=""></option>	<option value="ALL">ALL</option><option value="MPS">MPS</option><option value="CSS">CSS</option>	</select>	</td></tr><tr><td colspan="4">&nbsp;</td></tr><tr><td colspan="4"><div class="buttomLine"></div></td></tr><tr><td colspan="4">&nbsp;</td></tr><input type="hidden" value="320169" name="runNowParameters[1].reportParameterId" id="runNowParameters1.reportParameterId">	<input type="hidden" value="StartDate" name="runNowParameters[1].name" id="runNowParameters1.name">	<input type="hidden" value="DATE" name="runNowParameters[1].dataType" id="runNowParameters1.dataType">
+                                     	<tr><td align="right" id="requiredTd1">*</td><td style="display:none" id="maxLengthTd1"></td><td width="250" align="left" id="displayName1">Start Date:</td><td align="left">	    <a title="Previous Day" class="validDateAction" onclick="moveDate('localizedDateValue1', -1);" id="prevLocalizedDateValue1">&lt;&lt;</a>&nbsp;	    <input type="hidden" value="" name="runNowParameters[1].value" id="dateValue1">	    <input type="text" readonly="readOnly" onmouseup="show_cal('localizedDateValue1', null, null);" size="7" id="localizedDateValue1">	    <img width="23" height="23" onclick="showCal('effDtOfChange',convertDateToString(new Date().addDays(null)), null, false);" src="../../../images/ic_cal.png" style="vertical-align:top">&nbsp;	    <a title="Next Day" class="validDateAction" onclick="moveDate('localizedDateValue1', 1);" id="nextLocalizedDateValue1">&gt;&gt;</a>&nbsp;	</td></tr><tr><td colspan="4">&nbsp;</td></tr><tr><td colspan="4"><div class="buttomLine"></div></td></tr><tr><td colspan="4">&nbsp;</td></tr>
+                                     	<tr><td align="right" id="requiredTd2">*</td><td style="display:none" id="maxLengthTd2"></td><td width="250" align="left" id="displayName2">End Date:</td><td align="left">	    <a title="Previous Day" class="validDateAction" onclick="moveDate('localizedDateValue2', -1);" id="prevLocalizedDateValue2">&lt;&lt;</a>&nbsp;	    <input type="hidden" value="" name="runNowParameters[2].value" id="dateValue2">	    <input type="text" readonly="readOnly" onmouseup="show_cal('localizedDateValue2', null, null);" size="7" id="localizedDateValue2">	    <img width="23" height="23" onclick="showCal('effDtOfChange',convertDateToString(new Date().addDays(null)), null, false);" src="../../../images/ic_cal.png" style="vertical-align:top">&nbsp;	    <a title="Next Day" class="validDateAction" onclick="moveDate('localizedDateValue2', 1);" id="nextLocalizedDateValue2">&gt;&gt;</a>&nbsp;	</td></tr><tr><td colspan="4">&nbsp;</td></tr><tr><td colspan="4"><div class="buttomLine"></div></td></tr><tr><td colspan="4">&nbsp;</td></tr>
+                                        <tr><td align="right" id="requiredTd3">*</td><td style="display:none" id="maxLengthTd3"></td><td width="250" align="left" id="displayName3">Lifecycle:</td><td align="left">	&nbsp;	<select name="runNowParameters[3].value" id="listValue3">	<option value=""></option>	<option value="Shipped">Shipped</option><option value="Installed">Installed</option><option value="Stored">Stored</option><option value="All">All</option>	</select>	</td></tr><tr><td colspan="4">&nbsp;</td></tr><tr><td colspan="4"><div class="buttomLine"></div></td></tr><tr><td colspan="4">&nbsp;</td></tr></tbody></table></td></tr></tbody></table></div><!-- added by nelsons --><!-- end of addition by nelsons -->	<div class="portlet-footer">	<div class="portlet-footer-inner"></div></div></div><div class="portlet-wrap" id="parameterPanel">	<div class="portlet-header">	<table class="displayGrid">
+              <thead>
+                <tr><th>Select when you would like this report to run.</th>
+                </tr></thead>
+              
+            </table></div><div class="portlet-wrap-inner">	<table>	<tbody><tr><td align="left">	<input type="checkbox" checked="checked" value="runNow" onclick="clickRunType(this)" name="runType" id="runNowCheckBox"><input type="hidden" value="on" name="_runType">	</td><td align="left">	Run now	</td></tr><tr><td align="left">	<input type="checkbox" value="schedule" onclick="clickRunType(this)" name="runType" id="scheduleCheckBox"><input type="hidden" value="on" name="_runType">	</td><td align="left">	Schedule	</td></tr></tbody></table><br>	</div><div class="portlet-footer">	<div class="portlet-footer-inner"></div></div></div><div style="clear:both; position:relative">	<table width="100%">	<tbody><tr>	<td align="right">	<button style="" onclick="javascript:window.close();" type="button" class="button_cancel">CANCEL</button>	&nbsp;&nbsp;	<button onclick="javascript:window.close();" type="submit" class="button">SUBMIT</button>	</td></tr><tr><td>&nbsp;</td></tr></tbody></table></div></form></div>
+	
+	</div>
+
+</div>
+</div>
+</body>
+</html>

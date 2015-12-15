@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PaymentTypeDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value></value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value></value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value></value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping -->
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>
+	     		<entry>
+	         		<key><value>paymentType</value></key>
+	         		<value></value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

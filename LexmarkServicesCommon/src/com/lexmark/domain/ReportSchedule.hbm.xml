@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.lexmark.domain">
+	
+	<class name="ReportSchedule"
+	   		table="REPORT_SCHEDULE"
+	   		lazy="false">
+	   		
+   		<id name="id" 
+   			column="REPORT_SCHEDULE_ID"
+   			type="integer"
+   			unsaved-value="null">
+   			<generator class="native"/>
+   		</id>
+	   		
+		<property   name="userNumber"
+					column="USERNUMBER"
+					type="string"
+					length="100"
+					not-null="false"/>
+					
+		<property   name="recepientEmail"
+					column="RECEPIENT_EMAIL"
+					type="string"
+					length="255"
+					not-null="false"/>
+					
+		<property   name="preferedTimezone"
+					column="PREFERRED_TIMEZONE"
+					type="string"
+					length="100"
+					not-null="false"/>
+					
+		<property   name="country"
+					column="COUNTRY"
+					type="string"
+					length="255"
+					not-null="false"/>
+					
+		<property   name="emailReminderFlag"
+					column="EMAIL_REMINDER_FLAG"
+					type="string"
+					length="1"
+					not-null="false"/>
+					
+					
+		<property   name="customLeadMinutes"
+					column="CUSTOM_LEAD_MINUTES"
+					type="integer"
+					not-null="false"/>					
+					
+					
+		<property   name="runFrequency"
+					column="RUN_FREQUENCY"
+					type="string"
+					length="1"
+					not-null="false"/>		
+					
+		<property   name="runInterval"
+					column="RUN_INTERVAL"
+					type="integer"
+					not-null="false"/>	
+					
+		<property   name="effectiveDate"
+					column="SCHEDULE_EFFECTIVE_DATE"
+					type="java.util.Date"
+					not-null="false"/>		
+					
+		<property   name="expirationDate"
+					column="SCHEDULE_EXPIRATION_DATE"
+					type="java.util.Date"
+					not-null="false"/>	
+					
+		<property   name="dayOfWeek"
+					column="DAY_OF_WEEK"
+					type="integer"
+					not-null="false"/>	
+					
+		<property   name="dayOfMonth"
+					column="DAY_OF_MONTH"
+					type="integer"
+					not-null="false"/>	
+					
+		<property   name="reportDefinitionId"
+					column="REPORT_DEFINITION_ID"
+					type="integer"
+					not-null="true"/>	
+					
+		<!-- added by nelson for employee report -->			
+		<property   name="mdmId"
+					column="MDM_ID"
+					type="string"
+					length="100"
+					not-null="false"/>
+		<property   name="mdmLevel"
+                    column="MDM_LEVEL"
+                    type="string"
+                    length="100"
+                    not-null="false"/>
+                    
+        <property   name="isLBSAccount"
+                    column="ISLBSACCOUNT"
+                    type="string"
+                    length="1"
+                    not-null="false"/>
+		<!-- end of addition by nelson for employee report -->
+					
+		<bag name="reportScheduleParameters" lazy="false" cascade="all" inverse="true">
+			<key column="REPORT_SCHEDULE_ID"></key>
+			<one-to-many class="ReportScheduleParameter"></one-to-many>
+		</bag>		
+	</class>
+	
+	<class name="ReportScheduleParameter"
+			table="REPORT_SCHEDULE_PARAMETERS"
+			lazy="false">
+			
+   		<id name="id" 
+   			column="ID"
+   			type="integer"
+   			unsaved-value="null">
+   			<generator class="native"/>
+   		</id>		
+   		
+		<property   name="name"
+					column="NAME"
+					length="255"
+					type="string"
+					not-null="false"/>	
+		<property   name="value"
+					column="VALUE"
+					length="255"
+					type="string"
+					not-null="false"/>	
+		<many-to-one name="schedule" class="ReportSchedule">
+			<column name="REPORT_SCHEDULE_ID" not-null="true"/>
+		</many-to-one> 
+	</class>
+</hibernate-mapping>			

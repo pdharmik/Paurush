@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+	<display-name>LexmarkOPSPortal</display-name>
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>LexmarkOPSPortal</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/context/applicationContext.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>com.liferay.portal.kernel.servlet.SecurePluginContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.liferay.portal.kernel.servlet.SerializableSessionAttributeListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>LexmarkOPSPortal Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>com.liferay.util.bridges.mvc.MVCPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>ServiceRequest Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>DeviceFinder Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>Contacts Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>PageCounts Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>ManageAssets Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>ManageAddresses Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>ManageContacts Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>ManageCHLOthers Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>ManageReturns Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>OrderSuppliesCatalogOrder Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>AllRequestsHistory Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>OrderSuppliesAssetOrder Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>OrderHardware Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>CreditCard Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>AssetAcceptance Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>MapView Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>MapsRequest Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+		<init-param>
+			<param-name>portlet-class</param-name>
+			<param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+              <servlet-name>OPSLevelSelection Servlet</servlet-name>
+              <servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>
+              <init-param>
+                      <param-name>portlet-class</param-name>
+                      <param-value>org.springframework.web.portlet.DispatcherPortlet</param-value>
+              </init-param>
+              <load-on-startup>1</load-on-startup>
+      </servlet>
+	<servlet>
+		<servlet-name>Dynamic Resource Servlet</servlet-name>
+		<servlet-class>com.liferay.portal.kernel.servlet.PortalClassLoaderServlet</servlet-class>
+		<init-param>
+			<param-name>servlet-class</param-name>
+			<param-value>com.liferay.portal.webserver.DynamicResourceServlet</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>ViewRendererServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.ViewRendererServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ServiceRequest Servlet</servlet-name>
+		<url-pattern>/ServiceRequest/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeviceFinder Servlet</servlet-name>
+		<url-pattern>/DeviceFinder/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Contacts Servlet</servlet-name>
+		<url-pattern>/Contacts/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>PageCounts Servlet</servlet-name>
+		<url-pattern>/PageCounts/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ManageAssets Servlet</servlet-name>
+		<url-pattern>/ManageAssets/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ManageAddresses Servlet</servlet-name>
+		<url-pattern>/ManageAddresses/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ManageContacts Servlet</servlet-name>
+		<url-pattern>/ManageContacts/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ManageCHLOthers Servlet</servlet-name>
+		<url-pattern>/ManageCHLOthers/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ManageReturns Servlet</servlet-name>
+		<url-pattern>/ManageReturns/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderSuppliesCatalogOrder Servlet</servlet-name>
+		<url-pattern>/OrderSuppliesCatalogOrder/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AllRequestsHistory Servlet</servlet-name>
+		<url-pattern>/AllRequestsHistory/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderSuppliesAssetOrder Servlet</servlet-name>
+		<url-pattern>/OrderSuppliesAssetOrder/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>OrderHardware Servlet</servlet-name>
+		<url-pattern>/OrderHardware/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CreditCard Servlet</servlet-name>
+		<url-pattern>/CreditCard/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AssetAcceptance Servlet</servlet-name>
+		<url-pattern>/AssetAcceptance/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MapView Servlet</servlet-name>
+		<url-pattern>/MapView/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>MapsRequest Servlet</servlet-name>
+		<url-pattern>/MapsRequest/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+              <servlet-name>OPSLevelSelection Servlet</servlet-name>
+              <url-pattern>/OPSLevelSelection/*</url-pattern>
+      </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Dynamic Resource Servlet</servlet-name>
+		<url-pattern>/sprite/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewRendererServlet</servlet-name>
+		<url-pattern>/WEB-INF/servlet/view</url-pattern>
+	</servlet-mapping>
+	<jsp-config>
+		<taglib>
+			<taglib-uri>http://liferay.com/tld/aui</taglib-uri>
+			<taglib-location>/WEB-INF/tld/aui.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>http://java.sun.com/portlet_2_0</taglib-uri>
+			<taglib-location>/WEB-INF/tld/liferay-portlet.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>http://liferay.com/tld/portlet</taglib-uri>
+			<taglib-location>/WEB-INF/tld/liferay-portlet-ext.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>http://liferay.com/tld/security</taglib-uri>
+			<taglib-location>/WEB-INF/tld/liferay-security.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>http://liferay.com/tld/theme</taglib-uri>
+			<taglib-location>/WEB-INF/tld/liferay-theme.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>http://liferay.com/tld/ui</taglib-uri>
+			<taglib-location>/WEB-INF/tld/liferay-ui.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>http://liferay.com/tld/util</taglib-uri>
+			<taglib-location>/WEB-INF/tld/liferay-util.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+</web-app>

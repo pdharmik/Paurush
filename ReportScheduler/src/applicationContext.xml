@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+<!-- Amind Integration
+	<bean id="globalService" class="com.lexmark.service.impl.real.AmindGlobalService">
+		<property name="statelessSessionFactory"><ref bean="statelessSessionFactory"/></property> 
+	</bean>
+-->
+
+    <bean id="reportScheduleService" class="com.lexmark.service.impl.real.jdbc.ReportScheduleServiceImp" singleton="false">
+    	<property name="globalService" ref="globalServiceFacade" />
+    	<property name="userInfoService" ref="userInfoService" />
+     </bean>
+<!-- 
+    <bean id="documentumServcice" class="com.lexmark.reportScheduler.service.impl.mock.DocumentumServiceMock" singleton="false" />
+
+    <bean id="reportGenerator" class="com.lexmark.reportScheduler.service.impl.mock.ReportGenerateServiceMock" singleton="false" />
+ -->
+    <bean id="documentumServcice" class="com.lexmark.reportScheduler.service.impl.DocumentumServiceImpl" singleton="false" />
+
+    <bean id="reportGenerator" class="com.lexmark.reportScheduler.service.impl.ReportGenerateServiceImpl" singleton="false" >
+    	<property name="reportScheduleService" ref="reportScheduleService" />
+    </bean>
+
+    <bean id="globalServiceFacade" class="com.lexmark.service.impl.real.GlobalServiceFacadeImpl" singleton="false" >
+    	<property name="globalService"><ref bean="globalService"/></property> 
+    </bean>
+
+    <bean id="userInfoService" class="com.lexmark.reportScheduler.service.impl.UserInfoServiceImpl" singleton="false" />
+	
+	<bean id="globalService" class="com.lexmark.service.impl.real.AmindGlobalService">
+		<property name="statelessSessionFactory"><ref bean="statelessSessionFactory"/></property> 
+	</bean>
+
+	<bean name="statelessSessionFactory" class="com.amind.session.StatelessSessionFactory"> 
+		<property name="statelessSessionTimeout" value="300000"/> 
+		<property name="statelessWaitTime" value="120000"/> 
+		<property name="maxConnections" value="20"/> 
+	</bean> 
+	
+</beans>

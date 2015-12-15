@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:tns="http://dlxkswmis1.lex.lexmark.com/LXKCustomerContact/webServices/provider/processCustomerContactWS" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="processCustomerContactWS" targetNamespace="http://dlxkswmis1.lex.lexmark.com/LXKCustomerContact/webServices/provider/processCustomerContactWS">
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://dlxkswmis1.lex.lexmark.com/LXKCustomerContact/webServices/provider/processCustomerContactWS" xmlns:SOAP_ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://dlxkswmis1.lex.lexmark.com/LXKCustomerContact/webServices/provider/processCustomerContactWS">
+          
+          <xsd:complexType name="publishContacts">
+            <xsd:sequence>
+              <xsd:element name="contact" nillable="true" type="tns:CustomerContact"/>
+              <xsd:element name="synchOrAsynch" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="CustomerContact">
+            <xsd:sequence>
+              <xsd:element name="CustomerContact" type="tns:CustomerContact2"/>
+              <xsd:element name="_env" nillable="true" type="tns:envelope" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="CustomerContact2">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" type="tns:DocumentMetaData" minOccurs="0"/>
+              <xsd:element name="Data" type="tns:Data" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="DocumentMetaData">
+            <xsd:sequence>
+              <xsd:element name="EnterpriseDocumentId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SourceSystem" type="xsd:string"/>
+              <xsd:element name="BusinessProcess" type="xsd:string"/>
+              <xsd:element name="SourceDocumentTrackingId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SourceCreationDateTime" type="xsd:dateTime" minOccurs="0"/>
+              <xsd:element name="ObjectChangeActionType" type="tns:ObjectChangeActionType"/>
+              <xsd:element name="IntegrationCreationDateTime" type="xsd:dateTime"/>
+              <xsd:element name="IntegrationFrequency" type="tns:IntegrationFrequency"/>
+              <xsd:element name="IntegrationResubmissionDateTime" type="xsd:dateTime" minOccurs="0"/>
+              <xsd:element name="DocumentResubmissionAttemptNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LargeDocumentHandling" type="tns:LargeDocumentHandling" minOccurs="0"/>
+              <xsd:element name="RelevantGeographies" type="tns:RelevantGeographies" minOccurs="0"/>
+              <xsd:element name="TradingPartnerMetaData" type="tns:TradingPartnerMetaData" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:simpleType name="ObjectChangeActionType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="CHANGE"/>
+              <xsd:enumeration value="DELETE"/>
+              <xsd:enumeration value="NEW"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="IntegrationFrequency">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="DailyBatch"/>
+              <xsd:enumeration value="RealTime"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:complexType name="LargeDocumentHandling">
+            <xsd:sequence>
+              <xsd:element name="StorageType" type="tns:StorageType" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:simpleType name="StorageType">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="DB"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:complexType name="RelevantGeographies">
+            <xsd:sequence>
+              <xsd:element name="Americas" type="tns:Americas" minOccurs="0"/>
+              <xsd:element name="EMEA" type="tns:EMEA" minOccurs="0"/>
+              <xsd:element name="APG" type="tns:APG" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:simpleType name="Americas">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="NO"/>
+              <xsd:enumeration value="YES"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="EMEA">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="NO"/>
+              <xsd:enumeration value="YES"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:simpleType name="APG">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:enumeration value="NO"/>
+              <xsd:enumeration value="YES"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:complexType name="TradingPartnerMetaData">
+            <xsd:sequence>
+              <xsd:element name="SenderId" type="xsd:string"/>
+              <xsd:element name="SenderName" type="xsd:string"/>
+              <xsd:element name="OriginalPartnerId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OriginalPartnerName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReceiverId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReceiverName" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Data">
+            <xsd:sequence>
+              <xsd:element name="ContactId" type="xsd:string"/>
+              <xsd:element name="CustomerName" type="xsd:string"/>
+              <xsd:element name="CustomerMDMId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="MDMCustomerLevel" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ContactType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="FirstName" type="xsd:string"/>
+              <xsd:element name="LastName" type="xsd:string"/>
+              <xsd:element name="EmailAddress" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="WorkPhoneNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="HomePhoneNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="FaxNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="MobileNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Language" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ContactReferenceId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PhysicalAddress" type="tns:PhysicalAddress" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="PhysicalAddress">
+            <xsd:sequence>
+              <xsd:element name="Name1" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Name2" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine1" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine2" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine3" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine4" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="City" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="StateOrProvince" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Country" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="County" type="tns:County" minOccurs="0"/>
+              <xsd:element name="Region" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="District" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:simpleType name="County">
+            <xsd:restriction base="xsd:string">
+              <xsd:whiteSpace value="preserve"/>
+              <xsd:minLength value="1"/>
+              <xsd:maxLength value="3"/>
+            </xsd:restriction>
+          </xsd:simpleType>
+          <xsd:complexType name="envelope">
+            <xsd:sequence>
+              <xsd:element name="activation" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="appLastSeqn" type="xsd:int" minOccurs="0"/>
+              <xsd:element name="appPassword" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="appSeqn" type="xsd:int" minOccurs="0"/>
+              <xsd:element name="appUserName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="businessContext" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="controlLabel" type="tns:ArrayOfshort" minOccurs="0"/>
+              <xsd:element name="errorsTo" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="errorRequestsTo" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="locale" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="maxResults" type="xsd:int" minOccurs="0"/>
+              <xsd:element name="replyTo" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="runLevel" type="xsd:int" minOccurs="0"/>
+              <xsd:element name="signature" type="tns:ArrayOfbyte" minOccurs="0"/>
+              <xsd:element name="signatureType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="startResult" type="xsd:int" minOccurs="0"/>
+              <xsd:element name="tag" type="xsd:int" minOccurs="0"/>
+              <xsd:element name="trackId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="transactionId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="transformState" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="age" type="xsd:int" minOccurs="0"/>
+              <xsd:element name="connectionIntegrity" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="destId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="enqueueTime" type="xsd:dateTime" minOccurs="0"/>
+              <xsd:element name="logBroker" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="logHost" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="pubDistinguishedName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="pubId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="pubNetAddr" type="tns:ArrayOfbyte" minOccurs="0"/>
+              <xsd:element name="pubSeqn" type="xsd:long" minOccurs="0"/>
+              <xsd:element name="pubLabel" type="tns:ArrayOfshort" minOccurs="0"/>
+              <xsd:element name="recvTime" type="xsd:dateTime" minOccurs="0"/>
+              <xsd:element name="route" type="tns:ArrayOfroute" minOccurs="0"/>
+              <xsd:element name="uuid" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfshort">
+<xsd:sequence>
+			<xsd:element name="ArrayOfshortItem" type="xsd:short" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfbyte">
+<xsd:sequence>
+			<xsd:element name="ArrayOfbyteItem" type="xsd:byte" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="route">
+            <xsd:sequence>
+              <xsd:element name="broker" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="recvTime" type="xsd:dateTime" minOccurs="0"/>
+              <xsd:element name="enqueueTime" type="xsd:dateTime" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfroute">
+<xsd:sequence>
+			<xsd:element name="ArrayOfrouteItem" type="tns:route" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="publishContactsResponse">
+            <xsd:sequence>
+              <xsd:element name="contactReferenceId" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        			<xsd:element name="publishContacts" type="tns:publishContacts"/>
+			<xsd:element name="publishContactsResponse" type="tns:publishContactsResponse"/>
+	</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="processCustomerContactWS_PortType_publishContacts">
+    <wsdl:part name="parameters" element="tns:publishContacts">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="processCustomerContactWS_PortType_publishContactsResponse">
+    <wsdl:part name="parameters" element="tns:publishContactsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="processCustomerContactWS_PortType">
+    <wsdl:operation name="processCustomerContact">
+      <wsdl:input message="tns:processCustomerContactWS_PortType_publishContacts">
+    </wsdl:input>
+      <wsdl:output message="tns:processCustomerContactWS_PortType_publishContactsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LXKCustomerContact_webServices_provider_processCustomerContactWS_Binder" type="tns:processCustomerContactWS_PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="processCustomerContact">
+      <soap:operation soapAction="LXKCustomerContact_webServices_provider_processCustomerContactWS_Binder_processCustomerContact" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="processCustomerContactWS">
+    <wsdl:port name="LXKCustomerContact_webServices_provider_processCustomerContactWS_Port" binding="tns:LXKCustomerContact_webServices_provider_processCustomerContactWS_Binder">
+      <soap:address location="http://dlxkswmis1.lex.lexmark.com:9300/ws/LXKCustomerContact.webServices.provider:processCustomerContactWS"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

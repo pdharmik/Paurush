@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!--
+
+Mapping file for the LexmarkTransaction class of Lexmark Service.
+
+
+
+@author Alex Zhou <alexzhou216@gmail.com>
+
+-->
+<hibernate-mapping package="com.lexmark.domain">
+
+<class name="SupportedLocale"
+	   table="SUPPORTED_LOCALE"
+	   lazy="false">
+	
+	<id name="supportedLocaleId"
+		type="integer"
+		column="SUPPORTED_LOCALE_ID"
+		 unsaved-value="0">
+		<generator class="native"/>
+	</id>
+	
+	<property   name="supportedLocaleName"
+				column="SUPPORTED_LOCALE_NAME"
+				type="string"
+				length="100"
+				not-null="false"/>				
+				
+	<property   name="supportedLocaleCode"
+				column="SUPPORTED_LOCALE_CODE"
+				type="string"
+				length="100"
+				not-null="false"/>				
+</class>
+
+<class name="SiebelLocalization"
+	   table="SIEBEL_LOCALIZATION"
+	   lazy="false">
+	
+	<id name="siebelLocalizationId"
+		type="integer"
+		column="SIEBEL_LOCALIZATION_ID"
+		 unsaved-value="0">
+		<generator class="native"/>
+	</id>
+	
+	<property   name="optionType"
+				column="OPTION_TYPE"
+				type="string"
+				length="50"
+				not-null="false"/>				
+				
+	<property   name="siebelValue"
+				column="SIEBEL_VALUE"
+				type="string"
+				length="250"
+				not-null="false"/>
+	<property   name="statusOrder"
+				column="STATUS_ORDER"
+				type="integer"
+				not-null="false"/>		
+    <property   name="showEntitlementFlag"
+				column="SHOW_ENTITLEMENT_FLAG"
+				type="boolean"
+				not-null="false"/>
+    <property   name="partnerType"
+				column="PARTNER_TYPE"
+				type="string"
+				length="20"
+				not-null="false"/>
+	<property   name="partnerDirectValue"
+				column="PARTNER_DIRECT_VALUE"
+				type="string"
+				length="250"
+				not-null="false"/>
+	<property   name="partnerIndirectValue"
+				column="PARTNER_INDIRECT_VALUE"
+				type="string"
+				length="250"
+				not-null="false"/>
+				
+	   <bag name="localeList" cascade="all" inverse="true" lazy="false">
+            <key column="SIEBEL_LOCALIZATION_ID"/>
+            <one-to-many class="SiebelLocalizationLocale"/>
+        </bag>
+    				
+</class>
+
+<class name="SiebelLocalizationLocale"
+	   table="SIEBEL_LOCALIZATION_LOCALE"
+	   lazy="false">
+	
+	<id name="siebelLocalizationLocaleId"
+		type="integer"
+		column="SIEBEL_LOCALIZATION_LOCALE_ID"
+		 unsaved-value="0">
+		<generator class="native"/>
+	</id>
+	
+	<property   name="displayValue"
+				column="DISPLAY_VALUE"
+				type="string"
+				length="250"
+				not-null="true"/>	
+	<many-to-one name="supportedLocale" class="SupportedLocale" column="SUPPORTED_LOCALE_ID"/>	
+	<many-to-one name="siebelLocalization" class="SiebelLocalization" column="SIEBEL_LOCALIZATION_ID" not-null="true"/>		
+</class>
+
+
+</hibernate-mapping>

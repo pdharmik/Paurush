@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Changes Done for CI BRD 13-10-02 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+	 http://www.springframework.org/schema/beans 
+	 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	 http://www.springframework.org/schema/context 
+	 http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	 http://www.springframework.org/schema/util 
+	 http://www.springframework.org/schema/util/spring-util-3.0.xsd"> 
+
+<context:annotation-config/>
+<bean id="propertyConfigurerCHLOthers" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+       		 <list>
+               <value>/WEB-INF/context/common.properties</value> 
+        	 </list>    
+        </property>
+	</bean>
+
+<!-- Controllers -->
+
+<bean id="manageAssetsController" class="com.lexmark.services.portlet.cm.ManageAssetsController"> 
+		<property name="listOfFileTypes">
+    			<value>${attachment.fileType.list}</value>
+    	</property>
+   		<property name="attMaxCount">
+    			<value>${attachment.maxcount}</value>
+    	</property>
+</bean>
+<bean id="historyController" class="com.lexmark.services.portlet.common.HistoryController"> </bean><!-- Added for CI BRD 13-10-02 -->
+<bean id="contactController" class="com.lexmark.services.portlet.common.ContactController"> </bean> <!-- Added for MPS2.1 -->
+<bean id="serviceRequestHistoryController" class="com.lexmark.services.portlet.common.ServiseRequestHistoryController"> </bean>
+<bean id="commonController" class="com.lexmark.services.portlet.common.CommonController"> </bean>
+<bean id="addressCleansing" class="com.lexmark.services.portlet.common.AddressCleansingController"> </bean>
+<bean id="attachmentController" class="com.lexmark.services.portlet.common.CommonAttachmentController"/>
+<bean id="filterManagementController" class="com.lexmark.services.portlet.fleetmanagement.FilterManagementController"> </bean>
+<bean id="lbsLocationService" class="com.lexmark.service.impl.real.AmindLBSLocationService"></bean>	
+<!-- Validators -->
+<bean id="changeAssetValidator" class="com.lexmark.services.form.validator.ManageAssetFormValidator" scope="prototype"></bean>
+
+<!-- Maps added for CI BRD 13-10-02 -->
+<util:map id ="historyPageMap" key-type="java.lang.String" value-type="java.lang.String" >			
+		<entry key="ALL_REQUESTS" value="allRequestHistory" />
+		<entry key="SUPPLY_REQUESTS" value="supplyRequestHistory" />
+		<entry key="CHANGE_REQUESTS" value="changeRequestHistory" />
+		<!-- <entry key="SERVICE_REQUESTS" value="serviceRequestHistory" />-->
+		<entry key="SERVICE_REQUESTS" value="serviceRequestListPage" />
+	</util:map>
+	
+	<util:map id ="historyPageAccessRoleMap" key-type="java.lang.String" value-type="java.lang.String" >			
+		<entry key="ALL_REQUESTS" value="SHOW REQUEST HISTORY" />
+		<entry key="SUPPLY_REQUESTS" value="SHOW SUPPLIES REQUEST" />
+		<entry key="CHANGE_REQUESTS" value="SHOW CHANGE MGMT REQUEST" />
+		<entry key="SERVICE_REQUESTS" value="SHOW SERVICE REQUEST" />
+	</util:map>
+<bean id="manageTemplateController" class="com.lexmark.services.portlet.cm.ManageTemplateController"> 
+<property name="srTemplateDownloadLocation"><value>${multipleSR.template.path}</value></property>
+</bean>
+	<bean id="portletMultipartResolver"
+		class="org.springframework.web.portlet.multipart.CommonsPortletMultipartResolver">
+		<!-- <property name="maxUploadSize" value="1048576" /> -->
+	</bean>	
+	<bean class="org.springframework.web.portlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="order" value="10"/>
+		<property name="interceptors">
+			<list>
+				<ref bean="performanceInterceptor" />
+			</list>
+	     	</property>
+	</bean>
+</beans>
+
+

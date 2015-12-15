@@ -1,0 +1,30 @@
+<div id="topnavigation" class="sort-pages modify-pages">
+	<ul>
+		#foreach ($nav_item in $nav_items)
+			#if ($nav_item.isSelected())
+				#set ($nav_item_class = "selected")
+			#else
+				#set ($nav_item_class = "")
+			#end
+
+			<li class="$nav_item_class">
+				<a href="$nav_item.getURL()" $nav_item.getTarget()><span>$nav_item.getName()</span></a>
+
+			</li>
+		#end
+		#if ($show_sign_in)
+			#set ($nav_item_class = "")
+			<li class="$nav_item_class">
+				<a href="$sign_in_url">$sign_in_text</a>
+			</li>
+		#end
+
+		#if ($show_sign_out)
+			#set ($nav_item_class = "")
+			<li class="$nav_item_class">
+				<a href="$sign_out_url">$sign_out_text</a>
+			</li>
+		#end
+
+	</ul>
+</div>

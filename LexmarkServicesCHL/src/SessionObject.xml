@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+	<!--  
+	<bean id="loginInfo" class="com.amind.data.source.LoginInfo">
+		<property name="host"><value></value></property>
+		<property name="server"><value></value></property>
+		<property name="listenPort"><value>2321</value></property>
+		<property name="component"><value></value></property>
+		<property name="lang"><value>enu</value></property>
+		<property name="user"><value></value></property>
+		<property name="password"><value></value></property>
+		<property name="connectionLimit"><value>-1</value></property>
+	</bean>
+		
+	<bean id="dataSource" class="com.amind.data.source.SiebelDataSource">
+		<property name="loginInfo"><ref bean="loginInfo"/></property>
+	</bean>
+	-->
+
+	<bean id="dataSource" class="com.amind.data.source.SiebelDataSource">
+		<property name="configLocation"><value>amindweb</value></property>
+	</bean>
+
+	<bean id="workflowProcessManager" class="com.amind.workflow.service.WorkflowProcessManager">
+		<property name="dataSource"><ref bean="dataSource"/></property>
+	</bean>
+	
+	<bean id="boDataService" class="com.amind.data.service.SiebelBODataService">
+		<property name="dataSource"><ref bean="dataSource"/></property>
+		<property name="domainObjectBrokerDao"><ref bean="doBrokerDao"/></property>
+	</bean>
+	<bean id="eaiDataService" class="com.amind.data.service.SiebelEAIDataService">
+		<property name="dataSource"><ref bean="dataSource"/></property>
+		<property name="domainObjectBrokerDao"><ref bean="doBrokerDao"/></property>
+	</bean>
+	
+	<bean id="productDataService" class="com.amind.data.service.SiebelProductDataService">
+		<property name="dataSource"><ref bean="dataSource"/></property>
+		<property name="domainObjectBrokerDao"><ref bean="doBrokerDao"/></property>
+	</bean>
+	
+	<bean id="workflowDataService" class="com.amind.data.service.SiebelWorkflowDataService">
+		<property name="dataSource"><ref bean="dataSource"/></property>
+		<property name="domainObjectBrokerDao"><ref bean="doBrokerDao"/></property>
+	</bean>	
+
+	<bean id="workflowService" class="com.amind.workflow.service.WorkflowProcessManager">
+		<property name="dataSource"><ref bean="dataSource"/></property>
+	</bean>	
+		
+	<bean id="dataManager" class="com.amind.data.service.DataManager">
+		<property name="domainObjectBrokerDao"><ref bean="doBrokerDao"/></property>
+	</bean>
+	
+	<bean id="catalogDataManager" class="com.amind.catalog.service.CatalogDataManager">
+		<property name="domainObjectBrokerDao"><ref bean="doBrokerDao"/></property>
+	</bean>
+	
+	<bean id="workflowDataManager" class="com.amind.workflow.service.WorkflowDataManager">
+		<property name="domainObjectBrokerDao"><ref bean="doBrokerDao"/></property>
+	</bean>	
+	
+	<bean id="siebelBusServiceProxy" class="com.amind.common.service.SiebelBusinessServiceProxy">
+		<property name="dataSource"><ref bean="dataSource"/></property>
+		<property name="dataManager"><ref bean="dataManager"/></property>
+	</bean>	
+	
+		
+	<bean id="doBrokerDao" class="com.amind.data.service.DomainObjBrokerDao">
+		<property name="dataServiceMap">
+			<map>
+				<entry key="Siebel BO">
+					<ref local="boDataService"/>
+				</entry>	             
+				<entry key="EAI Siebel Adapter">
+					<ref local="eaiDataService"/>
+				</entry>
+				<entry key="PDS Business Service">
+					<ref local="productDataService"/>
+				</entry>	
+				<entry key="Workflow Process Manager">
+					<ref local="workflowDataService"/>
+				</entry>					
+			</map>
+		</property>		
+	</bean>	
+
+	
+</beans>

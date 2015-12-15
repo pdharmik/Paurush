@@ -1,0 +1,381 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Add an Asset</title>
+<link href="../../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../../../js/util.js"></script>
+<script src="../../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/tree/dhtmlxtree.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../../../js/mps.js"></script>
+</head>
+<body onload="javascript:hideAddiContacts(); hideAddress(); hideContact();  hideContact2(); hideHiererchy();">
+<div id="wrapper" >
+  <div id="banner">
+    <h1 class="logo"><a href="https://tportal.lexmark.com/web/guest" title="Lexmark Global Services">tportal.lexmark.com</a></h1>
+    <div id="top-header">
+      <div id="top-header-navigation" class="sort-pages modify-pages" >
+        <ul>
+          <li><b><span>Welcome Firstname Lastname!</span></b></li>
+          <li><a href="#">Preferences</a></li>
+          <li><a href="#">User Administration</a></li>
+          <li><a href="#">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="bottom-header">
+      <div id="bottom-header-navigation" class="sort-pages modify-pages" >
+        <ul>
+          <li>
+            <select>
+              <option>English (US)</option>
+            </select>
+          </li>
+          <li><a href="#">Lexmark.com</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Get Help</a></li>
+          <li><a href="#">Contact Lexmark</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="tabNavigation">
+    <ul class="tab">
+      <li><a href="#"><img src="../../../../images/home.png" alt="Home" title="Home" class="home" /></a></li>
+      <li><a href="" title="">Device Finder</a></li>
+      <li class="selected"><a href="" title="">Requests</a></li>
+      <li><a href="" title="">Page Counts</a></li>
+      <li><a href="" title="">Documents</a></li>
+    </ul>
+  </div>
+  <div id="subnavigation">
+    <ul>
+      <li><a href="javascript:void(0);"><span>Request History</span></a></li>
+      <li><a href="../../create_new_request.html" class="lightbox" title="Create New Request"><span>Create New Request</span></a></li>
+    </ul>
+  </div>
+  <div id="content-wrapper">
+    <div class="journal-content-article">
+      <h2>Change Request</h2>
+      <span class="step">Assets</span> </div>
+    <div class="main-wrap">
+      <div class="content"> 
+        <!-- MAIN CONTENT BEGIN -->
+        <h3 class="pageTitle">Add New Asset <span>[Fields marked <span class="req">*</span> are required]</span></h3>
+        <div class="portletBlock">
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4><a href="javascript:void();" class="lightboxLarge" title="Select a Contact">Select a different contact</a>Primary Contact for this Request</h4>
+              <ul class="form">
+                <li>
+                  <label>Name:</label>
+                  <span>FirstName</span><span>LastName</span>
+                <li>
+                  <label>Phone Number:</label>
+                  <span>XXXXXXXXXX</span></li>
+                <li>
+                  <label>Email Address</label>
+                  <span>firstname.lastname@domain.com</span></li>
+              </ul>
+            </div>
+            <div class="buttonContainerIn" id="buttonContact">
+              <button class="button" onclick="javascript:showAddiContacts();">Add an Additional Contact</button>
+            </div>
+            <div class="infoBox columnInner rounded shadow" id="addiContact">
+              <h4><a href="javascript:hideAddiContacts();">Remove</a>Secondary Contact for this Request</h4>
+              <ul class="form">
+                <li>
+                  <label>Name:</label>
+                  <span>FirstName</span><span>LastName</span>
+                  </li>
+                <li>
+                  <label>Phone Number:</label>
+                  <span>XXXXXXXXXX</span></li>
+                <li>
+                  <label>Email Address:</label>
+                  <span>firstname.lastname@domain.com</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Additional Information for this Request</h4>
+              <ul class="form">
+                <li>
+                  <label for="refId">Customer Reference ID:</label>
+                  <span><input type="text" id="refId" />
+                  <img src="../../../../images/help.png" class="helpIcon" title="Customer Reference ID." width="18" height="18"/></span></li>
+                <li>
+                  <label for="costCntr">Cost Center:</label>
+                  <span><input type="text" id="costCntr" />
+                  <img src="../../../../images/help.png" class="helpIcon" title="Cost Center." width="18" height="18"/></span></li>
+                <li>
+                  <label for="desc">Description:</label>
+                  <span><textarea id="desc" rows="3"></textarea>
+                  <img src="../../../../images/help.png" class="helpIcon" title="Description." width="18" height="18"/></span></li>
+                <li>
+                  <label for="date1">Requested effective date of change:</label>
+                  <span><input type="date" id="datepicker" class="w100"/>
+                  <img src="../../../../images/ic_cal.png" title="Select a Date" width="23" height="23"/></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr class="separator" />
+        <p class="info">Please enter the following information for the asset to be added:</p>
+        <div class="portletBlock">
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Asset Identifiers</h4>
+              <ul class="form">
+                <li>
+                  <label for="serial">Serial Number: </label>
+                  <span><input type="text" id="serial" />
+                  <img src="../../../../images/help.png" class="helpIcon" title="Enter Serial No. of the asset" width="18" height="18"/></span></li>
+                <li>
+                  <label for="productName">Product: </label>
+                  <span><input type="text" id="productName" />
+                  <img src="../../../../images/help.png" class="helpIcon" title="Enter Product model of the asset" width="18" height="18"/></span></li>
+                <li>
+                  <label for="installDate">Install Date: </label>
+                  <span><input type="date" id="installDate" class="w100" />
+                  <img src="../../../../images/ic_cal.png" title="Select a Date" width="23" height="23"/></span></li>
+                <li>
+                  <label for="ipadd">IP Address: </label>
+                  <span><input type="text" id="ipadd" />
+                  <img src="../../../../images/help.png" class="helpIcon" title="Enter IP Address of the asset" width="18" height="18"/></span></li>
+                <li>
+                  <label for="hostName">Host Name: </label>
+                  <span><input type="text" id="hostName" />
+                  <img src="../../../../images/help.png" class="helpIcon" title="Enter Host name of the asset" width="18" height="18"/></span></li>
+                <li>
+                  <label for="custTag">Customer Asset Tag: </label>
+                  <span><input type="text" id="custTag" />
+                  <img src="../../../../images/help.png" class="helpIcon" title="Enter Customer Asset Tag" width="18" height="18"/></span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Page Count</h4>
+              <ul class="form">
+                <li>
+                  <label for="ltpc">LTPC: </label>
+                  <span><input type="text" id="ltpc" class="w150" />
+                  <img src="../../../../images/help.png" class="helpIcon" title="Enter Life Time Page Count for this asset" width="18" height="18"/></span></li>
+                <li>
+                  <label for="date1">Date &amp; Time: </label>
+                  <span><input type="date" id="date1" class="w150" />
+                  <img src="../../../../images/ic_cal.png" title="Select a Date" width="23" height="23"/></span></li>
+                  </ul>
+                  <ul class="form division">
+                <li>
+                  <label for="color">Color: </label>
+                  <span><input type="text" id="color" class="w150" />
+                  <img src="../../../../images/help.png" class="helpIcon" title="Enter Color Page Count for the asset" width="18" height="18"/></span></li>
+                <li>
+                  <label for="date2">Date &amp; Time: </label>
+                  <span><input type="date" id="date2" class="w150" />
+                  <img src="../../../../images/ic_cal.png" title="Select a Date" width="23" height="23"/></span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="portletBlock">
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Billing Details</h4>
+              <ul class="form">
+                <li>
+                  <label for="assetCost">Asset Cost Center:</label>
+                  <span><input type="text" id="assetCost" />
+                  <img src="../../../../images/help.png" class="helpIcon" title="Enter Asset Cost Center details" width="18" height="18"/></span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="columnsTwo" >
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Customer Hierercy Level</h4>
+              <ul class="form">
+                <li id="defaultHiererchy">
+                  <label>Hierercy Level for this asset:</label>
+                  <span><a class="chlModOpen" href="../../chl.html" title="Customer Hierarchy">Select Heirerchy Level</a></span></li>
+                <li id="changeHiererchy">
+                  <label>Hierercy Level for this asset:</label>
+                  <span><a class="chlModOpen floatR" href="../../chl.html" title="Customer Hierarchy">Change</a>Selected Hierercy Level</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="tabs-2">
+          <div class="portletBlock"> 
+            <!-- Installed Address Default View - Start -->
+            <div class="columnsTwo" id="installedAddr">
+              <div class="infoBox columnInner rounded shadow">
+                <h4>Asset Installed Address</h4>
+                <p>To add a new address or to select an existing address from the address list please <a class="lightboxLarge" href="javascript:void()" title="Select an Address">click here.</a></p>
+              </div>
+            </div>
+            <!-- Installed Address Default View - End --> 
+            <!-- Installed Address Data Filled View - Start -->
+            <div class="columnsTwo" id="installedAddrData">
+              <div class="infoBox columnInner rounded shadow">
+                <h4><a class="lightboxLarge" href="javascript:void()" title="Select an Address">Select a different address</a>Asset Installed Address</h4>
+                <ul class="roDisplay">
+                  <li><span>Address Line 1<br />
+                    Address Line 2<br />
+                    Address Line 3<br />
+                    City, State / Province XXXXX<br />
+                    Country</span> </li>
+                  <li><span>Building: XXXXXXX</span></li>
+                  <li><span>Floor: XX</span></li>
+                  <li><span>Office: XXXXXXX</span></li>
+                </ul>
+                <ul class="form division">
+                  <li>
+                    <label>Do you require Lexmark to install this asset?</label>
+                    <span class="radio">
+                    <input type="radio" name="installAsset" id="installAssetY" value="yes" />
+                    <label for="installAssetY">Yes</label>
+                    <input type="radio" name="installAsset" id="installAssetN" value="no" />
+                    <label for="installAssetN">No</label>
+                    </span></li>
+                </ul>
+              </div>
+            </div>
+            <!-- Installed Address Data Filled View - End --> 
+            <!-- Consumables Contact Default View - Start -->
+            <div class="columnsTwo">
+              <div class="infoBox columnInner rounded shadow" id="contact">
+                <h4 >Consumables Contact</h4>
+                <p>To add a new contact or to select an existing contact from the contact list
+                  please <a href="javascript:showContact();">click here.</a> </p>
+                <h4 class="inlineTitle disable">Consumables Contact Address</h4>
+                <p class="check disable">
+                  <input type="checkbox" id="copyAddress1" disabled="disabled" />
+                  <label for="copyAddress1">Same as installed address</label>
+                </p>
+              </div>
+            </div>
+            <!-- Consumables Contact Default View - End --> 
+            <!-- Consumables Contact - Data Filled WITHOUT Consumable Address View - Start -->
+            <div class="columnsTwo" id="contactData">
+              <div class="infoBox columnInner rounded shadow">
+                <h4><a href="javascript:void(0);">Select a different contact</a>Consumables Contact</h4>
+                <ul class="form">
+                  <li>
+                    <label>First Name: </label>
+                    <span>FirstName</span></li>
+                  <li>
+                    <label>Middle Name: </label>
+                    <span>MiddleName</span></li>
+                  <li>
+                    <label>Last Name: </label>
+                    <span>LastName</span></li>
+                  <li>
+                    <label>Work Phone: </label>
+                    <span>XXXXXXXXXX</span></li>
+                  <li>
+                    <label>Alternate Phone: </label>
+                    <span>XXXXXXXXXX</span></li>
+                  <li>
+                    <label>Email Address: </label>
+                    <span>firstname.lastname@domain.com</span></li>
+                </ul>
+                <h4 class="inlineTitle">Consumables Contact Address</h4>
+                <p>There is no address associated to the selected contact.</p>
+                <p>To add a new contact or to select an existing contact from the contact list
+                  please <a href="javascript:showContact2();">click here.</a> </p>
+                <p class="check">
+                  <input type="checkbox" id="copyAddress2" />
+                  <label for="copyAddress2">Same as installed address</label>
+                </p>
+              </div>
+            </div>
+            <!-- Consumables Contact - Data Filled WITHOUT Consumable Address View - End --> 
+            <!-- Consumables Contact - Data Filled WITH Consumable Address View - Start -->
+            <div class="columnsTwo" id="contactData2">
+              <div class="infoBox columnInner rounded shadow">
+                <h4><a href="javascript:void(0);">Select a different contact</a>Consumables Contact</h4>
+                <ul class="form">
+                  <li>
+                    <label>First Name: </label>
+                    <span>FirstName</span></li>
+                  <li>
+                    <label>Middle Name: </label>
+                    <span>MiddleName</span></li>
+                  <li>
+                    <label>Last Name: </label>
+                    <span>LastName</span></li>
+                  <li>
+                    <label>Work Phone: </label>
+                    <span>XXXXXXXXXX</span></li>
+                  <li>
+                    <label>Alternate Phone: </label>
+                    <span>XXXXXXXXXX</span></li>
+                  <li>
+                    <label>Email Address: </label>
+                    <span>firstname.lastname@domain.com</span></li>
+                </ul>
+                <h4 class="inlineTitle"><a href="javascript:void(0);">Select a different address</a>Consumables Contact Address</h4>
+                <ul class="roDisplay">
+                  <li><span>Address Line 1<br />
+                    Address Line 2<br />
+                    Address Line 3<br />
+                    City, State / Province XXXXX<br />
+                    Country</span> </li>
+                  <li><span>Building: XXXXXXX</span></li>
+                  <li><span>Floor: XX</span></li>
+                  <li><span>Office: XXXXXXX</span></li>
+                </ul>
+                <p class="check">
+                  <input type="checkbox" id="copyAddress3" />
+                  <label for="copyAddress3">Same as installed address</label>
+                </p>
+              </div>
+            </div>
+            <!-- Consumables Contact - Data Filled WITH Consumable Address View - End --> 
+          </div>
+        </div>
+        <div class="buttonContainer">
+          <button class="button">Back</button>
+          <button class="button_cancel">Cancel</button>
+          <button class="button">Continue</button>
+        </div>
+      </div>
+      <!-- MAIN CONTENT END --> 
+    </div>
+  </div>
+  <div id="footer">Footer</div>
+</div>
+</body>
+</html>

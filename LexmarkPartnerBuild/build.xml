@@ -1,0 +1,98 @@
+<project name="LexmarkPartnerPortal" basedir="." default="dist">
+	<property name="dist"  location="dist"/>
+   <property name="ant-contrib.jar" location="..\ExternalLib\ant\ant-contrib-1.0b3.jar"></property>
+
+	<target name="clean"
+        description="clean up" >
+	    <delete dir="${dist}"/>
+    </target>
+	
+	<target name="cleanAll">
+		<ant dir="../DctmWebServiceClient" target="clean" inheritAll="false"/>
+		<ant dir="../LexmarkServicesWebService" target="clean" inheritAll="false"/>
+		<ant dir="../LexmarkServicesCommon" target="clean" inheritAll="false"/>
+		<ant dir="../LexmarkPartnerPortal" target="clean" inheritAll="false"/>
+		<ant dir="../LexmarkPartnerPortalTheme" target="clean" inheritAll="false"/>
+		<antcall target="clean" />
+	</target>
+
+	<target name="init" depends="clean"
+        description="initialize thed dist and lib folder" >
+        
+        <taskdef resource="net/sf/antcontrib/antcontrib.properties" classpath="${ant-contrib.jar}"/>
+    	
+        <mkdir dir="${dist}"/>
+    	<mkdir dir="${dist}/lib"/>
+    </target>
+	
+	<target name="dist" depends="init"  
+		description="Generate the war for LexmarkPartnerPortal">
+		<if>
+			<isset property="build.env"/>
+		<then>
+    		<ant dir="../LexmarkServicesCommon" target="dist" inheritAll="false"/>
+    		<ant dir="../LexmarkServicesWebService" target="dist" inheritAll="false"/>
+			<echo> ============= LexmarkServicesCommon Done.=============</echo>
+			
+    		<ant dir="../LexmarkPartnerPortal" target="war" inheritAll="false">
+    		    <property  name="build.env" value="${build.env}" />
+    		</ant>
+			
+			
+			<echo> ============= LexmarkPartnerPortal Done.=============</echo>
+			
+    		<ant dir="../LexmarkPartnerPortalTheme" target="lexmarkThemeWar" inheritAll="false">
+    		    <property  name="build.env" value="${build.env}" />
+    		</ant>
+			<echo> ============= LexmarkPartnerPortalTheme Done.=============</echo>
+			
+			<copy file="../LexmarkServicesCommon/dist/lib/LexmarkServicesCommon.jar" todir="${dist}/lib" />
+			<copy file="../DctmWebServiceClient/dist/lib/DctmWebServiceClient.jar" todir="${dist}/lib" />
+			<copy file="../LexmarkServicesWebService/dist/lib/LexmarkServicesWebService.jar" todir="${dist}/lib" />
+			<copy file="../LexmarkPartnerPortal/dist/LexmarkPartnerPortal.war" todir="${dist}" />
+			<!--
+			<copy file="../LexmarkPartnerPortalTheme/dist/lexmark-partner-portal-theme-theme-5.2.3.1.war" todir="${dist}" />
+			<copy file="../LexmarkPartnerPortalTheme/dist/LGS_Partner_Portal_Rebranded-theme-5.2.3.1.war" todir="${dist}" />
+			-->
+			<copy file="../LexmarkPartnerPortalTheme/dist/lexmark-partner-portal-theme-theme-6.2.0.1.1.war" todir="${dist}" />
+			<copy file="../LexmarkPartnerPortalTheme/dist/LGS_Partner_Portal_Rebranded-theme-6.2.0.1.1.war" todir="${dist}" />
+			<echo> ============= Build Done.=============</echo>
+		</then>
+		<else>
+			<echo>If you want to package war please specify build.env</echo>
+			<echo> > ant dist -Dbuild.env=QA</echo>
+		</else>
+		</if>
+
+		<ant dir="../LexmarkPartnerPortal" target="clean" inheritAll="false">
+			<property  name="build.env" value="${build.env}" />
+		</ant>
+    </target>
+
+	<target name="lexmarkThemeWar" depends="init" description="generate theme war file">
+    	<ant dir="../LexmarkPartnerPortalTheme" target="lexmarkThemeWar" inheritAll="false"/>
+		<copy file="../LexmarkPartnerPortalTheme/dist/lexmark-partner-portal-theme-theme-6.2.0.1.1.war" todir="${dist}" />
+		<copy file="../LexmarkPartnerPortalTheme/dist/LGS_Partner_Portal_Rebranded-theme-6.2.0.1.1.war" todir="${dist}" />
+	</target>
+	
+	<target name="distQA" description="Generate files for QA environment">
+		<property  name="build.env" value="QA" />
+		<antcall target="dist"/>
+	</target>
+
+	<target name="distQATRNG" description="Generate files for QA Traning environment">
+		<property  name="build.env" value="QATRNG" />
+		<antcall target="dist"/>
+	</target>
+
+	<target name="distPROD" description="Generate files for PROD environment">
+		<property  name="build.env" value="PROD" />
+		<antcall target="dist"/>
+	</target>
+
+	<target name="distDEV" description="Generate files for DEV environment">
+		<property  name="build.env" value="DEV" />
+		<antcall target="dist"/>
+	</target>
+    
+</project>

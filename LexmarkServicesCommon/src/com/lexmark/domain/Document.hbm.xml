@@ -1,0 +1,310 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!-- Mapping file for Document, and Report of Lexmark Service. -->
+
+<hibernate-mapping package="com.lexmark.domain">
+
+	<class name="Document" table="lxk_portal_doc" lazy="true" discriminator-value="DOC">
+
+		<id name="documentId" type="long" column="DOCUMENT_ID"
+			unsaved-value="null">
+			<generator class="native" />
+		</id>
+		
+		<discriminator column="DOCUMENT_TYPE" type="string"/>
+		
+		<property name="fileObjectId" column="R_OBJECT_ID" type="string"
+			length="30" not-null="false" />
+			
+		<property name="fileName" column="OBJECT_NAME" type="string"
+			length="100" not-null="false" />
+
+		<property name="fileType" column="R_OBJECT_TYPE" type="string"
+			length="100" not-null="true" />
+
+		<property name="filePath" column="A_WEBC_URL" type="string"
+			length="100" not-null="false" />
+
+		<property name="filedataLink" column="FILE_DATA_LINK" type="long"
+			length="100" not-null="false" />
+
+		<property name="lastUpdateTime" column="R_MODIFY_DATE" type="java.util.Date"
+			length="100" not-null="false" />
+
+		<property name="fileSize" column="R_CONTENT_SIZE" type="int"
+			update="false" not-null="true" />
+		<many-to-one name="definition" class="DocumentDefinition"
+			column="DEFINITION_ID" cascade="none" />
+			
+		<subclass name="Report" discriminator-value="REPORT">
+			<property name="runTime" column="RUN_TIME" type="timestamp" 
+				not-null="false"/>
+				
+			<property name="statusCode" column="STATUS_CODE" type="string" 
+				not-null="false"/>
+				
+			<property name="errorMessage" column="ERROR_MESSAGE" type="string" 
+				not-null="false"/>
+				
+			<property name="errorCode" column="ERROR_CODE" type="string" 
+				not-null="false"/>
+				
+			<property name="userNumber" column="USER_NUMBER" type="string" 
+				not-null="false"/>
+				
+			<property name="legalName" column="LEGAL_NAME" type="string" 
+				not-null="false"/>
+		</subclass>
+	</class>
+	
+	
+	<class name="ReportDeleteStatus" table="REPORT_DELETE_STATUS" lazy="false">
+		
+		<id name="id" type="java.lang.Long" column="REPORT_DELETE_STATUS_ID"
+			unsaved-value="null">
+			<generator class="native" />	
+		</id>
+
+		<property name="reportId" column="R_OBJECT_ID" type="string"
+			length="100" not-null="false" />
+			
+		<property name="isDeleted" column="IS_DELETED" type="true_false"
+			length="100" not-null="false" />		
+		
+	</class>
+
+	<class name="DocumentDefinition" table="REPORT_DEFINITION" lazy="false" discriminator-value="DOC">
+	
+		<id name="id" type="java.lang.Integer" column="REPORT_DEFINITION_ID"
+			unsaved-value="null">
+			<generator class="native" />
+		</id>
+		
+		<discriminator column="DEFINITION_TYPE" type="string"/>
+		
+		<property name="name" column="NAME" type="string"
+			length="100" not-null="false" />
+<!-- 			Changed for CI7 BRD 14-06-01 -->
+		<property name="display_order" column="DISPLAY_ORDER" type="java.lang.String"
+			length="100" not-null="false" />
+			
+		<property name="mdmId" column="MDM_ID" type="string" length="100"
+			not-null="false" />
+
+		<property name="mdmLevel" column="MDM_LEVEL" type="string"
+			length="100" not-null="false" />
+
+        <property name="isDeleted" column="IS_DELETED" type="true_false" not-null="true"/>
+        
+        <!--**** limit flag and customer account added for DOC Lib CR **** start-->
+        <property name="limitFlag" column="LIMIT_FLAG" type="true_false" not-null="true"/>
+        
+        <property name="customerAccount" column="CUSTOMER_ACCOUNT" type="string" length="100" not-null="false"/>
+		 <!--**** limit flag and customer account added for DOC Lib CR **** end-->
+		 
+		<many-to-one name="roleCategory" class="RoleCategory" not-found="ignore"
+			column="CATEGORY_ID" cascade="none" />
+
+		<bag name="localeList" cascade="all" lazy="false">
+			<key column="REPORT_DEFINITION_ID" foreign-key="definitionLocaleId"></key>
+			<one-to-many class="DefinitionLocale" ></one-to-many>
+		</bag>
+		
+		<subclass name="ReportDefinition" discriminator-value="REPORT">
+		
+			<property name="reportType" column="REPORT_TYPE" type="string"
+				length="100" not-null="false" />
+				
+			<property name="reportSourceId" column="REPORT_SOURCE_ID" type="string"
+				length="100" not-null="false" />
+				
+			<property name="isSendMDMParameter" column="IS_MDM" type="true_false"
+				not-null="false" />
+			
+			<property name="isSchedulable" column="IS_SCHEDULABLE" type="true_false"
+				not-null="false" />
+
+			<property name="description" column="DESCRIPTION" type="string"
+				length="500" not-null="false" />
+
+			<property name="viewType" column="VIEW_TYPE" type="string"
+				length="16" not-null="false" />
+
+			<bag name="parameterList" cascade="all" lazy="false" order-by="ORDER_NUMBER ASC">
+			    <key column="REPORT_DEFINITION_ID"/>
+			    <one-to-many class="ReportParameters"/>
+			</bag>
+			<!-- added by nelson for CI5 -->
+			<bag name="reportCustomersList" cascade="all" lazy="false">
+			    <key column="REPORT_DEFINITION_ID"/>
+			    <one-to-many class="ReportCustomers"/>
+			</bag>
+			<!-- added by nelson for CI5 -->
+		</subclass>
+	</class>
+	<class name="DefinitionLocale" table="DEFINITION_LOCALE" lazy="false">
+		<id name="definitionLocaleId" type="java.lang.Integer" column="DEFINITION_LOCALE_ID"
+			unsaved-value="null">
+			<generator class="native" />
+		</id>
+		<property name="name" column="NAME" type="string" length="100"
+			not-null="false" />
+		<property name="reportDefinitionId" column="REPORT_DEFINITION_ID" type="java.lang.Integer"
+			not-null="false" />
+		<property name="description" column="DESCRIPTION" type="string"
+			length="250" not-null="false" />
+		<many-to-one name="supportedLocale" column="SUPPORTED_LOCALE_ID"
+			class="SupportedLocale" cascade="none" />
+	</class>
+	<class name="RoleCategory" table="CATEGORY" lazy="false">
+		<id name="categoryId" type="java.lang.Integer" column="CATEGORY_ID" unsaved-value="0">
+			<generator class="native" />
+		</id>
+		<property name="name" column="NAME" type="string" length="100"
+			not-null="false" />
+
+		<property name="orderNumber" column="ORDER_NUM" type="int"
+			length="100" not-null="false" />
+
+        <property name="type" column="TYPE" type="string"
+            length="1" not-null="true" />
+            
+        <property name="isDeleted" column="IS_DELETED" type="true_false" not-null="true"/>
+
+		<bag name="roles" cascade="none" inverse="false" lazy="false" table="REPORT_ACL">
+			<key column="CATEGORY_ID"></key>
+			<many-to-many class="Role" column="ROLE_ID"></many-to-many>
+		</bag>
+
+		<bag name="localeList" cascade="all" lazy="false" >
+			<key column="CATEGORY_ID" foreign-key="categoryLocaleId"></key>
+			<one-to-many class="RoleCategoryLocale" ></one-to-many>
+		</bag>
+		<bag name="documentList" cascade="none" lazy="true" inverse="true">
+			<key column="CATEGORY_ID"></key>
+			<one-to-many class="DocumentDefinition" ></one-to-many>
+		</bag>
+	</class>
+
+	<class name="Role" table="ROLE" lazy="false">
+		<id name="id" type="java.lang.Integer" column="ROLE_ID" unsaved-value="null">
+			<generator class="native" />
+		</id>
+		<property name="name" column="NAME" type="string" length="100"
+			not-null="false" />
+		<property name="targetPortal" column="TARGET_PORTAL" type="string" length="20"
+			not-null="false" />
+		<property name="roleType" column="ROLE_TYPE" type="string" length="20"
+			not-null="false" />
+	</class>
+
+	<class name="RoleCategoryLocale" table="CATEGORY_LOCALE" lazy="false">
+		<id name="categoryLocaleId" type="java.lang.Integer" column="CATEGORY_LOCALE_ID"
+			unsaved-value="null">
+			<generator class="native" />
+		</id>
+		<property name="name" column="NAME" type="string" length="100" 
+			not-null="false" />
+		<property name="categoryId" column="CATEGORY_ID" type="java.lang.Integer"
+			not-null="false" />
+		
+		<many-to-one name="supportedLocale" class="SupportedLocale" column="SUPPORTED_LOCALE_ID" cascade="none"/>	
+	</class>
+	
+	<class name="ReportParameters" table="REPORT_PARAMETER" lazy="false">
+		<id name="reportParameterId" type="java.lang.Integer" 
+			column="REPORT_PARAMETER_ID" unsaved-value="null">
+			<generator class="native"/>
+		</id>
+		<property name="name" column="NAME" type="string" length="100"
+			not-null="false" />
+		<property name="value" column="VALUE" type="string" length="100"
+			not-null="false" />
+		<property name="listValues" column="DEFAULT_VALUES" type="string" length="255"
+			not-null="false" />
+		<property name="displayName" column="DISPLAY_NAME" type="string" length="100"
+			not-null="false" />
+		<property name="dataType" column="DATA_TYPE" type="string" length="100"
+			not-null="false" />
+        <property name="orderNumber" column="ORDER_NUMBER" type="java.lang.Integer"
+            not-null="true" />
+		<property name="maxSize" column="MAX_SIZE" type="integer" not-null="false" />
+		<property name="isRequired" column="IS_REQUIRED" type="true_false"
+			not-null="false"/>
+		<!-- Columns Added for CI BRD13-10-27 STARTS -->
+		<property name="displayNameSpanish" column="DISPLAY_NAME_SPANISH" type="string" length="100"
+			not-null="false" />
+			<property name="displayNameGerman" column="DISPLAY_NAME_GERMAN" type="string" length="100"
+			not-null="false" />
+			<property name="displayNameFrench" column="DISPLAY_NAME_FRENCH" type="string" length="100"
+			not-null="false" />
+			<property name="displayNameChina" column="DISPLAY_NAME_CHINA" type="string" length="100"
+			not-null="false" />
+			<property name="displayNameChinaTw" column="DISPLAY_NAME_CHINA_TW" type="string" length="100"
+			not-null="false" />
+			<property name="displayNamePortugal" column="DISPLAY_NAME_PT_PT" type="string" length="100"
+			not-null="false" />
+			<property name="displayNamePortugalBrazil" column="DISPLAY_NAME_PT_BR" type="string" length="100"
+			not-null="false" />
+			<property name="displayNameItaly" column="DISPLAY_NAME_ITALY" type="string" length="100"
+			not-null="false" />
+			<property name="displayNameKorea" column="DISPLAY_NAME_KOREA" type="string" length="100"
+			not-null="false" />
+			<property name="displayNameRussia" column="DISPLAY_NAME_RUSSIA" type="string" length="100"
+			not-null="false" />
+			<property name="displayNameJapan" column="DISPLAY_NAME_JAPAN" type="string" length="100"
+			not-null="false" />
+			<property name="displayNameTurkey" column="DISPLAY_NAME_TURKEY" type="string" length="100"
+			not-null="false" />
+		<!--Columns Added for CI BRD13-10-27 ENDS-->
+	</class>
+	
+		<class name="ReportACL"  table="REPORT_ACL" lazy="false">
+		<composite-id>
+			<key-property name="categoryId" column="CATEGORY_ID" type="java.lang.Integer" />
+			<key-property name="roleId" column="ROLE_ID" type="java.lang.Integer" />
+		</composite-id>
+		<many-to-one name="role" column="ROLE_ID" class="Role"  insert="false" update="false"></many-to-one>
+	</class>
+	<!-- added by nelson for CI5 -->
+	<class name="ReportCustomers" table="report_customers" lazy="false">
+		<id name="id" type="java.lang.Integer" 
+			column="REPORT_CUSTOMER_ID" unsaved-value="null">
+			<generator class="native"/>
+		</id>
+		<property name="mdmId" column="MDM_ID" type="string" length="100" not-null="false" />
+		<property name="mdmLevel" column="MDM_LEVEL" type="string" length="100" not-null="false" />
+		<property name="checkRestrictExclude" column="RESTRICT_REPORT" type="string" length="10" not-null="false" />
+	</class>
+	<!-- end of addition for CI5 by nelson -->
+	
+	<class name="Category_PartnerType" table="CATEGORY_PARTNERTYPE" lazy="false">
+	
+		<id name="categoryID" type="java.lang.Integer" 
+			column="CATEGORY_ID" unsaved-value="null">
+			<generator class="native"/>
+		</id>
+		<property name="partnerType" column="PARTNER_TYPE" type="string"
+			length="100" not-null="false" />
+		<property name="category_id_original" column="CATEGORY_ID_ORIGINAL" type="string"
+            length="100" not-null="false" />
+	</class>
+	
+	<class name="Category_Country" table="CATEGORY_COUNTRY" lazy="false">
+		<id name="category_Id" type="java.lang.Integer" 
+			column="CATEGORY_ID" unsaved-value="null">
+			<generator class="native"/>
+		</id>
+        <property name="country" column="COUNTRY" type="string"
+            length="100" not-null="false" />
+        <property name="category_id_original" column="CATEGORY_ID_ORIGINAL" type="string"
+            length="100" not-null="false" />
+	</class>
+
+	
+	
+	
+</hibernate-mapping>
+

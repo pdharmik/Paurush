@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="SupplyRequestDetailPendingShipmentDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS HW Service Request Detail - Service Web</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS SR Order Line - Service Web</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+                <entry>
+                    <key><value>id</value></key>
+                    <value>LXK MPS Order Item Id</value>
+                </entry>
+                <entry>
+                    <key><value>partNumber</value></key>
+                    <value>Product</value>
+                </entry>
+                <entry>
+                    <key><value>partName</value></key>
+                    <value>Product Description</value>
+                </entry>
+                <entry>
+                    <key><value>partType</value></key>
+                    <value>LXK MPS Consumable Type</value>
+                </entry>
+                <entry>
+                    <key><value>status</value></key>
+                    <value>Status</value>
+                </entry>
+                <entry>
+                    <key><value>vendorId</value></key>
+                    <value>LXK MPS Service Provider Id</value>
+                </entry>
+                
+                <entry>
+                    <key><value>requestedQuantity</value></key>
+                    <value>LXK MPS Quantity Requested</value>
+                </entry>
+                
+                <entry>
+                    <key><value>backOrderQuantity</value></key>
+                    <value>LXK MPS Back Order Quantity</value>
+                </entry>
+                
+                <entry>
+                    <key><value>orderedDate</value></key>
+                    <value>LXK MPS Created</value>
+                </entry>
+                <entry>
+                    <key><value>orderReferenceNumber</value></key>
+                    <value>LXK MPS Partner Order Ref Number</value>
+                </entry>
+                <entry>
+                    <key><value>expectedShipDate</value></key>
+                    <value>LXK MPS Earliest Fulfillment Date</value>
+                </entry>
+                <entry>
+                    <key><value>shippedQuantity</value></key>
+                    <value>LXK MPS Shipped Quantity</value>
+                </entry>
+                <entry>
+                    <key><value>cancelledQuantity</value></key>
+                    <value>LXK MPS Cancelled Quantity</value>
+                </entry>
+                
+                <entry>
+                    <key><value>orderLineType</value></key>
+                    <value>LXK R Line Type</value>
+                </entry>
+                <entry>
+                    <key><value>cancellationReason</value></key>
+                    <value>LXK MPS Cancellation Reason</value>
+                </entry>
+                <entry>
+                    <key><value>fulfillmentType</value></key>
+                    <value>LXK MPS Fulfillment Type WF</value>
+                </entry>
+                
+                <entry>
+                    <key><value>pendingShipmentItems</value></key>
+                    <value>com.lexmark.service.impl.real.domain.SupplyRequestDetailOrderLineShipmentItemDo</value>
+                </entry>
+                
+                <entry>
+                    <key><value>portalFulfillmentStatus</value></key>
+                    <value>LXK MPS Fulfillment Status</value>
+                </entry> 
+                 <entry>
+                    <key><value>vendorPartNumber</value></key>
+                    <value>LXK MPS Vendor Part No</value>
+                </entry>
+                
+	     	</map>
+		</property>
+    </bean>  
+</beans>

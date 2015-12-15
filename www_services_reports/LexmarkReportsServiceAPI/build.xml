@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="LexmarkReportsServicesAPI" default="all" basedir=".">
+
+    <property name="WS-dirs.base" value="."/>
+	<property name="WS-base" value="build/LexmarkReportsServicesAPI"/>
+	<property name="WS-classdir" value="build/classes-WS"/>
+	<property name="WS-src" value="src"/>
+	<property name="WS-webcont" value="webapp"/>
+	<property name="WS-deploymentdescription" value="webapp/WEB-INF"/>
+	<property name="WS-warfile" value="LexmarkReportsServicesAPI.war"/>
+	<property name="WS-warDir" value="build/war"/>	
+ 
+	 <path id="WS-compile.classpath">	 		
+	 		<fileset dir="${WS-deploymentdescription}/lib">
+	 			<include name="*.jar"/>
+	 		</fileset>	 		 
+	</path>
+
+	
+
+
+
+	
+
+<target name="init">
+		<!-- Create classes directories -->
+	 	<mkdir dir="build/war/WEB-INF"/>
+		<mkdir dir="build/war/WEB-INF/classes"/>
+		<mkdir dir="build/classes-WS"/>
+		
+</target>
+
+	<!-- Main target -->
+
+<target name="all" depends="init,WS-Compile,WS-buildWar,final-stage "/>
+
+	
+
+
+<!-- Compile - Web - Java Files and store in /build/src directory -->
+
+<target name="WS-Compile" >
+		<javac srcdir="${WS-src}" destdir="${WS-classdir}" debug="true" includes="**/*.java">
+			<classpath refid="WS-compile.classpath"/>
+		</javac>
+</target>
+
+
+
+
+
+
+
+
+
+<!-- Create the War File -->
+
+<target name="WS-buildWar" depends="init">
+    <delete file="build/war/LexmarkReportsServicesAPI.war" />
+		<copy todir="${WS-warDir}/WEB-INF/classes">
+			<fileset dir="${WS-classdir}" includes="**/*.class" />
+			<fileset dir="${WS-dirs.base}/src" includes="*.properties" />
+			<fileset dir="${WS-dirs.base}/src" includes="*.xml" />
+		</copy>
+
+		<copy todir="${WS-warDir}/WEB-INF">
+			<fileset dir="${WS-deploymentdescription}" includes="web.xml" />
+		</copy>
+
+		<copy todir="${WS-warDir}">
+		     <fileset dir="${WS-webcont}">
+			    <include name="**/*.*"/>
+			    
+                     </fileset>
+			
+		</copy>
+	
+              
+                 
+		<!-- Create war file and place in directory -->
+		<jar jarfile="${WS-warDir}/${WS-warfile}" basedir="${WS-warDir}" />
+
+</target>
+
+
+
+
+<target name="final-stage" depends="init">
+
+<copy todir="build">
+	
+	<fileset dir="${WS-warDir}">
+		<include name="*.war"/>
+	</fileset>
+
+
+</copy>
+
+              
+	    <delete dir="${WS-warDir}/META-INF" />
+		<delete dir="${WS-warDir}/WEB-INF" />
+	    <delete file="${WS-warDir}/index.jsp" />
+		<delete dir="${WS-warDir}/WEB-INF/classes" />
+		<delete dir="${WS-classdir}" />
+	    <delete file="build/LexmarkReportsServicesAPI.war" />
+	
+		<echo message="" />
+<echo message="LexmarkReportsServicesAPI.war  have been created in build folder. Thank You." />
+</target>
+
+
+
+</project>

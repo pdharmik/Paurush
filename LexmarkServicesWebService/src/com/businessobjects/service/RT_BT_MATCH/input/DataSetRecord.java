@@ -1,0 +1,453 @@
+/**
+ * DataSetRecord.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
+ */
+
+package com.businessobjects.service.RT_BT_MATCH.input;
+
+public class DataSetRecord  implements java.io.Serializable {
+    private java.lang.String id;
+
+    private java.lang.String location;
+
+    private java.lang.String name;
+
+    private java.lang.String city;
+
+    private java.lang.String country;
+
+    private java.lang.String postalCode;
+
+    private java.lang.String state;
+
+    private java.lang.String streetAddress;
+
+    private java.lang.String streetAddress2;
+
+    private java.lang.String organization;
+
+    public DataSetRecord() {
+    }
+
+    public DataSetRecord(
+           java.lang.String id,
+           java.lang.String location,
+           java.lang.String name,
+           java.lang.String city,
+           java.lang.String country,
+           java.lang.String postalCode,
+           java.lang.String state,
+           java.lang.String streetAddress,
+           java.lang.String streetAddress2,
+           java.lang.String organization) {
+           this.id = id;
+           this.location = location;
+           this.name = name;
+           this.city = city;
+           this.country = country;
+           this.postalCode = postalCode;
+           this.state = state;
+           this.streetAddress = streetAddress;
+           this.streetAddress2 = streetAddress2;
+           this.organization = organization;
+    }
+
+
+    /**
+     * Gets the id value for this DataSetRecord.
+     * 
+     * @return id
+     */
+    public java.lang.String getId() {
+        return id;
+    }
+
+
+    /**
+     * Sets the id value for this DataSetRecord.
+     * 
+     * @param id
+     */
+    public void setId(java.lang.String id) {
+        this.id = id;
+    }
+
+
+    /**
+     * Gets the location value for this DataSetRecord.
+     * 
+     * @return location
+     */
+    public java.lang.String getLocation() {
+        return location;
+    }
+
+
+    /**
+     * Sets the location value for this DataSetRecord.
+     * 
+     * @param location
+     */
+    public void setLocation(java.lang.String location) {
+        this.location = location;
+    }
+
+
+    /**
+     * Gets the name value for this DataSetRecord.
+     * 
+     * @return name
+     */
+    public java.lang.String getName() {
+        return name;
+    }
+
+
+    /**
+     * Sets the name value for this DataSetRecord.
+     * 
+     * @param name
+     */
+    public void setName(java.lang.String name) {
+        this.name = name;
+    }
+
+
+    /**
+     * Gets the city value for this DataSetRecord.
+     * 
+     * @return city
+     */
+    public java.lang.String getCity() {
+        return city;
+    }
+
+
+    /**
+     * Sets the city value for this DataSetRecord.
+     * 
+     * @param city
+     */
+    public void setCity(java.lang.String city) {
+        this.city = city;
+    }
+
+
+    /**
+     * Gets the country value for this DataSetRecord.
+     * 
+     * @return country
+     */
+    public java.lang.String getCountry() {
+        return country;
+    }
+
+
+    /**
+     * Sets the country value for this DataSetRecord.
+     * 
+     * @param country
+     */
+    public void setCountry(java.lang.String country) {
+        this.country = country;
+    }
+
+
+    /**
+     * Gets the postalCode value for this DataSetRecord.
+     * 
+     * @return postalCode
+     */
+    public java.lang.String getPostalCode() {
+        return postalCode;
+    }
+
+
+    /**
+     * Sets the postalCode value for this DataSetRecord.
+     * 
+     * @param postalCode
+     */
+    public void setPostalCode(java.lang.String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+
+    /**
+     * Gets the state value for this DataSetRecord.
+     * 
+     * @return state
+     */
+    public java.lang.String getState() {
+        return state;
+    }
+
+
+    /**
+     * Sets the state value for this DataSetRecord.
+     * 
+     * @param state
+     */
+    public void setState(java.lang.String state) {
+        this.state = state;
+    }
+
+
+    /**
+     * Gets the streetAddress value for this DataSetRecord.
+     * 
+     * @return streetAddress
+     */
+    public java.lang.String getStreetAddress() {
+        return streetAddress;
+    }
+
+
+    /**
+     * Sets the streetAddress value for this DataSetRecord.
+     * 
+     * @param streetAddress
+     */
+    public void setStreetAddress(java.lang.String streetAddress) {
+        this.streetAddress = streetAddress;
+    }
+
+
+    /**
+     * Gets the streetAddress2 value for this DataSetRecord.
+     * 
+     * @return streetAddress2
+     */
+    public java.lang.String getStreetAddress2() {
+        return streetAddress2;
+    }
+
+
+    /**
+     * Sets the streetAddress2 value for this DataSetRecord.
+     * 
+     * @param streetAddress2
+     */
+    public void setStreetAddress2(java.lang.String streetAddress2) {
+        this.streetAddress2 = streetAddress2;
+    }
+
+
+    /**
+     * Gets the organization value for this DataSetRecord.
+     * 
+     * @return organization
+     */
+    public java.lang.String getOrganization() {
+        return organization;
+    }
+
+
+    /**
+     * Sets the organization value for this DataSetRecord.
+     * 
+     * @param organization
+     */
+    public void setOrganization(java.lang.String organization) {
+        this.organization = organization;
+    }
+
+    private java.lang.Object __equalsCalc = null;
+    public synchronized boolean equals(java.lang.Object obj) {
+        if (!(obj instanceof DataSetRecord)) return false;
+        DataSetRecord other = (DataSetRecord) obj;
+        if (obj == null) return false;
+        if (this == obj) return true;
+        if (__equalsCalc != null) {
+            return (__equalsCalc == obj);
+        }
+        __equalsCalc = obj;
+        boolean _equals;
+        _equals = true && 
+            ((this.id==null && other.getId()==null) || 
+             (this.id!=null &&
+              this.id.equals(other.getId()))) &&
+            ((this.location==null && other.getLocation()==null) || 
+             (this.location!=null &&
+              this.location.equals(other.getLocation()))) &&
+            ((this.name==null && other.getName()==null) || 
+             (this.name!=null &&
+              this.name.equals(other.getName()))) &&
+            ((this.city==null && other.getCity()==null) || 
+             (this.city!=null &&
+              this.city.equals(other.getCity()))) &&
+            ((this.country==null && other.getCountry()==null) || 
+             (this.country!=null &&
+              this.country.equals(other.getCountry()))) &&
+            ((this.postalCode==null && other.getPostalCode()==null) || 
+             (this.postalCode!=null &&
+              this.postalCode.equals(other.getPostalCode()))) &&
+            ((this.state==null && other.getState()==null) || 
+             (this.state!=null &&
+              this.state.equals(other.getState()))) &&
+            ((this.streetAddress==null && other.getStreetAddress()==null) || 
+             (this.streetAddress!=null &&
+              this.streetAddress.equals(other.getStreetAddress()))) &&
+            ((this.streetAddress2==null && other.getStreetAddress2()==null) || 
+             (this.streetAddress2!=null &&
+              this.streetAddress2.equals(other.getStreetAddress2()))) &&
+            ((this.organization==null && other.getOrganization()==null) || 
+             (this.organization!=null &&
+              this.organization.equals(other.getOrganization())));
+        __equalsCalc = null;
+        return _equals;
+    }
+
+    private boolean __hashCodeCalc = false;
+    public synchronized int hashCode() {
+        if (__hashCodeCalc) {
+            return 0;
+        }
+        __hashCodeCalc = true;
+        int _hashCode = 1;
+        if (getId() != null) {
+            _hashCode += getId().hashCode();
+        }
+        if (getLocation() != null) {
+            _hashCode += getLocation().hashCode();
+        }
+        if (getName() != null) {
+            _hashCode += getName().hashCode();
+        }
+        if (getCity() != null) {
+            _hashCode += getCity().hashCode();
+        }
+        if (getCountry() != null) {
+            _hashCode += getCountry().hashCode();
+        }
+        if (getPostalCode() != null) {
+            _hashCode += getPostalCode().hashCode();
+        }
+        if (getState() != null) {
+            _hashCode += getState().hashCode();
+        }
+        if (getStreetAddress() != null) {
+            _hashCode += getStreetAddress().hashCode();
+        }
+        if (getStreetAddress2() != null) {
+            _hashCode += getStreetAddress2().hashCode();
+        }
+        if (getOrganization() != null) {
+            _hashCode += getOrganization().hashCode();
+        }
+        __hashCodeCalc = false;
+        return _hashCode;
+    }
+
+    // Type metadata
+    private static org.apache.axis.description.TypeDesc typeDesc =
+        new org.apache.axis.description.TypeDesc(DataSetRecord.class, true);
+
+    static {
+        typeDesc.setXmlType(new javax.xml.namespace.QName("http://businessobjects.com/service/RT_BT_MATCH/input", ">>DataSet>Record"));
+        org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("id");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "Id"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("location");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "Location"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("name");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "Name"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("city");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "City"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("country");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "Country"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("postalCode");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "PostalCode"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("state");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "State"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("streetAddress");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "StreetAddress"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("streetAddress2");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "StreetAddress2"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("organization");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "Organization"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+    }
+
+    /**
+     * Return type metadata object
+     */
+    public static org.apache.axis.description.TypeDesc getTypeDesc() {
+        return typeDesc;
+    }
+
+    /**
+     * Get Custom Serializer
+     */
+    public static org.apache.axis.encoding.Serializer getSerializer(
+           java.lang.String mechType, 
+           java.lang.Class _javaType,  
+           javax.xml.namespace.QName _xmlType) {
+        return 
+          new  org.apache.axis.encoding.ser.BeanSerializer(
+            _javaType, _xmlType, typeDesc);
+    }
+
+    /**
+     * Get Custom Deserializer
+     */
+    public static org.apache.axis.encoding.Deserializer getDeserializer(
+           java.lang.String mechType, 
+           java.lang.Class _javaType,  
+           javax.xml.namespace.QName _xmlType) {
+        return 
+          new  org.apache.axis.encoding.ser.BeanDeserializer(
+            _javaType, _xmlType, typeDesc);
+    }
+
+}

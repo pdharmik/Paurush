@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="AccountByVendorIdDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS Service Partner Portal Account IO</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+<!-- 			<value>LXK Account Service Web Portal</value> -->
+			<value>Service Agreement/Account</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>LXK MPS Agreement Account Global DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>LXK MPS Agreement Account Domestic DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXK MPS Agreement Account Legal #</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXK MPS Agreement Account MDM#</value>
+				</entry>		
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>Account Id</value>
+				</entry>
+				
+                <entry>
+                    <key><value>partnerFlag</value></key>
+                    <value>LXK MPS Partner Flag</value>
+                </entry>
+				
+                <entry>
+                    <key><value>id</value></key>
+                    <value>LXK MPS Primary Account Id</value>
+                </entry>
+                <entry>
+                    <key><value>name</value></key>
+                    <value>LXK Primary Account</value>
+                </entry>
+                <entry>
+                    <key><value>country</value></key>
+                    <value>LXK MPS Country</value>
+                </entry>
+                <entry>
+                    <key><value>agreementName</value></key>
+                    <value>LXK MPS Agreement Name</value>
+                </entry>
+                <entry>
+                    <key><value>vendorAccountId</value></key>
+                    <value>Account Id</value>
+                </entry>                
+    			<entry>
+	         		<key><value>primaryAccount</value></key>
+	         		<value>LXK Primary Account</value>
+				</entry>
+                <entry>
+                    <key><value>agreementId</value></key>
+                    <value>Agreement Id</value>
+                </entry>
+    			<entry>
+	         		<key><value>addressFlag</value></key>
+	         		<value>LXK MPS Org Address Flag</value>
+				</entry>
+                <entry>
+                    <key><value>consumableFlag</value></key>
+                    <value>LXK WEB Consumables Flag</value>
+                </entry>
+ 	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

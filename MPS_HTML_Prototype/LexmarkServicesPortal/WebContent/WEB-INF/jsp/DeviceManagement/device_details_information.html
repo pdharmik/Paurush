@@ -1,0 +1,586 @@
+<!DOCTYPE HTML>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Lexmark Portal - Device Finder</title>
+<link href="../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<style type="text/css">
+#productModelPanel .pad_010 {
+	padding: 0 10px;
+}
+.swfupload {
+    z-index: 100000 !important;
+}
+</style>
+
+<script src="../../../js/util.js"></script>
+<script src="../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/tree/dhtmlxtree.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../../js/expand.js"></script>
+<script src="../../../js/mps.js"></script>
+<script>
+	$(function() {
+		$( "#tabs" ).tabs();
+	});
+
+	function onload_page()
+	{
+	document.getElementById('supplies_requests').style.display = "none";
+	document.getElementById('change_requests').style.display = "none";
+	document.getElementById('service_requests').style.display = "none";
+	}
+	
+	function goBack() {
+		window.location.href="all_devices.html";
+	}
+	
+	function show(li_id)
+	{
+		switch(li_id.id)
+		{
+			case "li_all_request_types":
+				document.getElementById('supplies_requests').style.display = "none";
+				document.getElementById('change_requests').style.display = "none";
+				document.getElementById('service_requests').style.display = "none";
+				document.getElementById('all_request_types').style.display = "block";
+				document.getElementById(li_id.id).className="selected";
+				document.getElementById('li_supplies_requests').className="";
+				document.getElementById('li_change_requests').className="";
+				document.getElementById('li_service_requests').className="";
+			break;
+			case "li_supplies_requests":
+				document.getElementById('all_request_types').style.display = "none";
+				document.getElementById('change_requests').style.display = "none";
+				document.getElementById('service_requests').style.display = "none";
+				document.getElementById('supplies_requests').style.display = "block";
+				document.getElementById(li_id.id).className="selected";
+				document.getElementById('li_all_request_types').className="";
+				document.getElementById('li_change_requests').className="";
+				document.getElementById('li_service_requests').className="";
+			break;
+			case "li_change_requests":
+				document.getElementById('all_request_types').style.display = "none";
+				document.getElementById('supplies_requests').style.display = "none";
+				document.getElementById('service_requests').style.display = "none";
+				document.getElementById('change_requests').style.display = "block";
+				document.getElementById(li_id.id).className="selected";
+				document.getElementById('li_supplies_requests').className="";
+				document.getElementById('li_all_request_types').className="";
+				document.getElementById('li_service_requests').className="";
+			break;
+			case "li_service_requests":
+				document.getElementById('all_request_types').style.display = "none";
+				document.getElementById('supplies_requests').style.display = "none";
+				document.getElementById('change_requests').style.display = "none";
+				document.getElementById('service_requests').style.display = "block";
+				document.getElementById(li_id.id).className="selected";
+				document.getElementById('li_supplies_requests').className="";
+				document.getElementById('li_change_requests').className="";
+				document.getElementById('li_all_request_types').className="";
+			break;
+		}
+	}
+	
+	function openPageCount(){
+	var url = "update_page_counts.html";
+	
+		jQuery('#updatePageCount').load(url,function(){
+			
+			dialog=jQuery('#contentPageCount').dialog({
+				autoOpen: false,
+				title: 'Update Meter Reads',
+				modal: true,
+				height: 550,
+				width: 780,				
+				close: function(event,ui){
+					 dialog.dialog('destroy');
+					 
+					 dialog=null;
+					 jQuery('#updatePageCount').empty();				 
+					}
+				});
+			
+			dialog.dialog('open');
+			});
+	}
+	
+	function doBookmark() {
+		if (document.getElementById("bookmarkLink").innerHTML == "Bookmark This Device") {
+			document.getElementById("bookmark").innerHTML = "<img src=\"../../../images/favorite.png\" width=\"15\" height=\"15\" onclick=\"javascript:doBookmark();\" /> <a href=\"javascript:doBookmark();\" id=\"bookmarkLink\">Remove from Bookmark</a>";
+		}
+		else {
+			document.getElementById("bookmark").innerHTML = '<img src="../../../images/unfavorite.png" width="15" height="15" onclick="javascript:doBookmark();" /> <a href="javascript:doBookmark();" id="bookmarkLink">Bookmark This Device</a>';
+		}
+	}
+	
+	function ipAddressPopup() {
+	var url = "ipAddressPopup.html";
+	
+		jQuery('#ipAddressDiv').load(url,function(){
+			
+			dialog=jQuery('#ipAddressContent').dialog({
+				autoOpen: false,
+				autoClose: false,
+				title: '',
+				modal: true,
+				height: 150,
+				width: 400,				
+				close: function(event,ui){
+					 dialog.dialog('destroy');
+					 
+					 dialog=null;
+					 jQuery('#ipAddressDiv').empty();				 
+					}
+				});
+			
+			dialog.dialog('open');
+			});
+}
+
+function controlPanelPopup() {
+	var url = "controlPanelPopup.html";
+	
+		jQuery('#controlPanel').load(url,function(){
+			
+			dialog=jQuery('#controlPanelPopup').dialog({
+				autoOpen: false,
+				autoClose: false,
+				title: 'Update Meter Reads',
+				modal: true,
+				height: 150,
+				width: 400,				
+				close: function(event,ui){
+					 dialog.dialog('destroy');
+					 
+					 dialog=null;
+					 jQuery('#controlPanel').empty();				 
+					}
+				});
+			
+			dialog.dialog('open');
+			});
+}
+	
+</script>
+</head>
+<body onload="javascript:onload_page();">
+<div id="updatePageCount"></div>
+<div id="ipAddressDiv"></div>
+<div id="controlPanel" style="display:none"></div>  
+<div id="wrapper" >
+  <div id="banner">
+    <h1 class="logo"><a href="https://tportal.lexmark.com/web/guest" title="Lexmark Global Services">tportal.lexmark.com</a></h1>
+    <div id="top-header">
+      <div id="top-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><b><span>Welcome Jason Filarky!</span></b></li>
+          <li><a href="../Home/preferences.html">Preferences</a></li>
+          <li><a href="#">User Administration</a></li>
+          <li><a href="../Home/login.html">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="bottom-header">
+      <div id="bottom-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><a href="http://www.lexmark.com">Lexmark.com</a></li>
+          <li><a href="../Home/FAQ.html">FAQ</a></li>
+          <li><a href="../Home/getHelp.html">Get Help</a></li>
+          <li><a href="../Home/contact_Lexmark.html">Contact Lexmark</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sort-pages modify-pages" id="topnavigation">	
+  <ul>	
+	  <li>	<a href="../Home/home.html"><span>Home</span></a>	</li>
+	  <li class="selected">	<a href="../DeviceManagement/all_devices.html"><span>Device Finder</span></a>	</li>
+	  <li class="">	<a href="../pageCounts/defaltPageCount.html"><span>Page Counts</span></a>	</li>
+	  <li class="">	<a href="../HistoryAndDetails/history_allRequest.html"><span>Requests</span></a>	</li>
+	  <li class="">	<a target="_blank" href="https://services.lexmark.com/portal/site"><span>Order Supplies</span></a>	</li>
+	  <li class="">	<a href="../Reports/defaltReportView.html"><span>Reports</span></a>	</li>
+	  <li class="">	<a href="../DocumentLibrary/docLibrary_landingPage.html"><span>Document Library</span></a>	</li>
+  </ul>
+  </div>
+  
+  <div id="content-wrapper">
+    <div class="main-wrap">
+	  <div class="journal-content-article">
+      <h2>Device Finder</h2>
+      <span class="step">Device Details</span></div>
+      <div class="content"> 
+        <!-- MAIN CONTENT BEGIN -->
+        <h3 class="pageTitle">Lexmark X945e</h3>
+        <div class="utilities printPage floatR">
+          <ul>
+            <li class="first"><a href="#"><img src="../../../images/print.jpg" alt="Print this page" title="Print this page"></a></li>
+          </ul>
+        </div>
+        <div id="productModelPanel" class="portletBlock">
+          <div class="columnsOne">
+            <div class="columnInner infoBox rounded shadow">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" class="assetDetail">
+                <tr>
+                  <td class="pModel"><ul>
+                      <li class="center"><img src="../../../images/dummy_printer.jpg" /></li>
+                    </ul></td>
+                  <td class="pad_010"><ul class="form">
+                      <li>
+                        <label>Serial Number:</label>
+                        <span>0210021</span></li>
+                      <li>
+                        <label>Asset Tag:</label>
+                        <span> X945e-0210021</span></li>
+                      <li class="fav" id="bookmark"><img src="../../../images/unfavorite.png" width="15" height="15" onclick="javascript:doBookmark();" /> <a href="javascript:doBookmark();" id="bookmarkLink">Bookmark This Device</a> </li>
+                    </ul></td>
+                  <td class="actionLinks separatorV"><ul class="link">
+                      <li><a href="#" onclick="controlPanelPopup()">Control Panel</a></li>
+                      <li><a target="_blank" href="http://md.lexmark.com/md/?dest=support&lang=en&country=en_US&partnumber=21Z0221">Support &amp; Download</a></li>
+                      <li><a href="#">Create a Request</a></li>
+                      <li><a href="#" onclick="javascript:openPageCount();">Update Page Count</a></li>
+                    </ul></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!-- TABBED SECTION - START -->
+        <div id="tabs" class="nestedTabs">
+          <ul>
+            <li><a href="#tabs-1">Device Information</a></li>
+            <li><a href="#tabs-2">Request History </a></li>
+          </ul>
+          <div class="tabContent">
+            <div id="tabs-1">
+              <div class="portletBodyWrap">
+                <div class="columnsTwo">
+                  <div class="columnInner infoBox rounded shadow">
+                    <h4>Identifiers</h4>
+                    <ul class="form">
+                      <li>
+                        <label>Consumer Device Tag:</label>
+                        <span></span></li>
+                      <li>
+                        <label>Device Hostname:</label>
+                        <span>swlax1a4cw</span></li>
+                      <li>
+                        <label>IP Address:</label>
+                        <span><a href="#" onclick="ipAddressPopup()">10.188.22.13</a></span></li>
+                      <li>
+                        <label>Device Phase:</label>
+                        <span>Accepted</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="columnsTwo">
+                  <div class="columnInner infoBox rounded shadow">
+                    <h4>Page Counts</h4>
+                    <ul class="form">
+                      <li>
+                        <label>LTPC:</label>
+                        <span>186860</span></li>
+                      <li>
+                        <label>Date &amp; Time:</label>
+                        <span>03/27/2013 14:08:59</span></li>
+                    </ul>
+                    <ul class="form division">
+                      <li>
+                        <label>Color:</label>
+                        <span>144258</span></li>
+                      <li>
+                        <label>Date &amp; Time:</label>
+                        <span>03/27/2013 14:08:59</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="portletBodyWrap">
+                <div class="columnsTwo">
+                  <div class="columnInner infoBox rounded shadow">
+                    <h4>Installed Address</h4>
+                    <ul class="roDisplay">
+                      <li><div>2211 Michelson Dr Ste 600</div>
+					  <div>Irvine, CA / 92612-0300</div>
+					  <div>USA</div></li>
+                      <li><label>Building:</label><span> Irvine</span></li>
+                      <li><label>Floor:</label><span> Floor 1</span></li>
+                      <li><label>Office:</label><span> swlax1a4cw</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="columnsTwo">
+                  <div class="columnInner infoBox rounded shadow">
+                    <h4>Primary Contact</h4>
+                    <ul class="form">
+                      <li>
+                        <label>First Name:</label>
+                        <span>Terri</span></li>
+                      <li>
+                        <label>Middle Name:</label>
+                        <span></span></li>
+                      <li>
+                        <label>Last Name:</label>
+                        <span>Molvar</span></li>
+                      <li>
+                        <label>Work Phone:</label>
+                        <span>7143712044</span></li>
+                      <li>
+                        <label>Alternate Phone:</label>
+                        <span></span></li>
+                      <li>
+                        <label>Email Address:</label>
+                        <span>tmolvar@lexmark.com</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="tabs-2">
+              <div class="columnInner">
+                <div class="left-nav">
+                  <div class="left-nav-inner"> 
+                    <!-- LEFT COLUMN CONTENT GOES HERE -->
+                    <div class="left-nav-header">
+                      <h3>Request Type:</h3>
+                    </div>
+                    <ul class="filters">
+                      <li id="li_all_request_types" class="selected" onclick="javascript:show(this);"><a href="javascript:void(0);">All Request Types</a></li>
+                      <li id="li_supplies_requests" onclick="javascript:show(this);"><a href="javascript:void(0);">Supplies Requests</a></li>
+                      <li id="li_change_requests" onclick="javascript:show(this);"><a href="javascript:void(0);">Change Requests</a></li>
+                      <li id="li_service_requests" onclick="javascript:show(this);"><a href="javascript:void(0);">Service Requests</a></li>
+                    </ul>
+                  </div>
+                  <div class="left-nav-footer"> 
+                    <!-- NO CONTENT HERE PLS --> 
+                  </div>
+                </div>
+                <div id="all_request_types">
+                  <div class="right-column">
+                    <h3 class="pageTitle">All Request Types</h3>
+                    <div class="grid-controls"> 
+                      <!-- Expand-min Start -->
+                      <div class="expand-min">
+                        <ul>
+                          <li class="first"><img src="../../../images/customize.png" alt="Customize Grid" title="Customize Grid" /><a href="#grid" id='headerMenuButton'>Customize Columns</a></li>
+                          <li><img src="../../../images/reset.png" alt="Reset Grid" title="Reset Grid" /><a href="javascript:doReset();">Reset</a></li>
+                        </ul>
+                      </div>
+                      <!-- Expand-min End --> 
+                    </div>
+                    <div class="portlet-wrap rounded">
+                      <div class="portlet-wrap-inner">
+                        <div id="mygrid_container_all_request_types" class="gridbox gridbox_light"></div>
+                      </div>
+                    </div>
+                    <div class="pagination"><span id="pagingArea_all_request_types"></span><span id="infoArea_all_request_types"></span> </div>
+                  </div>
+                </div>
+                <div id="supplies_requests">
+                  <div class="right-column">
+                    <h3 class="pageTitle">Supplies Requests</h3>
+                    <div class="grid-controls"> 
+                      <!-- Expand-min Start -->
+                      <div class="expand-min">
+                        <ul>
+                          <li class="first"><img src="../../../images/customize.png" alt="Customize Grid" title="Customize Grid" /><a href="#grid" id='headerMenuButton'>Customize Columns</a></li>
+                          <li><img src="../../../images/reset.png" alt="Reset Grid" title="Reset Grid" /><a href="javascript:doReset();">Reset</a></li>
+                        </ul>
+                      </div>
+                      <!-- Expand-min End --> 
+                    </div>
+                    <div class="portlet-wrap rounded">
+                      <div class="portlet-wrap-inner">
+                        <div id="mygrid_container_supplies_requests" class="gridbox gridbox_light"></div>
+                      </div>
+                    </div>
+                    <div class="pagination"><span id="pagingArea_supplies_requests"></span><span id="infoArea_supplies_requests"></span></div>
+                  </div>
+                </div>
+                <div id="change_requests">
+                  <div class="right-column">
+                    <h3 class="pageTitle">Change Requests</h3>
+                    <div class="grid-controls"> 
+                      <!-- Expand-min Start -->
+                      <div class="expand-min">
+                        <ul>
+                          <li class="first"><img src="../../../images/customize.png" alt="Customize Grid" title="Customize Grid" /><a href="#grid" id='headerMenuButton'>Customize Columns</a></li>
+                          <li><img src="../../../images/reset.png" alt="Reset Grid" title="Reset Grid" /><a href="javascript:doReset();">Reset</a></li>
+                        </ul>
+                      </div>
+                      <!-- Expand-min End --> 
+                    </div>
+                    <div class="portlet-wrap rounded">
+                      <div class="portlet-wrap-inner">
+                        <div id="mygrid_container_change_requests" class="gridbox gridbox_light"></div>
+                      </div>
+                    </div>
+                    <div class="pagination"><span id="pagingArea_change_requests"></span><span id="infoArea_change_requests"></span></div>
+                  </div>
+                </div>
+                <div id="service_requests">
+                  <div class="right-column">
+                    <h3 class="pageTitle">Service Requests</h3>
+                    <div class="grid-controls"> 
+                      <!-- Expand-min Start -->
+                      <div class="expand-min">
+                        <ul>
+                          <li class="first"><img src="../../../images/customize.png" alt="Customize Grid" title="Customize Grid" /><a href="#grid" id='headerMenuButton'>Customize Columns</a></li>
+                          <li><img src="../../../images/reset.png" alt="Reset Grid" title="Reset Grid" /><a href="javascript:doReset();">Reset</a></li>
+                        </ul>
+                      </div>
+                      <!-- Expand-min End --> 
+                    </div>
+                    <div class="portlet-wrap rounded">
+                      <div class="portlet-wrap-inner">
+                        <div id="mygrid_container_service_requests" class="gridbox gridbox_light"></div>
+                      </div>
+                    </div>
+                    <div class="pagination"><span id="pagingArea_service_requests"></span><span id="infoArea_service_requests"></span> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- TABBED SECTION - END -->
+        <div class="buttonContainer">
+          <button class="button" onclick="goBack();">Back</button>
+        </div>
+      </div>
+      <!-- MAIN CONTENT END --> 
+    </div>
+  </div>
+  
+  <div id="footer" class="round_top">
+<div id="footer-nav-container">
+<ul id="footer-nav-ul">
+  <li><a href="http://www1.lexmark.com/en_US/about-us/index.shtml">About 
+  Lexmark </a></li><li><a href="http://www1.lexmark.com/en_US/terms/privacy-security.shtml">Privacy 
+  Policy</a> </li><li><a href="http://www1.lexmark.com/en_US/terms/terms-and-conditions.shtml">Terms 
+  &amp; Conditions </a></li><li><a href="http://www1.lexmark.com/en_US/nav/sitemap.shtml">Sitemap 
+  </a></li><li><a href="http://www1.lexmark.com/en_US/about-us/company/contact-us.shtml">Contact 
+  Lexmark </a></li></ul><br>
+<p align="left">&copy; Copyright 2012 
+Lexmark<!--extra added align center>--></p></div></div>
+  
+</div>
+</body>
+<script>
+   var mygrid;
+   var headerString = "Request No,Date/Time Created,Request Type,Area,Status";
+   var ar = [["<a href=\"#\">1-11721050681</a>","03/28/2013 02:52:20 PM","Service","","Inprocess"],
+			["<a href=\"#\">1-11716389435</a>","03/28/2013 01:18:09 PM","Service","","Inprocess"],
+			["<a href=\"#\">1-11704927391</a>","03/27/2013 08:30:09 AM","Service","Hardware","Cancelled"]]; 
+   mygrid = new dhtmlXGridObject('mygrid_container_all_request_types');
+   mygrid.setImagePath("../../../images/gridImgs/");
+   mygrid.setHeader(headerString);
+   mygrid.attachHeader("#text_filter,,,#text_filter,#select_filter");
+   mygrid.setInitWidths("160,160,160,160,*");
+   mygrid.setColAlign("left,left,left,left,left");
+   mygrid.setColSorting("str,na,str,str,str");
+   mygrid.setSkin("light");
+   mygrid.setColTypes("ro,ro,ro,ro,ro");
+   mygrid.enableAutoHeight(true);
+   mygrid.enableMultiline(true);
+   mygrid.enableColumnMove(true);
+   mygrid.init();
+   mygrid.enablePaging(true, 20, 10, "pagingArea_all_request_types", true, "infoArea_all_request_types");
+   mygrid.setPagingSkin("bricks"); 	 
+   mygrid.parse(ar,"jsarray");
+</script>
+<script>
+   var mygrid;
+   var headerString = "&nbsp;,&nbsp;,Request No.,Date/Time Created,Area,Sub Area,Serial No.,Status";
+   var ar = [["","<table class=\"displayGrid\"><thead><tr><th class=\"w100\">Part No.</th><th>Description</th><th class=\"w150\">Part Type</th><th class=\"w80 right\">Quantity</th></tr></thead><tbody><tr class=\"altRow\"><td>C736H1KG</td><td>C736 HY LRP Cartridge Black</td><td>Black Cartridge</td><td class=\"right\">1</td></tr></tbody></table>",
+			"<a href=\"#\">1-11674056204</a>","03/23/2013 08:12:24 PM","Consumables Supplies Request","Proactive  - Detected","9433YTH","Completed"]]; 
+   mygrid = new dhtmlXGridObject('mygrid_container_supplies_requests');
+   mygrid.setImagePath("../../../images/gridImgs/");
+   mygrid.setHeader(headerString);
+   mygrid.attachHeader(",,#text_filter,,#text_filter,#text_filter,#text_filter,#select_filter");
+   mygrid.setInitWidths("50,30,150,160,150,150,150,*");
+   mygrid.setColAlign("left,left,left,left,left,left,left,left");
+   mygrid.setSkin("light");
+   mygrid.setColSorting("na,na,str,str,str,str,str,str");
+   mygrid.setColTypes("ro,sub_row,ro,ro,ro,ro,ro,ro");
+   mygrid.enableAutoHeight(true);
+   mygrid.enableMultiline(true);
+   mygrid.enableColumnMove(true);
+   mygrid.init();
+   mygrid.enablePaging(true, 20, 10, "pagingArea_supplies_requests", true, "infoArea_supplies_requests");
+   mygrid.setPagingSkin("bricks"); 	 
+   mygrid.parse(ar,"jsarray");
+</script>
+<script>
+   var mygrid;
+   var headerString = "Request No.,Date/Time Created,Area,Sub Area,Status";
+   var ar = [["<a href=\"#\">1-11082681951</a>","03/22/2013 05:07:38 PM","Change Asset","Change Asset Data","Submitted"]];
+   mygrid = new dhtmlXGridObject('mygrid_container_change_requests');
+   mygrid.setImagePath("../../../images/gridImgs/");
+   mygrid.setHeader(headerString);
+   mygrid.attachHeader("#text_filter,,,#text_filter,#select_filter");
+   mygrid.setInitWidths("160,160,160,160,*");
+   mygrid.setColAlign("left,left,left,left,left");
+   mygrid.setColSorting("str,na,str,str,str");
+   mygrid.setSkin("light");
+   mygrid.setColTypes("ro,ro,ro,ro,ro");
+   mygrid.enableAutoHeight(true);
+   mygrid.enableMultiline(true);
+   mygrid.enableColumnMove(true);
+   mygrid.init();
+   mygrid.enablePaging(true, 20, 10, "pagingArea_change_requests", true, "infoArea_change_requests");
+   mygrid.setPagingSkin("bricks");
+   mygrid.parse(ar,"jsarray");
+</script>
+<script>
+   var mygrid;
+   var headerString = ",Request Number,Date/Time Created,Serial Number,Product Model,Resolution,Status";
+   var ar = [["<table class=\"displayGrid\"><thead><tr><th class=\"w150\">Problem Description:</th><th class=\"w100\">Resolution:</th><th class=\"w100\">ETA: </th><th class=\"w150\">Service Location</th><th class=\"w150\">Primary Contact</th></tr></thead><tbody><tr><td>Atolamento de papel no fusor. Envio de tecnico</td><td></td><td>04/02/2013 21:00:00</td><td>Rua do Rocio 430<br>Sao Paulo<br>SP , &nbsp;Brazil<br></td><td>Rogerio&nbsp;G Palomares<br>+55113046632000 0000-0000<br><br></td></tr></tbody></table>",
+			"<a href=\"#\">1-11721050681</a>","03/28/2013 02:52:20 PM","7929LBP","Lexmark X646e",,"Inprocess"]];
+   mygrid = new dhtmlXGridObject('mygrid_container_service_requests');
+   mygrid.setImagePath("../../../images/gridImgs/");
+   mygrid.setHeader(headerString);
+   mygrid.attachHeader(",#text_filter,,#text_filter,#text_filter,#text_filter,#text_filter");
+   mygrid.setInitWidths("30,160,160,160,160,160,*");
+   mygrid.setColAlign("left,left,left,left,left,left,left");
+   mygrid.setColSorting("na,str,na,str,str,str,str");
+   mygrid.setSkin("light");
+   mygrid.setColTypes("sub_row,ro,ro,ro,ro,ro,ro");
+   mygrid.enableAutoHeight(true);
+   mygrid.enableMultiline(true);
+   mygrid.enableColumnMove(true);
+   mygrid.init();
+   mygrid.enablePaging(true, 20, 10, "pagingArea_service_requests", true, "infoArea_service_requests");
+   mygrid.setPagingSkin("bricks"); 	 
+   mygrid.parse(ar,"jsarray");
+</script>
+</html>

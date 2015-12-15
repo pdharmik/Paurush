@@ -1,0 +1,2156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="serviceRequestWS" targetNamespace="http://dlxkswmis1.lex.lexmark.com/ServiceRequest/serviceRequestWS" xmlns:tns1="http://dlxkswmis1.lex.lexmark.com/ServiceRequest/serviceRequestWS" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://tlxkswmis4.lex.lexmark.com/ServiceRequest/serviceRequestWS" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://dlxkswmis1.lex.lexmark.com/ServiceRequest/serviceRequestWS" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://dlxkswmis1.lex.lexmark.com/ServiceRequest/serviceRequestWS" xmlns:SOAP_ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+          
+          <xsd:complexType name="getSRAndActivityDetails">
+            <xsd:sequence>
+              <xsd:element name="getServiceRequestAndActivityDetails" nillable="true" type="tns:serviceRequestAndActivityDetailsInput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="serviceRequestAndActivityDetailsInput">
+            <xsd:sequence>
+              <xsd:element name="getServiceRequestAndActivityDetails" type="tns:getServiceRequestAndActivityDetails"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getServiceRequestAndActivityDetails">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+              <xsd:element name="getServiceRequestAndActivityDetailsData" type="tns:getServiceRequestAndActivityDetailsData" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="WebServiceDocumentMetaData">
+            <xsd:sequence>
+              <xsd:element name="SenderId" type="xsd:string"/>
+              <xsd:element name="SenderName" type="xsd:string"/>
+              <xsd:element name="OriginalPartnerId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OriginalPartnerName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReceiverId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReceiverName" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getServiceRequestAndActivityDetailsData">
+            <xsd:sequence>
+              <xsd:element name="ServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestToken" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ActivityId" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getServiceRequestDetailsResponse">
+            <xsd:sequence>
+              <xsd:element name="serviceRequestDetailsOutput" nillable="true" type="tns:serviceRequestDetailsOutput"/>
+              <xsd:element name="errorCode" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="message" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="serviceRequestDetailsOutput">
+            <xsd:sequence>
+              <xsd:element name="ServiceRequestWSOutput" type="tns:ServiceRequestWSOutput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ServiceRequestWSOutput">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" type="tns:DocumentMetaData" minOccurs="0"/>
+              <xsd:element name="ServiceRequestData" type="tns:ServiceRequestData" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="DocumentMetaData">
+            <xsd:sequence>
+              <xsd:element name="SenderId" type="xsd:string"/>
+              <xsd:element name="SenderName" type="xsd:string"/>
+              <xsd:element name="OriginalPartnerId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OriginalPartnerName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReceiverId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReceiverName" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ServiceRequestData">
+            <xsd:sequence>
+              <xsd:element name="ServiceRequestNumber" type="xsd:string"/>
+              <xsd:element name="ServiceRequestId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestDate" type="xsd:string"/>
+              <xsd:element name="ServiceRequestStatus" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestSource" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestRegion" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Requester" type="tns:Requester"/>
+              <xsd:element name="CustomerInformation" type="tns:CustomerInformation" minOccurs="0"/>
+              <xsd:element name="PrimaryContact" type="tns:PrimaryContact"/>
+              <xsd:element name="SecondaryContact" type="tns:SecondaryContact" minOccurs="0"/>
+              <xsd:element name="AssetInformation" type="tns:AssetInformation"/>
+              <xsd:element name="ProblemDescription" type="xsd:string"/>
+              <xsd:element name="RequestedService" type="xsd:string"/>
+              <xsd:element name="SelectedServiceDetails" type="tns:ArrayOfSelectedServiceDetails"/>
+              <xsd:element name="ServiceAddress" type="tns:ServiceAddress"/>
+              <xsd:element name="TrackingNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Carrier" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ShipDate" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReferenceNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReturnTrackingNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReturnedAssetInformation" type="tns:ReturnedAssetInformation" minOccurs="0"/>
+              <xsd:element name="optionExchangeAdditionalDescription" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ActivityDetails" type="tns:ArrayOfActivityDetails" minOccurs="0"/>
+              <xsd:element name="ServiceProviderInformation" type="tns:ServiceProviderInformation" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Requester">
+            <xsd:sequence>
+              <xsd:element name="ContactId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="FirstName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Department" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="WorkPhone" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="EmailAddress" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UpdateContactFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewContactFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UserFavoriteFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="CustomerInformation">
+            <xsd:sequence>
+              <xsd:element name="MDMId" type="xsd:string"/>
+              <xsd:element name="MDMLevel" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="PrimaryContact">
+            <xsd:sequence>
+              <xsd:element name="ContactId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="FirstName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Department" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="WorkPhone" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AlternatePhone" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="EmailAddress" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="TimeZone" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Country" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Language" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UpdateContactFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewContactFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UserFavoriteFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SecondaryContact">
+            <xsd:sequence>
+              <xsd:element name="ContactId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="FirstName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Department" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="WorkPhone" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="EmailAddress" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UpdateContactFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewContactFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UserFavoriteFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="AssetInformation">
+            <xsd:sequence>
+              <xsd:element name="AssetId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SerialNumber" type="xsd:string"/>
+              <xsd:element name="AssetTag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductModel" type="xsd:string"/>
+              <xsd:element name="ProductNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductLine" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AssetType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="InstalledAtAddress" type="tns:InstalledAtAddress" minOccurs="0"/>
+              <xsd:element name="Entitlement" type="tns:Entitlement" minOccurs="0"/>
+              <xsd:element name="AssetContact" type="tns:AssetContact" minOccurs="0"/>
+              <xsd:element name="Account" type="tns:Account" minOccurs="0"/>
+              <xsd:element name="IPAddress" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SupportURL" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ControlPanelURL" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="KnowledgeBaseURL" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductImageURL" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="HostName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OperatingSystem" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OperatingSystemVersion" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ConnectivityType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="DeviceTag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewMeterReadDate" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ColorCapableIndicator" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastMonoPageReadDate" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastPageCount" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewPageCount" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastColorPageReadDate" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastColorPageCount" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewColorPageCount" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NotMyPrinterFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="InstalledAtAddress">
+            <xsd:sequence>
+              <xsd:element name="AddressId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine1" type="xsd:string"/>
+              <xsd:element name="AddressLine2" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine3" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine4" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="City" type="xsd:string"/>
+              <xsd:element name="State" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Province" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Country" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="County" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewAddressFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UserFavoriteFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Entitlement">
+            <xsd:sequence>
+              <xsd:element name="EntitlementId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="EntitlementName" type="xsd:string"/>
+              <xsd:element name="EntitlementServiceDetails" type="tns:EntitlementServiceDetails" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="EntitlementServiceDetails">
+            <xsd:sequence>
+              <xsd:element name="ServiceDetailId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceDetailsDescription" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PrimaryFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="AssetContact">
+            <xsd:sequence>
+              <xsd:element name="ContactId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="FirstName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Department" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="WorkPhone" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="EmailAddress" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UpdateContactFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewContactFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UserFavoriteFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Account">
+            <xsd:sequence>
+              <xsd:element name="AccountId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AccountName" type="xsd:string"/>
+              <xsd:element name="AccountAddress" type="tns:AccountAddress" minOccurs="0"/>
+              <xsd:element name="AccountPriority" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="AccountAddress">
+            <xsd:sequence>
+              <xsd:element name="AddressId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine1" type="xsd:string"/>
+              <xsd:element name="AddressLine2" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine3" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine4" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="City" type="xsd:string"/>
+              <xsd:element name="State" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Province" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Country" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="County" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewAddressFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UserFavoriteFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SelectedServiceDetails">
+            <xsd:sequence>
+              <xsd:element name="Entitlement" type="tns:Entitlement2" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Entitlement2">
+            <xsd:sequence>
+              <xsd:element name="EntitlementId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="EntitlementName" type="xsd:string"/>
+              <xsd:element name="EntitlementServiceDetails" type="tns:EntitlementServiceDetails2" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="EntitlementServiceDetails2">
+            <xsd:sequence>
+              <xsd:element name="ServiceDetailId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceDetailsDescription" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PrimaryFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfSelectedServiceDetails">
+<xsd:sequence>
+			<xsd:element name="ArrayOfSelectedServiceDetailsItem" type="tns:SelectedServiceDetails" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="ServiceAddress">
+            <xsd:sequence>
+              <xsd:element name="AddressId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine1" type="xsd:string"/>
+              <xsd:element name="AddressLine2" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine3" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine4" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="City" type="xsd:string"/>
+              <xsd:element name="State" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Province" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Country" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="County" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewAddressFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UserFavoriteFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ReturnedAssetInformation">
+            <xsd:sequence>
+              <xsd:element name="AssetId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SerialNumber" type="xsd:string"/>
+              <xsd:element name="AssetTag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductModel" type="xsd:string"/>
+              <xsd:element name="ProductNumber" type="xsd:string"/>
+              <xsd:element name="ProductLine" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AssetType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="InstalledAtAddress" type="tns:InstalledAtAddress2" minOccurs="0"/>
+              <xsd:element name="Entitlement" type="tns:Entitlement3" minOccurs="0"/>
+              <xsd:element name="AssetContact" type="tns:AssetContact2" minOccurs="0"/>
+              <xsd:element name="Account" type="tns:Account2" minOccurs="0"/>
+              <xsd:element name="IPAddress" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SupportURL" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ControlPanelURL" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="KnowledgeBaseURL" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductImageURL" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="HostName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="DeviceTag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="DeviceName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PhysicalLocation" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewMeterReadDate" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ColorCapableIndicator" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastMonoPageReadDate" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastPageCount" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewPageCount" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastColorPageReadDate" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastColorPageCount" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewColorPageCount" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NotMyPrinterFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="InstalledAtAddress2">
+            <xsd:sequence>
+              <xsd:element name="AddressId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine1" type="xsd:string"/>
+              <xsd:element name="AddressLine2" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine3" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine4" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="City" type="xsd:string"/>
+              <xsd:element name="State" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Province" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Country" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="County" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewAddressFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UserFavoriteFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Entitlement3">
+            <xsd:sequence>
+              <xsd:element name="EntitlementId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="EntitlementName" type="xsd:string"/>
+              <xsd:element name="EntitlementServiceDetails" type="tns:EntitlementServiceDetails3" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="EntitlementServiceDetails3">
+            <xsd:sequence>
+              <xsd:element name="ServiceDetailId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceDetailsDescription" type="xsd:string"/>
+              <xsd:element name="PrimaryFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="AssetContact2">
+            <xsd:sequence>
+              <xsd:element name="ContactId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="FirstName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Department" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="WorkPhone" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="EmailAddress" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UpdateContactFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewContactFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UserFavoriteFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Account2">
+            <xsd:sequence>
+              <xsd:element name="AccountId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AccountName" type="xsd:string"/>
+              <xsd:element name="AccountAddress" type="tns:AccountAddress2" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="AccountAddress2">
+            <xsd:sequence>
+              <xsd:element name="AddressId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine1" type="xsd:string"/>
+              <xsd:element name="AddressLine2" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine3" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine4" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="City" type="xsd:string"/>
+              <xsd:element name="State" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Province" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Country" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewAddressFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UserFavoriteFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ActivityDetails">
+            <xsd:sequence>
+              <xsd:element name="ActivityId" type="xsd:string"/>
+              <xsd:element name="ActivityType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ActivityDate" type="xsd:string"/>
+              <xsd:element name="ActivityStatus" type="xsd:string"/>
+              <xsd:element name="ActivityDescription" type="xsd:string"/>
+              <xsd:element name="RecipientEmailAddress" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PlannedStartTime" type="xsd:string"/>
+              <xsd:element name="PlannedCompletionTime" type="xsd:string"/>
+              <xsd:element name="AssignedTo" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Priority" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Severity" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NoSoonerThan" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfActivityDetails">
+<xsd:sequence>
+			<xsd:element name="ArrayOfActivityDetailsItem" type="tns:ActivityDetails" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="ServiceProviderInformation">
+            <xsd:sequence>
+              <xsd:element name="ServiceProviderName" type="xsd:string"/>
+              <xsd:element name="ServiceProviderInstructions" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceProviderReferenceNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceProviderTimeOfArrival" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="updateServiceRequestActivity">
+            <xsd:sequence>
+              <xsd:element name="debug" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="synchOrAsynch" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="updateServiceRequestActivityInput" nillable="true" type="tns:updateServiceRequestActivityInput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="updateServiceRequestActivityInput">
+            <xsd:sequence>
+              <xsd:element name="updateServiceRequestActivityWSInput" type="tns:updateServiceRequestActivityWSInput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="updateServiceRequestActivityWSInput">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+              <xsd:element name="ServiceRequestData" type="tns:ServiceRequestData2" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ServiceRequestData2">
+            <xsd:sequence>
+              <xsd:element name="ServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ActivityId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestDate" type="xsd:string"/>
+              <xsd:element name="ServiceRequestStatus" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestSource" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ActivityStatus" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Requester" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+              <xsd:element name="CustomerInformation" nillable="true" type="tns:SiebelMDMCustomerInformation" minOccurs="0"/>
+              <xsd:element name="PrimaryContact" nillable="true" type="tns:SiebelContact"/>
+              <xsd:element name="SecondaryContact" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+              <xsd:element name="ServiceAddress" nillable="true" type="tns:SiebelAddress" minOccurs="0"/>
+              <xsd:element name="AssetInformation" nillable="true" type="tns:SiebelAssetInformation" minOccurs="0"/>
+              <xsd:element name="ServiceRequestDetails" nillable="true" type="tns:SiebelServiceRequestDetails" minOccurs="0"/>
+              <xsd:element name="ServiceProviderInformation" nillable="true" type="tns:SiebelServiceProviderInformation" minOccurs="0"/>
+              <xsd:element name="Technician" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+              <xsd:element name="RecommendedPartsList" nillable="true" type="tns:ArrayOfSiebelRecommendedPartsList" minOccurs="0"/>
+              <xsd:element name="ReturnPartsList" nillable="true" type="tns:ArrayOfSiebelReturnPartsList" minOccurs="0"/>
+              <xsd:element name="ActivityNotes" nillable="true" type="tns:ArrayOfSiebelActivityNotes" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SiebelContact">
+            <xsd:sequence>
+              <xsd:element name="ContactId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="FirstName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Department" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="WorkPhone" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AlternatePhone" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="EmailAddress" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="TimeZone" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Country" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Language" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SendRelatedInfoFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UpdateContactFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewContactFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="UserFavoriteFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ContactType" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SiebelMDMCustomerInformation">
+            <xsd:sequence>
+              <xsd:element name="MDMId" type="xsd:string"/>
+              <xsd:element name="MDMLevel" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SiebelAddress">
+            <xsd:sequence>
+              <xsd:element name="AddressId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine1" type="xsd:string"/>
+              <xsd:element name="AddressLine2" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="HouseNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="City" type="xsd:string"/>
+              <xsd:element name="StateCode" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Province" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="District" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="County" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Region" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Country" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CountryCode" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PhysicalLocation1" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PhysicalLocation2" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PhysicalLocation3" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="StateFullName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Latitude" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Longitude" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressCleansedFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressMessage" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewAddressFlag" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SiebelAssetInformation">
+            <xsd:sequence>
+              <xsd:element name="AssetId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SerialNumber" type="xsd:string"/>
+              <xsd:element name="AssetTag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductModel" type="xsd:string"/>
+              <xsd:element name="ProductNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductLine" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="MachineTypeModel" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AssetType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="InstalledAtAddress" nillable="true" type="tns:SiebelAddress" minOccurs="0"/>
+              <xsd:element name="Entitlement" type="tns:Entitlement4" minOccurs="0"/>
+              <xsd:element name="AssetContact" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+              <xsd:element name="Account" type="tns:Account3" minOccurs="0"/>
+              <xsd:element name="IPAddress" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SupportURL" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ControlPanelURL" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="KnowledgeBaseURL" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductImageURL" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="HostName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OperatingSystem" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ConnectivityType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="DeviceTag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CartridgeDateCode" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewMeterReadDate" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ColorCapableIndicator" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastMonoPageReadDate" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastPageCount" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewPageCount" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastColorPageReadDate" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastColorPageCount" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NewColorPageCount" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NotMyPrinterFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Entitlement4">
+            <xsd:sequence>
+              <xsd:element name="EntitlementId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="EntitlementName" type="xsd:string"/>
+              <xsd:element name="EntitlementServiceDetails" type="tns:EntitlementServiceDetails4" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="EntitlementServiceDetails4">
+            <xsd:sequence>
+              <xsd:element name="ServiceDetailId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceDetailsDescription" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PrimaryFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Account3">
+            <xsd:sequence>
+              <xsd:element name="AccountId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AccountName" type="xsd:string"/>
+              <xsd:element name="AccountAddress" nillable="true" type="tns:SiebelAddress" minOccurs="0"/>
+              <xsd:element name="AccountPriority" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SiebelServiceRequestDetails">
+            <xsd:sequence>
+              <xsd:element name="FailureCode" type="xsd:string"/>
+              <xsd:element name="ProblemDescription" type="xsd:string"/>
+              <xsd:element name="RequestLexmarkReviewFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReviewComments" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SiebelServiceProviderInformation">
+            <xsd:sequence>
+              <xsd:element name="ServiceProviderAccountId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceProviderName" type="xsd:string"/>
+              <xsd:element name="ServiceProviderAgreement" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceProviderOrganization" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceProviderInstructions" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceProviderReferenceNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceProviderTimeOfArrival" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceProviderRequestedResponseDate" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceProviderStatus" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceProviderStatusAsOfDate" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceProviderComments" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SiebelRecommendedPartsList">
+            <xsd:sequence>
+              <xsd:element name="LineItemId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OrderDate" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Quantity" type="xsd:string"/>
+              <xsd:element name="PartInformation" type="tns:PartInformation"/>
+              <xsd:element name="ReturnRequiredFlag" type="xsd:string"/>
+              <xsd:element name="ExpediteShipmentFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ShipToAddress" nillable="true" type="tns:SiebelAddress"/>
+              <xsd:element name="Status" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ErrorCode1" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ErrorCode2" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Carrier" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PartSource" nillable="true" type="xsd:string"/>
+              <xsd:element name="ReturnTrackingNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RecommendedPartUpdatedFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="PartInformation">
+            <xsd:sequence>
+              <xsd:element name="PartNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PartId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PartName" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfSiebelRecommendedPartsList">
+<xsd:sequence>
+			<xsd:element name="ArrayOfSiebelRecommendedPartsListItem" type="tns:SiebelRecommendedPartsList" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="SiebelReturnPartsList">
+            <xsd:sequence>
+              <xsd:element name="LineItemId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PartInfromation" type="tns:PartInfromation"/>
+              <xsd:element name="Carrier" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReturnTrackingNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReturnPartUpdatedFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="PartInfromation">
+            <xsd:sequence>
+              <xsd:element name="PartNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PartId" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfSiebelReturnPartsList">
+<xsd:sequence>
+			<xsd:element name="ArrayOfSiebelReturnPartsListItem" type="tns:SiebelReturnPartsList" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="SiebelActivityNotes">
+            <xsd:sequence>
+              <xsd:element name="NoteId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NoteDate" type="xsd:string"/>
+              <xsd:element name="NoteAuthor" type="tns:NoteAuthor"/>
+              <xsd:element name="NoteDetails" type="xsd:string"/>
+              <xsd:element name="NoteUpdateFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="NoteAuthor">
+            <xsd:sequence>
+              <xsd:element name="ContactId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="FirstName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LastName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="EmailAddress" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfSiebelActivityNotes">
+<xsd:sequence>
+			<xsd:element name="ArrayOfSiebelActivityNotesItem" type="tns:SiebelActivityNotes" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="updateServiceRequestActivityResponse">
+            <xsd:sequence>
+              <xsd:element name="status" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="updateConsumablesServiceRequest">
+            <xsd:sequence>
+              <xsd:element name="ConsumablesServiceRequestWSInput" nillable="true" type="tns:ConsumablesServiceRequestWSInput"/>
+              <xsd:element name="debug" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ConsumablesServiceRequestWSInput">
+            <xsd:sequence>
+              <xsd:element name="ConsumablesServiceRequestWSInput" type="tns:ConsumablesServiceRequestWSInput2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ConsumablesServiceRequestWSInput2">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+              <xsd:element name="ConsumablesServiceRequestData" type="tns:ConsumablesServiceRequestData" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ConsumablesServiceRequestData">
+            <xsd:sequence>
+              <xsd:element name="ServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestType" type="xsd:string"/>
+              <xsd:element name="ServiceRequestSource" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestStatus" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RequestedService" type="xsd:string"/>
+              <xsd:element name="RequestedServiceAction" type="xsd:string"/>
+              <xsd:element name="ServiceRequestDate" type="xsd:string"/>
+              <xsd:element name="ServiceRequestDescription" type="xsd:string"/>
+              <xsd:element name="Requester" nillable="true" type="tns:SiebelContact"/>
+              <xsd:element name="PrimaryContact" nillable="true" type="tns:SiebelContact"/>
+              <xsd:element name="SecondaryContact" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+              <xsd:element name="AccountInformation" nillable="true" type="tns:SiebelAccount" minOccurs="0"/>
+              <xsd:element name="ShipToAddress" nillable="true" type="tns:SiebelAddress" minOccurs="0"/>
+              <xsd:element name="AssetInformation" type="tns:AssetInformation2" minOccurs="0"/>
+              <xsd:element name="MaterialDetails" type="tns:ArrayOfMaterialDetails" minOccurs="0"/>
+              <xsd:element name="CustomerReferenceNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="VendorName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="VendorId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CostCenter" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="InstallationOnlyFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestComments" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RelatedServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RelatedAgreementNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RelatedContractNumber" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="BillingModel" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AttachmentNotes" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OrderInformation" type="tns:OrderInformation" minOccurs="0"/>
+              <xsd:element name="PaymentInformation" nillable="true" type="tns:SiebelPaymentDetails"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SiebelAccount">
+            <xsd:sequence>
+              <xsd:element name="AccountId" type="xsd:string"/>
+              <xsd:element name="AccountName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="MDMId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="MDMLevel" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AccountCountry" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SoldToNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="BillToNumber" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="AssetInformation2">
+            <xsd:sequence>
+              <xsd:element name="SerialNumber" type="xsd:string"/>
+              <xsd:element name="AssetTag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductModel" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="IPAddress" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AssetInstalledDate" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="HostName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PageCountData" type="tns:ArrayOfPageCountData" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="PageCountData">
+            <xsd:sequence>
+              <xsd:element name="PageCountType" type="xsd:string"/>
+              <xsd:element name="PageCount" type="xsd:string"/>
+              <xsd:element name="ReadingDateTime" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfPageCountData">
+<xsd:sequence>
+			<xsd:element name="ArrayOfPageCountDataItem" type="tns:PageCountData" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="MaterialDetails">
+            <xsd:sequence>
+              <xsd:element name="MaterialNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="MaterialId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="HardwareConfigurationID" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RelatedContractParentLineNumber" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RelatedContractLineNumber" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Quantity" type="xsd:string"/>
+              <xsd:element name="UnitPrice" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="TaxAmount" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="TotalLinePrice" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CurrencyCode" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="MaterialType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PrinterNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ConsumableType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Yield" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AssetUsageType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CatalogId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ImplicitCatalogEntryFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfMaterialDetails">
+<xsd:sequence>
+			<xsd:element name="ArrayOfMaterialDetailsItem" type="tns:MaterialDetails" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="OrderInformation">
+            <xsd:sequence>
+              <xsd:element name="ExpediteOrderFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SpecialHandlingInstructions" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RequestedDeliveryDate" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SiebelPaymentDetails">
+            <xsd:sequence>
+              <xsd:element name="PaymentDetails" type="tns:PaymentDetails" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="PaymentDetails">
+            <xsd:sequence>
+              <xsd:element name="PurchaseOrderNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CreditCardInformation" nillable="true" type="tns:CreditCardInformation" minOccurs="0"/>
+              <xsd:element name="BillToAddress" nillable="true" type="tns:SiebelAddress"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="CreditCardInformation">
+            <xsd:sequence>
+              <xsd:element name="CreditCardType" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CreditCardNumber" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CreditCardToken" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CreditCardExpirationDate" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CreditCardHolderName" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CreditCardTransactionId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CreditCardAuthorizationNumber" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="updateConsumablesServiceRequestResponse">
+            <xsd:sequence>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getServiceAppointment">
+            <xsd:sequence>
+              <xsd:element name="serviceAppointment" nillable="true" type="tns:serviceAppointment"/>
+              <xsd:element name="debug" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="serviceAppointment">
+            <xsd:sequence>
+              <xsd:element name="getServiceAppointmentWSInput" type="tns:getServiceAppointmentWSInput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getServiceAppointmentWSInput">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+              <xsd:element name="getServiceAppointmentData" type="tns:getServiceAppointmentData" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getServiceAppointmentData">
+            <xsd:sequence>
+              <xsd:element name="ActivityId" type="xsd:string"/>
+              <xsd:element name="ActivityType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ActivityPriority" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRegion" type="xsd:string"/>
+              <xsd:element name="SessionRequestId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="EmployeeId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="EarliestStartDateTime" type="xsd:string"/>
+              <xsd:element name="LatestStartDateTime" type="xsd:string"/>
+              <xsd:element name="TimeZone" type="xsd:string"/>
+              <xsd:element name="AppointmentDuration" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="BreakFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SameTimeFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RescheduleFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getServiceAppointmentResponse">
+            <xsd:sequence>
+              <xsd:element name="serviceAppointmentTimeSlots" nillable="true" type="tns:serviceAppointmentTimeSlots" minOccurs="0"/>
+              <xsd:element name="sessionRequestId" nillable="true" type="xsd:string"/>
+              <xsd:element name="errorCode" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="message" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="serviceAppointmentTimeSlots">
+            <xsd:sequence>
+              <xsd:element name="addedPropSet" nillable="true" type="tns:addedPropSet"/>
+            </xsd:sequence>
+            <xsd:attribute name="version" type="xsd:string" use="required"/>
+            <xsd:attribute name="encoding" type="xsd:string" use="required"/>
+          </xsd:complexType>
+          <xsd:complexType name="addedPropSet">
+            <xsd:sequence>
+              <xsd:element name="TimeSlot" nillable="true" type="tns:ArrayOfTimeSlot"/>
+            </xsd:sequence>
+            <xsd:attribute name="number_spcof_spcappointments" type="xsd:string"/>
+            <xsd:attribute name="number_undof_undappointments" type="xsd:string"/>
+          </xsd:complexType>
+          <xsd:complexType name="TimeSlot">
+            <xsd:attribute name="ReqId" type="xsd:string" use="required"/>
+            <xsd:attribute name="PlannedStartSRTimeZone" type="xsd:string" use="required"/>
+            <xsd:attribute name="Assignee" type="xsd:string" use="required"/>
+            <xsd:attribute name="SlotStart" type="xsd:string" use="required"/>
+            <xsd:attribute name="ActId" type="xsd:string" use="required"/>
+            <xsd:attribute name="SlotStartSRTimeZone" type="xsd:string" use="required"/>
+            <xsd:attribute name="SlotEndSRTimeZone" type="xsd:string" use="required"/>
+            <xsd:attribute name="PlannedStart" type="xsd:string" use="required"/>
+            <xsd:attribute name="PlannedEndSRTimeZone" type="xsd:string" use="required"/>
+            <xsd:attribute name="PlannedEnd" type="xsd:string" use="required"/>
+            <xsd:attribute name="SvcRegnId" type="xsd:string" use="required"/>
+            <xsd:attribute name="SlotEnd" type="xsd:string" use="required"/>
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfTimeSlot">
+<xsd:sequence>
+			<xsd:element name="ArrayOfTimeSlotItem" type="tns:TimeSlot" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="addressCleanse">
+            <xsd:sequence>
+              <xsd:element name="AddressCleanseWSInput" nillable="true" type="tns:AddressCleanseWSInput"/>
+              <xsd:element name="debug" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="AddressCleanseWSInput">
+            <xsd:sequence>
+              <xsd:element name="AddressWSInput" type="tns:AddressWSInput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="AddressWSInput">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" type="tns:DocumentMetaData2" minOccurs="0"/>
+              <xsd:element name="AddressData" type="tns:AddressData"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="DocumentMetaData2">
+            <xsd:sequence>
+              <xsd:element name="SenderId" type="xsd:string"/>
+              <xsd:element name="SenderName" type="xsd:string"/>
+              <xsd:element name="OriginalPartnerId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OriginalPartnerName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReceiverId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReceiverName" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="AddressData">
+            <xsd:sequence>
+              <xsd:element name="AccountId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Name" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine1" type="xsd:string"/>
+              <xsd:element name="AddressLine2" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine3" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="City" type="xsd:string"/>
+              <xsd:element name="County" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="StateOrProvince" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Country" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="addressCleanseResponse">
+            <xsd:sequence>
+              <xsd:element name="AddressCleanseWSOutput" nillable="true" type="tns:AddressCleanseWSOutput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="AddressCleanseWSOutput">
+            <xsd:sequence>
+              <xsd:element name="AddressWSOutput" type="tns:AddressWSOutput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="AddressWSOutput">
+            <xsd:sequence>
+              <xsd:element name="AddressData" type="tns:AddressData2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="AddressData2">
+            <xsd:sequence>
+              <xsd:element name="AccountId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Name" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine1" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine2" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AddressLine3" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="City" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="County" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="StateOrProvince" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Country" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ErrorMessage" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="State" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Province" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="confirmServiceAppointment">
+            <xsd:sequence>
+              <xsd:element name="confirmServiceAppointment" nillable="true" type="tns:confirmServiceAppointment2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="confirmServiceAppointment2">
+            <xsd:sequence>
+              <xsd:element name="confirmServiceAppointmentWSInput" type="tns:confirmServiceAppointmentWSInput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="confirmServiceAppointmentWSInput">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+              <xsd:element name="confirmServiceAppointmentData" type="tns:confirmServiceAppointmentData" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="confirmServiceAppointmentData">
+            <xsd:sequence>
+              <xsd:element name="ActivityId" type="xsd:string"/>
+              <xsd:element name="ServiceRegion" type="xsd:string"/>
+              <xsd:element name="RequesterId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestToken" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AppointmentStartDateTime" type="xsd:string"/>
+              <xsd:element name="TimeZone" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="confirmServiceAppointmentResponse">
+            <xsd:sequence>
+              <xsd:element name="errorCode" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="serviceRequestDetailsOutput" nillable="true" type="tns:serviceRequestDetailsOutput"/>
+              <xsd:element name="message" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceAppointmentOnReschedule">
+            <xsd:sequence>
+              <xsd:element name="cancelServiceAppointmentReschedule" nillable="true" type="tns:cancelServiceAppointmentReschedule"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceAppointmentReschedule">
+            <xsd:sequence>
+              <xsd:element name="cancelServiceAppointmentRescheduleWSInput" type="tns:cancelServiceAppointmentRescheduleWSInput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceAppointmentRescheduleWSInput">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+              <xsd:element name="cancelServiceAppointmentRescheduleData" type="tns:cancelServiceAppointmentRescheduleData" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceAppointmentRescheduleData">
+            <xsd:sequence>
+              <xsd:element name="SessionRequestId" type="xsd:string"/>
+              <xsd:element name="ActivityId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestToken" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRegion" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceAppointmentOnRescheduleResponse">
+            <xsd:sequence>
+              <xsd:element name="errorCode" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="message" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="createChangeManagementServiceRequest">
+            <xsd:sequence>
+              <xsd:element name="debug" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ChangeManagementServiceRequestWSInput" nillable="true" type="tns:ChangeManagementServiceRequestWSInput"/>
+              <xsd:element name="synchOrAsynch" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ChangeManagementServiceRequestWSInput">
+            <xsd:sequence>
+              <xsd:element name="ChangeManagementServiceRequestWSInput" type="tns:ChangeManagementServiceRequestWSInput2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ChangeManagementServiceRequestWSInput2">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+              <xsd:element name="ChangeManagementServiceRequestData" type="tns:ChangeManagementServiceRequestData" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ChangeManagementServiceRequestData">
+            <xsd:sequence>
+              <xsd:element name="ServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestType" type="xsd:string"/>
+              <xsd:element name="ServiceRequestSource" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RequestedService" type="xsd:string"/>
+              <xsd:element name="RequestedServiceAction" type="xsd:string"/>
+              <xsd:element name="ServiceRequestDate" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Requester" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+              <xsd:element name="AccountInformation" nillable="true" type="tns:SiebelAccount" minOccurs="0"/>
+              <xsd:element name="PrimaryContact" nillable="true" type="tns:SiebelContact"/>
+              <xsd:element name="SecondaryContact" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+              <xsd:element name="AssetInformation" nillable="true" type="tns:SiebelAssetManagementInformation"/>
+              <xsd:element name="AssetContacts" nillable="true" type="tns:ArrayOfAssetContacts" minOccurs="0"/>
+              <xsd:element name="ServiceRequestDescription" type="xsd:string"/>
+              <xsd:element name="CustomerReferenceNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CostCenter" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RelatedServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestComments" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AttachmentNotes" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="MoveToAddress" nillable="true" type="tns:SiebelAddress" minOccurs="0"/>
+              <xsd:element name="PickUpAddress" nillable="true" type="tns:SiebelAddress" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SiebelAssetManagementInformation">
+            <xsd:sequence>
+              <xsd:element name="AssetId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SerialNumber" type="xsd:string"/>
+              <xsd:element name="AssetTag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="DeviceTag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductModel" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductLine" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="MachineTypeModel" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AssetType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AssetCostCenter" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AssetDepartmentName" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AssetDepartmentNumber" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="IPAddress" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="IPSubMask" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="IPGateway" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="IPV6" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="MACAddress" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="HostName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ComputerName" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NetworkConnected" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PortNumber" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="WiringClosetNumber" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="FaxConnected" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="FaxPortNumber" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OperatingSystem" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OperatingSystemVersion" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Firmware" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="WorkingCondition" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NetworkTopology" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PrintServer" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SpecialUsage" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RelatedCustomerHierarchyLevel" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="InstallDate" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="InstalledAtAddress" nillable="true" type="tns:SiebelAddress" minOccurs="0"/>
+              <xsd:element name="MeterReadInformation" nillable="true" type="tns:ArrayOfSiebelMeterReadInformation" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SiebelMeterReadInformation">
+            <xsd:sequence>
+              <xsd:element name="MeterType" nillable="true" type="xsd:string"/>
+              <xsd:element name="MeterDateTime" nillable="true" type="xsd:string"/>
+              <xsd:element name="MeterValue" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfSiebelMeterReadInformation">
+<xsd:sequence>
+			<xsd:element name="ArrayOfSiebelMeterReadInformationItem" type="tns:SiebelMeterReadInformation" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="AssetContacts">
+            <xsd:sequence>
+              <xsd:element name="ContactType" nillable="true" type="xsd:string"/>
+              <xsd:element name="ContactDetails" nillable="true" type="tns:SiebelContact"/>
+              <xsd:element name="ContactAddress" nillable="true" type="tns:SiebelAddress" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfAssetContacts">
+<xsd:sequence>
+			<xsd:element name="ArrayOfAssetContactsItem" type="tns:AssetContacts" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="createChangeManagementServiceRequestResponse">
+            <xsd:sequence>
+              <xsd:element name="serviceRequestDetails" nillable="true" type="tns:serviceRequestDetailsOutput"/>
+              <xsd:element name="srRowId" nillable="true" type="xsd:string"/>
+              <xsd:element name="srNumber" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="createServiceRequest">
+            <xsd:sequence>
+              <xsd:element name="debug" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="serviceRequest" nillable="true" type="tns:serviceRequestInput"/>
+              <xsd:element name="synchOrAsynch" nillable="true" type="xsd:string"/>
+              <xsd:element name="returnDetail_x003F_" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="serviceRequestInput">
+            <xsd:sequence>
+              <xsd:element name="ServiceRequestWSInput" type="tns:ServiceRequestWSInput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ServiceRequestWSInput">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+              <xsd:element name="ServiceRequestData" type="tns:ServiceRequestData3" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ServiceRequestData3">
+            <xsd:sequence>
+              <xsd:element name="ServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestDate" type="xsd:string"/>
+              <xsd:element name="ServiceRequestStatus" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestSource" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Requester" nillable="true" type="tns:SiebelContact"/>
+              <xsd:element name="CustomerInformation" nillable="true" type="tns:SiebelMDMCustomerInformation" minOccurs="0"/>
+              <xsd:element name="PrimaryContact" nillable="true" type="tns:SiebelContact"/>
+              <xsd:element name="SecondaryContact" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+              <xsd:element name="AssetInformation" nillable="true" type="tns:SiebelAssetInformation"/>
+              <xsd:element name="ProblemDescription" type="xsd:string"/>
+              <xsd:element name="ProblemResolution" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RequestedService" type="xsd:string"/>
+              <xsd:element name="NewProblemFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OnDemandDataSentFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SelectedServiceDetails" type="tns:ArrayOfSelectedServiceDetails2"/>
+              <xsd:element name="ServiceAddress" nillable="true" type="tns:SiebelAddress"/>
+              <xsd:element name="TrackingNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Carrier" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ShipDate" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReferenceNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReturnTrackingNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="optionExchangeAdditionalDescription" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReturnedAssetInformation" nillable="true" type="tns:SiebelAssetInformation" minOccurs="0"/>
+              <xsd:element name="webUpdateActivities" nillable="true" type="tns:SiebelActivityDetails" minOccurs="0"/>
+              <xsd:element name="EmailActivities" nillable="true" type="tns:SiebelActivityDetails" minOccurs="0"/>
+              <xsd:element name="ServiceProviderInformation" nillable="true" type="tns:SiebelServiceProviderInformation" minOccurs="0"/>
+              <xsd:element name="RecommendedPartsList" nillable="true" type="tns:ArrayOfSiebelRecommendedPartsList" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SelectedServiceDetails2">
+            <xsd:sequence>
+              <xsd:element name="Entitlement" type="tns:Entitlement5" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Entitlement5">
+            <xsd:sequence>
+              <xsd:element name="EntitlementId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="EntitlementName" type="xsd:string"/>
+              <xsd:element name="EntitlementServiceDetails" type="tns:EntitlementServiceDetails5" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="EntitlementServiceDetails5">
+            <xsd:sequence>
+              <xsd:element name="ServiceDetailId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceDetailsDescription" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PrimaryFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfSelectedServiceDetails2">
+<xsd:sequence>
+			<xsd:element name="ArrayOfSelectedServiceDetails2Item" type="tns:SelectedServiceDetails2" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="SiebelActivityDetails">
+            <xsd:sequence>
+              <xsd:element name="ActivityId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ActivityDate" type="xsd:string"/>
+              <xsd:element name="ActivityStatus" type="xsd:string"/>
+              <xsd:element name="ActivityDescription" type="xsd:string"/>
+              <xsd:element name="RecipientEmailAddress" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="createServiceRequestResponse">
+            <xsd:sequence>
+              <xsd:element name="srNumber" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="activityId" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SRRowId" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SRNumHashValue" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="serviceRegionId" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="siebelStatusMessage" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="serviceRequestDetails" nillable="true" type="tns:serviceRequestDetailsOutput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceRequestAppointment">
+            <xsd:sequence>
+              <xsd:element name="cancelServiceAppointment" nillable="true" type="tns:cancelServiceAppointment"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceAppointment">
+            <xsd:sequence>
+              <xsd:element name="cancelServiceAppointmentWSInput" type="tns:cancelServiceAppointmentWSInput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceAppointmentWSInput">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+              <xsd:element name="cancelServiceAppointmentData" type="tns:cancelServiceAppointmentData" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceAppointmentData">
+            <xsd:sequence>
+              <xsd:element name="ActivityId" type="xsd:string"/>
+              <xsd:element name="ServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestToken" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRegion" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceRequestAppointmentResponse">
+            <xsd:sequence>
+              <xsd:element name="errorCode" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="message" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="createConsumablesServiceRequest">
+            <xsd:sequence>
+              <xsd:element name="debug" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ConsumablesServiceRequestWSInput" nillable="true" type="tns:ConsumablesServiceRequestWSInput"/>
+              <xsd:element name="synchOrAsynch" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="createConsumablesServiceRequestResponse">
+            <xsd:sequence>
+              <xsd:element name="serviceRequestDetailsOutput" nillable="true" type="tns:serviceRequestDetailsOutput"/>
+              <xsd:element name="sRNumber" nillable="true" type="xsd:string"/>
+              <xsd:element name="sRRowId" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getServiceRequestStatus">
+            <xsd:sequence>
+              <xsd:element name="getServiceRequestStatus" nillable="true" type="tns:getServiceRequestStatusInput"/>
+              <xsd:element name="debug" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getServiceRequestStatusInput">
+            <xsd:sequence>
+              <xsd:element name="getServiceRequestStatusWSInput" nillable="true" type="tns:getServiceRequestStatusWSInput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getServiceRequestStatusWSInput">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+              <xsd:element name="getServiceRequestStatusData" nillable="true" type="tns:getServiceRequestStatusData"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getServiceRequestStatusData">
+            <xsd:sequence>
+              <xsd:element name="SRNumber" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="getServiceRequestStatusResponse">
+            <xsd:sequence>
+              <xsd:element name="statusServiceRequestWSOutput" nillable="true" type="tns:statusServiceRequestWSOutput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="statusServiceRequestWSOutput">
+            <xsd:sequence>
+              <xsd:element name="statusServiceRequestWSOutput" type="tns:statusServiceRequestWSOutput2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="statusServiceRequestWSOutput2">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" form="qualified" type="tns:DocumentMetaData3" minOccurs="0"/>
+              <xsd:element name="StatusServiceRequestData" form="qualified" type="tns:StatusServiceRequestData" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="DocumentMetaData3">
+            <xsd:sequence>
+              <xsd:element name="SenderId" form="qualified" type="xsd:string"/>
+              <xsd:element name="SenderName" form="qualified" type="xsd:string"/>
+              <xsd:element name="OriginalPartnerId" form="qualified" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OriginalPartnerName" form="qualified" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReceiverId" form="qualified" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReceiverName" form="qualified" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="StatusServiceRequestData">
+            <xsd:sequence>
+              <xsd:element name="ServiceRequestNumber" form="qualified" type="xsd:string"/>
+              <xsd:element name="ServiceRequestType" form="qualified" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestStatus" form="qualified" type="xsd:string"/>
+              <xsd:element name="StatusDate" form="qualified" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CustomerId" form="qualified" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CustomerName" form="qualified" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CustomerReferenceNumber" form="qualified" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SerialNumber" form="qualified" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ShipmentInformation" form="qualified" type="tns:ArrayOfShipmentInformation" minOccurs="0"/>
+              <xsd:element name="DebriefInformation" form="qualified" type="tns:DebriefInformation" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ShipmentInformation">
+            <xsd:sequence>
+              <xsd:element name="ProductNumber" form="qualified" type="xsd:string"/>
+              <xsd:element name="ProductDescription" form="qualified" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Carrier" form="qualified" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="TrackingNumber" form="qualified" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ShippedDate" form="qualified" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReturnTrackingNumber" form="qualified" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfShipmentInformation">
+<xsd:sequence>
+			<xsd:element name="ArrayOfShipmentInformationItem" type="tns:ShipmentInformation" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="DebriefInformation">
+            <xsd:sequence>
+              <xsd:element name="InstalledProduct" form="qualified" type="xsd:string"/>
+              <xsd:element name="ReplacementProductSerialNumber" form="qualified" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReplacementProductModel" form="qualified" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ActualStartDateTime" form="qualified" type="xsd:string"/>
+              <xsd:element name="ActualEndDateTime" form="qualified" type="xsd:string"/>
+              <xsd:element name="ActualFailureCode" form="qualified" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ActualResolutionCode" form="qualified" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="escalateServiceRequest">
+            <xsd:sequence>
+              <xsd:element name="debug" nillable="true" type="xsd:string"/>
+              <xsd:element name="escalateServiceRequestWSInput" nillable="true" type="tns:escalateServiceRequestWSInput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="escalateServiceRequestWSInput">
+            <xsd:sequence>
+              <xsd:element name="escalateServiceRequestWSInput" type="tns:escalateServiceRequestWSInput2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="escalateServiceRequestWSInput2">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+              <xsd:element name="escalateServiceRequestData" type="tns:escalateServiceRequestData" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="escalateServiceRequestData">
+            <xsd:sequence>
+              <xsd:element name="ServiceRequestNumber" type="xsd:string"/>
+              <xsd:element name="CustomerId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CustomerRelatedDocumentNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="EscalateReason" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="escalateServiceRequestResponse">
+            <xsd:sequence>
+              <xsd:element name="escalateServiceRequestResult" nillable="true" type="xsd:string"/>
+              <xsd:element name="description" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceRequest">
+            <xsd:sequence>
+              <xsd:element name="cancelServiceRequestWSInput" nillable="true" type="tns:cancelServiceRequestWSInput"/>
+              <xsd:element name="debug" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceRequestWSInput">
+            <xsd:sequence>
+              <xsd:element name="cancelServiceRequestWSInput" type="tns:cancelServiceRequestWSInput2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceRequestWSInput2">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+              <xsd:element name="cancelServiceRequestData" type="tns:cancelServiceRequestData" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceRequestData">
+            <xsd:sequence>
+              <xsd:element name="ServiceRequestNumber" type="xsd:string"/>
+              <xsd:element name="CustomerId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CustomerRelatedDocumentNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CancelReason" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceRequestResponse">
+            <xsd:sequence>
+              <xsd:element name="cancelServiceRequestResult" nillable="true" type="xsd:string"/>
+              <xsd:element name="description" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceAppointmentRequestList">
+            <xsd:sequence>
+              <xsd:element name="cancelServiceAppointmentRequest" nillable="true" type="tns:cancelServiceAppointmentRequest"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceAppointmentRequest">
+            <xsd:sequence>
+              <xsd:element name="cancelServiceAppointmentRequestListWSInput" type="tns:cancelServiceAppointmentRequestListWSInput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceAppointmentRequestListWSInput">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData"/>
+              <xsd:element name="cancelServiceAppointmentData" type="tns:cancelServiceAppointmentData2" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceAppointmentData2">
+            <xsd:sequence>
+              <xsd:element name="SessionRequestId" type="xsd:string"/>
+              <xsd:element name="ActivityId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestToken" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRegion" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="cancelServiceAppointmentRequestListResponse">
+            <xsd:sequence>
+              <xsd:element name="errorCode" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="message" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="debriefServiceRequestActivity">
+            <xsd:sequence>
+              <xsd:element name="debug" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="synchOrAsynch" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="debriefServiceRequestActivityInput" nillable="true" type="tns:debriefServiceRequestActivityInput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="debriefServiceRequestActivityInput">
+            <xsd:sequence>
+              <xsd:element name="debriefServiceRequestActivityWSInput" type="tns:debriefServiceRequestActivityWSInput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="debriefServiceRequestActivityWSInput">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+              <xsd:element name="ServiceRequestData" type="tns:ServiceRequestData4" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ServiceRequestData4">
+            <xsd:sequence>
+              <xsd:element name="ServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ActivityId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestDate" type="xsd:string"/>
+              <xsd:element name="ServiceRequestStatusOverall" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestStatusDetail" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestSource" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RelatedSourceReferenceNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AssetInformation" nillable="true" type="tns:SiebelAssetInformation" minOccurs="0"/>
+              <xsd:element name="Requester" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+              <xsd:element name="PrimaryContact" nillable="true" type="tns:SiebelContact"/>
+              <xsd:element name="SecondaryContact" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+              <xsd:element name="CustomerInformation" nillable="true" type="tns:SiebelMDMCustomerInformation" minOccurs="0"/>
+              <xsd:element name="ServiceAddress" nillable="true" type="tns:SiebelAddress" minOccurs="0"/>
+              <xsd:element name="Technician" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+              <xsd:element name="DebriefDetails" type="tns:DebriefDetails" minOccurs="0"/>
+              <xsd:element name="RecommendedPartsList" nillable="true" type="tns:ArrayOfSiebelRecommendedPartsList" minOccurs="0"/>
+              <xsd:element name="ReturnPartsList" nillable="true" type="tns:ArrayOfSiebelReturnPartsList" minOccurs="0"/>
+              <xsd:element name="ActivityNotes" nillable="true" type="tns:ArrayOfSiebelActivityNotes" minOccurs="0"/>
+              <xsd:element name="PaymentRequestList" nillable="true" type="tns:ArrayOfSiebelPaymentRequestList" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="DebriefDetails">
+            <xsd:sequence>
+              <xsd:element name="ActualStartDate" type="xsd:string"/>
+              <xsd:element name="ActualEndDate" type="xsd:string"/>
+              <xsd:element name="TravelDistance" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="TravelDistanceUnitOfMeasure" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="TravelDuration" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="TravelDurationUnitOfMeasure" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProblemCode" type="xsd:string"/>
+              <xsd:element name="ProblemDetails" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ResolutionCode" type="xsd:string"/>
+              <xsd:element name="RepairDescription" type="xsd:string"/>
+              <xsd:element name="AdditionalServiceRequired" type="xsd:string"/>
+              <xsd:element name="NonLexmarkSuppliesUsed" type="xsd:string"/>
+              <xsd:element name="SupplyManufacturer" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OriginalDeviceInformation" type="tns:OriginalDeviceInformation" minOccurs="0"/>
+              <xsd:element name="ReplacementDeviceInformation" type="tns:ReplacementDeviceInformation" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="OriginalDeviceInformation">
+            <xsd:sequence>
+              <xsd:element name="AssetId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PrinterWorkingCondition" type="xsd:string"/>
+              <xsd:element name="TotalPageCount" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LexmarkAssetTag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NetworkConnected" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="IPAddress" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="MACAddress" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ReplacementDeviceInformation">
+            <xsd:sequence>
+              <xsd:element name="AssetId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="TotalPageCount" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="LexmarkAssetTag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="NetworkConnected" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="IPAddress" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="MACAddress" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="MachineTypeModel" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SerialNumber" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SiebelPaymentRequestList">
+            <xsd:sequence>
+              <xsd:element name="PaymentRequestId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PaymentType" type="xsd:string"/>
+              <xsd:element name="Quantity" type="xsd:string"/>
+              <xsd:element name="UnitPrice" type="xsd:string"/>
+              <xsd:element name="TotalAmount" type="xsd:string"/>
+              <xsd:element name="Currency" type="xsd:string"/>
+              <xsd:element name="Description" type="xsd:string"/>
+              <xsd:element name="PaymentRequestUpdateFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfSiebelPaymentRequestList">
+<xsd:sequence>
+			<xsd:element name="ArrayOfSiebelPaymentRequestListItem" type="tns:SiebelPaymentRequestList" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="debriefServiceRequestActivityResponse">
+            <xsd:sequence>
+              <xsd:element name="status" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="updateSellableItemsServiceRequest">
+            <xsd:sequence>
+              <xsd:element name="SellableItemServiceRequestWSInput" nillable="true" type="tns:SellableItemServiceRequestWSInput"/>
+              <xsd:element name="debug" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SellableItemServiceRequestWSInput">
+            <xsd:sequence>
+              <xsd:element name="SellableItemsServiceRequestWSInput" type="tns:SellableItemsServiceRequestWSInput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SellableItemsServiceRequestWSInput">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" nillable="true" type="tns:WebServiceDocumentMetaData" minOccurs="0"/>
+              <xsd:element name="SellableItemsServiceRequestData" type="tns:SellableItemsServiceRequestData" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="SellableItemsServiceRequestData">
+            <xsd:sequence>
+              <xsd:element name="ServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestType" type="xsd:string"/>
+              <xsd:element name="ServiceRequestSource" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestStatus" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RequestedService" type="xsd:string"/>
+              <xsd:element name="RequestedServiceAction" type="xsd:string"/>
+              <xsd:element name="ServiceRequestDate" type="xsd:string"/>
+              <xsd:element name="ServiceRequestDescription" type="xsd:string"/>
+              <xsd:element name="AccountInformation" nillable="true" type="tns:SiebelAccount"/>
+              <xsd:element name="Requester" nillable="true" type="tns:SiebelContact"/>
+              <xsd:element name="PrimaryContact" nillable="true" type="tns:SiebelContact"/>
+              <xsd:element name="SecondaryContact" nillable="true" type="tns:SiebelContact" minOccurs="0"/>
+              <xsd:element name="ShipToAddress" nillable="true" type="tns:SiebelAddress"/>
+              <xsd:element name="ProductDetails" type="tns:ArrayOfProductDetails" minOccurs="0"/>
+              <xsd:element name="CustomerReferenceNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CostCenter" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="InstallationOnlyFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ServiceRequestComments" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RelatedServiceRequestNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RelatedAgreementNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RelatedContractNumber" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="BillingModel" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AttachmentNotes" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OrderInformation" type="tns:OrderInformation2" minOccurs="0"/>
+              <xsd:element name="PaymentInformation" nillable="true" type="tns:SiebelPaymentDetails"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ProductDetails">
+            <xsd:sequence>
+              <xsd:element name="ProductNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductDescription" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Quantity" type="xsd:string"/>
+              <xsd:element name="UnitPrice" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="TaxAmount" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="TotalLinePrice" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CurrencyCode" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ProductType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PrinterModel" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PrinterSeries" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ConsumableType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Yield" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="AssetUsageType" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CatalogId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="CatalogItemId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="HardwareConfigurationID" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RelatedContractParentLineNumber" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RelatedContractLineNumber" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ImplicitCatalogEntryFlag" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="ArrayOfProductDetails">
+<xsd:sequence>
+			<xsd:element name="ArrayOfProductDetailsItem" type="tns:ProductDetails" maxOccurs="unbounded"/>
+		</xsd:sequence>
+
+          </xsd:complexType>
+          <xsd:complexType name="OrderInformation2">
+            <xsd:sequence>
+              <xsd:element name="ExpediteOrderFlag" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SpecialHandlingInstructions" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="RequestedDeliveryDate" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="updateSellableItemsServiceRequestResponse">
+            <xsd:sequence>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="createSellableItemsServiceRequest">
+            <xsd:sequence>
+              <xsd:element name="SellableItemServiceRequestWSInput" nillable="true" type="tns:SellableItemServiceRequestWSInput"/>
+              <xsd:element name="synchOrAsynch" nillable="true" type="xsd:string"/>
+              <xsd:element name="debug" nillable="true" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="createSellableItemsServiceRequestResponse">
+            <xsd:sequence>
+              <xsd:element name="serviceRequestDetails" nillable="true" type="tns:serviceRequestDetailsOutput" minOccurs="0"/>
+              <xsd:element name="sRNumber" nillable="true" type="xsd:string"/>
+              <xsd:element name="sRRowId" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        			<xsd:element name="getServiceRequestStatus" type="tns1:getServiceRequestStatus"/>
+			<xsd:element name="getServiceRequestStatusResponse" type="tns1:getServiceRequestStatusResponse"/>
+			<xsd:element name="createChangeManagementServiceRequest" type="tns1:createChangeManagementServiceRequest"/>
+			<xsd:element name="createChangeManagementServiceRequestResponse" type="tns1:createChangeManagementServiceRequestResponse"/>
+			<xsd:element name="getServiceAppointment" type="tns1:getServiceAppointment"/>
+			<xsd:element name="getServiceAppointmentResponse" type="tns1:getServiceAppointmentResponse"/>
+			<xsd:element name="updateConsumablesServiceRequest" type="tns1:updateConsumablesServiceRequest"/>
+			<xsd:element name="updateConsumablesServiceRequestResponse" type="tns1:updateConsumablesServiceRequestResponse"/>
+			<xsd:element name="updateServiceRequestActivity" type="tns1:updateServiceRequestActivity"/>
+			<xsd:element name="updateServiceRequestActivityResponse" type="tns1:updateServiceRequestActivityResponse"/>
+			<xsd:element name="escalateServiceRequest" type="tns1:escalateServiceRequest"/>
+			<xsd:element name="escalateServiceRequestResponse" type="tns1:escalateServiceRequestResponse"/>
+			<xsd:element name="cancelServiceRequest" type="tns1:cancelServiceRequest"/>
+			<xsd:element name="cancelServiceRequestResponse" type="tns1:cancelServiceRequestResponse"/>
+			<xsd:element name="updateSellableItemsServiceRequest" type="tns1:updateSellableItemsServiceRequest"/>
+			<xsd:element name="updateSellableItemsServiceRequestResponse" type="tns1:updateSellableItemsServiceRequestResponse"/>
+			<xsd:element name="cancelServiceAppointmentOnReschedule" type="tns1:cancelServiceAppointmentOnReschedule"/>
+			<xsd:element name="cancelServiceAppointmentOnRescheduleResponse" type="tns1:cancelServiceAppointmentOnRescheduleResponse"/>
+			<xsd:element name="getSRAndActivityDetails" type="tns1:getSRAndActivityDetails"/>
+			<xsd:element name="getServiceRequestDetailsResponse" type="tns1:getServiceRequestDetailsResponse"/>
+			<xsd:element name="cancelServiceAppointmentRequestList" type="tns1:cancelServiceAppointmentRequestList"/>
+			<xsd:element name="cancelServiceAppointmentRequestListResponse" type="tns1:cancelServiceAppointmentRequestListResponse"/>
+			<xsd:element name="debriefServiceRequestActivity" type="tns1:debriefServiceRequestActivity"/>
+			<xsd:element name="debriefServiceRequestActivityResponse" type="tns1:debriefServiceRequestActivityResponse"/>
+			<xsd:element name="confirmServiceAppointment" type="tns1:confirmServiceAppointment"/>
+			<xsd:element name="confirmServiceAppointmentResponse" type="tns1:confirmServiceAppointmentResponse"/>
+			<xsd:element name="createServiceRequest" type="tns1:createServiceRequest"/>
+			<xsd:element name="createServiceRequestResponse" type="tns1:createServiceRequestResponse"/>
+			<xsd:element name="createConsumablesServiceRequest" type="tns1:createConsumablesServiceRequest"/>
+			<xsd:element name="createConsumablesServiceRequestResponse" type="tns1:createConsumablesServiceRequestResponse"/>
+			<xsd:element name="createSellableItemsServiceRequest" type="tns1:createSellableItemsServiceRequest"/>
+			<xsd:element name="createSellableItemsServiceRequestResponse" type="tns1:createSellableItemsServiceRequestResponse"/>
+			<xsd:element name="cancelServiceRequestAppointment" type="tns1:cancelServiceRequestAppointment"/>
+			<xsd:element name="cancelServiceRequestAppointmentResponse" type="tns1:cancelServiceRequestAppointmentResponse"/>
+			<xsd:element name="addressCleanse" type="tns1:addressCleanse"/>
+			<xsd:element name="addressCleanseResponse" type="tns1:addressCleanseResponse"/>
+	</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="serviceRequestWS_PortType_getServiceAppointmentResponse">
+    <wsdl:part name="parameters" element="tns1:getServiceAppointmentResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_getServiceRequestDetailsResponse">
+    <wsdl:part name="parameters" element="tns1:getServiceRequestDetailsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_cancelServiceAppointmentRequestList">
+    <wsdl:part name="parameters" element="tns1:cancelServiceAppointmentRequestList">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_addressCleanse">
+    <wsdl:part name="parameters" element="tns1:addressCleanse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_createChangeManagementServiceRequestResponse">
+    <wsdl:part name="parameters" element="tns1:createChangeManagementServiceRequestResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_cancelServiceAppointmentOnReschedule">
+    <wsdl:part name="parameters" element="tns1:cancelServiceAppointmentOnReschedule">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_cancelServiceAppointmentOnRescheduleResponse">
+    <wsdl:part name="parameters" element="tns1:cancelServiceAppointmentOnRescheduleResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_createServiceRequestResponse">
+    <wsdl:part name="parameters" element="tns1:createServiceRequestResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_getSRAndActivityDetails">
+    <wsdl:part name="parameters" element="tns1:getSRAndActivityDetails">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_debriefServiceRequestActivityResponse">
+    <wsdl:part name="parameters" element="tns1:debriefServiceRequestActivityResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_cancelServiceAppointmentRequestListResponse">
+    <wsdl:part name="parameters" element="tns1:cancelServiceAppointmentRequestListResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_updateSellableItemsServiceRequestResponse">
+    <wsdl:part name="parameters" element="tns1:updateSellableItemsServiceRequestResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_cancelServiceRequestAppointmentResponse">
+    <wsdl:part name="parameters" element="tns1:cancelServiceRequestAppointmentResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_createConsumablesServiceRequest">
+    <wsdl:part name="parameters" element="tns1:createConsumablesServiceRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_updateServiceRequestActivityResponse">
+    <wsdl:part name="parameters" element="tns1:updateServiceRequestActivityResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_addressCleanseResponse">
+    <wsdl:part name="parameters" element="tns1:addressCleanseResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_escalateServiceRequestResponse">
+    <wsdl:part name="parameters" element="tns1:escalateServiceRequestResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_updateServiceRequestActivity">
+    <wsdl:part name="parameters" element="tns1:updateServiceRequestActivity">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_cancelServiceRequestResponse">
+    <wsdl:part name="parameters" element="tns1:cancelServiceRequestResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_escalateServiceRequest">
+    <wsdl:part name="parameters" element="tns1:escalateServiceRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_createServiceRequest">
+    <wsdl:part name="parameters" element="tns1:createServiceRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_getServiceAppointment">
+    <wsdl:part name="parameters" element="tns1:getServiceAppointment">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_createSellableItemsServiceRequestResponse">
+    <wsdl:part name="parameters" element="tns1:createSellableItemsServiceRequestResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_createChangeManagementServiceRequest">
+    <wsdl:part name="parameters" element="tns1:createChangeManagementServiceRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_getServiceRequestStatus">
+    <wsdl:part name="parameters" element="tns1:getServiceRequestStatus">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_cancelServiceRequestAppointment">
+    <wsdl:part name="parameters" element="tns1:cancelServiceRequestAppointment">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_createSellableItemsServiceRequest">
+    <wsdl:part name="parameters" element="tns1:createSellableItemsServiceRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_cancelServiceRequest">
+    <wsdl:part name="parameters" element="tns1:cancelServiceRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_updateConsumablesServiceRequestResponse">
+    <wsdl:part name="parameters" element="tns1:updateConsumablesServiceRequestResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_updateSellableItemsServiceRequest">
+    <wsdl:part name="parameters" element="tns1:updateSellableItemsServiceRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_createConsumablesServiceRequestResponse">
+    <wsdl:part name="parameters" element="tns1:createConsumablesServiceRequestResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_confirmServiceAppointment">
+    <wsdl:part name="parameters" element="tns1:confirmServiceAppointment">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_confirmServiceAppointmentResponse">
+    <wsdl:part name="parameters" element="tns1:confirmServiceAppointmentResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_getServiceRequestStatusResponse">
+    <wsdl:part name="parameters" element="tns1:getServiceRequestStatusResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_updateConsumablesServiceRequest">
+    <wsdl:part name="parameters" element="tns1:updateConsumablesServiceRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="serviceRequestWS_PortType_debriefServiceRequestActivity">
+    <wsdl:part name="parameters" element="tns1:debriefServiceRequestActivity">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="serviceRequestWS_PortType">
+    <wsdl:operation name="getServiceRequestStatus">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_getServiceRequestStatus">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_getServiceRequestStatusResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createChangeManagementServiceRequest">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_createChangeManagementServiceRequest">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_createChangeManagementServiceRequestResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceAppointment">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_getServiceAppointment">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_getServiceAppointmentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateConsumablesServiceRequest">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_updateConsumablesServiceRequest">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_updateConsumablesServiceRequestResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateServiceRequestActivity">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_updateServiceRequestActivity">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_updateServiceRequestActivityResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="escalateServiceRequest">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_escalateServiceRequest">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_escalateServiceRequestResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelServiceRequest">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_cancelServiceRequest">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_cancelServiceRequestResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateSellableItemsServiceRequest">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_updateSellableItemsServiceRequest">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_updateSellableItemsServiceRequestResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelServiceAppointmentOnReschedule">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_cancelServiceAppointmentOnReschedule">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_cancelServiceAppointmentOnRescheduleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSRAndActivityDetails">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_getSRAndActivityDetails">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_getServiceRequestDetailsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelServiceAppointmentRequestList">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_cancelServiceAppointmentRequestList">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_cancelServiceAppointmentRequestListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="debriefServiceRequestActivity">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_debriefServiceRequestActivity">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_debriefServiceRequestActivityResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmServiceAppointment">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_confirmServiceAppointment">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_confirmServiceAppointmentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createServiceRequest">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_createServiceRequest">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_createServiceRequestResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createConsumablesServiceRequest">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_createConsumablesServiceRequest">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_createConsumablesServiceRequestResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createSellableItemsServiceRequest">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_createSellableItemsServiceRequest">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_createSellableItemsServiceRequestResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelServiceRequestAppointment">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_cancelServiceRequestAppointment">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_cancelServiceRequestAppointmentResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addressCleanse">
+      <wsdl:input message="tns1:serviceRequestWS_PortType_addressCleanse">
+    </wsdl:input>
+      <wsdl:output message="tns1:serviceRequestWS_PortType_addressCleanseResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceRequest_serviceRequestWS_Binder" type="tns1:serviceRequestWS_PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getServiceRequestStatus">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_getServiceRequestStatus" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createChangeManagementServiceRequest">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_createChangeManagementServiceRequest" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getServiceAppointment">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_getServiceAppointment" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateConsumablesServiceRequest">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_updateConsumablesServiceRequest" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateServiceRequestActivity">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_updateServiceRequestActivity" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="escalateServiceRequest">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_escalateServiceRequest" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelServiceRequest">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_cancelServiceRequest" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateSellableItemsServiceRequest">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_updateSellableItemsServiceRequest" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelServiceAppointmentOnReschedule">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_cancelServiceAppointmentOnReschedule" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSRAndActivityDetails">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_getSRAndActivityDetails" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelServiceAppointmentRequestList">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_cancelServiceAppointmentRequestList" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="debriefServiceRequestActivity">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_debriefServiceRequestActivity" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="confirmServiceAppointment">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_confirmServiceAppointment" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createServiceRequest">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_createServiceRequest" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createConsumablesServiceRequest">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_createConsumablesServiceRequest" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createSellableItemsServiceRequest">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_createSellableItemsServiceRequest" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelServiceRequestAppointment">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_cancelServiceRequestAppointment" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addressCleanse">
+      <soap:operation soapAction="ServiceRequest_serviceRequestWS_Binder_addressCleanse" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="serviceRequestWS">
+    <wsdl:port name="ServiceRequest_serviceRequestWS_Port" binding="tns1:ServiceRequest_serviceRequestWS_Binder">
+      <soap:address location="http://dlexrwmis002.lex.lexmark.com:8700/ws/ServiceRequest:serviceRequestWS/ServiceRequest_serviceRequestWS_Port"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

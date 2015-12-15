@@ -1,0 +1,121 @@
+@media only screen and (min-width : 768px) {
+
+	table.report-table {
+		display:none;
+   }
+	
+}
+
+/* Laptops ----------- */
+@media only screen and (max-width : 980px) {
+
+	/*#topnavigation ul {
+      height: 80px;
+   }
+   #topnavigation ul {
+      padding: 3px 0px 0px 4px !important;
+   }*/
+	
+}
+/* Tablets ----------- */
+@media only screen and (max-width : 768px) {
+
+	/*#topnavigation li {
+		display:inline-block;
+		width:60%;
+	}
+	#topnavigation ul {
+      border-width:0px;
+   }*/
+   .gridbox{
+		width:100%!important;
+   }
+   #sidebar {
+	    padding: 0px !important;
+	    margin-top: 1em;
+	}
+   table.report-table {
+		width:100%;
+		margin-bottom:5px;
+		display:none;
+   }
+   table.report-table th{
+	width:30%;
+	background-color:#F1F1F1;
+	border:1px solid #FFFFFF;
+	padding:4px;
+   }
+   table.report-table td{
+	width:70%;
+	border:1px solid #F1F1F1;
+	padding:4px;
+   }
+   .ui-icon {
+	margin:0 6%;
+   }
+   #reportListContainer{
+	display:block;
+	height:auto!important;
+   }
+   .objbox{
+   height:auto!important;
+   }
+   div.xhdr{
+	display:none;
+   }
+   table.obj{
+	width:100%!important;
+   }
+    table.obj th{
+	display:block;
+	}
+   table.obj td{
+	display:block;
+	padding-left:35%!important;
+	border: none;
+	border-bottom: 1px solid #eee;
+	position: relative;
+	white-space: normal;
+	text-align: left;
+   }
+   table.obj td:before{
+	content:attr(data-title);
+	position: absolute;
+	top: 6px;
+	left: 6px;
+	width: 35%;
+	padding-right: 10px;
+	white-space: nowrap;
+	text-align: left;
+	font-weight: bold;
+	z-index:10;
+   }
+   table.obj td table{
+	width:100%!important;
+   }
+	table.obj td table td{
+	display:inline!important;
+	padding-left:inherit !important;
+	position:static!important;
+   }
+	div.gridbox_light table.obj td{
+	font-size:14px!important;
+	}
+	div.gridbox_light table.obj tr {
+    border-bottom: 1px solid #ccc;
+	}
+	div.gridbox_light table.obj tr:first-child,
+	div.gridbox_light table.obj tr:last-child,
+	div.gridbox_light table.obj table tr {
+    border-bottom-width: 0;
+	}
+}
+/* Phones ----------- */
+@media only screen and (max-width : 480px) {
+
+	/*#topnavigation li {
+		display:inline-block;
+		width:100%;
+	}*/
+
+}

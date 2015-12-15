@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>LexmarkServicesCHL</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>SaveServicesUser</servlet-name>
+    <servlet-class>com.lexmark.servlet.SaveServicesUser</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>SaveServicesUser</servlet-name>
+      <url-pattern>/saveServicesUser</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>GenerateReportingHierarchy</servlet-name>
+    <servlet-class>com.lexmark.servlet.GenerateReportingHierarchy</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>GenerateReportingHierarchy</servlet-name>
+      <url-pattern>/customerHierarchyURL</url-pattern>
+  </servlet-mapping>
+  
+  <jsp-config>
+    <taglib>
+      <taglib-uri>/spring</taglib-uri>
+      <taglib-location>/WEB-INF/tld/spring-form.tld</taglib-location>
+    </taglib>
+  </jsp-config>
+  
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/context/applicationContext.xml</param-value>
+  </context-param>
+
+</web-app>

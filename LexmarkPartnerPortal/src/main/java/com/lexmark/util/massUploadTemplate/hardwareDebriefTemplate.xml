@@ -1,0 +1,707 @@
+<templateInformation>
+	<fileName>requestInfo.massUploadTemplate.hardwareOrder.fileName</fileName>
+	<firstLineCSV># LXK MPS Activity Import</firstLineCSV>
+	<!-- name refersto bean field name-->
+	<field>
+		<name>serviceRequest.serviceRequestNumber</name>
+		<csvHeader>hardware.massUploadTemplate.SRNumber</csvHeader>
+		<siebelHeader></siebelHeader>
+		<editable>false</editable>
+		<columnNumber>0</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	
+	<field>
+		<name>serviceRequest.asset.activityNumber</name>
+		<csvHeader>hardware.massUploadTemplate.ActivityId</csvHeader>
+		<siebelHeader># LXK MPS Action Import BC.Activity UID</siebelHeader>
+		<editable>false</editable>
+		<columnNumber>1</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>	
+	<field>
+		<name>serviceRequest.asset.description</name>
+		<csvHeader>hardware.massUploadTemplate.AssetDescription</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Asset Desc PreDebriefRFV</siebelHeader>
+		<editable>false</editable>
+		<columnNumber>2</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.productTLI</name>
+		<csvHeader>hardware.massUploadTemplate.Product</csvHeader>
+		<siebelHeader></siebelHeader>
+		<editable>true</editable>
+		<columnNumber>3</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.productModelNumber</name>
+		<csvHeader>hardware.massUploadTemplate.DeviceTypeModelNumber</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Dev Type Model Num PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>4</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<!--<name>customerAccount.accountName</name>-->
+		<name>serviceRequest.asset.account.accountName</name><!-- Changed for 12103 Defect -->
+		<csvHeader>hardware.massUploadTemplate.CustomerName</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS CHL Name PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>5</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<!--<name>serviceRequest.asset.consumableContact.lastName</name>-->
+		<name>serviceRequest.massUploadContact.lastName</name>		
+		<csvHeader>hardware.massUploadTemplate.ConsumablesContactLastName</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC_Contact.Contact Last Name</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>6</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<!--<name>serviceRequest.asset.consumableContact.firstName</name>-->
+		<name>serviceRequest.massUploadContact.firstName</name>		
+		<csvHeader>hardware.massUploadTemplate.ConsumablesContactFirstName</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC_Contact.Contact First Name</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>7</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.massUploadContact.workPhone</name>
+		<csvHeader>hardware.massUploadTemplate.ContactPrimaryPhoneNo</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC_Contact.Contact Work Phone #</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>8</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.massUploadContact.homePhone</name>
+		<csvHeader>hardware.massUploadTemplate.ContactSecondaryPhoneNo</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC_Contact.Contact Home Phone</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>9</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.massUploadContact.emailAddress</name>
+		<csvHeader>hardware.massUploadTemplate.ContactEmailAddress</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC_Contact.Contact Email Address</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>10</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.massUploadContact.contactType</name>
+		<csvHeader>hardware.massUploadTemplate.Contacttype</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC_Contact.Contact Job Role</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>11</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.massUploadContact.country</name>
+		<csvHeader>hardware.massUploadTemplate.Contactcountry</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC_Contact.LXK MPS Uploader Country</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>12</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.storeFrontName</name>
+		<csvHeader>hardware.massUploadTemplate.InstalledAddressName</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK C Installed Asset Address Name PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>13</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.massUploadInstallAddress.addressLine1</name>
+		<csvHeader>hardware.massUploadTemplate.InstalledAddressLine1</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK R Installed Address Line 1</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>14</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.massUploadInstallAddress.addressLine2</name>
+		<csvHeader>hardware.massUploadTemplate.InstalledAddressLine2</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK R Installed Address Line 2</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>15</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.massUploadInstallAddress.city</name>
+		<csvHeader>hardware.massUploadTemplate.InstalledCity</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK R Installed City</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>16</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.massUploadInstallAddress.county</name>
+		<csvHeader>hardware.massUploadTemplate.InstalledCounty</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK R Installed County</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>17</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.massUploadInstallAddress.state</name>
+		<csvHeader>hardware.massUploadTemplate.InstalledState</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK R Installed State</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>18</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.massUploadInstallAddress.province</name>
+		<csvHeader>hardware.massUploadTemplate.InstalledProvince</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK R Installed Province</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>19</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.massUploadInstallAddress.postalCode</name>
+		<csvHeader>hardware.massUploadTemplate.InstalledPostalCode</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK R Installed Postal Code</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>20</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.massUploadInstallAddress.country</name>
+		<csvHeader>hardware.massUploadTemplate.InstalledCountry</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK R Installed Country</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>21</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.massUploadInstallAddress.physicalLocation1</name>
+		<csvHeader>hardware.massUploadTemplate.Building</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK C Installed Asset Physical Location 1 PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>22</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.massUploadInstallAddress.physicalLocation2</name>
+		<csvHeader>hardware.massUploadTemplate.Floor</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK C Installed Asset Physical Location 2 PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>23</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.massUploadInstallAddress.physicalLocation3</name>
+		<csvHeader>hardware.massUploadTemplate.Office</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK C Installed Asset Physical Location 3 PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>24</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.massUploadInstallAddress.district</name>
+		<csvHeader>hardware.massUploadTemplate.InstalledAddressDistrict</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK R Installed Address District</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>25</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.massUploadInstallAddress.officeNumber</name>
+		<csvHeader>hardware.massUploadTemplate.InstalledAddressOfficeNo</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK R Installed Address Office#</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>26</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.installDate</name>
+		<csvHeader>hardware.massUploadTemplate.InstallDate</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Install Date PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>33</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.serialNumber</name>
+		<csvHeader>hardware.massUploadTemplate.SerialNumber</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK C Installed Asset Serial Number</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>34</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.networkConnectedFlag</name>
+		<csvHeader>hardware.massUploadTemplate.NetworkConnected</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK R Network Connected</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>35</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.ipAddress</name>
+		<csvHeader>hardware.massUploadTemplate.IPAddress</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK R IP Address</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>36</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.gateway</name>
+		<csvHeader>hardware.massUploadTemplate.IPGateway</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS IP Gateway PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>37</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.subnet</name>
+		<csvHeader>hardware.massUploadTemplate.IPSubmask</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS IP Submask PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>38</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.ipV6</name>
+		<csvHeader>hardware.massUploadTemplate.IPv6</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS IP V6 PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>39</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.macAddress</name>
+		<csvHeader>hardware.massUploadTemplate.MACAddress</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK C Installed Asset MAC Address PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>40</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.printerWorkingCondition</name>
+		<csvHeader>hardware.massUploadTemplate.DeviceCondition</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK C Installed Asset Device Conditioin PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>41</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.faxConnectedValue</name>
+		<csvHeader>hardware.massUploadTemplate.FaxConnected</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Fax Connected PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>42</columnNumber>
+		<prepopulate>true</prepopulate>
+		<!-- <constraint>
+				<value>PABX</value>
+				<value>DIRECT</value>
+			</constraint> -->				
+	</field>
+	<field>
+		<name>serviceRequest.asset.faxPortNumber</name>
+		<csvHeader>hardware.massUploadTemplate.FaxPortNumber</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Fax port num PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>43</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.hostName</name>
+		<csvHeader>hardware.massUploadTemplate.HostName</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Host Name PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>44</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.computerName</name>
+		<csvHeader>hardware.massUploadTemplate.ComputerName</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXKMPSComputerNamePreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>45</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.portNumber</name>
+		<csvHeader>hardware.massUploadTemplate.PortNumber</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Port Num PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>46</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.wiringClosestNetworkPoint</name>
+		<csvHeader>hardware.massUploadTemplate.WiringClosetNetworkPoint</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Wiring Closet_Netwk Pt PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>47</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.account.accountName</name>
+		<csvHeader>hardware.massUploadTemplate.AccountName</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Account Name PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>48</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.assetCostCenter</name>
+		<csvHeader>hardware.massUploadTemplate.CostCenter</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Asset Cost Center PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>49</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.deviceTag</name>
+		<csvHeader>hardware.massUploadTemplate.CustomerDeviceTag</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Customer Device Tag PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>50</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.departmentId</name>
+		<csvHeader>hardware.massUploadTemplate.DepartmentId</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Dept Id PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>51</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.department</name>
+		<csvHeader>hardware.massUploadTemplate.DepartmentName</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Dept Name PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>52</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.firmware</name>
+		<csvHeader>hardware.massUploadTemplate.Firmware</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Firmware PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>53</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.networkTopology</name>
+		<csvHeader>hardware.massUploadTemplate.NetworkTopology</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Network Topology PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>54</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.operatingSystem</name>
+		<csvHeader>hardware.massUploadTemplate.OperatingSystem</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS OS PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>55</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.operatingSystemVersion</name>
+		<csvHeader>hardware.massUploadTemplate.OperatingSystemVersion</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS OS Version PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>56</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.topBill</name>
+		<csvHeader>hardware.massUploadTemplate.TopBill</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Topbill Num  PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>57</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.specialUsage</name>
+		<csvHeader>hardware.massUploadTemplate.SpecialUsage</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Usage UOM PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>58</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<!-- Changes for 13485 July release -->
+	<field>
+		<name>serviceRequest.asset.assetField2</name>
+		<csvHeader>hardware.massUploadTemplate.ProjectData2</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Asset Field2 PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>59</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+		<field>
+		<name>serviceRequest.asset.assetField3</name>
+		<csvHeader>hardware.massUploadTemplate.ProjectData3</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Asset Field3 PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>60</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<!-- End Changes for 13485 July release -->
+	<field>
+		<name>technician.technicianName</name>
+		<csvHeader>hardware.massUploadTemplate.TechnicianName</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK SD Technician Name</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>64</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceProviderReferenceNumber</name>
+		<csvHeader>hardware.massUploadTemplate.ServiceProviderReferenceNo</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK R SP Reference #</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>65</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>activityStatus.value</name>
+		<csvHeader>hardware.massUploadTemplate.ActionStatus</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.Status</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>66</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>activitySubStatus.value</name>
+		<csvHeader>hardware.massUploadTemplate.ActionNarrative</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK R Substatus</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>67</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<!-- Any changes in Siebel Header and column number for the field debriefStatus will
+	 also need changes in ExcelToCSVConverter.java(For Portal Uploader logic) -->
+	<field>
+		<name>debriefStatus</name>
+		<csvHeader>hardware.massUploadTemplate.DebriefStatus</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK R Debrief Status</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>68</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>expectedCompletionDate</name>
+		<csvHeader>hardware.massUploadTemplate.expectedEndDate</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Expected End Date</siebelHeader>
+		<editable>false</editable>
+		<columnNumber>69</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>expectedStartInterventionDate</name>
+		<csvHeader>hardware.massUploadTemplate.expectedStartDate</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK C New Intervention Date</siebelHeader>
+		<editable>false</editable>
+		<columnNumber>70</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name></name>
+		<csvHeader>hardware.massUploadTemplate.debriefMethod</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Debrief Method</siebelHeader>
+		<editable>false</editable>
+		<columnNumber>71</columnNumber>
+		<prepopulate>true</prepopulate>
+		<constraint>
+				<defaultCSVValue></defaultCSVValue><!-- this is for CSV value where no options are chosen -->
+		</constraint>
+	</field>
+	<!-- changes for CR#17273 Critical Path  Starts-->
+	<field>
+		<name>serviceRequest.asset.deinstSerialNumber</name>
+		<csvHeader>hardware.massUploadTemplate.SerialNumber.deinstall</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Deinst Serial Num PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>72</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+			<name>serviceRequest.asset.deinstPartNumber</name>
+		<csvHeader>hardware.massUploadTemplate.PartNumber.deinstall</csvHeader>
+			<siebelHeader>LXK MPS Action Import BC.LXK MPS Deinst Part Num PreDebriefRFV</siebelHeader>
+			<editable>true</editable>
+			<columnNumber>73</columnNumber>
+			<prepopulate>true</prepopulate>
+		</field>
+	<field>
+		<name>serviceRequest.asset.deinstModel</name>
+		<csvHeader>hardware.massUploadTemplate.DeviceTypeModelNumber.deinstall</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Deinst Model PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>74</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.deinstBrand</name>
+		<csvHeader>hardware.massUploadTemplate.Brand.deinstall</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Deinst Brand PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>75</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.deinstIpAddress</name>
+		<csvHeader>hardware.massUploadTemplate.IPAddress.deinstall</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Deinst IP Addr PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>76</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.deinstHostName</name>
+		<csvHeader>hardware.massUploadTemplate.HostName.deinstall</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Deinst Host Name PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>77</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.deinstRemovalDate</name>
+		<csvHeader>hardware.massUploadTemplate.RemovalDate</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Deinst Removal Date PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>78</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.deinstComments</name>
+		<csvHeader>hardware.massUploadTemplate.Comments</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Deinst Comments PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>79</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.deinstAssetTag</name>
+		<csvHeader>hardware.massUploadTemplate.CustomerDeviceTag.deinstall</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK R Deinstalled Asset Tag</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>80</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<field>
+		<name>serviceRequest.asset.deviceCondition</name>
+		<csvHeader>hardware.massUploadTemplate.DeviceCondition.deinstall</csvHeader>
+		<siebelHeader>LXK MPS Action Import BC.LXK MPS Deinst Device Cond PreDebriefRFV</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>81</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
+	<!-- changes for CR#17273 Critical Path  Ends  -->
+	
+<listFieldDetail beanName="serviceRequest.asset.partList">
+	<!-- commented as of defect 12032
+		<field>
+			<name>partId</name>
+			<csvHeader>Part Row Id</csvHeader>
+			<siebelHeader>LXK MPS Parts &amp; Tools Import BC.LXK MPS Seq Num</siebelHeader>
+			<editable>true</editable>
+			<columnNumber>27</columnNumber>
+			<prepopulate>true</prepopulate>
+		</field> -->
+		<field>
+			<name>partNumber</name>
+			<csvHeader>hardware.massUploadTemplate.PartNumber(s)</csvHeader>
+			<siebelHeader>LXK MPS Parts &amp; Tools Import BC.Product Name</siebelHeader>
+			<editable>true</editable>
+			<columnNumber>27</columnNumber>
+			<prepopulate>true</prepopulate>
+		</field>
+		
+		<field>
+			<name>orderQuantity</name>
+			<csvHeader>hardware.massUploadTemplate.Quantity</csvHeader>
+			<siebelHeader>LXK MPS Parts &amp; Tools Import BC.Recommended Quantity</siebelHeader>
+			<editable>true</editable>
+			<columnNumber>28</columnNumber>
+			<prepopulate>false</prepopulate>
+		</field>
+		<field>
+			<name>usedQuantity</name>
+			<csvHeader>hardware.massUploadTemplate.UsedQuantity</csvHeader>
+			<siebelHeader>LXK MPS Parts &amp; Tools Import BC.LXK MPS Used Qty</siebelHeader>
+			<editable>true</editable>
+			<columnNumber>29</columnNumber>
+			<prepopulate>true</prepopulate>
+		</field>
+		<field>
+			<name>notUsedQuantity</name>
+			<csvHeader>hardware.massUploadTemplate.NotUsedQuantity</csvHeader>
+			<siebelHeader>LXK MPS Parts &amp; Tools Import BC.LXK MPS Not Used Qty</siebelHeader>
+			<editable>true</editable>
+			<columnNumber>30</columnNumber>
+			<prepopulate>true</prepopulate>
+		</field>
+		<field>
+			<name>doaQuantity</name>
+			<csvHeader>hardware.massUploadTemplate.DOAQuantity</csvHeader>
+			<siebelHeader>LXK MPS Parts &amp; Tools Import BC.LXK MPS DOA Qty</siebelHeader>
+			<editable>true</editable>
+			<columnNumber>31</columnNumber>
+			<prepopulate>true</prepopulate>
+		</field>		
+		<field>
+			<name>relationType</name>
+			<csvHeader>hardware.massUploadTemplate.PartType(RecommendedorAdditional)</csvHeader>
+			<siebelHeader>LXK MPS Parts &amp; Tools Import BC.Relation Type</siebelHeader>
+			<editable>true</editable>
+			<columnNumber>32</columnNumber>
+			<prepopulate>true</prepopulate>
+			<constraint>
+				<defaultCSVValue>Recommended1</defaultCSVValue><!-- this is for CSV value where no options are chosen -->
+				<value csvValue="Recommended1">Recommended</value>
+				<value csvValue="Associated">Additional</value>
+			</constraint>
+		</field>	
+	
+</listFieldDetail>
+<listFieldDetail beanName="serviceRequest.asset.pageCounts">
+	
+		<field>
+		<name>type</name>
+		<csvHeader>hardware.massUploadTemplate.PageCountType</csvHeader>
+		<siebelHeader>LXK MPS Activity Readings.LXK MPS Page Count Type</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>61</columnNumber>
+		<prepopulate>true</prepopulate>
+		<constraint>
+				<siebelLOV>PAGE_COUNTS_FOR_ASSET</siebelLOV><!-- This should be value from SiebelLocalization.java-->
+		</constraint>
+	</field>
+	<field>
+		<name>count</name>
+		<csvHeader>hardware.massUploadTemplate.PageCount</csvHeader>
+		<siebelHeader>LXK MPS Activity Readings.Page Count</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>62</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>	
+	<field>
+		<name></name>
+		<csvHeader>hardware.massUploadTemplate.PageCountFor</csvHeader>
+		<siebelHeader>LXK MPS Activity Readings.Type</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>63</columnNumber>
+		<prepopulate>true</prepopulate>
+		<constraint>
+				<value csvValue="Deinstalled">Deinstalled</value>
+		</constraint>
+	</field>
+</listFieldDetail>		
+		
+</templateInformation>

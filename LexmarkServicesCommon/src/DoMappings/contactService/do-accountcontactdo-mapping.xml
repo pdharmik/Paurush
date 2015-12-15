@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="AccountContactDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+		<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK SW Contact - Service Web</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW Contact - Service Web</value>
+        </property>
+        
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+			
+				<!--	BO Fields  -->
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>LXK SW Account Global DUNS Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>LXK SW Account Domestic DUNS Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXK SW Account MDM Legal Entity ID #</value>
+				</entry>
+				<entry>
+	         		<key><value>accountTransFlag</value></key>
+	         		<value>LXK SW L5 Account Transactable Flag</value>
+				</entry>				
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXK SW Account MDM Account #</value>
+				</entry>				
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>Account Id</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>contactAliasId</value></key>
+	         		<value>LXK Contact Alias Id</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>firstName</value></key>
+	         		<value>First Name</value>
+				</entry>
+
+				<entry>
+	         		<key><value>lastName</value></key>
+	         		<value>Last Name</value>
+				</entry>
+				<entry>
+	         		<key><value>middleName</value></key>
+	         		<value>LXK MPS Middle Name</value>
+				</entry>
+				<entry>
+	         		<key><value>emailAddress</value></key>
+	         		<value>Email Address</value>
+				</entry>
+				<entry>
+	         		<key><value>workPhone</value></key>
+	         		<value>Work Phone #</value>
+				</entry>
+				<entry>
+	         		<key><value>alternatePhone</value></key>
+	         		<value>LXK SW Alternate Primary Phone Number</value>
+				</entry>
+				 
+				<!-- GenericAddress address -->
+				<entry>
+	         		<key><value>addressLine1</value></key>
+	         		<value>LXK MPS Personal Street Address</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine2</value></key>
+	         		<value>LXK MPS Personal Street Address 2</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine3</value></key>
+	         		<value>LXK MPS Street Address 3</value>
+				</entry>
+				<entry>
+	         		<key><value>addressName</value></key>
+	         		<value>LXK MPS Personal Address Name</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>city</value></key>
+	         		<value>LXK MPS Personal City</value>
+				</entry>
+				<entry>
+	         		<key><value>state</value></key>
+	         		<value>LXK MPS Personal State</value>
+				</entry>
+				<entry>
+	         		<key><value>country</value></key>
+	         		<value>LXK MPS Personal Country</value>
+				</entry>
+				<entry>
+	         		<key><value>province</value></key>
+	         		<value>LXK MPS Personal Province</value>
+				</entry>
+				<entry>
+	         		<key><value>postalCode</value></key>
+	         		<value>LXK MPS Personal Postal Code</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>addressId</value></key>
+	         		<value>LXK MPS Primary Personal Address Id</value>
+				</entry>
+				
+				<!-- it should be physicalLocation -->
+				<entry>
+					<key><value>physicalLocation1</value></key>
+					<value>LXK MPS Physical Location 1</value>
+				</entry>
+				<entry>
+					<key><value>physicalLocation2</value></key>
+					<value>LXK MPS Physical Location 2</value>
+				</entry>
+				<entry>
+					<key><value>physicalLocation3</value></key>
+					<value>LXK MPS Physical Location 3</value>
+				</entry>
+				<entry>
+					<key><value>jobLevel</value></key>
+					<value>Job Level Lexmark</value>
+				</entry>
+				
+				<entry>
+					<key><value>county</value></key>
+					<value>LXK MPS Personal County</value>
+				</entry>
+				<entry>
+					<key><value>district</value></key>
+					<value>LXK MPS Personal District</value>
+				</entry>
+				<entry>
+					<key><value>officeNumber</value></key>
+					<value>LXK MPS Personal House No</value>
+				</entry>
+	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="CatalogListDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS Supplies Catalog</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Supplies Catalog</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>partNumber</value></key>
+	         		<value>LXK MPS Supply Part#</value>
+				</entry>
+				<entry>
+	         		<key><value>description</value></key>
+	         		<value>LXK MPS Supply Part Description Explicit</value>
+				</entry>
+					<!-- swap values for Part Type and Consumable Type for Portal UI-->
+				<entry>
+	         		<key><value>consumableType</value></key>
+	         		<value>LXK MPS Part Type</value>
+				</entry>
+					<!-- swap values for Part Type and Consumable Type for Portal UI-->
+				<entry>
+	         		<key><value>partType</value></key>
+	         		<value>LXK MPS Catalog Consumable Type Explicit</value>
+				</entry>
+				<entry>
+	         		<key><value>implicitFlag</value></key>
+	         		<value>LXK MPS Implicit Flag</value>
+				</entry>
+				<entry>
+	         		<key><value>printerPartNo</value></key>
+	         		<value>LXK MPS Printer Material #</value>
+				</entry>
+				<entry>
+	         		<key><value>yield</value></key>
+	         		<value>LXK MPS Yield Class Exp</value>
+				</entry>
+				<entry>
+	         		<key><value>agreementId</value></key>
+	         		<value>LXK MPS Agreement Id</value>
+				</entry>
+				<entry>
+	         		<key><value>productType</value></key>
+	         		<value>LXK MPS Product Type</value>
+				</entry>
+				<entry>
+	         		<key><value>productModel</value></key>
+	         		<value>LXK MPS Product Model</value>
+				</entry>
+				<entry>
+	         		<key><value>catalogId</value></key>
+	         		<value>LXK MPS Id</value>
+				</entry>
+				<entry>
+	         		<key><value>portalFlag</value></key>
+	         		<value>LXK MPS Display On Portal</value>
+				</entry>
+				<entry>
+	         		<key><value>supplyId</value></key>
+	         		<value>LXK MPS Supply Id</value>
+				</entry>
+				<entry>
+	         		<key><value>productId</value></key>
+	         		<value>LXK MPS Product Id</value>
+				</entry>
+				<entry>
+	         		<key><value>price</value></key>
+	         		<value>LXK MPS Price</value>
+				</entry>
+				<entry>
+	         		<key><value>materialLine</value></key>
+	         		<value>LXK MPS Material Line</value>
+				</entry>
+				<entry>
+	         		<key><value>mpsQuantity</value></key>
+	         		<value>LXK MPS Quantity</value>
+				</entry>	
+	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

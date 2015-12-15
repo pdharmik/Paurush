@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!--
+
+Mapping file for the LexmarkTransaction class of Lexmark Service.
+
+
+
+@author Alex Zhou <alexzhou216@gmail.com>
+
+-->
+<hibernate-mapping package="com.lexmark.domain">
+
+<class name="LexmarkTransaction"
+	   table="LEXMARKTRANSACTION"
+	   lazy="true">
+	
+	<id name="id"
+		type="long"
+		column="LEXMARKTRANSACTION_ID"
+		unsaved-value="null">
+		<generator class="native"/>
+	</id>
+	
+	<property   name="invoker"
+				column="INVOKER"
+				type="string"
+				length="100"
+				not-null="false"/>				
+				
+	<property   name="targetSystem"
+				column="TARGETSYSTEM"
+				type="string"
+				length="100"
+				not-null="false"/>				
+				
+	<property   name="webServiceName"
+				column="WEBSERVICENAME"
+				type="string"
+				length="100"
+				not-null="false"/>				
+				
+	<property   name="accountID"
+				column="ACCOUNTID"
+				type="string"
+				length="100"
+				not-null="false"/>				
+				
+	<property   name="loginUser"
+				column="LOGINUSER"
+				type="string"
+				length="100"
+				not-null="false"/>
+				
+	<property   name="startTime"
+				column="STARTTIME"
+				type="java.util.Date"
+				update="false"
+				not-null="true"/>
+				
+	<property   name="endTime"
+				column="ENDTIME"
+				type="java.util.Date"
+				update="false"
+				not-null="true"/>
+				
+	<property   name="duration"
+				column="DURATION"
+				type="long"
+				update="false"/>
+</class>
+</hibernate-mapping>

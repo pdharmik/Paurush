@@ -1,0 +1,21 @@
+
+<project name="MyTestLab">
+	<path id="myclasspath">
+	<fileset dir="C:\Users\sakoar\Desktop\Automation\Scripts\Webdrivers\WorkSpace\TestNG_test">
+	<include name="jxl.jar"/>
+	</fileset>	
+	
+	<fileset dir="C:\Users\sakoar\Desktop\Automation\SetUP\eclipse\plugins\org.testng.eclipse_6.7.0.20120825_1316\lib">
+	<include name="testng.jar"/>
+	</fileset>	
+				
+	<pathelement path="bin"></pathelement>
+	
+	</path>
+		<target name="run">
+		<taskdef classname="com.beust.testng.TestNGAntTask" name="testng" classpathref="myclasspath"/>	
+		<testng classpathref="myclasspath" outputDir="out">
+		<xmlfileset dir= "C:\Users\sakoar\Desktop\Automation\Scripts\Webdrivers\WorkSpace\TestNG_test" includes="testNG.xml"/>
+		</testng>
+	</target>
+</project>

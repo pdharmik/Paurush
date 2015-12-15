@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="CustomerSapAccountDo" class="com.amind.data.service.DomainObjMapping">
+  
+    <!-- data source info -->
+       <property name="dataSourceName">
+            <value>EAI Siebel Adapter</value>
+        </property>
+
+       <property name="dsTargetObjectName">
+            <value>LXK SAP Account Detail IO</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+            <value>LXK SAP Account</value>
+        </property>
+
+        <property name="packageName">
+            <value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+        <!-- field mapping --> 
+        <property name="doFieldNameToDsFieldNameMap">
+            <map>
+                <entry>
+                    <key><value>soldTo</value></key>
+                    <value>LXK SoldTo#</value>
+                </entry>
+                <entry>
+                    <key><value>billTo</value></key>
+                    <value>LXK BillTo#</value>
+                </entry>
+                <entry>
+	         		<key><value>customerSapAccountBusinessAddress</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.CustomerSapAccountBusinessAddressDo</value>
+				</entry>
+				<entry>
+	         		<key><value>companyCodeDo</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.CompanyCodeDo</value>
+				</entry>
+				 <entry>
+	         		<key><value>salesOrg</value></key>
+	         		<value>LXK MPS Sales Org Number</value>
+				</entry>		
+				 <entry>
+	         		<key><value>id</value></key>
+	         		<value>LXK Parent Row Id</value>
+				</entry>	
+				<entry>
+	         		<key><value>accountName</value></key>
+	         		<value>LXK SW Account Siebel Name</value>
+				</entry>	
+            </map>
+        </property>
+    </bean>  
+</beans>

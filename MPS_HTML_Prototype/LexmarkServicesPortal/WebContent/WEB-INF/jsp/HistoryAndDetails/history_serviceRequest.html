@@ -1,0 +1,436 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Request History - Services Requests</title>
+<link href="../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../../js/util.js"></script>
+<script src="../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/tree/dhtmlxtree.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../js/mps.js"></script>
+<script type="text/javascript">
+var global_paging_message={results:"Results",records:"Records from  ",to:" to ",page:"page ",perpage:"rows per page",first:"To first Page",previous:"Previous Page",found:"Found records",next:"Next Page",last:"To last Page",of:" of ",notfound:"No Records Found"};
+var global_button_message={close:"CLOSE",ok:"OK",cancel:"CANCEL",selectColumns:"SELECT COLUMNS"};
+</script>
+<style type="text/css">
+#banner .logo {
+	background: url("../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/images/custom/logoLex.png") no-repeat scroll left top transparent;
+	display: block;
+	margin: 0;
+	padding: 0 !important;
+	width: 168px;
+	height: 56px;
+	position: absolute;
+	top: 13px;
+	left: 20px;
+	text-indent: -9999em;
+}
+</style>
+</head>
+<body>
+<div id="wrapper">
+   <div id="banner">
+    <h1 class="logo"><a href="https://tportal.lexmark.com/web/guest" title="Lexmark Global Services">tportal.lexmark.com</a></h1>
+    <div id="top-header">
+      <div id="top-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><b><span>Welcome Jason Filarky!</span></b></li>
+          <li><a href="../Home/preferences.html">Preferences</a></li>
+          <li><a href="#">User Administration</a></li>
+          <li><a href="login.html">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="bottom-header">
+      <div id="bottom-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><a href="http://www.lexmark.com">Lexmark.com</a></li>
+          <li><a href="../Home/FAQ.html">FAQ</a></li>
+          <li><a href="../Home/getHelp.html">Get Help</a></li>
+          <li><a href="../Home/contact_Lexmark.html">Contact Lexmark</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sort-pages modify-pages" id="topnavigation">	
+  <ul>	
+	  <li>	<a href="../Home/home.html"><span>Home</span></a>	</li>
+	  <li class="">	<a href="../DeviceManagement/all_devices.html"><span>Device Finder</span></a>	</li>
+	  <li class="">	<a href="../pageCounts/defaltPageCount.html"><span>Page Counts</span></a>	</li>
+	  <li class="selected">	<a href="../HistoryAndDetails/history_allRequest.html"><span>Requests</span></a>	</li>
+	  <li class="">	<a target="_blank" href="https://services.lexmark.com/portal/site"><span>Order Supplies</span></a>	</li>
+	  <li class="">	<a href="../Reports/defaltReportView.html"><span>Reports</span></a>	</li>
+	  <li class="">	<a href="../DocumentLibrary/docLibrary_landingPage.html"><span>Document Library</span></a>	</li>
+  </ul>
+  </div>
+  <div id="subnavigation">
+    <ul>
+      <li class="selected"><a href="javascript:void(0);"><span>Request History</span></a></li>
+      <li><a href="../create_new_request.html" class="lightbox" title="Create New Request"><span>Create New Request</span></a></li>
+    </ul>
+  </div>
+  <div id="content-wrapper">
+    <div class="journal-content-article">
+      <h2>Request History</h2>
+      <span class="step">Service Requests</span> </div>
+    <div class="main-wrap">
+      <div class="content"><a name="scrollTo"></a>
+        <div class="left-nav">
+          <div class="left-nav-inner"> 
+            <!-- LEFT COLUMN CONTENT GOES HERE -->
+            <div class="left-nav-header">
+              <h3>Request Type:</h3>
+            </div>
+            <ul class="filters">
+              <li><a href="history_allRequest.html">All Request Types</a></li>
+              <li><a href="history_suppliesRequest.html">Supplies Requests</a></li>
+              <li><a href="history_changeRequest.html">Change Requests</a></li>
+               <li class="selected"><a href="history_serviceRequest.html">Service Requests</a></li>
+              
+            </ul>
+            <div class="left-nav-header inlineTitle">
+              <h3>Filter by View:</h3>
+            </div>
+            <ul class="filters radio">
+              <li> <span>
+                <input type="radio" name="viewBy" id="myReq" checked="checked" />
+                </span>
+                <label for="myReq">My Requests</label>
+              </li>
+              <li> <span>
+                <input type="radio" id="bookAssetReq" name="viewBy" />
+                </span>
+                <label for="bookAssetReq">Bookmarked Asset Requests</label>
+              </li>
+              <li> <span>
+                <input type="radio" id="allReq" name="viewBy" />
+                </span>
+                <label for="allReq">Show All</label>
+              </li>
+            </ul>
+            <div class="left-nav-header inlineTitle">
+              <h3>Filter by Date Range:</h3>
+            </div>
+            <ul class="filters">
+              <li>
+                <label for="fromDate">From:</label>
+                <span>
+                <input type="date" id="fromDate" class="w100"/>
+                <img src="../../../images/ic_cal.png" title="Select a Date" width="23" height="23"/></span></li>
+              <li>
+                <label for="toDate">To:</label>
+                <span>
+                <input type="date" id="toDate" class="w100"/>
+                <img src="../../../images/ic_cal.png" title="Select a Date" width="23" height="23"/></span></li>
+            </ul>
+            <div class="buttonContainerIn">
+              <button class="button">Go</button>
+            </div>
+            <div class="left-nav-header">
+              <h3>Filter by:</h3>
+            </div>
+            <ul class="filters">
+              <li><a href="#scrollTo" class="chl">Device Location</a></li>
+              <li><a href="#scrollTo" class="chl">Customer Hierarchy</a></li>
+            </ul>
+          </div>
+          <div class="left-nav-footer"> 
+            <!-- NO CONTENT HERE PLS --> 
+          </div>
+        </div>
+        <div class="leftOverlay rounded shadow">
+          <div class="columnInner">
+            <h4><a href="javascript:void(0);" class="chlClose"><strong>Close</strong></a>CHL / Location</h4>
+            The CHL / Location Tree structure goes here
+            <div class="buttonContainerIn">
+              <button class="button_cancel chlClose">Cancel</button>
+              <button class="button chlClose">Select</button>
+            </div>
+          </div>
+        </div>
+        <div class="right-column">
+          <h3 class="pageTitle">Service Requests</h3>
+          <div class="grid-controls"> 
+            <!-- Utilities Start -->
+            <div class="utilities">
+              <ul>
+                 <li class="first"><a href="#" onclick="downloadFile('xls')"><img src="../../../images/xls.png" alt="Export to Excel" title="Export to Excel"></a></li>
+                <li><a href="#" onclick="downloadFile('pdf')" target="_blank"><img src="../../../images/pdf.png" alt="Export to PDF" title="Export to PDF" /></a></li>
+                 <li><a href="ServiceRequestListPrint.html" target="_blank"><img src="../../../images/print.jpg" alt="Print" title="Print"></a></li>
+              </ul>
+            </div>
+            <!-- utilities End --> 
+            <!-- Expand-min Start -->
+            <div class="expand-min">
+             <ul>
+                <li class="first"> <img src="../../../images/minimize_all.png" alt="Minimize All" title="Minimize All" /> <a href="javascript:void(0)" onClick="minimizeAll()";>Minimize All</a> </li>
+                <li> <img src="../../../images/expand_all.png" alt="Expand All" title="Expand All" /> <a href="javascript:void(0)" onClick="expandAll()";>Expand All</a> </li>
+                <li class="first"> <img src="../../../images/customize.png" alt="Customize Grid" title="Customize Grid" /> <a href="#grid" id='headerMenuButton'>Customize Columns</a> </li>
+                <li> <img src="../../../images/reset.png" alt="Reset Grid" title="Reset Grid" /> <a href="javascript:reloadGrid();">Reset</a> </li>
+              </ul>
+            </div>
+            <!-- Expand-min End --> 
+            <!-- Customize Coulmns Popup Start -->
+            <!-- Customize Coulmns Popup End --> 
+          </div>
+          <!-- grid-controls -->
+          <div class="portlet-wrap rounded">
+            <div class="portlet-wrap-inner">
+              <div id="mygrid_container" class="gridbox gridbox_light "></div>
+            </div>
+          </div>
+          <div class="pagination"><span id="pagingArea"></span><span id="infoArea"></span></div>
+          <!-- mygrid_container --> 
+        </div>
+      </div>
+    </div>
+  </div>
+   <div id="footer" class="round_top">
+<div id="footer-nav-container">
+<ul id="footer-nav-ul">
+  <li><a href="http://www1.lexmark.com/en_US/about-us/index.shtml">About 
+  Lexmark </a></li><li><a href="http://www1.lexmark.com/en_US/terms/privacy-security.shtml">Privacy 
+  Policy</a> </li><li><a href="http://www1.lexmark.com/en_US/terms/terms-and-conditions.shtml">Terms 
+  &amp; Conditions </a></li><li><a href="http://www1.lexmark.com/en_US/nav/sitemap.shtml">Sitemap 
+  </a></li><li><a href="http://www1.lexmark.com/en_US/about-us/company/contact-us.shtml">Contact 
+  Lexmark </a></li></ul><br>
+<p align="left">&copy; Copyright 2012 
+Lexmark<!--extra added align center>--></p></div></div>
+</div>
+</body>
+<script>
+	var mygrid;
+	var headerString = "&nbsp;,#cspan,Request Number,Date,Serial Number,Product Model,Problem Description,Status,Address Name,City,State,Province,Postal Code,Country,Helpdesk Reference #,Primary Contact First Name,Primary Contact Last Name,Primary Contact Email,Primary Contact Phone, Contract Type, Customer Device Tag, Device Host Name, Cost Center,&nbsp;";
+	var ar =  [
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>840.02 scanner disable</td><td>Replaced Part(s)</td><td>03/08/2013 17:00:00</td><td class=\"right\">8383 158th Ave Ne Redmond	WA ,  USA</td><td>Jan Strock 4258960781 jstrock@lexmark.com</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11446325216&src_page=serviceRequest\">1-11446325216</a>",
+								"03/01/2013 10:52:43 PM", "7562019400215", "LexmarkX792dte", "840.02 scanner disable",
+								"Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>Arena iade .Fatura no:826578</td><td>Scrapped</td><td>03/13/2013 15:15:00</td><td class=\"right\">Piyalepasa Bulvari FAMAS Plaza B Blok, Kat: 4 ISTANBUL IB ,  Turkey</td><td>Yeşim Tuncer +902122200440000 000 00 00 yesim.tuncer@lexmark.com.tr</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11464083968&src_page=serviceRequest\">1-11464083968</a>",
+								"03/04/2013 8:18:26 AM", "350H6T6", "LexmarkX364dn", "Arena iade .Fatura no:826578",
+								"Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>Bekir Dalcı demo iadesi.İrs.no:176818</td><td>Aligned and Cleaned</td><td>	03/05/2013 14:00:00</td><td class=\"right\">Piyalepasa Bulvari FAMAS Plaza B Blok, Kat: 4 ISTANBUL IB ,  Turkey</td><td>Yeşim Tuncer +902122200440000 000 00 00 yesim.tuncer@lexmark.com.tr</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11464084011&src_page=serviceRequest\">1-11464084011</a>",
+								"03/04/2013 8:44:13 AM", "3770498", "Lexmark2590plus", "Bekir Dalcı demo iadesi.İrs.no:176818",	"Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>Some text are cut-off when doing a scan to email</td><td></td><td></td><td class=\"right\">740 W New Circle Rd. Lexington KY ,  USA</td><td>Denise Zimmerman 8592323163 dezimmerman@lexmark.com</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11466281458&src_page=serviceRequest\">1-11466281458</a>",
+								"1/10/2013  12:37:18 PM", "79G1R7P", "LexmarkX656dte", "Some text are cut-off when doing a scan to email","Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>84 yellow pc missing</td><td></td><td></td><td class=\"right\">740 W New Circle Rd. Lexington KY ,  USA</td><td>Ram Prabhu 8592324143 ramprabhu@lexmark.com</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11475304262&src_page=serviceRequest\">1-11475304262</a>",
+								"03/05/2013 4:50:39 PM", "214730", "LexmarkX945e", "84 yellow pc missing",
+								"Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>842.XX Hatası</td><td>Replaced Part(s)</td><td>03/05/2013 13:23:00</td><td class=\"right\">Tahılpazarı Mah. Adnan Menderes Bul. Emel 2 İş Merkezi Antalya TR ,  Turkey</td><td>Tuğrul Sütyemez +902123168983 tsutyemez@lexmark.com</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11477252972&src_page=serviceRequest\">1-11477252972</a>",
+								"03/05/2013 1:08:34 PM", "7942FFP", "LexmarkX656dte", "842.XX Hatası",
+								"Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>maintenance Part Number: 40X7101</td><td>Replaced Part(s)</td><td>03/07/2013 12:45:00</td><td class=\"right\">Route De Pre-bois 20 Geneve ,  Switzerland</td><td>Jose Leite +41227107553 jose.leite@lexmarkpartners-europe.com</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11478640035&src_page=serviceRequest\">1-11478640035</a>",
+								"03/05/2013 3:38:43 PM", "75620294002YV", "LexmarkX792de", "maintenance",
+								"Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>Arena iade alındı . Fatura no:826836 ( Milli Eğt.Müd/Askale)</td><td>Scrapped</td><td>03/07/2013 08:33:00</td><td class=\"right\">Piyalepasa Bulvari FAMAS Plaza B Blok, Kat: 4 ISTANBUL IB ,  Turkey</td><td>Yeşim Tuncer +902122200440000 000 00 00 yesim.tuncer@lexmark.com.tr</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11485981239&src_page=serviceRequest\">1-11485981239</a>",
+								"03/06/2013 2:18:07 PM", "5923NJY", "LexmarkX204n", "Arena iade alındı . Fatura no:826836 ( Milli Eğt.Müd/Askale)","Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>Banvit demo iadesi.İrsaliye yok.</td><td>Aligned and Cleaned</td><td>03/08/2013 14:00:00</td><td class=\"right\">14:00:00	Piyalepasa Bulvari FAMAS Plaza B Blok, Kat: 4 ISTANBUL IB ,  Turkey</td><td>Serdal Bezaroğlu +902122200440 sbezeroglu@lexmark.com</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11489832069&src_page=serviceRequest\">1-11489832069</a>",
+								"03/07/2013 7:53:13 AM", "79G12VZ", "LexmarkX656dte", "Banvit demo iadesi.İrsaliye yok.","Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>Banvit demo iadesi .İrsaliye yok</td><td>Aligned and Cleaned	</td><td>03/08/2013 14:00:00</td><td class=\"right\">	Piyalepasa Bulvari FAMAS Plaza B Blok, Kat: 4 ISTANBUL IB ,  Turkey</td><td>Serdal Bezaroğlu +902122200440 sbezeroglu@lexmark.com</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11489832093&src_page=serviceRequest\">1-11489832093</a>",
+								"03/07/2013 8:28:13 AM", "794HCMX", "LexmarkX652de", "Banvit demo iadesi .İrsaliye yok","Completed"
+						],
+						
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">PrimaryContact</th></tr></thead><tbody><tr><td>Media Markt Beylikdüzü iade ( irs.no:114350).Nejat Can bilgisinde iadealınacaktır </td><td>User Issue</td><td>03/18/2013 15:15:00</td><td class=\"right\">Piyalepasa Bulvari FAMAS Plaza B Blok, Kat: 4 ISTANBULIB ,Turkey</td><td>Nejat Can+902122200440000 000 00 00nejatcan@lexmark.com</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11489832536&src_page=serviceRequest\">1-11489832536</a>",
+								"03/07/2013 10:34:18 AM", "000DM05649M", "LexmarkPro205", "Media Markt Beylikdüzü iade ( irs.no:114350).Nejat Can bilgisinde iade alınacaktır","Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>Media MarktBeylikdüzü (irs.no:114350).Nejat Canbilgisindeiadalınacaktır</td><td>Scrapped</td><td>03/18/2013 15:15:00</td><td class=\"right\">Piyalepasa Bulvari FAMAS Plaza B Blok, Kat: 4ISTANBUL IB ,Turkey</td><td>NejatCan+90212220044000000nejatcan@lexmark.com</td></tr></tbody></table></div>","<ahref=\"details_serviceRequest.html?request_id=1-11489832598&src_page=serviceRequest\">1-11489832598</a>","03/07/2013 10:47:14 AM", "000HM29360M", "LexmarkPro209", "Media Markt Beylikdüzü (irs.no:114350).Nejat Can bilgisinde iade alınacaktır","Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>Media Markt Beylikdüzü (irs.no:114350).Nejat Can bilgisinde iade alınacaktır</td><td>User Issue</td><td>03/18/2013 15:15:00</td><td class=\"right\">Piyalepasa Bulvari FAMAS Plaza B Blok, Kat: 4 ISTANBUL IB ,  Turkey</td><td>Nejat Can+902122200440000 000 00 00 nejatcan@lexmark.com</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11489832631&src_page=serviceRequest\">1-11489832631</a>",
+								"03/07/2013 10:57:27 AM", "000H0093251", "LexmarkPro205", "Media Markt Beylikdüzü (irs.no:114350).Nejat Can bilgisinde iade alınacaktır","Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>Media Markt Beylikdüzü (irs.no:114350).Nejat Can bilgisinde iade alınacaktır</td><td>User Issue</td><td>03/18/2013 15:15:00</td><td class=\"right\">Piyalepasa Bulvari FAMAS Plaza B Blok, Kat: 4 ISTANBUL IB ,Turkey</td><td>Nejat Can+902122200440000 000 00 00 nejatcan@lexmark.com</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11489832667&src_page=serviceRequest\">1-11489832667</a>",
+								"03/07/2013 11:06:30 AM", "D44272J", "LexmarkPro205", "Media Markt Beylikdüzü (irs.no:114350).Nejat Can bilgisinde iade alınacaktır","Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>Customer would like to know a solution to retain the jobs sent to the MFP</td><td></td><td></td><td class=\"right\">Rua do Rocio 430 Sao Paulo SP ,Brazil</td><td>JULIO QUEIROS 1156611179 julio@lanytecnologia.com.br</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11490239303&src_page=serviceRequest\">1-11490239303</a>",
+								"03/06/2013 5:02:53 PM", "", "LexmarkX364dn", "Customer would like to know a solution to retain the jobs sent to the MFP","Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>Media Markt Beylikdüzü (irs.no:114350).Nejat Can bilgisinde iade alınacaktır</td><td>Scrapped</td><td>03/18/2013 15:15:00</td><td class=\"right\"Piyalepasa Bulvari FAMAS Plaza B Blok, Kat: 4 ISTANBUL IB ,Turkey</td><td>Nejat Can +902122200440000 000 00 00 nejatcan@lexmark.com</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11498614005&src_page=serviceRequest\">1-11498614005</a>",
+								"03/07/2013 11:45:50 AM", "000DM06284M", "LexmarkPro205", "Media Markt Beylikdüzü (irs.no:114350).Nejat Can bilgisinde iade alınacaktır","Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>Media Markt Beylikdüzü (irs.no:114350).Nejat Can bilgisinde iade alınacaktır</td><td>User Issue</td><td>03/18/2013 15:15:00</td><td class=\"right\">Piyalepasa Bulvari FAMAS Plaza B Blok, Kat: 4 ISTANBUL IB ,Turkey</td><td>Nejat Can+902122200440000 000 00 00 nejatcan@lexmark.com</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11498614041&src_page=serviceRequest\">1-11498614041</a>",
+								"03/07/2013 11:56:32 AM", "000DM06279M", "LexmarkPro205", "Media Markt Beylikdüzü (irs.no:114350).Nejat Can bilgisinde iade alınacaktır","Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>Media Markt Beylikdüzü (irs.no:114350).Nejat Can bilgisinde iade alınacaktır</td><td>User Issue</td><td>03/18/2013 15:15:00</td><td class=\"right\">Piyalepasa Bulvari FAMAS Plaza B Blok, Kat: 4 ISTANBUL IB ,Turkey</td><td>Nejat Can+902122200440000 000 00 00 nejatcan@lexmark.com</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11498614088&src_page=serviceRequest\">1-11498614088</a>",
+								"03/07/2013 12:07:41 PM", "D44258J", "Lexmark Pro205", "Media Markt Beylikdüzü (irs.no:114350).Nejat Can bilgisinde iade alınacaktır","Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>problem :  uninstall and pack</td><td>Performed Deinstall</td><td>03/11/2013 21:00:00</td><td class=\"right\">9975 Av de Catania Brossard, Canada</td><td>Patrick Caron 5148301427 pcaron@lexmark.com</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11507156761&src_page=serviceRequest\">1-11507156761</a>",
+								"03/08/2013 2:19:39 PM", "792Y1XN", "LexmarkX658de", "problem :uninstall and pack","Completed"
+						],
+						[
+								"<img src=\"../../../images/expdt.gif\" alt=\"Expedited Request\" width=\"16\" height=\"16\" />",
+								"<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th class=\"w100\">Problem Description</th><th>Resolution</th><th class=\"w150\">ETA</th><th class=\"w80 right\">Service Location</th><th class=\"w100\">Primary Contact</th></tr></thead><tbody><tr><td>problem :uninstall and pack</td><td>	Performed Deinstall</td><td>03/11/2013 21:00:00</td><td class=\"right\">9975 Av de Catania Brossard, Canada</td><td>Pierre Crispin 4506765396x256 pcrispin@lexmark.com</td></tr></tbody></table></div>",
+								"<a href=\"details_serviceRequest.html?request_id=1-11507156784&src_page=serviceRequest\">1-11507156784</a>",
+								"03/08/2013 2:23:07 PM", "792ZN62", "LexmarkT654dtn", "problem :  uninstall and pack","Completed"
+						]
+						
+											
+					];
+	mygrid = new dhtmlXGridObject('mygrid_container');
+	mygrid.setImagePath("../../../images/gridImgs/");
+	mygrid.setHeader(headerString);
+	mygrid.attachHeader(",#cspan,#text_filter,#text_filter,#select_filter,#select_filter,#text_filter,#select_filter");
+	mygrid.setLockColVisibility("true,true,true,true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false");
+	mygrid.setInitWidths("20,30,100,130,130,130,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,*");
+	mygrid.setColumnMinWidth("20,30,100,130,130,130,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,1");
+	mygrid.enableResizing("false,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true");
+	mygrid.setColAlign("left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left");
+	mygrid.setSkin("light");
+	mygrid.setColSorting("na,na,str,str,str,str,str,str,na,str,str,str,str,str,str,str,str,str,str,str,str,str,str");
+	mygrid.setColTypes("ro,sub_row,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
+	mygrid.enableAutoHeight(true);
+	mygrid.enableMultiline(true);
+	mygrid.enableColumnMove(true);
+	mygrid.enableHeaderMenuForButton("headerMenuButton");
+	mygrid.enableAlterCss("even_row","odd_row");
+	mygrid.init();
+	mygrid.enablePaging(true, 20, 2, "pagingArea", true, "infoArea");
+	mygrid.setPagingSkin("bricks");
+	mygrid.parse(ar, "jsarray");
+	setDefaultHiddenColumns();
+	
+	function setDefaultHiddenColumns(){
+	
+		mygrid.setColumnHidden(9,true);
+		mygrid.setColumnHidden(10,true);
+		mygrid.setColumnHidden(11,true);
+	    mygrid.setColumnHidden(12,true);
+		mygrid.setColumnHidden(13,true);
+		mygrid.setColumnHidden(14,true);
+		mygrid.setColumnHidden(15,true);
+		mygrid.setColumnHidden(16,true);
+		mygrid.setColumnHidden(17,true);
+		mygrid.setColumnHidden(18,true);
+		mygrid.setColumnHidden(19,true);
+		mygrid.setColumnHidden(20,true);
+		mygrid.setColumnHidden(21,true);
+		mygrid.setColumnHidden(22,true);
+		 }
+		 
+	function reloadGrid() {
+		setDefaultHiddenColumns();
+	};
+
+	
+	
+	function minimizeAll() {
+		mygrid.forEachRow(function(id) {
+			var cell = mygrid.cellById(id, 1);
+			cell.close();
+			subRowOpenFlag = false;
+		});
+	};
+	function expandAll() {
+		mygrid.forEachRow(function(id) {
+			var cell = mygrid.cellById(id, 1);
+			cell.open();
+			subRowOpenFlag = true;
+		});
+	};
+	
+		
+	function downloadFile(extnsn){	
+	
+			if(extnsn=='xls'){
+				location.href="ServiceRequestList.csv";
+			}else
+			if(extnsn=='pdf'){
+				window.location="ServiceRequestList.pdf";
+			}
+			}
+</script>
+         
+
+   </html>      

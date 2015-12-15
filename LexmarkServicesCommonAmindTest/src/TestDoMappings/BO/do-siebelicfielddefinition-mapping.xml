@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+  Mapping definition for aMmindSolutions "SiebelBusCompDef" domain object to "Repository Integration Component Field"
+  "Repository Integration Object" "Siebel BO" 
+  -->
+
+<beans>
+    <bean id="SiebelICFieldDefinition" class="com.amind.data.service.DomainObjMapping">
+        
+        <property name="dataSourceName">
+            <value>Siebel BO</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+            <value>Repository Integration Object</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+            <value>Repository Integration Component Field</value>
+        </property>    
+        
+        
+       <!-- field mapping --> 
+	   <property name="doFieldNameToDsFieldNameMap">
+	     <map>
+	     
+	       <!-- base fields -->
+	       <entry>
+	         <key><value>name</value></key>
+	         <value>Name</value>
+	       </entry>	       
+       
+	       <entry>
+	         <key><value>integrationId</value></key>
+	         <value></value>
+	       </entry>	
+	       
+	       <entry>
+	         <key><value>id</value></key>
+	         <value>Id</value>
+	       </entry>	  	
+	              
+
+	       <!-- simple fields -->	     
+	     
+	       <entry>
+	         <key><value>type</value></key>
+	         <value>Physical Data Type</value>
+	       </entry>	
+	       	     
+	       <entry>
+	         <key><value>inactive</value></key>
+	         <value>Inactive</value>
+	       </entry>	 
+	       
+	       <entry>
+	         <key><value>parentId</value></key>
+	         <value>Parent Id</value>
+	       </entry>	 
+	       
+	       <entry>
+	         <key><value>parentName</value></key>
+	         <value>Parent Name</value>
+	       </entry>	
+	       
+	       <entry>
+	         <key><value>grandParentName</value></key>
+	         <value>GParent Name</value>
+	       </entry>	 
+	              
+	       <entry>
+	         <key><value>repositoryName</value></key>
+	         <value>Repository Name</value>
+	       </entry>	 	       
+	       
+	       <entry>
+	         <key><value>repositoryId</value></key>
+	         <value>Repository Id</value>
+	       </entry>	 	  	       
+	       
+	     </map>
+	   </property>
+       	   
+	            
+    </bean>  
+</beans>

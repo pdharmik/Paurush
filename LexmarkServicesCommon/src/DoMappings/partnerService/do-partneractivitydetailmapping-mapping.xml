@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerActivityDetailDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Request Detail Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW Request Detail - Partner Portal</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	   
+	     		<entry>
+	         		<key><value>activityId</value></key>
+	         		<value>Activity UID</value>
+				</entry>  
+				<entry>
+	         		<key><value>reviewComments</value></key>
+	         		<value>LXK SW SR Description</value>
+				</entry> 
+				<entry>
+	         		<key><value>actualFailureCode</value></key>
+	         		<value>LXK SD Actual Failure Code</value>
+				</entry> 
+	     		<entry>
+	         		<key><value>responseMatric</value></key>
+	         		<value>LXK SW Response Metric Calc</value>
+				</entry>  
+				<entry>
+	         		<key><value>customerRequestedResponseDate</value></key>
+	         		<value>LXK C New Intervention Date</value>
+				</entry> 
+				<entry>
+	         		<key><value>resolutionMetric</value></key>
+	         		<value>LXK SW Resolution Metric Calc</value>
+				</entry> 
+				<entry>
+	         		<key><value>resolutionDate</value></key>
+	         		<value>LXK SW Committed Date Time</value>
+				</entry>  
+				<entry>
+	         		<key><value>serviceActivityWithin30Days</value></key>
+	         		<value>LXK R Repeats</value>
+				</entry> 
+				<entry>
+	         		<key><value>serviceProviderAttemptNumber</value></key>
+	         		<value>LXK SD Activity Counter</value>
+				</entry> 
+				<entry>
+	         		<key><value>serviceSummary</value></key>
+	         		<value>LXK SW SR Description</value>
+				</entry>  
+				<entry>
+	         		<key><value>accountSpecialHandling</value></key>
+	         		<value>LXK SW Special Handling Instructions</value>
+				</entry> 
+				<entry>
+	         		<key><value>assetWarningMessage</value></key>
+	         		<value>LXK C Product Asset Warning Display</value>
+				</entry> 
+				<entry>
+	         		<key><value>estimatedArrivalTime</value></key>
+	         		<value>LXK R Service Provider ETA</value>
+				</entry> 
+				<entry>
+	         		<key><value>activityStatus</value></key>
+	         		<value>Status</value>
+				</entry> 
+
+				<entry>
+	         		<key><value>activitySubStatus</value></key>
+	         		<value>LXK R Substatus</value>
+				</entry> 		
+				<entry>
+	         		<key><value>serviceRequestId</value></key>
+	         		<value>Activity SR Id</value>
+				</entry> 
+				<entry>
+	         		<key><value>serviceRequestNumber</value></key>
+	         		<value>SR Number</value>
+				</entry> 
+				<entry>
+	         		<key><value>serviceProviderReferenceNumber</value></key>
+	         		<value>LXK SD SP Reference</value>
+				</entry> 
+				<entry>
+	         		<key><value>serviceRequestDate</value></key>
+	         		<value>LXK SW SR Created Date</value>
+				</entry> 
+				<entry>
+	         		<key><value>problemDescription</value></key>
+	         		<value>LXK SW SR Problem Details</value>
+				</entry> 
+				<entry>
+	         		<key><value>customerReferenceNumber</value></key>
+	         		<value>LXK SW SR Customer Reference #</value>
+				</entry> 	
+				<entry>
+	         		<key><value>primaryContactId</value></key>
+	         		<value>LXK SW SR Primary Contact Id</value>
+				</entry> 	
+				<entry>
+	         		<key><value>primaryContactFirstName</value></key>
+	         		<value>LXK SW SR Primary Contact First Name</value>
+				</entry> 																					
+				<entry>
+	         		<key><value>primaryContactLastName</value></key>
+	         		<value>LXK SW SR Primary Contact Last Name</value>
+				</entry> 
+				<entry>
+	         		<key><value>primaryContactWorkPhone</value></key>
+	         		<value>LXK SW SR Primary Contact Phone</value>
+				</entry> 
+				<entry>
+	         		<key><value>primaryContactEmailAddress</value></key>
+	         		<value>LXK SW SR Primary Contact Email Addr</value>
+				</entry> 	
+				<entry>
+	         		<key><value>secondaryContactId</value></key>
+	         		<value>LXK SW SR Alternate Contact Id</value>
+				</entry> 																					
+				<entry>
+	         		<key><value>secondaryContactFirstName</value></key>
+	         		<value>LXK SW SR Alternate Contact First Name</value>
+				</entry> 
+				<entry>
+	         		<key><value>secondaryContactLastName</value></key>
+	         		<value>LXK SW SR Alternate Contact Last Name</value>
+				</entry> 
+				<entry>
+	         		<key><value>secondaryContactWorkPhone</value></key>
+	         		<value>LXK SW SR Alternate Contact Phone</value>
+				</entry> 	
+				<entry>
+	         		<key><value>secondaryContactEmailAddress</value></key>
+	         		<value>LXK SW SR Alternate Contact Email Addr</value>
+				</entry> 																					
+				<entry>
+	         		<key><value>assetId</value></key>
+	         		<value>Asset Id</value>
+				</entry> 
+				<entry>
+	         		<key><value>installedAssetSerialNumber</value></key>
+	         		<value>LXK C Installed Asset Serial Number</value>
+				</entry> 
+				<entry>
+	         		<key><value>installedAssetDeviceTag</value></key>
+	         		<value>LXK R Lexmark Asset Tag</value>
+				</entry> 
+				<entry>
+	         		<key><value>assetProductLine</value></key>
+	         		<value>LXK R SR Product Line</value>
+				</entry> 																					
+				<entry>
+	         		<key><value>assetMachineTypeModel</value></key>
+	         		<value>LXK SD SR Product MTM Name</value>
+				</entry> 
+				<entry>
+	         		<key><value>assetProductTLI</value></key>
+	         		<value>LXK SD SR Product TLI</value>
+				</entry> 																
+				<entry>
+	         		<key><value>customerAccountName</value></key>
+	         		<value>Account Name</value>
+				</entry> 
+				<entry>
+	         		<key><value>customerAccountId</value></key>
+	         		<value>Account Id</value>
+				</entry> 
+				<entry>
+	         		<key><value>serviceAddressId</value></key>
+	         		<value>LXK SW SR Service Location Id</value>
+				</entry> 
+				<entry>
+	         		<key><value>serviceAddressLine1</value></key>
+	         		<value>Service Street Address</value>
+				</entry> 																
+				<entry>
+	         		<key><value>serviceAddressLine2</value></key>
+	         		<value>Service Street Address Line 2</value>
+				</entry> 
+				<entry>
+	         		<key><value>serviceAddressLine3</value></key>
+	         		<value>Service Street Address Line 3</value>
+				</entry> 	
+				<entry>
+	         		<key><value>serviceCity</value></key>
+	         		<value>Service City</value>
+				</entry> 
+				<entry>
+	         		<key><value>serviceState</value></key>
+	         		<value>Service State</value>
+				</entry> 	
+				<entry>
+	         		<key><value>serviceProvince</value></key>
+	         		<value>Service Province</value>
+				</entry> 
+				<entry>
+	         		<key><value>servicePostalCode</value></key>
+	         		<value>Service Postal Code</value>
+				</entry> 	
+				<entry>
+	         		<key><value>serviceCountry</value></key>
+	         		<value>Service Country</value>
+				</entry> 
+				<entry>
+	         		<key><value>technicianContactId</value></key>
+	         		<value>LXK R Tech Id</value>
+				</entry> 	
+				<entry>
+	         		<key><value>technicianContactFirstName</value></key>
+	         		<value>LXL SW Activity Technician First Name</value>
+				</entry> 
+				<entry>
+	         		<key><value>technicianContactLastName</value></key>
+	         		<value>LXK SW Activity Technician Last Name</value>
+				</entry> 	
+				<entry>
+	         		<key><value>debriefServiceStartDate</value></key>
+	         		<value>LXK R Project Item Actual Start</value>
+				</entry> 
+				<entry>
+	         		<key><value>debriefServiceEndDate</value></key>
+	         		<value>LXK R Project Item Actual End</value>
+				</entry> 
+				<entry>
+	         		<key><value>debriefTravelDistance</value></key>
+	         		<value>LXK R Travel Distance</value>
+				</entry> 
+				<entry>
+	         		<key><value>debriefTravelUnitOfMeasure</value></key>
+	         		<value>LXK R Travel Distance UM</value>
+				</entry> 
+				<entry>
+	         		<key><value>debriefTravelDuration</value></key>
+	         		<value>LXK R Travel Duration</value>
+				</entry> 
+				<entry>
+	         		<key><value>debriefActualFailureCode</value></key>
+	         		<value>LXK SD Actual Failure Code</value>
+				</entry> 
+				<entry>
+	         		<key><value>debriefProblemDescription</value></key>
+	         		<value>LXK SW SR Description</value>
+				</entry> 
+				<entry>
+	         		<key><value>debriefResolutionCode</value></key>
+	         		<value>LXK R Resolution Code</value>
+				</entry> 
+				<entry>
+	         		<key><value>debriefRepairDescription</value></key>
+	         		<value>LXK SW Action Narrative</value>
+				</entry> 
+				<entry>
+	         		<key><value>debriefActionStatus</value></key>
+	         		<value>LXK R Debrief Status</value>
+				</entry> 
+				<entry>
+	         		<key><value>debriefGenuineLexmarkSuppliesUsedFlag</value></key>
+	         		<value>LXK R Lexmark Supplies</value>
+				</entry> 
+				<entry>
+	         		<key><value>debriefDeviceCondition</value></key>
+	         		<value>LXK R Device Condition</value>
+				</entry> 
+				<entry>
+	         		<key><value>assetDeviceTag</value></key>
+	         		<value>LXK R Deinstalled Asset Tag</value>
+				</entry> 
+				<entry>
+	         		<key><value>assetNetworkConnectedFlag</value></key>
+	         		<value>LXK R Network Connected</value>
+				</entry> 
+				<entry>
+	         		<key><value>assetIPAddress</value></key>
+	         		<value>LXK R IP Address</value>
+				</entry> 
+				<entry>
+	         		<key><value>assetMACAddress</value></key>
+	         		<value>LXK R Mac Address</value>
+				</entry> 
+				<entry>
+	         		<key><value>assetSerialNumber</value></key>
+	         		<value>Serial Number</value>
+				</entry> 
+ 
+				<entry>
+	         		<key><value>debriefSupplyManufacturer</value></key>
+	         		<value>LXK SW Supply Manufacturer</value>
+				</entry> 
+				<entry>
+	         		<key><value>statusUpdateDate</value></key>
+	         		<value>Updated</value>
+				</entry>  
+				<entry>
+	         		<key><value>addressStatus</value></key>
+	         		<value>LXK R Service Provider ShipTo Default</value>
+				</entry> 
+				<entry>
+	         		<key><value>partQuantityOrderLimit</value></key>
+	         		<value>LXK SD SP Max Parts Per Activity</value>
+				</entry> 
+				<entry>
+	         		<key><value>primaryAddressId</value></key>
+	         		<value>LXK SW Service Provider ShipTo Address Id</value>
+				</entry> 
+				<entry>
+	         		<key><value>primaryAddressLine1</value></key>
+	         		<value>LXK SW SP ShipTo Addr</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryAddressName</value></key>
+	         		<value>LXK SW SP ShipTo Addr Name</value>
+				</entry> 
+				<entry>
+	         		<key><value>primaryAddressLine2</value></key>
+	         		<value>LXK SW SP ShipTo Addr2</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryAddressLine3</value></key>
+	         		<value>LXK SW SP ShipTo Addr3</value>
+				</entry> 
+				<entry>
+	         		<key><value>primaryAddressCity</value></key>
+	         		<value>LXK SW SP ShipTo City</value>
+				</entry> 
+				<entry>
+	         		<key><value>primaryAddressState</value></key>
+	         		<value>LXK SW SP ShipTo State</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryAddressCountry</value></key>
+	         		<value>LXK SW SP ShipTo Country</value>
+				</entry> 	
+				<entry>
+	         		<key><value>primaryAddressProvince</value></key>
+	         		<value>LXK SW SP ShipTo Province</value>
+				</entry> 
+				<entry>
+	         		<key><value>primaryAddressPostalCode</value></key>
+	         		<value>LXK SW SP ShipTo Postal Code</value>
+				</entry>
+				<entry>
+	         		<key><value>organizationID</value></key>
+	         		<value>LXK SW SR Primary Organization Id</value>
+				</entry>
+				<entry>
+	         		<key><value>partnerAccountId</value></key>
+	         		<value>LXK R Service Provider Id</value>
+				</entry> 
+				<entry>
+	         		<key><value>partnerAccountName</value></key>
+	         		<value>LXK R Service Provider Name</value>
+				</entry> 
+				<entry>
+	         		<key><value>serviceProviderEmailAddress</value></key>
+	         		<value>LXK R Service Provider Email Address</value>
+				</entry> 
+				<entry>
+	         		<key><value>activityType</value></key>
+	         		<value>Type</value>
+				</entry> 
+				<entry>
+	         		<key><value>serviceRequestStatus</value></key>
+	         		<value>SR Status</value>
+				</entry> 
+				<entry>
+	         		<key><value>currency</value></key>
+	         		<value>LXK SW Service Provider Currency</value>
+				</entry>	
+				<entry>
+	         		<key><value>overrideActualFailureCode</value></key>
+	         		<value>LXK SW SR Service Summary</value>
+				</entry>
+				<entry>
+	         		<key><value>repairedSerialNumber</value></key>
+	         		<value>LXK C De-Installed Asset Serial Number</value>
+				</entry>	
+				
+				<entry>
+	         		<key><value>expenses</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerActivityDetailExpenseDo</value>
+				</entry>
+				<entry>
+	         		<key><value>instructions</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerActivityDetailInstructionDo</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>orderLines</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerActivityDetailOrderLineDo</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>notes</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerActivityDetailNoteDo</value>
+				</entry>
+				<entry>
+	         		<key><value>parts</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerActivityDetailPartDo</value>
+				</entry>
+				<entry>
+	         		<key><value>repairedDevices</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerActivityDetailRepairedDeviceDo</value>
+				</entry>
+				<entry>
+	         		<key><value>installedDevices</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerActivityDetailInstalledAssetDo</value>
+				</entry>	
+				<entry>
+	         		<key><value>flags</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerActivityDetailFlagDo</value>
+				</entry>	
+				<entry>
+	         		<key><value>debriefParts</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerActivityDetailDebriefPartDo</value>
+				</entry>	
+	     	</map>
+		</property>
+    </bean>  
+</beans>

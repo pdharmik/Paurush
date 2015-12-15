@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!--
+Mapping file for the ChartDetails class of Lexmark Service.
+-->
+
+<hibernate-mapping package="com.lexmark.domain">
+
+<class name="ChartInfo"
+       table="CHART_SETTINGS_INFO"
+       lazy="false">
+
+ 	<id name="chartId" type="string" length="20" column="CHART_ID" />
+			
+    <property   name="chartUrl"
+                column="CHART_URL"
+                type="string"
+                length="100"
+                /> 
+    <property   name="chartName"
+                column="CHART_NAME"
+                type="string"
+                length="30"
+                />  
+    
+   <property   name="mdmRequired"
+                column="MDM_REQUIRED"
+                type="string"
+                length="10"
+                />              
+                
+                                                                
+</class>
+</hibernate-mapping>

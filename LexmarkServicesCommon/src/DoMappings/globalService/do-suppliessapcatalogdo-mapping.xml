@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="SuppliesSAPCatalogDo" class="com.amind.data.service.DomainObjMapping">
+  
+		<!-- data source info -->
+       	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS Entitlement - Portal2.1</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS SAP Sold To</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>contractNumber</value></key>
+	         		<value>LXK MPS Sales Contract #</value>
+				</entry>	
+				<entry>
+	         		<key><value>contractLine</value></key>
+					<value>LXK MPS English Lang Description</value> 
+				</entry>
+				<entry>
+	         		<key><value>soldToNumber</value></key>
+	         		<value>LXK MPS Sold To #</value>
+				</entry>
+				<entry>
+	         		<key><value>soldToType</value></key>
+					<value>LXK MPS Sold To Type</value> 
+				</entry>
+				<entry>
+	         		<key><value>contractSAPSatus</value></key>
+					<value>LXK MPS SAP Contract Status</value> 
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

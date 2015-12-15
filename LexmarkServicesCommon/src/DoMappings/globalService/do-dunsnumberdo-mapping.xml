@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="DunsNumberDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK Service Web Portal Account IO</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK Account Service Web Portal</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>name</value></key>
+	         		<value>Name</value>
+				</entry>
+						
+	
+				<entry>
+	         		<key><value>legalEntity</value></key>
+	         		<value>LXM MDM Legal Entity ID #</value>
+				</entry>
+				<entry>
+	         		<key><value>globalDuns</value></key>
+	         		<value>Global Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>domesticDuns</value></key>
+	         		<value>Domestic Ultimate DUNS</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>transFlag</value></key>
+	         		<value>LXM Trans Flag</value>
+				</entry>
+				
+	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

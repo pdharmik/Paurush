@@ -1,0 +1,76 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="OfflineModeRequestAttachmentDO" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Activity List Partner Portal_Offline_Mode</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>Service Request Attachment</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+	     		<entry>
+	         		<key><value>created</value></key>
+	         		<value>Created</value>
+				</entry>
+				<entry>
+	         		<key><value>autoUploadFlag</value></key>
+	         		<value>ActivityFileAutoUpdFlg</value>
+				</entry>
+				<entry>
+	         		<key><value>fileDate</value></key>
+	         		<value>ActivityFileDate</value>
+				</entry>
+				<entry>
+	         		<key><value>fileExtension</value></key>
+	         		<value>ActivityFileExt</value>
+				</entry>
+				<entry>
+	         		<key><value>fileName</value></key>
+	         		<value>ActivityFileName</value>
+				</entry>
+				<entry>
+	         		<key><value>fileSize</value></key>
+	         		<value>ActivityFileSize</value>
+				</entry>
+				<entry>
+	         		<key><value>fileSourcePath</value></key>
+	         		<value>ActivityFileSrcPath</value>
+				</entry>
+				<entry>
+	         		<key><value>fileSourceType</value></key>
+	         		<value>ActivityFileSrcType</value>
+				</entry>
+				<entry>
+	         		<key><value>attachmentId</value></key>
+	         		<value>AttachmentId</value>
+				</entry>
+				<entry>
+	         		<key><value>status</value></key>
+	         		<value>LXK MPS Status</value>
+				</entry>
+				<entry>
+	         		<key><value>visibility</value></key>
+	         		<value>LXK MPS Visibility</value>
+				</entry>
+				<entry>
+	         		<key><value>comments</value></key>
+	         		<value>ActivityComments</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

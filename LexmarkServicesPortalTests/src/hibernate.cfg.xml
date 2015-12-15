@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+
+		<!-- Don't forget to copy your JDBC driver to the lib/ directory! -->
+
+		<!-- Settings for a local HSQL (testing) database. -->
+<!-- 	<property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+		<property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+		<property name="connection.url">jdbc:hsqldb:data/performanceTracking</property>
+		<property name="connection.username">sa</property>
+		<property name="connection.password"></property>
+--> 
+ 
+       <property name="hibernate.connection.url">jdbc:oracle:thin:@10.2.11.163:1521:lexmark</property>
+       <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+       <property  name="hibernate.connection.username">lexmark</property>
+       <property name="hibernate.connection.password">lexmark</property>
+ 	   <property name="hibernate.connection.pool_size">10</property>
+       <property name="dialect">org.hibernate.dialect.OracleDialect</property>
+       
+		<!-- Use the Hibernate built-in pool for tests. -->
+		<property name="connection.pool_size">1</property>
+
+		<!-- Print SQL to stdout. -->
+		<property name="show_sql">false</property>
+
+        <!-- Create the tables -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+		<!-- CaveatEmptor mapping files. -->
+		<mapping resource="com/lexmark/domain/ServiceRequestLocale.hbm.xml"/>
+		<mapping resource="com/lexmark/domain/LexmarkTransaction.hbm.xml"/>
+		<mapping resource="com/lexmark/domain/Notification.hbm.xml"/>
+		<mapping resource="com/lexmark/domain/ServicesUser.hbm.xml"/>
+        <mapping resource="com/lexmark/domain/Document.hbm.xml"/>
+
+	</session-factory>
+
+</hibernate-configuration>

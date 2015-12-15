@@ -1,0 +1,2768 @@
+body {
+	font-size:12px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#1d1d25;
+}
+
+#wrapper { 
+	width: 95%;
+}
+#selectLocalAddress ul li{
+list-style-type:none;
+	}
+
+.ie7 #wrapper, .ie8 #wrapper{min-width: 1063px!important; }
+a:active { font-weight:normal!important }
+/* HEADER SECTION */
+#banner .logo {
+	background: url("/lexmark-services-portal-theme/images/custom/lexmark-global-services-logo.png") no-repeat scroll left top transparent;
+	display: block;
+	margin: 0;
+	padding: 0 !important;
+	width: 382px;
+	height: 40px;
+	position: absolute;
+	top: 25px;
+	left: 20px;
+	text-indent: -9999em;
+}
+#banner .logo a {
+	display: block;
+	background:none !important;
+	font-size: 0;
+	text-indent: -9999em;
+	width: 382px;
+	height: 40px;
+}
+
+#top-header-navigation { padding: 0!important; }
+/* Commented forFAQ, Get Help link alignment from Theme
+#bottom-header { top: 65px; } */
+
+/* MAIN TABBED NAVIGATION */
+.home { padding:5px 0 }
+#bottom-header-navigation li { padding: 0 5px 0 7px; }
+/* BELOW IS THE CODE FOR THE NEW TOP MENU */
+#tabNavigation ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	width:auto;
+	position:relative;
+	display:block;
+	height:36px;
+	text-transform:uppercase;
+	font-size:12px;
+	font-weight:bold;
+	background:transparent url(/LexmarkServicesPortal/images/bg_off_customize.png) repeat-x top left;
+	font-family:Helvetica, Arial, Verdana, sans-serif;
+	border-left:1px solid #abcbc2;
+	border-right:1px solid #abcbc2;
+	border-top:1px solid #C0E2D4;
+	margin-top:1px
+}
+#tabNavigation ul li {
+	display:block;
+	float:left;
+	margin:0;
+	pading:0;
+}
+#tabNavigation ul li a {
+	display:block;
+	float:left;
+	color:#1d1d25;
+	text-decoration:none;
+	padding:10px 20px 2px 20px;
+	height:24px;
+	background:transparent url("/LexmarkServicesPortal/images/custom/bg_divider.gif") no-repeat top right;
+}
+#tabNavigation ul li a:hover { background:transparent url(/LexmarkServicesPortal/images/custom/bg_hover.gif) no-repeat top right; }
+#tabNavigation ul li a:active {
+	font-weight:bold!important;
+	color:#1d1d25;
+}
+#tabNavigation ul li.selected a, #tabNavigation ul li.selected a:hover {
+	color:#1d1d25;
+	background:transparent url(/LexmarkServicesPortal/images/custom/bg_on.gif) no-repeat top right;
+}
+#tabNavigation .home {
+	padding:0;
+	margin-top:-3px
+}
+/* ABOVE IS THE CODE FOR THE NEW TOP MENU */
+/* SUB NAVIGATION */
+#subnavigation {
+	padding:2px;
+	overflow:hidden;
+	clear:both;
+	margin: 10px 0 10px 16px;
+}
+#subnavigation ul { overflow: hidden; margin:0 }
+#subnavigation ul li {
+	background-color: #e6e6f0;
+	display:inline-block;
+	float:left;
+	font-weight: bold;
+    margin-right: 15px;
+}
+#subnavigation ul li a {
+	display:inline-block;
+	padding:4px 15px;
+	color:#000 !important;
+	font-size:12px;
+	font-weight:bold !important;
+}
+#subnavigation ul li a:hover {
+	/*
+	background: #dcdcdc;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#dcdcdc));
+	background: -moz-linear-gradient(top, #fefefe, #dcdcdc);
+ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#fefefe', endColorstr='#dcdcdc');
+	border: #cdcdcd 1px solid;
+	-webkit-border-radius:3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	color:#000;
+	padding:3px 14px;
+	behavior: url(/LexmarkServicesPortal/WEB-INF/css/PIE.htc)*/
+	font-weight:bold;
+	text-decoration:none;
+	background-color:#e2e2e2;
+}
+#subnavigation ul li a:active {
+	/*color: #1d1d25;
+	background: -webkit-gradient(linear, left top, left bottom, from(#e6e6f0), to(#fefefe));
+	background: -moz-linear-gradient(top, #e6e6f0, #fefefe);
+ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#e6e6f0', endColorstr='#fefefe');
+	font-weight:bold!important;
+	behavior: url(/LexmarkServicesPortal/WEB-INF/css/PIE.htc)*/
+}
+#subnavigation ul li.selected a {
+	background-color: #e6e6f0;
+    border-bottom: 2px solid #00c425;
+    color: #1d1d25;
+    font-weight: bold;
+    padding: 3px 14px;
+    text-decoration: none;
+}
+/* CONTENT AREA */
+#content-wrapper-inner {
+	overflow:hidden;
+	border:none;
+	margin-bottom:2px;
+	clear:both
+}
+#content-wrapper {
+	font-size: 12px;
+}
+/* PAGE BANNER */
+.journal-content-article {
+	clear:both;
+	height:40px;
+	margin-left:15px;
+	//margin-top:20px !important;
+
+}
+.journal-content-article h1{
+	display:inline-block;
+	font-size: 1.8em;
+	margin:0;
+	float:left;
+	color: #008a44;
+	line-height:20px !important;
+	
+	 
+}
+.journal-content-article h2 {
+	font-size:20px;
+	color:#000;
+	font-weight:normal;
+	display:inline-block;
+	padding: 0px 40px 3px 10px;
+	margin:0 10px 0 0;
+	float:left;
+	width:auto;
+	height: 20px;
+}
+.journal-content-article .step {
+	font-size:20px;
+	color:#000;
+	display:inline-block;
+	padding:3px 0 0 10px;
+}
+div.main-wrap { padding-top: 0;clear:both; }
+div.content { 
+	background:none !important;
+	height:auto; 
+	padding: 0 10px;
+}
+/*Link Styles*/
+.content a { text-decoration:none}
+.nav-menu{
+	padding-left:20px;
+}
+.layouts li{
+	list-style-type:none;
+}
+
+.content a:hover { text-decoration:none }
+.expand-min a, .gridbox a { text-decoration:underline!important }
+.expand-min a { text-decoration:none!important }
+.expand-min a:hover, .gridbox a:hover { text-decoration:none!important }
+ul.link { margin:0 }
+ul.link a {
+	text-decoration:none!important;
+	font-weight:bold
+}
+ul.link a:hover { text-decoration:underline!important }
+.edit {
+	font-size:12px;
+	font-weight:normal;
+	margin-left:10px
+}
+/* LEFT COLUMN */
+.left-nav-header h3 {
+	font-weight:bold;
+	font-size:12px!important;
+}
+div.left-nav{
+	background:none !important;
+}
+div.left-nav-inner ul.filters { padding: 0; }
+div.left-nav-inner ul.filters li {
+	list-style-type:none!important;
+	clear:both;
+	line-height: normal;
+}
+div.left-nav-inner ul.filters li a {
+	border-bottom: 1px solid #e6e6f0;
+    color: #1e68bc;
+    display: block;
+    padding: 8px 15px 8px 12px;
+    text-decoration: none;
+}
+div.left-nav-inner ul.filters li.selected a, div.left-nav-inner ul.filters li a:hover {
+	background-color:#eff0f6!important;
+}
+div.left-nav-footer {
+	background:none !important;
+}
+div.left-nav-inner ul.filters li.selected a, div.left-nav-inner ul.sub li.selected a:active { font-weight:bold!important }
+div.left-nav-inner ul.sub { margin-top:-4px }
+div.left-nav-inner ul.sub li.selected a, div.left-nav-inner ul.sub li a:hover {
+	color:#000;
+	overflow:hidden;
+}
+div.left-nav-inner ul.sub li a span {
+	display:block;
+	width:98%;
+	padding-left:2%;
+	font-weight:normal
+}
+div.left-nav-inner ul.sub li a span:hover { background-color:#e9e9e9 }
+div.left-nav-inner ul.sub li a span img {
+	float:right;
+	margin-right:5px
+}
+div.left-nav-inner ul.filters li.selected a:hover { text-decoration:none }
+div.left-nav-inner ul.filters li label {
+	display:inline-block;
+	float:left;
+	padding:2px 0 2px 2px;
+	vertical-align:top;
+	font-weight:normal;
+	width:40px
+}
+div.left-nav-inner ul.radio li label { width:auto }
+div.left-nav-inner ul.filters li span {
+	display:inline-block;
+	float:left;
+	padding:2px 0;
+	margin-top:5px;
+}
+div.left-nav-inner ul.radio li input { margin:4px 2px 4px 2px }
+div.left-nav-inner ul.filters li img {
+	display:inline-block;
+	margin-top:2px;
+	position:relative;
+	vertical-align:top
+}
+/* RIGHT COLUMN */
+.pageTitle {
+	color: #000;
+	font-size: 18px !important;
+	font-weight:bold;
+	height: auto;
+	margin: 0 0 5px !important;
+    padding: 1px 0;
+    line-height:30px !important;
+}
+.pageTitle span {
+	display:inline-block;
+	font-style:italic;
+	font-size:12px;
+	font-weight:normal;
+	margin-left: 5px
+}
+.printPage { margin-top:-38px!important }
+/*div.utilities ul li { height: 30px; }*/
+div.expand-min ul li img { margin:0 3px 0 0 }
+/* INFO BOX */
+.infoBox {
+	margin:5px 5px 10px 5px;
+	overflow:hidden;
+}
+.infoBox ul.activity {
+	margin: 0 20px;
+	padding: 0;
+}
+/* CHL / Location */
+.leftOverlay {
+	position:absolute;
+	z-index:1000;
+	background:#fff;
+	width:202px;
+	min-width: 202px;
+	max-width:350px;
+	height:auto;
+	min-height:560px;
+	max-height:600px;
+	vertical-align:top;
+	margin:0;
+	display:none;
+}
+.leftOverlay .columnInner .buttonContainerIn {
+	position:absolute;
+	bottom:10px;
+	right:0;
+	left:0;
+	border-top:1px dotted #aaa;
+	padding-top:10px
+}
+.chlModal {
+	margin:0 -10px;
+	background-color:#fff
+}
+.chlModal .chlInner {
+	height:500px;
+	overflow:auto;
+}
+/* GENERIC */
+p {
+	padding:5px 10px;
+	line-height:1.2em;
+	margin-bottom:5px
+}
+.info {
+	font-weight:bold;
+	font-size:14px;
+	padding:5px 10px;
+}
+.add {
+	margin-left:0;
+	margin-top:5px;
+	padding-left:5px
+}
+.banner {
+	background:#FFC url(/LexmarkServicesPortal/images/attention.png) no-repeat 10px 7px;
+	border:2px solid #FC3;
+	padding:15px 10px 15px 50px !important;
+	margin:10px 5px 5px 5px;
+}
+.ok {
+	background-color:#DFD;
+	background-image: url(/LexmarkServicesPortal/images/check.png);
+	border-color:#47CA0F
+}
+/* Added for SR creation error */
+.err {
+	background-color:#ffe9e9;
+	background-image: url(/LexmarkServicesPortal/images/error2.png);
+	border-color:#f00;
+	color:#f00;
+	list-style-type: none !important;/*By offshore, for error list */
+}
+.note {
+	color:#1d1d25;
+	padding:0 0 5px 0;
+	width:300px;
+	font-size:11px;
+}
+ul.serviceSuccess, ul.serviceError { list-style-type:none!important; margin:10px!important }
+ul.serviceSuccess li, ul.serviceError li { 
+	list-style-type:none!important; 	
+	padding: 8px 35px !important;
+}
+div.portletBlock {
+	width:auto;
+	overflow: hidden;
+}
+#dialog{clear:both;}
+div.inner {
+	width:auto;
+	overflow:hidden;
+}
+.columnsTwo {
+	float:left;
+	width:49.95%;
+}
+/*.columnsTwo a { color: #336699; }*/
+.columnsThree {
+	float:left;
+	width:33.33%;
+}
+.columnInner {
+	padding:10px 10px;
+	overflow:hidden;
+}
+.rounded {
+	border:none !important;
+}
+.shadow {
+	box-shadow: none;
+}
+.bgSolid { background-color:#fff }
+h4, .h4 {
+	color: #000 !important;
+	font-size: 12px !important;
+	font-weight:bold !important;
+	height: auto !important;
+	padding: 5px 10px!important;
+	margin:-5px -10px 5px -10px  !important;
+	background:#e6e6f0 !important;
+}
+
+h4 a, .h4 a {
+	float:right;
+	font-weight:normal;
+}
+h4 span {
+	display:inline-block;
+	font-style:italic;
+	font-size:12px;
+	font-weight:normal;
+	margin-left: 5px
+}
+/* EXPAND COLLAPSE*/
+.collapse { padding:10px 5px }
+.expand a {
+  display:block;
+  float:none;
+  font-size:inherit;
+  text-decoration:none;
+  color:#000 !important;
+  font-weight:bold;
+  padding-left:15px
+}
+.expand a:link, .expand a:visited {
+  background-image:url(/LexmarkServicesPortal/images/arrow-down.gif);
+  background-repeat:no-repeat;
+  background-position:0 50%;
+}
+.expand a:hover, .expand a:active, .expand a:focus {
+  text-decoration:none;
+  font-weight:bold!important
+}
+.expand a.open:link, .expand a.open:visited {
+  background:url(/LexmarkServicesPortal/images/arrow-up.gif) no-repeat 0 50%
+}
+
+#sr_technician_h4 a:link, #sr_technician_h4 a:visited{
+	background:url(/LexmarkServicesPortal/images/arrow-up.gif) no-repeat 0 50%;
+}
+#sr_technician_h4 a.open:link, #sr_technician_h4 a.open:visited {
+	background-image:url(/LexmarkServicesPortal/images/arrow-down.gif);
+}
+/*#expanderHead { cursor:pointer }
+#expanderContent {
+	display:none;
+	padding:10px 0;
+	overflow:hidden
+}
+#expanderSign {
+	display:inline-block;
+	width:10px;
+	padding:0 3px 0 0;
+	font-size:14px;
+	margin-left:-5px;
+	font-weight:bold
+}*/
+.inlineTitle {
+	clear:both;
+	border-top:1px solid #e7e7e7;
+}
+p.inlineTitle {
+	border-top:0 none;
+	/*border-bottom:1px dotted #CCC;*/
+	font-weight:bold;
+	font-size:16px;
+	padding:15px 10px 5px 10px;
+	color:#3a7fa8;
+	margin:0;
+}
+.left-nav .inlineTitle {
+	border-top:0 none;
+	margin:5px 0
+}
+.split { /*background:url(/LexmarkServicesPortal/images/split.gif) repeat-y 50% 0*/ }
+.split70p { background:url(/LexmarkServicesPortal/images/split.gif) repeat-y 70% 0 }
+.columnRt h4 {/* border-left:1px dotted #aaa */}
+.splitter {
+	/*border-left:1px dotted #aaa;*/
+	width:49.89%;
+}
+.splitter h4 { padding-left:15px!important }
+.splitter ul { padding-left:5px }
+.separator {
+	margin:10px 0;
+	height:1px;
+	border:none;
+	border-top: 0px dotted #aaa;
+}
+.bottomPush { margin-bottom:15px } /*Add extra space at the bottom of containers*/
+.wFull { width:100%!important; } /*Full width*/
+.wHalf { width:50%!important; } /*Half width*/
+.w70p { width:70%!important; }/* Two third width*/
+.w30p { width:29.89%!important; } /*One Third width*/
+body:nth-of-type(1) .w30p { width:29.80%!important; }
+.w10 { width:10px!important; }
+.w20p { width:20%!important; } /*One Fifth width*/
+.w40p { width:40%!important; } /*One Fifth width*/
+.w15 { width:15px!important; }
+.w50 { width:50px!important; }
+.w80 { width:80px!important; }
+.w90 { width:90px!important; }
+.w100 { width:100px!important; }
+.w110 { width:110px!important; }
+.w120 { width:120px!important; }
+.w150 { width:150px!important; }
+.w200 { width:200px!important; }
+.w500 { width:500px!important; }
+.disable { color:#BDBDBD }
+.strong { font-weight:bold } /*Bold text*/
+.center { text-align:center } /*Align to Center*/
+.right { text-align: right!important; }
+.floatR { float:right!important }
+.floatL { float:left!important }
+span.req { /*Required field "*" */
+	padding:0!important;
+	margin:0!important;
+	background:none!important;
+	color:#F00!important;
+	font-size:14px;
+	display:inline!important;
+	float:none!important;
+	width:10px!important;
+}
+.portlet-wrap { background: none!important; }
+.portlet-wrap-inner {
+	background: none!important;
+	padding: 0!important;
+}
+/* CART */
+.cart {
+	width:250px;
+	margin:3px 5px 2px 0;
+	float:right
+}
+.cart a {
+	display:block;
+	background:#fff url(/LexmarkServicesPortal/images/cart.png) no-repeat 5px 2px;
+	padding:5px 5px 5px 40px;
+	color:#1d1d25;
+	font-size:14px;
+	text-decoration:none;
+	font-weight:bold;
+}
+.cart a:hover, .cart a:active {
+	text-decoration:none;
+	color:#999;
+	font-weight:bold!important
+}
+.cart a span {
+	color:#1d1d25;
+	font-size:16px;
+	display:inline-block;
+	padding:0 5px
+}
+/* PROCESS STEPS */
+ul.processSteps {
+	border: solid 4px #fff;
+	-webkit-border-radius: .5em;
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	background: #f7f7f7;
+	padding: 0 5px;
+	overflow:hidden;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	font-weight:bold;
+	display:inline-block;
+	zoom:1;
+	width:auto;
+	margin: 10px 0 5px 0;
+}
+ul.processSteps li {
+	display:inline;
+	float:left;
+	background:url(/LexmarkServicesPortal/images/stepsPoint.png) no-repeat right center;
+}
+ul.processSteps li a {
+	display:inline-block;
+	padding:18px 28px 18px 0px;
+	background:url(/LexmarkServicesPortal/images/steps_bg_disabled.png) no-repeat 5px 6px;
+	color:#b5b5b5;
+	cursor:default;
+	text-decoration: none!important;
+	vertical-align:baseline;
+}
+ul.processSteps li a:hover { text-decoration: none }
+ul.processSteps li a:active { font-weight:bold!important }
+ul.processSteps li a span {
+	display:inline-block;
+	float:left;
+	font-size:28px;
+	width:52px;
+	margin-right:5px;
+	text-align:center
+}
+ul.processSteps li.active a {
+	color:#3a7fa8;
+	background-image:url(/LexmarkServicesPortal/images/steps_bg_active.png);
+	cursor:pointer
+}
+ul.processSteps li.selected a {
+	color:#339933;
+	background-image:url(/LexmarkServicesPortal/images/steps_bg_select.png)
+}
+ul.processSteps li.last { background-image:none }
+ul.processSteps li.last a { padding-right:5px }
+/* FORM ELEMENTS */
+ul.form {
+	float:left;
+	width:100%;
+	margin-bottom:5px
+}
+ul.form li {
+	background:none;
+	display:block;
+	clear:both; 
+	float: left;
+	list-style-type:none!important;
+	line-height:2.2em;
+	padding-left:0%;
+	width:100%;
+}
+ul.form li label {
+	display:inline-block;
+	float:left;
+	padding:2px 0 2px 0;
+	width:40%;
+	margin-left:0%;
+	color: #1d1d25;
+	vertical-align:top;
+	font-weight:bold;
+	line-height:1.8em;
+	font-size:12px;
+}
+ul.form li span {
+	display:inline-block;
+	float:left;
+	padding:2px 5px 2px 0;
+	line-height:1.8em;
+}
+ul.wordBreak li span {
+	width:auto;
+	word-wrap: break-word;
+}
+
+ul.form li img {
+	display:inline-block;
+	margin-top:2px;
+	position:relative;
+	vertical-align:top
+}
+.columnsOne ul.form { width:48.5%; margin:0  }
+.columnsTwo ul.form { width:100%; margin:0 }
+/* Form inside Asset Detail Table */
+.assetDetail .infoDsiplay { width: 40.4% }
+.assetDetail .infoDsiplay ul.form li span { width:50% }
+.assetDetail .separatorV { padding-left:15px!important }
+.assetDetail ul.form li img {
+	display:inline-block;
+	margin-top:2px;
+	position:relative;
+	vertical-align:top
+}
+.division,.division1{
+	border-top: 1px dotted #aaa;
+	margin-top:5px;
+	padding-top: 5px;
+}
+.division1 input{
+	width: 140px !important;	
+	}
+.division1 select{
+	padding: 0px !important;
+	}
+/* For Radio Buttons */
+ul.form li span.radio input {
+	float:left;
+	margin-top:5px
+}
+ul.form li span.radio label {
+	display:inline-block;
+	float:left;
+	padding:0!important;
+	width:auto;
+	margin:0 15px 0 5px;
+	color: #707070;
+	vertical-align:top;
+	font-weight:normal
+}
+/* For Checkboxes */
+.check {
+	padding:5px 3px;
+	overflow:hidden
+}
+.check input {
+	margin:2px 5px 0 0;
+	float:left;
+}
+.check label {
+	float:left;
+	width:auto
+}
+/* ReadOnly Address blocks*/
+ul.roDisplay {margin:0}
+ul.roDisplay li {
+	background:none;
+	width:60%;
+	margin-left:0;
+	padding:0;
+	list-style-type:none!important;
+}
+#selectAddress li{
+	margin-top:20px;
+	width:100%;
+}
+ul.roDisplay li span {
+	display:inline-block;
+	padding-top:2px;
+	line-height:1.8em
+}
+ul.roDisplay li label { /* Added by offshore for building, floor, office */
+	display: inline-block;
+    width: 100px;
+    font-weight: bold;
+}
+li.link { padding:5px 0!important; }
+/* List of links */
+ul.link li {
+	list-style-type:none;
+	padding:3px 0 3px 12px;
+	/*background: transparent url(/LexmarkServicesPortal/images/bullet.gif) no-repeat 0 9px;*/
+}
+input[type="text"], input[type="password"], input[type="date"], textarea, textarea.dhx_combo_edit {
+	padding:4px!important;
+	border-top:1px inset #bfbfbf;
+	border-left:1px inset #bfbfbf;
+	border-bottom:1px solid #dedede;
+	border-right:1px solid #dedede;
+	outline: 0;
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	margin-left: 0px!important;
+	width: 200px;
+}
+table.hdr input { margin-left:5px }
+textarea {
+	resize: none;
+	margin-right:5px;
+}
+select {
+	border-top:1px inset #bfbfbf;
+	border-left:1px inset #bfbfbf;
+	border-bottom:1px solid #dedede;
+	border-right:1px solid #dedede;
+	margin-left: 0px;
+	margin-right: 5px;
+}
+.form select { width: 212px; }
+.gridbox input[type="text"], .gridbox select, .displayGrid input[type="text"] { margin-right:0 }
+.multiLine { line-height: normal!important }
+input.dhx_combo_input { border:0 none }
+ul.form .comboSelect { margin-left:0!important; }
+ul.form div.dhx_combo_box { width:210px!important }
+ul.form img.dhx_combo_img {
+	margin:0!important;
+	float:right;
+	position:absolute; /* Added by offshore */
+}
+#txtFilePath { width: 300px }
+
+
+/* added by offshore */
+.requestsUploader {
+	filter: alpha(opacity = 0);
+	opacity: 0;
+	cursor: pointer !important;
+    height: 28px;
+    margin: 0;
+    position: relative;
+    width: 5px !important;
+    z-index: 2;
+    left:0;
+    vertical-align:top;
+    padding:0!important
+    }
+#btnBrowse{left: 0;
+    padding: 4px 7px;
+    position: relative;
+    margin:0px;}
+.ie7 #btnBrowse{margin:0 2px 0 0;}
+
+#btnUpload{	left: 0;
+    position: relative;
+	padding: 4px 7px;}
+    
+@-moz-document url-prefix() {
+	.requestsUploader {left:0px;}
+	#btnBrowse{padding: 4px 14px; }
+	#btnUpload{padding: 4px 14px; }
+}
+/* end added by offshore */
+/*
+@-moz-document url-prefix() {.requestsUploader {margin-left:-118px!important }} /* Firefox fix */
+em.note {
+	display:block;
+	width:auto;
+	clear:left;
+	line-height:1.2em!important;
+	font-style:normal
+}
+/* FORM INPUT FIELDS HIGHLIGHT */
+/* By offshore, added input:focus to focus in popup */
+input:focus, input.ieFocusHack, input.focus, .form input:focus, .form input.ieFocusHack, .form textarea:focus, .form textarea.ieFocusHack, .form select:focus, .form select.ieFocusHack, .displayGrid input:focus, .displayGrid input.ieFocusHack {
+	/*background-color:lightyellow;
+	border:2px #FC3 solid;*/
+	padding:4px!important;
+}
+.radio input:focus, .radio input.ieFocusHack, .radio textarea:focus, .radio textarea.ieFocusHack, .radio select:focus, .radio select.ieFocusHack {
+	background-color:transparent;
+	border:0 none;
+	padding:0!important;
+}
+.form select:focus, .form select.ieFocusHack { padding:0!important }
+.qtip { line-height:1.2em!important; }
+/* By offshore */
+/* ERROR MESSAGES */
+li.error label { font-weight:bold }
+li.error input[type="text"], li.error input[type="password"], li.error select {
+	border-top:1px inset #F00;
+	border-left:1px inset #F00;
+	border-bottom:1px solid #FCC;
+	border-right:1px solid #FCC;
+	background-color:#ffe9e9
+}
+div.error {
+	color:#F00;
+	border:2px #F00 solid;
+	margin:0 5px 10px 5px;
+	padding:5px 10px;
+	overflow:hidden;
+	background-color:#ffe9e9;
+	list-style-type: none !important;/*By offshore, for error list */
+}
+div.error ul {
+	margin: 0 15px;
+	padding:0;
+}
+/* BUTTONS */
+
+.buttonContainerIn {
+	text-align:right;
+	padding:0;
+	margin:0;
+	border:none;
+	clear:left;
+}
+.left-nav .buttonContainerIn { padding:10px }
+.inPortlet {
+	padding:10px;
+	margin-top:0;
+	border-top:1px dotted #aaa;
+	background:#fff;
+	clear:both
+}
+.button, .button:focus, .button_cancel, .button_cancel:focus {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 12px/100% Arial, Helvetica, sans-serif;
+	min-width:50px;
+	padding: 4px 9px;
+	text-transform: uppercase;
+	margin-right:5px !important;
+	line-height:normal !important;
+}
+.button{
+	background-color: #1e68bc;
+    border: 0 none;
+    color: #fff !important;
+    font-size: 11px;
+    padding: 4px 9px!important;
+}
+.button:hover, .button_cancel:hover { text-decoration: none; }
+.button:active, .button_cancel:active {
+	position: relative;
+	top: 1px;
+}
+
+
+
+.button, .button:focus, .gridbox .button, .gridbox .button:focus {
+	border-radius: 0px !important;
+}
+.button:focus,.gridbox .button:focus,.button:hover,.gridbox .button:hover {
+	background-color: #5c8ec7;
+}
+
+
+.button:active, .gridbox .button:active {
+	background-color: #164c89;
+}
+
+.button_cancel, .gridbox .button_cancel,#popup_cancel {
+	color: #000 !important;
+	background-color: #c9c9d1;
+	padding: 4px 9px !important;
+}
+
+.button_cancel:hover, .gridbox .button_cancel:hover,#popup_cancel:hover {
+	background-color: #e6e6f0;
+}
+
+.button_cancel:active, .gridbox .button_cancel:active,#popup_cancel:active {
+	background-color:#a5a5aa;
+}
+
+
+.button:hover, .button_cancel:hover { text-decoration: none; }
+.button:active, .button_cancel:active {position: relative;top: 1px;}
+.disabled, .disabled:hover, .disabled:active {
+	cursor: default;
+	border: solid 1px #999999;
+	color: #d9eef7;
+	background: #999999;
+	background: -webkit-gradient(linear, left top, left bottom, from(#cccccc), to(#999999));
+	background: -moz-linear-gradient(top, #cccccc, #999999);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#999999');
+	top: 0px;
+}
+.gridbox .button, .gridbox .button:focus, .displayGrid .button, .displayGrid .button:focus {
+	font: 11px/100% Arial, Helvetica, sans-serif;
+	-webkit-border-radius: .2em;
+	-moz-border-radius: .2em;
+	border-radius: .2em;
+	padding: .35em .7em .4em;
+	margin:0
+}
+/*
+.button:focus{
+	padding: .4em 1em .45em!important;
+	border: solid 1px #0076a3!important;
+}*/
+.gridbox .button:focus {padding: .35em .7em .4em!important;}
+	
+/*fixes for extra padding on buttons in Firefox */
+input::-moz-focus-inner, button::-moz-focus-inner {padding:0;border:0;}
+
+/* LeftNav button */
+.buttonContainerIn .button_cancel, .buttonContainerIn .button {
+	padding-left: .4em;
+	padding-right: .4em;	
+}
+
+/* GRID */
+div.expand-min { padding-right:0!important }
+div.expand-min ul li a:active {text-decoration: underline;font-weight:normal}
+.gridbox {height:300px;width: 100%;}
+.grid-controls { overflow:hidden;/*padding-top: 15px;*/}
+div.gridbox_light table.hdr .filter {text-align:left!important}
+div.gridbox_light table.hdr .filter input {margin-left:4px!important}
+div.gridbox_light table.hdr .filter .dhx_combo_box input {margin-left:0px!important}
+div.gridbox_light table.hdr td { border: 0 none; }
+div.gridbox_light table.hdr td div.hdrcell {
+	background: url(/LexmarkServicesPortal/images/gridImgs/lex/hdr_divider.gif) no-repeat scroll left center transparent;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 90%;
+}
+
+div.gridbox_light .xhdr { 
+	background:#e6e6f0 !important;
+}
+div.gridbox_light .hdr { 
+	background-image:none !important;
+}
+div.gridbox_light table.obj { border-bottom: 0 none!important; }
+div.gridbox_light table.obj tr.rowselected { }
+div.gridbox_light table.obj td {
+	border-left: 0 none !important;
+	border-right: 0 none !important;
+	border-top:1px solid #e6e6f0;
+	padding-top:5px!important;
+	padding-bottom:5px!important;
+	vertical-align:top!important;
+	height:auto!important;
+	overflow:hidden!important
+}
+div.gridbox_light table.obj td img {
+	display:inline-block;
+	vertical-align:middle;
+	cursor:pointer
+}
+textarea.dhx_combo_edit {
+	overflow:hidden!important;
+	width:87%!important;
+	height:14px!important;
+	margin-left:4px!important;
+	font-size:11px!important;
+	font-family:arial!important
+}
+table.obj td input {
+	font-family:arial!important;
+	font-size:11px!important;
+}
+div.gridbox_light table.obj td img.gridIcon { cursor:pointer }
+/* Grid content */
+.dhx_sub_row {
+	left: 0!important;
+	margin:0!important;
+	padding: 0!important;
+	height:auto!important;
+	width:100%!important;
+	background-color:transparent!important;
+	overflow:hidden;
+}
+.grid-inner-body {
+	width:750px; /* set so that even at 1024 resolution, it's fully visible. Change to 100% if the #wrapper max width is being set.*/
+	float:left;
+	margin:5px 0;
+}
+.grid-inner-body td.pModel { width:15%; }
+.grid-inner-body td.pModel img, .displayGrid td.pModel img { border:1px solid #e7e7e7 }
+.grid-inner-body td.actionLinks {
+	width:25%;
+	border-left:1px dotted #aaa
+}
+.grid-inner-body td ul { padding:5px 10px }
+.grid-inner-body ul li { list-style-type:none }
+.grid-inner-body ul li.fav { padding:5px 0 }
+.grid-inner-body ul li.fav img {
+	float:left;
+	margin-right:5px
+}
+.even_row { background:#f7f7f7 }
+.odd_row { background:#ffffff }
+div.portletBodyWrap {
+	width:auto;
+	overflow:hidden;
+	margin: 0px 5px 10px 5px;
+	padding: 5px;
+}
+div.detailsBodyWrap {
+	width:auto;
+	overflow:hidden;
+	margin: 0px 5px 10px 5px;
+}
+.filterLinks { margin-left:5px }
+.filterLinks ul li {
+	display:inline;
+	float:left;
+	background: url("/LexmarkServicesPortal/images/vert-border.png") no-repeat scroll left center transparent;
+	padding:5px 15px;
+}
+.filterLinks ul li.first {
+	background:none;
+	padding-left:0
+}
+.filterLinks ul li img {
+	margin:0 5px 0 0;
+	float:left
+}
+/* CUSTOMIZE COULMNS */
+#grid_menu { display:none }
+
+.dhx_header_cmenu {
+	border: 1px solid #c9c9d1 !important;
+    border-radius: 5px;
+}
+
+.dhx_header_cmenu ul {
+	float: left;
+	width: 180px;
+	margin: 0 0 10px 0!important;
+	padding: 0;
+}
+.dhx_header_cmenu ul li {
+	clear:both;
+	margin: 0;
+	padding: 1px 0!important;
+	list-style:none!important;
+	background:none!important
+}
+.dhx_header_cmenu ul li label {
+	display:inline-block;
+	padding:0 0 0 10px!important;
+	margin:0!important;
+	background-image:none!important
+}
+.dhx_header_cmenu ul li input {
+	float:left;
+	margin:3px 3px 0 -10px;
+}
+
+/*
+.dhx_header_cmenu_item { white-space:nowrap;float: left;
+    padding: 0px 5px 0px 5px;clear:both;width:auto;}
+.dhx_header_cmenu_item2 { white-space:nowrap;padding: 0px 5px 0px 5px;width:auto;}
+*/
+/* PAGINATION */
+.pagination span#pagingArea>div { width:100%!important }
+.pagination span#pagingArea_request_type>div { width:100%!important }/* Added for CI BRD13-10-02 */
+.dhx_pline {
+	margin: -14px 10px 10px 10px;
+	width:auto!important
+}
+.pagination span#pagingArea2>div { width:100%!important }
+.pagination span#pagingArea3>div { width:100%!important }
+.pagination span#pagingAreaPopup>div { width:100%!important }
+.popup_grid>div { width:100%!important }
+/*.pagination span#inprocessPagingArea_Popup>div { width:100%!important }
+.shipmentPaging_width>div { width:100%!important }
+.cancelPagingArea_width>div { width:100%!important }
+.technicianPagingArea_width>div { width:100%!important }*/
+.dhx_page { 
+	background-color:#c9c9d1!important;
+	color:#1d1d25!important;
+	margin:3px 0 !important;
+	}
+.dhx_pager_info { margin: -10px 10px 10px 10px; }
+.dhx_page div {
+	width:auto!important;
+	min-width:20px;
+	height:20px!important;
+	text-align:center;
+	vertical-align:middle;
+	padding:0 2px;
+	color:#1e68bc;
+	background-color:#e6e6f0!important;
+}
+.dhx_page div:hover{
+	background-color:#eff0f6!important;
+}
+/* ASSET INFO DISPLAY TABLE */
+.assetDetail {
+	width:100%;
+	border:0;
+	border-collapse:collapse
+}
+.assetDetail td { vertical-align: top }
+.assetDetail td.pModel {
+	width: 16%;
+}
+.assetDetail td.pModel ul { margin:10px }
+.assetDetail td.pModel ul li { list-style-type:none; }
+.assetDetail td.pModel ul li.pModelName {
+	font-weight:bold;
+	border-top: 1px solid #e7e7e7;
+	margin-top:5px;
+	padding-top:5px
+}
+.assetDetail td.pDetail td { padding:5px 10px }
+/* DISPLAY GRIDS & TABLES */
+.displayGrid { border-collapse:collapse }
+#partListTable th {
+    width: unset;
+}
+.displayGrid tr th {
+	font-weight:bold;
+	background: #e6e6f0;
+	padding:8px;
+	font-size:1.2em;
+	text-align:left;
+	width:100%;
+	color: #1d1d25 !important;
+}
+.displayGrid tr td {
+	height:0;
+	padding:5px;
+	border-left:1px solid #ccc;
+	background-color:#fff;
+	vertical-align:top
+}
+div.portlet-header {
+	background: #e6e6f0 !important;
+	margin: 0;
+	height:none!important;
+	padding: 0;
+}
+.noBorder tr td { border:0 none; }
+.displayGrid tr.altRow td { background-color:#f0f0f0 }
+.displayGrid tr:hover td { background: #FFC; }
+.displayGrid tr td img {
+	display:inline-block;
+	vertical-align: middle
+}
+.displayGrid ul.form {
+	width:100%;
+	margin:0;
+}
+.displayGrid ul.form li { padding-left:110px; }
+.displayGrid ul.form li label {
+	width:100px;
+	margin-left:-110px;
+}
+.dhx_sub_row .displayGrid {
+	border:1px solid #ccc;
+	width:700px; /* set so that even at 1024 resolution, it's fully visible. Change to 95% if the #wrapper max width is being set.*/
+	margin:10px auto 20px 20px; /* Chnage to "10px auto 20px" if width is set to 95%*/
+}
+img.download { margin:3px 5px }
+.icon {
+	float:left;
+	width:auto;
+	/*padding:10px 20px 10px 10px; - Administration icons are not proper - Updated by Satheesh*/
+	border-right:1px dotted #aaa
+}
+.status {
+	float:left;
+	width:85%;
+}
+#suppliesShipment .status {
+	float:none;
+	width:auto;
+}
+.status div {
+	width: 480px;
+	height:12px;
+	margin:10px auto;
+	border-left:1px solid #000;
+	border-right:1px solid #000;
+	background:url(/LexmarkServicesPortal/images/progressBar/progressbg_green.gif) no-repeat 0 0;
+}
+.status table {
+	width:480px;
+	margin:10px auto;
+	border-collapse:collapse
+}
+.status table td {
+	border:1px solid #aaa;
+	text-align:center;
+	border-top:0 none;
+	border-bottom:0 none;
+	width:33.3%
+}
+/* MODAL WINDOWS */
+.ui-dialog { height:auto!important }
+.ui-dialog-titlebar { padding: .4em .5em .2em .5em!important }
+.ui-dialog-content { width:auto!important; height:auto!important }
+.modal {
+	padding:0!important;
+	margin:0!important;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:100%;
+	background-color:#fff;   
+	border: 1px solid #e2e2e2;
+	//position:absolute !important;
+}
+.modal .hovfx {
+	border:2px solid #fff;
+	width:32.7%;
+	float:left;
+}
+.modal .hovfx:hover {
+	border:2px solid #c9c9d1;
+}
+.modal p { padding:5px 0; }
+.modal p.brief {
+	font-size:12px;
+	font-weight:normal;
+	min-height:50px
+}
+.modal p.info { padding:5px 10px; }
+.modal .banner { padding:15px 10px 15px 50px!important; }
+.modal ul {
+	margin:0;
+	border-top:1px dotted #ccc
+}
+.modal ul li {
+	list-style-type:none;
+	border-bottom:1px solid #e6e6f0;
+}
+.modal ul.form, .modal ul.form li { border: 0 none }
+.modal a {
+	color:#369;
+	display:block;
+	padding:3px 5px;
+	text-decoration:none
+}
+.modal a:hover {
+	color:#000;
+	background-color:#eff0f6;
+}
+.greenBanner {
+	width:100%;
+	margin:10px 0 0 0;
+	background-color:#008a44;
+	overflow:hidden
+}
+.greenBanner img { float:left }
+.greenBanner div {
+	float: left;
+	padding:5px;
+	color: #fff;
+}
+.greenBanner div h5 {
+	background:none;
+	color:#fff;
+	font-weight:bold;
+	border:0 none;
+	font-size:14px
+}
+.greenBanner div a {
+	color:#fff !important;
+	font-weight:bold;
+	padding:3px 0;
+	display:inline
+}
+.greenBanner div a:hover {
+	background:none;
+	text-decoration:underline;
+	color:#fff;
+}
+/*POPUP ALERTS*/
+
+#popup_content { padding:5px !important;} /* changed by offshore */
+#popup_content.confirm { background: url("/LexmarkServicesPortal/images/attention.png") no-repeat 10px 7px !important;} /* Added by offshore */
+#popup_message { overflow: hidden; min-height:30px; margin:0; padding:10px 10px 10px 50px}
+#popup_panel { display:block; float:none; backround: red; overflow:hidden; margin:0 auto!important; padding:10px }
+
+.oneblock { overflow:hidden }
+/*Added for Overlay*/
+
+.ui-dialog .ui-dialog-titlebar {
+   background-color:#fff!important;
+	color: #008a44!important;
+    font-size: 14px;
+    font-weight: bold;
+    min-height: 28px;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+}
+/*.ui-dialog .ui-dialog-titlebar-close { background-image:none!important }*/
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt {
+	height: 25px;
+	margin-bottom: -25px;
+}
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label {
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+/* Fixes for Chrome ONLY */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.w30p { width:29.99%!important; } /*One Third width*/
+.splitter { width:49.9%; }
+}
+/* File Browse */
+.fileBrowse {
+	opacity: 0;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	position: absolute;
+	height: 25px;
+	width: 80px;
+}
+.fileBrowse, x:-moz-any-link, x:default {
+ 	height: 30px;
+}
+
+.errorColor{
+	background-color:#F8E0E0!important;
+	border:2px #DF0101 solid!important;
+	padding:3px!important;
+}
+
+div.gridbox_light .odd_light{
+background-color: #eff0f6 !important;
+}
+
+.ev_light input[type="text"].errorColor, .odd_light input[type="text"].errorColor{
+	background-color:#F8E0E0!important;
+	border:2px #DF0101 solid!important;
+	padding:3px!important;
+}
+/* Added by offshore */
+#grid_menu input[type="checkbox"] {padding:0px !important; border-width:0px !important;}
+/*div.utilities ul {
+	margin-top: -5px;
+}*/
+.img_for_combo{margin-left: 218px;margin-top: 2px;}
+
+.assetDetail table ul{font-size:12px;margin-left:0px;margin-right:0px}
+.assetDetail table .infoDsiplay {width: 45%}
+.assetDetail table ul.form li{padding-left:0%}
+.assetDetail table ul.form li label{width: 40%;margin-left:0%}
+.assetDetail table .infoDsiplay ul.form li span { font-size:12px;width:auto;word-wrap:break-word;padding:2px 0px 2px 0}
+
+/*NESTED TABS*/
+.nestedTabs {
+	overflow:visible;
+	border:none;
+	font-family:Arial, Helvetica, sans-serif!important
+}
+.ie .ui-tabs{overflow:visible;}
+.nestedTabs ul.ui-tabs-nav{
+	 padding-left: 8px !important;
+}
+.nestedTabs ul {
+	background-color:transparent;
+	border:none;
+	 padding-left: 0px !important;
+}
+.nestedTabs ul li a {
+	color:#1d1d25;
+	background: inherit;
+	font-weight:bold
+}
+.nestedTabs ul li a.link { font-weight:normal; }
+.nestedTabs ul li a:hover, .nestedTabs ul li a:active {
+	color:#000;
+	font-weight:bold;
+	background: inherit
+}
+.nestedTabs .ui-tabs-nav a, .nestedTabs .ui-tabs-nav a:hover, .nestedTabs .ui-tabs-nav a:active, .nestedTabs .ui-tabs-nav a:focus { font-weight:bold!important }
+.nestedTabs .ui-tabs-active, .nestedTabs .ui-tabs-active, .nestedTabs .ui-tabs-selected { border-color:#ccc }
+.nestedTabs ul.form li a { text-decoration:underline }
+.nestedTabs ul.form li a:hover { text-decoration:none }
+.tabContent {
+	border:1px #ccc solid;
+	margin:0 2px;
+	font-family:Arial, Helvetica, sans-serif!important
+}
+.tabContent ul li { background-image:none!important }
+.tabContent ul li span { background-image:none!important }
+.tabContent ul.form li span:hover {
+	padding:2px 5px 2px 0;
+	color:#1d1d25
+}
+.tabContent a, .tabContent a:hover, .tabContent a:active, .tabContent a:focus { font-weight:normal!important }
+.tabContent ul li a, .tabContent ul li a:hover {
+	padding:0px;
+	color: #336699;
+}
+.tabContent h3.pageTitle {
+	color: #3a7fa8;
+	font-size: 16px;
+	font-weight:bold;
+	height: auto;
+	padding:8px 5px 3px 5px;
+	margin:0 0 5px 0;
+	border-top:0 none;
+	border-bottom:1px dotted #aaa;
+}
+.tabContent .portlet-wrap, .tabContent .portletBodyWrap { margin:0!important }
+.tabContent .expand-min ul li { background: url(../../images/vert-border.png) no-repeat scroll left center transparent!important }
+.tabContent .expand-min ul li.first { background:none!important }
+.tabContent .expand-min ul li img { float:left }
+.tabContent .expand-min ul li a {
+	padding:4px;
+	background:none!important
+}
+.ui-tabs-panel {
+	padding:0px 0!important;
+	overflow:hidden
+}
+.tabContent ul.filters li {
+	line-height:1.8em;
+	float:none!important;
+	display:block!important;
+	padding:0!important;
+	margin:0!important;
+}
+.tabContent ul.filters li a {
+	float:none!important;
+	display:block!important;
+	padding:7px 5px 17px 15px!important;
+}
+.tabContent ul.form li {
+	float:none;
+	margin:0;
+}
+.tabContent ul.roDisplay li span {
+	display:inline;
+	padding:2px 0 0 0;
+}
+.tabContent ul.roDisplay li span:hover {
+	padding:2px 0 0 0;
+	color:#1d1d25
+}
+.moreLink{vertical-align: bottom;}
+
+.moreLink ul.link {margin:1em 1em 1em 2em}
+
+.ui-tabs li a,.ui-tabs li a:hover{background:none repeat scroll 0 0 transparent;}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{background:none repeat scroll 0 0 #e6e6f0;}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active{background:none repeat scroll 0 0 #FFFFFF !important;}
+
+#productModelPanel .actionLinks{width: 25%;}
+#productModelPanel .pad_010{padding:0 10px;}
+#productModelPanel ul.form li.fav{padding:5px 0;}
+.ui-widget{font-size:12px;}
+.ui-widget-content{color:#1d1d25;}
+.ui-tabs li{line-height:1.6em}
+.ui-tabs .ui-tabs-hiden {visibility: hidden; height:0px;}
+#overlayPopup {
+	background: #FFF;
+	opacity: 0.5;
+	z-index: 1000;
+	filter: alpha(opacity = 50);
+	position: absolute;
+	cursor:wait
+}
+#processingHintPopup {
+	position: absolute;
+	width: 300px;
+	height: 50px;
+	overflow:visible;
+	outline-width: 0px;
+	outline-style: initial;
+	outline-color: initial;
+	top: 150px;
+	background:#ffffff;
+	font-size: 23px;
+	font-weight:bold;
+	display: block;
+	z-index: 1001;
+	margin-left:5px;
+	margin-top:5px;
+	border: double 1px;
+	display: none;
+}
+
+.popupBtnCont{clear:both;margin-top: 0;padding: 5px 0 0;}
+div.gridLoading {
+	width:100%!important;
+}
+.buttonContainer{
+	text-align:right;
+	padding:0 30px 15px 0;
+}
+.textScroll {
+	height: 65px;
+    overflow-y: auto;
+    margin-top: 5px!important;
+    margin-bottom: 5px!important;
+}
+body:first-of-type .textScroll { word-break: break-all; } /* Added for Chrome */
+div.visibleContainer{overflow:visible;}
+.collapse{padding:0;border-width:0px;margin:0}
+
+
+#accountListGrid .objbox table.obj{table-layout:auto !important;}
+
+.button_disabled {
+	opacity: 0.5;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0.3)";
+	filter: alpha(opacity=30);
+}
+.ie .button_disabled, .ie .gridbox .button_disabled {
+background: url(/LexmarkServicesPortal/images/disabledButton.jpg) #76bed6 repeat-x 0px 0px;
+}
+.ie .button_disabled:hover, .ie .gridbox .button_disabled:hover {
+background: url(/LexmarkServicesPortal/images/disabledButtonhover.jpg) #77b3cb repeat-x 0px 0px;
+}
+
+/* catalog order part list grid changes */
+#catalogListGridObj ul.form{margin:0px;}
+#catalogListGridObj ul.form li label{padding:0px;width:100px;margin-left:-100px}
+#catalogListGridObj ul.form li{padding-left:100px;font-size:12px;}
+
+#catalogListGridObj .w200 ul.form li label{margin-left:-60px;width:100px;}
+#catalogListGridObj .w200 ul.form li{padding-left:100px;}
+#catalogListGridObj tr:hover td { background: #FFC; }
+#consumableAssetlistGrid tr:hover td { background: #FFC; } /*Added for grid hover color on 11June 2013*/
+#sub_row_service h4 {
+	background : none!important;
+	border-bottom:none!important;
+}
+
+.statusPopup {
+	width:80%!important;
+}
+
+/*.ie css3-container {left:auto!important;top:auto!important;}*/
+
+.lightboxDetails:hover {
+	cursor:pointer
+}
+.lightbox:hover {
+	cursor:pointer
+}
+
+#chlOthersFormId  .dhx_combo_input:disabled{background-color:#ece9d8;color:#aca899;}
+
+.windowdialog {
+	max-height:500px;
+	overflow-y:auto;
+}
+
+.radio_confirm {
+       padding-left: 10px!important;
+}
+.installCheck label {
+	width: auto!important;	
+}
+
+/****** Header color in Service Request grid ******/
+.brkfix_grid{color:#000}
+
+/**************Banner implemantation by Sathees****************/
+div.left-nav-header {
+	margin:0;
+    padding: 5px 0;
+	background: #e6e6f0;
+}
+
+div.left-nav-header h3 {
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	line-height: 25px;
+	text-indent: 12px;
+	color:#1d1d25;
+}
+
+.shipment_link {
+	float: none!important;
+	padding-left:10px;	
+}
+/*
+.displayGrid thead {
+	-moz-border-radius: 5px 5px 0px 0px;
+	border-radius:	5px 5px 0px 0px;	
+}*/
+
+.addiLink {
+	padding:0px 10px;
+	margin-top:-10px;
+}
+/*Added on 25 Sep*/
+.columnInnerTable {
+/* 	margin-top:5px; */
+	overflow: hidden;
+	margin-left: 0px; 
+}
+.columnInnerTable table {
+	width: 100%;
+}
+.columnInnerTable tr td {
+	/*border-left: none;*/
+}
+#Tabs ul {
+padding: 0px;
+margin: 0px;
+margin-left: 10px;
+list-style-type: none;
+}
+
+#Tabs ul li {
+display: inline-block;
+clear: none;
+float: left;
+height: 24px;
+}
+
+#Tabs ul li a {
+position: relative;
+margin-top: 16px;
+display: block;
+margin-left: 6px;
+line-height: 24px;
+padding-left: 10px;
+background: #f6f6f6;
+z-index: 9999;
+border: 1px solid #ccc;
+border-bottom: 0px;
+
+/* The following four lines are to make the top left and top right corners of each tab rounded. */
+-moz-border-radius-topleft: 4px;
+border-top-left-radius: 4px;
+-moz-border-radius-topright: 4px;
+border-top-right-radius: 4px;
+/* end of rounded borders */
+
+width: 130px;
+color: #1d1d25;
+text-decoration: none;
+font-weight: bold;
+}
+
+#Tabs ul li a:hover {
+text-decoration: underline; /* a very simple effect when hovering the mouse on tab     */
+}
+
+#Tabs #Content_Area { /* this is the css class for the content displayed in each tab    */
+padding: 0 15px;
+clear:both;
+overflow:hidden;
+line-height:19px;
+position: relative;
+top: 20px;
+z-index: 5;
+/*height: 150px;*/
+overflow: hidden;
+}
+
+p { padding-left: 15px; }
+.mainTableBorder 
+{BORDER-RIGHT: #1d1d25 1px solid; 
+BORDER-TOP: #1d1d25 1px solid; 
+BORDER-LEFT: #1d1d25 1px solid; 
+COLOR: black; 
+BORDER-BOTTOM: #1d1d25 1px solid;}
+
+#serviceAddressGridbox {
+      
+      width:auto!important;
+
+}
+
+
+
+
+/* end */
+/* Added for MPS-II */
+.w300 { width:300px!important; }
+.lineClear { padding-top: 10px;}
+.spaceClear{ padding-left:10px;}
+.f200
+{
+	font-size:22px;
+	padding-top: 10px;
+	vertical-align: text-top;
+	font-weight:normal;
+	
+}
+.f150
+{
+	padding-top: 10px;
+	font-size:17px;
+	font-weight:normal;
+}     
+.paddingAll
+{
+	padding:3%;
+}
+.borderBlack
+{
+    border:solid 1px black;
+}
+.cBox
+{
+	height:100%;
+	overflow:hidden;
+}
+.marginAll
+{
+	margin:1%;	
+}
+/* Added on 11June 2013 */
+.comboAlterColor {
+	background-color: #F0F0F0;
+}
+.comboAlterColor:hover{
+	background-color:#316AC5 !important;
+	color: white;
+}
+.comboColor:hover{
+	background-color:#316AC5 !important;
+	color: white;
+}
+.dhx_selected_option .comboAlterColor  {
+background-color: #316AC5;
+color: white;
+}
+.disableInput {
+	background-color: #F2F2F2 !important;
+	opacity: 0.5;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0.5)";
+	filter: alpha(opacity=0.5);
+}
+/* background color for Billing address dropdown */
+.backgroundLight {
+	background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#F5F5F5));
+	background: -moz-linear-gradient(top, #ffffff, #F5F5F5);
+ 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#F5F5F5');	
+}
+.errorText {
+	padding: 0!important;
+	margin: 0!important;
+	background: none!important;
+	color: #F00!important;
+	font-size: 12px;
+	display: inline!important;
+	float: none!important;
+	font-weight: bold;
+}
+/*Added for MPS 2.1 Contact*/
+.input200{border-color: #BFBFBF #DEDEDE #DEDEDE #BFBFBF;
+    border-radius: 0 0 0 0;
+    border-style: inset solid solid inset;
+    border-width: 1px;
+    margin-left: 0 !important;
+    outline: 0 none;
+    padding: 4px !important;
+    width: 200px;}
+
+.gray {
+   background-color: #F0F0F0;
+}
+
+/* Added by Pranav on July08,2013 for UI  modification */
+.ui-dialog .ui-dialog-titlebar-close { padding: 0px!important; }
+
+/* Added by Pranav on July16,2013 for UI  modification */
+#button1{posiiton:relative;width:auto!important;float:left;margin-left:80%;}
+#button2{posiiton:relative;width:auto!important;float:left;}
+/* Added by Pranav on July17,2013 for manage contacts */
+.button_subrow1{padding: 0.27em 0.6em 0.34em!important;}
+.button_subrow2{margin-left:5px;border-radius: 0.4em 0.4em 0.4em 0.4em!important;}
+
+p.compact {
+    padding: 5px 0;
+}
+.buttonDivContainer{margin-top:20px;}
+
+/*Changes for Disabling icons for Contact MPS 2.1*/
+.disabledImage
+{
+opacity: 0.5;
+-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+filter: alpha(opacity=50); 
+}
+/*Changes for button issues in catalog list*/
+.buttonFix
+{posiiton:relative;width:auto!important;padding:0px;}
+/*Changes for defect 7960 MPS 2.1 */
+.autoWidth{width:auto!important;}
+/* Ends Changes for defect 7960 MPS 2.1 */
+.margin_asset_move_type{margin-left:-43%;}/*--Added for CI7 Defect 7853 --*/
+/* changes for space issue in address , defect 8387*/
+.dBlock{display:inline;}
+.dBlock5{margin-right:-3px;}
+.currencyRight{
+width:50%;
+text-align:right;
+}
+.borderTableLeft{border-left:1px solid #ccc!important;}
+.middle {vertical-align:middle!important;}
+.bottom {vertical-align:bottom!important;}
+.minimum{font-size:1px;}
+.instructionsScroll {
+	height:auto!important;
+	max-height: 120px;
+	width:250px;
+    overflow: auto;
+    margin-top: 5px!important;
+    margin-bottom: 5px!important;
+    word-break: break-all;
+}
+.noteWrap{
+	width:98%;
+	word-wrap: break-word;
+}
+.w400 { width:400px!important; }
+.portletScroll {
+	height:auto!important;
+	max-height: 280px;
+    overflow: auto!important;
+}
+.sort-pages span{
+white-space:nowrap!important;
+}
+.modify-pages span{
+white-space:nowrap!important;
+}
+
+/* added for hardware page */
+.noWordBreak {
+	word-break:initial;	
+}
+.ie .noWordBreak {
+	word-break:keep-all;	
+}
+.aui .collapse {
+    height: auto;
+}
+/* Theme */
+#main-content {
+	background: none repeat scroll 0 0 #fff !important;
+}
+div.main-wrap {
+	font-size: 12px;
+}
+div.main-wrap-fleet {
+	clear:both;
+	margin-top:5px;
+}
+div.main-wrap .label {
+	font-size: 12px;
+}
+#grid_menu h4{
+	background:#fff !important;
+	color: #1d1d25 !important;
+	border-bottom:0 none !important;
+}
+#chlTreeDiv h4,#locationTreeDiv h4{
+	background:#e6e6f0 !important;
+	color:#1d1d25 !important;
+}
+
+.ui-dialog {
+	background-color: #fff;
+    border: 2px solid #828f95;
+}
+
+
+.ui-dialog .ui-dialog-titlebar-close {
+    background-image: url("/LexmarkServicesPortal/images/ui-icons-sprite.png") !important;
+    background-position: 1px -1000px!important;
+    background-repeat: no-repeat;
+    color: transparent;
+    display: inline-block;
+    font-size: 0;
+    height: 20px !important;
+    max-width: 20px !important;
+    vertical-align: middle !important;
+    width: 20px !important;
+    height: 16px;
+    position: absolute;
+    right: 5px;
+
+}
+
+.aui .cartClass h4{
+	background-color: gray!important;
+}
+.cartClass{
+	background:#777 !important;
+	color:000;
+	line-height:25px!important;
+}
+.modal ul {
+    border-top:none!important;
+    margin: 0;
+}
+.aui .modal-header {
+    border-bottom: 1px solid #eee;
+    margin-top: 10px;
+    padding: 0 15px;
+}
+#viewText{
+    color: #3181c5;
+    float: right;
+    font-family: "ProximaNova",Arial,sans-serif !important;
+    font-size: 13px;
+    line-height: 12px;
+    margin-right: 20px;
+    padding: 3px 0;
+    text-align: right;
+    width: auto;
+    cursor:pointer;
+}
+
+
+/*************************** sprite-image icons **************************/
+.ui_icon_sprite {
+    background-image:url("/LexmarkServicesPortal/images/ui-icons-sprite.png");
+    background-repeat: no-repeat;
+    color: transparent;
+    display: inline-block;
+    font-size: 0;
+    height: 20px !important;
+    margin-right: 3px;
+    vertical-align: middle !important;
+    width: 20px !important;
+    max-width:20px !important;
+}
+.steps {
+  height: 40px !important;
+  width: 40px !important;
+  max-width:40px !important;
+}
+
+.widgets {
+  height: 100px !important;
+  width: 100px !important;
+  max-width:100px !important;
+}
+
+
+/* ---------- ICON MAPPED ------------- */
+
+
+/* --------- INDIVIDUAL ICON CLASSES ---------- */
+.pending_move-icon {
+  background-position: 0px -1920px;
+}
+.pending_move-icon:hover {
+  background-position: -20px -1920px;
+}
+.pending_move-icon:active {
+  background-position: -40px -1920px;
+}
+.upload-icon{
+  background-position: 0px -500px;
+}
+.upload-icon:hover{
+  background-position: -20px -500px;
+}
+.upload-icon:active{
+  background-position: -40px -500px;
+}
+.edit-icon {
+  background-position: 0px -520px;
+}
+.edit-icon:hover{
+  background-position: -20px -520px;
+}
+.edit-icon:active {
+  background-position: -40px -520px;
+}
+.list_view-icon {
+  background-position: 0px -540px;
+}
+.list_view-icon:hover {
+  background-position: -20px -540px;
+}
+.list_view-icon:active {
+  background-position: -40px -540px;
+}
+.arrow_down-icon {
+  background-position: 0px -560px;
+  margin:0px !important;
+  padding:0px !important;
+}
+.arrow_down-icon:hover{
+  background-position: -20px -560px;
+  margin:0px !important;
+  padding:0px !important;
+}
+.arrow_down-icon:active{
+  background-position: -40px -560px;
+  margin:0px !important;
+  padding:0px !important;
+}
+.arrow_up-icon {
+  background-position: 0px -580px; 
+  margin:0px !important;
+  padding:0px !important;
+}
+.arrow_up-icon:hover{
+  background-position: -20px -580px;
+  margin:0px !important;
+  padding:0px !important;
+}
+.arrow_up-icon:active{
+  background-position: -40px -580px;
+  margin:0px !important;
+  padding:0px !important;
+}
+.arrow_right-icon {
+  background-position: 0px -600px;
+}
+.arrow_right-icon:hover {
+  background-position: -20px -600px;
+}
+.arrow_right-icon:active{
+  background-position: -40px -600px;
+}
+.arrow_left-icon {
+  background-position: 0px -620px;
+}
+.arrow_left-icon:hover{
+  background-position: -20px -620px;
+}
+.arrow_left-icon:active{
+  background-position: -40px -620px;
+}
+.sort-icon {
+  background-position: 0px -640px;
+}
+.sort-icon:hover {
+  background-position: -20px -640px;
+}
+.sort-icon:active {
+  background-position: -40px -640px;
+}
+.unsort-icon{
+  background-position: 0px -660px;
+}
+.unsort-icon:hover{
+  background-position: -20px -660px;
+}
+.unsort-icon:active{
+  background-position: -40px -660px;
+}
+.folder-open-icon{
+  background-position: 0px -680px;
+}
+.folder-open-icon:hover {
+  background-position: -20px -680px;
+}
+.folder-open-icon:active{
+  background-position: -40px -680px;
+}
+.folder-closed-icon{
+  background-position: 0px -700px;
+}
+.folder-closed-icon:hover{
+  background-position: -20px -700px;
+}
+.folder-closed-icon:active{
+  background-position: -40px -700px;
+}
+.cart-icon {
+  background-position: 0px -720px;
+}
+.cart-icon:hover{
+  background-position: -20px -720px;
+}
+.cart-icon:active {
+  background-position: -40px -720px;
+}
+.checkmark-icon {
+  background-position: 0px -740px;
+}
+.checkmark-icon:hover{
+  background-position: -20px -740px;
+}
+.checkmark-icon:active{
+  background-position: -40px -740px;
+}
+.save-icon {
+  background-position: 0px -760px;
+}
+.save-icon:hover {
+  background-position: -20px -760px;
+}
+.save-icon:active {
+  background-position: -40px -760px;
+}
+.home-icon {
+  background-position: 0px -780px;
+}
+.home-icon:hover {
+  background-position: -20px -780px;
+}
+.home-icon:active {
+  background-position: -40px -780px;
+}
+.technician-icon {
+  background-position: 0px -800px;
+}
+.technician-icon:hover{
+  background-position: -20px -800px;
+}
+.technician-icon:active{
+  background-position: -40px -800px;
+}
+.fwd-arrow-icon{
+  background-position: 0px -820px;
+}
+.fwd-arrow-icon:hover {
+  background-position: -20px -820px;
+}
+.fwd-arrow-icon:active {
+  background-position: -40px -820px;
+}
+.bck-arrow-icon{
+  background-position: 0px -840px;
+}
+.bck-arrow-icon:hover {
+  background-position: -20px -840px;
+}
+.bck-arrow-icon:active{
+  background-position: -40px -840px;
+}
+.services-icon {
+  background-position: 0px -860px;
+}
+.services-icon:hover {
+  background-position: -20px -860px;
+}
+.services-icon:active {
+  background-position: -40px -860px;
+}
+.supplies-icon {
+  background-position: 0px -880px;
+}
+.supplies-icon:hover{
+  background-position: -20px -880px;
+}
+.supplies-icon:active{
+  background-position: -40px -880px;
+}
+.move-icon {
+  background-position: 0px -900px;
+}
+.move-icon:hover{
+  background-position: -20px -900px;
+}
+.move-icon:active{
+  background-position: -40px -900px;
+}
+.decommission-icon {
+  background-position: 0px -920px;
+}
+.decommission-icon:hover{
+  background-position: -20px -920px;
+}
+.decommission-icon:active{
+  background-position: -40px -920px;
+}
+.change-icon{
+  background-position: 0px -940px;
+}
+.change-icon:hover {
+  background-position: -20px -940px;
+}
+.change-icon:active{
+  background-position: -40px -940px;
+}
+.phone-icon {
+  background-position: 0px -960px;
+}
+.phone-icon:hover {
+  background-position: -20px -960px;
+}
+.phone-icon:active {
+  background-position: -40px -960px;
+}
+.mobile-icon {
+  background-position: 0px -980px;
+}
+.mobile-icon:hover{
+  background-position: -20px -980px;
+}
+.mobile-icon:active{
+  background-position: -40px -980px;
+}
+.bookmark-star-icon {
+  background-position: 0px -1020px;
+}
+.removebookmark-icon {
+  background-position: -20px -1020px;
+}
+.steps-current-icon{
+  background-position: 0px -1040px;
+}
+.steps-selected-icon {
+  background-position: 0px -1080px;
+}
+.steps-unavailable-icon{
+  background-position: 0px -1120px;
+}
+.technician-large-icon {
+  background-position: 0px -1160px;
+}
+.inProcess-icon {
+  background-position: 0px -1260px;
+}
+.widgets-truck-rt-icon{
+  background-position: 0px -1360px;
+}
+.widgets-truck-lf-icon{
+  background-position: 0px -1460px;
+}
+.req_supplies-icon {
+  background-position: 0px -1560px;
+  max-width: 100px !important;
+  margin-left:20%;
+}
+.req_service-icon {
+  background-position: 0px -1660px;
+  max-width: 100px !important;
+  margin-left:20%;
+}
+.req_change-icon{
+  background-position: 0px -1760px;
+  max-width: 100px !important;
+  margin-left:20%;
+}
+.map-view-icon {
+  background-position: 0px -1860px;
+}
+.map-view-icon:hover {
+  background-position: -20px -1860px;
+}
+.map-view-icon:active {
+  background-position: -40px -1860px;
+}
+.history-icon {
+  background-position: 0px -1880px;
+}
+.history-icon:hover {
+  background-position: -20px -1880px;
+}
+.history-icon:active {
+  background-position: -40px -1880px;
+}
+.schedule-reports-icon {
+  background-position: 0px -1900px;
+}
+.schedule-reports-icon:hover {
+  background-position: -20px -1900px;
+}
+.schedule-reports-icon:active {
+  background-position: -40px -1900px;
+}
+.ui-icon-closethick {
+  background-position: 1px -1000px!important;;
+}
+.ui-icon-closethick:hover{
+  background-position: -18px -1000px;
+}
+.ui-icon-closethick:active {
+  background-position: -39px -1000px;
+}
+.trash-icon {
+  background-position: 0px -480px;
+}
+.trash-icon:hover {
+  background-position: -20px -480px;
+}
+.trash-icon:active {
+  background-position: -40px -480px;
+}
+.email-icon {
+  background-position: 0px -460px;
+}
+.email-icon:hover {
+  background-position: -20px -460px;
+}
+.email-icon:active {
+  background-position: -40px -460px;
+}
+.info-small-icon{
+  background-position: 0px -440px;
+}
+.login-icon {
+  background-position: 0px -260px;
+}
+.login-icon:hover{
+  background-position: -20px -260px;
+}
+.login-icon:active {
+  background-position: -40px -260px;
+}
+.my-places-icon{
+  background-position: 0px -220px;
+}
+.my-places-icon:hover{
+  background-position: -20px -220px;
+}
+.my-places-icon:active{
+  background-position: -40px -220px;
+}
+.support-icon {
+  background-position: 0px -140px;
+}
+.support-icon:hover {
+  background-position: -20px -140px;
+}
+.support-icon:active {
+  background-position: -40px -140px;
+}
+.white_close-icon {
+  background-position: 0px -20px;
+}
+.white_close-icon:hover {
+  background-position: -20px -20px;
+}
+.white_close-icon:active{
+  background-position: -40px -20px;
+}
+.document-icon {
+  background-position: 0px -100px;
+}
+.document-icon:hover{
+  background-position: -20px -100px;
+}
+.document-icon:active{
+  background-position: -40px -100px;
+}
+.customize-icon{
+  background-position: 0px -40px;
+}
+
+.customize-icon:hover{
+  background-position: -20px -40px;
+}
+
+.customize-icon:active{
+  background-position: -40px -40px;
+}
+
+.reset-icon{
+  background-position: 0px -160px;
+}
+
+.reset-icon:hover {
+  background-position: -20px -160px;
+}
+
+.reset-icon:active {
+  background-position: -40px -160px;
+}
+
+.support-icon{
+  background-position: 0px -140px;
+  margin-bottom:10px;
+}
+
+.spreadsheet-icon{
+  background-position: 0px -80px;
+}
+
+.spreadsheet-icon:hover{
+  background-position: -20px -80px;
+}
+
+.spreadsheet-icon:active{
+  background-position: -40px -80px;
+}
+
+.pdf-icon{
+  background-position: 0px -200px;
+}
+
+.pdf-icon:hover{
+  background-position: -20px -200px;
+}
+
+.pdf-icon:active{
+  background-position: -40px -200px;
+}
+
+.print-icon{
+  background-position: 0px -180px;
+}
+
+.print-icon:hover {
+  background-position: -20px -180px;
+}
+
+.print-icon:active {
+  background-position: -40px -180px;
+}
+
+.minimize-icon{
+  background-position: 0px -240px;
+}
+
+.minimize-icon:hover {
+  background-position: -20px -240px;
+}
+
+.minimize-icon:active {
+  background-position: -40px -240px;
+}
+
+.expand-icon{
+  background-position: 0px -60px;
+}
+
+.expand-icon:hover {
+  background-position: -20px -60px;
+}
+
+.expand-icon:active {
+  background-position: -40px -60px;
+}
+
+.calendar-icon{
+  background-position: 0px 0px;
+}
+
+.calendar-icon:hover{
+  background-position: -20px 0px;
+}
+
+.calendar-icon:active{
+  background-position: -40px 0px;
+}
+
+.error-icon{
+  background-position: 0px -280px;
+}
+
+.success-icon{
+  background-position: 0px -300px;
+}
+
+.basic-icon{
+  background-position: 0px -320px;
+}
+
+.info-icon{
+  background-position: 0px -340px;
+}
+
+.info-small-icon{
+  background-position: 0px -440px;
+  vertical-align: middle;
+}
+
+.login-icon {
+  background-position: 0px -260px;
+}
+
+.user-icon{
+  background-position: 0px -120px;
+}
+
+.user-icon:hover {
+  background-position: -20px -120px;
+}
+
+.user-icon:active {
+  background-position: -40px -120px;
+}
+.first-page-icon{
+  background-position: -40px -355px;
+  margin-right: 0 !important;
+   display: list-item !important;
+}
+
+.first-page-icon:hover {
+  background-position: -20px -355px;
+  margin-right: 0 !important;
+   display: list-item !important;
+}
+
+.first-page-icon:active {
+  background-position: -40px -355px;
+  margin-right: 0 !important;
+   display: list-item !important;
+}
+
+/* FIRST PAGE ICON DISABLED STATE */
+.first-page-disabled-icon{
+  background-position: -60px -355px;
+  margin-right: 0 !important;
+   display: list-item !important;
+}
+
+.next-page-icon{
+  background-position: 0px -375px;
+  margin-right: 0 !important;
+   display: list-item !important;
+}
+
+.next-page-icon:hover {
+  background-position: -20px -375px;
+  margin-right: 0 !important;
+   display: list-item !important;
+}
+
+.next-page-icon:active {
+  background-position: -40px -375px;
+  margin-right: 0 !important;
+   display: list-item !important;
+}
+
+/* NEXT PAGE ICON DISABLED STATE */
+.next-page-disabled-icon{
+  background-position: -60px -375px;
+  margin-right: 0 !important;
+   display: list-item !important;
+}
+.previous-page-icon{
+  background-position: 0px -395px;
+  margin-right: 0 !important;
+   display: list-item !important;
+}
+
+.previous-page-icon:hover {
+  background-position: -20px -395px;
+  margin-right: 0 !important;
+   display: list-item !important;
+}
+
+.previous-page-icon:active {
+  background-position: -40px -395px;
+  margin-right: 0 !important;
+   display: list-item !important;
+}
+
+/* PREVIOUS PAGE ICON DISABLED STATE */
+.previous-page-disabled-icon{
+  background-position: -60px -395px;
+  margin-right: 0 !important;
+   display: list-item !important;
+}
+
+.last-page-icon{
+  background-position: -5px -415px;
+  margin-right: 0 !important;
+   display: list-item !important;
+}
+
+.last-page-icon:hover{
+  background-position: -25px -415px;
+  margin-right: 0 !important;
+   display: list-item !important;
+}
+
+.last-page-icon:active {
+  background-position: -45px -415px;
+  margin-right: 0 !important;
+   display: list-item !important;
+}
+
+/* LAST PAGE ICON DISABLED STATE */
+.last-page-disabled-icon{
+  background-position: -60px -420px;
+  margin-right: 0 !important;	
+   display: list-item !important;
+}
+
+
+
+span.portlet-title {
+	font-size: 1.2em !important;
+	display: inline;
+	font-weight:bold!important;
+	line-height: 32px !important;
+	width: auto !important;
+	margin: 0;
+	padding: 0 0 0 15px;
+	color: #000;
+	font-weight: normal;
+}
+
+div.portlet-topper {
+    background-color: #e6e6f0;
+    height: 30px;
+    line-height: normal;
+    margin:0!important;
+    padding: 0!important;
+}
+
+div.portlet {
+    background: none!important;
+    font-family: Arial,Verdana,sans-serif;
+    font-size: 12px;
+    margin: 0 0 12px !important;
+    overflow: hidden;
+    margin: 0!important;
+    width:100%!important;
+}
+div.portlet-wrap-inner {
+	margin: 0!important;
+	padding: 0!important;
+	overflow: hidden;
+	background: none!important;
+	border:none!important;
+}
+.dhx_pbox {
+	border-width: 0 !important;
+}
+div.portlet-wrap a:hover {
+    text-decoration: none!important;
+    color: #489ce3;
+}
+
+.aui p, .aui ul, .aui ol{
+	margin:0;
+	padding:0;
+}
+.aui li{
+	line-height:19px!important;
+}
+form{
+	margin-bottom:10px !important;
+}
+.deleteDisplayNone{
+	display:none !important;	
+}
+
+.aui dl{
+	margin-bottom:15px !important;
+}
+input[type=radio][name=exportType]{
+	margin-top:-4px !important;
+}
+
+.map-img{
+	background: url("/LexmarkServicesPortal/images/map0.gif") repeat center top;
+}
+.dhx_page_active div.dhx_page_active{
+	font-weight:bold;
+	color:#1d1d25 !important;
+	 background-color: #fff !important;
+}
+.dhx_page.dhx_page_active {
+    border-top: 2px solid black;
+    background-color: #c9c9d1 !important;
+}
+.checkbox_Span,.radio_Span{
+	width:15px;
+	height:15px;
+	color:transparent;
+	display:inline-block;
+	background-repeat:no-repeat;
+	cursor:pointer;
+	margin-right:5px;
+	padding:0px !important;
+	vertical-align:middle;
+}
+.check_On{
+	background-image:url(/LexmarkServicesPortal/images/checkbox_checked.png);
+}
+.check_Off{
+	background-image:url(/LexmarkServicesPortal/images/checkbox_unchecked.png);
+}
+.radio_On{
+	background-image:url(/LexmarkServicesPortal/images/radio_checked.png);
+}
+.radio_Off{
+	background-image:url(/LexmarkServicesPortal/images/radio_unchecked.png);
+}
+
+#div_inprocessGridContainer .displayGrid th {
+    width: 25%;
+}
+.clearBoth{
+	clear:both;
+}
+.radio span {
+    margin-top: 3px;
+}

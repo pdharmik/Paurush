@@ -1,0 +1,196 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="OrderSuppliesAssetFavoriteDo" class="com.amind.data.service.DomainObjMapping">
+
+    <!-- data source info -->
+       <property name="dataSourceName">
+            <value>EAI Siebel Adapter</value>
+        </property>
+
+       <property name="dsTargetObjectName">
+            <value>LXK MPS SW Contact Favorite Entitled Assets</value>
+       </property>
+
+        <property name="dsTargetComponentName">
+            <value>LXK MPS SW Contact Favorite Entitled Assets</value>
+        </property>
+
+        <property name="packageName">
+            <value>com.lexmark.service.impl.real.domain</value>
+        </property>
+
+           <!-- field mapping -->
+           <property name="doFieldNameToDsFieldNameMap">
+               <map>
+                    <entry>
+                        <key><value>id</value></key>
+                        <value>Id</value>
+                    </entry>
+                   <entry>
+                       <key><value>mdmLevel1AccountId</value></key>
+                       <value>LXK Account Global DUNS Number</value>
+                   </entry>
+                   <entry>
+                       <key><value>mdmLevel2AccountId</value></key>
+                       <value>LXK Account Domestic DUN Number</value>
+                   </entry>
+                   <entry>
+                       <key><value>mdmLevel3AccountId</value></key>
+                       <value>LXM MDM Legal Entity ID #</value>
+                   </entry>
+                   <entry>
+                       <key><value>mdmLevel4AccountId</value></key>
+                       <value>LXM MDM Account #</value>
+                   </entry>
+                   <entry>
+                       <key><value>mdmLevel5AccountId</value></key>
+                       <value>Owner Account Id</value>
+                   </entry>                
+                    <entry>
+                        <key><value>contactId</value></key>
+                        <value>Contact Id</value>
+                    </entry>
+                    <entry>
+                        <key><value>assetFavFlag</value></key>
+                        <value>LXK SW Asset Favorite Flag</value>
+                    </entry>
+                    <entry>
+                        <key><value>ownerAccountId</value></key>
+                        <value>Owner Account Id</value>
+                    </entry>
+
+                    <!--Result Data to Populate-->
+
+                    <entry>
+                        <key><value>assetId</value></key>
+                        <value>Favorite Asset Id</value>
+                    </entry>
+                    <entry>
+                        <key><value>serialNumber</value></key>
+                        <value>Serial Number</value>
+                    </entry>
+                    <entry>
+                        <key><value>assetTag</value></key>
+                        <value>Owner Asset Number</value>
+                    </entry>
+                    <entry>
+                        <key><value>machineTypeModel</value></key>
+                        <value>MTM Name</value>
+                    </entry>
+                    <entry>
+                        <key><value>ipAddress</value></key>
+                        <value>IP Address</value>
+                    </entry>
+                    <entry>
+                        <key><value>agreementType</value></key>
+                        <value>LXK SW Agreement Type</value>
+                    </entry>
+                    <entry>
+                        <key><value>hostName</value></key>
+                        <value>Host Name</value>
+                    </entry>
+                    <entry>
+                        <key><value>deviceTagCustomer</value></key>
+                        <value>Device Tag Customer</value>
+                    </entry>
+                    <entry>
+                        <key><value>productTLI</value></key>
+                        <value>Product Name</value>
+                    </entry>
+                    <entry>
+                        <key><value>productLine</value></key>
+                        <value>LXK Product Model Name</value>
+                    </entry>
+                    <entry>
+                        <key><value>devicePhase</value></key>
+                        <value>Device Phase</value>
+                    </entry>
+                    <entry>
+                        <key><value>macAddress</value></key>
+                        <value>MAC Address</value>
+                    </entry>
+
+                    <!--GenericAddress installAddress-->
+
+                    <entry>
+                        <key><value>addressName</value></key>
+                        <value>Install Address Name</value>
+                    </entry>
+                    <entry>
+                        <key><value>address1</value></key>
+                        <value>Install Address Line 1</value>
+                    </entry>
+                    <entry>
+                        <key><value>address2</value></key>
+                        <value>Install Address Line 2</value>
+                    </entry>
+                    <entry>
+                        <key><value>address3</value></key>
+                        <value>Install Address Line 3</value>
+                    </entry>
+                    <entry>
+                        <key><value>installCity</value></key>
+                        <value>Install Address City</value>
+                    </entry>
+                    <entry>
+                        <key><value>installState</value></key>
+                        <value>Install Address State</value>
+                    </entry>
+                    <entry>
+                        <key><value>installProvince</value></key>
+                        <value>Install Address Province</value>
+                    </entry>
+                    <entry>
+                        <key><value>installPostalCode</value></key>
+                        <value>Install Address Zip</value>
+                    </entry>
+                    <entry>
+                        <key><value>installCountry</value></key>
+                        <value>Install Address Country</value>
+                    </entry>
+
+                    <!--AccountContact assetContact-->
+
+                    <entry>
+                        <key><value>contactFirstName</value></key>
+                        <value>Primary Contact First Name</value>
+                    </entry>
+                    <entry>
+                        <key><value>contactLastName</value></key>
+                        <value>Primary Contact Last Name</value>
+                    </entry>
+                    <entry>
+                        <key><value>contactEmailAddress</value></key>
+                        <value>Primary Contact Email Address</value>
+                    </entry>
+                    <entry>
+                        <key><value>contactWorkPhone</value></key>
+                        <value>Primary Contact Work Phone</value>
+                    </entry>
+
+                    <!--misc-->
+
+                    <entry>
+                        <key><value>operationalStatus</value></key>
+                        <value>Operating Status</value>
+                    </entry>
+                    <entry>
+                        <key><value>agreementId</value></key>
+                        <value></value>
+                    </entry>
+                    
+                    <entry>
+                        <key><value>mdmLevel</value></key>
+                        <value>LXK MPS Account Level</value>
+                    </entry>
+                    
+                    <entry>
+                        <key><value>consumableAssetFlag</value></key>
+                        <value>LXK MPS Consumable Flag</value>
+                   </entry>    
+               </map>
+        </property>
+    </bean>
+</beans>

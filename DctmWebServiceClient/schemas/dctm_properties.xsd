@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="DocumentProperties">
+  <xs:complexType>
+    <xs:sequence>
+     
+	 <xs:element name="document_info" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            		
+			<!-- Defined by portal -->
+			<xs:element name="object_name" type="xs:string" />
+			<xs:element name="owner_name" type="xs:string" />
+			<xs:element name="locale" type="xs:string" />
+			<xs:element name="portal_uid" type="xs:string" />
+			<xs:element name="mdmlevel" type="xs:string" minOccurs="0" />
+			<xs:element name="mdmid" type="xs:string" minOccurs="0" />
+			<xs:element name="usernumber" type="xs:string" />
+			<xs:element name="definition_id" type="xs:string" />
+			<xs:element name="subcategory_name" type="xs:string" />
+			<xs:element name="schedule_frequency" type="xs:string" />
+			<xs:element name="account_name" type="xs:string" />
+			<xs:element name="isoverwrite" type="xs:string" />
+
+			<!-- Required by documentum -->
+			<xs:element name="a_content_type" type="xs:string" />
+			<xs:element name="acl_name" type="xs:string" />
+			<xs:element name="acl_domain" type="xs:string" />
+			<xs:element name="r_folder_path" type="xs:string" />
+			<xs:element name="r_object_type" type="xs:string" />
+			
+			<!-- if needed -->
+			<xs:element name="r_object_id" type="xs:string" />
+
+			<xs:element name="keywords">
+				<xs:complexType>
+					<xs:sequence minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="values" type="xs:string" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+            
+           </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    
+  </xs:complexType>
+</xs:element>
+
+</xs:schema>

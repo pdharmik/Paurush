@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!--
+		* Copyright 2005-2008 the original author or authors. * * Licensed
+		under the Apache License, Version 
+2.0 (the "License"); * you may not
+		use this file except in compliance with the License. * You may obtain
+		
+a copy of the License at * *
+		http://www.apache.org/licenses/LICENSE-2.0 * * Unless required by
+		applicable 
+law or agreed to in writing, software * distributed under
+		the License is distributed on an "AS IS" 
+BASIS, * WITHOUT WARRANTIES
+		OR CONDITIONS OF ANY KIND, either express or implied. * See the
+		License 
+for the specific language governing permissions and *
+		limitations under the License.
+	-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:context="http://www.springframework.org/schema/context" xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring" 
+xmlns:task="http://www.springframework.org/schema/task" xmlns:util="http://www.springframework.org/schema/util"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+ xsi:schemaLocation="
+	 http://www.springframework.org/schema/task
+	 
+http://www.springframework.org/schema/task/spring-task-3.0.xsd
+     http://www.springframework.org/schema/context
+     
+http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     http://www.springframework.org/schema/beans 
+
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring
+     
+http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.0.xsd http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-3.0.xsd
+	http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	">
+	<context:annotation-config/>
+	<ehcache:annotation-driven cache-manager="ehCacheManager"/>
+	
+	<bean id="ehCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation">
+			<value>/WEB-INF/context/cache/lexmarkservicespunchout-ehcache.xml</value>
+		</property>
+	</bean>
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/context/webservice.properties</value>
+				<value>/WEB-INF/context/common.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="myKeyGenerator" class="com.googlecode.ehcache.annotations.key.StringCacheKeyGenerator">
+		<property name="includeMethod" value="false"/>
+	</bean>
+	<!-- Message Source -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:com/lexmark/services/resources/messages</value> <!-- (localized "messages_xx.properties" files) -->
+				<value>classpath:com/lexmark/services/resources/hostConfig</value>			
+			</list>
+		</property>
+		<property name="defaultEncoding" value="UTF-8"/>
+	</bean>
+	<!-- Default View Resolver -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="cache" value="false"/>
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	<!-- Abstract Default Exception Handler -->
+	<bean id="defaultExceptionHandlerTemplate" class="org.springframework.web.portlet.handler.SimpleMappingExceptionResolver" abstract="true">
+		<property name="defaultErrorView" value="defError"/>
+		<property name="exceptionMappings">
+			<props>
+				<prop key="javax.portlet.PortletSecurityException">notAuthorized</prop>
+				<prop key="javax.portlet.UnavailableException">notAvailable</prop>
+				<prop key="com.lexmark.services.exception.LoginException">loginException</prop>
+				<prop key="com.lexmark.services.exception.AccountNotAssociatedException">accountNotAssociatedException</prop>
+			</props>
+		</property>
+	</bean>
+	<bean name="statelessSessionFactory" class="com.amind.session.StatelessSessionFactory">
+		<property name="statelessSessionTimeout" value="1200000"/>
+		<property name="statelessWaitTime" value="1000"/>
+		<property name="maxConnections" value="200"/>
+	</bean>
+	
+	<bean id="sessionFactory" class="com.amind.session.StatefulSessionFactory"/>
+	
+	<bean id="globalService" class="com.lexmark.service.impl.real.AmindGlobalService">
+		<property name="statelessSessionFactory">
+			<ref bean="statelessSessionFactory"/>
+		</property>
+		<property name="statefulSessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="customerPaymentsService" class="com.lexmark.service.impl.real.customerPaymentService.AmindCustomerPaymentService" >
+		<property name="statelessSessionFactory"><ref bean="statelessSessionFactory"/></property> 
+	</bean>
+	
+	<bean id="createServiceRequestB2B" class="com.lexmark.services.webService.impl.CreateServiceRequestB2BImpl">
+			<property name="senderId" >
+    			<value>${createServiceRequest.senderId}</value>
+    		</property>                                                                                     
+    		<property name="senderName">
+    			<value>${createServiceRequest.senderName}</value>
+    		</property>                                                                                 
+    		<property name="receiverId" >
+    			<value>${createServiceRequest.receiverId}</value>
+    		</property>
+    		<property name="address">
+    			<value>${createServiceRequest.address}</value>
+    		</property>
+    		<property name="userName">
+				<value>${createServiceRequest.userName}</value>
+			</property>
+			<property name="password">
+				<value>${createServiceRequest.password}</value>
+			</property>
+	</bean>
+	<bean id="retrievePriceService" class="com.lexmark.services.webService.RetrievePriceServiceImpl">
+			<property name="endpointURL">
+    			<value>${priceService.address}</value>
+    		</property>
+    		<property name="userName">
+				<value>${priceService.userName}</value>
+			</property>
+			<property name="password">
+				<value>${priceService.password}</value>
+			</property>
+	</bean>
+	
+	
+	
+	<bean id="requestTypeB2bService" class="com.lexmark.service.impl.real.AmindRequestTypeServiceB2B"></bean>
+	
+	<bean id="loadAllAccountList" class="com.lexmark.services.servlet.LoadAccountInformation"></bean>
+	<bean id="loadPriceInformation" class="com.lexmark.services.servlet.LoadPriceInformation"></bean>
+	
+	<bean id="orderHardwareService" class="com.lexmark.service.impl.real.AmindOrderHardwareService"></bean>
+	<bean id="orderSuppliesCatalogService" class="com.lexmark.service.impl.real.AmindOrderSuppliesCatalogService"/>
+	<bean id="LPMDService" class="com.lexmark.services.impl.LPMDServiceImpl"/>
+	
+	<util:map id="contractMap" map-class="java.util.HashMap" key-type="java.lang.String" value-type="com.lexmark.domain.HardwareCatalog"/>
+	<util:map id="allBundlePriceMap" map-class="java.util.HashMap" key-type="java.lang.String" value-type="contractMap" />
+	<util:list id="allAccountList" value-type="com.lexmark.domain.PunchoutAccount" />  
+	
+</beans>

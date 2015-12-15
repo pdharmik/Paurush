@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="taxCalculateWS" targetNamespace="http://dlexrwmis001.lex.lexmark.com/LXKTaxCalculationWS/webservices/provider/taxCalculateWS" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2010/soapjms/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://dlexrwmis001.lex.lexmark.com/LXKTaxCalculationWS/webservices/provider/taxCalculateWS" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://dlexrwmis001.lex.lexmark.com/LXKTaxCalculationWS/webservices/provider/taxCalculateWS" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://dlexrwmis001.lex.lexmark.com/LXKTaxCalculationWS/webservices/provider/taxCalculateWS">
+          <xsd:element name="calculateTax" type="tns:calculateTax"/>
+          <xsd:element name="calculateTaxResponse" type="tns:calculateTaxResponse"/>
+          <xsd:complexType name="calculateTax">
+            <xsd:sequence>
+              <xsd:element name="debug" nillable="true" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="TaxCalculationWSInput" nillable="true" type="tns:TaxCalculationWSInput"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="TaxCalculationWSInput">
+            <xsd:sequence>
+              <xsd:element name="TaxCalculationWSInput" type="tns:TaxCalculationWSInput2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="TaxCalculationWSInput2">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" type="tns:DocumentMetaData" minOccurs="0"/>
+              <xsd:element name="TaxData" type="tns:TaxData" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="DocumentMetaData">
+            <xsd:sequence>
+              <xsd:element name="SenderId" type="xsd:string"/>
+              <xsd:element name="SenderName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OriginalPartnerId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OriginalPartnerName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReceiverId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReceiverName" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="TaxData">
+            <xsd:sequence>
+              <xsd:element name="Header" type="tns:Header" minOccurs="0"/>
+              <xsd:element name="LineInformation" type="tns:LineInformation" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Header">
+            <xsd:sequence>
+              <xsd:element name="SourceReferenceId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SoldToNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ShipToNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SalesOrganization" type="xsd:string"/>
+              <xsd:element name="SalesOffice" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SalesGroup" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="City" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="County" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Region" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Country" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="LineInformation">
+            <xsd:sequence>
+              <xsd:element name="SourceReferenceLineId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Plant" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="MaterialNumber" type="xsd:string"/>
+              <xsd:element name="NetPrice" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="calculateTaxResponse">
+            <xsd:sequence>
+              <xsd:element name="TaxCalculationWSOutput" nillable="true" type="tns:TaxCalculationWSOutput" minOccurs="0"/>
+              <xsd:element name="IntegrationResponse" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="TaxCalculationWSOutput">
+            <xsd:sequence>
+              <xsd:element name="TaxCalculationWSOutput" type="tns:TaxCalculationWSOutput2"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="TaxCalculationWSOutput2">
+            <xsd:sequence>
+              <xsd:element name="DocumentMetaData" type="tns:DocumentMetaData2" minOccurs="0"/>
+              <xsd:element name="TaxData" type="tns:TaxData2" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="DocumentMetaData2">
+            <xsd:sequence>
+              <xsd:element name="SenderId" type="xsd:string"/>
+              <xsd:element name="SenderName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OriginalPartnerId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="OriginalPartnerName" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReceiverId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ReceiverName" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="TaxData2">
+            <xsd:sequence>
+              <xsd:element name="Header" type="tns:Header2" minOccurs="0"/>
+              <xsd:element name="LineInformation" type="tns:LineInformation2" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="Header2">
+            <xsd:sequence>
+              <xsd:element name="SourceReferenceId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SoldToNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="ShipToNumber" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SalesOrganization" type="xsd:string"/>
+              <xsd:element name="SalesOffice" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="SalesGroup" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="City" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="County" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Region" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Country" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Currency" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+          <xsd:complexType name="LineInformation2">
+            <xsd:sequence>
+              <xsd:element name="SourceReferenceLineId" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="Plant" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="MaterialNumber" type="xsd:string"/>
+              <xsd:element name="NetPrice" type="xsd:string" minOccurs="0"/>
+              <xsd:element name="TaxAmount" type="xsd:string"/>
+              <xsd:element name="ProfitCenter" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        	</xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="taxCalculateWS_PortType_calculateTax">
+    <wsdl:part name="parameters" element="tns:calculateTax">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="taxCalculateWS_PortType_calculateTaxResponse">
+    <wsdl:part name="parameters" element="tns:calculateTaxResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="taxCalculateWS_PortType">
+    <wsdl:operation name="calculateTax">
+      <wsdl:input message="tns:taxCalculateWS_PortType_calculateTax">
+    </wsdl:input>
+      <wsdl:output message="tns:taxCalculateWS_PortType_calculateTaxResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LXKTaxCalculationWS_webservices_provider_taxCalculateWS_Binder" type="tns:taxCalculateWS_PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="calculateTax">
+      <soap:operation soapAction="LXKTaxCalculationWS_webservices_provider_taxCalculateWS_Binder_calculateTax" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="taxCalculateWS">
+    <wsdl:port name="LXKTaxCalculationWS_webservices_provider_taxCalculateWS_Port" binding="tns:LXKTaxCalculationWS_webservices_provider_taxCalculateWS_Binder">
+      <soap:address location="http://dlexrwmis001.lex.lexmark.com:9600/ws/LXKTaxCalculationWS.webservices.provider:taxCalculateWS/LXKTaxCalculationWS_webservices_provider_taxCalculateWS_Port"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

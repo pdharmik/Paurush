@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?><definitions
+ xmlns="http://schemas.xmlsoap.org/wsdl/"
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+ targetNamespace="http://siebel.com/CustomUI"
+ xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:tns="http://siebel.com/CustomUI"
+><types
+></types
+><message
+ name="Update_Asset_Input"
+><part
+ name="ZoneId"
+ type="xsd:string"
+></part
+><part
+ name="Longitude"
+ type="xsd:string"
+></part
+><part
+ name="SRId"
+ type="xsd:string"
+></part
+><part
+ name="Process_spcInstance_spcId"
+ type="xsd:string"
+></part
+><part
+ name="GridCoordinatesX"
+ type="xsd:string"
+></part
+><part
+ name="SiteId"
+ type="xsd:string"
+></part
+><part
+ name="Floor"
+ type="xsd:string"
+></part
+><part
+ name="InstallAddressId"
+ type="xsd:string"
+></part
+><part
+ name="City"
+ type="xsd:string"
+></part
+><part
+ name="Zone"
+ type="xsd:string"
+></part
+><part
+ name="State"
+ type="xsd:string"
+></part
+><part
+ name="SRAccountId"
+ type="xsd:string"
+></part
+><part
+ name="Object_spcId"
+ type="xsd:string"
+></part
+><part
+ name="Latitude"
+ type="xsd:string"
+></part
+><part
+ name="GridCoordinatesY"
+ type="xsd:string"
+></part
+><part
+ name="BuildingId"
+ type="xsd:string"
+></part
+><part
+ name="Siebel_spcOperation_spcObject_spcId"
+ type="xsd:string"
+></part
+><part
+ name="ExtAddressId"
+ type="xsd:string"
+></part
+><part
+ name="StreetAddress"
+ type="xsd:string"
+></part
+><part
+ name="Site"
+ type="xsd:string"
+></part
+><part
+ name="Country"
+ type="xsd:string"
+></part
+><part
+ name="Zipcode"
+ type="xsd:string"
+></part
+><part
+ name="FloorId"
+ type="xsd:string"
+></part
+><part
+ name="AssetId"
+ type="xsd:string"
+></part
+><part
+ name="AccountId"
+ type="xsd:string"
+></part
+><part
+ name="MADCProductName"
+ type="xsd:string"
+></part
+><part
+ name="Building"
+ type="xsd:string"
+></part
+><part
+ name="Error_spcCode"
+ type="xsd:string"
+></part
+><part
+ name="MADCSerialNumber"
+ type="xsd:string"
+></part
+><part
+ name="Error_spcMessage"
+ type="xsd:string"
+></part
+></message
+><message
+ name="Update_Asset_Output"
+><part
+ name="AccountId"
+ type="xsd:string"
+></part
+><part
+ name="AssetId"
+ type="xsd:string"
+></part
+><part
+ name="Building"
+ type="xsd:string"
+></part
+><part
+ name="BuildingId"
+ type="xsd:string"
+></part
+><part
+ name="City"
+ type="xsd:string"
+></part
+><part
+ name="Country"
+ type="xsd:string"
+></part
+><part
+ name="Error_spcCode"
+ type="xsd:string"
+></part
+><part
+ name="Error_spcMessage"
+ type="xsd:string"
+></part
+><part
+ name="ExtAddressId"
+ type="xsd:string"
+></part
+><part
+ name="Floor"
+ type="xsd:string"
+></part
+><part
+ name="FloorId"
+ type="xsd:string"
+></part
+><part
+ name="GridCoordinatesX"
+ type="xsd:string"
+></part
+><part
+ name="GridCoordinatesY"
+ type="xsd:string"
+></part
+><part
+ name="InstallAddressId"
+ type="xsd:string"
+></part
+><part
+ name="Latitude"
+ type="xsd:string"
+></part
+><part
+ name="Longitude"
+ type="xsd:string"
+></part
+><part
+ name="MADCProductName"
+ type="xsd:string"
+></part
+><part
+ name="MADCSerialNumber"
+ type="xsd:string"
+></part
+><part
+ name="Object_spcId"
+ type="xsd:string"
+></part
+><part
+ name="Process_spcInstance_spcId"
+ type="xsd:string"
+></part
+><part
+ name="SRAccountId"
+ type="xsd:string"
+></part
+><part
+ name="SRId"
+ type="xsd:string"
+></part
+><part
+ name="Siebel_spcOperation_spcObject_spcId"
+ type="xsd:string"
+></part
+><part
+ name="Site"
+ type="xsd:string"
+></part
+><part
+ name="SiteId"
+ type="xsd:string"
+></part
+><part
+ name="State"
+ type="xsd:string"
+></part
+><part
+ name="StreetAddress"
+ type="xsd:string"
+></part
+><part
+ name="Zipcode"
+ type="xsd:string"
+></part
+><part
+ name="Zone"
+ type="xsd:string"
+></part
+><part
+ name="ZoneId"
+ type="xsd:string"
+></part
+></message
+><portType
+ name="LXK_spcLBS_spcUpdate_spcAsset_spcfrom_spcMap"
+><operation
+ name="Update_Asset"
+><input
+ message="tns:Update_Asset_Input"
+></input
+><output
+ message="tns:Update_Asset_Output"
+></output
+></operation
+></portType
+><binding
+ name="LXK_spcLBS_spcUpdate_spcAsset_spcfrom_spcMap"
+ type="tns:LXK_spcLBS_spcUpdate_spcAsset_spcfrom_spcMap"
+><soap:binding
+ transport="http://schemas.xmlsoap.org/soap/http"
+ style="rpc"
+></soap:binding
+><operation
+ name="Update_Asset"
+><soap:operation
+ soapAction="rpc/http://siebel.com/CustomUI:Update_Asset"
+></soap:operation
+><input
+><soap:body
+ namespace="http://siebel.com/CustomUI"
+ use="literal"
+></soap:body
+></input
+><output
+><soap:body
+ namespace="http://siebel.com/CustomUI"
+ use="literal"
+></soap:body
+></output
+></operation
+></binding
+><service
+ name="LXK_spcLBS_spcUpdate_spcAsset_spcfrom_spcMap"
+><port
+ binding="tns:LXK_spcLBS_spcUpdate_spcAsset_spcfrom_spcMap"
+ name="LXK_spcLBS_spcUpdate_spcAsset_spcfrom_spcMap"
+><soap:address
+ location=" https://siebelqa.lexmark.com/eai_enu/start.swe?SWEExtSource=WebService&amp;SWEExtCmd=Execute"
+></soap:address
+></port
+></service
+></definitions
+>

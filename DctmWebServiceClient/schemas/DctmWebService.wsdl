@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://schemas.lexmark.com/ecm/dctmwebservice/ecmschema/1.0"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:ns="http://schemas.xmlsoap.org/soap/encoding/" name="DctmWebService"
+	targetNamespace="http://schemas.lexmark.com/ecm/dctmwebservice/ecmschema/1.0">
+	<types>
+		<xsd:schema>
+			<xsd:import
+				namespace="http://schemas.lexmark.com/ecm/dctmwebservice/ecmschema/1.0"
+				schemaLocation="DctmWebService.xsd" />
+		</xsd:schema>
+	</types>
+	<message name="ECMServiceException">
+		<part name="fault" element="tns:ECMServiceException" />
+	</message>
+
+	<message name="query">
+		<part name="parameters" element="tns:query" />
+	</message>
+
+	
+	<message name="queryResponse">
+		<part name="parameters" element="tns:queryResponse" />
+	</message>
+	<message name="SecurityRequestHeader">
+		<part name="DocumentumRequestHeader" element="tns:DocumentumSecurityToken" />
+	</message>
+
+	<message name="authenticate">
+		<part name="parameters" element="tns:authenticate" />
+	</message>
+
+	<message name="authenticateResponse">
+		<part name="parameters" element="tns:authenticateResponse" />
+	</message>
+
+	<!-- File Related Response -->
+	<message name="createDocument">
+		<part name="parameters" element="tns:createDocument" />
+	</message>
+	<message name="createDocumentResponse">
+		<part name="parameters" element="tns:createDocumentResponse" />
+	</message>
+
+	<message name="updateObject">
+		<part name="parameters" element="tns:updateObject" />
+	</message>
+	<message name="updateObjectResponse">
+		<part name="parameters" element="tns:updateObjectResponse" />
+	</message>
+
+	<message name="deleteDocument">
+		<part name="parameters" element="tns:deleteDocument" />
+	</message>
+	<message name="deleteDocumentResponse">
+		<part name="parameters" element="tns:deleteDocumentResponse" />
+	</message>
+	
+	
+	<!--  Future Place holder for get document -->
+	<message name="getDocument">
+		<part name="parameters" element="tns:getDocument" />
+	</message>
+
+	<message name="getDocumentResponse">
+		<part name="parameters" element="tns:getDocumentResponse" />
+	</message>
+
+	
+
+	<!-- Folder Related Response -->
+
+	<message name="createFolder">
+		<part name="parameters" element="tns:createFolder" />
+	</message>
+	<message name="createFolderResponse">
+		<part name="parameters" element="tns:createFolderResponse" />
+	</message>
+
+	<message name="moveContent">
+		<part name="parameters" element="tns:moveContent" />
+	</message>
+	<message name="moveContentResponse">
+		<part name="parameters" element="tns:moveContentResponse" />
+	</message>
+
+	<message name="deleteFolder">
+		<part name="parameters" element="tns:deleteFolder" />
+	</message>
+	<message name="deleteFolderResponse">
+		<part name="parameters" element="tns:deleteFolderResponse" />
+	</message>
+
+	<!--
+		 
+		  PORT DEFINITION
+		 
+	-->
+	<portType name="DctmWebService">
+
+		<!-- Authenticate -->
+
+
+
+		<operation name="query">
+			<input message="tns:query" />
+			<output message="tns:queryResponse" />
+			<fault name="ECMServiceException" message="tns:ECMServiceException" />
+		</operation>
+
+		<operation name="authenticate">
+			<input message="tns:authenticate" />
+			<output message="tns:authenticateResponse" />
+			<fault name="ECMServiceException" message="tns:ECMServiceException" />
+		</operation>
+
+		<!-- ############ File related operations ####### -->
+
+		<operation name="createDocument">
+			<input message="tns:createDocument" />
+			<output message="tns:createDocumentResponse" />
+			<fault name="ECMServiceException" message="tns:ECMServiceException" />
+		</operation>
+
+
+		<operation name="updateObject">
+			<input message="tns:updateObject" />
+			<output message="tns:updateObjectResponse" />
+			<fault name="ECMServiceException" message="tns:ECMServiceException" />
+		</operation>
+
+
+
+		<operation name="deleteDocument">
+			<input message="tns:deleteDocument" />
+			<output message="tns:deleteDocumentResponse" />
+			<fault name="ECMServiceException" message="tns:ECMServiceException" />
+		</operation>
+
+		<!--  Future place holder for get document -->
+		<operation name="getDocument">
+			<input message="tns:getDocument" />
+			<output message="tns:getDocumentResponse" />
+			<fault name="ECMServiceException" message="tns:ECMServiceException" />
+		</operation>
+
+		<!-- ############ Folder related operations -->
+
+		<operation name="createFolder">
+			<input message="tns:createFolder" />
+			<output message="tns:createFolderResponse" />
+			<fault name="ECMServiceException" message="tns:ECMServiceException" />
+		</operation>
+
+
+		<operation name="moveContent">
+			<input message="tns:moveContent" />
+			<output message="tns:moveContentResponse" />
+			<fault name="ECMServiceException" message="tns:ECMServiceException" />
+		</operation>
+
+
+
+		<operation name="deleteFolder">
+			<input message="tns:deleteFolder" />
+			<output message="tns:deleteFolderResponse" />
+			<fault name="ECMServiceException" message="tns:ECMServiceException" />
+		</operation>
+
+
+	</portType>
+
+
+	<!--
+		########################## BINDING DEFINITION
+		############################
+	-->
+
+	<binding name="DctmWebServicePortBinding" type="tns:DctmWebService">
+
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<!-- authenticate -->
+		<operation name="authenticate">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="ECMServiceException">
+				<soap:fault name="ECMServiceException" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="query">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+				<soap:header message="tns:SecurityRequestHeader" part="DocumentumRequestHeader"
+					use="literal"
+					namespace="http://schemas.cunamutual.com/ecm/ecmwaspservices/ecmschema/1.0" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="ECMServiceException">
+				<soap:fault name="ECMServiceException" use="literal" />
+			</fault>
+		</operation>
+
+
+		<!-- ############ File related operations ####### -->
+
+		<operation name="createDocument">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+				<soap:header message="tns:SecurityRequestHeader" part="DocumentumRequestHeader"
+					use="literal" namespace="http://schemas.lexmark.com/ecm/dctmwebservice/ecmschema/1.0" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="ECMServiceException">
+				<soap:fault name="ECMServiceException" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="updateObject">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+				<soap:header message="tns:SecurityRequestHeader" part="DocumentumRequestHeader"
+					use="literal" namespace="http://schemas.lexmark.com/ecm/dctmwebservice/ecmschema/1.0" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="ECMServiceException">
+				<soap:fault name="ECMServiceException" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="deleteDocument">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+				<soap:header message="tns:SecurityRequestHeader" part="DocumentumRequestHeader"
+					use="literal" namespace="http://schemas.lexmark.com/ecm/dctmwebservice/ecmschema/1.0" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="ECMServiceException">
+				<soap:fault name="ECMServiceException" use="literal" />
+			</fault>
+		</operation>
+		
+		
+		<operation name="getDocument">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:SecurityRequestHeader" part="DocumentumRequestHeader" use="literal" namespace=""/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="ECMServiceException">
+				<soap:fault name="ECMServiceException" use="literal"/>
+			</fault>
+		</operation>
+
+		<!-- ############ Folder related operations ####### -->
+
+		<operation name="createFolder">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+				<soap:header message="tns:SecurityRequestHeader" part="DocumentumRequestHeader"
+					use="literal" namespace="http://schemas.lexmark.com/ecm/dctmwebservice/ecmschema/1.0" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="ECMServiceException">
+				<soap:fault name="ECMServiceException" use="literal" />
+			</fault>
+		</operation>
+
+
+		<operation name="moveContent">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+				<soap:header message="tns:SecurityRequestHeader" part="DocumentumRequestHeader"
+					use="literal" namespace="http://schemas.lexmark.com/ecm/dctmwebservice/ecmschema/1.0" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="ECMServiceException">
+				<soap:fault name="ECMServiceException" use="literal" />
+			</fault>
+		</operation>
+
+		<operation name="deleteFolder">
+			<soap:operation soapAction="" />
+			<input>
+				<soap:body use="literal" />
+				<soap:header message="tns:SecurityRequestHeader" part="DocumentumRequestHeader"
+					use="literal" namespace="http://schemas.lexmark.com/ecm/dctmwebservice/ecmschema/1.0" />
+			</input>
+			<output>
+				<soap:body use="literal" />
+			</output>
+			<fault name="ECMServiceException">
+				<soap:fault name="ECMServiceException" use="literal" />
+			</fault>
+		</operation>
+
+
+	</binding>
+
+	<service name="DctmWebService">
+		<port name="DctmWebServicePort" binding="tns:DctmWebServicePortBinding">
+			<soap:address location="REPLACE_WITH_ACTUAL_URL" />
+		</port>
+	</service>
+
+
+</definitions>

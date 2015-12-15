@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="VendorAssetLocationDo" class="com.amind.data.service.DomainObjMapping">
+
+		<!-- data source info -->
+		<!-- <value>LXK SW Contracted Asset Service Address - Service Web</value> -->
+		<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+		</property>
+
+		<property name="dsTargetObjectName">
+			<value>LXK SW Contracted Asset Location - Service Web</value>
+		</property>
+
+		<property name="dsTargetComponentName">
+			<value>LXK SW Contracted Asset Service Address - Service Web</value>
+		</property>
+
+		<property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+		</property>
+
+		<!-- field mapping -->
+		<property name="doFieldNameToDsFieldNameMap">
+            <map>
+
+                <entry>
+                    <key><value>id</value></key>
+                    <value>Id</value>
+                </entry>
+                
+                <!--Input  Data-->
+                
+                <entry>
+                    <key><value>mdmLevel1AccountId</value></key>
+                    <value>LXK MPS Vendor Account Domestic DUNS Number</value>
+                </entry>
+                <entry>
+                    <key><value>mdmLevel2AccountId</value></key>
+                    <value>LXK MPS Vendor Account Global DUNS Number</value>
+                </entry>
+                <entry>
+                    <key><value>mdmLevel3AccountId</value></key>
+                    <value>LXK MPS Vendor Account Legal Entity Id</value>
+                </entry>
+                <entry>
+                    <key><value>mdmLevel4AccountId</value></key>
+                    <value>LXK MPS Vendor Account MDM #</value>
+                </entry>
+                <entry>
+                    <key><value>mdmLevel5AccountId</value></key>
+                    <value>LXK MPS Vendor Account Id</value>
+                </entry>
+                <!--Result Data to Populate-->
+
+
+                <!--GenericAddress-->
+
+  				<entry>
+	         		<key><value>addressName</value></key>
+	         		<value>Address Name</value>
+				</entry>	
+				<entry>
+	         		<key><value>city</value></key>
+	         		<value>City</value>
+				</entry>	
+				<entry>
+	         		<key><value>postalCode</value></key>
+	         		<value>Postal Code</value>
+				</entry>
+				<entry>
+	         		<key><value>province</value></key>
+	         		<value>Province</value>
+				</entry>
+				<entry>
+	         		<key><value>state</value></key>
+	         		<value>State</value>
+				</entry>		
+				<entry>
+	         		<key><value>streetAddress</value></key>
+	         		<value>Street Address</value>
+				</entry>	
+				<entry>
+	         		<key><value>streetAddress2</value></key>
+	         		<value>Street Address 2</value>
+				</entry>	
+				<entry>
+	         		<key><value>country</value></key>
+	         		<value>Country</value>
+				</entry>		
+            </map>
+		</property>
+	</bean>
+</beans>

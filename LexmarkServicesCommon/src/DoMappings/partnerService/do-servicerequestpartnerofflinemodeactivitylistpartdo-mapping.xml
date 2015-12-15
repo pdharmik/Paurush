@@ -1,0 +1,44 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="ServiceRequestPartnerOfflineModeActivityListPartDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SD Service Request_Offline</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>FS Activity Recommended Parts Tools</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>partNumber</value></key>
+	         		<value>Product Name</value>
+				</entry>
+				<entry>
+	         		<key><value>productDescription</value></key>
+	         		<value>Product Description</value>
+				</entry> 
+				<entry>
+	         		<key><value>recommendedQuantity</value></key>
+	         		<value>Recommended Quantity</value>
+				</entry>
+				<entry>
+	         		<key><value>machineTypeModel</value></key>
+	         		<value>LXK SD Machine Type Model</value>
+				</entry> 
+	     	</map>
+		</property>
+    </bean>  
+</beans>

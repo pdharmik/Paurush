@@ -1,0 +1,10 @@
+.dhx_header_cmenu{
+   background-color:#ffffff;
+   border:2px outset silver;
+   z-index:2;
+   text-align:left;
+   padding:3px 3px 0px 3px;
+  }
+ .dhx_header_cmenu_item{
+  white-space:nowrap;
+ }

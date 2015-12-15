@@ -1,0 +1,58 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="OrderSuppliesAssetAgreementEntitlementDo" class="com.amind.data.service.DomainObjMapping">
+
+       <property name="dataSourceName">
+            <value>EAI Siebel Adapter</value>
+        </property>
+        
+       <property name="dsTargetObjectName">
+            <value>LXK MPS Consumable Asset Detail - Service Web</value>
+       </property>
+
+        <property name="dsTargetComponentName">
+            <value>Agreement Entitlement</value>
+        </property>
+
+        <property name="packageName">
+            <value>com.lexmark.service.impl.real.domain</value>
+        </property>
+
+           <!-- field mapping -->
+           <property name="doFieldNameToDsFieldNameMap">
+             <map>
+               <entry>
+                    <key><value>entitlementDetails</value></key>
+                    <value>com.lexmark.service.impl.real.domain.OrderSuppliesAssetEntitlementDetailDo</value>
+               </entry>                 
+               <entry>
+                    <key><value>entitlementType</value></key>
+                    <value>Entitlement Type</value>
+               </entry>               
+               <entry>
+                    <key><value>entitlementStatus</value></key>
+                    <value>LXK MPS Entitlement Status</value>
+               </entry>        
+               
+               <entry>
+                    <key><value>showPrice</value></key>
+                    <value>LXK MPS Show Price</value>
+               </entry>       
+               <entry>
+                    <key><value>expediteFlag</value></key>
+                    <value>LXK MPS EntitlementCriteria_Expedite Calc</value>
+               </entry>       
+			   <entry>
+                    <key><value>agreementId</value></key>
+                    <value>Agreement Id</value>
+               </entry> 
+               <entry>
+                    <key><value>quantity</value></key>
+                    <value>LXK MPS Quantity</value>
+               </entry>    
+           </map>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,19 @@
+<div id="topnavigation" class="sort-pages modify-pages">
+	<ul>
+		#foreach ($nav_item in $nav_items)
+#if ($nav_item.getName() != "TopHeader" && $nav_item.getName() != "BottomHeader" && $nav_item.getName() != "Footer")
+			#if ($nav_item.isSelected())
+				#set ($nav_item_class = "selected")
+			#else
+				#set ($nav_item_class = "")
+			#end
+
+			<li class="$nav_item_class">
+				<a href="$nav_item.getURL()" $nav_item.getTarget()><span>$nav_item.getName()</span></a>
+
+			</li>
+#end
+		#end
+
+	</ul>
+</div>

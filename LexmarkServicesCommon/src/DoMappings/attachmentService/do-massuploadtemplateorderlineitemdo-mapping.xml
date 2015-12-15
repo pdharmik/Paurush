@@ -1,0 +1,72 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="MassUploadTemplateOrderLineItemDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK MPS Order Mass Upload - Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Order Line Item Import</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>
+	     		<entry>
+	         		<key><value>partNumber</value></key>
+	         		<value>Product</value>
+				</entry>
+				<entry>
+	         		<key><value>lineNumber</value></key>
+	         		<value>Line Number</value>
+				</entry>
+				<entry>
+	         		<key><value>partDescription</value></key>
+	         		<value>Product Description</value>
+				</entry>
+				<entry>
+	         		<key><value>quantitiyRequested</value></key>
+	         		<value>LXK MPS Quantity Requested</value>
+				</entry>
+				<entry>
+	         		<key><value>remainingQuantity</value></key>
+	         		<value>LXK MPS Remaining Quantity</value>
+				</entry>
+				<entry>
+	         		<key><value>backOrderQuantity</value></key>
+	         		<value>LXK MPS Back Order Qty</value>
+				</entry>
+				<entry>
+	         		<key><value>orderNumber</value></key>
+	         		<value>Order Number</value>
+				</entry>
+				<entry>
+	         		<key><value>serialNumber</value></key>
+	         		<value>Serial Number</value>
+				</entry>
+				<entry>
+	         		<key><value>orderStatus</value></key>
+	         		<value>Status</value>
+				</entry>	
+				<entry>
+	         		<key><value>partnerOrderReferenceNumber</value></key>
+	         		<value>LXK MPS Partner OrdRefNum</value>
+				</entry>
+	     		<entry>
+	         		<key><value>shipments</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.MassUploadTemplateShipmentDo</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

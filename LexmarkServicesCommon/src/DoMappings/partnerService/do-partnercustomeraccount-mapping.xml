@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerCustomerAccountDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Customer Account Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW Customer Account - Partner Portal</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>LXK SW Customer Partner Global DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>LXK SW Customer Partner Domestic DUNS</value>
+				</entry> 
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXK SW Customer Partner MDM Id</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXK SW Customer Partner MDM Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>LXK SW Customer Partner Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel</value></key>
+	         		<value>LXK SW Customer Partner Account Level</value>
+				</entry>
+				<entry>
+	         		<key><value>accountId</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>accountName</value></key>
+	         		<value>Name</value>
+				</entry>
+				<entry>
+	         		<key><value>addressId</value></key>
+	         		<value>Primary Address Id</value>
+				</entry>
+				<entry>
+	         		<key><value>addressName</value></key>
+	         		<value>Primary Account Address Name</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine1</value></key>
+	         		<value>Primary Account Street Address</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine2</value></key>
+	         		<value>Primary Account Street Address 2</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine3</value></key>
+	         		<value>Primary Account Street Address 3</value>
+				</entry>
+				<entry>
+	         		<key><value>city</value></key>
+	         		<value>Primary Account City</value>
+				</entry>	
+				<entry>
+	         		<key><value>province</value></key>
+	         		<value>Primary Account Province</value>
+				</entry>
+				<entry>
+	         		<key><value>postalCode</value></key>
+	         		<value>Primary Account Postal Code</value>
+				</entry>
+				<entry>
+	         		<key><value>country</value></key>
+	         		<value>Primary Account Country</value>
+				</entry>
+				<entry>
+	         		<key><value>state</value></key>
+	         		<value>Primary Account State</value>
+				</entry>
+					
+				<entry>
+					<key><value>county</value></key>
+					<value></value>
+				</entry>
+				<entry>
+					<key><value>district</value></key>
+					<value></value>
+				</entry>
+				<entry>
+					<key><value>officeNumber</value></key>
+					<value></value>
+				</entry>
+					
+	     	</map>
+		</property>
+    </bean>  
+</beans>

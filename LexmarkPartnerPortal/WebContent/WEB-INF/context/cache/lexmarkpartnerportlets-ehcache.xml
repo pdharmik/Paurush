@@ -1,0 +1,28 @@
+<ehcache>
+	<diskStore path="java.io.tmpdir" />
+	<defaultCache maxElementsInMemory="10" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120" overflowToDisk="true" />
+		
+	<cache name="retrieveLocalizedServiceStatus" maxElementsInMemory="50" eternal="false"
+		overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />
+	<cache name="retrieveLocalizedEntitlementServiceDetail" maxElementsInMemory="50" eternal="false"
+		overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />
+	<cache name="retrieveLocalizedServiceActivityStatus" maxElementsInMemory="50" eternal="false"
+		overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />
+	<cache name="retrieveSiebelLOVList" maxElementsInMemory="50" eternal="false"
+		overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />
+	<cache name="retrieveLocalizedSiebelValue" maxElementsInMemory="50" eternal="false"
+		overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />
+	<cache name="retrieveLocalizedSiebelLOVList" maxElementsInMemory="50" eternal="false"
+		overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />
+
+	<cache name="retrieveCountryDetails" maxElementsInMemory="50" eternal="false"
+		overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />
+		
+	<cache name="retrieveStateDetails" maxElementsInMemory="50" eternal="false"
+	overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />
+	
+	<cache name="retrieveAllStateDetails" maxElementsInMemory="50" eternal="false"
+	overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />
+	
+</ehcache>

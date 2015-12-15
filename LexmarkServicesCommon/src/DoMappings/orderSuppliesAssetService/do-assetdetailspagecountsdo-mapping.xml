@@ -1,0 +1,37 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="AssetDetailsPageCountsDO" class="com.amind.data.service.DomainObjMapping">
+
+		<!-- data source info -->
+		<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+		</property>
+
+		<property name="dsTargetObjectName">
+			<value>LXK MPS Asset Detail - Meter Readings</value>
+		</property>
+
+		<property name="dsTargetComponentName">
+			<value>LXK SW FS Asset Measurement Characteristics - Service Web</value>
+		</property>
+		<property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+		</property>
+
+		<!-- field mapping -->
+		<property name="doFieldNameToDsFieldNameMap">
+			<map>
+				<entry>
+                	<key><value>name</value></key>
+                	<value>Name</value>
+                </entry>
+				<entry>
+					<key><value>latestReadings</value></key>
+					<value>com.lexmark.service.impl.real.domain.AssetDetailsPageCountsReadingsDO</value>
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>

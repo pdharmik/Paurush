@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!--
+
+Mapping file for the LexmarkTransaction class of Lexmark Service.
+
+
+
+@author Alex Zhou <alexzhou216@gmail.com>
+
+-->
+<hibernate-mapping package="com.lexmark.domain">
+
+<class name="Notification"
+	   table="Notification"
+	   lazy="false">
+	
+	<id name="notificationId"
+		type="integer"
+		column="NOTIFICATION_ID"
+		 unsaved-value="0">
+		<generator class="native"/>
+	</id>
+	
+	<property   name="adminName"
+				column="ADMIN_NAME"
+				type="string"
+				length="100"
+				not-null="false"/>				
+				
+	<property   name="displayURL"
+				column="DISPLAY_URL"
+				type="string"
+				length="250"
+				not-null="false"/>
+				
+	<property   name="displayOrder"
+				column="DISPLAY_ORDER"
+				type="integer"
+				not-null="false"/>
+
+	<property   name="displayDate"
+				column="DISPLAY_DATE"
+				type="date"
+				not-null="false"/>
+
+	<property   name="removeDate"
+				column="REMOVE_DATE"
+				type="date"
+				not-null="false"/>
+</class>
+
+<class name="NotificationLocale"
+	   table="Notification_Locale"
+	   lazy="false">
+	
+	<id name="notificationLocaleId"
+		type="integer"
+		column="NOTIFICATION_LOCALE_ID"
+		 unsaved-value="0">
+		<generator class="native"/>
+	</id>
+	
+	<property   name="notificationId"
+				column="NOTIFICATION_ID"
+				type="integer" />
+				
+	<property   name="displayDescription"
+				column="DISPLAY_DESCRIPTION"
+				length="500"
+				type="string" />
+	<many-to-one name="supportedLocale" class="SupportedLocale" column="SUPPORTED_LOCALE_ID"/>	
+</class>
+
+<class name="UserNotificationHiding"
+	   table="User_Notification_Hiding"
+	   lazy="false">
+	
+   <composite-id>
+        <key-property name="notificationId"
+				column="NOTIFICATION_ID"
+				type="integer" />
+        <key-property name="userId"
+				column="USER_ID"
+				type="string" />
+   </composite-id>
+	
+</class>
+</hibernate-mapping>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerAccountDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Partner Account Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW Channel Partner - Partner Portal</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	 
+	     		<entry>
+	         		<key><value>addressId</value></key>
+	         		<value>Primary Ship To Address Id</value>
+				</entry>    
+				<entry>
+				<key><value>primaryAddressID</value></key>
+				<value>Primary Address Id</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>LXK SW Partner Global Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>LXK SW Partner Domestic Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXK SW Partner Legal Entity Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXK SW Partner MDM Account Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>accountName</value></key>
+	         		<value>Name</value>
+				</entry>
+				<entry>
+	         		<key><value>addressName</value></key>
+	         		<value>LXK SW Primary ShipTo Address Name</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryAddressName</value></key>
+	         		<value>LXK SW Primary Address Name</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine1</value></key>
+	         		<value>LXK SW Primary ShipTo Addr 1</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryAddressLine1</value></key>
+	         		<value>LXK SW Primary Addr 1</value>
+				</entry>	
+				<entry>
+	         		<key><value>addressLine2</value></key>
+	         		<value>LXK SW Primary ShipTo Addr 2</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryAddressLine2</value></key>
+	         		<value>LXK SW Primary Addr 2</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine3</value></key>
+	         		<value>LXK SW Primary ShipTo Addr 3</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryAddressLine3</value></key>
+	         		<value>LXK SW Primary Addr 3</value>
+				</entry>
+				<entry>
+	         		<key><value>city</value></key>
+	         		<value>LXK SW Primary ShipTo City</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryCity</value></key>
+	         		<value>LXK SW Primary City</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>province</value></key>
+	         		<value>LXK SW Primary ShipTo Province</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryProvince</value></key>
+	         		<value>LXK SW Primary Province</value>
+				</entry>
+				<entry>
+	         		<key><value>postalCode</value></key>
+	         		<value>LXK SW Primary ShipTo PostalCode</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryPostalCode</value></key>
+	         		<value>LXK SW Primary PostalCode</value>
+				</entry>
+				<entry>
+	         		<key><value>country</value></key>
+	         		<value>LXK SW Primary ShipTo Country</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryCountry</value></key>
+	         		<value>LXK SW Primary Country</value>
+				</entry>
+				<entry>
+	         		<key><value>state</value></key>
+	         		<value>LXK SW Primary ShipTo State</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryState</value></key>
+	         		<value>LXK SW Primary State</value>
+				</entry>
+				<entry>
+	         		<key><value>organizationId</value></key>
+	         		<value>Primary Organization Id</value>
+				</entry>	
+				<entry>
+	         		<key><value>partQuantityOrderLimit</value></key>
+	         		<value>LXK SD Max Parts Per Activity</value>
+				</entry>	
+				<entry>
+	         		<key><value>mdmLevel</value></key>
+	         		<value>LXK SW Partner Account MDM Level</value>
+				</entry>	
+				<entry>
+	         		<key><value>currency</value></key>
+	         		<value>LXK SW Partner Currency</value>
+				</entry>	
+				<entry>
+	         		<key><value>flags</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerAccountFlagDo</value>
+				</entry>	
+				<entry>
+	         		<key><value>accountTypes</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.PartnerAccountTypeDo</value>
+				</entry>				
+				
+				<entry>
+					<key><value>county</value></key>
+					<value>LXK SW Primary ShipTo County</value>
+				</entry>
+				<entry>
+					<key><value>district</value></key>
+					<value>LXK SW Primary ShipTo District</value>
+				</entry>
+				<entry>
+					<key><value>officeNumber</value></key>
+					<value>LXK SW Primary ShipTo Office</value>
+				</entry>
+				<entry>
+					<key><value>primaryCounty</value></key>
+					<value>LXK SW Primary County</value>
+				</entry>
+				<entry>
+					<key><value>primaryDistrict</value></key>
+					<value>LXK SW Primary District</value>
+				</entry>
+				<entry>
+					<key><value>primaryOfficeNumber</value></key>
+					<value>LXK SW Primary Office</value>
+				</entry>
+								
+				<entry>
+	         		<key><value>partnerFlag</value></key>
+	         		<value>Partner Flag</value>
+				</entry> 
+				<entry>
+	         		<key><value>massUploadFlag</value></key>
+	         		<value>LXK MPS Service Order Flag</value>
+				</entry> 
+				<entry>
+	         		<key><value>partnerSetUpType</value></key>
+	         		<value>LXK SW Partner Setup Type</value>
+				</entry> 
+				<entry>
+	         		<key><value>partnerSetUpFlag</value></key>
+	         		<value>LXK SW Partner Setup Flag</value>
+				</entry> 
+				<entry>
+	         		<key><value>partnerCountry</value></key>
+	         		<value>LXK SD SR Country</value>
+				</entry> 
+				<entry>
+	         		<key><value>shipToDefault</value></key>
+	         		<value>LXK SW Partner Ship to Default</value>
+				</entry> 
+	     	</map>
+		</property>
+    </bean>  
+</beans>

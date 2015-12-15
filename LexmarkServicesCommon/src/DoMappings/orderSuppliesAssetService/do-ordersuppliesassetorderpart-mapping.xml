@@ -1,0 +1,90 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="OrderSuppliesAssetOrderPartDo" class="com.amind.data.service.DomainObjMapping">
+
+    <!-- data source info -->
+    <!--   -->
+       <property name="dataSourceName">
+            <value>EAI Siebel Adapter</value>
+        </property>
+        
+       <property name="dsTargetObjectName">
+            <value>LXK MPS Consumable Asset Detail - Service Web</value>
+       </property>
+
+        <property name="dsTargetComponentName">
+            <value>Order Entry - Line Items</value>
+        </property>
+        
+        <property name="packageName">
+            <value>com.lexmark.service.impl.real.domain</value>
+        </property>
+
+       <!-- field mapping -->
+       <property name="doFieldNameToDsFieldNameMap">
+           <map>
+                <entry>
+                    <key><value>id</value></key>
+                    <value>Id</value>
+                </entry>
+                
+                <entry>
+                    <key><value>shippedDate</value></key>
+                    <value>LXK R Shipped Date</value>
+                </entry>
+                
+                <entry>
+                    <key><value>productName</value></key>
+                    <value>LXK SD Service Product Name</value>
+                </entry>
+                
+                <entry>
+                    <key><value>orderDate</value></key>
+                    <value>Order Date</value>
+                </entry>
+                
+                <entry>
+                    <key><value>orderNumber</value></key>
+                    <value>Order Number</value>
+                </entry>
+                
+                <entry>
+                    <key><value>description</value></key>
+                    <value>Part Number</value>
+                </entry>
+                
+                <entry>
+                    <key><value>partNo</value></key>
+                    <value>Product</value>
+                </entry>
+                
+                <entry>
+                    <key><value>partType</value></key>
+                    <value>LXK MPS Catalog Consumable Type</value>
+                </entry>
+                
+                <entry>
+                    <key><value>orderQuantity</value></key>
+                    <value>Quantity Requested</value>
+                </entry>
+                
+                <entry>
+                    <key><value>status</value></key>
+                    <value>Status</value>
+                </entry>
+                
+                <entry>
+                    <key><value>lineType</value></key>
+                    <value>LXK R Line Type</value>
+                </entry>  
+                <!-- Defect updated for 7423 -->
+                <entry>
+                    <key><value>srNumber</value></key>
+                    <value>LXK UP SR Number</value>                                     
+                </entry> 
+           </map>
+       </property>
+    </bean>
+</beans>

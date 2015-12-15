@@ -1,0 +1,227 @@
+<?xml version="1.0"?>
+
+<project name="portal" basedir="." xmlns:antelope="antlib:ise.antelope.tasks">
+	<property file="build.properties" />
+	<path id="classpath">
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<taskdef classpathref="classpath" resource="tasks.properties" />
+	<!-- Please make sure findbugs-ant.jar is under your ant/lib-->
+	<!--<taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask"/>-->
+
+	<target name="cleanup">
+		<delete dir="${build.dir}" />
+	</target>
+
+	<target name="init" depends="cleanup">
+		<mkdir dir="${build.dir}" />
+	</target>
+
+	<target name="inittest">
+		<delete dir="${test.dir}" />
+		<mkdir dir="${test.dir}" />
+		<mkdir dir="${test.dir}/reports/junitxml" />
+		<mkdir dir="${test.dir}/reports/junithtml" />
+		<mkdir dir="${test.dir}/reports/coveragexml" />
+		<mkdir dir="${test.dir}/reports/coveragehtml" />
+	</target>
+
+	<target name="copylib">
+		<copy todir="${lib}">
+			<fileset dir="../LexmarkServicesCommon/lib">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+		<copy todir="${lib}">
+			<fileset dir="../LexmarkServicesPortal/WebContent/WEB-INF/lib">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="compile" depends="init,copylib">
+		<!--	temporarily  comment out the webserviceClient since it is not available on the SVN
+		<javac srcdir="${webserviceClient.src.dir}" destdir="${build.dir}" encoding="ISO-8859-1" debug="yes">
+			<classpath refid="classpath"/>
+		</javac>
+	-->
+		<javac srcdir="${common.src.dir}" destdir="${build.dir}" encoding="ISO-8859-1" debug="yes">
+			<classpath refid="classpath" />
+		</javac>
+		<javac srcdir="${portal.src.dir}" destdir="${build.dir}" encoding="ISO-8859-1" debug="yes">
+			<classpath refid="classpath" />
+		</javac>
+		<copy todir="${build.dir}">
+			<fileset dir="${common.src.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+		<copy todir="${build.dir}">
+			<fileset dir="${portal.src.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="deploy" depends="compile">
+		<war destfile="${tomcat.deployPath}/lexmarkServicesPortal.war" needxmlfile="false" basedir="${portal.web.basedir}">
+			<classes dir="C:/lexmark/jobs/PortalDeploy/workspace/LexmarkServicesPortalTests/target" />
+		</war>
+	</target>
+
+	<target name="compiletestcode" depends="inittest, compile">
+		<javac srcdir="${commonTest.dir};" destdir="${test.dir}" debug="yes">
+			<classpath refid="classpath" />
+			<classpath>
+				<pathelement location="${build.dir}" />
+			</classpath>
+		</javac>
+		<javac srcdir="${portalTest.dir};" destdir="${test.dir}" debug="yes">
+			<classpath refid="classpath" />
+			<classpath>
+				<pathelement location="${build.dir}" />
+			</classpath>
+		</javac>
+		<copy todir="${test.dir}">
+			<fileset dir="${portalTest.dir}" excludes="**/*.java" />
+		</copy>
+		<copy todir="${test.dir}">
+			<fileset dir="${commonTest.dir}" excludes="**/*.java" />
+		</copy>
+	</target>
+
+	<target name="instrument">
+		<cobertura-instrument todir="${instrumented.dir}">
+			<ignore regex="org.apache.log4j.*" />
+			<fileset dir="${coverageTest.dir}">
+				<include name="**/*.class" />
+				<exclude name="lexmark/userservice/*.class" />
+			</fileset>
+		</cobertura-instrument>
+	</target>
+
+	<target name="test">
+		<junit dir="./" errorproperty="tests.failed" failureproperty="tests.failed" fork="true" showoutput="true">
+			<classpath location="${instrumented.dir}" />
+			<classpath refid="classpath" />
+			<syspropertyset>
+				<propertyref prefix="test-sys-prop." />
+				<mapper from="test-sys-prop.*" to="*" type="glob" />
+			</syspropertyset>
+			<classpath location="${build.dir}" />
+			<classpath location="${test.dir}" />
+			<formatter type="brief" usefile="false" />
+			<formatter type="xml" />
+			<test name="${testcase}" todir="${reports.dir}/junitxml" if="testcase" />
+			<batchtest todir="${reports.dir}/junitxml" unless="testcase">
+				<fileset dir="${commonTest.dir}">
+					<include name="com/lexmark/tests/*TestCase.java" />
+					<include name="com/lexmark/tests/domain/*TestCase.java" />
+					<include name="com/lexmark/claims/tests/form/*TestCase.java" />
+					<include name="com/lexmark/tests/contract/*TestCase.java" />
+					<include name="com/lexmark/tests/util/*TestCase.java" />
+					<include name="com/lexmark/tests/ws/*TestCase.java" />
+				</fileset>
+				<fileset dir="${build.dir}">
+					<include name="**/*TestCase.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+
+		<junitreport todir="${reports.dir}/junitxml">
+			<fileset dir="${reports.dir}/junitxml">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="${reports.dir}/junithtml" />
+		</junitreport>
+	</target>
+
+	<target name="coverage-check">
+		<cobertura-check branchrate="34" totallinerate="100" />
+	</target>
+
+	<target name="coverage-report">
+		<cobertura-report srcdir="${common.src.dir}" destdir="${reports.dir}/coveragexml" format="xml" />
+		<cobertura-report srcdir="${portal.src.dir}" destdir="${reports.dir}/coveragexml" format="xml" />
+	</target>
+
+	<target name="alternate-coverage-report">
+		<cobertura-report destdir="${reports.dir}/coveragehtml">
+			<fileset dir="${common.src.dir}">
+			</fileset>
+			<fileset dir="${portal.src.dir}">
+			</fileset>
+		</cobertura-report>
+	</target>
+
+	<target name="runOneTest" depends="init" description="Only Run One Test">
+		<mkdir dir="${reports.dir}" />
+		<input message="Please enter the full class signature (i.e. com.psi.vida.concept.account.ejb.AccountDataMediatorTest) of the junit test that you wish to run.  Alternatively you can also pass in the test name like this: (ant runOneTest -Dtest.name=com.psi.vida.concept.account.ejb.AccountDataMediatorTest):" addproperty="test.name" />
+		<junit printsummary="withOutAndErr" haltonfailure="no" fork="yes" newenvironment="true" showoutput="false">
+			<classpath refid="classpath" />
+			<test name="${test.name}" todir="${reports.dir}" />
+		</junit>
+		<junitreport todir="${report.dir}">
+			<fileset dir="${report.dir}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="frames" todir="${reports.dir}" />
+		</junitreport>
+		<echo>
+          ################################################################################
+          # View JUnit report at ${basedir}/${report.dir}/index.html
+          ################################################################################
+        </echo>
+	</target>
+
+	<target name="utest" depends="cleanup,init,compiletestcode,instrument,test,coverage-report,alternate-coverage-report,runCommonMetrics" />
+
+	<target name="initSourceForAnalysis">
+		<delete dir="${analysis.source}/com" failonerror="false" />
+		<copy todir="${analysis.source}">
+			<fileset dir="${portal.src.dir}" includes="**/*.java" />
+			<fileset dir="${common.src.dir}" includes="**/*.java" />
+		</copy>
+		<copy todir="${serviceTest.src.dir}">
+			<fileset dir="${portal.src.dir}" includes="**/*.java" />
+			<fileset dir="${common.src.dir}" includes="**/*.java" />
+		</copy>
+	</target>
+
+	<target name="cleanupSourceAfterAnalysis">
+		<delete dir="${analysis.source}/com" failonerror="false" />
+	</target>
+
+	<target name="runCommonMetrics">
+		<antcall target="initSourceForAnalysis" />
+		<!--
+    	<antcall target="runFindbugs">
+            <param name="findbugs.report.home" value="${reports.dir}/findbugs"/>
+            <param name="findbugs.source.tree" value="${portal.src.dir}"/>
+            <param name="findbugs.classes" value="${coverageTest.dir}"/>
+            <param name="findbugs.classpath" value="${lib}"/>
+        </antcall>
+        -->
+		<!--
+	 	<antcall target="cleanupSourceAfterAnalysis" />
+	 	-->
+	</target>
+
+	<target name="runFindbugs" description="runs findbugs for a given source tree">
+		<delete dir="${findbugs.report.home}" failonerror="false" />
+		<mkdir dir="${findbugs.report.home}" />
+		<findbugs home="${java.tools.findbugs}" sourcepath="${findbugs.source.tree}" reportlevel="medium" output="xml" outputFile="${findbugs.report.home}/findbugs.xml" jvmargs="-Xmx128M -XX:MaxPermSize=512m">
+			<sourcePath path="${findbugs.source.tree}" />
+			<class location="${findbugs.classes}" />
+		</findbugs>
+
+		<xslt in="${findbugs.report.home}/findbugs.xml" out="${findbugs.report.home}/default.html" style="${java.tools.findbugs}/src/xsl/default.xsl" />
+		<xslt in="${findbugs.report.home}/findbugs.xml" out="${findbugs.report.home}/fancy.html" style="${java.tools.findbugs}/src/xsl/fancy.xsl" />
+		<xslt in="${findbugs.report.home}/findbugs.xml" out="${findbugs.report.home}/plain.html" style="${java.tools.findbugs}/src/xsl/plain.xsl" />
+		<xslt in="${findbugs.report.home}/findbugs.xml" out="${findbugs.report.home}/summary.html" style="${java.tools.findbugs}/src/xsl/summary.xsl" />
+
+	</target>
+</project>

@@ -1,0 +1,84 @@
+#set ($communities = "")
+#set ($communityid = "community")
+#foreach ($place in $theme_display.user.myPlaces)
+  #if($place.hasPrivateLayouts() && $place != $theme_display.layout.group && $place.isCommunity())
+    #set ($communities = "TRUE")
+    #set ($communityid = "community-selector")
+  #end
+#end
+
+        <div id="top-level-navigation">
+            <ul>
+                #if($theme_display.layout.getName("en-US") == "_HOME")
+                    #set ($nav_item_class = "selected")
+                #else
+                    #set ($nav_item_class = "")
+                #end
+                <li id="$communityid" class="$nav_item_class">
+                    <a href="$theme_display.layout.group.getPathFriendlyURL(true,$theme_display)$theme_display.layout.group.friendlyURL">
+                        $theme_display.layout.group.name
+                    </a>
+                    #if ($communities == "TRUE")
+                      <a href="#" id="community-selector-chevron">▼</a>
+                      <ul id="community-list" class="popup" style="left: 6em;">
+                          #foreach ($place in $theme_display.user.myPlaces)
+                              #if($place.hasPrivateLayouts() && $place != $theme_display.layout.group && $place.isCommunity())
+                                  <li><a href="$place.getPathFriendlyURL(true,$theme_display)$place.getFriendlyURL()">$place.getDescriptiveName()</a></li>
+                              #end
+                          #end
+                      </ul>
+                    #end
+                </li>
+                #foreach ($nav_item in $nav_items)
+                    #if ($nav_item.name != "TopHeader" && $nav_item.name != "BottomHeader" && $nav_item.name != "Footer" && !$nav_item.name.startsWith("_"))
+                        #if ($nav_item.selected)
+                            #set ($nav_item_class = "selected")
+                        #else
+                            #set ($nav_item_class = "")
+                        #end
+                        <li class="$nav_item_class hover-menu">
+                            <a href="$nav_item.getURL()" class="top-level-link" $nav_item.getTarget()><span>$nav_item.getName()</span></a>
+                        </li>
+                    #end
+                #end
+            </ul>
+        </div>
+<div id="top-header">
+<div id="top-header-navigation" class="sort-pages modify-pages">
+    <ul> 
+    #if ($show_page_settings)
+        <li>#parse ("$full_templates_path/dock.vm")</li>
+    #else
+        <li><b><span>$user_greeting</span></b></li>
+    #end        
+        #foreach ($nav_item in $nav_items)
+            #if ($nav_item.hasChildren())
+            #if ($nav_item.getName() == "TopHeader")
+                    #foreach ($nav_child in $nav_item.getChildren())
+                        #if ($nav_child.isSelected())
+                            #set ($nav_item_class = "selected")
+                        #else
+                            #set ($nav_item_class = "")
+                        #end
+            <li class="$nav_item_class">
+                <a href="$nav_child.getURL()" $nav_child.getTarget()><span>$nav_child.getName()</span></a>
+            </li>
+                    #end
+                #end
+            #end
+        #end
+        #if ($show_sign_in)
+            #set ($nav_item_class = "")
+            <li class="$nav_item_class">
+                <a href="$sign_in_url">$sign_in_text</a>
+            </li>
+        #end
+        #if ($show_sign_out)
+            #set ($nav_item_class = "")
+            <li class="$nav_item_class">
+                <a href="$sign_out_url?referer=/group/partner-portal/">$sign_out_text</a>
+            </li>
+        #end
+    </ul>
+</div>
+</div>  

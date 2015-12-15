@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!--
+Mapping file for the ServicesUser class of Lexmark Service.
+-->
+
+<hibernate-mapping package="com.lexmark.domain">
+
+<class name="ServicesUser"
+       table="SERVICES_USER"
+       lazy="false">
+    
+    <id name="servicesUserId"
+        type="java.lang.Integer"
+        column="SERVICES_USER_ID"
+        unsaved-value="0">
+        <generator class="native"/>
+    </id>           
+                
+    <property   name="userNumber"
+                column="USERNUMBER"
+                type="string"
+                length="50"
+                not-null="true"/>
+                
+    <property   name="mdmId"
+                column="RESTRICT_MDM_ID"
+                type="string"
+                length="50"
+                not-null="false"/>
+
+    <property   name="mdmLevel"
+                column="RESTRICT_MDM_LEVEL"
+                type="string"
+                length="50"
+                not-null="false"/>
+
+    <property   name="chlNodeId"
+                column="CHL_NODE_ID"
+                type="string"
+                length="50"
+                not-null="false"/>
+                        
+</class>
+</hibernate-mapping>

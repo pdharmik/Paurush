@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="SoanrLexmarkPartnerPortal" default="sonar1" basedir=".">
+	<property file="build.${user.name}.properties" />
+	<property file="build.${env.COMPUTERNAME}.properties" />
+	<property file="build.properties" />
+
+	<property name="sonar.jdbc.url" value="jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8" />
+	<property name="sonar.jdbc.driverClassName" value="com.mysql.jdbc.Driver" />
+	<property name="sonar.jdbc.username" value="sonar" />
+	<property name="sonar.jdbc.password" value="sonar" />
+
+	<!-- EXAMPLE FOR DERBY     
+		<property name="sonar.jdbc.url" value="jdbc:derby://localhost:1527/sonar;create=true" />
+		<property name="sonar.jdbc.driverClassName" value="org.apache.derby.jdbc.ClientDriver" />
+		<property name="sonar.jdbc.username" value="sonar" />
+		<property name="sonar.jdbc.password" value="sonar" />
+	-->
+	
+	<taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+		<classpath>
+			<pathelement location="${lib.dir}/sonar-ant-task-1.1.jar" />
+		</classpath>
+	</taskdef>
+	<target name="sonar1">
+		<property name="sonar.sources" value="${src.dir}" />
+		<property name="sonar.host.url" value="http://10.2.13.108:9000" />
+		<property name="sonar.tests" value="${test.src.dir}" />
+			
+		<!-- 
+		<property name="sonar.exclusions" value="./src/main/java/com/lexmark/util/AccountUtil.java" />
+		-->
+		
+		<property name="sonar.projectName" value="LexmarkPartnerPortal" />
+		<property name="sonar.binaries" value="${web.basedir}/classes" />
+		<property name="sonar.sourceEncoding" value="UTF-8" />
+		<sonar:sonar key="org.example:LexmarkPartnerPortal" version="0.9" xmlns:sonar="antlib:org.sonar.ant" />
+	</target>
+</project>

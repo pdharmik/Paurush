@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!--
+Mapping file for the ServicesUser class of Lexmark Service.
+-->
+
+<hibernate-mapping package="com.lexmark.domain">
+
+<class name="UserGridSetting"
+       table="USER_GRID_SETTINGS_ENHANCEMENT"
+       lazy="false">
+     
+    <composite-id>
+	         <key-property name="userNumber"
+				  column="USER_NUMBER"
+				  length="50"
+				  type="string" 
+				   />
+	         <key-property name="gridId"
+				  column="GRID_ID"
+				  length="50"
+				  type="string" 
+				  />	  			
+   </composite-id>         
+ 
+    <property   name="colsOrder"
+                column="COLSORDER"
+                type="string"
+                length="200"
+                not-null="false"
+                /> 
+    <property   name="colsWidth"
+                column="COLSWIDTH"
+                type="string"
+                length="200"
+                not-null="false"
+                />  
+    <property   name="colsSorting"
+                column="COLSSORTING"
+                type="string"
+                length="200"
+                not-null="false"
+                />    
+    <property   name="colsHidden"
+                column="COLSHIDDEN"
+                type="string"
+                length="200"
+                not-null="false"
+                /> 
+    <property   name="colsFilter"
+                column="COLSFILTER"
+                type="string"
+                length="200"
+                not-null="false"
+                />                                                             
+</class>
+</hibernate-mapping>

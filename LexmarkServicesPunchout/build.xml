@@ -1,0 +1,137 @@
+<project name="LexmarkServicesPunchout" default="war" basedir=".">
+    <description>
+        simple example build file
+    </description>
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="build" location="build"/>
+  <property name="dist"  location="dist"/>
+  <property name="lib" value="WebContent/WEB-INF/lib"/>
+  <property name="projectName" value="LexmarkServicesPunchout"/>
+  <property name="warName" value="${projectName}.war"/>
+  <property name="tomcat-lib" location="../ExternalLib/tomcat-6.0.18-lib" />
+  <property name="configurationFolder" location="../LexmarkBuild/environment" />
+  <property name="ant-contrib.jar" location="..\ExternalLib\ant\ant-contrib-1.0b3.jar"></property>
+
+
+ <path id="project.jar.path">	
+  <fileset dir="${lib}" >
+	  <include name="**/*.jar"/>
+  </fileset>	
+ 	
+  <fileset dir="../LexmarkServicesCommon/dist/lib" >
+    <include name="**/*.jar"/>
+  </fileset>
+ 
+  <fileset dir="../DctmWebServiceClient/dist/lib" >
+ 	<include name="**/*.jar"/>
+  </fileset>
+ 	
+  <fileset dir="../LexmarkServicesWebService/dist/lib" >
+ 	 	<include name="**/*.jar"/>
+  </fileset>
+	 
+  <fileset dir="${tomcat-lib}" >
+		  <include name="**/*.jar"/>
+   </fileset>
+ 	
+   <fileset dir="../LexmarkServicesCommon/lib/" >
+ 	    <include name="junit-4.0.jar"/>
+    </fileset>
+ </path>
+	
+
+  <target name="buildLexmarkServicesWebService">
+  	<ant dir="../LexmarkServicesWebService" target="dist" inheritAll="false"/>
+  </target>
+
+  <target name="buildLexmarkServicesCommon">
+  	  <ant dir="../LexmarkServicesCommon" target="dist" inheritAll="false"/>
+   </target>
+	
+  <target name="init">
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties" classpath="${ant-contrib.jar}"/>
+    <!-- Create the time stamp -->
+    <tstamp/>
+    <!-- Create the build directory structure used by compile -->
+    <mkdir dir="${build}"/>
+  </target>
+
+  <target name="compile" depends="init, buildLexmarkServicesWebService, buildLexmarkServicesCommon"
+        description="compile the source " >
+    <!-- Compile the java code from ${src} into ${build} -->
+  	<javac destdir="${build}" source="1.6" target="1.6" debug="true" debuglevel="lines,vars,source">
+  		<compilerarg value="-Xlint:unchecked"/>
+  	    <src path="${src}"/>
+  	    <classpath refid="project.jar.path" />
+  	</javac>
+  	
+	<copy todir="${build}">
+  			<fileset dir="${src}" excludes="**/*.java" />
+  	 </copy>
+  	
+  </target>
+
+  <target name="war" depends="compile"
+        description="generate the distribution" >
+    <!-- Create the distribution directory -->
+  	<fail message="Please specify which environment to build DEV, PROD or QA by:  ant dist -Dbuild.env=QA">
+  	     <condition>
+  	       <not>
+  	         <isset property="build.env"/>
+  	       </not>
+  	     </condition>
+    </fail>
+
+
+  	<mkdir dir="${dist}/tmp"/>
+	<copy todir="${dist}/tmp">
+		<fileset dir="WebContent" />
+	</copy>
+  	
+ 	<copy todir="${dist}/tmp/WEB-INF/classes">
+  			<fileset dir="${build}" />
+   	 </copy>
+  	
+  	<!-- copy propeties for environment set in build.env -->
+  	 <echo> copy properties from ${configurationFolder}/${build.env} </echo>
+	
+  	<copy todir="${dist}/tmp/WEB-INF/classes" file="${configurationFolder}/${build.env}/amindweb.properties" overwrite="true"/>
+  	<copy todir="${dist}/tmp/WEB-INF/classes" file="${configurationFolder}/${build.env}/documentumWebService.properties" overwrite="true"/>
+    <copy todir="${dist}/tmp/WEB-INF/classes" file="${configurationFolder}/${build.env}/mail.properties" overwrite="true"/>
+  	<copy todir="${dist}/tmp/WEB-INF/classes" file="${configurationFolder}/${build.env}/reportNotifier.properties" overwrite="true"/>
+  	<copy todir="${dist}/tmp/WEB-INF/classes" file="${configurationFolder}/${build.env}/SessionObject.xml" overwrite="true"/>
+  	<copy todir="${dist}/tmp/WEB-INF/classes" file="${configurationFolder}/${build.env}/ApplicationObject.xml" overwrite="true"/>
+    <copy todir="${dist}/tmp/WEB-INF/classes" file="${configurationFolder}/${build.env}/siebel.properties" overwrite="true"/>
+  	<copy todir="${dist}/tmp/WEB-INF/classes" file="${configurationFolder}/${build.env}/attachment.properties" overwrite="true"/>
+	<copy todir="${dist}/tmp/WEB-INF/classes" file="${configurationFolder}/${build.env}/log4j2.xml" overwrite="true"/>
+	<copy todir="${dist}/tmp/WEB-INF/classes" file="${configurationFolder}/${build.env}/ariba.properties" overwrite="true"/>
+
+    <copy todir="${dist}/tmp/WEB-INF/classes/com/lexmark/services/resources" file="${configurationFolder}/${build.env}/reportURL.properties" overwrite="true"/>
+    <copy todir="${dist}/tmp/WEB-INF/classes/com/lexmark/services/resources" file="${configurationFolder}/${build.env}/hostConfig.properties" overwrite="true"/>
+	<copy todir="${dist}/tmp/WEB-INF/classes/com/lexmark/services/resources" file="${configurationFolder}/${build.env}/customerInvoiceURL.properties" overwrite="true"/>
+
+    <copy todir="${dist}/tmp/WEB-INF/context" file="${configurationFolder}/${build.env}/webservice.properties" overwrite="true"/>
+  	<copy todir="${dist}/tmp/WEB-INF/context" file="${configurationFolder}/${build.env}/common.properties" overwrite="true"/>
+	<copy todir="${dist}/tmp/WEB-INF/context" file="${configurationFolder}/${build.env}/creditCard.properties" overwrite="true"/>
+
+	<copy file="../LexmarkServicesCommon/dist/lib/LexmarkServicesCommon.jar" todir="${dist}/tmp/WEB-INF/lib" />
+	<copy file="../DctmWebServiceClient/dist/lib/DctmWebServiceClient.jar" todir="${dist}/tmp/WEB-INF/lib" />
+	<copy file="../LexmarkServicesWebService/dist/lib/LexmarkServicesWebService.jar" todir="${dist}/tmp/WEB-INF/lib" />
+  			
+	<zip
+		basedir="${dist}/tmp/"
+		destfile="${dist}/${warName}"
+	/>
+  	
+  	<delete dir="${dist}/tmp"/>
+  	
+  </target>
+
+  <target name="clean"
+        description="clean up" >
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+</project>

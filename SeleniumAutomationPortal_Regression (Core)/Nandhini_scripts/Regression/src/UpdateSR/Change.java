@@ -1,0 +1,143 @@
+package UpdateSR;
+
+import static org.junit.Assert.assertEquals;
+
+
+import java.util.concurrent.TimeUnit;
+
+
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+
+
+public class Change {
+	
+	 @Test
+	 
+	  public void testUpdateChangeSR() throws Exception {	 
+		 
+
+			  System.out.println("starting Update Change SR");
+			 
+						
+				System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+				WebDriver driver = new ChromeDriver(); //Chrome*/
+				driver.manage().window().maximize();
+				
+				 // Login Portal
+		         driver.get("https://portal-qa.lexmark.com/group/global-services");
+		         driver.findElement(By.id("_58_login")).clear();
+		         driver.findElement(By.id("_58_login")).sendKeys("kn@qa.com");
+		         driver.findElement(By.id("_58_password")).clear();
+		         driver.findElement(By.id("_58_password")).sendKeys("Lexmark15");
+		         driver.findElement(By.cssSelector("button.btn.btn-primary")).click();
+		         Thread.sleep(18000);
+		         System.out.println("LogIn successful");
+		         
+	    
+		         // Request tab
+		         driver.findElement(By.xpath("//.//*[@id='topnavigation']/ul/li[5]/a/span")).click();
+		         Thread.sleep(8000);
+	    System.out.println("Create Update Change SR");
+	    
+	    // Update Change Request
+	    driver.findElement(By.linkText("Change Requests")).click();	 
+	    Thread.sleep(10000);
+	    driver.findElement(By.xpath("//html/body/div[4]/div[2]/div/div/div/div/div/div/div/div[13]/div/div[8]/div/div[2]/div/div[1]/div[1]/table/tbody/tr[3]/td[1]/div/input")).sendKeys("1-54157060671");
+	    Thread.sleep(10000);
+	    driver.findElement(By.linkText("1-54157060671")).click();
+	    
+	    // Change Request Detailed Page
+	    driver.findElement(By.id("updateButton")).click();
+	   
+	    // InquiryPage
+	    driver.findElement(By.id("custReferenceId")).clear();
+	    driver.findElement(By.id("custReferenceId")).sendKeys("26357");
+	    driver.findElement(By.id("costCenter")).clear();
+	    driver.findElement(By.id("costCenter")).sendKeys("4658678");
+	    driver.findElement(By.id("addtnlDescription")).clear();
+	    driver.findElement(By.id("addtnlDescription")).sendKeys("Description");
+	    driver.findElement(By.id("notesOrComments")).clear();
+	    driver.findElement(By.id("notesOrComments")).sendKeys("Important notes");
+	    driver.findElement(By.cssSelector("button.button.buttonOK")).click();
+	    
+	    
+	    // Inquiry_Reveiw Page
+	    driver.findElement(By.cssSelector("button.button")).click();
+	    
+	    
+	    // Inquiry_Confirmation Page
+	    String Request_Number = driver.findElement(By.xpath("//span[@id='reqNumber']")).getText();
+	    Thread.sleep(8000);
+	    System.out.println(Request_Number);
+	    System.out.println("storedVars['Request_Number'].replace(\"$\",\"\")");
+	    
+	    
+	    // Verify SR number
+	//    driver.findElement(By.xpath("//div[@id='topnavigation']/ul/li[4]/a/span")).click();
+	    Thread.sleep(8000);
+	    driver.findElement(By.xpath("//*[@id='allRequestHistory']/div[1]/table/tbody/tr[3]/td[1]/div/input")).sendKeys(Request_Number);
+	    Thread.sleep(8000);
+	    
+        //Verify details
+        driver.findElement(By.xpath("//html/body/div[3]/div[2]/div/div/div/div/div/div/div/div[13]/div/div[8]/div/div[2]/div/div[1]/div[2]/table/tbody/tr[2]/td[1]/a")).click();
+        Thread.sleep(7000);
+        
+        
+      
+        assertEquals("Update Request", driver.findElement(By.id("area")).getText());
+        assertEquals("Decommission Request", driver.findElement(By.id("subArea")).getText());
+        assertEquals("Important notes", driver.findElement(By.id("notes")).getText());
+        
+     //   LogOff
+  		driver.findElement(By.xpath("//*[@id='top-header-navigation']/ul/li[4]/a")).click();
+  		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+  		Thread.sleep(15000);
+
+        //Open siebel application 		
+         		
+         	  driver.get("https://siebelqa.lexmark.com/service_oui_enu/start.swe?");  
+       	   driver.findElement(By.id("s_swepi_1")).clear();
+       	    driver.findElement(By.id("s_swepi_1")).sendKeys("alohidasan");
+       	    driver.findElement(By.id("s_swepi_2")).clear();
+       	    driver.findElement(By.id("s_swepi_2")).sendKeys("Lexmark@123");
+       	    driver.findElement(By.id("s_swepi_22")).click();
+       	    System.out.println("LogIn successful");
+       	    Thread.sleep(25000); 
+           
+           //Navigating site map
+           driver.findElement(By.cssSelector("#tb_2 > img.ToolbarButtonOn")).click();
+           Thread.sleep(5000);
+           driver.findElement(By.id("s_sma167")).click();
+           driver.findElement(By.xpath("(//a[contains(text(),'MPS Service Requests')])[4]")).click();
+           Thread.sleep(5000);
+           driver.findElement(By.name("s_vis_div")).click();
+           Thread.sleep(3000);
+           new Select(driver.findElement(By.name("s_vis_div"))).selectByVisibleText("All Service Requests across Organizations");
+           driver.findElement(By.xpath("//div[@id='s_vis_div']/select/option[3]")).click();
+           Thread.sleep(5000);
+           driver.findElement(By.id("s_1_1_13_0_Ctrl")).click();
+           Thread.sleep(2000);
+           driver.findElement(By.id("1SR_Number")).click();
+           driver.findElement(By.id("1_SR_Number")).clear();
+           driver.findElement(By.id("1_SR_Number")).sendKeys(Request_Number);
+           Thread.sleep(3000);	 
+           driver.findElement(By.xpath("html/body/div[1]/div/div[5]/div/div[6]/div/div[1]/div/div[1]/div/div/form/div[1]/span/table/tbody/tr/td[6]/button")).click();
+           Thread.sleep(8000);	
+           
+           assertEquals("Update Request", driver.findElement(By.name("s_2_1_174_0")).getAttribute("value"));
+           assertEquals("Decommission Request", driver.findElement(By.name("s_2_1_175_0")).getAttribute("value"));
+           assertEquals("Kuehne + Nagel NV", driver.findElement(By.name("s_2_1_143_0")).getAttribute("value"));
+           
+           //LogOff  
+           driver.findElement(By.cssSelector("span.ui-button-text")).click();
+           driver.findElement(By.xpath("//html/body/div[1]/div/div[1]/div/div[2]/span/li[1]/ul/li[19]/a")).click();	
+          	  Thread.sleep(8000);
+           
+	  }
+}
+

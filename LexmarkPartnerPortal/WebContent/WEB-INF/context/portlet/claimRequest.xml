@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * Copyright 2005-2008 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<context:annotation-config/>
+
+	
+	<!-- Controllers -->
+
+	<bean id="requestController" class="com.lexmark.portlet.RequestController"/>
+	<bean id="claimRequestCreateController" class="com.lexmark.portlet.ClaimRequestCreateController"/>
+	<bean id="GeographyListResult" class="com.lexmark.result.GeographyListResult"/>
+	<bean id="serviceRequestController" class="com.lexmark.portlet.ServiceRequestController"/>
+	<bean id="claimRequestSelectClaimController" class="com.lexmark.portlet.ClaimRequestSelectClaimController"/>
+	<bean id="claimThankYouControllor" class="com.lexmark.portlet.ClaimThankYouControllor"/>
+	<bean id="customerAccountInfoController" class="com.lexmark.portlet.CustomerAccountInfoController"/>
+	<bean id="claimCloseOutController" class="com.lexmark.portlet.ClaimCloseOutController"/>
+	<bean id="baseController" class="com.lexmark.portlet.BaseController"/>
+	<bean id="claimUpdateController" class="com.lexmark.portlet.ClaimUpdateController"/>
+	<bean id="requestUpdateController" class="com.lexmark.portlet.RequestUpdateController"/>
+	<bean id="requestsDebriefController" class="com.lexmark.portlet.RequestsDebriefController"/>
+	<bean id="gridSettingController" class="com.lexmark.portlet.GridSettingController" />
+	<bean id="portletMultipartResolver" class="org.springframework.web.portlet.multipart.CommonsPortletMultipartResolver" />	<!-- added for CI5 attachment feature -->
+	<bean id="AddressCleansingController" class="com.lexmark.portlet.common.AddressCleansingController" />
+	<bean id="hardwareDebriefController" class="com.lexmark.portlet.HardwareDebriefController" />
+	
+	<bean id="lbsLocationService" class="com.lexmark.service.impl.real.AmindLBSLocationService"></bean>	
+	<!-- Handler Mappings -->
+
+	<bean class="org.springframework.web.portlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="order" value="10"/>
+        <property name="interceptors">
+            <list>
+                <ref bean="userInfoInterceptor" />
+				<ref bean="accountAssociateInterceptor" />
+				<ref bean="performanceInterceptor" />
+            </list>
+        </property>
+	</bean>
+
+	<!-- Exceptions Handlers -->
+
+	<bean id="defaultExceptionHandler" parent="defaultExceptionHandlerTemplate"/>
+
+</beans>

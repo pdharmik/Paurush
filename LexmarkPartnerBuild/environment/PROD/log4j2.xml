@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>  
+	<Appenders>
+	    <Console name="stdout" target="SYSTEM_OUT">
+	      <PatternLayout pattern="%d [%t] %X %-5p %c - %m%n"/>
+	    </Console>
+	    <RollingFile name="SERVICESPORTAL" append="true"
+             fileName="${sys:catalina.base}/logs/global-partner.log"
+             filePattern="${sys:catalina.base}/logs/global-partner.%d{yyyy-MM-dd}.log">
+             <PatternLayout pattern="%d [%t] %X %-5p %c - %m%n"/>
+             <Policies>
+                 <TimeBasedTriggeringPolicy/>
+             </Policies>
+        </RollingFile>
+        <RollingFile name="PLOG-FILE" append="true"
+             fileName="${sys:catalina.base}/logs/performance-partner.log"
+             filePattern="${sys:catalina.base}/logs/performance-partner.%d{yyyy-MM-dd}.log">
+             <PatternLayout pattern="%d [%t] %X %-5p %c - %m%n"/>
+             <Policies>
+                 <TimeBasedTriggeringPolicy/>
+             </Policies>
+        </RollingFile>
+
+	 </Appenders>
+    <Loggers>
+        <Logger name="org.springframework.web.portlet" level="warn"/>
+        <Logger name="org.springframework.web.servlet.ViewRendererServlet" level="warn"/>
+        <Logger name="org.apache.axis" level="warn"/>
+        <Logger name="com.lexmark" level="error"/>
+        <Logger name="com.amind" level="error"/>       
+        <AsyncLogger name="performance" level="error">
+        	<appender-ref ref="PLOG-FILE" />
+        </AsyncLogger>
+	    <Root level="fatal">
+	      <appender-ref ref="stdout" />
+       	  <appender-ref ref="SERVICESPORTAL" />
+	    </Root>
+	 </Loggers>
+    </Configuration> 

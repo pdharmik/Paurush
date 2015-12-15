@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project" default="zip">
+	<fileset dir="lib" id="package">
+		<include name="commons-codec-1.4.jar"/>
+	    <include name="joda-time-1.6.2.jar"/>
+	</fileset>
+	<path id="build">
+		<fileset refid="package" />
+		<fileset dir="lib">
+			<include name="servlet-api.jar"/>
+		</fileset>
+	</path>	
+	
+    <target name="zip" depends="compile">
+    	<zip destfile="files.zip">
+    		<zipfileset prefix="WEB-INF" dir="." includes="web.xml" />
+    		<zipfileset prefix="WEB-INF/lib" refid="package" />
+    		<zipfileset prefix="WEB-INF/classes" dir="bin"/>
+    	</zip>
+    </target>
+
+    <target name="compile">
+    	<mkdir dir="bin"/>
+    	<javac classpathref="build" srcdir="src" destdir="bin"/>
+    </target>
+	
+	<target name="clean">
+		<delete dir="bin" />
+		<delete file="files.zip" />
+	</target>
+
+</project>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="AgreementFlagsDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK Service Web Portal Account IO</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK Account Service Web Portal</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>name</value></key>
+	         		<value>Name</value>
+				</entry>
+				<entry>
+	         		<key><value>accountTransFlag</value></key>
+	         		<value>LXM Trans Flag</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>Global Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>Domestic Ultimate DUNS</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXM MDM Legal Entity ID #</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXM MDM Account #</value>
+				</entry>		
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>createServiceRequest</value></key>
+	         		<value>LXK SW WEB Display SR</value>
+				</entry>	
+				<entry>
+	         		<key><value>manualMeterRead</value></key>
+	         		<value>LXK SW WEB Display Meter Read</value>
+				</entry>
+				<entry>
+	         		<key><value>usesConsumables</value></key>
+	         		<value>LXK SW WEB Display Consumables</value>
+				</entry>
+				<entry>
+	         		<key><value>functionalClassification</value></key>
+	         		<value>LXK SD Functional Classification</value>
+				</entry>
+				<entry>
+					<key><value>mdmLevel</value></key>
+               		<value>LXK SW MDM Account Level</value>
+				</entry>
+				<!-- agreement -->
+				<entry>
+	         		<key><value>agreementId</value></key>
+	         		<value>LXK MPS Primary Service Agreement Id</value>
+				</entry>				
+				<entry>
+	         		<key><value>agreementName</value></key>
+	         		<value>LXK MPS Primary Service Agreement Name</value>
+				</entry>
+		
+				<!-- address -->
+				<entry>
+	         		<key><value>address1</value></key>
+	         		<value>Primary Account Street Address</value>
+				</entry>		
+				<entry>
+	         		<key><value>address2</value></key>
+	         		<value>Primary Account Street Address 2</value>
+				</entry>		
+				<entry>
+	         		<key><value>address3</value></key>
+	         		<value>Primary Account Street Address 3</value>
+				</entry>		
+				<entry>
+	         		<key><value>city</value></key>
+	         		<value>Primary Account City</value>
+				</entry>		
+				<entry>
+	         		<key><value>country</value></key>
+	         		<value>Primary Account Country</value>
+				</entry>		
+				<entry>
+	         		<key><value>postalCode</value></key>
+	         		<value>Primary Account Postal Code</value>
+				</entry>		
+				<entry>
+	         		<key><value>province</value></key>
+	         		<value>Primary Account Province</value>
+				</entry>		
+				<entry>
+	         		<key><value>state</value></key>
+	         		<value>Primary Account State</value>
+				</entry>
+				<entry>
+	         		<key><value>changeManagment</value></key>
+	         		<value>LXK MPS WEB Display Fleet</value>
+				</entry>
+				<entry>
+	         		<key><value>addressFlag</value></key>
+	         		<value>LXK MPS Org Address Flag</value>
+				</entry> 
+				<entry>
+	         		<key><value>specialHandlingInstruction</value></key>
+	         		<value>LXK MPS Special Handling Instruction</value>
+				</entry> 
+				<entry><!-- if its null then old system, if its populated then new system -->
+	         		<key><value>upsCode</value></key>
+	         		<value>LXK MPS Account Code</value>
+				</entry> 
+				
+                <entry>
+                    <key><value>accountServiceAgreements</value></key>
+                    <value>com.lexmark.service.impl.real.domain.AccountServiceAgreementDo</value>
+                </entry>
+                
+                <entry>
+					<key><value>county</value></key>
+					<value></value>
+				</entry>
+				<entry>
+					<key><value>district</value></key>
+					<value></value>
+				</entry>
+				<entry>
+					<key><value>officeNumber</value></key>
+					<value></value>
+				</entry>
+                
+	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- AmindServiceRequestService::retrieveAddressList -->
+	<!-- SAMPLE QUERY: SELECT X_ADDR_STATUS FROM SIEBEL.S_ADDR_PER WHERE X_ADDR_STATUS <> 'Marked For Deletion' OR X_ADDR_STATUS IS NULL -->
+	<bean id="LBSLocationDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+
+        <property name="dsTargetObjectName">
+			<value>LXK LBS Location Details</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK LBS Location Detail</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>locationName</value></key>
+	         		<value>LXK LBS Location Name</value>
+				</entry>
+				<entry>
+	         		<key><value>locationId</value></key>
+	         		<value>LXK LBS Location Id</value>
+				</entry>
+				<entry>
+	         		<key><value>country</value></key>
+	         		<value>LXK LBS Country</value>
+				</entry>
+				<entry>
+	         		<key><value>state</value></key>
+	         		<value>LXK LBS State</value>
+				</entry>
+				<entry>
+	         		<key><value>city</value></key>
+	         		<value>LXK LBS City</value>
+				</entry>
+				<entry>
+	         		<key><value>province</value></key>
+	         		<value>LXK LBS Province</value>
+				</entry>
+				<entry>
+	         		<key><value>county</value></key>
+	         		<value>LXK LBS County</value>
+				</entry>
+				<entry>
+	         		<key><value>district</value></key>
+	         		<value>LXK LBS District</value>
+				</entry>
+				<entry>
+	         		<key><value>site</value></key>
+	         		<value>LXK LBS Belongs To Name</value>
+				</entry>
+				<entry>
+	         		<key><value>siteId</value></key>
+	         		<value>LXK LBS Belongs To Id</value>
+				</entry>
+				<entry>
+	         		<key><value>buildingType</value></key>
+	         		<value>LXK LBS Building Type</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

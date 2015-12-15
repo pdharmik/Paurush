@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="AccountAgreementSoldToDo" class="com.amind.data.service.DomainObjMapping">
+  
+    <!-- data source info -->
+       <property name="dataSourceName">
+            <value>EAI Siebel Adapter</value>
+        </property>
+
+       <property name="dsTargetObjectName">
+            <value>LXK MPS SAP Sold To</value>
+        </property>
+                <property name="dsTargetComponentName">
+            <value>LXK MPS SAP Sold To</value>
+        </property>
+
+        <property name="packageName">
+            <value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+        <!-- field mapping --> 
+        <property name="doFieldNameToDsFieldNameMap">
+            <map>
+				<entry>
+	         		<key><value>accountId</value></key>
+	         		<value>LXK MPS Account Id</value>
+				</entry>	
+				<entry>
+	         		<key><value>agreementId</value></key>
+	         		<value>LXK MPS Agreement Id</value>
+				</entry>	
+				<entry>
+	         		<key><value>contactId</value></key>
+	         		<value>LXK MPS Contact Id</value>
+				</entry>	
+				<entry>
+	         		<key><value>contractName</value></key>
+	         		<value>LXK MPS English Lang Description</value>
+				</entry>	
+				<entry>
+	         		<key><value>contractNumber</value></key>
+	         		<value>LXK MPS Sales Contract #</value>
+				</entry>	
+				<entry>
+	         		<key><value>soldTo</value></key>
+	         		<value>LXK MPS Sold To #</value>
+				</entry>
+				<entry>
+	         		<key><value>soldToType</value></key>
+	         		<value>LXK MPS Sold To Type</value>
+				</entry>	
+            </map>
+        </property>
+    </bean>  
+</beans>

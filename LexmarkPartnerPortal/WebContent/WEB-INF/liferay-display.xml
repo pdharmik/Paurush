@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE display PUBLIC "-//Liferay//DTD Display 5.0.0//EN" "http://www.liferay.com/dtd/liferay-display_5_0_0.dtd">
+
+<display>
+	<category name="Lexmark Partner Portal">
+		<portlet id="claimRequest"></portlet>
+		<portlet id="paymentRequest"></portlet>
+		<portlet id="EmployeeAccountSelection"></portlet>
+		<portlet id="BulkUpload"></portlet>
+		<portlet id="ServiceOrders"></portlet>
+		<portlet id="PartnerPayments"></portlet>
+		<!-- Phase 2 Changes -->
+		<portlet id="MassUpload"></portlet>
+		<portlet id="UploadHistory"></portlet>
+		<portlet id="HardwareInstallation"></portlet>
+		<portlet id="OfflineInstallRequest"></portlet>
+		<!-- Ends -->
+	</category>
+</display>

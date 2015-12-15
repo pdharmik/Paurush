@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:annotation-config/>
+	<bean id="propertyConfigurerCHLOthers" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+       		 <list>
+               <value>/WEB-INF/context/common.properties</value> 
+        	 </list>    
+        </property>
+	</bean>
+   <!-- Controllers -->
+	<bean id="orderHardwareController" class="com.lexmark.services.portlet.hardware.OrderHardwareController">
+		<property name="maxPartsToBeOrdered"><value>${assetOrderParts.numberOfParts}</value></property>
+    	<property name="listOfFileTypes">
+    			<value>${attachment.fileType.list}</value>
+    	</property>
+   		<property name="attMaxCount">
+    			<value>${attachment.maxcount}</value>
+    	</property>
+    	<property name="templateFileCount">
+    			<value>${attachment.fileSize.hardwareTemplate}</value>
+    	</property>
+    	<property name="templateFileLOV">
+    			<value>${attachment.fileType.hardwareTemplate.list}</value>
+    	</property>
+    	<property name="templateFileName">
+    			<value>${attachment.fileSize.hardwareTemplateName}</value>
+    	</property>
+	</bean>
+    <bean id="commonController" class="com.lexmark.services.portlet.common.CommonController"> </bean>
+    <bean id="contactController" class="com.lexmark.services.portlet.common.ContactController"> </bean> <!-- Added for MPS2.1 -->
+    <bean id="commonValidator" class="com.lexmark.services.form.validator.CommonValidator"/>
+    <bean id="addressCleansing" class="com.lexmark.services.portlet.common.AddressCleansingController"> </bean>	
+    <bean id="attachmentController" class="com.lexmark.services.portlet.common.CommonAttachmentController"/>
+	<!-- Handler Mappings -->
+
+	<bean class="org.springframework.web.portlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="order" value="10"/>
+		<property name="interceptors">
+			<list>
+				<ref bean="userInfoInterceptor" />
+				<ref bean="accountAssociateInterceptor" />
+				<ref bean="performanceInterceptor" />
+			</list>
+      	</property>
+	</bean>
+	
+	<bean id="portletMultipartResolver"
+		class="org.springframework.web.portlet.multipart.CommonsPortletMultipartResolver">
+		<!-- <property name="maxUploadSize" value="1048576" /> -->
+	</bean>
+	
+	<!-- Exceptions Handlers -->
+
+	<bean id="defaultExceptionHandler" parent="defaultExceptionHandlerTemplate"/>
+
+</beans>

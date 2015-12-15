@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- BC: LXK SD Asset Reading Latest, TABLE: S_ASSET_RDNG -->
+	<bean id="AccountAssetReadingDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>Siebel BO</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>Asset Management</value> 
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>FS Asset Reading</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>reading</value></key>
+	         		<value>Reading</value>
+				</entry>
+				<entry>
+	         		<key><value>completeFlag</value></key>
+	         		<value>Complete Flag</value>
+				</entry>
+				<entry>
+	         		<key><value>timestamp</value></key>
+	         		<value>Timestamp</value>
+				</entry>
+				<entry>
+	         		<key><value>assetMeasurementId</value></key>
+	         		<value>Asset Measurement Id</value>
+				</entry>
+				<entry>
+	         		<key><value>exceptionFlag</value></key>
+	         		<value>LXK A Exception Flag</value>
+				</entry>
+				
+	     	</map>
+		</property>
+    </bean>  
+</beans>

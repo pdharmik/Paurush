@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="ConsumableDeviceTypeDo" class="com.amind.data.service.DomainObjMapping">
+
+		<!-- data source info -->
+		<!-- <value>LXK SW Contracted Asset Service Address - Service Web</value> -->
+		<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+		</property>
+
+		<property name="dsTargetObjectName">
+			<value>LXK MPS Contracted Consumable Only Asset List</value>
+		</property>
+
+		<property name="dsTargetComponentName">
+			<value>LXK MPS Contracted Consumable Only Asset List_LXK CSS Asset Entitlement</value>
+		</property>
+
+		<property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+		</property>
+
+		<!-- field mapping -->
+		<property name="doFieldNameToDsFieldNameMap">
+            <map>
+
+               <entry>
+                   <key><value>id</value></key>
+                   <value>Id</value>
+               </entry>
+
+               <entry>
+                   <key><value>consumableType</value></key>
+                   <value>LXK SW Entitlement Type</value>
+               </entry>    
+               <entry>
+                   <key><value>entitlementStatus</value></key>
+                   <value>LXK MPS Ent Status</value>
+               </entry>    
+               
+           </map>
+       </property>
+   </bean>
+</beans>

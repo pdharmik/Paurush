@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="LexmarkServicesCommon" default="sonar" basedir=".">
+	<property file="build.${user.name}.properties" />
+	<property file="build.${env.COMPUTERNAME}.properties" />
+	<property file="build.properties" />
+	<!-- Out-of-the-box those parameters are optional -->
+	<!-- EXAMPLE FOR MYSQL       -->
+	<property name="sonar.jdbc.url" value="jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8" />
+	<property name="sonar.jdbc.driverClassName" value="com.mysql.jdbc.Driver" />
+	<property name="sonar.jdbc.username" value="sonar" />
+	<property name="sonar.jdbc.password" value="sonar" />
+	<!-- EXAMPLE FOR DERBY     
+	<property name="sonar.jdbc.url" value="jdbc:derby://localhost:1527/sonar;create=true" />
+	<property name="sonar.jdbc.driverClassName" value="org.apache.derby.jdbc.ClientDriver" />
+	<property name="sonar.jdbc.username" value="sonar" />
+	<property name="sonar.jdbc.password" value="sonar" />
+	-->
+	<!-- SERVER ON A REMOTE HOST -->
+	<!--
+	   <property key="sonar.host.url" value="http://myserver:1234" />
+	 -->
+	<!-- Define the Sonar task if this hasn't been done in a common script -->
+	<taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+		<classpath>
+			<pathelement location="${lib.dir}/sonar-ant-task-1.1.jar" />
+		</classpath>
+	</taskdef>
+
+	<!-- Add the target -->
+	<target name="sonar">
+		<!-- list of mandatories Sonar properties -->
+		<property name="sonar.sources" value="${lexmark.common.project.home}/src" />
+		<property name="sonar.host.url" value="http://10.2.13.108:9000" />
+		<property name="sonar.projectKey" value="org.example:LexmarkServicesCommon" />
+
+		<property name="sonar.projectName" value="LexmarkServicesCommon" />
+		<property name="sonar.binaries" value="${lexmark.common.project.home}/build" />
+
+		<property name="sonar.sourceEncoding" value="UTF-8" />
+		<sonar:sonar key="${sonar.projectKey}" version="0.9" xmlns:sonar="antlib:org.sonar.ant" />
+
+	</target>
+</project>

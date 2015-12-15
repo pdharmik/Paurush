@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- SELECT * FROM SIEBEL.S_PARTY_REL WHERE REL_TYPE_CD='Favorite' -->
+	<bean id="AccountFavouriteContactDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK SW Person Favorite Contacts</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW Person Favorite Contacts</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>name</value></key>
+	         		<value>Name</value>
+				</entry>
+				<entry>
+					<key><value>favoriteContactId</value></key>
+	         		<value>Favorite Contact Id</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>favoriteFlagType</value></key>
+	         		<value>Party Relationship Type</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>contactId</value></key>
+	         		<value>Person Id</value>
+				</entry>
+				<entry>
+	         		<key><value>workPhone</value></key>
+	         		<value>Work Phone #</value>
+				</entry>
+				<entry>
+	         		<key><value>alternatePhone</value></key>
+	         		<value>Alternate Phone #</value>
+				</entry>
+				<entry>
+	         		<key><value>emailAddress</value></key>
+	         		<value>Email Address</value>
+				</entry>
+				<entry>
+	         		<key><value>firstName</value></key>
+	         		<value>First Name</value>
+				</entry>
+
+				<entry>
+	         		<key><value>lastName</value></key>
+	         		<value>Last Name</value>
+				</entry>
+				
+				<!-- GenericAddress address -->
+				<entry>
+	         		<key><value>addressLine1</value></key>
+	         		<value>LXK MPS Personal Street Address</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine2</value></key>
+	         		<value>LXK MPS Personal Street Address 2</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine3</value></key>
+	         		<value>LXK MPS Street Address 3</value>
+				</entry>
+				<entry>
+	         		<key><value>addressName</value></key>
+	         		<value>LXK MPS Personal Address Name</value>
+				</entry>
+				<entry>
+	         		<key><value>city</value></key>
+	         		<value>LXK MPS Personal City</value>
+				</entry>
+				<entry>
+	         		<key><value>state</value></key>
+	         		<value>LXK MPS Personal State</value>
+				</entry>
+				<entry>
+	         		<key><value>country</value></key>
+	         		<value>LXK MPS Personal Country</value>
+				</entry>
+				<entry>
+	         		<key><value>province</value></key>
+	         		<value>LXK MPS Personal Province</value>
+				</entry>
+				<entry>
+	         		<key><value>postalCode</value></key>
+	         		<value>LXK MPS Personal Postal Code</value>
+				</entry>
+				<entry>
+	         		<key><value>addressId</value></key>
+	         		<value>LXK MPS Primary Personal Address Id</value>
+				</entry>
+				
+				<!-- it should be physicalLocation -->
+				<entry>
+					<key><value>physicalLocation1</value></key>
+					<value>LXK MPS Physical Location 1</value>
+				</entry>
+				<entry>
+					<key><value>jobLevel</value></key>
+					<value>LXK MPS Job Level Lexmark</value>
+				</entry>
+				<!-- 
+				<entry>
+					<key><value>physicalLocation1</value></key>
+					<value>LXK MPS Physical Location 2</value>
+				</entry>
+				<entry>
+					<key><value>physicalLocation1</value></key>
+					<value>LXK MPS Physical Location 3</value>
+				</entry>
+				-->
+				
+	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

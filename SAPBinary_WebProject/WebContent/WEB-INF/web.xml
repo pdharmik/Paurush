@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<!-- <servlet>
+		<servlet-name>SAPBinaryDataTest</servlet-name>
+		<servlet-class>servlet.SAPDataTest</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet> -->
+	<servlet>		
+		<servlet-name>SAPDataTest</servlet-name>
+		<servlet-class>servlet.SAPDataTest</servlet-class>
+	</servlet>
+	<!-- 
+	<servlet-mapping>
+		<servlet-name>SAPBinaryDataTest</servlet-name>
+		<url-pattern>/GenerateInvoiceServlet.do</url-pattern>
+	</servlet-mapping> -->
+	<servlet-mapping>
+		<servlet-name>SAPDataTest</servlet-name>
+		<url-pattern>/SAPData</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>FirstServlet</servlet-name>
+		<jsp-file>/Welcome.jsp</jsp-file>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>FirstServlet</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	
+	
+	<welcome-file-list>
+   		<welcome-file>Welcome.jsp</welcome-file>
+    </welcome-file-list>   
+</web-app>

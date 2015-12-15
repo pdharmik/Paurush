@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerAssetFlagDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Asset Partner Portal</value>
+        </property>
+
+        <property name="dsTargetComponentName">
+			<value>LXK SW Asset - Partner Portal_LXK SW Partner Setup</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>type</value></key>
+	         		<value>LXK SW Customer Partner Setup Type</value>
+				</entry>
+				<entry>
+	         		<key><value>value</value></key>
+	         		<value>LXK SW Customer Partner Setup Flag</value>
+				</entry>																																		
+	     	</map>
+		</property>
+    </bean>  
+</beans>

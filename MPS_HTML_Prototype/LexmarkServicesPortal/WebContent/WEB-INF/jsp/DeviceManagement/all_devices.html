@@ -1,0 +1,440 @@
+<!DOCTYPE HTML>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Lexmark Portal - Device Finder</title>
+<link href="../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../../js/util.js"></script>
+<script src="../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/tree/wip_dhtmlxtree.js"></script>
+<script src="../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../../js/expand.js"></script>
+<script src="../../../js/mps.js"></script>
+<script type="text/javascript">
+var global_paging_message={results:"Results",records:"Records from &nbsp;",to:" to ",page:"page ",perpage:"rows per page",first:"To first Page",previous:"Previous Page",found:"Found records",next:"Next Page",last:"To last Page",of:" of ",notfound:"No Records Found"};
+var global_button_message={close:"CLOSE",ok:"OK",cancel:"CANCEL",selectColumns:"SELECT COLUMNS"};
+</script>
+</head>
+<body>
+<div id="wrapper">
+  <div id="banner">
+    <h1 class="logo"><a href="https://tportal.lexmark.com/web/guest" title="Lexmark Global Services">tportal.lexmark.com</a></h1>
+    <div id="top-header">
+      <div id="top-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><b><span>Welcome Jason Filarky!</span></b></li>
+          <li><a href="../Home/preferences.html">Preferences</a></li>
+          <li><a href="#">User Administration</a></li>
+          <li><a href="login.html">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="bottom-header">
+      <div id="bottom-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><a href="http://www.lexmark.com">Lexmark.com</a></li>
+          <li><a href="../Home/FAQ.html">FAQ</a></li>
+          <li><a href="../Home/getHelp.html">Get Help</a></li>
+          <li><a href="../Home/contact_Lexmark.html">Contact Lexmark</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sort-pages modify-pages" id="topnavigation">	
+  <ul>	
+	  <li>	<a href="../Home/home.html"><span>Home</span></a>	</li>
+	  <li class="selected">	<a href="../DeviceManagement/all_devices.html"><span>Device Finder</span></a>	</li>
+	  <li class="">	<a href="../pageCounts/defaltPageCount.html"><span>Page Counts</span></a>	</li>
+	  <li class="">	<a href="../HistoryAndDetails/history_allRequest.html"><span>Requests</span></a>	</li>
+	  <li class="">	<a href="../Reports/defaltReportView.html"><span>Reports</span></a>	</li>
+	  <li class="">	<a href="../DocumentLibrary/docLibrary_landingPage.html"><span>Document Library</span></a>	</li>
+  </ul>
+  </div>
+  
+  <div id="content-wrapper">
+  <div class="main-wrap">
+	<div class="journal-content-article">
+      <h2>Device Finder</h2>
+    </div>
+    <div class="content">
+	<a name="scrollTo"></a>
+        <div class="left-nav">
+          <div class="left-nav-inner"> 
+            <!-- LEFT COLUMN CONTENT GOES HERE -->
+            <div class="left-nav-header">
+              <h3>Filters:</h3>
+            </div>
+            <ul class="filters">
+              <li><a id="linkViewAll" href="#" onclick="javascript:doInitGrid();">All Devices</a></li>
+              <li><a id="linkBookmarked" href="#" onclick="javascript:bookmarkGrid();">My Bookmarked Devices</a></li>
+              <li><a href="#scrollTo" class="chl" onclick="openPopup('Location')">Device Location</a></li>
+              <li><a href="#scrollTo" class="chl" onclick="openPopup('CHL')">Customer Hierarchy</a></li>
+            </ul>
+			<br/>
+			<div id="deviceLocInfoDiv" style="display:none">
+				Device Location ,<br/>
+				<div id="deviceLocInfoSpan"></div>
+				<div style="float:right;padding-right:10px;margin-top:-18px;">
+					<img src="../../../images/delete.png" 
+						 id="deleteChlBtn" 
+						 onclick="removeFilters('deviceLocInfoDiv');" 
+						 height="15px" width="15px"/>
+				</div>
+			</div>
+			<div id="chlInfoDiv" style="display:none">
+				Customer Hierarchy , <br>
+				<div id="chlInfoSpan"></div>
+				<div style="float:right;padding-right:10px;margin-top:-18px;">
+					<img src="../../../images/delete.png" 
+						 id="deleteChlBtn" 
+						 onclick="removeFilters('chlInfoDiv');" 
+						 height="15px" width="15px"/>
+				</div>
+			</div>
+			
+          </div>
+          <div class="left-nav-footer"> 
+            <!-- NO CONTENT HERE PLS --> 
+          </div>
+        </div>
+		<div class="leftOverlay rounded shadow">
+          <div class="columnInner">
+            <h4>
+				<a href="javascript:void(0);" class="chlClose">
+					<img src="../../../images/tabbarImgs/default/close.png" height="15px" width="15px"/>
+				</a>
+				<label id="chlHdrId" style="display:none">Filter by CHL</label>	
+				<label id="locHdrId" style="display:none">Filter by Location</label>				
+			</h4>
+				
+				<div id="chl_node_tree_container" style="height:480px" ></div>					
+				<div id="location_tree_container" style="height:480px"></div>	
+				
+            <div class="buttonContainerIn">
+              <button class="button_cancel chlClose">Cancel</button>
+              <button class="button chlClose" onclick="labelAddFunc()">Select</button>
+            </div>
+          </div>
+        </div>
+        <div class="right-column"> 
+          <!-- MAIN CONTENT GOES HERE -->		  
+          <h3 class="pageTitle">All Devices</h3>
+          <div class="grid-controls"> 
+            <!-- Utilities Start -->
+            <div class="utilities">
+              <ul>
+                <li class="first"><a href="DeviceList.csv"><img
+											src="../../../images/xls.png" / alt="Export to Excel"
+											title="Export to Excel"></a></li>
+                <li><a href="DeviceList.pdf" target="_blank"><img src="../../../images/pdf.png"
+											/ alt="Export to PDF" title="Export to PDF"></a></li>
+                <li><a href="deviceListPrint.html" target="_blank"><img src="../../../images/print.jpg" height="23px" width="23px"
+											/ alt="Print" title="Print"></a></li>
+              </ul>
+            </div>
+            <!-- utilities End --> 
+            <!-- Expand-min Start -->
+            <div class="expand-min">
+              <ul>
+                <li class="first"><img src="../../../images/minimize_all.png"
+										alt="Minimize All" title="Minimize All" /><a
+										href="javascript:void(0)" onClick="minimizeAll()";>Minimize
+                  All</a></li>
+                <li><img src="../../../images/expand_all.png"
+										alt="Expand All" title="Expand All" /><a
+										href="javascript:void(0)" onClick="expandAll()";>Expand
+                  All</a></li>
+                <li><img src="../../../images/customize.png"
+										alt="Customize Grid" title="Customize Grid" /><a href="#grid"
+										id='headerMenuButton'>Customize Columns</a></li>
+                <li><img src="../../../images/reset.png" alt="Reset Grid"
+										title="Reset Grid" /><a href="javascript:reloadGrid();">Reset</a> </li>
+              </ul>
+            </div>
+            <!-- Expand-min End -->            
+          </div>
+          <!-- grid-controls -->
+          <div class="portlet-wrap rounded">
+            <div class="portlet-wrap-inner">
+              <div id="mygrid_container" class="gridbox gridbox_light"></div>
+            </div>
+          </div>
+          <div class="pagination"> <span id="pagingArea"></span><span id="infoArea"></span> </div>
+          <!-- mygrid_container --> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <input type="hidden" id="dummyVal" value=""/>
+  
+  <div id="footer" class="round_top">
+<div id="footer-nav-container">
+<ul id="footer-nav-ul">
+  <li><a href="http://www1.lexmark.com/en_US/about-us/index.shtml">About 
+  Lexmark </a></li><li><a href="http://www1.lexmark.com/en_US/terms/privacy-security.shtml">Privacy 
+  Policy</a> </li><li><a href="http://www1.lexmark.com/en_US/terms/terms-and-conditions.shtml">Terms 
+  &amp; Conditions </a></li><li><a href="http://www1.lexmark.com/en_US/nav/sitemap.shtml">Sitemap 
+  </a></li><li><a href="http://www1.lexmark.com/en_US/about-us/company/contact-us.shtml">Contact 
+  Lexmark </a></li></ul><br>
+<p align="left">&copy; Copyright 2012 
+Lexmark<!--extra added align center>--></p></div></div>
+ 
+<div id="updatePageCount" style="display:none"></div>  
+<div id="controlPanel" style="display:none"></div>  
+  
+</div>
+</body>
+<script>   
+   var mygrid;
+   var headerString = "&nbsp;,Serial Number,Product Model,Asset Tag,Device Host Name,Customer Device Tag,IP Address,Address Name, Address Line1, City, State, Province, Country, Zip/Postal Code, Primary Contact First Name, Primary Contact Last Name, Primary Contact Email, Primary Contact Phone";
+   var ar = [["<table cellspacing=\"0\" cellpadding=\"0\" class=\"grid-inner-body\"><tbody><tr><td class=\"pModel\"><ul><li class=\"strong\">Lexmark X945e</li><li><img width=\"100\" height=\"100\" src=\"https://www.lexmark.com/vgn/files/portal/x560n_lg.jpg\" id=\"rowid_0\"></li></ul></td><td width=\"30%\"><ul><li class=\"strong\">Installed Address</li><li>740 W New Circle Rd.</li><li></li><li>Lexington</li><li>40550-0001</li><li>USA</li><li class=\"fav\"><img width=\"15\" height=\"15\" name=\"unfavorite.png\" src=\"../../../images/unfavorite.png\" onclick=\"updateUserFavoriteAsset('1-GFLG8F')\" style=\"cursor:Hand;cursor:pointer\" id=\"starIMG_1-GFLG8F\">&nbsp;<a onclick=\"\" href=\"#\" id=\"starTXT_1-GFLG8F\">Bookmark This Device</a></li></ul></td><td class=\"moreLink\"><ul class=\"link\"><li><a onclick=\"viewDeviceDetail()\" ;=\"\" href=\"###\">View More</a></li></ul></td><td class=\"actionLinks\"><ul class=\"link\"><li><a onclick=\"controlPanelPopup()\" href=\"#\">Control Panel</a></li><li><a target=\"_blank\" href=\"http://md.lexmark.com/md/?dest=support&amp;lang=en&amp;country=en_US&amp;partnumber=14A1010\">Supports and Downloads</a></li><li><a onclick=\"requestService('1-GFLG8F','true','null');\" ;=\"\" href=\"###\">Create a Request</a></li><li><a onclick=\"javascript:openPageCount();\" id=\"meterReadsCountLink1\" href=\"#\">Update Page Counts</a></li></ul></td></tr></tbody></table>",
+   "<a onclick=\"viewDeviceDetail()\" ;=\"\" href=\"###\">6701100</a>","Lexmark X560n","X560n-006701100","","","157.184.117.197","Lexington Corporate Campus"],
+   ["<table cellspacing=\"0\" cellpadding=\"0\" class=\"grid-inner-body\"><tbody><tr><td class=\"pModel\"><ul><li class=\"strong\">Lexmark X945e</li><li><img width=\"100\" height=\"100\" src=\"../../../images//dummy_noimg.jpg\" id=\"rowid_1\"></li></ul></td><td width=\"30%\"><ul><li class=\"strong\">Installed Address</li><li>2211 Michelson Dr Ste 600</li><li></li><li>Irvine</li><li>92612-0300</li><li>USA</li><li class=\"fav\"><img width=\"15\" height=\"15\" name=\"unfavorite.png\" src=\"../../../images/unfavorite.png\" onclick=\"updateUserFavoriteAsset('1-GW768H')\" style=\"cursor:Hand;cursor:pointer\" id=\"starIMG_1-GW768H\">&nbsp;<a onclick=\"\" href=\"#\" id=\"starTXT_1-GW768H\">Bookmark This Device</a></li></ul></td><td class=\"moreLink\"><ul class=\"link\"><li><a onclick=\"viewDeviceDetail()\" ;=\"\" href=\"###\">View More</a></li></ul></td><td class=\"actionLinks\"><ul class=\"link\"><li><a href=\"http://lx0041b4cw.prt.lexmark.com/\" target=\"_blank\">Control Panel</a></li><li><a target=\"_blank\" href=\"http://md.lexmark.com/md/?dest=support&amp;lang=en&amp;country=en_US&amp;partnumber=21Z0221\">Supports and Downloads</a></li><li><a onclick=\"requestService('1-GW768H','true','null');\" ;=\"\" href=\"###\">Create a Request</a></li><li><a onclick=\"javascript:openPageCount();\" id=\"meterReadsCountLink2\" href=\"#\">Update Page Counts</a></li></ul></td></tr></tbody></table>",
+   "<a onclick=\"viewDeviceDetail()\" ;=\"\" href=\"###\">210021</a>","Lexmark X945e","X945e-0210021","swlax1a4cw","","10.188.22.13","Irvine Sales Office"]];
+   
+   var arBookmark = [["<table cellspacing=\"0\" cellpadding=\"0\" class=\"grid-inner-body\"><tbody><tr><td class=\"pModel\"><ul><li class=\"strong\">Lexmark X560n</li><li><img width=\"100\" height=\"100\" src=\"https://www.lexmark.com/vgn/files/portal/x560n_lg.jpg\" id=\"rowid_0\"></li></ul></td><td width=\"30%\"><ul><li class=\"strong\">Installed Address</li><li>740 W New Circle Rd.</li><li></li><li>Lexington</li><li>40550-0001</li><li>USA</li><li class=\"fav\"><img width=\"15\" height=\"15\" name=\"unfavorite.png\" src=\"../../../images/unfavorite.png\" onclick=\"updateUserFavoriteAsset('1-GFLG8F')\" style=\"cursor:Hand;cursor:pointer\" id=\"starIMG_1-GFLG8F\">&nbsp;<a onclick=\"\" href=\"#\" id=\"starTXT_1-GFLG8F\">Bookmark This Device</a></li></ul></td><td class=\"moreLink\"><ul class=\"link\"><li><a onclick=\"viewDeviceDetail()\" ;=\"\" href=\"###\">View More</a></li></ul></td><td class=\"actionLinks\"><ul class=\"link\"><li><a href=\"http://lx0041b4cw.prt.lexmark.com/\" target=\"_blank\">Control Panel</a></li><li><a target=\"_blank\" href=\"http://md.lexmark.com/md/?dest=support&amp;lang=en&amp;country=en_US&amp;partnumber=14A1010\">Supports and Downloads</a></li><li><a onclick=\"requestService('1-GFLG8F','true','null');\" ;=\"\" href=\"###\">Create a Request</a></li><li><a onclick=\"javascript:openPageCount();\" id=\"meterReadsCountLink3\" href=\"#\">Update Page Counts</a></li></ul></td></tr></tbody></table>",
+   "<a onclick=\"viewDeviceDetail()\" ;=\"\" href=\"###\">6701100</a>","Lexmark X560n","X560n-006701100","","","157.184.117.197","Lexington Corporate Campus"]];
+   
+   mygrid = new dhtmlXGridObject('mygrid_container');
+   mygrid.setImagePath("../../../images/gridImgs/");
+   mygrid.setHeader(headerString);
+   mygrid.attachHeader(",#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
+   mygrid.setInitWidths("30,130,130,170,130,130,130,130,130,130,130,130,130,130,130,130,130,130,*");
+   mygrid.setColAlign("left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left");
+   
+   mygrid.setSkin("light");
+   mygrid.setColSorting("na,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str");
+   mygrid.setColTypes("sub_row,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
+   mygrid.enableAutoHeight(true);
+   mygrid.enableMultiline(true);
+   mygrid.enableColumnMove(true);
+   mygrid.init();
+   mygrid.prftInit();
+   mygrid.enableHeaderMenuForButton("headerMenuButton");
+   mygrid.enablePaging(true, 6, 2, "pagingArea", true, "infoArea");
+   mygrid.setPagingSkin("bricks"); 	 
+   mygrid.parse(ar,"jsarray");
+   setDefaultHiddenColumns();
+   
+function doInitGrid(){
+   document.getElementById('linkViewAll').style.fontWeight = "Bold";
+   document.getElementById('linkBookmarked').style.fontWeight = "Normal";
+   mygrid.clearAll();
+   mygrid.parse(ar, "jsarray");   
+   setDefaultHiddenColumns();
+}
+
+function bookmarkGrid() {
+   document.getElementById('linkBookmarked').style.fontWeight = "Bold";
+   document.getElementById('linkViewAll').style.fontWeight = "Normal";
+   mygrid.clearAll();
+   mygrid.parse(arBookmark,"jsarray");  
+   setDefaultHiddenColumns();   
+}
+
+
+function setDefaultHiddenColumns(){
+		mygrid.setColumnHidden(0,false);
+		mygrid.setColumnHidden(1,false);
+		mygrid.setColumnHidden(2,false);
+		mygrid.setColumnHidden(3,false);		
+	    mygrid.setColumnHidden(4,false);
+		mygrid.setColumnHidden(5,false);
+		mygrid.setColumnHidden(6,false);
+		mygrid.setColumnHidden(7,false);
+		mygrid.setColumnHidden(8,true);
+		mygrid.setColumnHidden(9,true);
+		mygrid.setColumnHidden(10,true);
+		mygrid.setColumnHidden(11,true);		
+	    mygrid.setColumnHidden(12,true);
+		mygrid.setColumnHidden(13,true);
+		mygrid.setColumnHidden(14,true);
+		mygrid.setColumnHidden(15,true);
+		mygrid.setColumnHidden(16,true);
+		mygrid.setColumnHidden(17,true);		
+}
+
+function reloadGrid() {
+	setDefaultHiddenColumns();
+};
+
+
+function minimizeAll() {
+   mygrid.forEachRow(function(id){
+   var cell=mygrid.cellById(id,0);
+   cell.close();
+   subRowOpenFlag=false;
+   });
+};
+function expandAll() {
+	mygrid.forEachRow(function(id){
+   		var cell=mygrid.cellById(id,0);
+   		cell.open();
+   		subRowOpenFlag=true;
+   	});
+};
+function doReset(){
+};
+function viewDeviceDetail() {
+	window.location.href = "device_details_information.html";
+};
+function openPageCount(){
+	var url = "update_page_counts.html";
+	
+		jQuery('#updatePageCount').load(url,function(){
+			
+			dialog=jQuery('#contentPageCount').dialog({
+				autoOpen: false,
+				autoClose: false,
+				title: 'Update Meter Reads',
+				modal: true,
+				height: 550,
+				width: 780,				
+				close: function(event,ui){
+					 //dialog.dialog('destroy');
+					 
+					// dialog=null;
+					 //jQuery('#updatePageCount').empty();				 
+					}
+				});
+			
+			dialog.dialog('open');
+			});
+			
+		/*jQuery('#updatePageCount').load(url,function(){
+						dialog=jQuery('#contentPageCount').dialog({
+							autoOpen: false,
+							title: 'Update Meter Reads',
+							modal: true,
+							draggable: false,
+							resizable: false,
+							position: 'center',
+							height: 'auto',
+							width: 940,
+							close: function(event,ui){
+								dialog.dialog('destroy');					 
+								dialog=null;
+								jQuery('#contentPageCount').remove();
+								jQuery('#updatePageCount').empty();
+								},
+							error: function (jqXHR, textStatus, errorThrown) {
+								dialog.dialog('destroy');					 
+								dialog=null;
+								jQuery('#contentPageCount').remove();
+								}
+							});
+						dialog.dialog('open');
+						});*/
+};
+
+var dialog;
+function controlPanelPopup() {
+	var url = "controlPanelPopup.html";
+	
+		jQuery('#controlPanel').load(url,function(){
+			
+			dialog=jQuery('#controlPanelPopup').dialog({
+				autoOpen: false,
+				autoClose: false,
+				title: 'Update Meter Reads',
+				modal: true,
+				height: 150,
+				width: 400,				
+				close: function(event,ui){
+					 dialog.dialog('destroy');
+					 
+					 dialog=null;
+					 jQuery('#controlPanel').empty();				 
+					}
+				});
+			
+			dialog.dialog('open');
+			});
+}
+
+
+		var locationTree = new dhtmlXTreeObject("location_tree_container","100%","100%",0);
+		locationTree.setSkin('dhx_skyblue');
+		locationTree.setImagePath("../../../images/treeImgs/");		
+		//locationTree.enableTreeLines(true);
+		locationTree.enableSmartXMLParsing(true);
+		if(jQuery.browser.ie) {
+			locationTree.enableIEImageFix(true);
+		}
+		locationTree.loadXML("\locationItems.xml");
+		
+		var customerTree = new dhtmlXTreeObject("chl_node_tree_container","100%","100%",0);
+		customerTree.setSkin('dhx_skyblue');
+		customerTree.setImagePath("../../../images/treeImgs/");
+		//locationTree.enableTreeLines(true);
+		customerTree.enableSmartXMLParsing(true);
+		if(jQuery.browser.ie) {
+			customerTree.enableIEImageFix(true);
+		}
+		customerTree.loadXML("\customerItems.xml");
+		
+function openPopup(mark){
+	if(mark == 'CHL'){
+		document.getElementById('chlHdrId').style.display = "block";
+		document.getElementById('locHdrId').style.display = "none";
+		document.getElementById('chl_node_tree_container').style.display = "block";
+		document.getElementById('location_tree_container').style.display = "none";
+	}
+	
+	if(mark == 'Location'){
+		document.getElementById('locHdrId').style.display = "block";
+		document.getElementById('chlHdrId').style.display = "none";
+		document.getElementById('location_tree_container').style.display = "block";
+		document.getElementById('chl_node_tree_container').style.display = "none";
+	}
+}
+
+function labelAddFunc(){
+	if(document.getElementById('locHdrId').style.display == "block"){
+		document.getElementById('chlInfoDiv').style.display = "none";
+		document.getElementById('deviceLocInfoDiv').style.display = "block";
+		document.getElementById('deviceLocInfoSpan').innerHTML=document.getElementById('dummyVal').value;				
+	}
+	if(document.getElementById('chlHdrId').style.display == "block"){
+		document.getElementById('chlInfoDiv').style.display = "block";
+		document.getElementById('deviceLocInfoDiv').style.display = "none";
+		document.getElementById('chlInfoSpan').innerHTML=document.getElementById('dummyVal').value;		
+	}	
+}
+
+function removeFilters(filterName){		
+	document.getElementById(filterName).style.display = "none";
+}
+
+
+</script>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE HTML>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Order Review</title>
+<link href="../../../css/lexmark.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../LexmarkGlobalServicesThemeCustomer/themes/lexmark-services-portal-theme/docroot/css/main.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_dhx_skyblue.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_pgn_bricks.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/dhtmlxgrid_hmenu.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/grid/skins/dhtmlxgrid_dhx_lex.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/tree/dhtmlxtree.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/jquery/jquery-ui.css" rel="stylesheet" type="text/css" />
+<link href="../../../css/mps.css" rel="stylesheet" type="text/css" />
+<!--[if IE 7]>
+<link href="../../../css/mps_ie7.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<script src="../../../../js/util.js"></script>
+<script src="../../../../js/grid/dhtmlxcommon.js"></script>
+<script src="../../../../js/grid/dhtmlxgrid.js"></script>
+<script src="../../../../js/grid/dhtmlxgridcell.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_link.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_filter.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_pgn.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_hmenu.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_mcol.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_mcol.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_ssw.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_hmenu.js"></script>
+<script src="../../../../js/grid/prft/prft_dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/tree/dhtmlxtree.js"></script>
+<script src="../../../../js/grid/ext/dhtmlxgrid_excell_sub_row.js"></script>
+<script src="../../../../js/jQuery/jquery.min.js"></script>
+<script src="../../../../js/jQuery/jquery-ui.min.js"></script>
+<script src="../../../../js/jQuery/jquery.ui.widget.js"></script>
+<script src="../../../../js/jQuery/jquery.qtip-1.0.min.js"></script>
+<script src="../../../../js/mps.js"></script>
+</head>
+<body>
+<div id="wrapper">
+<div id="banner">
+    <h1 class="logo"><a href="https://tportal.lexmark.com/web/guest" title="Lexmark Global Services">tportal.lexmark.com</a></h1>
+    <div id="top-header">
+      <div id="top-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li><b><span>Welcome Firstname Lastname!</span></b></li>
+          <li><a href="#">Preferences</a></li>
+          <li><a href="#">User Administration</a></li>
+          <li><a href="#">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="bottom-header">
+      <div id="bottom-header-navigation" class="sort-pages modify-pages">
+        <ul>
+          <li>
+            <select>
+              <option>English (US)</option>
+            </select>
+          </li>
+          <li><a href="#">Lexmark.com</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Get Help</a></li>
+          <li><a href="#">Contact Lexmark</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="tabNavigation">
+    <ul class="tab">
+      <li><a href="#"><img src="../../../../images/home.png" alt="Home" title="Home" class="home" /></a></li>
+      <li><a href="" title="">Device Finder</a></li>
+      <li class="selected"><a href="" title="">Requests</a></li>
+      <li><a href="" title="">Page Counts</a></li>
+      <li><a href="" title="">Documents</a></li>
+    </ul>
+  </div>
+  <div id="subnavigation">
+    <ul>
+      <li><a href="javascript:void(0);"><span>Request History</span></a></li>
+      <li><a href="../Asset/create_new_request.html" class="lightbox" title="Create New Request"><span>Create New Request</span></a></li>
+    </ul>
+  </div>
+    <div id="content-wrapper">
+    <div class="journal-content-article">
+      <h2>Supplies Request</h2>
+      <span class="step">Order Supplies</span> </div>
+      <div class="main-wrap">
+      <div class="content"> 
+      <!-- PROCESS STEPS START -->
+        <div class="portletBlock center">
+          <ul class="processSteps shadow">
+            <li class="active"><a href="#" title="Step 1: Select Items"><span>1</span>Select Items</a></li>
+            <li class="active"><a href="#" title="Step 2: Order Details"><span>2</span>Order Details</a></li>
+            <li class="selected"><a href="#" title="Step 3: Review"><span>3</span>Review</a></li>
+            <li class="last"><a href="#" title="Step 4: Confirmation"><span>4</span>Confirmation</a></li>
+          </ul>
+        </div>
+        <!-- PROCESS STEPS END -->
+                <h3 class="pageTitle">Review Order</h3>
+        <p class="info banner">Please review the details for this request. Once confirmed, click on the SUBMIT button below.</p>
+<div class="portletBlock">
+          <div class="columnsTwo">
+            <div class="columnInner rounded infoBox">
+              <h4>Primary Contact for this Request</h4>
+              <div class="borderBottomLightGray"></div>
+              <ul class="form">
+                <li>
+                  <label>Name:</label>
+                  <span>FirstName LastName</span></li>
+                <li>
+                  <label>Phone Number:</label>
+                  <span>XXXXXXXXXX</span></li>
+                <li>
+                  <label>Email Address</label>
+                  <span>firstname.lastname@domain.com</span></li>
+              </ul>
+            </div>
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Secondary Contact for this Request</h4>
+              <ul class="form">
+                <li>
+                  <label>Name:</label>
+                  <span>FirstName LastName</span></li>
+                <li>
+                  <label>Phone Number:</label>
+                  <span>XXXXXXXXXX</span></li>
+                <li>
+                  <label>Email Address</label>
+                  <span>firstname.lastname@domain.com</span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Additional Information for this Request</h4>
+              <ul class="form">
+                <li>
+                  <label>Customer Reference ID:</label>
+                  <span>Customer Reference ID</span></li>
+                <li>
+                  <label>Cost Center:</label>
+                  <span>Cost Center</span></li>
+                <li>
+                  <label>Description:</label>
+                  <span class="multiLine">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac volutpat erat. Suspendisse tincidunt pellentesque accumsan.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr class="separator" />
+        <p class="inlineTitle">Items in your Order</p>
+<div class="columnInner">
+          <table class="displayGrid rounded shadow wFull">
+            <thead>
+              <tr>
+                <th class="w100">Part No.</th>
+                <th>Description</th>
+                <th class="w100">Part Type</th>
+                <th class="w100">Yield</th>
+                <th class="w100">Model</th>
+                <th class="w100 right">Order Quantity</th>
+                <th class="w100">Price</th>
+                <th class="w100">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="w100">123456SDFGH</td>
+                <td>Description of the item goes here</td>
+                <td class="w100">Part Type</td>
+                <td class="w100">Yield</td>
+                <td class="w100">Model</td>
+                <td class="w100 right">10</td>
+                <td class="w100">Price</td>
+                <td class="w100">Total</td>
+              </tr>
+              <tr class="altRow">
+                <td>123456SDFGH</td>
+                <td>Description of the item goes here</td>
+                <td>Part Type</td>
+                <td class="w100">Yield</td>
+                <td class="w100">Model</td>
+                <td class="right">10</td>
+                <td class="w100">Price</td>
+                <td class="w100">Total</td>
+              </tr>
+              <tr>
+                <td>123456SDFGH</td>
+                <td>Description of the item goes here</td>
+                <td>Part Type</td>
+                <td class="w100">Yield</td>
+                <td class="w100">Model</td>
+                <td class="right">10</td>
+                <td class="w100">Price</td>
+                <td class="w100">Total</td>
+              </tr>
+              <tr class="altRow">
+                <td>123456SDFGH</td>
+                <td>Description of the item goes here</td>
+                <td>Part Type</td>
+                <td class="w100">Yield</td>
+                <td class="w100">Model</td>
+                <td class="right">10</td>
+                <td class="w100">Price</td>
+                <td class="w100">Total</td>
+              </tr>
+              <tr>
+                <td>123456SDFGH</td>
+                <td>Description of the item goes here</td>
+                <td>Part Type</td>
+                <td class="w100">Yield</td>
+                <td class="w100">Model</td>
+                <td class="right">10</td>
+                <td class="w100">Price</td>
+                <td class="w100">Total</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="columnInner floatR">
+	    <table>
+	    <tr>
+	    	<td class="right">Sub-total:</td>
+	    	<td class="right">XXXXX</td>
+	    </tr>
+	    <tr>
+	    	<td class="right">Taxes:</td>
+	    	<td class="right">XX.XX</td>
+	    </tr>
+	    <tr>
+	    	<td class="right strong">Total Amount Payable:</td>
+	    	<td class="right strong">XXX.XXX</td>
+	    </tr>
+	    </table>
+	    </div>
+        </div>
+        <p class="inlineTitle">Shipping Information</p>
+<div class="portletBlock">
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Ship-to Address</h4>
+              <ul class="roDisplay">
+                <li><span>Address Line 1<br />
+                  Address Line 2<br />
+                  Address Line 3<br />
+                  City, State / Province XXXXX<br />
+                  Country</span></li>
+                  <li>
+                  <label for="building">Building:</label>
+                  <span>
+                  &ltBuilding&gt
+                  </span>
+                <li>
+                  <label for="floor">Floor:</label>
+                  <span>
+                  &ltFloor&gt
+                  </span>
+                <li>
+                  <label for="office">Office:</label>
+                  <span>
+                  &ltOffice&gt
+                  </span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Order Instructions</h4>
+              <ul class="form">
+                <li>
+                  <label for="desc">Special Instructions:</label>
+                  <span class="multiLine">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ac volutpat erat. Suspendisse tincidunt pellentesque accumsan.</span></li>
+                <li>
+                  <label for="date1">Default Special Instructions:</label>
+                  <span>Default Special Instructions</span></li>
+                <li>
+                  <label for="expOrder">Request Expedite Order:</label>
+                  <span>Yes / No</span></li>
+                <li>
+                  <label for="date1">Requested Delivery Date:</label>
+                  <span>MM/DD/YY</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+         <!-- PAYMENT DETAILS BLOCK STARTS -->
+        
+        <p class="inlineTitle">Payment Information</p>
+        <div class="portletBlock">
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4><a href="javascript:void();" class="lightboxLarge" title="Select an Address">Select your card information</a>Payment Options</h4>          
+              <div class="lineClear"></div>
+              <ul class="form">
+                <li>
+                  <label for="poNo">Enter a PO Number:<span class="req">*</span></label>
+                  <span>
+                  <input type="text" id="poNo" />
+                  </span></li>
+              </ul>
+              
+              <ul class="form">
+                <li>
+                  <label>Credit Card Token Number: <span class="req">*</span></label>
+                  <span>XXXX-XXXX</span>
+              </ul>
+            </div>
+          </div>
+          <div class="columnsTwo">
+            <div class="infoBox columnInner rounded shadow">
+              <h4><a href="javascript:void();" class="lightboxLarge" title="Select an Address">Select a different address</a>Bill-to Address</h4>
+              <ul class="roDisplay">              	
+                 <li>
+                  <div id="sameAsShipto" align="left">
+                    <input type="checkBox" id="sameAsShiptoCheckBox"/>
+					Same as Ship-To Address<br/>
+                  </div></li>
+                <li><span>
+                  Store-front Name<br/>
+                  Address Line 1<br />
+                  Address Line 2<br />
+                  City, State / Province XXXXX<br />
+                  Country</span> </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+       
+        <!-- PAYMENT DETAILS BLOCK ENDS -->
+                <p class="inlineTitle">Notes &amp; Attachments</p>
+        <div class="portletBlock">
+          <div class="columnsOne">
+            <div class="infoBox columnInner rounded shadow">
+              <h4>Notes</h4>
+              <p class="w70p multiLine">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse consequat bibendum ligula.  Phasellus dignissim eleifend volutpat. Proin tempor velit eget dui sollicitudin a vehicula odio feugiat.</p>
+            </div>
+          </div>
+        </div>
+        <!-- ****Use this code if multiple notes is possible****
+        <div class="portletBlock">
+          <div class="columnsOne">
+            <div class="columnInner">
+            <table class="displayGrid rounded shadow wFull">
+                    <thead>
+                      <tr>
+                        <th>Notes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse consequat bibendum ligula.  Phasellus dignissim eleifend volutpat. Proin tempor velit eget dui sollicitudin a vehicula odio feugiat.</td>
+                      </tr>
+                      <tr class="altRow">
+                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse consequat bibendum ligula.  Phasellus dignissim eleifend volutpat. Proin tempor velit eget dui sollicitudin a vehicula odio feugiat.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  </div> -->
+<div class="portletBlock">
+<div class="columnInner">
+              <table class="displayGrid rounded shadow wHalf">
+                    <thead>
+                      <tr>
+                        <th>Attachments</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><a href="#">DocumentName1</a></td>
+                      </tr>
+                      <tr class="altRow">
+                        <td><a href="#">DocumentName1</a></td>
+                      </tr>
+                    </tbody>
+                  </table>  
+            </div>
+            </div>
+            <div class="buttonContainer">
+          <button class="button" onClick="window.location.href='order_details.html'">Back</button>
+          <button class="button_cancel" onClick="window.location.href='search_catalog.html'">Cancel</button>
+          <button class="button" onClick="window.location.href='order_confirmation.html'">Submit</button>
+        </div>        
+        </div>
+      </div>
+    </div>
+    <div id="footer">Footer</div>
+</div>
+</body>
+</html>

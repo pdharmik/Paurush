@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="SupplyRequestDetailOrderItemDo" class="com.amind.data.service.DomainObjMapping">
+  
+		<!-- data source info -->
+        <property name="dataSourceName">
+    		<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS HW Service Request Detail - Service Web</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK C Order Entry - Orders (EAI)</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>LXK MPS Order Id</value>
+				</entry>
+				
+				<entry>
+	         		<key><value>orderNumber</value></key>
+	         		<value>Order Number</value>
+				</entry>
+				
+					<entry>
+	         		<key><value>serviceRequestNumber</value></key>
+	         		<value>SR Number</value>
+				</entry>
+				<entry>
+	         		<key><value>orderDate</value></key>
+	         		<value>LXK MPS Created</value>
+				</entry>
+					<!-- service address -->
+				<entry>
+	         		<key><value>serviceAddress1</value></key>
+	         		<value>LXK MPS Service Address1</value>
+				</entry>	
+				<entry>
+	         		<key><value>serviceAddress2</value></key>
+	         		<value>LXK MPS Service Address 2</value>
+				</entry>	
+				<entry>
+	         		<key><value>serviceAddress3</value></key>
+	         		<value>LXK MPS Service Address 3</value>
+				</entry>	
+				<entry>
+	         		<key><value>serviceCity</value></key>
+	         		<value>LXK MPS Service City</value>
+				</entry>	
+				<entry>
+	         		<key><value>serviceState</value></key>
+	         		<value>LXK MPS Service State</value>
+				</entry>
+				<entry>
+	         		<key><value>servicePostalCode</value></key>
+	         		<value>LXK MPS Service Postal Code</value>
+				</entry>																								
+				<entry>
+	         		<key><value>serviceProvince</value></key>
+	         		<value>LXK MPS Service Province</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceCountry</value></key>
+	         		<value>LXK MPS Service Country</value>
+				</entry>		
+				<entry>
+	         		<key><value>serviceAddressName</value></key>
+	         		<value>LXK MPS Service Address Name</value>
+				</entry>
+				<entry>
+	         		<key><value>storeFrontName</value></key>
+	         		<value>LXK MPS Store Front Name</value>
+				</entry>
+				
+				<!-- Asset -->
+                <entry>
+                    <key><value>serialNumber</value></key>
+                    <value>LXK MPS Serial Number</value>
+                </entry>
+					
+				<!-- secondary contact -->
+				<entry>
+	         		<key><value>secondaryContactFirstName</value></key>
+	         		<value>LXK MPS Alternate First Name</value>
+				</entry>	
+				<entry>
+	         		<key><value>secondaryContactLastName</value></key>
+	         		<value>LXK MPS Alternate Last Name</value>
+				</entry>
+				<entry>
+	         		<key><value>secondaryContactEmailAddress</value></key>
+	         		<value>LXK MPS Alternate Email Address</value>
+				</entry>		
+				<entry>
+	         		<key><value>secondaryContactWorkPhone</value></key>
+	         		<value>LXK MPS Alternate Work Phone</value>
+				</entry>
+				
+				<!-- primary contact -->
+				<entry>
+	         		<key><value>primaryContactFirstName</value></key>
+	         		<value>LXK MPS Primary First Name</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactLastName</value></key>
+	         		<value>LXK MPS Primary Last Name</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactEmailAddress</value></key>
+	         		<value>LXK MPS Primary Email Address</value>
+				</entry>				
+				<entry>
+	         		<key><value>primaryContactWorkPhone</value></key>
+	         		<value>LXK MPS Primary Work Phone</value>
+				</entry>
+				<entry>
+	         		<key><value>status</value></key>
+	         		<value>Status</value>
+				</entry>
+             	<entry>
+		   		<key><value>portalSpecialInstruction</value></key>
+	         		<value>LXK MPS Portal Special Instructions</value>
+				</entry>		
+				<entry>
+	         		<key><value>requestedDeliveryDate</value></key>
+	         		<value>LXK MPS Requested Delivery date</value>
+				</entry>		
+				<entry>
+	         		<key><value>attentionTo</value></key>
+	         		<value>LXK MPS Attention To</value>
+				</entry>	
+				<entry>
+	         		<key><value>assetIdentifier</value></key>
+	         		<value>LXK MPS Asset Identifier</value>
+				</entry>	
+				<entry>
+	         		<key><value>insideLocation</value></key>
+	         		<value>LXK MPS Inside Location</value>
+				</entry>	
+				<entry>
+	         		<key><value>specialHandlingInstructions</value></key>
+	         		<value>LXK MPS Special Handling Instructions</value>
+				</entry>	
+				<entry>
+	         		<key><value>mustResolveBy</value></key>
+	         		<value>SR Commit Time</value>
+				</entry>	
+				<entry>
+	         		<key><value>requestType</value></key>
+	         		<value>LXK SD SR Type</value>
+				</entry>	
+				<entry>
+	         		<key><value>orderType</value></key>
+	         		<value>Order Type</value>
+				</entry>	
+				
+				<entry>
+                    <key><value>pendingShipments</value></key>
+                    <value>com.lexmark.service.impl.real.domain.SupplyRequestDetailPendingShipmentDo</value>
+                </entry>
+                <entry>
+                    <key><value>shippedItems</value></key>
+                    <value>com.lexmark.service.impl.real.domain.SupplyRequestDetailShipmentDo</value>
+            	</entry>
+            	<entry>
+					<key><value>county</value></key>
+					<value>LXK MPS Service County</value>
+					</entry>
+				<entry>
+					<key><value>district</value></key>
+					<value>LXK MPS Service District</value>
+				</entry>
+				<entry>
+					<key><value>officeNumber</value></key>
+					<value>LXK MPS Service House No</value>
+				</entry>
+				<entry>
+					<key><value>subStatus</value></key>
+					<value>LXK SD Order SubStatus</value>
+				</entry>
+				<entry>
+					<key><value>severity</value></key>
+					<value>LXK SD Severity</value>
+				</entry>
+				<entry>
+	         		<key><value>orderedParts</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.SupplyRequestOrderedPartsDo</value>
+				</entry>
+				<entry>
+	         		<key><value>lbsOrderLineItems</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.SupplyRequestLbsLineItemsDo</value>
+				</entry>
+			</map>
+		</property>
+	</bean>	
+</beans>

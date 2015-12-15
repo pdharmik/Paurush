@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+#parse ($init)
+
+<html dir="#language ("lang.dir")" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>$company_name - $the_title</title>
+
+	$theme.include($top_head_include)
+
+	#css ($css_main_file)
+
+	<script type="text/javascript">
+		// <![CDATA[
+			$page_javascript_1
+			$page_javascript_2
+			$page_javascript_3
+		// ]]>
+	</script>
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery('#emailValidateDiv #validateEmail').parent().css('position', 'static');
+		jQuery('#portlet-wrapper-CreateAndEditUserPortlet_WAR_DA_INSTANCE_ywE1 form table tr td').css('position', 'static');
+		jQuery('.uni-form .button-holder input[type="submit"]').wrap('<span></span>');
+	});
+</script>
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		jQuery('#formReportDefinitionDetail table tbody tr td a').click(function(){
+			jQuery(this).parent().parent().siblings().children().children('a').removeClass('selected');
+			jQuery(this).addClass('selected');
+		});
+	});
+</script>
+		
+<script language="JavaScript" type="text/javascript">
+	#if ($LGS-CUSTOMER-userAuthenticated)
+		var loginTest = true;
+	#else
+		var loginTest = false;
+	#end
+
+var field = 'p_p_id'; 
+var url = window.location.href; 
+var urlPath=window.location.pathname;
+if (urlPath.indexOf('/web/global-services/login') == 0){
+if(url.indexOf('?' + field + '=') == -1){
+window.location.replace( '/web/global-services/login?p_p_id=58&p_p_lifecycle=0&_58_redirect=%2Fgroup%2Fglobal-services%2F' );
+}
+if(url.indexOf('_58_redirect=') > 0 && loginTest){
+window.location.replace( '/group/global-services' );
+}
+}
+
+var allPortlets = "";
+var portletName;
+var pageTitle = "";
+var pageNameSelected;
+var companyName = "$LGS-CUSTOMER-ldapUserCompanyName";
+var mdmId = "$LGS-CUSTOMER-ldapUserMdmId";
+var mdmLevel = "$LGS-CUSTOMER-ldapUserMdmLevel";
+var userType = "$LGS-CUSTOMER-ldapUserSegment";
+var pageTypeDisplayed = "";
+
+function addPortlet(portletSingle) {
+allPortlets = allPortlets + "," + portletSingle;
+
+
+}
+
+function markDirectCall(targetSystem){
+	var userLocale = "$themeDisplay.getLocale()";
+	var mdHost = "$LGS-CUSTOMER-markDirectHost";
+	var userCountry = "$LGS-CUSTOMER-ldapUserCountry";
+	var localeFirst = userLocale.substr(0,2);
+	var localeLast = userLocale.substr(3);
+	var fullURL = mdHost + targetSystem + "&ctry=" + localeLast + "&lang=" + localeFirst;
+	window.open(fullURL,'_blank');
+}
+
+function callOmnitureAction(portlet, type){
+	var s=s_gi('%omniture.account%'); 
+	s.linkTrackVars='prop1,eVar1,prop6,eVar6,events'; 
+	s.linkTrackEvents='event1'; 
+	s.prop1=portlet; 
+	s.eVar1=portlet; 
+	s.prop6=type; 
+	s.eVar6=type; 
+	s.events='event1'; 
+	s.tl(this,'o',type);
+}
+function callOmnitureReportRunAction(reportName){
+    var s=s_gi('%omniture.account%'); 
+    s.linkTrackVars='prop9,eVar9'; 
+    s.prop9=reportName;
+    s.eVar9=reportName;  
+    s.t();
+}
+
+</script>
+</head>
+
+<body class="$css_class">
+
+#foreach ($nav_item in $nav_items)
+	#if ($nav_item.hasChildren())
+		#foreach ($nav_child in $nav_item.getChildren())
+
+			#if ($nav_child.isSelected())
+				<script>
+					var pageUrl = '$nav_child.getURL()';
+					var url_array=pageUrl.split("/");
+					var pageEnd=url_array[url_array.length - 1];;
+					pageNameSelected = pageEnd; 
+				</script>
+			#end
+		#end
+	#else
+		#if ($nav_item.isSelected())
+			<script>
+				var pageUrl = '$nav_item.getURL()';
+				var url_array=pageUrl.split("/");
+				var pageEnd=url_array[url_array.length - 1];;
+				pageNameSelected = pageEnd; 
+			</script>
+		#end				
+	#end
+#end
+
+$theme.include($top_messages_include)
+
+<div id="borderOuterDiv" class="borderOuterDivCustomised">
+
+	<div id="borderHeaderDiv" align="left" class="borderHeaderDivCustomised">
+	<a href="https://www.staging.lexmark.relayware.com/">
+	<img src="/lexmark-partnernet-theme/images/header.jpg" alt="Home" border="0"/>
+	</a>
+	<div id="menu">
+	<ul class="nav" ID="nav"> </ul>   
+	</div>
+	</div>
+
+	#if ($selectable)
+		$theme.include($content_include)
+	#else
+		$portletDisplay.recycle()
+
+		$portletDisplay.setTitle($the_title)
+
+		$theme.wrapPortlet("portlet.vm", $content_include)
+	#end
+
+</div>
+</body>
+
+<!-- November 9 2012 9:00PM v1.46 (GlobalServices Build Version) -->
+<!-- ONLY USED IF AUTHENTICATED - SiteCatalyst code version: H.22.1.
+Copyright 1996-2010 Adobe, Inc. All Rights Reserved
+More info available at http://www.omniture.com -->
+<script language="JavaScript" type="text/javascript" src="/lexmark-services-portal-theme/javascript/s_code.js"></script>
+<script language="JavaScript" type="text/javascript"><!--
+/* You may give each page an identifying name, server, and channel on
+the next lines. */
+#if ($LGS-CUSTOMER-userAuthenticated)
+s.pageName=pageNameSelected
+s.server=""
+s.channel="Lexmark Global Services Customer Portal"
+s.pageType=pageTypeDisplayed
+s.prop1=allPortlets
+s.prop2=companyName
+s.prop3=companyName + " - " + mdmId
+s.prop4=mdmLevel
+s.prop5=userType
+/* Conversion Variables */
+s.campaign=""
+s.state=""
+s.zip=""
+s.events=""
+s.products=""
+s.purchaseID=""
+s.eVar1=allPortlets
+s.eVar2=companyName
+s.eVar3=companyName + " - " + mdmId
+s.eVar4=mdmLevel
+s.eVar5=userType
+#else
+s.pageName="login"
+s.server=""
+s.channel="Lexmark Global Services Customer Portal"
+s.pageType=pageTypeDisplayed
+s.prop1=""
+s.prop2=""
+s.prop3=""
+s.prop4=""
+s.prop5=""
+/* Conversion Variables */
+s.campaign=""
+s.state=""
+s.zip=""
+s.events=""
+s.products=""
+s.purchaseID=""
+s.eVar1=""
+s.eVar2=""
+s.eVar3=""
+s.eVar4=""
+s.eVar5=""
+#end
+
+/************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+var s_code=s.t();if(s_code)document.write(s_code)//--></script>
+<script language="JavaScript" type="text/javascript"><!--
+if(navigator.appVersion.indexOf('MSIE')>=0)document.write(unescape('%3C')+'\!-'+'-')
+//--></script><noscript><img src="http://lexmark.122.2o7.net/b/ss/%omniture.account%/1/H.22.1--NS/0?[AQB]&cdp=3&[AQE]"
+height="1" width="1" border="0" alt="" /></noscript><!--/DO NOT REMOVE/-->
+<!-- End SiteCatalyst code version: H.22.1. -->
+
+
+#js ($js_main_file)
+
+$theme.include($bottom_include)
+
+</html>

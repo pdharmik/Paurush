@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- BC: LXK SD Asset Reading Latest, TABLE: S_ASSET_RDNG -->
+	<bean id="AssetReadingLatestFavoriteDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK SW Contact Favorite Assets - MeterReads</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SW FS Asset Reading - Service Web</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>reading</value></key>
+	         		<value>Reading</value>
+				</entry>
+				<entry>
+	         		<key><value>completeFlag</value></key>
+	         		<value>Complete Flag</value>
+				</entry>
+				<entry>
+	         		<key><value>timestamp</value></key>
+	         		<value>Timestamp</value>
+				</entry>
+	     	</map>
+		</property>
+    </bean>  
+</beans>

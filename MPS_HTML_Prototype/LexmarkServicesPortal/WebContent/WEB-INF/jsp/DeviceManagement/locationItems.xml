@@ -1,0 +1,239 @@
+<?xml version="1.0" ?>	
+<tree id="0">
+ <item id="p1" text="Device Location">
+	  <item id="c1" text="Argentina">
+		 <item id="c1-1" text="Buenos Aires">
+			<item id="c1-1-1" text="Capital Federal"/>
+		 </item>
+	  </item>
+	  <item id="c2" text="Australia">
+		 <item id="c2-1" text="NSW">
+			<item id="c2-1-1" text="North Rvde"/>
+		 </item>
+		 <item id="c2-2" text="OLD">
+			<item id="c2-2-1" text="Brisbane"/>
+		 </item>
+	  </item>
+	  <item id="c3" text="Austria">
+			<item text="Wien" />
+	  </item>
+	  <item id="c4" text="Belgium">
+			<item itext="Vlaams-Brabant">
+				<item text="Diegem" />				
+			 </item>
+	  </item>
+	  <item id="c5" text="Brazil">
+			<item itext="SP">
+				<item text="Sao Paulo" />				
+			 </item>			 
+	 </item>
+	 <item id="c6" text="Canada">
+			<item id="c6-1" text="AB">
+				<item id="c6-1-1" text="Calgary" />				
+				<item id="c6-1-2" text="Edmonton" />				
+			 </item>
+			 <item id="c6-2" text="BC">
+				<item id="c6-2-1" text="Burnaby" />				
+			 </item>
+			 <item id="c6-3" text="MB">
+				<item id="c6-3-1" text="Winnipeg" />				
+			 </item>
+			 <item id="c6-4" text="ON">
+				<item id="c6-4-1" text="Ottawa" />				
+				<item id="c6-4-2" text="Richmond Hill" />				
+			 </item>
+			 <item id="c6-5" text="QC">
+				<item id="c6-5-1" text="Brossard" />				
+			 </item>
+	  </item>
+	  <item id="c7" text="Chile">
+			<item id="c7-1" text="Santiago">
+				<item id="c7-1-1" text="Santiago" />				
+			 </item>
+	  </item>	
+	  <item id="c9" text="Columbia">
+			<item id="c9-1" text="Cundinamarca">
+				<item id="c9-1-1" text="Bogota" />				
+			 </item>
+	  </item>
+	   <item id="c10" text="Denmark">
+			<item id="c10-1" text="Birkerod" />				
+	  </item>
+	  <item id="c11" text="Ecuador">
+			<item id="c11-1" text="Pichincha">
+				<item id="c11-1-1" text="Quito" />				
+			 </item>
+	  </item>
+	  <item id="c12" text="Finland">
+			<item id="c12-1" text="Espo" />				
+	  </item>
+	  <item id="c13" text="France">
+			<item id="c13-1" text="Lvon" />				
+			<item id="c13-2" text="Orleans" />				
+			<item id="c13-3" text="Suresnes" />	
+	  </item>
+	  <item id="c14" text="Germany">
+			<item id="c14-1" text="Berlin" />				
+			<item id="c14-2" text="Dietzenbach" />								
+			<item id="c14-5" text="Neckarsulm" />
+			<item id="c14-6" text="Stuttgart" />			
+	  </item>
+	  <item id="c15" text="Hungary">
+			<item id="c15-1" text="Budapest" />				
+	  </item>
+	  <item id="c16" text="India">
+			<item id="c16-1" text="WB">
+				<item id="c16-1-1" text="Kolkata" />				
+			</item>
+	  </item>
+	  <item id="c17" text="Italy">
+			<item id="c17-1" text="MI">
+				<item id="c17-1-1" text="Milano" />				
+			</item>
+			<item id="c17-2" text="RM">
+				<item id="c17-2-1" text="Roma" />				
+			</item>
+	  </item>
+	  <item id="c18" text="Mexico">
+			<item id="c18-1" text="CHH">
+				<item id="c18-1-1" text="Cuidad Juarez" />				
+			</item>
+			<item id="c18-2" text="DF">
+				<item id="c18-2-1" text="D.F." />				
+				<item id="c18-2-1" text="DF" />				
+			</item>
+	  </item>
+	  <item id="c19" text="Netherlands">
+			<item id="C19-1" text="Apeldoorn" />
+			<item id="C19-2" text="Nardeen" />
+			<item id="c19-3" text="Noord-Holand">
+				<item id="c19-3-1" text="Naarden" />				
+			</item>
+	  </item>
+	  <item id="c20" text="Norway">
+			<item id="C20-1" text="Oslo" />
+	  </item>
+	  <item id="c21" text="Peru">
+			<item id="C21-1" text="Lima" />
+	  </item>
+	  <item id="c22" text="Philippines">
+			<item id="c22-1" text="Cebu">
+				<item id="C22-1-1" text="Cebu City" />
+				<item id="C22-1-2" text="Lapu-Lapu City" />
+			</item>
+	  </item>
+	  <item id="c23" text="Poland">
+			<item id="C23-1" text="Krakow" />
+			<item id="C23-1" text="Warszawa" />
+	  </item>
+	  <item id="c24" text="Portugal">
+			<item id="c24-1" text="Lisboa">
+				<item id="C24-1-1" text="Lisboa" />
+			</item>
+	  </item>
+	  <item id="c25" text="Singapore">
+			<item id="C25-1" text="Singapore" />
+	  </item>
+	  <item id="c26" text="South Africa">
+			<item id="c26-1" text="Gauteng">
+				<item id="C26-1-1" text="Fourways" />
+			</item>
+	  </item>
+	  <item id="c27" text="Spain">
+			<item id="c27-1" text="Barcelona">
+				<item id="C27-1-1" text="Barcelona" />
+			</item>
+			<item id="c27-2" text="Madrid">
+				<item id="c27-2-1" text="Madrid" />
+			</item>
+	  </item>
+	  <item id="c28" text="Sweden">
+			<item id="c28-1-1" text="KISTA" />
+			<item id="c28-1-2" text="Solna" />
+	  </item>
+	  <item id="c29" text="Switzerland">			
+			<item id="c29-1-1" text="Geneve" />
+			<item id="c29-1-2" text="Thalwil" />
+	  </item>
+	  <item id="c30" text="Turkey">
+			<item id="c30-1" text="CANKAYA">
+				<item id="c30-1-1" text="ANKARA" />
+			</item>
+			<item id="c30-2" text="IB">
+				<item id="c30-2-1" text="ISTANBUL" />
+			</item>
+			<item id="c30-3" text="SISLI">
+				<item id="c30-3-1" text="ISTANBUL" />
+			</item>
+			<item id="c30-4" text="IZ">
+				<item id="c30-4-1" text="Izmir" />
+			</item>
+	  </item>
+	  <item id="c31" text="United Kingdom">			
+			<item id="c31-1-1" text="London"/>
+			<item id="c31-1-2" text="Maindenhead"/>
+			<item id="c31-1-3" text="manchester"/>
+	  </item>
+	  <item id="c32" text="USA">
+		<item id="c32-1" text="AR">
+			<item id="c32-1-1" text="Bentonvile"/>
+		</item>
+		<item id="c32-2" text="CA">
+			<item id="c32-2-1" text="Irvine"/>
+			<item id="c32-2-2" text="San Francisco"/>
+		</item>
+		<item id="c32-3" text="CO">
+			<item id="c32-3-1" text="Longmont"/>
+		</item>
+		<item id="c32-4" text="DC">
+			<item id="c32-4-1" text="Washington"/>
+		</item>
+		<item id="c32-5" text="FL">
+			<item id="c32-5-1" text="Coral Gables"/>
+		</item>
+		<item id="c32-6" text="GA">
+			<item id="c32-6-1" text="Alpharetta"/>
+		</item>
+		<item id="c32-7" text="IL">
+			<item id="c32-7-1" text="Schaumburg"/>
+		</item>
+		<item id="c32-8" text="KS">
+			<item id="c32-8-1" text="Shawnee"/>
+		</item>
+		<item id="c32-9" text="KY">
+			<item id="c32-9-1" text="Lexington"/>
+		</item>
+		<item id="c32-10" text="MA">
+			<item id="c32-10-1" text="Waltham"/>
+		</item>
+		<item id="c32-11" text="MI">
+			<item id="c32-11-1" text="Southfield"/>
+		</item>
+		<item id="c32-12" text="MN">
+			<item id="c32-12-1" text="Minneapolis"/>
+		</item>
+		<item id="c32-13" text="MO">
+			<item id="c32-13-1" text="St. Louis"/>
+		</item>
+		<item id="c32-14" text="NJ">
+			<item id="c32-14-1" text="Park Ridge"/>
+		</item>
+		<item id="c32-15" text="NY">
+			<item id="c32-15-1" text="New York"/>
+		</item>
+		<item id="c32-16" text="PR">
+			<item id="c32-16-1" text="Guaynabo"/>
+		</item>
+		<item id="c32-17" text="TX">
+			<item id="c32-17-1" text="Houston"/>
+			<item id="c32-17-2" text="Irving"/>
+		</item>
+		<item id="c32-18" text="VA">
+			<item id="c32-18-1" text="Ashburn"/>
+		</item>
+		<item id="c32-19" text="WA">
+			<item id="c32-19-1" text="Redmond"/>
+		</item>
+	  </item>	  
+ </item>	 
+</tree>

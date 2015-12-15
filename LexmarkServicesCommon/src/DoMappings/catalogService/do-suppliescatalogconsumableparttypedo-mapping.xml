@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="SuppliesCatalogConsumablePartTypeDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS Supplies Catalog - Consumable Part Type_POC</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Supplies Catalog - Consumable Part Type_POC_LXK MPS SAP Catalog</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>billingModel</value></key>
+	         		<value>LXK MPS Billing Model</value>
+				</entry>				
+				<entry>
+	         		<key><value>billingModelMVF</value></key>
+	         		<value>LXK MPS Billing Model MVF</value>
+				</entry>
+				<entry>
+	         		<key><value>sapSoldTo</value></key>
+	         		<value>LXK MPS SAP Sold To #</value>
+				</entry>
+				<entry>
+	         		<key><value>soldToMVF</value></key>
+	         		<value>LXK MPS Sold To MVF</value>
+				</entry>
+				<entry>
+	         		<key><value>contractNumber</value></key>
+	         		<value>LXK MPS SAP Contract MVF</value>
+				</entry>
+				<entry>
+	         		<key><value>contractLine</value></key>
+	         		<value>Contract Line</value>
+				</entry>	
+	     	</map>
+		</property>
+	   	     	  
+    </bean>  
+</beans>

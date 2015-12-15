@@ -1,0 +1,37 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="PartnerActivityListMassUploadDebriefDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK SW Activity List Partner Portal</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Activity Readings</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>pageCountType</value></key>
+	         		<value>LXK MPS Page Count Type</value>
+				</entry>
+				<entry>
+	         		<key><value>pageCount</value></key>
+	         		<value>Page Count</value>
+				</entry> 
+				
+	     	</map>
+		</property>
+    </bean>  
+</beans>

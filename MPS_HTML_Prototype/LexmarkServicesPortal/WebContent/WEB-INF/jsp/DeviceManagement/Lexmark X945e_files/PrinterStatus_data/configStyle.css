@@ -1,0 +1,40 @@
+BODY      {font-family: sans-serif; background: #FFFFFF; color: #000000}
+A:link       {
+	font-family: sans-serif;
+	font-size: 11pt;
+	color: #0033CC;
+	text-decoration : none;
+}
+A:visited {
+	font-family: sans-serif;
+	font-size: 11pt;
+	color: #0033CC;
+	text-decoration : none;
+}
+A:active  {
+	font-family: sans-serif;
+	font-size: 11pt;
+	color: #0033CC;
+	text-decoration : none;
+}
+A:hover   {
+	font-family: sans-serif;
+	font-size: 11pt;
+	color: #0033CC;
+	text-decoration : underline;
+}
+TD        {font-family: sans-serif; font-size: 10pt}
+H1        {font-family: sans-serif; font-size: 15pt}
+H2        {
+	font-family: sans-serif;
+	font-size: 13pt;
+	font-weight : bold;
+}
+H3        {
+	font-family: sans-serif;
+	font-size: 12pt;
+	font-weight : bold;
+}
+PRE       {font-family: monospace;  font-size: 10pt}
+HR        {align:  center;  width: 75%}
+

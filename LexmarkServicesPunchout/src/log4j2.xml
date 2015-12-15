@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>  
+	<Appenders>
+	    <Console name="stdout" target="SYSTEM_OUT">
+	      <PatternLayout pattern="%d [%t] %X %-5p %c - %m%n"/>
+	    </Console>
+	    <RollingFile name="B2BPublicOrder" append="true"
+             fileName="${sys:catalina.base}/logs/B2BPublicOrder.log"
+             filePattern="${sys:catalina.base}/logs/B2BPublicOrder.%d{yyyy-MM-dd}.log">
+             <PatternLayout pattern="%d [%t] %X %-5p %c - %m%n"/>
+             <Policies>
+                 <TimeBasedTriggeringPolicy/>
+             </Policies>
+        </RollingFile>
+        <RollingFile name="PLOG-FILE" append="true"
+             fileName="${sys:catalina.base}/logs/performance.log"
+             filePattern="${sys:catalina.base}/logs/performance.%d{yyyy-MM-dd}.log">
+             <PatternLayout pattern="%d [%t] %X %-5p %c - %m%n"/>
+             <Policies>
+                 <TimeBasedTriggeringPolicy/>
+             </Policies>
+        </RollingFile>
+        <!-- <Async name="PERFORMANCELOG">
+	      <AppenderRef ref="PLOG-FILE"/>
+	    </Async> -->
+	 </Appenders>
+    <Loggers>
+        <Logger name="org.springframework.web.portlet" level="warn"/>
+        <Logger name="org.springframework.web.servlet.ViewRendererServlet" level="warn"/>
+        <Logger name="org.apache.axis" level="warn"/>
+        <Logger name="com.lexmark" level="debug"/>
+        <Logger name="com.amind" level="info"/>
+        <Logger name="com.lexmark.services.servlet.ObieeBridge" level="debug"/>
+        <Logger name="data.com.amind" level="error"/>
+        <Logger name="time.com.amind" level="error"/>
+        <AsyncLogger name="performance" level="error">
+        	<appender-ref ref="PLOG-FILE" />
+        </AsyncLogger>
+	    <Root level="debug">
+	      <appender-ref ref="stdout" />
+       	  <appender-ref ref="B2BPublicOrder" />
+	    </Root>
+	 </Loggers>
+    </Configuration> 
+    
+    <!-- 
+    
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">  
+	 <layout class="org.apache.log4j.PatternLayout">  
+	  <param name="ConversionPattern" value="%d [%t] %X{SessionID} %X{mdmID} %X{mdmLevel} %X{loginUser} %X{userNumber} %-5p %c - %m%n" />  
+	 </layout>  
+	</appender>
+	
+	<appender name="PERFORMANCELOG" BufferSize="500" class="org.apache.log4j.AsyncAppender">
+		<appender-ref ref="PLOG-FILE" />
+	</appender>  
+	
+	<appender name="SERVICESPORTAL" class="org.apache.log4j.DailyRollingFileAppender">  
+	    <param name="File" value="${catalina.base}/logs/global-services.log"/>  
+	    <param name="encoding" value="UTF-8" />
+	    <param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+	    <param name="Append" value="true"/>  
+	 <layout class="org.apache.log4j.PatternLayout">  
+	  <param name="ConversionPattern" value="%d [%t] %X{SessionID} %X{mdmID} %X{mdmLevel} %X{loginUser} %X{userNumber} %-5p %c - %m%n" />  
+	 </layout>  
+	</appender> 
+	
+	<appender name="PLOG-FILE" class="org.apache.log4j.DailyRollingFileAppender">
+	    <param name="File" value="${catalina.base}/logs/performance.log"/>  
+	    <param name="encoding" value="UTF-8" />
+	    <param name="DatePattern" value="'.'yyyy-MM-dd'.log'" />
+	    <param name="Append" value="true"/>  
+	 <layout class="org.apache.log4j.PatternLayout">  
+	  <param name="ConversionPattern" value="%d [%t] %X{SessionID} %X{mdmID} %X{mdmLevel} %X{loginUser} %X{userNumber} %-5p %c - %m%n" />  
+	 </layout>  
+	</appender> 
+	  
+    <logger name="org.springframework.web.portlet">  
+        <level value="WARN" />  
+    </logger> 
+    <logger name="org.springframework.web.servlet.ViewRendererServlet">  
+        <level value="WARN" />  
+    </logger>
+    <logger name="org.apache.axis">  
+        <level value="WARN" />  
+    </logger>
+    <logger name="com.lexmark">  
+        <level value="DEBUG" />          
+    </logger> 
+    <logger name="com.amind">  
+        <level value="ERROR" />  
+    </logger> 
+    <logger name="com.lexmark.services.servlet.ObieeBridge">  
+        <level value="DEBUG" />  
+    </logger>
+    <logger name="data.com.amind">  
+        <level value="ERROR" />  
+    </logger>
+    <logger name="time.com.amind">  
+        <level value="ERROR" />  
+    </logger>
+    <logger name="performance">  
+        <level value="ERROR" /> 
+        <appender-ref ref="PERFORMANCELOG" /> 
+    </logger>
+    
+    <root> 
+    	<priority value="FATAL" />
+        <appender-ref ref="stdout" />
+        <appender-ref ref="SERVICESPORTAL" />
+    </root>   -->
+ 

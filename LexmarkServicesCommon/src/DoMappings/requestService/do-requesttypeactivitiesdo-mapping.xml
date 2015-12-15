@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="RequestTypeActivitiesDo" class="com.amind.data.service.DomainObjMapping">
+  
+		<!-- data source info -->
+      
+        <property name="dataSourceName">
+    		<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS HW Install Service Request IO</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>Action</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>
+	     		<entry>
+	         		<key><value>serviceRequestNumber</value></key>
+	         		<value>SR Number</value>
+				</entry>	     
+				<entry>
+	         		<key><value>status</value></key>
+	         		<value>Status</value>
+				</entry>
+				<entry>
+	         		<key><value>serialNumber</value></key>
+	         		<value>Serial Number</value>
+				</entry>
+				<entry>
+	         		<key><value>deviceType</value></key>
+	         		<value>RC Product Type Code</value>
+				</entry>
+				<entry>
+	         		<key><value>activityNumber</value></key>
+	         		<value>Activity UID</value>
+				</entry>
+				<entry>
+	         		<key><value>statusDetail</value></key>
+	         		<value>LXK R Service Additional Details</value>
+				</entry>
+				<entry>
+	         		<key><value>building</value></key>
+	         		<value>LXK R Physical Location 1</value>
+				</entry>
+				<entry>
+	         		<key><value>floor</value></key>
+	         		<value>LXK R Physical Location 2</value>
+				</entry>
+				<entry>
+	         		<key><value>office</value></key>
+	         		<value>LXK R Physical Location 3</value>
+				</entry>
+				<entry>
+	         		<key><value>description</value></key>
+	         		<value>LXK R Device Condition</value>
+				</entry>
+				<entry>
+	         		<key><value>deviceTag</value></key>
+	         		<value>LXK C Installed Asset Device Tag - PPID PreDebriefRFV</value>
+				</entry>
+				<entry>
+	         		<key><value>installDate</value></key>
+	         		<value>LXK MPS Install Date PreDebriefRFV</value>
+				</entry>
+				<entry>
+	         		<key><value>ipAddress</value></key>
+	         		<value>LXK MPS IP Address</value>
+				</entry>
+				<entry>
+	         		<key><value>hostName</value></key>
+	         		<value>LXK MPS Host Name PreDebriefRFV</value>
+				</entry>
+				<entry>
+	         		<key><value>district</value></key>
+	         		<value>LXK R Installed Address District</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine1</value></key>
+	         		<value>LXK R Installed Address Line 1</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine2</value></key>
+	         		<value>LXK R Installed Address Line 2</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLine3</value></key>
+	         		<value>LXK R Installed Address Line 3</value>
+				</entry>
+				<entry>
+	         		<key><value>city</value></key>
+	         		<value>LXK R Installed City</value>
+				</entry>
+				<entry>
+	         		<key><value>country</value></key>
+	         		<value>LXK R Installed Country</value>
+				</entry>
+				<entry>
+	         		<key><value>countryCode</value></key>
+	         		<value>LXK R Installed Country Code</value>
+				</entry>
+				<entry>
+	         		<key><value>county</value></key>
+	         		<value>LXK R Installed County</value>
+				</entry>
+				<entry>
+	         		<key><value>errorMessage</value></key>
+	         		<value>LXK R Installed Error Message</value>
+				</entry>
+				<entry>
+	         		<key><value>latitude</value></key>
+	         		<value>LXK R Installed Latitude</value>
+				</entry>
+				<entry>
+	         		<key><value>longitude</value></key>
+	         		<value>LXK R Installed Longitude</value>
+				</entry>
+				<entry>
+	         		<key><value>postalCode</value></key>
+	         		<value>LXK R Installed Postal Code</value>
+				</entry>
+				<entry>
+	         		<key><value>province</value></key>
+	         		<value>LXK R Installed Province</value>
+				</entry>
+				<entry>
+	         		<key><value>region</value></key>
+	         		<value>LXK R Installed Region</value>
+				</entry>
+				<entry>
+	         		<key><value>state</value></key>
+	         		<value>LXK R Installed State</value>
+				</entry>
+				<entry>
+	         		<key><value>stateFullName</value></key>
+	         		<value>LXK R Installed State Full Name</value>
+				</entry>
+				<entry>
+	         		<key><value>area</value></key>
+	         		<value>LXK MPS SR Area</value>
+				</entry>
+				<entry>
+	         		<key><value>subArea</value></key>
+	         		<value>LXK MPS SR Subarea</value>
+				</entry>
+				<entry>
+	         		<key><value>orderSource</value></key>
+	         		<value>LXK MPS SR Source</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestStatus</value></key>
+	         		<value>SR Status</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestCreated</value></key>
+	         		<value>LXK SD SR Created</value>
+				</entry>
+				<entry>
+	         		<key><value>requestorFirstName</value></key>
+	         		<value>LXK R SR Contact First Name</value>
+				</entry>
+				<entry>
+	         		<key><value>requestorLastName</value></key>
+	         		<value>LXK R SR Contact Last Name</value>
+				</entry>
+				<entry>
+	         		<key><value>AccountName</value></key>
+	         		<value>Account Name</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactFirstName</value></key>
+	         		<value>LXK SD Contact First Name</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactLastName</value></key>
+	         		<value>LXK SD Contact Last Name</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactWorkPhone</value></key>
+	         		<value>LXK SD Contact Work Phone</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactEmail</value></key>
+	         		<value>LXK MPS Installation Contact email</value>
+				</entry>
+				<entry>
+	         		<key><value>secondaryContactFirstName</value></key>
+	         		<value>LXK SD SR Alternate Contact First Name</value>
+				</entry>
+				<entry>
+	         		<key><value>secondaryContactLastName</value></key>
+	         		<value>LXK SD SR Alternate Contact Last Name</value>
+				</entry>
+				<entry>
+	         		<key><value>secondaryContactWorkPhone</value></key>
+	         		<value>LXK MPS Alternate Contact Work Phone</value>
+				</entry>
+				<entry>
+	         		<key><value>secondaryContactEmail</value></key>
+	         		<value>LXK MPS Alternate Contact Email Address</value>
+				</entry>
+				<entry>
+	         		<key><value>customerReferenceNumber</value></key>
+	         		<value>LXK R SR Customer Ref Number</value>
+				</entry>
+				<entry>
+	         		<key><value>costCenter</value></key>
+	         		<value>LXK MPS Cost center</value>
+				</entry>
+				<entry>
+	         		<key><value>addtnlDescription</value></key>
+	         		<value>LXK R Service Additional Details</value>
+				</entry>
+				<entry>
+	         		<key><value>notes</value></key>
+	         		<value>LXK MPS Request Comments</value>
+				</entry>
+				<entry>
+                    <key><value>activityPartList</value></key>
+                    <value>com.lexmark.service.impl.real.domain.ActivityPartListDo</value>
+             	</entry> 
+				<entry>
+                    <key><value>serviceRequestActivitiesAttachmentDo</value></key>
+                    <value>com.lexmark.service.impl.real.domain.ServiceRequestActivitiesAttachmentDo</value>
+             	</entry> 
+			</map>
+		</property>
+	</bean>	
+</beans>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- S_ENTLMNT_ITEM UPDATE siebel.s_entlmnt SET ENTL_TMPL_ID='' WHERE ROW_ID='1-FI5-1261'-->
+	<bean id="ServiceAgreementProductDo" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+    	<property name="dataSourceName">
+			<value>Siebel BO</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>Asset Management</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>Asset Mgmt - Service Agreement Product</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Entitlement Id</value>
+				</entry>
+				<entry>
+	         		<key><value>name</value></key>
+	         		<value>Entitlement Name</value>
+				</entry>
+				<entry>
+	         		<key><value>assetId</value></key>
+	         		<value>Asset Id</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceDetailsId</value></key>
+	         		<value>LXK C Entitlement Template Id</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceDetails</value></key>
+	         		<value>com.lexmark.service.impl.real.domain.EntitlementTemplateServiceDetailsDo</value>
+				</entry>
+				<entry>
+	         		<key><value>startDate</value></key>
+	         		<value>Entitlement Start Date</value>
+				</entry>
+				<entry>
+	         		<key><value>endDate</value></key>
+	         		<value>Entitlement End Date</value>
+				</entry>
+				
+				
+	     	</map>
+		</property>
+        <property name="doJoinDefsMap">
+			<map> 
+				<entry>
+					<key><value>serviceDetails</value></key>
+					<map>
+						<entry>
+							<key><value>entitlementId</value></key>  <!-- Parent ID field -->
+							<value>serviceDetailsId</value> <!-- Child ID field-->
+						</entry>    
+					</map>
+				</entry>
+			</map>
+		</property>              
+    </bean>  
+</beans>

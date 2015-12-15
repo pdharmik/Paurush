@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="RequestAttachment" class="com.amind.data.service.DomainObjMapping">
+  
+	<!-- data source info -->
+   	<property name="dataSourceName">
+			<value>EAI Siebel Adapter</value>
+        </property>
+       <property name="dsTargetObjectName">
+			<value>LXK MPS Parter Portal Service Request Attachment</value>
+       </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK MPS Parter Portal Service Request Attachment</value>
+        </property>
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+             
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	
+	     		<entry>
+	         		<key><value>mdmId</value></key>
+	         		<value>LXK MPS LASP Id</value>
+				</entry>
+				<entry>
+	         		<key><value>status</value></key>
+	         		<value>Attachment Status</value>
+				</entry>
+				<entry>
+	         		<key><value>requestNumber</value></key>
+	         		<value>SR Number</value>
+				</entry>
+				<entry>
+	         		<key><value>submittedOn</value></key>
+	         		<value>ActivityFileDate</value>
+				</entry>
+				<entry>
+	         		<key><value>completedOn</value></key>
+	         		<value>LXK SW Web SR Status Date</value>
+				</entry>
+				<entry>
+	         		<key><value>size</value></key>
+	         		<value>ActivityFileSize</value>
+				</entry>		
+				<entry>
+	         		<key><value>attachmentId</value></key>
+	         		<value>AttachmentId</value>
+				</entry>
+				<entry>
+	         		<key><value>type</value></key>
+	         		<value>ActivityFileSrcType</value>
+				</entry>
+				<entry>
+	         		<key><value>fileName</value></key>
+	         		<value>ActivityFileName</value>
+				</entry>
+				<entry>
+	         		<key><value>subArea</value></key>
+	         		<value>LXK MPS Sub_Area</value>
+				</entry>
+				<entry>
+	         		<key><value>srRowId</value></key>
+	         		<value>Activity Id</value>
+				</entry>
+				<entry>
+	         		<key><value>fileExt</value></key>
+	         		<value>ActivityFileExt</value>
+				</entry>
+				<entry>
+	         		<key><value>lastUpdatedOn</value></key>
+	         		<value>LXK MPS Last Updated</value>
+				</entry>
+	     	</map>
+		</property>
+    
+    </bean>  
+</beans>

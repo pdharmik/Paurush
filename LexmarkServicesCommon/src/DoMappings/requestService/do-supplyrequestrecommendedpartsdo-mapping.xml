@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="SupplyRequestRecommendedPartsDo" class="com.amind.data.service.DomainObjMapping">
+  
+		<!-- data source info -->
+      
+        <property name="dataSourceName">
+    		<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK MPS HW Service Request Detail - Service Web</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>FS Activity Recommended Parts Tools</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>recommendedQuantity</value></key>
+	         		<value>Recommended Quantity</value>
+				</entry>
+				<entry>
+	         		<key><value>productName</value></key>
+	         		<value>Product Name</value>
+				</entry>
+				<entry>
+	         		<key><value>partNumber</value></key>
+	         		<value>Part #</value>
+				</entry>
+				<entry>
+	         		<key><value>partDisposition</value></key>
+	         		<value>LXK R Part Disposition</value>
+				</entry>
+				<entry>
+	         		<key><value>returnIfDefective</value></key>
+	         		<value>LXK SD Return If Defective</value>
+				</entry>
+				<entry>
+	         		<key><value>productId</value></key>
+	         		<value>Product Id</value>
+				</entry>
+				<entry>
+	         		<key><value>activitySRId</value></key>
+	         		<value>Activity SR Id</value>
+				</entry>
+				<entry>
+	         		<key><value>relationType</value></key>
+	         		<value>LXK R Relation Type</value>
+				</entry>
+				<entry>
+	         		<key><value>activityId</value></key>
+	         		<value>Activity Id</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryOrderId</value></key>
+	         		<value>Primary Order Id</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryOrderItemId</value></key>
+	         		<value>Primary Order Item Id</value>
+				</entry>
+				<entry>
+	         		<key><value>recommendedRequiredFlag</value></key>
+	         		<value>LXK R Return Required Flag</value>
+				</entry>
+				
+			</map>
+		</property>
+	</bean>	
+</beans>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+ "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="ServiceRequestHistory" class="com.amind.data.service.DomainObjMapping">
+  
+		<!-- data source info -->
+    	<property name="dataSourceName">
+    		<value>EAI Siebel Adapter</value>
+        </property>
+       
+        <property name="dsTargetObjectName">
+			<value>LXK SD Service Request - Service Web</value>
+        </property>
+        
+        <property name="dsTargetComponentName">
+			<value>LXK SD Service Request - Service Web</value>
+        </property>
+
+        <property name="packageName">
+			<value>com.lexmark.service.impl.real.domain</value>
+        </property>
+              
+       	<!-- field mapping --> 
+	   	<property name="doFieldNameToDsFieldNameMap">
+	     	<map>	     
+				<entry>
+	         		<key><value>id</value></key>
+	         		<value>Id</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel1AccountId</value></key>
+	         		<value>LXK Account Global DUNS Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel2AccountId</value></key>
+	         		<value>LXK Account Domestic DUNS Number</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel3AccountId</value></key>
+	         		<value>LXM MDM Legal Entity ID #</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel4AccountId</value></key>
+	         		<value>LXM MDM Account #</value>
+				</entry>
+				<entry>
+	         		<key><value>mdmLevel5AccountId</value></key>
+	         		<value>Account Id</value>
+				</entry>
+				<entry>
+	         		<key><value>accountTransFlag</value></key>
+	         		<value>LXK L5 Account Transactable Flag</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestDate</value></key>
+	         		<value>LXK SW SR Created Date</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestNumber</value></key>
+	         		<value>SR Number</value>
+				</entry>
+				<entry>
+	         		<key><value>status</value></key>
+	         		<value>LXK SW Web SR Status</value>
+				</entry>
+				<entry>
+	         		<key><value>serialNumber</value></key>
+	         		<value>Serial Number</value>
+				</entry>
+				<entry>
+	         		<key><value>productLine</value></key>
+	         		<value>LXK SD Product Line</value>
+				</entry>
+				<entry>
+	         		<key><value>contactPrimaryId</value></key>
+	         		<value>LXK SW SR Primary Contact Alias Id</value>
+				</entry>
+				<entry>
+	         		<key><value>contactAlternateId</value></key>
+	         		<value>LXK SW SR Alternate Contact Alias Id</value>
+				</entry>
+				<entry>
+	         		<key><value>contactId</value></key>
+	         		<value>LXK SW SR Contact Alias Id</value>
+				</entry>	
+				<entry>
+	         		<key><value>assetId</value></key>
+	         		<value>LXK SW Latest Asset Id</value>
+				</entry>	
+				<entry>
+	         		<key><value>updateDate</value></key>
+	         		<value>Updated</value>
+				</entry>			
+				<entry>
+	         		<key><value>subStatus</value></key>
+	         		<value>Sub-Status</value>
+				</entry>	
+				<entry>
+	         		<key><value>expDate</value></key>
+	         		<value>LXK R ExpDate</value>
+				</entry>	
+				<entry>
+	         		<key><value>primaryContactEmail</value></key>
+	         		<value>LXK SW SR Primary Contact Email Address</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactFirstName</value></key>
+	         		<value>LXK R SR Contact First Name</value>
+				</entry>
+				<entry>
+	         		<key><value>primaryContactLastName</value></key>
+	         		<value>LXK R SR Contact Last Name</value>
+				</entry>								
+				<entry>
+	         		<key><value>primaryContactWorkPhone</value></key>
+	         		<value>LXK SW SR Primary Contact Work Phone</value>
+				</entry>	
+				<entry>
+	         		<key><value>parentChain</value></key>
+	         		<value>LXK SW CHL Parent Chain</value>
+				</entry>
+				<entry>
+	         		<key><value>city</value></key>
+	         		<value>Service City</value>
+				</entry>	
+				<entry>
+	         		<key><value>country</value></key>
+	         		<value>Service Country</value>
+				</entry>	
+				<entry>
+	         		<key><value>state</value></key>
+	         		<value>Service State</value>
+				</entry>
+				<entry>
+	         		<key><value>street1</value></key>
+	         		<value>LXK UP Service Street Address</value>
+				</entry>
+				<entry>
+	         		<key><value>street2</value></key>
+	         		<value>LXK UP Service Street Address2</value>
+				</entry>								
+				<entry>
+	         		<key><value>street3</value></key>
+	         		<value>LXK UP Service Street Address3</value>
+				</entry>	
+				<entry>
+	         		<key><value>postalCode</value></key>
+	         		<value>Service Postal Code</value>
+				</entry>
+				<entry>
+	         		<key><value>province</value></key>
+	         		<value>LXK SW Service Province</value>
+				</entry>
+				<entry>
+	         		<key><value>serviceRequestStatusDate</value></key>
+	         		<value>LXK SW Web SR Status Date</value>
+				</entry>
+				<entry>
+	         		<key><value>problemDescription</value></key>
+	         		<value>Abstract</value>
+				</entry>
+				<entry>
+	         		<key><value>modelNumber</value></key>
+	         		<value>LXK SD Product MTM Name</value>
+				</entry>
+				<entry>
+	         		<key><value>parentServiceRequestId</value></key>
+	         		<value>Parent Service Request Id</value>
+				</entry>
+				<entry>
+	         		<key><value>addressName</value></key>
+	         		<value>LXK UP Service Address Name</value>
+				</entry>
+                <entry>
+                	<key><value>resolutionCode</value></key>
+                	<value>LXK R Resolution Code</value>
+                </entry>
+				<entry>
+	         		<key><value>requestType</value></key>
+	         		<value>LXK MPS SR Type</value>
+				</entry>
+				<entry>
+	         		<key><value>area</value></key>
+	         		<value>LXK MPS SR Area</value>
+				</entry>
+				
+				
+			</map>
+		</property>
+    </bean>  
+</beans>

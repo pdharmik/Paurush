@@ -1,0 +1,22 @@
+# Define all the appenders
+
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%d [%t] %X{SessionID} %-5p %c - %m%n
+ 
+# Roll-over the log once per day
+log4j.appender.SERVICESPORTAL=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.SERVICESPORTAL.file=${catalina.base}/logs/global-partner.log
+log4j.appender.SERVICESPORTAL.encoding=UTF-8
+log4j.appender.SERVICESPORTAL.DatePattern='.'yyyy-MM-dd'.log'
+log4j.appender.SERVICESPORTAL.layout=org.apache.log4j.PatternLayout
+log4j.appender.SERVICESPORTAL.layout.ConversionPattern=%d [%t] %X{SessionID} %-5p %c - %m%n
+log4j.appender.SERVICESPORTAL.append=true
+
+log4j.rootLogger=FATAL,stdout,SERVICESPORTAL
+
+log4j.logger.org.springframework.web.portlet=ERROR
+log4j.logger.org.springframework.web.servlet.ViewRendererServlet=ERROR
+log4j.logger.org.apache.axis=ERROR
+log4j.logger.com.lexmark=DEBUG
+log4j.logger.com.amind=ERROR
