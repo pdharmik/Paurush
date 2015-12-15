@@ -1306,7 +1306,7 @@ public class HardwareDebriefController extends BaseController{
 			technicianInfo.append("}");
 			
 			if(StringUtils.isNotEmpty(accountId)) {
-				List<AccountContact> accountContactList = ControllerUtil.retrieveTechnicianListSorted(accountId, partnerRequestsServiceMock);
+				List<AccountContact> accountContactList = ControllerUtil.retrieveTechnicianListSorted(accountId, partnerRequestsService);
 				
 				for(AccountContact accountContact : accountContactList){
 					technicianInfo.append(
