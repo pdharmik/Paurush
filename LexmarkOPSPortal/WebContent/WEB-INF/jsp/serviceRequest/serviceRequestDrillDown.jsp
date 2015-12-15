@@ -1142,7 +1142,6 @@ jQuery(document).ready(function() {
  		<button class="button" type="button" onclick="backToHistory();"><spring:message code="Details.changeRequestDetails.button.back"/></button>
  	</td></tr>
 </table>
-</div>
 <div id="dialog_createNew" style="display:none;">
 <div id="totalContent">
 
@@ -1664,10 +1663,10 @@ var timezoneOffsetServiceRequest="";
     	 }
     	 function expandAssociatedAndHistory(){
     	  		document.getElementById("tab_associatedTicketsGrid").style.display = 'block';
-    	  		document.getElementById("img_tab_associatedTicketsGrid").setAttribute("src", "<html:imagesPath/>collapsed.jpg");
+    	  		jQuery("#img_tab_associatedTicketsGrid").removeClass("expand-icon").addClass("minimize-icon");
     	  		//Code commented for CI-7 Defect #8217
     	  		//document.getElementById("tab_historyGrid").style.display = 'block';
-    	  		//document.getElementById("img_tab_historyGrid").setAttribute("src", "<html:imagesPath/>collapsed.jpg"); 
+    	  		//jQuery("#img_tab_historyGrid").removeClass("expand-icon").addClass("minimize-icon");
     	  	  	};
     	  	 function popupNotificationDecDetail(selectedRowId){
     	    		var date = SRNotificationsGrid.cellByIndex(selectedRowId,0).cell.innerHTML;

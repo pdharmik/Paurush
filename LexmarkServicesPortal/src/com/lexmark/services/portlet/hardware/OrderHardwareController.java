@@ -504,7 +504,7 @@ public class OrderHardwareController extends BaseController {
 				if (productModel.length()>3){
 					partImage = URLImageUtil.getPartImage(productModel);
 				}
-				if(!partImage.equals(IMAGE_NOT_FOUND)){
+				if(!partImage.equals(IMAGE_NOT_FOUND)&& StringUtils.isNotBlank(partImage)){
 					partImage = "<img src='"+partImage+"' alt=\'Change\' width=\'100\' height=\'100\'/>";
 				}else{
 					partImage = "<img src=\'/LexmarkServicesPortal/images/part_na_color.png\' width=\'100\' height=\'100\'/>";

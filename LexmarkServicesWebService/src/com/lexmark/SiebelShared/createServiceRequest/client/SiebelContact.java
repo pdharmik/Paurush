@@ -599,6 +599,7 @@ public class SiebelContact  implements java.io.Serializable {
         elemField.setFieldName("contactType");
         elemField.setXmlName(new javax.xml.namespace.QName("", "ContactType"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
         elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
     }

@@ -7,9 +7,11 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import com.lexmark.contract.CatalogListContract;
+import com.lexmark.contract.GlobalCatalogListContract;
 import com.lexmark.domain.ListOfValues;
 import com.lexmark.domain.OrderPart;
 import com.lexmark.result.CatalogListResult;
+import com.lexmark.result.GlobalCatalogListResult;
 import com.lexmark.service.api.OrderSuppliesCatalogService;
 
 /**
@@ -147,6 +149,13 @@ public class OrderSuppliesCatalogServiceImpl implements OrderSuppliesCatalogServ
 	}
 	@Override
 	public CatalogListResult retrieveAccessoriesB2b(CatalogListContract contract)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public GlobalCatalogListResult retrieveGlobalCatalogListB2B(
+			GlobalCatalogListContract globalCatalogListContract)
 			throws Exception {
 		// TODO Auto-generated method stub
 		return null;

@@ -166,6 +166,7 @@ public class FleetManagementController extends BaseController{
 		form.setBackInfo(StringUtils.isNotBlank(backJson)==true?StringEscapeUtils.escapeJavaScript(backJson):"");
 		setFleetManagementDataToForm(request,form,model);
 		
+		form.setCompanyName(PortalSessionUtil.getServiceUser(session).getCompanyName());
 		model.addAttribute("fleetMgmtForm", form);
 		request.setAttribute("fleetManagementFlag", "true");
 		model.addAttribute("fleetManagementFlag", "true");
@@ -285,16 +286,22 @@ public class FleetManagementController extends BaseController{
 		StringBuffer imgUrls=new StringBuffer("[");
 		for(String device:splitDeviceID){
 			String partImage="";
-			try {
-				 partImage= URLImageUtil.getPartImageFromLocal(device);
-			} catch (Exception e) {
-				LOGGER.debug("Exception"+e.getMessage());
-				LOGGER.error("[Exception occured while retireving the url ]");				
-			} finally{
+			if(StringUtils.isNotBlank(device)){
+				try {
+					 partImage= URLImageUtil.getPartImageFromLocal(device);
+				} catch (Exception e) {
+					LOGGER.debug("Exception"+e.getMessage());
+					LOGGER.error("[Exception occured while retireving the url ]");				
+				} 
+			}else{
+				partImage="Not found";
+			}
+			
 				imgUrls.append("\"");
 				imgUrls.append(partImage);
 				imgUrls.append("\",");
-			}
+			
+			
 		}
 		imgUrls.deleteCharAt(imgUrls.length()-1);
 		imgUrls.append("]");
@@ -432,6 +439,7 @@ public class FleetManagementController extends BaseController{
 		String createChangeMgmtReq = (String)hMap.get("CREATE CHANGE MGMT REQUEST");
 		String createSuppliesReq = (String)hMap.get("CREATE SUPPLIES REQUEST");
 		String createServiceReq = (String)hMap.get("CREATE SERVICE REQUEST");
+		String createHardwareReq = (String)hMap.get("CREATE HARDWARE REQUEST");
 		
 		if(createChangeMgmtReq !=null && "True".equalsIgnoreCase(createChangeMgmtReq)){
 			form.setShowChangeMgmt(true);
@@ -441,6 +449,9 @@ public class FleetManagementController extends BaseController{
 		}
 		if(createServiceReq !=null && "True".equalsIgnoreCase(createServiceReq)){
 			form.setShowService(true);
+		}
+		if(createHardwareReq !=null && "True".equalsIgnoreCase(createHardwareReq)){
+			form.setShowHardware(true);
 		}
 		 
 	}
@@ -468,6 +479,8 @@ public class FleetManagementController extends BaseController{
 		Map<String, String>srOPSStatus=null;
 		Map<String, String>srSubStatus=null;
 		Map<String, String>srSource=null;
+		Map<String, String> alertCodes=null;
+		Map<String, String> expiration=null;
 		try {
 			
 			
@@ -489,6 +502,8 @@ public class FleetManagementController extends BaseController{
 			assetLifeCycle=commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_ASSET_LIFECYCLE.getValue(), request.getLocale());
 			devicePhase=commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_DEVICE_PHASE.getValue(), request.getLocale());
 			hwStatus=commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_HARDWARE_STATUS.getValue(), request.getLocale());
+			expiration = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_DEVICE_STATUS_EXPIRATION.getValue(), request.getLocale());
+			alertCodes = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_DEVICE_STATUS_ALERTS.getValue(), request.getLocale());
 			
 		}catch (LGSDBException e) {
 			// TODO Auto-generated catch block
@@ -513,6 +528,8 @@ public class FleetManagementController extends BaseController{
 		model.addAttribute("srOPSStatus",srOPSStatus);
 		model.addAttribute("srSubStatus",srSubStatus);
 		model.addAttribute("srSource",srSource);
+		model.addAttribute("alertCodes",alertCodes);
+		model.addAttribute("expiration",expiration);
 		
 		 	
 	}

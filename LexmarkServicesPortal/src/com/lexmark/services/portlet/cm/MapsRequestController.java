@@ -76,9 +76,11 @@ import com.lexmark.domain.Attachment;
 import com.lexmark.domain.FileObject;
 //import com.lexmark.domain.ListOfValues;
 import com.lexmark.domain.ServiceRequest;
+import com.lexmark.domain.SiebelLocalization.SiebelLocalizationOptionEnum;
 import com.lexmark.exceptionimpl.checked.LGSCheckedException;
 import com.lexmark.exceptionimpl.checked.business.LGSBusinessException;
 import com.lexmark.exceptionimpl.runtime.LGSRuntimeException;
+import com.lexmark.framework.exception.LGSDBException;
 import com.lexmark.framework.logging.LEXLogger;
 import com.lexmark.result.CreateServiceRequestResult;
 //import com.lexmark.result.LocalizedSiebelLOVListResult;
@@ -203,6 +205,9 @@ public class MapsRequestController extends BaseController {
 	 * 
 	 */
 	public String CHANGE_ACCOUNT_LINK ="changeAccountLink";
+	
+	/* LBS 1.5- For showing Grid Popup in Maps Request page */
+	private String lbsFormPost;
 	
 	private static String[] addressInputFields={"maps_req_addressId","maps_req_addressName","maps_req_addressLine1","maps_req_addressLine2",
         "maps_req_addressCity","maps_req_addressState","maps_req_addressProvince",
@@ -349,6 +354,25 @@ public class MapsRequestController extends BaseController {
 			model.addAttribute(REQ_ACCOUNT_CONTACT, accContact);
 		}
 		
+		//addition for maps request lodcheck start
+		Map<String, String> isLbsAddress=null;
+		Map<String, String> lbsAddressLOD=null;
+		Map<String, String> lbsFloorLOD=null;
+		
+		try {
+			isLbsAddress = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_ISLBSADDRESS.getValue(),request.getLocale());
+			lbsAddressLOD = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_ADDRESSLOD.getValue(),request.getLocale());
+			lbsFloorLOD= commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_FLOORLOD.getValue(),request.getLocale());
+		}catch (LGSDBException e) {
+			LOGGER.debug("Exception"+e.getMessage());
+		}catch (Exception e) {
+			LOGGER.debug("Exception"+e.getMessage());
+		}
+		model.addAttribute("isLbsAddress", isLbsAddress);
+		model.addAttribute("lbsAddressLOD", lbsAddressLOD);
+		model.addAttribute("lbsFloorLOD", lbsFloorLOD);
+		
+		////addition for maps request lodcheck end
 		//This section is for adding address to comments if the request comes from fleet management
 		HttpServletRequest httpReq = PortalUtil.getOriginalServletRequest(PortalUtil.getHttpServletRequest(request));
 		//checking for addressId if its present then get other values.
@@ -372,6 +396,15 @@ public class MapsRequestController extends BaseController {
 		model.addAttribute(MAPSREQUEST_FORM, mapsRequestForm);
 		model.addAttribute(FILE_UPLOAD_FORM, fileUploadForm);
 		model.addAttribute("fleetManagementFlag","true");
+		
+		/* LBS 1.5- Grid Popup showing */
+		setLbsFormPost(lbsFormPost);
+		LOGGER.debug("Calling Method setModelParams");
+		LOGGER.debug("lbsFormPost::"+getLbsFormPost());
+		commonController.setModelParams(model,session,getLbsFormPost());
+		LOGGER.debug("Outside Method setModelParams");
+		/* Ends */
+		
 		LOGGER.exit(CLASS_NAME, METHOD_NAME);
 		return "changemanagement/mapsRequest/mapsRequestDetails";
 	}
@@ -396,12 +429,11 @@ public class MapsRequestController extends BaseController {
 		LOGGER.enter(CLASS_NAME, METHOD_NAME);
 		LOGGER.debug("Inside MapsRequestController >> confirmRequest");
 		PortletSession session = request.getPortletSession();
-		
-
 		@SuppressWarnings("unchecked")
 		Map<String, FileObject> fileMap = (Map<String, FileObject>) session
 				.getAttribute(ChangeMgmtConstant.SESSION_FILE_MAP);
 		model.addAttribute(MAPSREQUEST_FORM, mapsRequestForm);
+		
 		request.setAttribute(REQ_FILE_MAP, fileMap);
 		mapsRequestForm.refreshSubmitToken(request);
 		FileUploadForm fileUploadForm = new FileUploadForm();
@@ -475,6 +507,25 @@ public class MapsRequestController extends BaseController {
 			model.addAttribute(LexmarkConstants.TIMEZONE_OFFSET,
 					Float.valueOf(timezoneOffset));
 		}
+		//addition for maps request lodcheck start
+				Map<String, String> isLbsAddress=null;
+				Map<String, String> lbsAddressLOD=null;
+				Map<String, String> lbsFloorLOD=null;
+				
+				try {
+					isLbsAddress = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_ISLBSADDRESS.getValue(),request.getLocale());
+					lbsAddressLOD = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_ADDRESSLOD.getValue(),request.getLocale());
+					lbsFloorLOD= commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_FLOORLOD.getValue(),request.getLocale());
+				}catch (LGSDBException e) {
+					LOGGER.debug("Exception"+e.getMessage());
+				}catch (Exception e) {
+					LOGGER.debug("Exception"+e.getMessage());
+				}
+				model.addAttribute("isLbsAddress", isLbsAddress);
+				model.addAttribute("lbsAddressLOD", lbsAddressLOD);
+				model.addAttribute("lbsFloorLOD", lbsFloorLOD);
+				
+				////addition for maps request lodcheck end
 		ResourceURL resURL = response.createResourceURL();
 		resURL.setResourceID(URL_DISPLAY_ATTACHMENT);
 		model.addAttribute(URL_ATTACHMENT, resURL.toString());
@@ -532,7 +583,25 @@ public class MapsRequestController extends BaseController {
 		model.addAttribute(FILE_UPLOAD_FORM, fileUploadForm);
 
 		commonController.getContactInformation(request, response);
-
+		//addition for maps request lodcheck start
+				Map<String, String> isLbsAddress=null;
+				Map<String, String> lbsAddressLOD=null;
+				Map<String, String> lbsFloorLOD=null;
+				
+				try {
+					isLbsAddress = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_ISLBSADDRESS.getValue(),request.getLocale());
+					lbsAddressLOD = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_ADDRESSLOD.getValue(),request.getLocale());
+					lbsFloorLOD= commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_FLOORLOD.getValue(),request.getLocale());
+				}catch (LGSDBException e) {
+					LOGGER.debug("Exception"+e.getMessage());
+				}catch (Exception e) {
+					LOGGER.debug("Exception"+e.getMessage());
+				}
+				model.addAttribute("isLbsAddress", isLbsAddress);
+				model.addAttribute("lbsAddressLOD", lbsAddressLOD);
+				model.addAttribute("lbsFloorLOD", lbsFloorLOD);
+				
+				////addition for maps request lodcheck end
 		// Forward to the respective render method
 		response.setRenderParameter("action", "backToEdit");
 		LOGGER.exit(CLASS_NAME, METHOD_NAME);
@@ -860,8 +929,15 @@ public class MapsRequestController extends BaseController {
 
 			serviceRequest.setServiceRequestNumber(mapsRequestForm
 					.getPrevSRNumber());
+			String requestForBuildingFloorNotes=mapsRequestForm.getNotesForNewBuilding();
+			if(requestForBuildingFloorNotes==null || requestForBuildingFloorNotes=="")
+			{
 			serviceRequest.setNotes(mapsRequestForm.getNotesOrComments());
-
+			}
+			else
+			{
+				serviceRequest.setNotes(mapsRequestForm.getNotesOrComments()+" " +requestForBuildingFloorNotes);	
+			}
 			
 			PortletSession session = request.getPortletSession();
 			@SuppressWarnings("unchecked")
@@ -1057,7 +1133,25 @@ public class MapsRequestController extends BaseController {
 		LOGGER.enter(CLASS_NAME, METHOD_NAME);
 		LOGGER.debug("In createCMRequestSuccess method "
 				+ request.getParameter(LexmarkConstants.TIMEZONE_OFFSET));
+		//addition for maps request lodcheck start
+		Map<String, String> isLbsAddress=null;
+		Map<String, String> lbsAddressLOD=null;
+		Map<String, String> lbsFloorLOD=null;
 		
+		try {
+			isLbsAddress = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_ISLBSADDRESS.getValue(),request.getLocale());
+			lbsAddressLOD = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_ADDRESSLOD.getValue(),request.getLocale());
+			lbsFloorLOD= commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_FLOORLOD.getValue(),request.getLocale());
+		}catch (LGSDBException e) {
+			LOGGER.debug("Exception"+e.getMessage());
+		}catch (Exception e) {
+			LOGGER.debug("Exception"+e.getMessage());
+		}
+		model.addAttribute("isLbsAddress", isLbsAddress);
+		model.addAttribute("lbsAddressLOD", lbsAddressLOD);
+		model.addAttribute("lbsFloorLOD", lbsFloorLOD);
+		
+		////addition for maps request lodcheck end
 		LOGGER.exit(CLASS_NAME, METHOD_NAME);
 		return "changemanagement/mapsRequest/mapsRequestSummary";
 	}
@@ -1332,4 +1426,18 @@ public class MapsRequestController extends BaseController {
 		this.hwMassTemplatePath = hwMassTemplatePath;
 	}
 	
+	/**
+	 * @return lbsFormPost 
+	 */
+	public String getLbsFormPost() {
+		LOGGER.debug("formPost=> "+lbsFormPost);
+		return lbsFormPost;
+	}
+	
+	/**
+	 * @param lbsFormPost 
+	 */
+	public void setLbsFormPost(String lbsFormPost) {
+		this.lbsFormPost = lbsFormPost;
+	}
 }

@@ -1363,21 +1363,24 @@ public class AmindGlobalServiceTest extends AmindServiceTest {
 	}
 	
 	@Test
-	public void testRetrievePaymentTypeList_SearchSpec() throws Exception {
+	public void testRetrievePaymentTypeList_INC0146472() throws Exception {
 		PaymentListContract contract = new PaymentListContract();
 		contract.setMdmLevel("Global");
-		contract.setMdmId("062320692");
-		contract.setSoldToNumber("0000166146");
+		contract.setMdmId("161906193");
+		contract.setSoldToNumber("0000219524");
 		contract.setHardwareFlag(false);
-		contract.setContractNumber("0040000157");
+		contract.setContractNumber("0040000150");
 		contract.setIncrement(0);
 		contract.setStartRecordNumber(0);
 		contract.setNewQueryIndicator(false);
-		contract.setAgreementId("1-5YV3Z4Y");
+		contract.setAgreementId("1-7PZOL4X");
 		contract.setSessionHandle(crmSessionHandle);
 		
 		PaymentTypeListResult result = amindGlobalService.retrievePaymentTypeList(contract);
-		System.out.println(result.getPaymentType().size());
+		for (String paymentType : result.getPaymentType()) {
+			System.out.println("paymentTyoe: " + paymentType);
+		}
+		System.out.println("Size: " + result.getPaymentType().size());
 	}
 
 	@Test
@@ -1803,6 +1806,75 @@ public class AmindGlobalServiceTest extends AmindServiceTest {
 	}
 	
 	@Test
+	public void testRetrieveCatalogAgreementList_INC0137727() throws Exception {
+		SiebelAccountListContract contract = new SiebelAccountListContract();
+		contract.setMdmLevel("Global");
+		contract.setMdmId("739088818");
+		contract.setNewQueryIndicator(true);
+		contract.setVendorFlag(false);
+		contract.setAgreementFlag(true);
+		contract.setHardwareFlag(true);
+		contract.setSessionHandle(crmSessionHandle);
+		SiebelAccountListResult result = amindGlobalService.retrieveCatalogAgreementList(contract);
+		for (Account account : result.getAccountList()) {
+			System.out.println("AgreementID: " + account.getAgreementId());
+		}
+		System.out.println();
+	}
+	
+	@Test
+	public void testRetrieveCatalogAgreementList_INC0144014() throws Exception {
+		SiebelAccountListContract contract = new SiebelAccountListContract();
+		contract.setMdmLevel("Global");
+		contract.setMdmId("077583318");
+		contract.setNewQueryIndicator(true);
+		contract.setVendorFlag(false);
+		contract.setAgreementFlag(false);
+		contract.setHardwareFlag(false);
+		contract.setSessionHandle(crmSessionHandle);
+		SiebelAccountListResult result = amindGlobalService.retrieveCatalogAgreementList(contract);
+		for (Account account : result.getAccountList()) {
+			System.out.println("AgreementID: " + account.getAgreementId());
+		}
+		System.out.println();
+	}
+	
+	@Test
+	public void testRetrieveCatalogAgreementList_INC0147452() throws Exception {
+		SiebelAccountListContract contract = new SiebelAccountListContract();
+		contract.setMdmLevel("Global");
+		contract.setMdmId("738801005");
+		contract.setNewQueryIndicator(true);
+		contract.setVendorFlag(false);
+		contract.setAgreementFlag(true);
+		contract.setHardwareFlag(true);
+		contract.setSessionHandle(crmSessionHandle);
+		SiebelAccountListResult result = amindGlobalService.retrieveCatalogAgreementList(contract);
+		System.out.println(result.getAccountList().size());
+	}
+	
+	@Test
+	public void testRetrieveCatalogAgreementList_INC0159273() throws Exception {
+		SiebelAccountListContract contract = new SiebelAccountListContract();
+		contract.setMdmLevel("Global");
+		contract.setMdmId("461064446");
+//		contract.setAccountId("1-LBTR7B");
+		contract.setNewQueryIndicator(true);
+		contract.setAgreementFlag(true);
+		contract.setHardwareFlag(false);
+		contract.setSessionHandle(crmSessionHandle);
+		SiebelAccountListResult result = amindGlobalService.retrieveCatalogAgreementList(contract);
+		for (Account account : result.getAccountList()) {
+			System.out.println("AccountId: " + account.getAccountId());
+			System.out.println("AccountName: " + account.getAccountName());
+			for (String soldto : account.getSoldToNumbers()) {
+				System.out.println("Soldto: " + soldto);
+			}
+		}
+		System.out.println("size: " + result.getAccountList().size());
+	}	
+	
+	@Test
 	public void testRetrieveBillToAddressList_defect12215() throws Exception {
 		AddressListContract contract = new AddressListContract();
 		contract.setSessionHandle(AmindServiceTest.crmSessionHandle);
@@ -1895,6 +1967,22 @@ public class AmindGlobalServiceTest extends AmindServiceTest {
 		contract.setSessionHandle(AmindServiceTest.crmSessionHandle);
 		contract.setFavoriteFlag(false);
 		contract.setSoldToNumbers(Arrays.asList("0000166146", "0000166146"));
+		contract.setCleansedAddress(false);
+		contract.setNewQueryIndicator(false);
+		contract.setStartRecordNumber(0);  
+		contract.setIncrement(0);
+		AddressListResult result = amindGlobalService.retrieveBillToAddressList(contract);
+		List<GenericAddress> addresses = result.getAddressList();
+		System.out.println("Size: " + addresses.size());
+		System.out.println("Total count: " + result.getTotalCount());
+	}
+	
+	@Test
+	public void testRetrieveBillToAddressList_INC0159273() throws Exception {
+		AddressListContract contract = new AddressListContract();
+		contract.setSessionHandle(AmindServiceTest.crmSessionHandle);
+		contract.setFavoriteFlag(false);
+		contract.setSoldToNumbers(Arrays.asList("0000270014", "0000270014"));
 		contract.setCleansedAddress(false);
 		contract.setNewQueryIndicator(false);
 		contract.setStartRecordNumber(0);  
@@ -2004,6 +2092,26 @@ public class AmindGlobalServiceTest extends AmindServiceTest {
 		PartnerAccountListContract contract = new PartnerAccountListContract();
 		contract.setMdmId("118552798");
 		contract.setMdmLevel("Global");
+		
+		PartnerAccountListResult result = amindGlobalService.retrievePartnerAccountList(contract);
+		System.out.println(result.getAccountList().size());
+	}
+	
+	@Test
+	public void testRetrievePartnerAccountList_LBS1_5() throws Exception {
+		PartnerAccountListContract contract = new PartnerAccountListContract();
+		contract.setMdmId("118552798");
+		contract.setMdmLevel("Global");
+		
+		PartnerAccountListResult result = amindGlobalService.retrievePartnerAccountList(contract);
+		System.out.println(result.getAccountList().size());
+	}
+	
+	@Test
+	public void testRetrievePartnerAccountList_DR_Env() throws Exception {
+		PartnerAccountListContract contract = new PartnerAccountListContract();
+		contract.setMdmId("18380");
+		contract.setMdmLevel("Legal");
 		
 		PartnerAccountListResult result = amindGlobalService.retrievePartnerAccountList(contract);
 		System.out.println(result.getAccountList().size());

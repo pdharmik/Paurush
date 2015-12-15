@@ -985,13 +985,6 @@ public class ServiceRequest_serviceRequestWS_BinderStub extends org.apache.axis.
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://dlxkswmis1.lex.lexmark.com/ServiceRequest/serviceRequestWS", "Description");
-            cachedSerQNames.add(qName);
-            cls = java.lang.String.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(org.apache.axis.encoding.ser.BaseSerializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleSerializerFactory.class, cls, qName));
-            cachedDeserFactories.add(org.apache.axis.encoding.ser.BaseDeserializerFactory.createFactory(org.apache.axis.encoding.ser.SimpleDeserializerFactory.class, cls, qName));
-
             qName = new javax.xml.namespace.QName("http://dlxkswmis1.lex.lexmark.com/ServiceRequest/serviceRequestWS", "DocumentMetaData");
             cachedSerQNames.add(qName);
             cls = com.lexmark.SiebelShared.createServiceRequest.client.DocumentMetaData.class;
@@ -1244,6 +1237,13 @@ public class ServiceRequest_serviceRequestWS_BinderStub extends org.apache.axis.
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
 
+            qName = new javax.xml.namespace.QName("http://dlxkswmis1.lex.lexmark.com/ServiceRequest/serviceRequestWS", "PrimaryContact");
+            cachedSerQNames.add(qName);
+            cls = com.lexmark.SiebelShared.createServiceRequest.client.PrimaryContact.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
     }
     private void addBindings1() {
             java.lang.Class cls;
@@ -1259,13 +1259,6 @@ public class ServiceRequest_serviceRequestWS_BinderStub extends org.apache.axis.
             java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
             java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
             java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
-            qName = new javax.xml.namespace.QName("http://dlxkswmis1.lex.lexmark.com/ServiceRequest/serviceRequestWS", "PrimaryContact");
-            cachedSerQNames.add(qName);
-            cls = com.lexmark.SiebelShared.createServiceRequest.client.PrimaryContact.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
-
             qName = new javax.xml.namespace.QName("http://dlxkswmis1.lex.lexmark.com/ServiceRequest/serviceRequestWS", "ProductDetails");
             cachedSerQNames.add(qName);
             cls = com.lexmark.SiebelShared.createServiceRequest.client.ProductDetails.class;
@@ -1740,7 +1733,7 @@ public class ServiceRequest_serviceRequestWS_BinderStub extends org.apache.axis.
         setRequestHeaders(_call);
         setAttachments(_call);
  try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {debug, changeManagementServiceRequestWSInput, synchOrAsynch});
-//System.out.println(_call.getMessageContext().getRequestMessage().getSOAPPartAsString());
+
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
         }
@@ -2354,7 +2347,7 @@ public class ServiceRequest_serviceRequestWS_BinderStub extends org.apache.axis.
         setRequestHeaders(_call);
         setAttachments(_call);
  try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {debug, consumablesServiceRequestWSInput, synchOrAsynch});
- 		//System.out.println(_call.getMessageContext().getRequestMessage().getSOAPPartAsString());
+
         if (_resp instanceof java.rmi.RemoteException) {
             throw (java.rmi.RemoteException)_resp;
         }

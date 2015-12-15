@@ -671,8 +671,8 @@ public class ClaimRequestCreateController {
 		List<Account> accntList = form.getPartnerIndirectAccountList();
 		boolean accountFlag = false;
 		for(int i=0; i<accntList.size(); i++){
-			logger.debug(i+"th account name in showClaimRequestSubmitPageDeviceFound is "+accntList.get(i).getAccountName());
-			logger.debug(i+"th isMaintenanceKit flag in showClaimRequestSubmitPageDeviceFound is "+accntList.get(i).isMaintenanceKit());
+			//logger.debug(i+"th account name in showClaimRequestSubmitPageDeviceFound is "+accntList.get(i).getAccountName());
+			//logger.debug(i+"th isMaintenanceKit flag in showClaimRequestSubmitPageDeviceFound is "+accntList.get(i).isMaintenanceKit());
 			if(accntList.get(i).isMaintenanceKit()){
 				accountFlag = true;
 			}
@@ -798,9 +798,9 @@ public class ClaimRequestCreateController {
 					SiebelLOVListContract lovListcontract = ContractFactory.createSiebelLOVListContract(SiebelLocalizationOptionEnum.PARTNER_RESOLUTION_CODE.getValue(), null);
 					SiebelLOVListResult listResult;
 					listResult = globalService.retrieveSiebelLOVList(lovListcontract);
-					for(int i=0; i<listResult.getLovList().size();i++){
+					/*for(int i=0; i<listResult.getLovList().size();i++){
 						logger.debug(i+"th value is "+listResult.getLovList().get(i).getValue());
-					}
+					}*/
 					
 					// retrieve map from db start
 					LocalizedSiebelLOVListContract localizedLOVListContract = ContractFactory.createLocalizedSiebelLOVListContract(SiebelLocalizationOptionEnum.PARTNER_DEBRIEF_RESOLUTION_CODE.getValue(), null, request.getLocale());
@@ -811,10 +811,10 @@ public class ClaimRequestCreateController {
 							dbLOVMap.put(localizedLOV.getValue(), localizedLOV.getName());
 						}
 					}
-					logger.debug("db lov map for new resolution code is "+dbLOVMap);
+					//logger.debug("db lov map for new resolution code is "+dbLOVMap);
 					Map<String, String> resolutionCodeMap = new HashMap<String, String>();
 					for(int i=0; i<listResult.getLovList().size();i++){
-						logger.debug(i+"th value is "+listResult.getLovList().get(i));
+						//logger.debug(i+"th value is "+listResult.getLovList().get(i));
 						String key = listResult.getLovList().get(i).getValue();
 						String value = dbLOVMap.get(key);
 						if(null != value && !value.toCharArray().equals("")){
@@ -832,9 +832,9 @@ public class ClaimRequestCreateController {
 		// adding to show only new values for part status code start  ========================================
 				lovListcontract = ContractFactory.createSiebelLOVListContract(SiebelLocalizationOptionEnum.PARTNER_PART_STATUS.getValue(), null);						 
 				listResult = globalService.retrieveSiebelLOVList(lovListcontract);
-				for(int i=0; i<listResult.getLovList().size();i++){
+				/*for(int i=0; i<listResult.getLovList().size();i++){
 					logger.debug(i+"th value is "+listResult.getLovList().get(i).getValue());
-				}
+				}*/
 				
 				// retrieve map from db start
 				 localizedLOVListContract = ContractFactory.createLocalizedSiebelLOVListContract(SiebelLocalizationOptionEnum.PARTNER_DEBRIEF_PART_STATUS.getValue(), null, request.getLocale());
@@ -845,10 +845,10 @@ public class ClaimRequestCreateController {
 						dbLOVMap.put(localizedLOV.getValue(), localizedLOV.getName());
 					}
 				}
-				logger.debug("db lov map for new part status code is "+dbLOVMap);
+				//logger.debug("db lov map for new part status code is "+dbLOVMap);
 				Map<String, String> partStatusMap = new HashMap<String, String>();
 				for(int i=0; i<listResult.getLovList().size();i++){
-					logger.debug(i+"th value is "+listResult.getLovList().get(i));
+					//logger.debug(i+"th value is "+listResult.getLovList().get(i));
 					String key = listResult.getLovList().get(i).getValue();
 					String value = dbLOVMap.get(key);
 					if(null != value && !value.toCharArray().equals("")){

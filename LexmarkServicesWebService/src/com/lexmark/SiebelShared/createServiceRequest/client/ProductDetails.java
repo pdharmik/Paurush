@@ -42,6 +42,8 @@ public class ProductDetails  implements java.io.Serializable {
 
     private java.lang.String hardwareConfigurationID;
 
+    private java.lang.String placementId;
+
     private java.lang.String relatedContractParentLineNumber;
 
     private java.lang.String relatedContractLineNumber;
@@ -69,6 +71,7 @@ public class ProductDetails  implements java.io.Serializable {
            java.lang.String catalogId,
            java.lang.String catalogItemId,
            java.lang.String hardwareConfigurationID,
+           java.lang.String placementId,
            java.lang.String relatedContractParentLineNumber,
            java.lang.String relatedContractLineNumber,
            java.lang.String implicitCatalogEntryFlag) {
@@ -89,6 +92,7 @@ public class ProductDetails  implements java.io.Serializable {
            this.catalogId = catalogId;
            this.catalogItemId = catalogItemId;
            this.hardwareConfigurationID = hardwareConfigurationID;
+           this.placementId = placementId;
            this.relatedContractParentLineNumber = relatedContractParentLineNumber;
            this.relatedContractLineNumber = relatedContractLineNumber;
            this.implicitCatalogEntryFlag = implicitCatalogEntryFlag;
@@ -436,6 +440,26 @@ public class ProductDetails  implements java.io.Serializable {
 
 
     /**
+     * Gets the placementId value for this ProductDetails.
+     * 
+     * @return placementId
+     */
+    public java.lang.String getPlacementId() {
+        return placementId;
+    }
+
+
+    /**
+     * Sets the placementId value for this ProductDetails.
+     * 
+     * @param placementId
+     */
+    public void setPlacementId(java.lang.String placementId) {
+        this.placementId = placementId;
+    }
+
+
+    /**
      * Gets the relatedContractParentLineNumber value for this ProductDetails.
      * 
      * @return relatedContractParentLineNumber
@@ -557,6 +581,9 @@ public class ProductDetails  implements java.io.Serializable {
             ((this.hardwareConfigurationID==null && other.getHardwareConfigurationID()==null) || 
              (this.hardwareConfigurationID!=null &&
               this.hardwareConfigurationID.equals(other.getHardwareConfigurationID()))) &&
+            ((this.placementId==null && other.getPlacementId()==null) || 
+             (this.placementId!=null &&
+              this.placementId.equals(other.getPlacementId()))) &&
             ((this.relatedContractParentLineNumber==null && other.getRelatedContractParentLineNumber()==null) || 
              (this.relatedContractParentLineNumber!=null &&
               this.relatedContractParentLineNumber.equals(other.getRelatedContractParentLineNumber()))) &&
@@ -627,6 +654,9 @@ public class ProductDetails  implements java.io.Serializable {
         }
         if (getHardwareConfigurationID() != null) {
             _hashCode += getHardwareConfigurationID().hashCode();
+        }
+        if (getPlacementId() != null) {
+            _hashCode += getPlacementId().hashCode();
         }
         if (getRelatedContractParentLineNumber() != null) {
             _hashCode += getRelatedContractParentLineNumber().hashCode();
@@ -761,6 +791,13 @@ public class ProductDetails  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("hardwareConfigurationID");
         elemField.setXmlName(new javax.xml.namespace.QName("", "HardwareConfigurationID"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(true);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("placementId");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "PlacementId"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(true);

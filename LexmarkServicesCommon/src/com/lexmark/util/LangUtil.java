@@ -243,6 +243,30 @@ public final class LangUtil {
 
 		return date;
 	}
+    
+    public static Date convertStringToUTCDate(String stringDate) {
+    	
+    	if (isBlank(stringDate)) {
+    		return null;
+    	}
+    	
+    	Date date = null;
+    	DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+    	formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+    	try {
+    		date = formatter.parse(stringDate);
+    	} catch (ParseException e) {
+    		try {
+    			formatter = new SimpleDateFormat("MM/dd/yyyy");
+    			formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+    			date = formatter.parse(stringDate);
+    		} catch (Exception ex) {
+    			ex.printStackTrace();
+    		}
+    	}
+    	
+    	return date;
+    }
 
     public static double convertStringToDouble(String number) {
     	

@@ -6,6 +6,7 @@ package com.lexmark.services.form;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
@@ -51,6 +52,8 @@ public class ManageAssetForm extends BaseForm implements Serializable {
 	private String moveType;
 	private String attachmentDescription;
 	private String backToMap;
+	private Map<String, Asset> assetDetailsMap;
+	private List<Asset> assetDetailsList;
 	
 	/**
 	 * @return String 
@@ -388,6 +391,27 @@ public class ManageAssetForm extends BaseForm implements Serializable {
 	 */
 	public String getBackToMap() {
 		return backToMap;
+	}
+
+	public Map<String, Asset> getAssetDetailsMap() {
+		return assetDetailsMap;
+	}
+	public void setAssetDetailsMap(Map<String, Asset> assetDetailsMap) {
+		this.assetDetailsMap = assetDetailsMap;
+	}
+
+	/**
+	 * @param assetDetailsList the assetDetailsList to set
+	 */
+	public void setAssetDetailsList(List<Asset> assetDetailsList) {
+		this.assetDetailsList = assetDetailsList;
+	}
+
+	/**
+	 * @return the assetDetailsList
+	 */
+	public List<Asset> getAssetDetailsList() {
+		return assetDetailsList;
 	}
 	
 }

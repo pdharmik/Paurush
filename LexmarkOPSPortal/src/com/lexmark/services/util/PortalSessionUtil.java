@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.portlet.PortletRequest;
 import javax.portlet.PortletSession;
@@ -15,6 +16,8 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 import java.util.Iterator;
+import java.util.Map.Entry;
+
 import com.lexmark.constants.LexmarkConstants;
 import com.lexmark.domain.Account;
 import com.lexmark.domain.ServicesUser;
@@ -486,5 +489,17 @@ public class PortalSessionUtil {
 	public static Boolean getOPSAccountSelected(PortletSession session){
 		return (Boolean)session.getAttribute(LexmarkConstants.OPS_ACCOUNT_SELECTED, PortletSession.APPLICATION_SCOPE);
 	}
-	
+	//Added for LBS 1.5
+	// added ***
+	public static String getLdapUserData(PortletSession session, String key) {
+		String returnString = "";
+		Map<String, String> ldapUserData = (Map<String, String>)session.getAttribute(LexmarkConstants.LDAP_USER_DATA, session.APPLICATION_SCOPE);
+		Set<Entry<String, String>> entrySet = ldapUserData.entrySet();		
+		for(Entry<String, String> entry: entrySet){
+			if(entry.getKey().equals(key)){
+				returnString = entry.getValue();
+			}
+		}		
+		return returnString;
+	}
 }

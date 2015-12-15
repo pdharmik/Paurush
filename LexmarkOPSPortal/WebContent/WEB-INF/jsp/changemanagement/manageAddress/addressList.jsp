@@ -185,21 +185,23 @@ jQuery(document).ready(function(){
 		}
 	initialiseGrid();
 });
-
+var lbsAddressFlagFilter=[];
+lbsAddressFlagFilter[0]=["Y","Yes"];
+lbsAddressFlagFilter[1]=["N","No"];
 	//following variables are declared in dynamicGridInitialize
 	pagingArea="pagingArea";infoArea="infoArea";headerMenuButton="headerMenuButton";loadingNotification="loadingNotification";backFilterValues="";
 	gridCreationId="serviceAddressGridbox_mainPage";
 
 	JSON_Param["<%=gridConfigurationValues[0]%>"]="&nbsp;,&nbsp;,"+"<spring:message code='serviceRequest.listHeader.serviceAddressList'/>";
-	JSON_Param["<%=gridConfigurationValues[1]%>"]=",,,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter";
-	JSON_Param["<%=gridConfigurationValues[2]%>"]="right,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left";
-	JSON_Param["<%=gridConfigurationValues[3]%>"]="55,25,0,150,115,105,105,90,80,65,100,60,60,60,80,80";
-	JSON_Param["<%=gridConfigurationValues[4]%>"]="ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro";
-	JSON_Param["<%=gridConfigurationValues[5]%>"]="na,na,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str";
+	JSON_Param["<%=gridConfigurationValues[1]%>"]=",,,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#combo_filter";
+	JSON_Param["<%=gridConfigurationValues[2]%>"]="right,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left";
+	JSON_Param["<%=gridConfigurationValues[3]%>"]="55,25,0,150,115,105,105,90,80,65,100,60,60,60,80,80,80";
+	JSON_Param["<%=gridConfigurationValues[4]%>"]="ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro";
+	JSON_Param["<%=gridConfigurationValues[5]%>"]="na,na,str,str,str,str,str,str,str,str,str,str,str,str,str,str,str,na";
 	JSON_Param["<%=gridConfigurationValues[6]%>"]="3";
 	JSON_Param["<%=gridConfigurationValues[7]%>"]="3,asc";
 	JSON_Param["<%=gridConfigurationValues[8]%>"]="2,7,11,12";
-	JSON_Param["<%=JSON_COMBO_FILTER%>1"]="";
+	JSON_Param["<%=JSON_COMBO_FILTER%>1"]=lbsAddressFlagFilter;
 	JSON_Param["<%=JSON_RESOURCE_URL%>"]="<portlet:resourceURL id="addressListPopulate"/>";
 	JSON_Param["<%=gridSavingParams[0]%>"]="${gridSettings.colsOrder}";
 	JSON_Param["<%=gridSavingParams[1]%>"]="${gridSettings.colsWidth}";

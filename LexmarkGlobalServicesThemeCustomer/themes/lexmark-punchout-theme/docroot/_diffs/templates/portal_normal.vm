@@ -159,7 +159,7 @@ $theme.include($body_top_include)
 	<header id="banner" role="banner">
 	
 		<h1 class="logo">
-			<a class="png" href="$company_url"></a>
+			<a class="png" href="#" onclick="showHome();"></a>
 
 		</h1>
 		<div id="top-header">

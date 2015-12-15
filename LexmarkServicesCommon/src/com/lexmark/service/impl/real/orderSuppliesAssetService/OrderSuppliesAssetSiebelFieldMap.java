@@ -20,6 +20,7 @@ public class OrderSuppliesAssetSiebelFieldMap {
 		m.put("installAddress.county", "Install County");
 		m.put("installAddress.district", "Install District");
 		m.put("installAddress.officeNumber", "Install House #");
+		m.put("installAddress.levelOfDetails", "LXK LBS Level of Detail");
 		m.put("assetContact.firstName", "LXK SW Primary Contact First Name");
 		m.put("assetContact.lastName", "LXK SW Primary Contact Last Name");
 		m.put("assetContact.emailAddress", "LXK SW Primary Contact Email");

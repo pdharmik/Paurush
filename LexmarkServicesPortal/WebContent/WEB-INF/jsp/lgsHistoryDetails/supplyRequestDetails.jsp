@@ -52,15 +52,18 @@ if(hMap.size()>0){
  
     <div class="journal-content-article">
       <h1><spring:message code="Details.changeRequestDetails.heading.supplyReqDeails"/></h1>
-      <h2 class="step"><spring:message code="Details.supplyRequestDetails.label.rquestNumber"/> <span id="reqNo">${requestForm.serviceRequest.serviceRequestNumber }</span></h2> </div>
-    <div class="utilities floatR" style="margin-top: -38px !important;">
+      <h2 class="step">
+      	<spring:message code="Details.supplyRequestDetails.label.rquestNumber"/> 
+      	<span id="reqNo">${requestForm.serviceRequest.serviceRequestNumber }</span>
+      </h2> 
+      	<div class="utilities floatR">
 		  	<ul>
               <li class="first"><a href="javascript:email();"><img src="<html:imagesPath/>transparent.png" class="ui_icon_sprite email-icon" alt="Email this page" ></a></li>
               <li><a href="javascript:print();"><img src="/LexmarkServicesPortal/images/transparent.png" class="ui_icon_sprite print-icon" alt="Print this page" height="27" width="27"></a></li>
             </ul>
           </div>
-    <div class="main-wrap">
-    
+     </div>    
+    <div class="main-wrap">    
       <div class="content" id="printSupplies"> 
         <!-- MAIN CONTENT BEGIN -->
         <div id="printSuppliesTop">

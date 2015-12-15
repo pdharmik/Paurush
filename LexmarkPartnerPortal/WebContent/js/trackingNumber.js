@@ -16,7 +16,7 @@ function onTrackingNumberClick(carrier, trackingNumber) {
 		webPage.document.write(" FedEx Shipment Status page is Loading...");
 		webPage.document.write("...please Wait");
 		webPage.document
-				.write("<FORM name='frm1' method='post' action='http://www.fedex.com/Tracking'>");
+				.write("<FORM name='frm1' method='post' action='http://www.fedex.com/Tracking/Detail?trackNum="+trackingNumber+"'>");
 		webPage.document
 				.write("<input type='hidden' name='ascend_header' value= '1'>");
 		webPage.document

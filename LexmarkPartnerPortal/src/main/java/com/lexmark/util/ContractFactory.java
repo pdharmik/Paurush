@@ -334,7 +334,7 @@ public final class ContractFactory {
 		
 		contract.setMdmId(PortalSessionUtil.getMdmId(session));
 		contract.setMdmLevel(PortalSessionUtil.getMdmLevel(session));
-		
+		contract.setChangeManagementFlag(false);
 		
 		
 		return contract;
@@ -394,6 +394,7 @@ public final class ContractFactory {
 		contract.setMdmId(PortalSessionUtil.getMdmId(session));
 		contract.setMdmLevel(PortalSessionUtil.getMdmLevel(session));
 		contract.setNewQueryIndicator(true);
+		contract.setChangeManagementFlag(false);
 		String queryType = request.getParameter("queryType");
 		if("Pending".equals(queryType))
 		{
@@ -1728,7 +1729,7 @@ public final class ContractFactory {
 				contract.setMassUploadRequest(true);
 			}
 			//ends
-			contract.setChangeManagementFlag(false);
+			
 			return contract;
 		}
 		

@@ -13,7 +13,7 @@
 				return false;
 			}
 			var hrefL=jQuery(this).attr('href');
-			if(hrefL.indexOf(backURL.backURLocation.substring(0,backURL.backURLocation.indexOf('?')))!=-1){
+			if(hrefL.indexOf(backURL.backURLocation.substring(0,(backURL.backURLocation.indexOf('?')==-1?backURL.backURLocation.length:backURL.backURLocation.indexOf('?'))))!=-1){
 				jQuery(this).parent().addClass('selected');
 			
 			}

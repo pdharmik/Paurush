@@ -38,7 +38,33 @@ public class LBSFloorPlanAssetDo extends AssetBase implements Serializable {
 	private String assetLifeCycle;
 	private String hardwareStatus;
 	private String partType;
+	private String levelOfDetails;
+	private String addressLevelDetails;
+	private String floorLevelDetails;
+	private String buildingType;
+	private String serialNumber;
+	private String accountId;
 	
+	public String getAccountId() {
+		return accountId;
+	}
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
+	}
+	
+	public String getSerialNumber() {
+		return serialNumber;
+	}
+	public void setSerialNumber(String serialNumber) {
+		this.serialNumber = serialNumber;
+	}
+	
+	public String getFloorLevelDetails() {
+		return floorLevelDetails;
+	}
+	public void setFloorLevelDetails(String floorLevelDetails) {
+		this.floorLevelDetails = floorLevelDetails;
+	}
 	public String getAssetTag() {
 		return assetTag;
 	}
@@ -206,5 +232,24 @@ public class LBSFloorPlanAssetDo extends AssetBase implements Serializable {
 	}
 	public void setPartType(String partType) {
 		this.partType = partType;
+	}
+	public String getLevelOfDetails() {
+		return levelOfDetails;
+	}
+	public void setLevelOfDetails(String levelOfDetails) {
+		this.levelOfDetails = levelOfDetails;
 	}	
+
+	public String getAddressLevelDetails() {
+		return addressLevelDetails;
+	}
+	public void setAddressLevelDetails(String addressLevelDetails) {
+		this.addressLevelDetails = addressLevelDetails;
+	}
+	public String getBuildingType() {
+		return buildingType;
+	}
+	public void setBuildingType(String buildingType) {
+		this.buildingType = buildingType;
+	}
 }

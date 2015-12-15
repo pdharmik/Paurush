@@ -15,7 +15,7 @@
 					</div><!-- portlet-header -->
 					<div class="portlet-wrap-inner">
 						<div class="scroll width-100per" >
-							<div id="service_history_container width-100per" ></div>
+							<div class="width-100per" id="service_history_container"></div>
 							<div id="loadingServiceHistory" class='gridLoading'>
 								<!--spring:message code="label.loadingNotification"/-->&nbsp;<img src="<html:imagesPath/>gridloading.gif" /><br>
 							</div>

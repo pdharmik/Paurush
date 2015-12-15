@@ -14,7 +14,7 @@
 </style>
 <link rel="stylesheet" type="text/css" href="<html:rootPath/>css/in-styles.css?version=<html:fileCacheVersion/>" />
 <body>
-<table width="600" border="0" cellspacing="0" cellpadding="0" align="center" class="emailPrintWraper" id="emailPrintWraper">
+<table width="800" border="0" cellspacing="0" cellpadding="0" align="center" class="emailPrintWraper" id="emailPrintWraper">
   <tr>
     <td class="table-td-style23"><img src="<html:imagesPath/>logoLexEmail.png" width="598" height="65" /></td>
   </tr>
@@ -274,7 +274,7 @@
   </tr> -->
 </table>
 <br>
-<table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="800" border="0" cellspacing="0" cellpadding="0" align="center">
 	<tr id="topEmail">
 		<td width="55%"></td>
 		<td align="right" width="25%">

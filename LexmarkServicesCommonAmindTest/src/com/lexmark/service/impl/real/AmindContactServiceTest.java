@@ -351,6 +351,28 @@ public class AmindContactServiceTest extends AmindServiceTest {
     	System.out.println("Size: " + contacts.size());
     	System.out.println("Total count: " + totalCount);
     }
+    
+    @Test
+    public void testRetrieveContactList_defect18674() throws Exception {
+    	ContactListContract contract = new ContactListContract();
+    	contract.setLocale(new Locale("en_US"));
+    	contract.setContactId("1-16X93QX");
+    	contract.setMdmId("1-DZ9CDJ");
+    	contract.setMdmLevel("Siebel");    
+    	contract.setFavoriteFlag(false);
+    	contract.setLoadAllFlag(false);
+    	contract.setNewQueryIndicator(true);
+    	contract.setStartRecordNumber(0);
+    	contract.setIncrement(40);
+    	contract.setSortCriteria((Map<String, Object>) MiscTest.newHashMap("lastName", "ASCENDING"));       
+    	contract.setSessionHandle(crmSessionHandle);
+    	
+    	ContactListResult result = contactService.retrieveContactList(contract);
+    	List<AccountContact> contacts = result.getContacts();
+    	int totalCount = result.getTotalCount();
+    	System.out.println("Size: " + contacts.size());
+    	System.out.println("Total count: " + totalCount);
+    }
 
     @Test
     public void testUpdateUserFavoriteContact_defect12390() throws Exception {

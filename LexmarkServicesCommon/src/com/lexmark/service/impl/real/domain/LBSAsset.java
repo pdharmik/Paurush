@@ -12,6 +12,7 @@ public class LBSAsset implements Serializable {
 	private String accountName;
 	private String assetCostCenter;
 	private String assetNumber;
+	private String buildingType;
 	private String brandMFGProduct;
 	private String devicePhase;
 	private String hostName;
@@ -41,7 +42,25 @@ public class LBSAsset implements Serializable {
 	private String partType;
 	//private String modelType;
 	
+	/* Added for LBS-1.5 - Level of Details - Address Level */
+	private String levelOfDetails;
+	private String floorLevelDetails;
+	private String addressLevelDetails;
+	private String serialNumber;
+	private String accountId;
 	
+	public String getAccountId() {
+		return accountId;
+	}
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
+	}
+	public String getSerialNumber() {
+		return serialNumber;
+	}
+	public void setSerialNumber(String serialNumber) {
+		this.serialNumber = serialNumber;
+	}
 	public String getMonoColor() {
 		return monoColor;
 	}
@@ -99,6 +118,12 @@ public class LBSAsset implements Serializable {
 	}
 	public String getId() {
 		return id;
+	}
+	public String getBuildingType() {
+		return buildingType;
+	}
+	public void setBuildingType(String buildingType) {
+		this.buildingType = buildingType;
 	}
 	public void setId(String id) {
 		this.id = id;
@@ -223,16 +248,30 @@ public class LBSAsset implements Serializable {
 	public void setPartType(String partType) {
 		this.partType = partType;
 	}
-	/**
-	 * @param modelType the modelType to set
-	 *//*
-	public void setModelType(String modelType) {
-		this.modelType = modelType;
+	public String getLevelOfDetails() {
+		return levelOfDetails;
 	}
-	*//**
-	 * @return the modelType
-	 *//*
-	public String getModelType() {
-		return modelType;
-	}*/	
+	public void setLevelOfDetails(String levelOfDetails) {
+		this.levelOfDetails = levelOfDetails;
+	}
+	/**
+	 * @param floorLevelDetails the floorLevelDetails to set
+	 */
+	public void setFloorLevelDetails(String floorLevelDetails) {
+		this.floorLevelDetails = floorLevelDetails;
+	}
+	/**
+	 * @return the floorLevelDetails
+	 */
+	public String getFloorLevelDetails() {
+		return floorLevelDetails;
+	}
+
+	public String getAddressLevelDetails() {
+		return addressLevelDetails;
+	}
+	public void setAddressLevelDetails(String addressLevelDetails) {
+		this.addressLevelDetails = addressLevelDetails;
+	}
+	
 }

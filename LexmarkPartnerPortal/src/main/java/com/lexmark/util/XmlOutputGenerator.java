@@ -1460,8 +1460,10 @@ public class XmlOutputGenerator {
 				LOGGER.debug("partLineItem.getPartOrderedDate() not null = " + partLineItem.getPartOrderedDate());
 			cellValue = DateLocalizationUtil.localizeDateTime(partLineItem.getPartOrderedDate(), false, locale);
 			LOGGER.debug("cellValue 11 = " + cellValue);
-			gridXmlBuilder.addCells(cellValue);
+			}else{
+				cellValue="";
 			}
+			gridXmlBuilder.addCells(cellValue);
 			
 			cellValue = String.valueOf(partLineItem.getQuantity());
 			LOGGER.debug("cellValue 22 = " + partLineItem.getQuantity());
@@ -1482,14 +1484,23 @@ public class XmlOutputGenerator {
 					LOGGER.debug("partLineItem.getPartNumber() not null = " + partLineItem.getPartNumber());
 			cellValue = XMLEncodeUtil.escapeXML(partLineItem.getPartNumber());
 			LOGGER.debug("cellValue 33 = " + cellValue);
-			gridXmlBuilder.addCells(cellValue);
+			
+				}else{
+					cellValue="";
 				}
-				if(partLineItem.getPartName() != null && !"".equals(partLineItem.getPartName())){
+			
+			gridXmlBuilder.addCells(cellValue);
+			
+			if(partLineItem.getPartName() != null && !"".equals(partLineItem.getPartName())){
 					LOGGER.debug("partLineItem.getPartName() not null = " + partLineItem.getPartName());
 			cellValue = XMLEncodeUtil.escapeXML(partLineItem.getPartName());
 			LOGGER.debug("cellValue 44 = " + cellValue);
-			gridXmlBuilder.addCells(cellValue);
+			
+				}else{
+					cellValue="";
 				}
+			gridXmlBuilder.addCells(cellValue);
+			
 			//Changes for CI7 14-07-06 START
 			if((partLineItem.getPartStatus())!=null && !"".equals(partLineItem.getPartStatus().toString().trim()))
 			{
@@ -1512,9 +1523,11 @@ public class XmlOutputGenerator {
 				cellValue = partLineItem.getLineStatus().getName();
 				LOGGER.debug("cellValue 77 = " + cellValue);
 				//ToDo Localization
-				gridXmlBuilder.addCells(cellValue);
+				
+			}else{
+				cellValue="";
 			}
-			
+			gridXmlBuilder.addCells(cellValue);
 			/*cellValue = partLineItem.getStatus();
 			if(cellValue == null){
 				cellValue = "";
@@ -1523,9 +1536,18 @@ public class XmlOutputGenerator {
 			if(partLineItem.getSerialNumber() != null && !"".equals(partLineItem.getSerialNumber())){
 				LOGGER.debug("partLineItem.getSerialNumber() not null = " + partLineItem.getSerialNumber());
 			cellValue = partLineItem.getSerialNumber();
+			
+			
+			}else{
+				
+				cellValue="";
+			}
 			LOGGER.debug("cellValue 88 = " + cellValue);
 			gridXmlBuilder.addCells(cellValue);
-			}
+			
+			try{
+				LOGGER.debug("entering into ship date");
+				LOGGER.debug("going to ship date::::::::::"+partLineItem.getShipDate()+partLineItem.getShipDate().toString());
 			if (partLineItem.getShipDate().toString().trim() != null && !"".equals(partLineItem.getShipDate().toString().trim())){
 				LOGGER.debug("partLineItem.getShipDate() not null = " + partLineItem.getShipDate());
 				String shipdate = partLineItem.getShipDate().toString().trim();
@@ -1552,11 +1574,17 @@ public class XmlOutputGenerator {
 			}else{
 				LOGGER.debug("partLineItem.getShipDate() null = " + partLineItem.getShipDate());
 				cellValue = "";
-				
-					
 			}
-			LOGGER.debug("cellValue 111 = " + cellValue);
+			
+			
+			}catch(Exception e){
+				cellValue="";
+				LOGGER.debug("in shipdate exception catch");
+			}
+			
 			gridXmlBuilder.addCells(cellValue);
+			LOGGER.debug("cellValue 111 = " + cellValue);
+			
 			if(null != partLineItem.getCarrier() && !"".equals(partLineItem.getCarrier().toString().trim())){
 				LOGGER.debug("partLineItem.getCarrier() not null = " + partLineItem.getCarrier());
 			carrierValue = XMLEncodeUtil.escapeXML(partLineItem.getCarrier().getName());
@@ -1582,8 +1610,11 @@ public class XmlOutputGenerator {
 				cellValue = strBulder.toString();	
 			}
 			}
-			gridXmlBuilder.addCells(cellValue);
+			
+			}else{
+				cellValue="";
 			}
+			gridXmlBuilder.addCells(cellValue);
 			String cellValueFlag = "";
 			if((genericAddress.getAddressLine1()!=null && genericAddress.getAddressLine1().trim()!="") && (genericAddress.getCity()!=null && genericAddress.getCity().trim()!="")){
 				LOGGER.debug("in if");

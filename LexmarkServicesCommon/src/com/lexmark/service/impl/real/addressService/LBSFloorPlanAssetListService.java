@@ -39,8 +39,8 @@ public class LBSFloorPlanAssetListService {
 
 	public void checkLBSRequiredFields() {
 		List<String> assetId = contract.getAssetIds();
-		if (LangUtil.isEmpty(assetId)) {
-			throw new IllegalArgumentException("Asset Id Id is Null");
+		if (LangUtil.isEmpty(assetId) && LangUtil.isEmpty(contract.getAccountId())) {
+			throw new IllegalArgumentException("Asset Id and Account Id is Null");
 		} 
 	}
 
@@ -82,7 +82,8 @@ public class LBSFloorPlanAssetListService {
 	public void buildLBSAssetSearchExpression() {
 		StringBuilder builder = new StringBuilder();
 		List<String> assetId = contract.getAssetIds();
-
+		if(LangUtil.isNotEmpty(assetId) && LangUtil.isEmpty(contract.getAccountId()))
+		{
 		builder.append("[Id] = '");
 		builder.append(assetId.get(0));
 		builder.append("'");
@@ -94,7 +95,14 @@ public class LBSFloorPlanAssetListService {
 				builder.append("'");
 			}
 		}
-
+		}
+		else 
+		{
+			builder.append("[LXK LBS Account Id]= '"+contract.getAccountId()+"'");
+			builder.append("AND [Product Name]= '"+contract.getProductName()+"'");
+			builder.append("AND [Serial Number]= '"+contract.getSerialNumber()+"'");
+			
+		}
 		Map<String, Object> filterCriteria = contract.getFilterCriteria();
 
 		if (isNotEmpty(filterCriteria)) {

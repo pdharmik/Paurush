@@ -47,6 +47,7 @@ import com.lexmark.result.CategoryHierarchyResult;
 import com.lexmark.result.DocumentUserListResult;
 import com.lexmark.result.GeographyListResult;
 import com.lexmark.service.api.DocumentManagementService;
+import com.lexmark.service.api.GeographyService;
 import com.lexmark.service.api.GlobalService;
 import com.lexmark.service.api.ReportScheduleService;
 import com.lexmark.services.reports.bean.DocDelDownloadInfo;
@@ -78,6 +79,9 @@ public class DocumentUserController extends BaseController{
 	@Autowired
 	private GlobalService globalService;
 	
+	 @Autowired 
+	private GeographyService geographyService; 
+	
 	@Resource
 	private List<GeographyListResult> allCountryList;
 
@@ -92,30 +96,52 @@ public class DocumentUserController extends BaseController{
 	@RequestMapping("VIEW")
 	public String defaultPage(@RequestParam(value = "path", required = false) String path, Model model, RenderRequest request,
 			RenderResponse response) throws Exception {
-		PortletSession portletSession = request.getPortletSession();
-		String mdmId = PortalSessionUtil.getMdmId(portletSession);
-		String mdmLevel = PortalSessionUtil.getMdmLevel(portletSession);
-		List<String> roles = LexmarkUserUtil.getUserRoleNameList(request);
-		//Countries
-		List<String> countriesList = LexmarkUserUtil.getCountriesList(request);
-		for(int i =0; i<countriesList.size();i++){
-			logger.debug("countriesList "+countriesList.get(i));
+		logger.debug("in defaultPage fo document library");
+		try{
+			logger.debug("in defaultPage fo document library try");
+			PortletSession portletSession = request.getPortletSession();
+			String mdmId = PortalSessionUtil.getMdmId(portletSession);
+			logger.debug("in defaultPage fo document library try mdm id is "+mdmId);
+			String mdmLevel = PortalSessionUtil.getMdmLevel(portletSession);
+			logger.debug("in defaultPage fo document library try mdmLevel is "+mdmLevel);
+			List<String> roles = LexmarkUserUtil.getUserRoleNameList(request);
+			logger.debug("role list size is "+roles.size());
+			for(int i=0; i<roles.size();i++){
+				logger.debug("role name is "+roles.get(i));
+			}
+			//Countries
+		//	List<String> countriesList = LexmarkUserUtil.getCountriesList(request);
+			//logger.debug("countriesList size is "+countriesList.size());
+		/*	for(int i =0; i<countriesList.size();i++){
+				logger.debug("countriesList "+countriesList.get(i));
+			}*/
+			//Partner Types
+			List<String> partnerTypes = LexmarkUserUtil.getPartnerTypeList(request);
+			logger.debug("partnerTypes size is "+partnerTypes.size());
+			for(int i =0; i<partnerTypes.size();i++){
+				logger.debug("partnerTypes "+partnerTypes.get(i));
+			}
+			
+			logger.debug(mdmId + " --- " + mdmLevel + " --- " + roles);
+			logger.debug(request.getLocale().getLanguage()+"|"+request.getLocale().getCountry()+"|"+request.getLocale().getDisplayName());
+			boolean isPublishing = LexmarkUserUtil.isPublishing(request);
+			logger.debug("isPublishing "+isPublishing);
+			model.addAttribute("isPublishing",isPublishing);
+			setRequestType(response.createRenderURL(), request);
+			List<RoleCategory> hierarchy = retrieveCategoryHierarchy(request);
+			logger.debug("hierarchy size is "+hierarchy.size());
+			for(int i=0;i<hierarchy.size();i++){
+				logger.debug("hierarchy is "+hierarchy.get(i));
+			}
+			//List<Integer> categoryId = retrieveCategoryId(request);
+			
+			model.addAttribute("hierarchy",hierarchy);
 		}
-		//Partner Types
-		List<String> partnerTypes = LexmarkUserUtil.getPartnerTypeList(request);
-		for(int i =0; i<partnerTypes.size();i++){
-			logger.debug("partnerTypes "+partnerTypes.get(i));
+		catch (Exception e) {
+			// TODO: handle exception
+			logger.debug("======================in catch block=====================");
+			e.printStackTrace();
 		}
-		
-		logger.debug(mdmId + " --- " + mdmLevel + " --- " + roles);
-		logger.debug(request.getLocale().getLanguage()+"|"+request.getLocale().getCountry()+"|"+request.getLocale().getDisplayName());
-		boolean isPublishing = LexmarkUserUtil.isPublishing(request);
-		model.addAttribute("isPublishing",isPublishing);
-		setRequestType(response.createRenderURL(), request);
-		List<RoleCategory> hierarchy = retrieveCategoryHierarchy(request);
-		//List<Integer> categoryId = retrieveCategoryId(request);
-		
-		model.addAttribute("hierarchy",hierarchy);
 		return "documentManagement/user/documentUser";
 	}
 	
@@ -172,12 +198,40 @@ public class DocumentUserController extends BaseController{
 	 * @throws Exception  
 	 */
 	private List<RoleCategory> retrieveCategoryHierarchy(PortletRequest request) throws Exception {
+		logger.debug("in retrieveCategoryHierarchy");
+		List<RoleCategory> hierarchy = new ArrayList<RoleCategory>();
+		try{
 		PortletSession portletSession = request.getPortletSession();
 		List<String> roles = LexmarkUserUtil.getUserRoleNameList(request);
-		
+		logger.debug(" roles size in retrieveCategoryHierarchy "+roles.size());
+		for(int i=0;i<roles.size();i++){
+			logger.debug("roles is "+roles.get(i));
+		}
 		// added for BRD 14-07-04
 		List<String> countriesList = LexmarkUserUtil.getCountriesList(request);
-		List<GeographyCountryContract> countryList=allCountryList.get(0).getCountryList();
+		logger.debug(" countriesList size in retrieveCategoryHierarchy "+countriesList.size());
+		/*for(int i=0;i<countriesList.size();i++){
+			logger.debug("countriesList is "+countriesList.get(i));
+		}*/
+		logger.debug("before countryList allCountryList size is "+allCountryList.size());
+		//List<GeographyCountryContract> countryList= allCountryList.get(0).getCountryList();
+		
+
+		GeographyListResult countryListResult = geographyService.getCountryDetails();
+		List<GeographyCountryContract> countryListcountries1 = countryListResult.getCountryList();
+		logger.debug("checking my country list size "+countryListcountries1.size());
+		for(int i=0;i<countryListcountries1.size();i++){
+			logger.debug("country is "+countryListcountries1.get(i).getCountryName() +" country code is "+countryListcountries1.get(i).getCountryCode());
+		}
+		/*if(null != allCountryList && allCountryList.size()>0){
+			countryList=allCountryList.get(0).getCountryList();
+		}*/
+		List<GeographyCountryContract> countryList= countryListcountries1;
+		//countryList = countryListcountries1;
+		logger.debug(" countryList size in retrieveCategoryHierarchy "+countryList.size());
+		for(int i=0;i<countryList.size();i++){
+			logger.debug("countryList is "+countryList.get(i));
+		}
 		List<String> countriesCode=new LinkedList<String>();
 		for(String country:countriesList){
 			for(GeographyCountryContract countryContract:countryList){
@@ -191,14 +245,27 @@ public class DocumentUserController extends BaseController{
 		
 		
 		List<String> partnerTypes = LexmarkUserUtil.getPartnerTypeList(request);
+		
+		logger.debug(" partnerTypes size in retrieveCategoryHierarchy "+partnerTypes.size());
+		for(int i=0;i<partnerTypes.size();i++){
+			logger.debug("partnerTypes is "+partnerTypes.get(i));
+		}
 
 		CategoryHierarchyContract contract = ContractFactory.getCategoryHierarchyContract(request, roles, partnerTypes , countriesCode , request
 				.getLocale(), globalService);
 		CategoryHierarchyResult result = documentManagementService.retrieveCategoryHierarchy(contract);
 
-		List<RoleCategory> hierarchy = result.getCategoryHierarchy();
+		hierarchy = result.getCategoryHierarchy();
 		return hierarchy;
-	}
+		}
+		catch (Exception e) {
+			logger.debug("in retrieveCategoryHierarchy catch block");
+			e.printStackTrace();
+			return hierarchy;
+			// TODO: handle exception
+		}
+		
+		}
 	
 	/**
 	 * @param definitionId 

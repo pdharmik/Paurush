@@ -3,14 +3,21 @@
 <%@ include file="/WEB-INF/jsp/common/subTab.jsp"%>
 <%@ page import="com.lexmark.services.form.FileUploadForm"%>
 <link rel="stylesheet" type="text/css" href="<html:rootPath/>css/mps.css"/>
+<script type="text/javascript"><%@ include file="../../../../js/showCoordinates.js"%></script>
 
 <!--[if IE 7]>
 	<style type="text/css"><%@ include file="/WEB-INF/css/mps_ie7.css" %></style>
 <![endif]-->
 
 <script type="text/javascript">
+
 jQuery(document).ready(function() {
 	
+	
+	var addressCoordinatesXPreDebriefRFV='<c:out value="${mapsRequestForm.serviceRequest.installAddress.coordinatesXPreDebriefRFV}" />';
+	var addressCoordinatesYPreDebriefRFV='<c:out value="${mapsRequestForm.serviceRequest.installAddress.coordinatesYPreDebriefRFV}" />';
+
+	coordinates(addressCoordinatesXPreDebriefRFV,addressCoordinatesYPreDebriefRFV);
 	c=1;
 	////var fileCount = '<c:out value="${fileUploadForm.fileCount}" />';
 	//alert(fileCount);
@@ -211,13 +218,13 @@ jQuery(document).ready(function() {
 					  </c:if> --%>
 	                  <li>
 	                    <label for="rqstDesc"><spring:message code="requestInfo.label.notesMapReview"/></label>
-	                    <span id="rqstDesc">${mapsRequestForm.notesOrComments }</span>
+	                    <span id="rqstDesc">${mapsRequestForm.notesOrComments }<br>${mapsRequestForm.notesForNewBuilding }</br></span>
 					  </li>
 					    <li>
                            <label for="moveAsset"><spring:message code="requestInfo.label.moveAsset"/></label>
                            <span id="moveAsset">
-                           <c:choose><c:when test="${mapsRequestForm.moveAsset==true}"><p>Yes</p></c:when>
-                           <c:otherwise><p>No</p></c:otherwise></c:choose></span>
+                           <c:choose><c:when test="${mapsRequestForm.moveAsset==true}">Yes</c:when>
+                           <c:otherwise>No</c:otherwise></c:choose></span>
                            <script>
                     
                            </script>
@@ -235,7 +242,7 @@ jQuery(document).ready(function() {
 	                </ul>
 	                </div>
 	                
-	                <c:if test="${mapsRequestForm.serviceRequest.mapsRequestContact.firstName !=null}">
+	                <c:if test="${mapsRequestForm.serviceRequest.mapsRequestContact.firstName !=null && mapsRequestForm.serviceRequest.mapsRequestContact.firstName !=''}">
 	                 <div class="infoBox columnInner rounded shadow" id="mapsRequestContact">
 	               <h4><spring:message code="requestInfo.heading.ContactForMapsRequest"/></h4>				
 	                
@@ -311,9 +318,9 @@ jQuery(document).ready(function() {
                        <span>${mapsRequestForm.serviceRequest.installAddress.physicalLocation2}</span>
                       </li>
 					
-					  <li><label><spring:message code="requestInfo.addressInfo.label.office"/> </label> 
+					  <%-- <li><label><spring:message code="requestInfo.addressInfo.label.office"/> </label> 
                     <span>${mapsRequestForm.serviceRequest.installAddress.physicalLocation3}</span>
-                      </li>
+                      </li> --%>
                       </c:when>
                       <c:when test="${mapsRequestForm.serviceRequest.installAddress.lbsAddressFlag eq 'true' }">
                       
@@ -329,13 +336,46 @@ jQuery(document).ready(function() {
                        <span>${mapsRequestForm.serviceRequest.installAddress.physicalLocation2}</span>
                       </li>
 					
-					  <li><label><spring:message code="requestInfo.addressInfo.label.office"/> </label> 
-                    <span>${mapsRequestForm.serviceRequest.installAddress.physicalLocation3}</span>
-                      </li>
+					<%--  <c:if test="${mapsRequestForm.serviceRequest.installAddress.levelOfDetails eq 'Street Level' or mapsRequestForm.serviceRequest.installAddress.levelOfDetails eq ''}">
+						  <li><label><spring:message code="requestInfo.addressInfo.label.office"/> </label> 
+	                    	<span>${mapsRequestForm.serviceRequest.installAddress.physicalLocation3}</span>
+	                      </li>
+                  	  </c:if>
+                       --%>
+                        <c:forEach var="isLbsAddress" items="${isLbsAddress}">
+                                  <c:if test="${isLbsAddress.key=='Y'}">
+                                  		<li>
+                                  			<label>LBS Address : </label> 
+                                  					<span>${isLbsAddress.value}</span>
+                                  		</li>
+                                  </c:if>
                       
-					 <li><label><spring:message code='lbs.label.zone'/>: </label> 
-                    <span>${mapsRequestForm.serviceRequest.installAddress.zoneName}</span>
-                      </li>
+                      </c:forEach>
+                      
+                       <c:forEach var="lbsAddressLOD" items="${lbsAddressLOD}">
+                                  <c:if test="${lbsAddressLOD.key==mapsRequestForm.serviceRequest.installAddress.levelOfDetails}">
+                                  		<li>
+                                  			<label><spring:message code="lbs.label.addresslod"/> : </label> 
+                                  					<span>${lbsAddressLOD.value}</span>
+                                  		</li>
+                                  </c:if>
+                      
+                      </c:forEach>
+                      <c:forEach var="lbsFloorLOD" items="${lbsFloorLOD}">
+                                  <c:if test="${lbsFloorLOD.key==mapsRequestForm.serviceRequest.installAddress.floorLevelOfDetails}">
+                                  		<li>
+                                  		<label><spring:message code="lbs.label.floorlod"/> : </label> 
+                                  				<span>${lbsFloorLOD.value}</span>
+                                  		</li>
+                                  </c:if>
+                      
+                      </c:forEach>
+                       <c:if test="${mapsRequestForm.serviceRequest.installAddress.floorLevelOfDetails=='Grid Level'}">
+                                  <li><label id="addressXYLbl">Grid X/Y  : </label> 
+                                 	<label id="addressCoords"></label>
+                                  </li>
+                      </c:if>
+                      
                       </c:when>
                       <c:when test="${mapsRequestForm.serviceRequest.installAddress.lbsAddressFlag ne 'true' }">
                       <li>
@@ -353,6 +393,12 @@ jQuery(document).ready(function() {
 					  <li><label><spring:message code="requestInfo.addressInfo.label.office"/> </label> 
                     <span>${mapsRequestForm.serviceRequest.installAddress.physicalLocation3}</span>
                       </li>
+                      <c:forEach var="isLbsAddress" items="${isLbsAddress}">
+                                  <c:if test="${isLbsAddress.key=='N'}">
+                                  <li><label>LBS Address : </label> 
+                                  <span>${isLbsAddress.value}</span></li></c:if>
+                      
+                      </c:forEach>
                       </c:when>
                       </c:choose>
                       <%--</c:when>
@@ -397,11 +443,14 @@ jQuery(document).ready(function() {
 		 
 	</div>
 
-		 <div class="filterLinks floatR">
-	          <ul>
-	            <li class="first"><a href="javascript:email();"><img class="ui_icon_sprite email-icon" src="<html:imagesPath/>transparent.png" height="23" width="27"/><spring:message code="requestInfo.link.emailThisPage"/></a></li>
-	            <li><a href="javascript:print();"><img class="ui_icon_sprite print-icon" src="<html:imagesPath/>transparent.png" height="27" width="27"/><spring:message code="requestInfo.link.printThisPage"/></a></li>
-	          </ul>
+		 <div class="filterLinks"> 
+				<button class="button_cancel" onclick="javascript:backToMapView();"	type="button">Back to Map</button>
+		 	<div class="floatR">
+			 	<ul>
+		            <li class="first"><a href="javascript:email();"><img class="ui_icon_sprite email-icon" src="<html:imagesPath/>transparent.png" height="23" width="27"/><spring:message code="requestInfo.link.emailThisPage"/></a></li>
+		            <li><a href="javascript:print();"><img class="ui_icon_sprite print-icon" src="<html:imagesPath/>transparent.png" height="27" width="27"/><spring:message code="requestInfo.link.printThisPage"/></a></li>
+		          </ul>
+		      </div>
           </div>
 <script type="text/javascript"><!--
 function print() {
@@ -450,5 +499,11 @@ function email() {
 			    ',left='+iLeft+
 			    ',status=no,toolbar=yes,menubar=no,location=no,resizable=yes,scrollbars=yes,titlebar=no');
 	};
-
+	
+	function backToMapView(){
+			showOverlay();
+			window.location.href='fleet-management';
+		
+	
+};
 </script>

@@ -42,6 +42,7 @@ import com.lexmark.contract.source.OrderAcceptContract;
 import com.lexmark.contract.source.RequestAcceptContract;
 import com.lexmark.domain.AccountContact;
 import com.lexmark.domain.Activity;
+import com.lexmark.domain.ActivityNote;
 import com.lexmark.domain.Asset;
 import com.lexmark.domain.Attachment;
 import com.lexmark.domain.Debrief;
@@ -341,6 +342,14 @@ public class AmindPartnerRequestsServiceTest extends AmindServiceTest {
 		c.setSerialNumber("mock-serialNumber");
 		GlobalPartnerAssetListResult r = service
 				.retrieveGlobalPartnerAssetList(c);
+//		MiscTest.print(r.getAssetList());
+	}
+	
+	@Test
+	public void testRetrieveGlobalPartnerAssetList_defect18496() throws Exception {
+		GlobalPartnerAssetListContract c = new GlobalPartnerAssetListContract();
+		c.setSerialNumber("79G61YY");
+		GlobalPartnerAssetListResult r = service.retrieveGlobalPartnerAssetList(c);
 		MiscTest.print(r.getAssetList());
 	}
 
@@ -4429,6 +4438,18 @@ public class AmindPartnerRequestsServiceTest extends AmindServiceTest {
     	FRUPartListResult result = service.retrieveFRUPartList(contract);
     	MiscTest.print(result.getPartList());
     }
+    
+    @Test
+    public void testRetrieveFRUPartList_defect11739() throws Exception {
+    	FRUPartListContract contract = new FRUPartListContract();
+    	contract.setModelNumber("7013-436");
+    	contract.setHardwarePartsRequest(true);
+    	FRUPartListResult result = service.retrieveFRUPartList(contract);
+    	for (Part part : result.getPartList()) {
+			System.out.println("PrinterType: " + part.isTypePrinter());
+		}
+    	MiscTest.print(result.getPartList());
+    }
 
     @Test
     public void testRetrieveActivityDetail_Sandbox_defect13078() throws Exception {
@@ -4829,6 +4850,93 @@ public class AmindPartnerRequestsServiceTest extends AmindServiceTest {
 		contract.setServicesUser(new ServicesUser());
 		ActivityDetailResult result = service.retrieveActivityDetail(contract);
 		System.out.println(result.getActivity().getDebrief().getDeviceCondition().getValue());
+	}
+	
+	@Test
+	public void testRetrieveActivityDetail_defect11739() throws Exception {
+		ActivityDetailContract contract = new ActivityDetailContract();
+		contract.setActivityId("1-P209PEO");
+		contract.setServiceRequestId("1-54540133748");
+		contract.setPageName("Debrief");
+		contract.setDebriefFlag(false);
+		contract.setServicesUser(new ServicesUser());
+		ActivityDetailResult result = service.retrieveActivityDetail(contract);
+		System.out.println(result.getActivity().getDebrief().getDeviceCondition().getValue());
+	}
+	
+	@Test
+	public void testRetrieveActivityDetail_LBS1_5() throws Exception {
+		ActivityDetailContract contract = new ActivityDetailContract();
+		contract.setActivityId("1-PMB23FJ");
+		contract.setServiceRequestId("1-55761617751");
+		contract.setPageName("Debrief");
+		contract.setDebriefFlag(false);
+		contract.setServicesUser(new ServicesUser());
+		ActivityDetailResult result = service.retrieveActivityDetail(contract);
+		System.out.println("LevelOfDetails: " + result.getActivity().getServiceRequest().getAsset().getInstallAddress().getLevelOfDetails());
+	}
+	
+	@Test
+	public void testRetrieveActivityDetail_Notes() throws Exception {
+		ActivityDetailContract contract = new ActivityDetailContract();
+		contract.setActivityId("1-PMB23FJ");
+		contract.setServiceRequestId("1-55761617751");
+		contract.setPageName("Debrief");
+		contract.setDebriefFlag(false);
+		contract.setServicesUser(new ServicesUser());
+		ActivityDetailResult result = service.retrieveActivityDetail(contract);
+		for (ActivityNote note : result.getActivity().getActivityNoteList()) {
+			System.out.println(note.getNoteId());
+		}
+		System.out.println(result.getActivity().getActivityNoteList().size());
+		
+	}
+	
+	@Test
+	public void testRetrieveActivityDetail_pdfDownloadDdata() throws Exception {
+		ActivityDetailContract contract = new ActivityDetailContract();
+		contract.setActivityId("1-QNW1R6I");
+		contract.setServiceRequestId("1-QNVSRL1");
+//		contract.setPageName("Debrief");
+		contract.setDebriefFlag(false);
+		contract.setServicesUser(new ServicesUser());
+		ActivityDetailResult result = service.retrieveActivityDetail(contract);
+		System.out.println(result.getActivity().getActivityId());
+	}
+	
+	@Test
+	public void testRetrieveActivityDetail_recommendedParts() throws Exception {
+		ActivityDetailContract contract = new ActivityDetailContract();
+		contract.setActivityId("1-153F5SGV");
+		contract.setServiceRequestId("1-153DJYS5");
+//		contract.setPageName("Debrief");
+		contract.setDebriefFlag(false);
+		contract.setServicesUser(new ServicesUser());
+		ActivityDetailResult result = service.retrieveActivityDetail(contract);
+		for (PartLineItem partLineItem : result.getActivity().getRecommendedPartList()) {
+			System.out.println("Part Number: " + partLineItem.getPartNumber());
+			System.out.println("Part Name: " + partLineItem.getPartName());
+		}
+		System.out.println("-------------------");
+		for (PartLineItem orderPart : result.getActivity().getOrderPartList()) {
+			System.out.println("Part Number: " + orderPart.getPartNumber());
+			System.out.println("Part Name: " + orderPart.getPartName());
+		}
+		System.out.println();
+	}
+	
+	@Test
+	public void testRetrieveActivityDetail_defect19899() throws Exception {
+		ActivityDetailContract contract = new ActivityDetailContract();
+		contract.setActivityId("1-RP62K17");
+		contract.setServiceRequestId("1-60295056819");
+		contract.setPageName("Debrief");
+		contract.setDebriefFlag(false);
+		contract.setServicesUser(new ServicesUser());
+		ActivityDetailResult result = service.retrieveActivityDetail(contract);
+		System.out.println(result.getActivity().getServiceRequest().getAsset().getInstallAddress().getCoordinatesXPreDebriefRFV());
+		System.out.println(result.getActivity().getServiceRequest().getAsset().getInstallAddress().getCoordinatesYPreDebriefRFV());
+		System.out.println();
 	}
 	
 	@Test
@@ -5928,6 +6036,46 @@ public class AmindPartnerRequestsServiceTest extends AmindServiceTest {
 	}
 	
 	@Test
+	public void testRetrieveActivityList_ActualFailureCode() throws Exception {
+		ActivityListContract contract = new ActivityListContract();
+		contract.setStatus("Closed");
+		contract.setQueryType("All");
+		contract.setMdmLevel("Legal");
+		contract.setMdmId("34143");
+		contract.setServiceRequestType("Service Request");
+		contract.setEmployeeId("1-46DUCFV");
+//		contract.setCurrentTimeStamp(LangUtil.convertStringToGMTDate("6/25/2015 09:20:32"));
+//		contract.setStatusLastUpdate("6/9/2015 19:58:21");
+		contract.setEmployeeFlag(false);
+		contract.setCountFlag(false);
+		contract.setRequestGridLoading(true);
+//		contract.setCreateChildSR("true");
+		contract.setChangeManagementFlag(false);
+		contract.setMassUploadRequest(false);
+		contract.setNewQueryIndicator(true);
+		contract.setStartRecordNumber(0);
+		contract.setIncrement(40);
+		contract.setSessionHandle(crmSessionHandle);
+		Map<String, Object> filterCriteria = new HashMap<String, Object>();
+		filterCriteria.put("Activity.activityDate.endDate",	LangUtil.convertStringToGMTDate("08/31/2015 18:30:00"));
+		filterCriteria.put("Activity.activityDate.startDate", LangUtil.convertStringToGMTDate("02/28/2015 18:30:00"));
+		filterCriteria.put("Activity.serviceRequest.serviceRequestNumber", "1-52319316214");
+		contract.setFilterCriteria(filterCriteria);
+		Map<String, Object> sortCriteria = new HashMap<String, Object>();
+		sortCriteria.put("Activity.activityDate", "DESCENDING");
+		contract.setSortCriteria(sortCriteria);
+		
+		ActivityListResult result = service.retrieveActivityList(contract);
+		for (Activity activity : result.getActivityList()) {
+			System.out.println("ActualFailureCode: " + activity.getDebrief().getActualFailureCode());
+		}
+		
+		int totalCount = result.getTotalcount();
+		System.out.println("Total count: " + totalCount);
+		System.out.println("End");
+	}
+	
+	@Test
 	public void testRetrieveClaimDetail_BRD14_06_03ShowLexmarkReviewFlaginClaimUpdatePage() throws Exception {
 		ClaimDetailContract contract = new ClaimDetailContract();
 		contract.setActivityId("1-97IJ14E");
@@ -5952,6 +6100,20 @@ public class AmindPartnerRequestsServiceTest extends AmindServiceTest {
 		ClaimDetailResult result = service.retrieveClaimDetail(contract);
 		Activity activity = result.getActivity();
 		System.out.println(activity == null);
+		System.out.println("END");
+	}
+	
+	@Test
+	public void testRetrieveClaimDetail_DisplayWarning() throws Exception {
+		ClaimDetailContract contract = new ClaimDetailContract();
+		contract.setActivityId("1-RLG8NQ7");
+		contract.setServiceRequestId("1-RLG8NPV");
+		contract.setDebriefFlag(false);
+		contract.setServicesUser(new ServicesUser());
+		
+		ClaimDetailResult result = service.retrieveClaimDetail(contract);
+		Activity activity = result.getActivity();
+		System.out.println("DisplayWarning: " + activity.getDisplayWarning());
 		System.out.println("END");
 	}
 	

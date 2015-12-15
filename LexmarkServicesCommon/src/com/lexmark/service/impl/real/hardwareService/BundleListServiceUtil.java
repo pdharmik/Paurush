@@ -54,6 +54,7 @@ public class BundleListServiceUtil {
 				part.setCatalogId(sapPaymentType.getCatalogId());
 				part.setSupplyId(sapPaymentType.getMaterialId());
 				part.setPaymentTypes(Arrays.asList(sapPaymentType.getBillingModel()));
+				part.setPartType(sapPaymentType.getPartType());
 				part.setParentLineItemNumber(sapPaymentType.getParentLineItemNumber());
 				parts.add(part);
 			}

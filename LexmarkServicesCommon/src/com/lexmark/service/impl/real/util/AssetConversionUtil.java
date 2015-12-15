@@ -75,6 +75,8 @@ public class AssetConversionUtil {
         installAddress.setDistrict(assetBase.getDistrict());
         installAddress.setOfficeNumber(assetBase.getOfficeNumber());
         
+        installAddress.setLevelOfDetails(assetBase.getLevelOfDetails());
+        
 //        installAddress.setStoreFrontName(assetBase.getStoreFrontName());
         asset.setInstallAddress(installAddress);
     }

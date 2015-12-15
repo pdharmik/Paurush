@@ -690,6 +690,8 @@ function Filters(){};
 		this.htmlEleObj=null;
 		this.visualizationObj=null;
 	};
+	
+	
 	ResponseProcessor.prototype={
 			processResponse:function (){
 				if(this.jsonResp.action=='move' && this.jsonResp.item=='map'){
@@ -701,6 +703,7 @@ function Filters(){};
 					setAddressToHTML(this.jsonResp.info.buildingInfo);//this method is there in assetDetailsView.jsp addressDB object is in defaultView.jsp
 					setTotalDevice(this.jsonResp.info.buildingInfo.totalAssets);//this method is there in assetDetailsView.jsp
 					setTotalDeviceFloor(this.jsonResp.info.buildingInfo.assetCount);
+					setbuildingType(this.jsonResp.info.buildingInfo.buildingType);
 					deviceInformations.setDeviceInformation(this.jsonResp.info);//save the reference for future use!!!
 					this.processResponseShowAsset();
 					 
@@ -711,6 +714,8 @@ function Filters(){};
 					this.processResponseClick();
 				}else if(this.jsonResp.action=='zoomOutToAggregation' && this.jsonResp.item=='map'){
 					hideNav();
+					if(window.deviceStatus)
+						deviceStatus.clearAllHtml();
 				}/*else if (this.jsonResp.action=='enableDrag' && this.jsonResp.item=='asset'){
 					setAddressHTML_MOVE_TO(addressObj);
 				}*/
@@ -719,10 +724,38 @@ function Filters(){};
 					setAddressHTML_MOVE_TO(this.jsonResp.info.pending);//This method is declared in assetDetailsView.jsp
 					
 				}else if(this.jsonResp.action=="info" && this.jsonResp.item=='map'){
-					var zoomInfo = JSON.stringify(this.jsonResp.info);
-					saveZoomToSession(zoomInfo);
+					zoomProcessor.zoomInfo=this.jsonResp.info;
+					zoomProcessor.processResponse();
+				}else if(this.jsonResp.action=="moveCancel" && this.jsonResp.item=='asset'){
+					$('#mapInfo').html(prvhtml);
+					showFiltersAndLeftNav();
+				}else if(this.jsonResp.action=="multiSelect" && this.jsonResp.item=='asset'){
+					/** Changes for LBS 1.5 add the list of assets for multiple Page Counts*/
+					if(multiSelectAsset.enabled){
+						multiSelectAsset.addAsset(this.jsonResp.info.assets);
+						multiSelectAsset.updateHtml();
+					}					
+					/**Ends multiselect asset changes*/
+				}else if(this.jsonResp.action=="deviceStatusListNotification" && this.jsonResp.item=='asset'){
+					deviceStatus.processDeviceStatus(this.jsonResp.info);
+				}else if(this.jsonResp.action=="multiSelectCancel" && this.jsonResp.item=='map'){
+					handleMultiSelectCancel();
+				}else if(this.jsonResp.action=="multiSelectConfirm" && this.jsonResp.item=='map'){
+					if(!this.jsonResp.info){
+						multiSelectAsset.showError();
+						lbs.postMessage({
+							"action": "enableMultiSelect",
+							 "item": "map"
+						});
+						return;
+					}
+					if(multiSelectAsset.enabled){
+						
+						console.log(JSON.stringify(this.jsonResp.info));
+						setMoveToAndInstallAddress(this.jsonResp.info);
+						multiSelectAsset.handleClickConfirm();
+					}
 				}
-				
 			},
 			setHTMLElement:function(htmlEleObj){
 				this.htmlEleObj=htmlEleObj;
@@ -737,42 +770,19 @@ function Filters(){};
 			},
 			processResponseClick: function (){
 				//here we need to send a post response to enable drag of an asset
-				//{"action":"click","item":"asset","info":{"id":"108","name":"94002CW"}
-				/*var deviceNm=this.jsonResp.info.name;
-				jQuery('#deviceContent').children().each(function(){
-					var divId="deviceDetails"+deviceNm;
-					
-					if(jQuery(this).attr('id')==divId){
-						alert(jQuery(this).position().top);
-						jQuery('#deviceContent').scrollTop(jQuery(this).position().top);
-					}
-				});*/
 				
-				//var hpx=jQuery('#deviceDetails'+this.jsonResp.info.name).position().top-jQuery('#deviceContent').position().top-jQuery('#deviceDetails'+this.jsonResp.info.name).height();
-				//alert(hpx);
 				
 				var ht=0;
-				var infoVal=this.jsonResp.info.id;
+				var infoVal=this.jsonResp.info[0].id;
 				
+				this.showAssetInLeftNav(infoVal);
 				
-				$("#deviceContent").scrollTop(0);
-				$('.deviceDetailsDiv').removeClass('greenBackground');
-				$("#deviceContent").animate({ 
-					scrollTop: ($('#deviceDetails'+infoVal).offset().top)-($("#deviceContent").offset().top) 
-					}, 1000);
-				
-				jQuery('#deviceDetails'+this.jsonResp.info.id).addClass('greenBackground');
 				
 				//update bread crump with the data
-				breadCrumpObject.updateDevice(this.jsonResp.info.name);//Defined in defaultview.jsp
+				breadCrumpObject.updateDevice(this.jsonResp.info[0].name);//Defined in defaultview.jsp
 				breadCrumpObject.updateBreadCrump();//Defined in defaultview.jsp
 				
-				//below commented as of now will uncomment later for MOVE			
-				/*this.visualizationObj.setAction("enableDrag");
-				this.visualizationObj.setItem(this.jsonResp.item);
-				this.visualizationObj.setInfo(this.jsonResp.info);	
-				this.htmlEleObj.showAssetInfo(this.jsonResp.info,"Selected Asset");
-				this.htmlEleObj.enableButton();*/
+				
 				
 				
 			},
@@ -782,7 +792,17 @@ function Filters(){};
 			},
 			setJSONResponse:function(jsonRespObj){
 				this.jsonResp=jsonRespObj;
+			},
+			showAssetInLeftNav:function(infoVal){
+				$("#deviceContent").scrollTop(0);
+				$('.deviceDetailsDiv').removeClass('greenBackground');
+				$("#deviceContent").animate({ 
+					scrollTop: ($('#deviceDetails'+infoVal).offset().top)-($("#deviceContent").offset().top) 
+					}, 1000);
+				
+				jQuery('#deviceDetails'+infoVal).addClass('greenBackground');
 			}
+			
 			
 	};
 	
@@ -807,11 +827,17 @@ function Filters(){};
 				this.respProcessorObj=respProc;
 			},
 			listener:function(event){	
-				//alert(event.data);
-				self.postMsgLoc=event.origin;
+				console.log(event.data);
+				var eventData = JSON.parse(event.data);
+				console.log("eventData.action.toLowerCase()::"+eventData.action.toLowerCase());
 				
-				respProcessorObj.setJSONResponse(JSON.parse(event.data));		
-				respProcessorObj.processResponse();
+				if(eventData.action.toLowerCase() != "deselect")
+				{
+					self.postMsgLoc=event.origin;
+					
+					respProcessorObj.setJSONResponse(JSON.parse(event.data));		
+					respProcessorObj.processResponse();
+				}
 			},
 			postMessage:function(visualizationObj){
 				
@@ -828,7 +854,22 @@ function Filters(){};
 			postEncryptedMessage:function(stringMsg){
 				var iframe = document.getElementsByTagName('iframe')[0];
 				iframe.contentWindow.postMessage(stringMsg, self.postMsgLoc);
+			},
+			highlightMap:function(id){
+				
+				$('.deviceDetailsDiv').removeClass('greenBackground');
+				$('#deviceDetails'+id).addClass('greenBackground');
+				
+				this.postMessage({
+					   "action": "select",
+					   "item": "asset",
+					   "info": {
+						   "id": id
+					   }});	
 			}
+			
+			
+			
 			
 	};
 	
@@ -877,57 +918,14 @@ function Filters(){};
 		updateAssetInformationInLeft:function (info){
 			
 			$('#deviceContent').html('');//Clear Previous html content
-			
+			if(typeof templateDevice !== 'function'){
+				initHandleBar();
+			}
 			$('#deviceContent').append(templateDevice(info));
 			
 			var arrDeviceId=[];
 			for(var i=0;i<info.assets.length;i++){
 				arrDeviceId.push(info.assets[i].productName);
-				//var html=assetDetailsHTML(deviceId);
-				//if(findDeviceWithinObject(deviceId)){
-					//html=html.replace('removebookmark-icon','bookmark-star-icon');
-				//}	
-				
-				
-					//htmlDeviceExt=templateDeviceExt(object2);
-					
-					
-				    // Append the rendered template to the page.
-				 
-				/*$('#deviceName'+deviceId).html((("name" in info[i])==true?info[i].name:""));
-				//Set value to deviceTag,serial , ip address 
-				$('#devTag'+deviceId).html((("customerDeviceTag" in info[i])==true?info[i].customerDeviceTag:""));
-				$('#ipAddr'+deviceId).html((("ipAddress" in info[i])==true?info[i].ipAddress:""));
-				$('#serailNum'+deviceId).html((("serialNumber" in info[i])==true?info[i].serialNumber:""));
-				*/
-				//Show supplies,service,move,change,decommission links based on the values from LBS
-				/*for(var l=0;l<info[i].srArray.length;l++){
-					var type=info[i].srArray[l].type;
-					var count=info[i].srArray[l].count;
-					if(count>0){
-						if(type=="Consumables" || type=="Supplies"){
-							$('#suppliesLink'+deviceId).show();
-						}	
-						if(type=="Service"){
-							$('#serviceLink'+deviceId).show();
-						}
-						if(type=="Move"){
-							$('#moveLink'+deviceId).show();
-						}
-						if(type=="Change"){
-							$('#changeLink'+deviceId).show();
-						}
-						if(type=="Decommission"){
-							$('#decomisionLink'+deviceId).show();
-						}
-					}
-					
-					
-					
-				}*/
-				
-			
-				
 			}
 			//Need to call for the retrieving the image from Server
 			this.getImageFromServer(arrDeviceId);
@@ -1008,20 +1006,37 @@ function Filters(){};
 		};
 		lbs.postMessage(obj); 
 	}
-
+	var inFloorLevel = false;
 	function showNav(){
-		
-			jQuery('#left-nav-Div,#leftNavDevices').show();
+			inFloorLevel = true;
+			jQuery('#left-nav-Div,#leftNavDevices,#deviceStatusContent,#viewGridActions').show();
 			jQuery('#uam-mps-view-map-iframe').css('width','69%');
-			changeSize();	
+			changeSize();
+			adjustLeftNav();
+			
 	}
 	function hideNav(){
-		
-		jQuery('#left-nav-Div,#leftNavDevices').hide();
+		inFloorLevel = false;
+		//jQuery('#deviceStatusContent').show();
+		jQuery('#left-nav-Div,#leftNavDevices,#moveMultiAssetLeftNav,#viewGridActions').hide();
 		jQuery('#uam-mps-view-map-iframe').css('width','100%');
 		changeSize();	
 	}	
-	
+	function adjustLeftNav(){
+		if($("#left-nav-Div").css('display')!='none')
+			$("#deviceStatusContent").width($('#firstBlock').width());
+		var leftNavHeight = $("#uam-mps-view-map-iframe").height();
+		jQuery('#leftNavDevices').css('min-height',leftNavHeight+'px');
+		var firstBlockHeight = $("#leftNavDevices #firstBlock").height();
+		var aggregateConditionsHeight = $("#deviceStatusContent").height();
+		$('#leftNavDevices #firstBlock').css('margin-top',aggregateConditionsHeight+"px");
+		var remainingLeftNav = leftNavHeight - firstBlockHeight - aggregateConditionsHeight;
+		$('#leftNavDevices #secondBlock').css('height',remainingLeftNav+'px');
+
+		var deviceHeaderHeight = $('#deviceHeader').height();
+		remainingLeftNav = remainingLeftNav - deviceHeaderHeight - 10;
+		$("#deviceContent").css('height',remainingLeftNav+"px");
+	}
 	
 	//This section is for customize Popup settings
 	//Key is the index to be saved and value is the id's of the input
@@ -1150,8 +1165,8 @@ function Filters(){};
 	}
 	//This will be used for MOVE request for setting address fields from LBS object to Portal Object
 	function  LBSAddressInformation(){
-		this.LBSField=["lat","lng","floorNumber","id","buildingId","buildingName","regionId","regionName","address","city","state","country","zipCode","extAddressId","campusId","campusName","floorId","floorName","attributes"];
-		this.HtmlId=["lbs_lat","lbs_lng","lbs_floorNumber","assetId","lbs_buildingId","lbs_buildingName","lbs_regionId","lbs_regionName","lbs_address","lbs_city","lbs_state","lbs_country","lbs_zipCode","lbs_extAddressId","lbs_campusId","lbs_campusName","lbs_floorId","lbs_floorName"];
+		this.LBSField=["lat","lng","floorNumber","id","buildingId","buildingName","regionId","regionName","address","city","state","country","zipCode","extAddressId","campusId","campusName","floorId","floorName","addressLOD","floorLOD","attributes"];
+		this.HtmlId=["lbs_lat","lbs_lng","lbs_floorNumber","assetId","lbs_buildingId","lbs_buildingName","lbs_regionId","lbs_regionName","lbs_address","lbs_city","lbs_state","lbs_country","lbs_zipCode","lbs_extAddressId","lbs_campusId","lbs_campusName","lbs_floorId","lbs_floorName","lbs_addressLOD","lbs_floorLOD"];
 	};
 	var addressMapping=new LBSAddressInformation();
 	
@@ -1171,14 +1186,37 @@ function Filters(){};
 			},
 			getDeviceInformations:function(){
 				return this["deviceInformations"].assets;
+			},
+			setPageCounts:function(assetPg){
+				var asset=this.getDeviceObjectFromList(assetPg.id);
+					asset.pageCount=assetPg.pageCount;				
+			},
+			getBuildingInfo:function(){
+				return{
+					bId:this.deviceInformations.buildingInfo.buildingId,
+					fId:this.deviceInformations.buildingInfo.floorId
+				};
+				
+				
+				
+			},
+			getAssetAddress:function(){
+				return this.deviceInformations;
+				
+			},
+			getAddress:function(){
+				return this.deviceInformations.buildingInfo;
+				
 			}
 	};
 	var deviceInformations=new LBSDeviceInformations();
 	
+	
+	
 	function showPendingMove(){
 		//hide left nav and show the pending move view
 		$('#parentFilter').slideUp();
-		$('#leftNavDevices').hide();
+		$('#leftNavDevices,#deviceStatusContent').hide();
 		$('#mapWithPendingMove').show();
 		changeSize();
 		
@@ -1186,7 +1224,7 @@ function Filters(){};
 	function hidePendingMove(){
 		//show left nav and hide the pending move view
 		$('#parentFilter').slideDown();
-		$('#leftNavDevices').show();
+		$('#leftNavDevices,#deviceStatusContent').show();
 		$('#mapWithPendingMove').hide();
 		changeSize();
 	}
@@ -1194,7 +1232,7 @@ function Filters(){};
 	function showLocationHistory(){
 		//hide left nav and show the pending move view
 		$('#parentFilter').slideUp();
-		$('#leftNavDevices').hide();
+		$('#leftNavDevices,#deviceStatusContent').hide();
 		$('#mapWithLocationhistory').show();
 		changeSize();
 		
@@ -1202,7 +1240,7 @@ function Filters(){};
 	function hideLocationHistory(){
 		//show left nav and hide the pending move view
 		$('#parentFilter').slideDown();
-		$('#leftNavDevices').show();
+		$('#leftNavDevices,#deviceStatusContent').show();
 		$('#mapWithLocationhistory').hide();
 		changeSize();
 	}
@@ -1211,11 +1249,11 @@ function Filters(){};
 		
 		//show left nav and hide the pending move view
 		$('#parentFilter').slideUp();
-		$('#leftNavDevices').hide();
+		$('#leftNavDevices,#deviceStatusContent').hide();
 		//alert($('#cfrmMoveHidden').width());
 		//alert($('#uam-mps-view-map-iframe').contents().find(".confirmButton").css('width'));
-		$('#cancelMoveRequest').css('right',($('#cfrmMoveHidden').width()+70)+'px');
-		$('#cancelMoveRequest').show();
+		//$('#cancelMoveRequest').css('right',($('#cfrmMoveHidden').width()+70)+'px');
+		//$('#cancelMoveRequest').show();
 		$('#breadCrumpMap').hide();
 		$('#uam-mps-view-map-iframe').css('width','100%');
 		changeSize();
@@ -1224,10 +1262,11 @@ function Filters(){};
 	function showFiltersAndLeftNav(){
 		//hide left nav and show the pending move view
 		$('#parentFilter').slideDown();
-		$('#leftNavDevices').show();
-		$('#cancelMoveRequest').hide();
+		$('#leftNavDevices,#deviceStatusContent').show();
+		//$('#cancelMoveRequest').hide();
 		$('#breadCrumpMap').show();
-		$('#uam-mps-view-map-iframe').css('width','69%');
+		if(inFloorLevel)
+			$('#uam-mps-view-map-iframe').css('width','69%');
 		changeSize();
 	}
 	
@@ -1289,128 +1328,152 @@ function Filters(){};
 	
 	
 	var templateDevice,templateDeviceExt;
-YUI().use('handlebars', 'node-base', function (Y) {
-	
-	 Y.on('domready', function () {
-		 	templateDevice = Y.Handlebars.compile(Y.one('#list-template').getHTML());
-    	 	templateDeviceExt=Y.Handlebars.compile(Y.one('#deviceInfoExt').getHTML());
-    	 	/*showNav();
-    		var obj={"assets":[{"id":"1-MPAOXM9","devicePhase":"Installed","productName":"47B1000","name":"1-49418825265","ipAddress":null,"serialNumber":"LBSVALUS04118","modelNumber":"7562-436","customerDeviceTag":"","srArray":[],"regionId":"","regionName":""}]};
-    		htmlEleObj.updateAssetInformationInLeft(obj);*/
-	 });
-	
-	var bClass="";
-	
-Y.Handlebars.registerHelper('generateBkmrkClass', function (deviceId) {
-		if(findDeviceWithinObject(deviceId)){bClass= "bookmark-star-icon";}else{bClass= "removebookmark-icon";}	
-		return bClass;
-	});
-
-Y.Handlebars.registerHelper('generateBkmrkMsg', function () {
-	if(bClass=="bookmark-star-icon"){return globalMessagesAssetDetails["unBookmark"];}else{return globalMessagesAssetDetails["bookmark"];}
-	
-});
-
-Y.Handlebars.registerHelper('showSupplies', function (srArray,id) {
-		for(var i=0;i<srArray.length;i++){
-			var type=requestTypeObj.getRequestType(srArray[i].type);
-			var count=srArray[i].count;
-			
-			if(type==1 && count>0){
-						return "<tr><td style=\"width:30px\"><img class=\"ui_icon_sprite supplies-icon\" alt=\"\" /></td>"+
-										"<td><a style=\"cursor: pointer;\" onClick=\"showRequests('"+id+"',1,1)\">"+globalMessagesAssetDetails["suppliesLink"]+"</a>"+
-									"</tr>";
+	YUI().use('node-base', function (Y) {
+		Y.on('domready', function () {
+			initHandleBar();
+			if(window.createMultiSelectTemplate){
+				createMultiSelectTemplate();
 			}
-			
-		}
-		
-	    
+		});
 	});
-	Y.Handlebars.registerHelper('showService', function (srArray,id) {
-		for(var i=0;i<srArray.length;i++){
-			var type=requestTypeObj.getRequestType(srArray[i].type);
-			var count=srArray[i].count;
-			if(type==2 && count>0){
-							return "<tr><td style=\"width:30px\"><img class=\"ui_icon_sprite services-icon\" alt=\"\" /></td>"+
-										"<td><a style=\"cursor: pointer;\" onClick=\"showRequests('"+id+"',2,1)\">"+globalMessagesAssetDetails["service"]+"</a>"+
-									"</tr>";
-						}
-			
+	
+function initHandleBar(){
+	YUI().use('handlebars','node-base', function (Y) {
+		if(Y.one('#list-template')!=null && Y.one('#deviceInfoExt')!=null){
+			templateDevice = Y.Handlebars.compile(Y.one('#list-template').getHTML());
+		 	templateDeviceExt=Y.Handlebars.compile(Y.one('#deviceInfoExt').getHTML());			
 		}
 		
-	    
+		var bClass="";
+		
+	Y.Handlebars.registerHelper('generateBkmrkClass', function (deviceId) {
+			if(findDeviceWithinObject(deviceId)){bClass= "bookmark-star-icon";}else{bClass= "removebookmark-icon";}	
+			return bClass;
+		});
+
+	Y.Handlebars.registerHelper('generateBkmrkMsg', function () {
+		if(bClass=="bookmark-star-icon"){return globalMessagesAssetDetails["unBookmark"];}else{return globalMessagesAssetDetails["bookmark"];}
+		
 	});
-	Y.Handlebars.registerHelper('showMove', function (srArray,id) {
-		for(var i=0;i<srArray.length;i++){
-			var type=requestTypeObj.getRequestType(srArray[i].type);
-			var count=srArray[i].count;
-			if(type==3 && count>0){
-							return "<tr><td style=\"width:30px\"><img class=\"ui_icon_sprite move-icon\" alt=\"\" /></td>"+
-										"<td><a style=\"cursor: pointer;\" onClick=\"showRequests('"+id+"',3,1)\">"+globalMessagesAssetDetails["move"]+"</a>"+
-									"<td style=\"width:30px\"><a class=\"ui_icon_sprite pending_move-icon\" href=\"#pM\" onClick=\"viewPendingMove('"+id+"')\"></a></td></tr>";
-						}
-			
-		}
-		
-	    
-	});
-	Y.Handlebars.registerHelper('showChange', function (srArray,id) {
-		for(var i=0;i<srArray.length;i++){
-			var type=requestTypeObj.getRequestType(srArray[i].type);
-			var count=srArray[i].count;
-			if(type==4 && count>0){
-							return "<tr><td style=\"width:30px\"><img class=\"ui_icon_sprite change-icon\" alt=\"\" /></td>"+
-										"<td><a style=\"cursor: pointer;\" onClick=\"showRequests('"+id+"',4,1)\">"+globalMessagesAssetDetails["change"]+"</a>"+
-									"</tr>";
-						}
-			
-		}
-		
-	    
-	});
-	Y.Handlebars.registerHelper('showDecommission', function (srArray,id) {
-		for(var i=0;i<srArray.length;i++){
-			var type=requestTypeObj.getRequestType(srArray[i].type);
-			var count=srArray[i].count;
-			if(type==5 && count>0){
-							return "<tr><td style=\"width:30px\"><img class=\"ui_icon_sprite decomission-icon\" alt=\"\" /></td>"+
-										"<td><a style=\"cursor: pointer;\" onClick=\"showRequests('"+id+"',5,1)\">"+globalMessagesAssetDetails["decommission"]+"</a>"+
-									"</tr>";
-						}
-			
-		}
-		
-	    
-	});
-    
-	Y.Handlebars.registerHelper('productTypeHelper', function (type) {
-		
-		var optionVal="";
-		if(type=="Mono"){
-			optionVal="Mono";
-		}else if(type=="Color"){
-			optionVal="Color";
-		}else if(type=="Single"){
-			optionVal="SingleFunctionPrinter";
-		}else if(type=="MFP"){
-			optionVal="MultiFunctionPrinter";
-		}
-		
-		if(optionVal==""){
-			return "";
-		}
-		
-		/* the producttypearray is declared in mapfilter.jsp this is a LOV list*/
-		var i=0;
-		for(i=0;i<productTypeArray.length;i++){
-			if(productTypeArray[i].value==optionVal){
+
+	Y.Handlebars.registerHelper('showSupplies', function (srArray,id) {
+			for(var i=0;i<srArray.length;i++){
+				var type=requestTypeObj.getRequestType(srArray[i].type);
+				var count=srArray[i].count;
 				
-				return productTypeArray[i].displayValue;
+				if(type==1 && count>0){
+							return "<tr><td style=\"width:30px\"><img class=\"ui_icon_sprite supplies-icon\" alt=\"\" /></td>"+
+											"<td><a style=\"cursor: pointer;\" onClick=\"showRequests('"+id+"',1,1)\">"+globalMessagesAssetDetails["suppliesLink"]+"</a>"+
+										"</tr>";
+				}
+				
 			}
-		}
+			
+		    
+		});
+		Y.Handlebars.registerHelper('showService', function (srArray,id) {
+			for(var i=0;i<srArray.length;i++){
+				var type=requestTypeObj.getRequestType(srArray[i].type);
+				var count=srArray[i].count;
+				if(type==2 && count>0){
+								return "<tr><td style=\"width:30px\"><img class=\"ui_icon_sprite services-icon\" alt=\"\" /></td>"+
+											"<td><a style=\"cursor: pointer;\" onClick=\"showRequests('"+id+"',2,1)\">"+globalMessagesAssetDetails["service"]+"</a>"+
+										"</tr>";
+							}
+				
+			}
+			
+		    
+		});
+		Y.Handlebars.registerHelper('showMove', function (srArray,id) {
+			for(var i=0;i<srArray.length;i++){
+				var type=requestTypeObj.getRequestType(srArray[i].type);
+				var count=srArray[i].count;
+				if(type==3 && count>0){
+								return "<tr><td style=\"width:30px\"><img class=\"ui_icon_sprite move-icon\" alt=\"\" /></td>"+
+											"<td><a style=\"cursor: pointer;\" onClick=\"showRequests('"+id+"',3,1)\">"+globalMessagesAssetDetails["move"]+"</a>"+
+										"<td style=\"width:30px\"><a class=\"ui_icon_sprite pending_move-icon\" href=\"#pM\" onClick=\"viewPendingMove('"+id+"')\"></a></td></tr>";
+							}
+				
+			}
+			
+		    
+		});
+		Y.Handlebars.registerHelper('showChange', function (srArray,id) {
+			for(var i=0;i<srArray.length;i++){
+				var type=requestTypeObj.getRequestType(srArray[i].type);
+				var count=srArray[i].count;
+				if(type==4 && count>0){
+								return "<tr><td style=\"width:30px\"><img class=\"ui_icon_sprite change-icon\" alt=\"\" /></td>"+
+											"<td><a style=\"cursor: pointer;\" onClick=\"showRequests('"+id+"',4,1)\">"+globalMessagesAssetDetails["change"]+"</a>"+
+										"</tr>";
+							}
+				
+			}
+			
+		    
+		});
+		Y.Handlebars.registerHelper('showDecommission', function (srArray,id) {
+			for(var i=0;i<srArray.length;i++){
+				var type=requestTypeObj.getRequestType(srArray[i].type);
+				var count=srArray[i].count;
+				if(type==5 && count>0){
+								return "<tr><td style=\"width:30px\"><img class=\"ui_icon_sprite decomission-icon\" alt=\"\" /></td>"+
+											"<td><a style=\"cursor: pointer;\" onClick=\"showRequests('"+id+"',5,1)\">"+globalMessagesAssetDetails["decommission"]+"</a>"+
+										"</tr>";
+							}
+				
+			}
+			
+		    
+		});
+	    
+		Y.Handlebars.registerHelper('productTypeHelper', function (type) {
+			
+			var optionVal="";
+			if(type=="Mono"){
+				optionVal="Mono";
+			}else if(type=="Color"){
+				optionVal="Color";
+			}else if(type=="Single"){
+				optionVal="SingleFunctionPrinter";
+			}else if(type=="MFP"){
+				optionVal="MultiFunctionPrinter";
+			}
+			
+			if(optionVal==""){
+				return "";
+			}
+			
+			/* the producttypearray is declared in mapfilter.jsp this is a LOV list*/
+			var i=0;
+			for(i=0;i<productTypeArray.length;i++){
+				if(productTypeArray[i].value==optionVal){
+					
+					return productTypeArray[i].displayValue;
+				}
+			}
+			
+		});
 		
+		Y.Handlebars.registerHelper('localizeAddressLOD', function (val) {
+			if(addressLOD[val]){
+				return addressLOD[val];
+			}else{
+				return val;
+			}
+		});
+		Y.Handlebars.registerHelper('localizeFloorLOD', function (val) {
+			if(floorLOD[val]){
+				return floorLOD[val];
+			}else{
+				return val;
+			}
+		});
+
 	});
-});
+}	
+
 	
 function checkAndSetState(s){
 	if (s==null || s=="" || s.indexOf("^")==-1){
@@ -1440,12 +1503,20 @@ function setRegionFields(obj,state){
 		obj["State"]=checkAndSetState(state);
 	}
 }
-	
-function postCapture(){
-	var captureMapObj={
-			   "action": "captureMap",
-			   "item": "map",
-			   "info": {}
-			};
+var captureMapObj={
+		   "action": "captureMap",
+		   "item": "map",
+		   "info": {}
+		};	
+function postCapture(){	
 	lbs.postMessage(captureMapObj);
+}
+
+function handleMultiSelectCancel(){
+	multiSelectAsset.resetObj();
+	$('#moveMultiAssetLeftNav').hide();
+	hideNav();
+	siebelJSON.defaultArea=	zoomProcessor.zoomInfo;
+	showMapBtnClicked();hideOverlay();
+	deviceStatus.clearApplyFilter(false);
 }

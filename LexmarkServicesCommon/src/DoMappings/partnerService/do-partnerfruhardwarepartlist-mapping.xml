@@ -39,6 +39,10 @@
 	         		<key><value>partName</value></key>
 	         		<value>Part Number</value>
 				</entry>
+				<entry>
+	         		<key><value>materialLine</value></key>
+	         		<value>LXK MPS Material Line</value>
+				</entry> 	
 	    	</map>
 		</property>
     </bean>  

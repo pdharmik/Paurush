@@ -36,6 +36,8 @@
 	
 	<cache name="retrieveAllStateDetails" maxElementsInMemory="50" eternal="false"
 	overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />	
+	<cache name="retrieveRoles4Customer" maxElementsInMemory="20" eternal="false"
+	overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />
 	
 
 	

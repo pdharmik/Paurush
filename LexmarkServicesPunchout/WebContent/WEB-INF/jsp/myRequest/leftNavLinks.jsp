@@ -1,10 +1,18 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
-
+<style type="text/css">
+.floatR { float:right!important }
+#search,#globalSearch {
+    margin: 3px;
+}
+#globalSearch {
+    padding: 0 8px !important;
+}
+</style>
       <div class="left-nav-inner">
       <c:if test="${acntType eq 'KAISER'}">
       	<!-- Added the Home Link -->
       	<div class="left-nav-header">        	
-        	<h3><a href="#" title="Home" id="homeLink"><spring:message code="myRequest.leftNavLinks.homeLink"/></a></h3>
+        	<h3><a href="#" title="Home" id="homeLink"><spring:message code="myRequest.leftNavLinks.homeLink"/></a><input class="button floatR" type="button" id="globalSearch" value="search" onclick="globalSearch();"/><input class="floatR" type="text" id="search" style="width:80px;height:10px;"/></h3>
         </div><br/>
       </c:if>
         <div class="left-nav-header">       	
@@ -33,5 +41,14 @@ function raiseEvent(msg){
 jQuery(".left-nav-header #homeLink").click(function(){
 	showHome();
 });
+
+function globalSearch(){
+	var searchNumber = document.getElementById("search").value;
+	//showOverlay();
+	//window.location.href='';
+	//window.location.href='<portlet:renderURL><portlet:param name="action" value="globalSearch" /></portlet:renderURL>';
+	raiseEvent("globalSearchList_"+searchNumber);
+	
+}
 
 </script>

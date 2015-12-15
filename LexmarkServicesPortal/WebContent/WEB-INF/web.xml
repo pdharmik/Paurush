@@ -9,19 +9,19 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/context/applicationContext.xml</param-value>
-	</context-param>
-	<listener>
-		<listener-class>com.liferay.portal.kernel.servlet.SecurePluginContextListener</listener-class>
-	</listener>
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+	</context-param>	
 	<listener>
 		<listener-class>com.lexmark.services.servlet.CacheLoaderListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>com.liferay.portal.kernel.servlet.PortletContextListener</listener-class>
-	</listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+<listener>
+    <listener-class>com.liferay.portal.kernel.servlet.SecurePluginContextListener</listener-class>
+</listener>
+<listener>
+    <listener-class>com.liferay.portal.kernel.servlet.PortletContextListener</listener-class>
+</listener>
 	<servlet>
 		<servlet-name>LexmarkServicesPortal Servlet</servlet-name>
 		<servlet-class>com.liferay.portal.kernel.servlet.PortletServlet</servlet-class>

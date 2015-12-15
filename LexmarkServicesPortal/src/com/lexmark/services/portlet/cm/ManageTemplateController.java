@@ -287,7 +287,7 @@ public class ManageTemplateController{
 		LOGGER.debug("ManageTemplateController.downloadTemplate Enter : requestSubType--"+requestSubType);
 		String downloadPath = "";
 		String fileToBeDownloaded = "";
-		String fileName = "";
+		
 		 if (request.getParameter("attachedFileName") !=null) {
 				
 				AttachmentProperties fileProperties = new AttachmentProperties(ChangeMgmtConstant.ATTACHMENT_REQUEST_TYPE);
@@ -297,37 +297,36 @@ public class ManageTemplateController{
 				downloadPath = fileProperties.getFileUploadDestination() +fileToBeDownloaded;
 				
 		 }else{
-			 String fileNameKy = "requestInfo.template.name";
-			
-			 fileName = PropertiesMessageUtil.getPropertyMessage(LexmarkSPConstants.MESSAGE_BUNDLE_NAME,fileNameKy, request.getLocale());
-			 // fileName = DownloadFileLocalizationUtil.getTemplateFileName(request.getLocale().toString()) + ".xls";
+			 
 			 if(requestType != null && requestSubType != null){
+				 if(requestSubType.equalsIgnoreCase("Assets")){ 
+					 String fileNameKy = "requestInfo.template.name";
+					 fileToBeDownloaded = PropertiesMessageUtil.getPropertyMessage(LexmarkSPConstants.MESSAGE_BUNDLE_NAME,fileNameKy, request.getLocale());
+					 String fileNameKey = requestType.concat("_").concat(requestSubType);
+					 LOGGER.debug("fileNameKey --->"+fileNameKey);
+					 fileToBeDownloaded = fileToBeDownloaded+"_"+request.getLocale().toString()+".xls";
+					 LOGGER.debug("Downloading file -->"+ fileToBeDownloaded);
+					 LOGGER.debug("Here file name is "+fileToBeDownloaded);
+					 LOGGER.debug("LOCALE IS ------------------- "+request.getLocale().toString());
+					 downloadPath = getSrTemplateDownloadLocation()+fileToBeDownloaded;
+				 }
+				 else if(requestSubType.equalsIgnoreCase("Addresses") || requestSubType.equalsIgnoreCase("Contacts")){
 				 String fileNameKey = requestType.concat("_").concat(requestSubType);
 				 LOGGER.debug("fileNameKey --->"+fileNameKey);
-				 /*if(! templateNameMap.containsKey(fileNameKey)){
+				 if(! templateNameMap.containsKey(fileNameKey)){
 					 throw new Exception("Template file not found !");
-				 }*/
-				 fileName = fileName+"_"+request.getLocale().toString()+".xls";
-				 //fileToBeDownloaded = templateNameMap.get(fileNameKey).trim();
-				 LOGGER.debug("Downloading file -->"+ fileName);
-				 //fileName = fileToBeDownloaded.substring(0, fileToBeDownloaded.indexOf(".xls"));
-				 LOGGER.debug("Here file name is "+fileName);
-				 LOGGER.debug("LOCALE IS ------------------- "+request.getLocale().toString());
-				 //fileName = fileName+"_"+request.getLocale().toString()+".xls";
-				 
-				 
-				 downloadPath = getSrTemplateDownloadLocation()+fileName;
+				 }
+				 fileToBeDownloaded = templateNameMap.get(fileNameKey).trim();
+				 LOGGER.debug("Downloading file -->"+templateNameMap.get(fileNameKey).trim());
+				 downloadPath = getSrTemplateDownloadLocation()+fileToBeDownloaded;
+				 }
 				 
 			 }
 			 			 
 		 }
-		 
 		 		LOGGER.debug("downloadPath --->"+downloadPath);
-		 		
-		 		openAttachment(request,response,fileName,downloadPath);
-		 		
-
-				LOGGER.debug("ManageTemplateController.downloadTemplate Exit : ");
+		 		openAttachment(request,response,fileToBeDownloaded,downloadPath);
+		 		LOGGER.debug("ManageTemplateController.downloadTemplate Exit : ");
 			}
 	
 	
@@ -938,14 +937,23 @@ public class ManageTemplateController{
 	    	fileName = fileName.replace(" ", "%20");   
 	    }   
 	    
-	 // PropertiesMessageUtil.getPropertyMessage(LexmarkSPConstants.MESSAGE_BUNDLE_NAME,"requestInfo.historyDetails.exception", request.getLocale()
-	 		//response.setProperty("Content-disposition", "attachment; filename=\"" + fileName +"\"");
-	 	    String localizedFileName = DownloadFileLocalizationUtil.encodeDecodeFileName(PropertiesMessageUtil.getPropertyMessage(LexmarkSPConstants.MESSAGE_BUNDLE_NAME,"multiple.template.sr", request.getLocale()));
-	 	    response.setProperty("Content-disposition", "attachment; filename=\"" + localizedFileName +"\"");	
-		//response.setContentType("text/xls;charset=UTF-8");
-		response.setCharacterEncoding("utf-8");
+	    String requestType = request.getParameter("requestType");
+		String requestSubType = request.getParameter("requestSubType");
+		LOGGER.debug("ManageTemplateController.downloadTemplate Enter : requestType--"+requestType);
+		LOGGER.debug("ManageTemplateController.downloadTemplate Enter : requestSubType--"+requestSubType);
+		
+		if(requestType != null && requestSubType != null){
+			 if(requestSubType.equalsIgnoreCase("Assets")){
+				 String localizedFileName = DownloadFileLocalizationUtil.encodeDecodeFileName(PropertiesMessageUtil.getPropertyMessage(LexmarkSPConstants.MESSAGE_BUNDLE_NAME,"multiple.template.sr", request.getLocale()));
+				 response.setProperty("Content-disposition", "attachment; filename=\"" + localizedFileName +"\"");	
+				 response.setCharacterEncoding("utf-8");
+			 }
+			 else if(requestSubType.equalsIgnoreCase("Addresses") || requestSubType.equalsIgnoreCase("Contacts")){
+			 response.setProperty("Content-disposition", "attachment; filename=\"" + fileName +"\"");
+			 }
+		}
 				
-		LOGGER.debug("fileName " + fileName);
+	 	LOGGER.debug("fileName " + fileName);
 		LOGGER.debug("fullPath " + fullPath);
 		
 		

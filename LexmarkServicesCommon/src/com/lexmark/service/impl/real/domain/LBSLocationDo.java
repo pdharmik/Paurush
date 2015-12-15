@@ -28,6 +28,7 @@ public class LBSLocationDo extends AccountBasedDo implements Serializable {
 	private String county;
 	private String district;
 	private String buildingType;
+	private String floorLevelOfDetails;
 	
 	public String getSite() {
 		return site;
@@ -130,6 +131,12 @@ public class LBSLocationDo extends AccountBasedDo implements Serializable {
 	}
 	public void setBuildingType(String buildingType) {
 		this.buildingType = buildingType;
+	}
+	public String getFloorLevelOfDetails() {
+		return floorLevelOfDetails;
+	}
+	public void setFloorLevelOfDetails(String floorLevelOfDetails) {
+		this.floorLevelOfDetails = floorLevelOfDetails;
 	}
 
 }

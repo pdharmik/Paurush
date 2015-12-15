@@ -7,11 +7,11 @@
 
 <div class="error" style="display: none;">
 	<ul>
-		<li>Please provide preference name</li>
+		<li><spring:message code="fleetmanagement.headers.providePrefName"/></li>
 	</ul>
 </div>
 
-<label>Preference Name</label>: <input type="text" id="name"/>
+<label><spring:message code="fleetmanagement.headers.preferenceName"/></label>: <input type="text" id="name"/>
 <input type="hidden" id="prefId">
 <div id="FilterDetails">
 			<div id="filterLocation" class="filterLocationPref">
@@ -52,7 +52,7 @@
 						</div>
 					</div>
 					
-					<div id="selectLocalAddress">
+					<div id="selectLocalAddress" class="selectLocalAddress">
 						<ul>
 							<li>
 								<select id="${prefixId}site">
@@ -232,9 +232,9 @@
 			</div>
 			</div>
 	<div class="clearDiv">							
-	<input type="checkbox" id="default"/><label>Default Preference</label>
-	<button class="button_cancel btnpopupPref" onclick="closeDialogPrefPop()">Cancel</button>
-	<button class="button btnpopupPref" onClick="savePrefPopup()">Save</button>
+	<input type="checkbox" id="default"/><label><spring:message code="fleetmanagement.headers.defaultPreference"/></label>
+	<button class="button_cancel btnpopupPref" onclick="closeDialogPrefPop()"><spring:message code="fleetmanagement.headers.cancel"/></button>
+	<button class="button btnpopupPref" onClick="savePrefPopup()"><spring:message code="fleetmanagement.headers.save"/></button>
 	</div>
 	
 	<div style="display: none;" id="${prefixId}customizepop" class="customizePopup">

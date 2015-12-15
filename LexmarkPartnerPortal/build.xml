@@ -36,7 +36,7 @@
 	</target>
 
 	<target name="compile" depends="init,common-jar,webService-jar">
-		<javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="build.classpath" debug="true" target="1.6" source="1.6"/>
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="build.classpath" debug="true" target="1.8" source="1.8"/>
 		<copy todir="${classes.dir}/com/lexmark/resources">
 			<fileset dir="${src.dir}/com/lexmark/resources">
 				<include name="*.properties" />

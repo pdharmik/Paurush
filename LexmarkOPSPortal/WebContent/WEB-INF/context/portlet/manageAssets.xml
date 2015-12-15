@@ -17,7 +17,8 @@
 <bean id="propertyConfigurerCHLOthers" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
        		 <list>
-               <value>/WEB-INF/context/common.properties</value> 
+               <value>/WEB-INF/context/common.properties</value>
+                <value>/WEB-INF/context/webservice.properties</value>  
         	 </list>    
         </property>
 	</bean>
@@ -25,6 +26,18 @@
 <!-- Controllers -->
 
 <bean id="manageAssetsController" class="com.lexmark.services.portlet.cm.ManageAssetsController"> 
+		<property name="listOfFileTypes">
+    			<value>${attachment.fileType.list}</value>
+    	</property>
+   		<property name="attMaxCount">
+    			<value>${attachment.maxcount}</value>
+    	</property>
+    	
+    	<property name="lbsFormPost">
+    		<value>${fleetManagement.lbs.endPoint}</value>
+    	</property>
+</bean>
+<bean id="manageMultiAssetsController" class="com.lexmark.services.portlet.cm.ManageMultiAssetsController"> 
 		<property name="listOfFileTypes">
     			<value>${attachment.fileType.list}</value>
     	</property>
@@ -73,6 +86,7 @@
 			</list>
 	     	</property>
 	</bean>
+	<bean id="lBSFloorPlanService" class="com.lexmark.service.impl.real.AmindLBSFloorPlanService"></bean>
 </beans>
 
 

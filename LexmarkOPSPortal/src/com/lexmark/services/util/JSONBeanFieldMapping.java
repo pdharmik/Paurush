@@ -39,9 +39,8 @@ public enum JSONBeanFieldMapping {
 	CONTACTEMAILADDRESS("email","primaryContactEmail"),
 	CONTACTWORKPHONE("workPhone","primaryContactWorkPhone"),CONTACTALTERNATEPHONE("alternatePhone","primaryContactAlternatePhone"),
 	LXKASSETTAG("lxkAssetTag","lxkAssetTag"),ASSETLIFECYCLE("assetLifeCycle","assetLifeCycle"),
-	HARDWARESTATUS("hardwareStatus","hardwareStatus"),PARTTYPE("partType","partType");
+	HARDWARESTATUS("hardwareStatus","hardwareStatus"),PARTTYPE("partType","partType"),ADDRESSLEVELLOD("addressLevelLOD","addressLevelDetails"),FLOORLEVELLOD("floorLevelLOD","floorLevelDetails"),BUILDINGTYPE("buildingType","buildingType");
 	//MODELTYPE("modelType","modelType");
-	
 	
 	
 	private String jsonParam;

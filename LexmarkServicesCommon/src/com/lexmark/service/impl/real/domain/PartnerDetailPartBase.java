@@ -33,6 +33,7 @@ public class PartnerDetailPartBase extends BaseEntity {
 	private Integer notUsedQuantity;
 	private Integer doaQuantity;
 	private String partStatus;
+	private String materialLine;
 	
 	public String getRelationType() {
 		return relationType;
@@ -210,5 +211,11 @@ public class PartnerDetailPartBase extends BaseEntity {
 	}
 	public void setPartStatus(String partStatus) {
 		this.partStatus = partStatus;
+	}
+	public String getMaterialLine() {
+		return materialLine;
+	}
+	public void setMaterialLine(String materialLine) {
+		this.materialLine = materialLine;
 	}
 }

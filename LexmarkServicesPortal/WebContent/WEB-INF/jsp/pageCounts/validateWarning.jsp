@@ -20,9 +20,9 @@
 			    <td width="25%" align="left"><h4 class="text-decoration-underline"><spring:message code="meterRead.label.response" /></h4></td>
 			</tr>
 			<tr>	
-				<td align="center" valign="top"><div id="serialNumber"></div></td>
+				<td align="center" valign="top"><div id="serialNumber_updt"></div></td>
 				<td align="center" valign="top"><div id="readDate"></div></td>
-				<td align="center" valign="top"><div id="pageCount"></div></td>
+				<td align="center" valign="top"><div id="pageCount_updt"></div></td>
 				<td align="center" valign="top"><div id="colorPageCount"></div></td>
 				<td align="left">  <!-- Changes Done for LEX:AIR00068875 -->
 				<table width="285px"> 			
@@ -92,9 +92,9 @@
 	}else{
 		document.getElementById("colorPageCount").innerHTML="---";
 	}
-	document.getElementById("serialNumber").innerHTML=window.parent.window.serialNumber;
+	document.getElementById("serialNumber_updt").innerHTML=window.parent.window.serialNumber;
 	document.getElementById("readDate").innerHTML=window.parent.window.document.getElementById("localizedReadDate"+selectedId).value;
-	document.getElementById("pageCount").innerHTML=inputNewCount;
+	document.getElementById("pageCount_updt").innerHTML=inputNewCount;
 	document.getElementById("warningMsgBW").innerHTML=msg;
 	document.getElementById("warningMsgcolor").innerHTML=msgColor;
 	document.getElementById("msgNotUpdate").innerHTML=msgNotUpdate;

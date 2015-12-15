@@ -139,6 +139,30 @@
 	         		<key><value>partType</value></key>
 	         		<value>LXK Material Part Type</value>
 				</entry>					
+				<entry>
+	         		<key><value>levelOfDetails</value></key>
+	         		<value>LXK LBS Level of Detail</value>
+				</entry>
+				<entry>
+	         		<key><value>addressLevelDetails</value></key>
+	         		<value>LXK LBS Address LOD</value>
+				</entry>
+				<entry>
+	         		<key><value>floorLevelDetails</value></key>
+	         		<value>LXK LBS Floor LOD</value>
+				</entry>					
+				<entry>
+	         		<key><value>buildingType</value></key>
+	         		<value>LXK LBS Building Type</value>
+				</entry>
+				<entry>
+	         		<key><value>serialNumber</value></key>
+	         		<value>Serial Number</value>
+				</entry>	
+				<entry>
+	         		<key><value>accountId</value></key>
+	         		<value>LXK LBS Account Id</value>
+				</entry>				
 	     	</map>
 		</property>
 	   	     	  

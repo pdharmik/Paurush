@@ -225,10 +225,7 @@ public class AssetListService {
 			throw new SiebelCrmServiceException("Chl Domian Object is null");
 		}
 		String parentChain = chl.getParentChain();
-		if(isEmpty(parentChain)) {
-			throw new SiebelCrmServiceException("No Parent Chain found using CHL Node ID: " + contract.getChlNodeId());
-			
-		}
+
 		expr.append(" AND ");
 		String topLevelAccountId = chl.getTopLevelAccountId();
 		if (isNotEmpty(topLevelAccountId))
@@ -237,24 +234,29 @@ public class AssetListService {
 			expr.append("='");
 			expr.append(topLevelAccountId);
 			expr.append("'");
-			expr.append("   AND");
+			
 		}
 	
+		if(isNotEmpty(parentChain)) {
+			expr.append(" AND");
+			expr.append(" (EXISTS(");
+			expr.append("[LXK SW Covered Asset CHL Parent Chain]");
+			expr.append(" LIKE '");
+			expr.append(parentChain);
+			expr.append("*')");
+			
+			expr.append(" OR ");
+			expr.append("[CHL Parent Chain]");
+			expr.append(" LIKE '");
+			expr.append(parentChain);
+			expr.append("*')");
+			
+//			throw new SiebelCrmServiceException("No Parent Chain found using CHL Node ID: " + contract.getChlNodeId());
+		}
 		
-		expr.append("  ( EXISTS(");
-		expr.append("[LXK SW Covered Asset CHL Parent Chain]");
-		expr.append(" LIKE '");
-		expr.append(parentChain);
-		expr.append("*') ");
-		
-		
-		expr.append(" OR ");
-		expr.append("[CHL Parent Chain]");
-		expr.append(" LIKE '");
-		expr.append(parentChain);
-		expr.append("*')");
 		expr.append(" AND EXISTS ( [LXK MPS CSS Ent Type] <> 'Warranty' " +
 				"AND ([LXK MPS CSS Ent End Date] >= '" +  contract.getEntitlementEndDate() + "'))") ;
+		
 		return expr;
 	}
 	@SuppressWarnings("unchecked")

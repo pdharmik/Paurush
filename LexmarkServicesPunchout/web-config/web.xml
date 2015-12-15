@@ -19,6 +19,23 @@
     <servlet-name>ViewRendererServlet</servlet-name>
     <url-pattern>/WEB-INF/servlet/view</url-pattern>
   </servlet-mapping>
+  <servlet>
+		<servlet-name>punchout</servlet-name>
+		<servlet-class>com.lexmark.servlet.PunchoutSetup</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>punchoutcatalog</servlet-name>
+		<servlet-class>com.lexmark.servlet.PunchOutSetupResponse</servlet-class>
+	</servlet>
+  <servlet-mapping>
+		<servlet-name>punchoutcatalog</servlet-name>
+		<url-pattern>/punchoutcatalog</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>punchout</servlet-name>
+		<url-pattern>/punchout</url-pattern>
+	</servlet-mapping>
+  
  <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>

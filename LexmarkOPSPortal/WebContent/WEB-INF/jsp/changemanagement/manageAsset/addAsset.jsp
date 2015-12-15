@@ -27,6 +27,7 @@ padding: 10px 7px 9px 0;
 <% request.setAttribute("subTabSelected","createNewRequest"); %>
 <jsp:include page="../../common/subTab.jsp"></jsp:include> 
 <jsp:include page="../../common/validationMPS.jsp" />
+<jsp:include page="../../common/mapViewPopup.jsp"></jsp:include>
 <portlet:renderURL var="addAssetConfirmationUrl">
 	<portlet:param name="action" value="addAssetConfirmation"></portlet:param>
 </portlet:renderURL>
@@ -74,7 +75,7 @@ padding: 10px 7px 9px 0;
 		</h3>
 			<%-- This section shows the front end validation errors --%>
  
-				<div class="error" id="errorDiv" style="display: none;">
+				<div class="serviceError" id="errorDiv" style="display: none;">
 				</div>
 			<%-- End of front end validations --%>
 			<%-- This section shows the server side validation errors --%>
@@ -261,7 +262,7 @@ padding: 10px 7px 9px 0;
         <form:input id="productModel" path="assetDetail.productLine" />
         </span>
         
-		
+		<form:hidden id="placementId" path="assetDetail.placementId"/>
 		</form:form>
 		<p class="inlineTitle"><spring:message code="requestInfo.label.attachFiles"/></p>
 		
@@ -296,6 +297,7 @@ padding: 10px 7px 9px 0;
 </form>
    
   <script type="text/javascript">
+  jQuery('#placementId').val('${placementId}');
   function onCancelClick() {
 		
 		
@@ -512,6 +514,15 @@ padding: 10px 7px 9px 0;
 				
 				return false;
 			}
+		
+			<c:if test="${placementId != null && placementId !=''}">
+			if(jQuery("#serialNumber").val() != "" && (jQuery('#productType').val()=="" && jQuery('#enterProduct').val()=="")){
+				jQuery('#errorDiv').show();
+				jQuery('#errorDiv').append("<li class=\"portlet-msg-error\"><strong>Please Enter Printer Model</strong></li>");
+				jQuery(document).scrollTop(0);
+				return false;
+			}
+			</c:if>
 			
 			if(pageCountValidate()==false) {
 					//jQuery('#errorDiv').append('<li><strong><spring:message code="validation.asset.add.properPageCount"/></strong></li>');
@@ -528,16 +539,16 @@ padding: 10px 7px 9px 0;
 			if(bindDeviceContact()==false) {
 				//alert('duplicateContactType='+duplicateContactType+' emptyContact='+emptyContact);
 				if(duplicateContactType){
-					jQuery('#errorDiv').append("<li><strong><spring:message code='validation.asset.add.dublicateContactInfo'/></strong></li>");
+					jQuery('#errorDiv').append("<li class=\"portlet-msg-error\"><strong><spring:message code='validation.asset.add.dublicateContactInfo'/></strong></li>");
 				}
 				if(duplicateContact){
-					jQuery('#errorDiv').append("<li><strong><spring:message code='contact.popup.duplicateData'/></strong></li>");
+					jQuery('#errorDiv').append("<li class=\"portlet-msg-error\"><strong><spring:message code='contact.popup.duplicateData'/></strong></li>");
 				}
 				if(emptyContact){
-					jQuery('#errorDiv').append("<li><strong><spring:message code='validation.asset.add.noDataInContactInfo'/></strong></li>");
+					jQuery('#errorDiv').append("<li class=\"portlet-msg-error\"><strong><spring:message code='validation.asset.add.noDataInContactInfo'/></strong></li>");
 				}
 				if(emptyContactType){
-					jQuery('#errorDiv').append("<li><strong><spring:message code='validation.asset.add.contactType'/></strong></li>");
+					jQuery('#errorDiv').append("<li class=\"portlet-msg-error\"><strong><spring:message code='validation.asset.add.contactType'/></strong></li>");
 				}
 				jQuery('#errorDiv').show();
 				jQuery(document).scrollTop(0);
@@ -556,7 +567,7 @@ padding: 10px 7px 9px 0;
 							{
 								validationflag=true;
 								jQuery('#'+elementIdsToValidate[i]).addClass('errorColor');
-								jQuery("#errorDiv").append('<li><strong>'+patRes+'</strong></li>');	
+								jQuery("#errorDiv").append('<li class=\"portlet-msg-error\"><strong>'+patRes+'</strong></li>');	
 								jQuery('#errorDiv').show();
 								jQuery(document).scrollTop(0);
 								return false;
@@ -566,13 +577,15 @@ padding: 10px 7px 9px 0;
 					
 					<%--Changed for LBS --%>
 					var lbsaddressflagins=jQuery("#installLBSAddressFlag").val();
-					if(lbsaddressflagins=="true"){
+					var installLevelOfDetails = $.trim(jQuery("#installLevelOfDetails").val()).toLowerCase();
+					
+					if(lbsaddressflagins=="true" && installLevelOfDetails.match("floor level|grid level|mix - see floor")){
 						
 						
 						if(jQuery('#physicalLocation1h').val() == ''||jQuery('#physicalLocation1h').val() == null ){
 							validationflag=true;
 							jQuery("#errorDiv").show();
-							jQuery("#errorDiv").append("<li><strong><spring:message code='lbs.label.install.building'/></strong></li>");
+							jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong><spring:message code='lbs.label.install.building'/></strong></li>");
 							jQuery(document).scrollTop(0);
 							return false;
 						}
@@ -580,7 +593,7 @@ padding: 10px 7px 9px 0;
 							
 							validationflag=true;
 							jQuery("#errorDiv").show();
-							jQuery("#errorDiv").append("<li><strong><spring:message code='lbs.label.install.floor'/></strong></li>");
+							jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong><spring:message code='lbs.label.install.floor'/></strong></li>");
 							jQuery(document).scrollTop(0);
 							return false;
 						}
@@ -593,7 +606,7 @@ padding: 10px 7px 9px 0;
 					
 					validationflag=true;
 					jQuery("#errorDiv").show();
-					jQuery("#errorDiv").append("<li><strong>Please enter Project Name</strong></li>");
+					jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>Please enter Project Name</strong></li>");
 					jQuery(document).scrollTop(0);
 					return false;
 				}
@@ -601,7 +614,7 @@ padding: 10px 7px 9px 0;
 					
 					validationflag=true;
 					jQuery("#errorDiv").show();
-					jQuery("#errorDiv").append("<li><strong>Please enter Project Phase</strong></li>");
+					jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>Please enter Project Phase</strong></li>");
 					jQuery(document).scrollTop(0);
 					return false;
 				}
@@ -613,7 +626,7 @@ padding: 10px 7px 9px 0;
 					if(pageCountsDate[j] != null){				
 					var currentDate = new Date(formatDateToDefault(pageCountsDate[j])).toUTCString();
 					if(new Date(currentDate)>new Date(new Date().toUTCString())){					
-						jQuery("#errorDiv").append("<li><strong>"+"<spring:message code='requestInfo.validation.currentDateExceed'/> " 
+						jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"<spring:message code='requestInfo.validation.currentDateExceed'/> " 
 								+(j+1)+ "</strong></li>");
 						jQuery('#errorDiv').show();
 						jQuery(document).scrollTop(0);
@@ -639,6 +652,8 @@ padding: 10px 7px 9px 0;
 							}else{
 								jQuery('#productModel').val(jQuery('#productType :selected').val());
 								}
+						
+						jQuery("#installFloorLevelOfDetails").val($("#flr option:selected").attr("lod"));
 													
 						jQuery("#addAssetForm").attr("action", addAssetConfirmUrl);
 						jQuery("#addAssetForm").submit();
@@ -746,23 +761,23 @@ var checkFlag=false;
 			 }
 		 
 			if(emptyFlag && checkFlag){
-				jQuery('#errorDiv').append("<li><strong><spring:message code='validation.asset.add.nodata'/></strong></li>");
-				jQuery("#errorDiv").append("<li><strong>"+"<spring:message code='validation.Asset.installAssetFlag.format.errorMsg'/>" 
+				jQuery('#errorDiv').append("<li class=\"portlet-msg-error\"><strong><spring:message code='validation.asset.add.nodata'/></strong></li>");
+				jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"<spring:message code='validation.Asset.installAssetFlag.format.errorMsg'/>" 
 						+ "</strong></li>");
 				jQuery('#errorDiv').show();
 				jQuery(document).scrollTop(0);
 				return false;
 			}else if(emptyFlag && !checkFlag){
-				jQuery('#errorDiv').append("<li><strong><spring:message code='validation.asset.add.nodata'/></strong></li>");
+				jQuery('#errorDiv').append("<li class=\"portlet-msg-error\"><strong><spring:message code='validation.asset.add.nodata'/></strong></li>");
 				if((jQuery('#installAssetYes').is(':checked')) && (jQuery('#installAddressLine1').val() == '' && jQuery('#installAddressCity').val() == '' && jQuery('#installAddressState').val() == '' && jQuery('#installAddressCountry').val() == '' && jQuery('#physicalLocation1').val()=='' && jQuery('#physicalLocation2').val()=='' && jQuery('#physicalLocation3').val()=='')){
-					jQuery("#errorDiv").append("<li><strong>"+"<spring:message code='requestInfo.validation.installAddressEmpty'/>" 
+					jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"<spring:message code='requestInfo.validation.installAddressEmpty'/>" 
 					+ "</strong></li>");
 					}
 				jQuery('#errorDiv').show();
 				jQuery(document).scrollTop(0);
 				return false;
 			}else if(!emptyFlag && checkFlag){
-				jQuery("#errorDiv").append("<li><strong>"+"<spring:message code='validation.Asset.installAssetFlag.format.errorMsg'/>" 
+				jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"<spring:message code='validation.Asset.installAssetFlag.format.errorMsg'/>" 
 						+ "</strong></li>");
 				jQuery('#errorDiv').show();
 				jQuery(document).scrollTop(0);
@@ -772,7 +787,7 @@ var checkFlag=false;
 		 if((jQuery('#installAssetYes').is(':checked')))
 			{
 			if(jQuery('#installAddressLine1').val() == '' && jQuery('#installAddressCity').val() == '' && jQuery('#installAddressState').val() == '' && jQuery('#installAddressCountry').val() == '' && jQuery('#physicalLocation1').val()=='' && jQuery('#physicalLocation2').val()=='' && jQuery('#physicalLocation3').val()==''){
-				jQuery("#errorDiv").append("<li><strong>"+"<spring:message code='requestInfo.validation.installAddressEmpty'/>" 
+				jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"<spring:message code='requestInfo.validation.installAddressEmpty'/>" 
 				+ "</strong></li>");
 				jQuery('#errorDiv').show();
 				jQuery(document).scrollTop(0);
@@ -821,9 +836,15 @@ var checkFlag=false;
 					}
 					}catch(e){
 						//alert("in else");
+						console.log('catch error');
+						 jQuery('#productModelLoading').hide();
 						}
 					
-				}
+				},
+                     error: function( objAJAXRequest, strError ){
+                        console.log('in error: '+strError);
+						 jQuery('#productModelLoading').hide();
+                     }
 			});	
 	 }
 	 function showEnterProduct(){

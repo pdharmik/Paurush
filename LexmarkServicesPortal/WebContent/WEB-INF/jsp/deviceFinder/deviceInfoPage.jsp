@@ -15,9 +15,11 @@
 <![endif]-->
 
 <style>
-
-
+ #tabs{
+ 	border:0 !important;
+ }
  .ui-tabs .ui-tabs-nav li{
+ margin-top:2px !important;
  height:26px !important
  }
   .ui-tabs .ui-tabs-nav li a {
@@ -759,7 +761,7 @@ function onSRNmbrClick(serviceRequestNumber, requestType){
 	else
 	{
 	srDetailsLink='<portlet:renderURL windowState="<%= LiferayWindowState.NORMAL.toString() %>"><portlet:param name='action' value='showServiceRequestDrillDownPage' /></portlet:renderURL>'+
-	'&serviceRequestNumber=' + serviceRequestNumber+"&sourcePage=DM"+"&assetRowId="+assetRowId1+"&isDeviceBookmarked="+${deviceDetailForm.device.userFavoriteFlag}+"&lclick="+linkClicked+"&dFFlag=true";
+	'&serviceRequestNumber=' + serviceRequestNumber+"&timeZoneOffset=" + timezoneOffset +"&sourcePage=DM"+"&assetRowId="+assetRowId1+"&isDeviceBookmarked="+${deviceDetailForm.device.userFavoriteFlag}+"&lclick="+linkClicked+"&dFFlag=true";
 	}
 	showOverlay(); 
 	window.location.href = srDetailsLink;

@@ -177,7 +177,7 @@ behavior: url(/LexmarkOPSPortal/WEB-INF/css/PIE.htc) !important;
 				</c:otherwise>
 				</c:choose>
 				
-				<div class="lineClear">
+				<div class="lineClear" id="quantityId">
 				<span class="fontQty"><spring:message code="requestInfo.heading.Qty"/></span><span class="spaceClear"/>
 				<input type="text" id="bundleList[${counter.index}].orderQuantity" class="w50 right" name="bundleList[${counter.index}].orderQuantity" value='${hardwareBundleListDetail.orderQuantity}' maxlength="4">
 			  </td>
@@ -391,7 +391,7 @@ behavior: url(/LexmarkOPSPortal/WEB-INF/css/PIE.htc) !important;
               <ul class="form">
                 <li>
                   <label for="coveredCheck"><spring:message code="requestInfo.label.coveredService"/></label>
-                  <span style="width: 100%;">
+                  <span>
                   <form:checkbox id="coveredCheck" path="installationOnlyFlag" onclick="showTemplate();"/>
                   <%-- Changes for MPS 2.1 7895 --%>
                   <img class="helpIcon ui_icon_sprite info-icon"  src="<html:imagesPath/>transparent.png" title="<spring:message code="hardwareDetail.installFlag.tooltip"/>" ></span>
@@ -399,11 +399,11 @@ behavior: url(/LexmarkOPSPortal/WEB-INF/css/PIE.htc) !important;
                  	
                  </li>
                  </ul>
-                 <div id="downloadTemp" style="display:none;">
-                 		<div style="margin-left:21%;margin-top:6px;float:left;width:100%;">
+                 <div id="downloadTemp" class="clearBoth"  style="display:none;">
+                 		<div style="margin-top:6px;float:left;width:100%;">
                  		<button type="button" class="button positionShift iePositionShift" onClick="downloadHWInstallTemplate()"><spring:message code="requestInfo.hardwareInstall.downloadTemplate"/></button>
                  		</div>
-                 		<div style="margin-left:21%;margin-top:10px;;float:left;width:100%;"><em class="note"><spring:message code="requestInfo.hardwareInstall.downloadTemplate.note"/></em>
+                 		<div style="margin-top:10px;;float:left;width:100%;"><em class="note"><spring:message code="requestInfo.hardwareInstall.downloadTemplate.note"/></em>
                  		</div>
                  		<div style="clear:both;"></div>
                  </div> 
@@ -449,7 +449,11 @@ behavior: url(/LexmarkOPSPortal/WEB-INF/css/PIE.htc) !important;
 </div><!-- content-wrapper -->
 </div><!-- main-wrap -->
 </div><!-- content -->
-<script type="text/javascript">	 
+<script type="text/javascript">
+<c:if test="${hardwareDetailPageForm.pageFlow != null && hardwareDetailPageForm.pageFlow != '' && hardwareDetailPageForm.pageFlow =='map'}">
+	jQuery('#quantityId').hide();
+</c:if>
+
 var attachTemplateCheck;
 var pageType="hardwareDetails";
 jQuery("#templateFileCheck").val("false");

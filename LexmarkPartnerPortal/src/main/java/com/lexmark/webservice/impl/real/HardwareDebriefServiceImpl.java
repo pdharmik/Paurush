@@ -270,7 +270,7 @@ public class HardwareDebriefServiceImpl implements HardwareDebriefService{
 						}else{
 							int statusArr[]=getPartStatus(userenteredpartList,part.getPartNumber());
 							
-							LOGGER.debug(" for part ["+part.getPartNumber()+"] used="+statusArr[0]+" not used="+statusArr[1]+" defective on Arrival=" + statusArr[2]);
+							LOGGER.debug(" for part 1 ["+part.getPartNumber()+"] used="+statusArr[0]+" not used="+statusArr[1]+" defective on Arrival=" + statusArr[2]);
 							recommendedPartsList[i].setUsedQuantity(String.valueOf(statusArr[0]));
 							recommendedPartsList[i].setNotUsedQuantity(String.valueOf(statusArr[1]));
 							recommendedPartsList[i].setDOAQuantity(String.valueOf(statusArr[2]));
@@ -278,7 +278,7 @@ public class HardwareDebriefServiceImpl implements HardwareDebriefService{
 					}else{
 						int statusArr[]=getPartStatus(userenteredpartList,part.getPartNumber());
 						
-						LOGGER.debug(" for part ["+part.getPartNumber()+"] used="+statusArr[0]+" not used="+statusArr[1]+" defective on Arrival=" + statusArr[2]);
+						LOGGER.debug(" for part 2 ["+part.getPartNumber()+"] used="+statusArr[0]+" not used="+statusArr[1]+" defective on Arrival=" + statusArr[2]);
 						recommendedPartsList[i].setUsedQuantity(String.valueOf(statusArr[0]));
 						recommendedPartsList[i].setNotUsedQuantity(String.valueOf(statusArr[1]));
 						recommendedPartsList[i].setDOAQuantity(String.valueOf(statusArr[2]));
@@ -327,11 +327,11 @@ public class HardwareDebriefServiceImpl implements HardwareDebriefService{
 					}
 				}
 			}			
-			LOGGER.debug("Added order Part List size "+addedOrderPartlist.size());
-			AdditionalPartsList[] additionalPartsList= new AdditionalPartsList[addedOrderPartlist.size()];
+			LOGGER.debug("Added order Part List size 1 "+lastorderPartlist.size());
+			AdditionalPartsList[] additionalPartsList= new AdditionalPartsList[lastorderPartlist.size()];
 			int additionalCount=0;
-			for(PartLineItem partToAdd:addedOrderPartlist){
-				LOGGER.debug("Added order Part List size "+addedOrderPartlist.size());
+			for(PartLineItem partToAdd:lastorderPartlist){
+				LOGGER.debug("Added order Part List size 2 "+lastorderPartlist.size());
 				int statusArr[]=getPartLineItemStatus(lastorderPartlist,partToAdd.getPartNumber());
 				LOGGER.debug("status Arr Length"+statusArr.length);
 				for(int k=0;k<statusArr.length;k++){
@@ -340,11 +340,12 @@ public class HardwareDebriefServiceImpl implements HardwareDebriefService{
 				additionalPartsList[additionalCount]=new AdditionalPartsList();
 				LOGGER.debug("Additional part partnumber "+partToAdd.getPartNumber());
 				LOGGER.debug("Additional part Description "+checkStringBlank(partToAdd.getDescription()));
-				additionalPartsList[additionalCount].setPartDescription(checkStringBlank(partToAdd.getDescription()));
+				LOGGER.debug("Additional Type Printer =" + partToAdd.isTypePrinter());
+				additionalPartsList[additionalCount].setPartDescription((checkStringBlank(partToAdd.getDescription())));
 				//additionalPartsList[i].setPartDisposition("");//Don't know what to send
 				additionalPartsList[additionalCount].setPartNumber(checkStringBlank(partToAdd.getPartNumber()));
 				int totalQty = statusArr[0]+statusArr[1]+statusArr[2];
-				LOGGER.debug(" for part ["+partToAdd.getPartNumber()+"] used="+statusArr[0]+" not used="+statusArr[1]+" defective on Arrival=" + statusArr[2]+" Total="+totalQty);					
+				LOGGER.debug(" for part ["+partToAdd.getPartNumber()+"] used="+statusArr[0]+" not used="+statusArr[1]+" defective on Arrival=" + statusArr[2]+" Total="+totalQty+" Type Printer="+partToAdd.isTypePrinter());					
 				additionalPartsList[additionalCount].setUsedQuantity(String.valueOf(statusArr[0]));
 				additionalPartsList[additionalCount].setNotUsedQuantity(String.valueOf(statusArr[1]));
 				additionalPartsList[additionalCount].setDOAQuantity(String.valueOf(statusArr[2]));
@@ -1007,6 +1008,7 @@ public class HardwareDebriefServiceImpl implements HardwareDebriefService{
 		int doA=0;//defective on arrival - status
 		int orderQuantity=0;
 		for(Part userEnteredPart:userenteredpartList){
+			LOGGER.debug(" userenteredpartList Size "+userenteredpartList.size());
 			if(userEnteredPart.getPartNumber().equalsIgnoreCase(partNumber)){
 				try{
 					orderQuantity+=Integer.parseInt(userEnteredPart.getOrderQuantity());
@@ -1016,11 +1018,11 @@ public class HardwareDebriefServiceImpl implements HardwareDebriefService{
 				}
 				
 				if("used".equalsIgnoreCase(userEnteredPart.getStatus())){
-					used++;
+					used = used+Integer.parseInt(userEnteredPart.getOrderQuantity());
 				}else if("not used".equalsIgnoreCase(userEnteredPart.getStatus())){
-					notUsed++;						
+					notUsed=notUsed+Integer.parseInt(userEnteredPart.getOrderQuantity());						
 				}else if("defective on arrival".equalsIgnoreCase(userEnteredPart.getStatus())){
-					doA++;
+					doA=doA+Integer.parseInt(userEnteredPart.getOrderQuantity());
 				}else{
 					LOGGER.debug(" part status is coming blank");
 				}

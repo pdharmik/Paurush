@@ -48,6 +48,7 @@ padding: 10px 7px 9px 0;
 </script> 
 <%-- Added for CI BRD13-10-02 --%>
 <script type="text/javascript" src="<html:rootPath/>js/expand.js"></script>
+<jsp:include page="../../common/mapViewPopup.jsp"></jsp:include>
 
 <%-- Below URL opens up the address list grid in popup --%>
 <portlet:renderURL var="addressListPopUpUrl" windowState="<%= LiferayWindowState.EXCLUSIVE.toString() %>">
@@ -116,7 +117,7 @@ padding: 10px 7px 9px 0;
 		<form:hidden path="prevSrNo" id="prevSrNo"/>
           <!-- MAIN CONTENT BEGIN -->
           <%-- This section shows the front end validation errors --%>
-			<div class="error" id="errorDiv" style="display: none;">
+			<div class="serviceError" id="errorDiv" style="display: none;">
 			
 			</div>
 		  <%-- End of front end validations --%>
@@ -191,7 +192,7 @@ padding: 10px 7px 9px 0;
 							width="100" height="100" id="MyPicture" onError="image_error();"/></li>
 							<%-- <li class="pModelName">${manageAssetFormForChange.assetDetail.productTLI}</li> --%>
 							<li class="pModelName">${manageAssetFormForChange.assetDetail.descriptionLocalLang}</li>
-							<li><a href="javascript:redirectToAssetListPage('<%=redirectToAssetListPage%>');">
+							<li id="differentAssetlink"><a href="javascript:redirectToAssetListPage('<%=redirectToAssetListPage%>');">
 			<spring:message code="requestInfo.link.chooseAdifferentAsset"/></a></li>
 						</ul>
 					</td>
@@ -372,7 +373,9 @@ padding: 10px 7px 9px 0;
 	<input type="hidden" name="backJson" id="backJson" value="${manageAssetFormForChange.backToMap}"/>
 </form>
 <script type="text/javascript">
-
+<c:if test="${fleetManagementFlag == true }">
+jQuery("#differentAssetlink").hide();
+</c:if>
 <%--Changed for LBS --%>
 function onCancelClick() {
 	
@@ -451,7 +454,7 @@ var isError="${exceptn}";
 			if(isError)
 				{
 				jQuery("#errorDiv").show();
-				jQuery("#errorDiv").append('<li><strong><spring:message code="exception.unableToRetrieveDeviceDetail"/></strong></li>');
+				jQuery("#errorDiv").append('<li class="portlet-msg-error"><strong><spring:message code="exception.unableToRetrieveDeviceDetail"/></strong></li>');
 				}
 	if(currentURL.indexOf('/partner-portal') == -1)
 	  {	
@@ -614,37 +617,35 @@ var changeAssetConfirmUrl="${changeAssetConfirmationUrl}"+"&timeZoneOffset=" + t
 						{
 							validationflag=true;
 							jQuery('#'+elementIdsToValidate[i]).addClass('errorColor');
-							jQuery("#errorDiv").append('<li><strong>'+patRes+'</strong></li>');	
+							jQuery("#errorDiv").append('<li class="portlet-msg-error"><strong>'+patRes+'</strong></li>');	
 						}
 					}
 				}
 			
 			
-			var lbsaddressflagins=jQuery("#installLBSAddressFlag").val();
-			
-			
+			var lbsaddressflagins=jQuery("#installLBSAddressFlag").val();			
 			var lbsaddressflagmov=jQuery("#moveToAddressLBSAddressFlag").val();
-			if(lbsaddressflagins=="true"){
-				
+			var levelOfDetails = $.trim(jQuery("#moveToAddressLevelOfDetails").val()).toLowerCase();
+			var installLevelOfDetails = $.trim(jQuery("#installLevelOfDetails").val()).toLowerCase();
 			
-			
+			if(lbsaddressflagins=="true" && installLevelOfDetails.match("floor level|grid level|mix - see floor")){			
 				if(jQuery('#physicalLocation2h').val() == ''||jQuery('#physicalLocation2h').val() == null){
 					validationflag=true;
-					jQuery("#errorDiv").append("<li><strong><spring:message code='lbs.label.install.floor'/></strong></li>");
+					jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong><spring:message code='lbs.label.install.floor'/></strong></li>");
 				}
 				if(jQuery('#physicalLocation1h').val() == ''||jQuery('#physicalLocation1h').val() == null ){
 					validationflag=true;
-					jQuery("#errorDiv").append("<li><strong><spring:message code='lbs.label.install.building'/></strong></li>");
+					jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong><spring:message code='lbs.label.install.building'/></strong></li>");
 				}
 			}
-			if(lbsaddressflagmov=="true"){
+			if(lbsaddressflagmov=="true" && levelOfDetails.match("floor level|grid level|mix - see floor")){
 				if(jQuery('#moveTophysicalLocation2h').val() == ''||jQuery('#moveTophysicalLocation2h').val() ==null){
 					validationflag=true;
-					jQuery("#errorDiv").append("<li><strong><spring:message code='lbs.label.move.floor'/></strong></li>");
+					jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong><spring:message code='lbs.label.move.floor'/></strong></li>");
 				}
 				if(jQuery('#moveTophysicalLocation1h').val() == ''||jQuery('#moveTophysicalLocation1h').val() ==null ){
 					validationflag=true;
-					jQuery("#errorDiv").append("<li><strong><spring:message code='lbs.label.move.building'/></strong></li>");
+					jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong><spring:message code='lbs.label.move.building'/></strong></li>");
 				}
 			}
 			
@@ -654,7 +655,7 @@ var changeAssetConfirmUrl="${changeAssetConfirmationUrl}"+"&timeZoneOffset=" + t
 				if(!(jQuery('#installAssetYes').is(':checked')) && !(jQuery('#installAssetNo').is(':checked')))
 				{	
 					validationflag=true;
-					jQuery("#errorDiv").append("<li><strong>"+"<spring:message code='validation.Asset.moveAssetFlag.format.errorMsg'/>" 
+					jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"<spring:message code='validation.Asset.moveAssetFlag.format.errorMsg'/>" 
 					+ "</strong></li>");
 				}
 			}else if(fleetMgmtFlag!= null && fleetMgmtFlag== 'true'){
@@ -665,7 +666,7 @@ var changeAssetConfirmUrl="${changeAssetConfirmationUrl}"+"&timeZoneOffset=" + t
 					if(!(jQuery('#installAssetYes').is(':checked')) && !(jQuery('#installAssetNo').is(':checked')))
 				{	
 					validationflag=true;
-					jQuery("#errorDiv").append("<li><strong>"+"<spring:message code='validation.Asset.moveAssetFlag.format.errorMsg'/>" 
+					jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"<spring:message code='validation.Asset.moveAssetFlag.format.errorMsg'/>" 
 					+ "</strong></li>");
 				}
 					
@@ -683,21 +684,22 @@ var changeAssetConfirmUrl="${changeAssetConfirmationUrl}"+"&timeZoneOffset=" + t
 					
 					if(jQuery('#moveToAddressLine1').val() == '' && jQuery('#moveToAddressCity').val() == '' && jQuery('#moveToAddressState').val() == '' && jQuery('#moveToAddressCountry').val() == ''){
 						validationflag=true;
-						jQuery("#errorDiv").append("<li><strong>"+"<spring:message code='requestInfo.validation.moveToAddressEmpty'/>" 
+						jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"<spring:message code='requestInfo.validation.moveToAddressEmpty'/>" 
 						+ "</strong></li>");
 						}
 					if(fleetMgmtFlag!= null && fleetMgmtFlag== 'true'){
 						var pageFlow = "${pageFlow}";
-						if(pageFlow == "fleetMgmtMove"){
-										
+						if(pageFlow == "fleetMgmtMove" && (lbsaddressflagmov=="true" && 
+								levelOfDetails.match("floor level|grid level|mix - see floor")))
+						{										
 								if(jQuery('#bldngm1').val()==''||jQuery('#bldngm1').val()==null||jQuery('#bldngm1').val()=="Select Building"){
 								validationflag=true;
-								jQuery("#errorDiv").append("<li><strong><spring:message code='lbs.label.move.building'/></strong></li>");
-							}	if(jQuery('#flrm1').val() == ''||jQuery('#flrm1').val()==null||jQuery('#flrm1').val()== "Select Floor"){
+								jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong><spring:message code='lbs.label.move.building'/></strong></li>");
+								}	
+								if(jQuery('#flrm1').val() == ''||jQuery('#flrm1').val()==null||jQuery('#flrm1').val()== "Select Floor"){
 								validationflag=true;
-								jQuery("#errorDiv").append("<li><strong><spring:message code='lbs.label.move.floor'/></strong></li>");
-							}
-								
+								jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong><spring:message code='lbs.label.move.floor'/></strong></li>");
+								}								
 						}
 					}	
 					
@@ -707,7 +709,7 @@ var changeAssetConfirmUrl="${changeAssetConfirmationUrl}"+"&timeZoneOffset=" + t
 				{
 					if(fleetMgmtFlag!= null && fleetMgmtFlag== 'true'){
 						var pageFlow = "${pageFlow}";
-						if(pageFlow == "fleetMgmtMove"&&lbsaddressflagmov!="true"){
+						/*if(pageFlow == "fleetMgmtMove"&&lbsaddressflagmov!="true"){
 										
 								if(jQuery('#bldngm1').val()==''||jQuery('#bldngm1').val()==null||jQuery('#bldngm1').val()=="Select Building"){
 								validationflag=true;
@@ -717,7 +719,7 @@ var changeAssetConfirmUrl="${changeAssetConfirmationUrl}"+"&timeZoneOffset=" + t
 								jQuery("#errorDiv").append("<li><strong><spring:message code='lbs.label.move.floor'/></strong></li>");
 							}
 								
-						}
+						}*/
 					}	
 				}
 				
@@ -727,12 +729,12 @@ var changeAssetConfirmUrl="${changeAssetConfirmationUrl}"+"&timeZoneOffset=" + t
 					if(jQuery('#projectName').val() == ''|| jQuery('#projectName').val()== null){
 						
 						validationflag=true;
-						jQuery("#errorDiv").append("<li><strong>Please enter Project Name</strong></li>");
+						jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>Please enter Project Name</strong></li>");
 					}
 					if(jQuery('#projectPhase').val() == ''|| jQuery('#projectPhase').val()== null){
 						
 						validationflag=true;
-						jQuery("#errorDiv").append("<li><strong>Please enter Project Phase</strong></li>");
+						jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>Please enter Project Phase</strong></li>");
 					}
 				}
 				
@@ -758,7 +760,7 @@ var changeAssetConfirmUrl="${changeAssetConfirmationUrl}"+"&timeZoneOffset=" + t
 						if(pageCountsDate[j] !=null && pageCountsDate[j] != ""){
 						var currentDate=new Date(formatDateToDefault(pageCountsDate[j])).toUTCString();	
 						if(new Date(currentDate)>new Date(new Date().toUTCString())){					
-							jQuery("#errorDiv").append("<li><strong>"+"<spring:message code='requestInfo.validation.currentDateExceed'/> " 
+							jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"<spring:message code='requestInfo.validation.currentDateExceed'/> " 
 									+(j+1)+ "</strong></li>");
 							jQuery('#errorDiv').show();
 							jQuery(document).scrollTop(0);
@@ -769,13 +771,13 @@ var changeAssetConfirmUrl="${changeAssetConfirmationUrl}"+"&timeZoneOffset=" + t
 					
 					if(pageCountValueListArray[j] != null && pageCountValueListArray[j] != ""){
 					if(parseInt(pageCountValueListArray[j])>parseInt(pageCountValue[j])){						
-						jQuery("#errorDiv").append("<li><strong>"+"<spring:message code='requestInfo.validation.newPageCountValue'/> "+(j+1)+ "</strong></li>");
+						jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"<spring:message code='requestInfo.validation.newPageCountValue'/> "+(j+1)+ "</strong></li>");
 						jQuery('#errorDiv').show();
 						jQuery(document).scrollTop(0);
 						validationflag=true;
 				}
 					if((pageCountValue[j]-pageCountValueListArray[j])>500000){
-						jQuery("#errorDiv").append("<li><strong>"+"<spring:message code='requestInfo.validation.newPageCountValue1'/> " 
+						jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"<spring:message code='requestInfo.validation.newPageCountValue1'/> " 
 								+(j+1)+ "</strong></li>");
 						jQuery('#errorDiv').show();
 						jQuery(document).scrollTop(0);
@@ -794,16 +796,16 @@ var changeAssetConfirmUrl="${changeAssetConfirmationUrl}"+"&timeZoneOffset=" + t
 				}
 				if(bindDeviceContact()==false) {
 					if(duplicateContactType){
-						jQuery('#errorDiv').append("<li><strong><spring:message code='validation.asset.add.dublicateContactInfo'/></strong></li>");
+						jQuery('#errorDiv').append("<li class=\"portlet-msg-error\"><strong><spring:message code='validation.asset.add.dublicateContactInfo'/></strong></li>");
 					}
 					if(duplicateContact){
-						jQuery('#errorDiv').append("<li><strong><spring:message code='contact.popup.duplicateData'/></strong></li>");
+						jQuery('#errorDiv').append("<li class=\"portlet-msg-error\"><strong><spring:message code='contact.popup.duplicateData'/></strong></li>");
 					}
 					if(emptyContact){
-						jQuery('#errorDiv').append("<li><strong><spring:message code='validation.asset.add.noDataInContactInfo'/></strong></li>");
+						jQuery('#errorDiv').append("<li class=\"portlet-msg-error\"><strong><spring:message code='validation.asset.add.noDataInContactInfo'/></strong></li>");
 					}	
 					if(emptyContactType){
-						jQuery('#errorDiv').append("<li><strong><spring:message code='validation.asset.add.contactType'/></strong></li>");
+						jQuery('#errorDiv').append("<li class=\"portlet-msg-error\"><strong><spring:message code='validation.asset.add.contactType'/></strong></li>");
 					}				
 					validationflag=true;
 				}
@@ -822,10 +824,16 @@ var changeAssetConfirmUrl="${changeAssetConfirmationUrl}"+"&timeZoneOffset=" + t
 					jQuery('#pageCountsDateID').val(pageCountsDate);
 					jQuery('#pageCountValueID').val(pageCountValue);
 					jQuery('#attachmentDescriptionID').val(jQuery('#attachmentDescription').val());
+					
+					$("#moveToFloorLevelOfDetails").val($("#flrm option:selected").attr("lod"));
+					$("#installFloorLevelOfDetails").val($("#flr option:selected").attr("lod"));
+					
 					//jQuery("#move_type").show(); //commented defect #7853
 					jQuery("#changeAssetForm").attr("action", changeAssetConfirmUrl);
 					jQuery("#changeAssetForm").submit();
 				}
+
+				
 	});
 		
 	//This is done temporarily

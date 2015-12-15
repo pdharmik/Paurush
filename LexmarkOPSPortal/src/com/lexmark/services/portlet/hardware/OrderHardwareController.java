@@ -209,7 +209,11 @@ public class OrderHardwareController extends BaseController {
 		LOGGER.debug("-------------[IN] showHardwareOrderList Controller method---------");
 		PortletSession session = request.getPortletSession();
 		HttpServletRequest httpReq = PortalUtil.getOriginalServletRequest(PortalUtil.getHttpServletRequest(request));
-		LOGGER.debug("requestNumber --------------->"+httpReq.getParameter("requestNumber")+" Status --------------->"+httpReq.getParameter("reqStatus"));
+		
+		String source=httpReq.getParameter("source");
+		String placementId=httpReq.getParameter("placementId");
+		String method=httpReq.getParameter("method");
+		LOGGER.debug("requestNumber --------------->"+httpReq.getParameter("requestNumber")+" Status --------------->"+httpReq.getParameter("reqStatus")+"source-------->>"+source+"method---->"+method);		
 		if(httpReq.getParameter("requestNumber")!= null && 
 				httpReq.getParameter("reqStatus")!=null &&
 				httpReq.getParameter("reqStatus").equalsIgnoreCase("Draft")){
@@ -229,8 +233,22 @@ public class OrderHardwareController extends BaseController {
 		}
 		
 		
-		String accountName=null;		
-		Map<String,String> accDetails=(Map<String,String>)session.getAttribute("accountCurrentDetails",PortletSession.APPLICATION_SCOPE);
+		String accountName=null;
+		Map<String,String> accDetails= new HashMap<String, String>();
+		if(source != null && "map".equalsIgnoreCase(source)&&(!"newselect".equalsIgnoreCase(method))){
+			accDetails.put("accountId", httpReq.getParameter("account.accountId"));	
+			accDetails.put("accountName", httpReq.getParameter("account.accountName"));			
+			accDetails.put("soldToList", httpReq.getParameter("soldtoNumber"));
+			accDetails.put("contractNumber", httpReq.getParameter("contractNumber"));
+			accDetails.put("agreementName", httpReq.getParameter("agreementName"));
+			accDetails.put("agreementId", httpReq.getParameter("agreementId"));
+			accDetails.put("showPrice", httpReq.getParameter("showPrice"));
+			accDetails.put("creditCardFlag", httpReq.getParameter("creditCardFlag"));
+			accDetails.put("poFlag", httpReq.getParameter("poFlag"));
+			session.setAttribute("accountCurrentDetails", accDetails ,PortletSession.APPLICATION_SCOPE);
+		}else{
+			accDetails=(Map<String,String>)session.getAttribute("accountCurrentDetails",PortletSession.APPLICATION_SCOPE);
+		}
 		if(accDetails != null){
 			accountName = accDetails.get("accountName");
 			model.addAttribute("accountName",accountName);
@@ -309,6 +327,8 @@ public class OrderHardwareController extends BaseController {
 		}
 		model.addAttribute("cartQuantity", hardwareOrderListToSession.size());
 		model.addAttribute("mdmLevelForAssetDetails", PortalSessionUtil.getMdmLevel(session));
+		model.addAttribute("pageSource", source);
+		model.addAttribute("placementId", placementId);
 		
 		LOGGER.debug("--------------------- [OUT] showHardwareOrderList method-------------------");
 		return "ordermanagement/hardwareOrder/viewHardwareOrderList";
@@ -420,6 +440,7 @@ public class OrderHardwareController extends BaseController {
 	public void retrieveHardwareList(ResourceRequest request, ResourceResponse response) throws Exception
 	{
 		LOGGER.debug("-----------------------[IN]retrieveHardwareList----------------------");
+		String pageSource= request.getParameter("pageSource");
 		HardwareCatalogContract contract = new HardwareCatalogContract();
 		PortletSession session = request.getPortletSession();
 		String soldToNumber = "";
@@ -503,7 +524,7 @@ public class OrderHardwareController extends BaseController {
 				if (productModel.length()>3){
 					partImage = URLImageUtil.getPartImage(productModel);
 				}
-				if(!partImage.equals(IMAGE_NOT_FOUND)){
+				if(!partImage.equals(IMAGE_NOT_FOUND) && StringUtils.isNotBlank(partImage)){
 					partImage = "<img src='"+partImage+"' alt=\'Change\' width=\'100\' height=\'100\'/>";
 				}else{
 					partImage = "<img src=\'/LexmarkOPSPortal/images/part_na_color.png\' width=\'100\' height=\'100\'/>";
@@ -519,7 +540,13 @@ public class OrderHardwareController extends BaseController {
 				color_mono = hardwareCatalogResult.getHardwareCatalog().getColor_mono();
 			}
 			int recordCount = 0;
-			String bundleXML = getXmlOutputGenerator(request.getLocale()).bundleViewXml(hardwareCatalogResult, session, bundlePriceResult, paymentType);
+			String bundleXML;
+			if("map".equalsIgnoreCase(pageSource)){
+				bundleXML = getXmlOutputGenerator(request.getLocale()).mapsBundleViewXml(hardwareCatalogResult, session, bundlePriceResult, paymentType);
+			}else{
+				bundleXML = getXmlOutputGenerator(request.getLocale()).bundleViewXml(hardwareCatalogResult, session, bundlePriceResult, paymentType);	
+			}
+			
 			if(hardwareCatalogResult.getHardwareCatalog() == null){
 				recordCount = 0;
 			}else{
@@ -836,10 +863,18 @@ public class OrderHardwareController extends BaseController {
 		AccountContact accContact=commonController.getContactInformation(request, response);
 		serviceRequest.setRequestor(accContact);
 		HardwareDetailPageForm hardwareDetailPageForm=(HardwareDetailPageForm)session.getAttribute("hardwareDetailPageFormSession");
+		String pageSource= request.getParameter("pageSource");
+		String placementId= request.getParameter("placementId");
 		if(hardwareDetailPageForm==null){
 		hardwareDetailPageForm = new HardwareDetailPageForm();
 		}
-	
+		if(pageSource!=null && "map".equalsIgnoreCase(pageSource)){
+			hardwareDetailPageForm.setPageFlow("map");
+			hardwareDetailPageForm.setPlacementId(placementId);
+		}else{
+			hardwareDetailPageForm.setPageFlow("");
+			hardwareDetailPageForm.setPlacementId("");
+		}
 		List<OrderPart> hardwareOrderListToSession = new ArrayList<OrderPart>();
 		hardwareOrderListToSession = (ArrayList<OrderPart>) session.getAttribute("hardwareOrderListToSession");
 		//Part details added to the cart
@@ -2598,6 +2633,14 @@ public class OrderHardwareController extends BaseController {
 			LOGGER.debug("Exception occured in retrieveSupplyRequestDetail service call ...");
 		}
 		HardwareDetailPageForm hardwareDetailPageForm = new HardwareDetailPageForm();
+		String placementId="";//requestResult.getServiceRequest().getPlacementId();
+		if(placementId !=null && !"".equalsIgnoreCase(placementId)){
+			hardwareDetailPageForm.setPageFlow("map");
+			hardwareDetailPageForm.setPlacementId(placementId);
+		}else{
+			hardwareDetailPageForm.setPageFlow("");
+			hardwareDetailPageForm.setPlacementId("");
+		}
 		
 		PortletSession session = request.getPortletSession();
 		session.setAttribute("draftSrNumber", httpReq.getParameter("requestNumber"));

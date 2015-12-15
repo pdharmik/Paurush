@@ -5,17 +5,23 @@
    
     <div class="mid-cntnr">
     <c:choose>
-    	<c:when test="${fn:length(shoppingCartForm.cartItems) >0 }">
+    	<c:when test="${fn:length(shoppingCartFormBundles.cartItems) >0 || fn:length(shoppingCartFormSupplies.cartItems) >0}">
     		<c:if test="${shoppingCartType eq 'printers' }">
     		<jsp:include page="/WEB-INF/jsp/shoppingCart/printersShoppingCart.jsp"/>
     		</c:if>
     		<c:if test="${shoppingCartType eq 'supplies' }">
     		<jsp:include page="/WEB-INF/jsp/shoppingCart/suppliesShoppingCart.jsp"/>
     		</c:if>
+    		<c:if test="${shoppingCartType eq 'globalSearch' }">
+    		<jsp:include page="/WEB-INF/jsp/shoppingCart/printersShoppingCart.jsp"/>
+    		<jsp:include page="/WEB-INF/jsp/shoppingCart/suppliesShoppingCart.jsp"/>
+    		
+    		</c:if>
     		
     		
     		
-   	<table>	 
+   	<table>
+   	<tr><td><td></td></td></tr>	 
    	<tr>
    	<td>
    	<c:if test="${shoppingCartType eq 'printers' }">

@@ -145,6 +145,7 @@ public class AmindOrderSuppliesAssetServiceUtil {
 		installAddress.setLbsLongitude(item.getLbsLongitude());
 		installAddress.setCoordinatesXPreDebriefRFV(item.getCoordinatesXPreDebriefRFV());
 		installAddress.setCoordinatesYPreDebriefRFV(item.getCoordinatesYPreDebriefRFV());
+		installAddress.setLevelOfDetails(item.getLevelOfDetails());
 		asset.setInstallAddress(installAddress);
 		asset.setColorCapableFlag(false);
 		if (item.getAgreementEntitlements() != null) {

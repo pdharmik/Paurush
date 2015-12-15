@@ -61,9 +61,11 @@ function loadPrinterModel(value){
 </script>
 
     <div id="portlet-wrap" style="width:100%!important">
+    <c:if test="${fromAriba == 'true'}">
       <div id="breadcrum-cart-cntnr">
         <jsp:include page="/WEB-INF/jsp/shoppingCart/totalItems.jsp"/>
       </div>
+      </c:if>
       <div class="pageTitle"><spring:message code="changemanagement.popup.label.orderSupplies"/></div>
       <div class="supplies-mid-cntnr">
         <div class="supplies-title"><spring:message code="suppliesList.title.value"/></div>
@@ -74,7 +76,7 @@ function loadPrinterModel(value){
           <select name="productType" id="productType" onChange="loadPrinterModel(this.value)">
             <option value=""><spring:message code="suppliesList.firstStep.value"/></option>
             <c:forEach items="${productType}" var="product">
-            	<option value="${product.value}">${product.value}</option>
+            	<option value="${product.key}">${product.key}</option>
             </c:forEach>
           </select>
           </li>

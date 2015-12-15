@@ -6,20 +6,59 @@
 <portlet:resourceURL var="favoriteURL" id="updateUserFavoriteAsset"></portlet:resourceURL>
 <portlet:resourceURL var="assetInfoURL" id="getAssetInformation"></portlet:resourceURL>
 <link rel="stylesheet" type="text/css" href="<html:rootPath/>css/in-styles.css?version=<html:fileCacheVersion/>" />
-
-<div id="leftNavDevices">
+	
+		<div id="leftNavDevices">
 			<div id="firstBlock">
 				<div id="installedAdd">
 					<u><b><spring:message code='lbs.label.installedaddress'/>:</b></u><br />	
 					<div id="addressDetails"></div>				
 				</div>
+				<%--Changes LBS 1.5 --%>
+				<select id="multi-select-map" class="floatR" onChange="enableMultiSelect(this)">
+				<option value=""><spring:message code="fleetmanagement.headers.multiselect"/></option>
+					<c:forEach var="lbsMultiselect" items="${lbsMultiselect}">
+                           <option value="${lbsMultiselect.key}">${lbsMultiselect.value}</option>
+                    </c:forEach>
+					<%--<option value="">MultiSelect</option>
+					<option value="move">Move</option>
+					<option value="change">Change</option>
+					<option value="decom">Decommision</option>
+					<option value="updateMeter">Update Meter Reads</option>	--%>		
+				</select>
+				<%--End Changes LBS 1.5 --%>
 				<div id="totalDiv">
 					<b><spring:message code='lbs.label.building'/></b> : <span id="building_assetDetails"></span><br />
 					<b><spring:message code='lbs.label.floor'/></b> : <span id="floor_assetDetails"></span><br />
-					<b><spring:message code='lbs.label.totaldevicesOnFloor'/></b> : <span id="totalDevicesOnFloor_assetDetails"></span>
-					<br /><span>_________________</span><br />
+					<b><spring:message code='lbs.label.totaldevicesOnFloor'/></b> : <span id="totalDevicesOnFloor_assetDetails"></span><br />
+					<c:if test="${fleetMgmtForm.showLod}">
+					<b><spring:message code='lbs.label.lod'/></b> : <span id="totalDevicesOnFloor_assetDetails_addressLOD"></span><br />
+					</c:if>
+					<b><spring:message code='lbs.label.buildingType'/></b>:<span id="lbs_buildingType"></span><br />
+					<span>_________________</span><br />
 					<b><spring:message code='lbs.label.totaldevices'/></b> : <span id="totalDevices_assetDetails"></span>
 				</div>
+				<div id="deviceDescriptionDetails" class="clearBoth">
+					<div id="alertsSuppliesStatusDescription" class="statusDescriptionBlock">
+						<label><b><spring:message  code="fleetmanagement.headers.suppliesAlerts"/></b></label>
+						<div id="alertsSuppliesStatusDescriptionContent"></div>
+					</div>
+					<div id="alertsDeviceStatusDescription" class="statusDescriptionBlock">
+						<label><b><spring:message  code="fleetmanagement.headers.deviceAlerts"/></b></label>
+						<div id="alertsDeviceStatusDescriptionContent"></div>
+					</div>
+					<div id="utilizationStatusDescription"  class="statusDescriptionBlock">
+						<label><b><spring:message  code="fleetmanagement.headers.utilization"/></b></label>
+						<div id="utilizationStatusDescriptionContent"></div>
+					</div>
+					<div id="reportingStatusDescription"  class="statusDescriptionBlock">
+						<label><b><spring:message  code="fleetmanagement.headers.reportingstatus"/></b></label>
+						<div id="reportingStatusDescriptionContent"></div>
+					</div>
+					<div id="expiredStatusDescription"  class="statusDescriptionBlock">
+						<label><b><spring:message  code="fleetmanagement.headers.expiringTerms"/></b></label>
+						<div id="expiredStatusDescriptionContent"></div>
+					</div>	
+			</div>
 			</div>
 			<div id="secondBlock">
 				<div id="deviceDetailsList">
@@ -37,7 +76,7 @@
         <div class="blockHeader">
             <h2 class="h2-style1"><spring:message code='lbs.label.pendingmoveview'/></h2> 
         </div> 
-               <div id="leftNavDevices">                       
+               <div class="leftNavDevicesStyle">                       
                        <div id="secondBlock1">                           
                            <div id="deviceDetailsList">
                              
@@ -82,7 +121,7 @@
         <div class="blockHeader">
             <h2 class="h2-style1"><spring:message code='lbs.label.locationHistory'/></h2> 
         </div> 
-               <div id="leftNavDevices">                       
+               <div class="leftNavDevicesStyle">                       
                        <div id="secondBlock1">                           
                            <div id="deviceDetailsList">
                              
@@ -103,6 +142,10 @@
                                                                      <div id="addressDetails_locHistry"></div>
                                                                      <b><spring:message code='lbs.label.building'/></b> : <span id="building_assetDetails_locHistry"></span><br />
 																	 <b><spring:message code='lbs.label.floor'/></b> : <span id="floor_assetDetails_locHistry"></span><br />
+																	 <c:if test="${fleetMgmtForm.showLod}">
+																		<b><spring:message code='lbs.label.lod'/></b> : <span id="assetDetails_locHistry_addressLOD"></span><br />
+																	 </c:if>
+																	 
                                                                </div>
                                                                
                                                        </div>
@@ -116,6 +159,38 @@
                
              
        </div>	
+		<%-- Changes LBS 1.5 --%>
+		<div id="moveMultiAssetLeftNav" style="display:none;height:600px;">
+			<div  class="firstBlock" style="padding: 5px 0 5px 5px;height: 130px;border:1px solid #c9c9c1;">
+			<u>
+				<b id="multiAssetFlowHeaderMove" class="noDisplay"><spring:message  code="fleetmanagement.headers.movefrom"/>:</b>
+				<b id="multiAssetFlowHeaderChange" class="noDisplay"><spring:message code='requestInfo.heading.currentInstallAdd'/></b>
+				<b id="multiAssetFlowHeaderDecomm" class="noDisplay"><spring:message code='changemanagement.deleteAsset.heading.pickupAddress'/></b>
+			</u>
+			<div id="move-from-details"></div>		
+			</div>
+			<div class="secondBlock" style="height:450px;position:relative;">
+				<div class="deviceHeader"><b><spring:message  code="fleetmanagement.headers.devicesselected"/> (<span id="no-of-asset">0</span>)</b></div>
+				<div style="overflow: auto;">
+					<table id="multi-select-move-table">
+						<thead>
+							<tr style="border-bottom:1px solid #999999;">
+								<th><spring:message  code="fleetmanagement.headers.SN"/></th>
+								<th><spring:message  code="lbs.label.ipaddress"/></th>
+								<th><spring:message  code="lbs.label.building"/></th>
+								<th><spring:message  code="lbs.label.floor"/></th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+				
+				
+			</div>	
+		</div>
+		<%--Changes Ends LBS 1.5 --%>
+		
 		
 		<div style="display: none;">
 			<div id="errorMove">
@@ -142,7 +217,7 @@
     
         {{#assets}}
         
-		<div class="deviceDetailsDiv" id="deviceDetails{{id}}">
+		<div class="deviceDetailsDiv" id="deviceDetails{{id}}" onclick="highlightAsset('{{id}}');">
 			<div class="deviceInfoDiv">
 				<div class="printerImage">
 						<img id="printImageId{{id}}" src="<html:imagesPath/>loading-icon.gif" alt="printer img" />
@@ -155,13 +230,12 @@
 					<img src="<html:imagesPath/>loading-icon.gif" id="loadigFavorite{{id}}" style="display: none;"/>
 					<span id="bookmarkMsg{{id}}">{{{generateBkmrkMsg}}}</span>
 				</div>
-				<spring:message code='lbs.label.serialno'/> :<span class="deviceSerialNo" >{{serialNumber}}</span><br/>
+				<spring:message code='lbs.label.serialno'/> :<span class="deviceSerialNo" ><a style="cursor:pointer" onClick="lbs.highlightMap('{{id}}');">{{serialNumber}}</a></span><br/>
 				<spring:message code='lbs.label.ipaddress'/> :<span class="deviceIP" >{{ipAddress}}</span><br/>
 				<spring:message code='lbs.label.customerdevicetag'/>:<span class="deviceTag">{{customerDeviceTag}}</span>
-				<div class='margin-top-10px'>
-					<a class="cursor-pointer" onclick="showRequests('{{id}}',-1)"><spring:message code='lbs.label.requesthistory'/></a> 
+				<div class='margin-top-10px'> 
 					<c:if test="${showCreateNew=='true'}">
-					:<a class="createRequests cursor-pointer" onClick="showCreateRequestPop('{{id}}')" id="createRequests{{id}}" ><spring:message code='lbs.label.createrequest'/></a>
+					<a class="createRequests cursor-pointer" onClick="showCreateRequestPop('{{id}}')" id="createRequests{{id}}" ><spring:message code='lbs.label.createrequest'/></a>
 					</c:if> 
 					:<a class="cursor-pointer" onclick="showLocationHistoryById('{{id}}')"><spring:message code='lbs.label.locationHistory'/></a>
 				</div>
@@ -210,9 +284,11 @@
 						</div>
 						<div class="additionalInfoContentRight" >
 							<ul>
+							<li id="reqHistory{{id}}"><a class="cursor-pointer" onclick="showRequests('{{id}}',-1)"><spring:message code='lbs.label.requesthistory'/></a><br/></li>
 							<li id="cntrlPanel{{id}}"><a target class="cursor-pointer" onClick="openCntlPanelPopup()" ><spring:message code='lbs.label.controlpanel'/></a><br/></li>
 							<li id="sprtDwnlds{{id}}"><a class="cursor-pointer" onClick="showSupportDownlds('{{id}}')" ><spring:message code='lbs.label.supportanddownloads'/></a><br/></li>
 							<li id="pgCounts{{id}}"><a class="cursor-pointer" onClick="openPopUp('{{id}}', '{{serialNumber}}', '{{ipAddress}}', '{{modelNumber}}', '{{customerDeviceTag}}')" ><spring:message code='lbs.label.updatepagecount'/></a><br/></li>
+							<li><a style="cursor: pointer;" onclick="showDeviceStatus('{{id}}');"><spring:message code="fleetmanagement.headers.devicestatus"/></a></li>
 							</ul>
 						</div>
 						
@@ -233,7 +309,7 @@
 									<tr class="tableRowShade"><td><spring:message code='lbs.label.costcenter'/>:</td><td>{{costCenter}}</td></tr>
 		                           	<tr>					 <td><spring:message code='lbs.label.product'/></td><td>{{assetProduct}}</td></tr>
 		                           <tr class="tableRowShade"><td><spring:message code='lbs.label.installdate'/>:</td><td>{{assetInstallDate}}</td></tr>
-		                           <tr>						 <td><spring:message code='lbs.label.modeltype_family'/>:</td><td>{{modelTypeFamily}}</td></tr>
+		                           <tr>						 <td><spring:message code='lbs.label.model_family'/>:</td><td>{{modelTypeFamily}}</td></tr>
 		                           <tr class="tableRowShade"> <td><spring:message code='lbs.label.producttype'/>:</td><td>{{productType}}</td></tr>
 		                           <tr ><td><spring:message code='lbs.label.productseries'/>:</td><td>{{productSeries}}</td></tr>
 		                           <tr class="tableRowShade"><td><spring:message code='lbs.label.brand'/>:</td><td>{{brand}}</td></tr>
@@ -242,6 +318,7 @@
 		                           
 		                           <tr><td><spring:message code='lbs.label.department'/>:</td><td>{{department}}</td></tr>
 		                           <tr class="tableRowShade"><td><spring:message code='lbs.label.meterreadtype_manual_vs_automated'/>:</td><td>{{meterReadType}}</td></tr>
+									<tr><td><spring:message code='lbs.label.buildingType'/>:</td><td>{{{buildingType}}}</td></tr>
 		                           </tbody>
 		                          </table>
 							<div class="popupContactInfo" id="popupContactInfo{{deviceId}}" style="display:none;">
@@ -260,7 +337,6 @@
 
 
 </script>
-			
 	<script>
 	var controlPanelDialog=$('#controlPanelDiv').dialog({
 		title:"<spring:message code='lbs.label.controlpanel'/>",
@@ -359,7 +435,12 @@
 	
 	
 	function showCreateRequestPop(deviceId){
-		$('#createRequestMenu'+deviceId).show();
+		$('#createRequestMenu'+deviceId).show().position({
+			  my: "right top",
+			  at: "right bottom",
+			  of: "#createRequests"+deviceId,
+			  collision:"none"
+			});
 		$('#deviceContent').animate({
 		    scrollTop: $('#createRequestMenu'+deviceId).offset().top-$('#deviceContent .deviceDetailsDiv:first-child').offset().top-200}, 'fast');
 		$('#createRequestMenu'+deviceId).mouseleave(function(){
@@ -372,11 +453,26 @@
 					$('#addressDetails').html(generateAddressDisplayForAsset(addressObj));
 					$('#building_assetDetails').html(addressObj["buildingName"]);
 					$('#floor_assetDetails').html(addressObj["floorName"]);
-					
+					var f="";
+					if("floorLOD" in addressObj){
+						if(addressObj["floorLOD"]==null || addressObj["floorLOD"]==""){
+							f="Street Level";
+						}else{
+							f=addressObj["floorLOD"];
+						}
+					}else{
+						f="Street Level";
+					}
+					$("#totalDevicesOnFloor_assetDetails_addressLOD,#assetDetails_locHistry_addressLOD").html(f);
 					//Set the address for location history too.. need for future click...
 					$('#addressDetails_locHistry').html(generateAddressDisplayForAsset(addressObj));
 					$('#building_assetDetails_locHistry').html(addressObj["buildingName"]);
 					$('#floor_assetDetails_locHistry').html(addressObj["floorName"]);
+					
+					
+					//Set the address to Move from for Multi Asset Select.. LBS 1.5
+					$('#move-from-details').html(generateAddressDisplayForAsset(addressObj));
+					
 			}
 			
 			function setTotalDevice(total){
@@ -384,6 +480,9 @@
 			}
 			function setTotalDeviceFloor(total){
 				$('#totalDevicesOnFloor_assetDetails').html(total);				
+			}
+			function setbuildingType(value){
+				$('#lbs_buildingType').html(value);				
 			}
 			function bookmarkDevice(deviceId,object)
 			{
@@ -547,7 +646,7 @@
 				$('#building_assetDetails_moveTo').html(addressObj["name"]);
 				$('#floor_assetDetails_moveTo').html(addressObj["floor"]);
 			}
-			var errorDialogMove;
+			var errorDialogMove;var prvhtml=$('#mapInfo').html();
 			function postMoveMessage(deviceId){
 				<%-- check for if there is already pending request is ther or not otherwise show warning --%>
 				callOmnitureAction('<%=LexmarkSPOmnitureConstants.FLEETMANAGER%>','<%=LexmarkSPOmnitureConstants.CREATEREQUESTMOVE%>');
@@ -583,26 +682,13 @@
 				};
 				lbs.postMessage(enableDrag);
 				hideFiltersAndLeftNav();<%--method declared in LbsService.js --%>
-				var prvhtml=$('#mapInfo').html();
+				prvhtml=$('#mapInfo').html();
 				$('#mapInfo').html("<spring:message code='lbs.msg.create.move'/> "+assetIfo.name);
-				$('#cancelMoveRequest').unbind("click");
-				<%--this button is there in default view jsp --%>
+				<%--$('#cancelMoveRequest').unbind("click");
+				this button is there in default view jsp 
 				$('#cancelMoveRequest').click(function(){
-					// Post json to cancel Move REquest!!!!
-					var cancelObj={
-							"action": "disableDrag",
-							"item": "asset",
-							"info": {
-							"id": deviceId
-							}
-							
-							};
-									
-					lbs.postMessage(cancelObj);
-					$('#mapInfo').html(prvhtml);
-					showFiltersAndLeftNav();
-					
-				});
+				
+				});--%>
 				
 			}
 			
@@ -676,4 +762,31 @@
 						navigation="";
 					});
 			}
+			function enableMultiSelect(x){
+				var multiSelectMode =$(x).val();
+				multiSelectAsset.enableMultiSelect(multiSelectMode);
+			}
+			function closeMoveMultiSelect(){
+				$('.deviceDetailsDiv').removeClass('greenBackground');
+				multiSelectAsset.closeMultiSelect();
+			}
+			function handleMultiAssetMove(){
+				multiSelectAsset.handleClickNext();
+				
+			}
+			
+			var expirationArray=[];
+			var expirationArrayCode=[];
+			expirationArray.push({"value":"", "displayValue":"Select Expiring Terms"});
+			expirationArray.push({"value":"Select All", "displayValue":"Select All"});
+			<c:forEach items="${expiration}" var="loopStatus">
+			expirationArray.push({"value":"${loopStatus.key}","displayValue":"${loopStatus.value}"});
+			expirationArrayCode["${loopStatus.key}".toLowerCase()]="${loopStatus.value}";
+			</c:forEach>		
+			
+			var alertTypeCodesLOV={};
+			<c:forEach items="${alertCodes}" var="loopStatus">
+			alertTypeCodesLOV["${loopStatus.key}"]="${loopStatus.value}";
+			</c:forEach>
 	</script>
+		<jsp:include page="/WEB-INF/jsp/fleetmanagement/deviceStatus/deviceStatusPopup.jsp"></jsp:include>

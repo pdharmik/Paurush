@@ -43,7 +43,36 @@ public class PartnerActivityDetailDo extends PartnerActivityDo {
 	private ArrayList<ServiceRequestActivityAttachmentsDo> serviceRequestAttachmentss;
 	private String coordinatesXPreDebriefRFV;
 	private String coordinatesYPreDebriefRFV;
+	private String levelOfDetails;
+	private String lbsAddressLod;
+	private String lbsBuildingId;
+	private String lbsFloorId;
+	private String lbsFloorLod;
+	
+	public String getLbsFloorLod() {
+		return lbsFloorLod;
+	}
 
+	public void setLbsFloorLod(String lbsFloorLod) {
+		this.lbsFloorLod = lbsFloorLod;
+	}
+
+	public String getLbsBuildingId() {
+		return lbsBuildingId;
+	}
+
+	public void setLbsBuildingId(String lbsBuildingId) {
+		this.lbsBuildingId = lbsBuildingId;
+	}
+
+	public String getLbsFloorId() {
+		return lbsFloorId;
+	}
+
+	public void setLbsFloorId(String lbsFloorId) {
+		this.lbsFloorId = lbsFloorId;
+	}
+	
 	public String getCoordinatesXPreDebriefRFV() {
 			return coordinatesXPreDebriefRFV;
 		}
@@ -258,5 +287,28 @@ public class PartnerActivityDetailDo extends PartnerActivityDo {
 			ArrayList<ServiceRequestActivityAttachmentsDo> serviceRequestAttachmentss) {
 		this.serviceRequestAttachmentss = serviceRequestAttachmentss;
 	}
+
+	public String getLevelOfDetails() {
+		return levelOfDetails;
+	}
+
+	public void setLevelOfDetails(String levelOfDetails) {
+		this.levelOfDetails = levelOfDetails;
+	}
+
+	/**
+	 * @param lbsAddressLod the lbsAddressLod to set
+	 */
+	public void setLbsAddressLod(String lbsAddressLod) {
+		this.lbsAddressLod = lbsAddressLod;
+	}
+
+	/**
+	 * @return the lbsAddressLod
+	 */
+	public String getLbsAddressLod() {
+		return lbsAddressLod;
+	}
+	
 
 }

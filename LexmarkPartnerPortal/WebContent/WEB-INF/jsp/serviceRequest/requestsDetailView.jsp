@@ -815,7 +815,7 @@ div.portlet-der h3 {
 							//Changes for CI7 BRD 14-07-06 START
 							gridCDtlVOPRequestGrid = new dhtmlXGridObject('gridRDVOrderedPartsTable');
 							gridCDtlVOPRequestGrid.setImagePath("<html:imagesPath/>gridImgs/");
-							gridCDtlVOPRequestGrid.setHeader(autoAppendPlaceHolder('<spring:message code="claim.headerList.orderedParts.detail"/>',12));
+							gridCDtlVOPRequestGrid.setHeader(autoAppendPlaceHolder('<spring:message code="claim.headerList.orderedParts.detail"/>',13));
 							gridCDtlVOPRequestGrid.setColAlign("left,left,left,left,left,left,left,left,left,left,left,left,left");
 							gridCDtlVOPRequestGrid.setColTypes("sub_row,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
 							gridCDtlVOPRequestGrid.setColSorting("na,str,str,str,str,str,str,str,str,str,str,str,str");
@@ -846,7 +846,7 @@ div.portlet-der h3 {
 							
 							// changes for db saving and retrieving	end
 							gridCDtlVOPRequestGrid.setPagingSkin("bricks");
-							gridCDtlVOPRequestGrid.setColumnHidden(12,true);
+							//gridCDtlVOPRequestGrid.setColumnHidden(12,true);
 							gridCDtlVOPRequestGrid.loadXMLString("${serviceRequestDetailForm.orderPartsXML}");
 							//Changes for CI7 BRD 14-07-06 END
 						//});

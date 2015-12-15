@@ -8,22 +8,79 @@
 
 
 <div id="leftNavDevices">
+			
 			<div id="firstBlock">
 				<div id="installedAdd">
 					<u><b><spring:message code='lbs.label.installedaddress'/>:</b></u><br />	
 					<div id="addressDetails"></div>				
 				</div>
+				<%--Changes LBS 1.5 --%>
+				<select id="multi-select-map" class="floatR" onChange="enableMultiSelect(this)">
+					<option value="">MultiSelect</option>
+					<option value="move">Move</option>
+					<option value="change">Change</option>
+					<option value="decom">Decommision</option>
+					<option value="updateMeter">Update Meter Reads</option>			
+				</select>
+				<%--End Changes LBS 1.5 --%>
 				<div id="totalDiv">
 					<b><spring:message code='lbs.label.building'/></b> : <span id="building_assetDetails"></span><br />
 					<b><spring:message code='lbs.label.floor'/></b> : <span id="floor_assetDetails"></span><br />
-					<b><spring:message code='lbs.label.totaldevicesOnFloor'/></b> : <span id="totalDevicesOnFloor_assetDetails"></span>
-					<br /><span >_________________</span><br />					
-					<b><spring:message code='lbs.label.totaldevices'/></b> : <span id="totalDevices_assetDetails"></span>
+					<b><spring:message code='lbs.label.totaldevicesOnFloor'/></b> : <span id="totalDevicesOnFloor_assetDetails"></span><br />
+					<b>Placements</b> : <span id="totalOnFloor_placement"></span><br />
+					<b><spring:message code='lbs.label.lod'/></b> : <span id="totalDevicesOnFloor_assetDetails_addressLOD"></span><br />
+					<b><spring:message code='lbs.label.buildingType'/></b>:<span id="lbs_buildingType"></span><br />
+					<span>_________________</span><br />
+					<b><spring:message code='lbs.label.totaldevices'/></b> : <span id="totalDevices_assetDetails"></span><br />
+					<b>Total Placements</b> : <span id="total_placement"></span>
 				</div>
+				<div id="deviceDescriptionDetails" class="clearBoth">
+					<div id="alertsSuppliesStatusDescription" class="statusDescriptionBlock">
+						<label><b>Supplies Alerts</b></label>
+						<div id="alertsSuppliesStatusDescriptionContent"></div>
+					</div>
+					<div id="alertsDeviceStatusDescription" class="statusDescriptionBlock">
+						<label><b>Device Alerts</b></label>
+						<div id="alertsDeviceStatusDescriptionContent"></div>
+					</div>
+					<div id="utilizationStatusDescription"  class="statusDescriptionBlock">
+						<label><b>Utilization</b></label>
+						<div id="utilizationStatusDescriptionContent"></div>
+					</div>
+					<div id="reportingStatusDescription"  class="statusDescriptionBlock">
+						<label><b>Reporting Status</b></label>
+						<div id="reportingStatusDescriptionContent"></div>
+					</div>
+					<div id="expiredStatusDescription"  class="statusDescriptionBlock">
+						<label><b>Terms</b></label>
+						<div id="expiredStatusDescriptionContent"></div>
+					</div>	
+			</div>
 			</div>
 			<div id="secondBlock">
+				<%-- LBS 1.5 Changes start --%>
+				<jsp:include page="placementDetailsView.jsp"></jsp:include>
+				<%-- LBS 1.5 Changes ENDS --%>
+				<%-- <div id="deviceDetailsList">
+				<div id="deviceHeader"><b><spring:message code='lbs.label.device'/></b><span class="floatR padding5"><img src="/LexmarkOPSPortal/images/plus.gif" style="cursor:pointer" onclick="javascript:forwardToAddAssetJSP('addone');" /></span></div>
+					<div id="deviceContent">
+						
+					</div>
+				</div> --%>
+				<%-- LBS 1.5 Changes ENDS --%>
 				<div id="deviceDetailsList">
-				<div id="deviceHeader"><b><spring:message code='lbs.label.device'/></b></div>
+					<div id="deviceHeader">
+						<b><spring:message code='lbs.label.device'/></b>
+						<span class="floatR padding5">
+							<!-- <img id="addDevice_PlusImage" src="/LexmarkOPSPortal/images/plus.gif" style="cursor:pointer" onclick="javascript:forwardToAddAssetJSP('addone');" /> -->
+							<img id="addDevice_PlusImage" src="/LexmarkOPSPortal/images/plus.gif" style="cursor:pointer" onclick="openAddDeviceList();" />
+						</span>
+					</div>
+					<div style="display: none;" id="addDevice_List"> 
+						<span class="popup_arrow"> <span class="popup_arrow-inner"></span> </span>
+						<div onclick="javascript:forwardToAddAssetJSP('addone','');">Add Asset</div> 
+						<div onclick="javascript:forwardToAddAssetJSP('addMultiple','');">Add Multiple Assets</div> 
+					</div>
 					<div id="deviceContent">
 						
 					</div>
@@ -32,12 +89,11 @@
 			
 			</div>
 		</div>
-		
 		<div id="mapWithPendingMove" style="display: none;">
         <div class="blockHeader">
             <h2 style="height:20px ;margin: 0px;"><spring:message code='lbs.label.pendingmoveview'/></h2> 
         </div> 
-               <div id="leftNavDevices">                       
+               <div class="leftNavDevicesStyle">                       
                        <div id="secondBlock1">                           
                            <div id="deviceDetailsList">
                              
@@ -82,7 +138,7 @@
         <div class="blockHeader">
             <h2 style="height:20px ;margin: 0px;"><spring:message code='lbs.label.locationHistory'/></h2> 
         </div> 
-               <div id="leftNavDevices">                       
+               <div class="leftNavDevicesStyle">                       
                        <div id="secondBlock1">                           
                            <div id="deviceDetailsList">
                              
@@ -103,6 +159,7 @@
                                                                      <div id="addressDetails_locHistry"></div>
                                                                      <b><spring:message code='lbs.label.building'/></b> : <span id="building_assetDetails_locHistry"></span><br />
 																	 <b><spring:message code='lbs.label.floor'/></b> : <span id="floor_assetDetails_locHistry"></span><br />
+																	 <b><spring:message code='lbs.label.lod'/></b> : <span id="locHistory_addressLOD"></span><br />
                                                                </div>
                                                                
                                                        </div>
@@ -116,6 +173,38 @@
                
              
        </div>	
+		<%-- Changes LBS 1.5 --%>
+		<div id="moveMultiAssetLeftNav" style="display:none;height:600px;">
+			<div  class="firstBlock" style="padding: 5px 0 5px 5px;height: 130px;border:1px solid #c9c9c1;">
+			<u>
+				<b id="multiAssetFlowHeaderMove" class="noDisplay">Move From:</b>
+				<b id="multiAssetFlowHeaderChange" class="noDisplay"><spring:message code='requestInfo.heading.currentInstallAdd'/></b>
+				<b id="multiAssetFlowHeaderDecomm" class="noDisplay"><spring:message code='changemanagement.deleteAsset.heading.pickupAddress'/></b>
+			</u>
+			<div id="move-from-details"></div>		
+			</div>
+			<div class="secondBlock" style="height:450px;position:relative;">
+				<div class="deviceHeader"><b>Devices Selected (<span id="no-of-asset">0</span>)</b></div>
+				<div style="overflow: auto;">
+					<table id="multi-select-move-table">
+						<thead>
+							<tr style="border-bottom:1px solid #999999;">
+								<th>SN#</th>
+								<th>IP Address</th>
+								<th>Building</th>
+								<th>Floor</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+				
+				
+			</div>	
+		</div>
+		<%--Changes Ends LBS 1.5 --%>
+		
 		
 		<div style="display: none;">
 			<div id="errorMove">
@@ -142,7 +231,7 @@
     
         {{#assets}}
         
-		<div class="deviceDetailsDiv" id="deviceDetails{{id}}">
+		<div class="deviceDetailsDiv" id="deviceDetails{{id}}" onclick="highlightAsset('{{id}}');">
 			<div class="deviceInfoDiv">
 				<div class="printerImage">
 						<img id="printImageId{{id}}" src="<html:imagesPath/>loading-icon.gif" alt="printer img" />
@@ -155,17 +244,17 @@
 					<img src="<html:imagesPath/>loading-icon.gif" id="loadigFavorite{{id}}" style="display: none;"/>
 					<span id="bookmarkMsg{{id}}">{{{generateBkmrkMsg}}}</span>
 				</div>
-				<spring:message code='lbs.label.serialno'/> :<span class="deviceSerialNo" >{{serialNumber}}</span><br/>
+				<spring:message code='lbs.label.serialno'/> :<span class="deviceSerialNo" ><a style="cursor:pointer" onClick="lbs.highlightMap('{{id}}');">{{serialNumber}}</a></span><br/>
 				<spring:message code='lbs.label.ipaddress'/> :<span class="deviceIP" >{{ipAddress}}</span><br/>
 				<spring:message code='lbs.label.customerdevicetag'/>:<span class="deviceTag">{{customerDeviceTag}}</span>
 				<div style='margin-top:10px'>
-					<a style="cursor: pointer;" onclick="showRequests('{{id}}',-1)"><spring:message code='lbs.label.requesthistory'/></a> 
 					<c:if test="${showCreateNew=='true'}">
-					:<a class="createRequests" onClick="showCreateRequestPop('{{id}}')" id="createRequests{{id}}" style="cursor: pointer;" ><spring:message code='lbs.label.createrequest'/></a>
+					<a class="createRequests" onClick="showCreateRequestPop('{{id}}')" id="createRequests{{id}}" style="cursor: pointer;" ><spring:message code='lbs.label.createrequest'/></a>
 					</c:if> 
 					:<a style="cursor: pointer;" onclick="showLocationHistoryById('{{id}}')">Location History</a>
                     <a style="cursor: pointer;display:none" onclick="showRequests('{{id}}',-2)">2 Year SR History</a>
 					:<a style="cursor: pointer;" onclick="postDirectMoveMessage('{{id}}');">Move without SR Creation</a>
+					
 				</div>
 			</div>
 			<div class="createRequestMenu" id="createRequestMenu{{id}}" style="display:none;">
@@ -212,9 +301,11 @@
 						</div>
 						<div class="additionalInfoContentRight" >
 							<ul>
+							<li id="reqHistory{{id}}"><a style="cursor: pointer;" onclick="showRequests('{{id}}',-1)"><spring:message code='lbs.label.requesthistory'/></a><br/></li> 
 							<li id="cntrlPanel{{id}}"><a targetstyle="cursor: pointer;" onClick="openCntlPanelPopup()" ><spring:message code='lbs.label.controlpanel'/></a><br/></li>
 							<li id="sprtDwnlds{{id}}"><a style="cursor: pointer;" onClick="showSupportDownlds('{{id}}')" ><spring:message code='lbs.label.supportanddownloads'/></a><br/></li>
 							<li id="pgCounts{{id}}"><a style="cursor: pointer;" onClick="openPopUp('{{id}}', '{{serialNumber}}', '{{ipAddress}}', '{{modelNumber}}', '{{customerDeviceTag}}')" ><spring:message code='lbs.label.updatepagecount'/></a><br/></li>
+							<li><a style="cursor: pointer;" onclick="showDeviceStatus('{{id}}');">Device Status</a></li>
 							</ul>
 						</div>
 						
@@ -249,8 +340,7 @@
 									<tr class="tableRowShade"><td><spring:message code='lbs.label.assetlifecycle'/>:</td><td>{{assetLifeCycle}}</td></tr>
 									<tr><td><spring:message code='lbs.label.hardwarestatus'/>:</td><td>{{hardwareStatus}}</td></tr>
 									<tr class="tableRowShade"><td><spring:message code='lbs.label.partType'/>:</td><td>{{partType}}</td></tr>
-									
-									</tbody>
+		                           </tbody>
 		                          </table>
 							<div class="popupContactInfo" id="popupContactInfo{{deviceId}}" style="display:none;">
 							<span class="popup_arrow_low"> <span class="popup_arrow-inner_low"></span></span>
@@ -270,6 +360,32 @@
 </script>
 			
 	<script>
+	$(document).ready(function(){
+		
+		var addDeviceListFlag = false;
+		
+		$('body').click(function() {
+		  if(!addDeviceListFlag){
+			  $('#addDevice_List').hide();
+		  }
+		});	
+		
+		$("#addDevice_List,#addDevice_PlusImage").mouseenter(function() {	
+			addDeviceListFlag = true;
+	    });
+		$("#addDevice_List,#addDevice_PlusImage").mouseleave(function() {
+			addDeviceListFlag = false;
+	    });
+	});
+	
+	function openAddDeviceList(){
+		$('#addDevice_List').show().position({
+			  my: "right top",
+			  at: "right bottom",
+			  of: "#addDevice_PlusImage",
+			  collision:"none"
+			});
+	}
 	var controlPanelDialog=$('#controlPanelDiv').dialog({
 		title:"<spring:message code='lbs.label.controlpanel'/>",
 		modal:true,
@@ -364,13 +480,22 @@
 	
 	
 	function showCreateRequestPop(deviceId){
-		$('#createRequestMenu'+deviceId).show();
-		$('#deviceContent').animate({
-		    scrollTop: $('#createRequestMenu'+deviceId).offset().top-$('#deviceContent .deviceDetailsDiv:first-child').offset().top-200}, 'fast');
+		$('#createRequestMenu'+deviceId).show().position({
+			  my: "right top",
+			  at: "right bottom",
+			  of: "#createRequests"+deviceId,
+			  collision:"none"
+			});
+		var dcTotal = $('#deviceContent').offset().top + $("#deviceContent").height();
+		var crTotal = $("#createRequestMenu"+deviceId).offset().top+$("#createRequestMenu"+deviceId).height();
+		if(crTotal>dcTotal)
+			$('#deviceContent').animate({scrollTop: $('#deviceContent').scrollTop()+(crTotal-dcTotal)+15}, 'slow');
 		$('#createRequestMenu'+deviceId).mouseleave(function(){
 			$(this).hide();
 		});
 	}
+	
+	
 	
 	 
 			function setAddressToHTML(addressObj){
@@ -382,6 +507,24 @@
 					$('#addressDetails_locHistry').html(generateAddressDisplayForAsset(addressObj));
 					$('#building_assetDetails_locHistry').html(addressObj["buildingName"]);
 					$('#floor_assetDetails_locHistry').html(addressObj["floorName"]);
+					
+					var f="";
+					if("floorLOD" in addressObj){
+						if(addressObj["floorLOD"]==null || addressObj["floorLOD"]==""){
+							f="Street Level";
+						}else{
+							f=addressObj["floorLOD"];
+						}
+					}else{
+						f="Street Level";
+					}
+					$("#totalDevicesOnFloor_assetDetails_addressLOD,#locHistory_addressLOD").html(f);
+					//Set the address to Move from for Multi Asset Select.. LBS 1.5
+					$('#move-from-details').html(generateAddressDisplayForAsset(addressObj));
+					//added for placement
+					$('#lbs_accountId').val(addressObj["accountId"]);
+					
+					
 			}
 			
 			function setTotalDevice(total){
@@ -389,6 +532,15 @@
 			}
 			function setTotalDeviceFloor(total){
 				$('#totalDevicesOnFloor_assetDetails').html(total);				
+			}
+			function setTotalPlacements(total){
+				$('#total_placement').html(total);	
+			}
+			function setTotalPlacementFloor(total){
+				$('#totalOnFloor_placement').html(total);				
+			}
+			function setbuildingType(value){
+				$('#lbs_buildingType').html(value);				
 			}
 			function bookmarkDevice(deviceId,object)
 			{
@@ -469,9 +621,6 @@
 			
 			function viewPendingMove(deviceId){
 				navigation="viewPendingMove";
-				
-				//history.pushState(closePendingObj, "", location.href);
-				//history.pushState(null, "", location.href);
 					<%-- Show pending move view code ....  --%>
 					pendingObj.info.setId(deviceId);
 					closePendingObj.info.setId(deviceId);
@@ -495,27 +644,6 @@
 					requestHistoryObj.setGridType(type);
 					requestHistoryObj.setWebStatus(status);
 					openHistoryPopup(type);
-				
-								
-				<%-- 
-				var select={
-						   "action": "select",
-						   "item": "asset",
-						   "info": [{
-						      "id": "320108W"
-						   }]
-						};
-				
-				var enableDrag={"action":"enableDrag",
-						"item":"asset",
-						"info":{"id":deviceId}
-				};--%>
-				 
-				 
-				
-				//lbs.postMessage(JSON.stringify(select));
-				//lbs.postMessage(JSON.stringify(pendingObj));
-				
 			}
 			function setDeviceDetails(assetObj,param){
 				$('#deviceId_'+param).html(("name" in assetObj)==true?assetObj.name:"");
@@ -535,7 +663,7 @@
 				$('#building_assetDetails_moveTo').html(addressObj["name"]);
 				$('#floor_assetDetails_moveTo').html(addressObj["floor"]);
 			}
-			var errorDialogMove;
+			var errorDialogMove;var prvhtml=$('#mapInfo').html();
 			function postMoveMessage(deviceId){
 				<%-- check for if there is already pending request is ther or not otherwise show warning --%>
 				
@@ -571,26 +699,13 @@
 				};
 				lbs.postMessage(enableDrag);
 				hideFiltersAndLeftNav();<%--method declared in LbsService.js --%>
-				var prvhtml=$('#mapInfo').html();
+				prvhtml=$('#mapInfo').html();
 				$('#mapInfo').html("<spring:message code='lbs.msg.create.move'/> "+assetIfo.name);
-				$('#cancelMoveRequest').unbind("click");
-				<%--this button is there in default view jsp --%>
+				<%--$('#cancelMoveRequest').unbind("click");
+				this button is there in default view jsp 
 				$('#cancelMoveRequest').click(function(){
-					// Post json to cancel Move REquest!!!!
-					var cancelObj={
-							"action": "disableDrag",
-							"item": "asset",
-							"info": {
-							"id": deviceId
-							}
-							
-							};
-									
-					lbs.postMessage(cancelObj);
-					$('#mapInfo').html(prvhtml);
-					showFiltersAndLeftNav();
-					
-				});
+				
+				});--%>
 				
 			}
 			
@@ -662,6 +777,9 @@
 					
 					}
 				}
+				
+				
+				
 				assetId=location[addressMapping.LBSField[3]];
 			
 				$('#backInfo').val(JSON.stringify(location.defaultArea));
@@ -675,14 +793,21 @@
 				}
 				if(directMoveInfo.isDirectMove){
 					directMoveInfo.isDirectMove=false;
-					showPopupMessagesOPS("Are you sure you want to move this device?",function(b){
-						
-						if (b){
-							createMoveDirect(location);
-						}else{							
-							$('#cancelMoveRequest').click();
-						}						
-					});
+					<%--assetLifeCycle == "Installed" &&  Commented on 28th Aug--%>
+					if($("#fleetMgmtForm #lbs_extAddressId").val().length == 0){
+						initOpenAddressPopup();
+					}
+					else{
+						showPopupMessagesOPS("Are you sure you want to move this device?",function(b){
+							
+							if (b){
+								createMoveDirect(location);
+							}else{							
+								$('#cancelMoveRequest').click();
+							}						
+						});
+					}
+					
 				}else{
 					moveAssetRequest();
 				}		
@@ -720,6 +845,9 @@
 					lbs.postMessage(locHistory);
 					$( "#closelocation_history").unbind( "click" );
 					var device=deviceInformations.getDeviceObjectFromList(deviceId);
+					if(!device){
+						device=deviceInformations.getPlacementfromList(deviceId);
+					}
 					showLocationHistory();<%-- function in lbsService.js --%>
 					setDeviceDetails(device,"locHistry");
 					$('#closelocation_history').click(function(){
@@ -731,4 +859,32 @@
 						navigation="";
 					});
 			}
+			function enableMultiSelect(x){
+				var multiSelectMode =$(x).val();
+				multiSelectAsset.enableMultiSelect(multiSelectMode);
+			}
+			function closeMoveMultiSelect(){
+				$('.deviceDetailsDiv').removeClass('greenBackground');
+				multiSelectAsset.closeMultiSelect();
+			}
+			function handleMultiAssetMove(){
+				multiSelectAsset.handleClickNext();
+				
+			}
+			
+			var expirationArray=[];
+			var expirationArrayCode=[];
+			expirationArray.push({"value":"", "displayValue":"Select Expiring Terms"});
+			expirationArray.push({"value":"Select All", "displayValue":"Select All"});
+			<c:forEach items="${expiration}" var="loopStatus">
+			expirationArray.push({"value":"${loopStatus.key}","displayValue":"${loopStatus.value}"});
+			expirationArrayCode["${loopStatus.key}".toLowerCase()]="${loopStatus.value}";
+			</c:forEach>		
+			
+			var alertTypeCodesLOV={};
+			<c:forEach items="${alertCodes}" var="loopStatus">
+			alertTypeCodesLOV["${loopStatus.key}"]="${loopStatus.value}";
+			</c:forEach>
 	</script>
+
+	<jsp:include page="/WEB-INF/jsp/fleetmanagement/deviceStatus/deviceStatusPopup.jsp"></jsp:include>

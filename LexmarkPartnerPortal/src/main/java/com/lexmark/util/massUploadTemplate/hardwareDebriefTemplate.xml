@@ -93,6 +93,9 @@
 		<editable>true</editable>
 		<columnNumber>10</columnNumber>
 		<prepopulate>true</prepopulate>
+		<constraint>
+			<type>Email_Address</type>
+		</constraint>
 	</field>
 	<field>
 		<name>serviceRequest.massUploadContact.contactType</name>
@@ -101,6 +104,9 @@
 		<editable>true</editable>
 		<columnNumber>11</columnNumber>
 		<prepopulate>true</prepopulate>
+		<constraint>
+				<siebelLOV>CONTACT_TYPE_FOR_ASSET</siebelLOV><!-- This should be value from SiebelLocalization.java-->
+		</constraint>
 	</field>
 	<field>
 		<name>serviceRequest.massUploadContact.country</name>
@@ -245,6 +251,11 @@
 		<editable>true</editable>
 		<columnNumber>35</columnNumber>
 		<prepopulate>true</prepopulate>
+		<constraint>
+				<defaultCSVValue></defaultCSVValue>
+				<value csvValue="Y">Y</value>
+				<value csvValue="N">N</value>
+			</constraint>
 	</field>
 	<field>
 		<name>serviceRequest.asset.ipAddress</name>
@@ -253,6 +264,9 @@
 		<editable>true</editable>
 		<columnNumber>36</columnNumber>
 		<prepopulate>true</prepopulate>
+		<constraint>
+		<type>IP_Address</type>
+		</constraint>
 	</field>
 	<field>
 		<name>serviceRequest.asset.gateway</name>
@@ -337,6 +351,9 @@
 		<editable>true</editable>
 		<columnNumber>46</columnNumber>
 		<prepopulate>true</prepopulate>
+		<constraint>
+				<type>INTEGER</type>
+			</constraint>
 	</field>
 	<field>
 		<name>serviceRequest.asset.wiringClosestNetworkPoint</name>
@@ -475,6 +492,9 @@
 		<editable>true</editable>
 		<columnNumber>66</columnNumber>
 		<prepopulate>true</prepopulate>
+		<constraint>
+				<siebelLOV>EVENT_STATUS</siebelLOV><!-- This should be value from SiebelLocalization.java-->
+		</constraint>
 	</field>
 	<field>
 		<name>activitySubStatus.value</name>
@@ -630,6 +650,9 @@
 			<editable>true</editable>
 			<columnNumber>28</columnNumber>
 			<prepopulate>false</prepopulate>
+			<constraint>
+				<type>INTEGER</type>
+			</constraint>
 		</field>
 		<field>
 			<name>usedQuantity</name>
@@ -638,6 +661,9 @@
 			<editable>true</editable>
 			<columnNumber>29</columnNumber>
 			<prepopulate>true</prepopulate>
+			<constraint>
+				<type>INTEGER</type>
+			</constraint>
 		</field>
 		<field>
 			<name>notUsedQuantity</name>
@@ -646,6 +672,9 @@
 			<editable>true</editable>
 			<columnNumber>30</columnNumber>
 			<prepopulate>true</prepopulate>
+			<constraint>
+				<type>INTEGER</type>
+			</constraint>
 		</field>
 		<field>
 			<name>doaQuantity</name>
@@ -654,6 +683,9 @@
 			<editable>true</editable>
 			<columnNumber>31</columnNumber>
 			<prepopulate>true</prepopulate>
+			<constraint>
+				<type>INTEGER</type>
+			</constraint>
 		</field>		
 		<field>
 			<name>relationType</name>
@@ -690,6 +722,9 @@
 		<editable>true</editable>
 		<columnNumber>62</columnNumber>
 		<prepopulate>true</prepopulate>
+		<constraint>
+			<type>INTEGER</type>
+		</constraint>
 	</field>	
 	<field>
 		<name></name>

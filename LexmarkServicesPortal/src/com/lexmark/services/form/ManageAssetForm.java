@@ -6,6 +6,7 @@ package com.lexmark.services.form;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
@@ -49,6 +50,8 @@ public class ManageAssetForm extends BaseForm implements Serializable {
 	private String backToMap;
 	//Install/De-install changes 
 	private String deinstallAssetFlag;
+	
+	private Map<String, Asset> assetDetailsMap;
 	
 	public String getFleetManagementFlag() {
 		return fleetManagementFlag;
@@ -395,6 +398,13 @@ public class ManageAssetForm extends BaseForm implements Serializable {
 
 	public void setDeinstallAssetFlag(String deinstallAssetFlag) {
 		this.deinstallAssetFlag = deinstallAssetFlag;
+	}
+	
+	public Map<String, Asset> getAssetDetailsMap() {
+		return assetDetailsMap;
+	}
+	public void setAssetDetailsMap(Map<String, Asset> assetDetailsMap) {
+		this.assetDetailsMap = assetDetailsMap;
 	}
 	
 }

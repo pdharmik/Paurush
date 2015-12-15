@@ -6,11 +6,11 @@
 	
 	<cache name="retrieveSiebelLOVList" maxElementsInMemory="50" eternal="false"
 		overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />
-		
+	<!--	
 	<cache name="retrieveAccountAgreementList" maxElementsInMemory="50" eternal="false"
 	overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />
 	
 	<cache name="retrievePriceList" maxElementsInMemory="50" eternal="false"
 	overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />	
-		
+		-->
 </ehcache>

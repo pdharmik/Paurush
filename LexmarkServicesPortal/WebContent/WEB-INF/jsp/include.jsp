@@ -34,7 +34,6 @@
 <%@page import="com.lexmark.services.util.PaginationUtil"%><c:set var="regional" value="${pageContext.request.locale.language}"/>
 <c:set var="language" value="${pageContext.request.locale.language}"/>
 <c:set var="country" value="${pageContext.request.locale.country}"/>
-<c:set var="mdmId" value="${pageContext.request.session}"/>
 <c:if test="${language == 'zh'}">
       <c:set var="regional" value="${language}-${country}"/>
 </c:if>

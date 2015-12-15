@@ -333,8 +333,10 @@
                     <key><value>coordinatesYPreDebriefRFV</value></key>
                     <value>LXK LBS Grid Coordinates Y</value>
                </entry>
-
-               
+                <entry>
+                    <key><value>levelOfDetails</value></key>
+                    <value>LXK LBS Level of Detail</value>
+               </entry>
            </map>
        </property>
     </bean>

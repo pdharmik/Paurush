@@ -18,7 +18,7 @@
 
 <tr>
 <td>
-<table width="600"  border="0" cellspacing="0" cellpadding="0" align="center" id="emailPrintWraper" class="emailPrintWraper">
+<table width="800"  border="0" cellspacing="0" cellpadding="0" align="center" id="emailPrintWraper" class="emailPrintWraper">
 
   <tr>
     <td class="table-td-style10"><table width="100%" border="0" cellspacing="0" cellpadding="0">

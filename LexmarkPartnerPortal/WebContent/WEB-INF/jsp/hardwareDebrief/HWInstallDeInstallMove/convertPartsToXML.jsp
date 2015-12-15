@@ -10,7 +10,8 @@
 			<cell><![CDATA[${partList.partNumber}]]></cell>
 			<cell><![CDATA[${partList.partName}]]></cell>
 			<cell><![CDATA[${partList.returnRequiredFlag}]]></cell>
-			<cell><![CDATA[<input id="btn_select" name="btn_select" class="button"  type="button" value="<spring:message code='button.select'/>" onclick="selectRow('${startPos+rowCounter.index}',this)"/>]]></cell>			
+			<cell><![CDATA[<input id="btn_select" name="btn_select" class="button"  type="button" value="<spring:message code='button.select'/>" onclick="selectRow('${startPos+rowCounter.index}',this)"/>]]></cell>
+			<cell><![CDATA[${partList.typePrinter}]]></cell>			
 		</row>
 		
 		

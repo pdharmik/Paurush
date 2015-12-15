@@ -2,7 +2,8 @@
 <%@ taglib prefix="util" uri="http://lexmark.com/tld/util" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
+<%@ taglib uri="/WEB-INF/tld/liferay-portlet.tld" prefix="portlet"%>
+<portlet:resourceURL var="encryptJSONVar" id="encryptJSON"></portlet:resourceURL>
 <div class="portletBlock infoBox rounded shadow">
           <div class="columnsOne">
             <div class="columnInner">
@@ -19,6 +20,21 @@
               	<spring:message code="requestInfo.hardwareDebreief.common.closeOut.serviceInfoForDevice.deviceInstalledAddress"/>
               </c:otherwise>
              </c:choose>
+             
+               <c:set var="isLbsAddress" value="false" scope="request"/>
+             <c:set var="islod" value="false" scope="request"/>
+             <%--
+             address.lbsAddressFlag=${hardwareDebriefForm.activity.serviceRequest.asset.installAddress.lbsAddressFlag}
+             address.lbsAddressLod=${hardwareDebriefForm.activity.serviceRequest.asset.installAddress.lbsAddressLod}
+			--%>
+             <c:if test="${hardwareDebriefForm.activity.serviceRequest.asset.installAddress.lbsAddressFlag != null && hardwareDebriefForm.activity.serviceRequest.asset.installAddress.lbsAddressFlag != false}">
+             <c:set var="isLbsAddress" value="true"/>
+             </c:if>
+             
+              <c:if test="${hardwareDebriefForm.activity.serviceRequest.asset.installAddress.lbsAddressLod != null && hardwareDebriefForm.activity.serviceRequest.asset.installAddress.lbsAddressLod != ''}">
+             <c:set var="islod" value="true"/>
+             </c:if>
+             
              </h4>
               <ul class="roDisplay">
                <util:addressOutput value="${hardwareDebriefForm.activity.serviceRequest.asset.installAddress}" displayInDivs="true"></util:addressOutput>
@@ -39,18 +55,40 @@
                   <span>
                  ${hardwareDebriefForm.activity.serviceRequest.asset.installAddress.physicalLocation3}
                   </span></li>
-                  <c:if test="${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.coordinatesXPreDebriefRFV != null 
+                  
+                 
+							
+    	              		
+							
+							
+							<c:if test="${(hardwareDebriefForm.activity.serviceRequest.asset.installAddress.lbsAddressLod == 'Mix-See Floor' && hardwareDebriefForm.activity.serviceRequest.asset.installAddress.floorLevelOfDetails == 'Grid Level') || hardwareDebriefForm.activity.serviceRequest.asset.installAddress.lbsAddressLod == 'Grid Level'}">
+								<ul id="lod-floor-grid" style="${showGrid}" class="form division">
+								 	<li><label for="coordinateX"><spring:message code="hardwareDebrief.closeOut.coordinateX"/></label>
+								 	<span id="co-X"></span> 
+								 	<span>${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.coordinatesXPreDebriefRFV}</span>
+								 	</li>
+									<li><label for="coordinateY"><spring:message code="hardwareDebrief.closeOut.coordinateY"/></label>
+									<span id="co-Y"></span>
+									<span>${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.coordinatesYPreDebriefRFV}</span>
+									</li>
+									<li> <a onclick="showMapPopup()" style="cursor: pointer; margin-left: -78.5%;"><spring:message code="hardwareDebrief.closeOut.viewGrid"/></a></li>
+									<%--For LBS Adresses display names--%>
+							 	</ul>	
+							</c:if>
+                  
+                  
+                  <%--<c:if test="${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.coordinatesXPreDebriefRFV != null 
                   && hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.coordinatesXPreDebriefRFV != ''}">
-                  <li><label for="coordinateX">Coordinate X</label> 
+                  <li><label for="coordinateX"><spring:message code='hardwareDebrief.closeOut.coordinateX'/></label> 
 						 	<span>${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.coordinatesXPreDebriefRFV}</span>
 						 	</li>
                   </c:if>
                   <c:if test="${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.coordinatesYPreDebriefRFV != null 
                   && hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.coordinatesYPreDebriefRFV != ''}">
-                  <li><label for="coordinateY">Coordinate Y</label>
+                  <li><label for="coordinateY"><spring:message code='hardwareDebrief.closeOut.coordinateY'/></label>
 							<span>${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.coordinatesYPreDebriefRFV}</span>
 							</li>
-                  </c:if>
+                  </c:if>--%>
 				  
               </ul>
             </div>
@@ -139,3 +177,26 @@
             </div>
           </div>
 </div>
+<script>
+function successMap(obj){
+	mapPopupObj.closePopup();
+	
+}
+
+
+function showMapPopup(){
+	mapPopupObj.showPopup({
+		"id":'',
+		"buildingId":"${hardwareDebriefForm.activity.serviceRequest.asset.installAddress.buildingId}",
+		"floorId":"${hardwareDebriefForm.activity.serviceRequest.asset.installAddress.floorId}",
+		"successFunc":successMap,
+		"encryptionURL":"${encryptJSONVar}",
+		"lbsPostURL":"${hardwareDebriefForm.mapForm.formPostUrl}",
+		"locale":"<%=request.getLocale()%>",
+		"mdmId":"${hardwareDebriefForm.userEnteredActivity.customerAccount.accountId}",
+		"mdmLevel":"Siebel",
+		"emailAddress":"${hardwareDebriefForm.mapForm.emailaddress}"
+	});
+	return false;
+}
+</script>

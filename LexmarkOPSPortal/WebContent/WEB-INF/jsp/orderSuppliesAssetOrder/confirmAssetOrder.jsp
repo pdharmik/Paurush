@@ -468,8 +468,8 @@
 					</li>
 	<%--	</c:if> --%>
 			
-	            <li class="first"><a href="javascript:email();"><img src="<html:imagesPath/>/mail2_16x16.gif" title="<spring:message code="requestInfo.title.emailThisPage"/>"height="23" width="27"/><spring:message code="requestInfo.link.emailThisPage"/></a></li>
-	            <li><a href="javascript:print();"><img src="<html:imagesPath/>/print_16x16.gif" title="<spring:message code="requestInfo.title.printThisPage"/>" height="27" width="27"/><spring:message code="requestInfo.link.printThisPage"/></a></li>
+	            <li class="first"><a href="javascript:email();"><img class="ui_icon_sprite email-icon" src="<html:imagesPath/>/transparent.png" title="<spring:message code="requestInfo.title.emailThisPage"/>"height="23" width="27"/><spring:message code="requestInfo.link.emailThisPage"/></a></li>
+	            <li><a href="javascript:print();"><img class="ui_icon_sprite print-icon" src="<html:imagesPath/>/transparent.png" title="<spring:message code="requestInfo.title.printThisPage"/>" height="27" width="27"/><spring:message code="requestInfo.link.printThisPage"/></a></li>
 	          </ul>
 	        </div>
         </div><!-- content-wrapper -->

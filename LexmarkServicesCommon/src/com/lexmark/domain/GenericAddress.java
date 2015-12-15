@@ -75,9 +75,21 @@ public class GenericAddress implements Serializable {
     private String lbsLatitude;
     private String coordinatesXPreDebriefRFV;
 	private String coordinatesYPreDebriefRFV;
+	
+/* Added for LBS-1.5 - Level of Details - Address Level and floor level */
+	private String levelOfDetails;
+	private String floorLevelOfDetails;
+	private String lbsAddressLod;
+	
+
+	// Added for LBS 1.5 -Request for new building and floor
+	private Boolean isRequestForBuilding;
+	private Boolean isRequestForFloor;
+	
     //Ends LBS Address Fields
     
-    public String getCoordinatesXPreDebriefRFV() {
+	
+	public String getCoordinatesXPreDebriefRFV() {
 		return coordinatesXPreDebriefRFV;
 	}
 
@@ -610,6 +622,49 @@ public class GenericAddress implements Serializable {
 	public void setLBSIdentifierFlag(String lBSIdentifierFlag) {
 		LBSIdentifierFlag = lBSIdentifierFlag;
 	}
+	
+	 public String getLevelOfDetails() {
+		return levelOfDetails;
+	}
 
+	public void setLevelOfDetails(String levelOfDetails) {
+		this.levelOfDetails = levelOfDetails;
+	}
+	public Boolean getIsRequestForBuilding() {
+		return isRequestForBuilding;
+	}
+
+	public void setIsRequestForBuilding(Boolean isRequestForBuilding) {
+		this.isRequestForBuilding = isRequestForBuilding;
+	}
+
+	public Boolean getIsRequestForFloor() {
+		return isRequestForFloor;
+	}
+
+	public void setIsRequestForFloor(Boolean isRequestForFloor) {
+		this.isRequestForFloor = isRequestForFloor;
+	}
+	public String getFloorLevelOfDetails() {
+		return floorLevelOfDetails;
+	}
+
+	public void setFloorLevelOfDetails(String floorLevelOfDetails) {
+		this.floorLevelOfDetails = floorLevelOfDetails;
+	}
+
+	/**
+	 * @param lbsAddressLod the lbsAddressLod to set
+	 */
+	public void setLbsAddressLod(String lbsAddressLod) {
+		this.lbsAddressLod = lbsAddressLod;
+	}
+
+	/**
+	 * @return the lbsAddressLod
+	 */
+	public String getLbsAddressLod() {
+		return lbsAddressLod;
+	}
 
 }

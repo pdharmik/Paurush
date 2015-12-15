@@ -14,6 +14,9 @@
 	
 	<bean id="hardwareDebriefController" class="com.lexmark.portlet.HardwareDebriefController" >
 		<property name="attachmentController" ref="attachmentController"></property>
+		<property name="lbsEndpointURL">
+			<value>${fleetManagement.lbs.endPoint}</value>
+		</property>
 	</bean>
 	
  
@@ -36,6 +39,7 @@
         <property name="locations">
         	<list>
                <value>classpath:attachment.properties</value>
+                <value>/WEB-INF/context/webservice.properties</value>  
             </list>  
         </property>
     </bean>

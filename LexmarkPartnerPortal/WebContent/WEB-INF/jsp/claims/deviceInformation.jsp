@@ -13,7 +13,7 @@
   <div class="portlet-wrap-inner">
   	<div class="width-100per">
 	    <div class="columns three">
-	      <div class="first-column columnsThree width-25per" ><%--width changed for CI 13.10 BRD13-10-07 --%>
+	      <div class="columnsThree width-20per" ><%--width changed for CI 13.10 BRD13-10-07 --%>
 		    <dl>
 			  <dd>
 	            <div class="device">
@@ -23,7 +23,7 @@
 			  </dd>
 	        </dl>		  
 	      </div><!-- first-column -->
-	      <div class="second-column width-35per" ><%--width changed for CI 13.10 BRD13-10-07 --%>
+	      <div class="second-column width-40per-important" ><%--width changed for CI 13.10 BRD13-10-07 --%>
 	      	<table>
 			  	<tr>
 				  	<td align="right" ><span ><B><spring:message code="claim.label.deviceData" /></B></span></td>
@@ -46,6 +46,11 @@
 		  				<td><span>${claimRequestConfirmationForm.asset.productTLI}</span></td>
 	  			</tr>
 	  			<tr>
+				  	<td align="right" style="vertical-align:top"><span ><B><spring:message code="claim.label.productAndAssetWarningMsg" /></B></span></td>
+				  	<td width="20px" >&nbsp;</td>
+		  				<td class="max-width-170px"><span>${claimRequestConfirmationForm.asset.displayWarning}</span></td>
+	  			</tr>
+	  			<tr>
 				  	<td align="right" >&nbsp;</td>
 				  	<td width="20px">&nbsp;</td>
 		  				<td>&nbsp;</td>
@@ -57,7 +62,7 @@
 	  			</tr>
 			</table>
 	      </div><!-- second-column -->
-	      <div class="third-column width-40per">
+	      <div class="third-column width-40per-important">
 	      	<input type="hidden" id = "newCustomerAccountFlagHidden" name="activity.newCustomerAccountFlag" value="false"></input>
 	     	<input type="hidden" id = "customerAccountIdHidden" name="activity.customerAccount.accountId" value="${claimRequestConfirmationForm.asset.account.accountId}"></input>
 	     	

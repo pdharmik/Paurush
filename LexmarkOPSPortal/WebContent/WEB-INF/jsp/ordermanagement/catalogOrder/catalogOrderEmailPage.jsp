@@ -10,7 +10,7 @@
 	th {padding:0 5px 0 5px;}
 </style>
 <body>
-<table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="border-width:1px; border-color:#3A7FA8; border-style:solid; background-color:#ffffff" id="emailPrintWraper">
+<table width="800" border="0" cellspacing="0" cellpadding="0" align="center" style="border-width:1px; border-color:#3A7FA8; border-style:solid; background-color:#ffffff" id="emailPrintWraper">
   <tr>
     <td style="background-color:#dadada"><img src="<html:imagesPath/>/logoLexEmail.png" width="598" height="65" /></td>
   </tr>
@@ -351,7 +351,7 @@
   </tr> -->
 </table>
 <br>
-<table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+<table width="800" border="0" cellspacing="0" cellpadding="0" align="center">
 	<tr id="topEmail">
 		<td width="55%"></td>
 		<td align="right" width="25%">

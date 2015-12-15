@@ -186,6 +186,14 @@
 					<key><value>b2bFlag</value></key>
 					<value>LXK MPS B2B Flag</value>
 				</entry>
+				<entry>
+					<key><value>deviceStatus</value></key>
+					<value>LXK LBS Device Status Flag</value>
+				</entry>
+				<entry>
+					<key><value>lbsUtilization</value></key>
+					<value>LXK LBS Utilization Flag</value>
+				</entry>
 	     	</map>
 		</property>
 	   	     	  

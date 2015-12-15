@@ -299,7 +299,6 @@ public class AmindPartnerActivityServiceUtil {
 		return resultActivityList;
 	}	
 	
-	//FIXME waiting for siebel.
 	private static List<PartLineItem> populateRecommendedPartList(PartnerOfflineModeActivityDo activityDo) {
 		List<PartLineItem> convertedParts = new ArrayList<PartLineItem>();
 		boolean activityDoChecked = false;
@@ -309,7 +308,7 @@ public class AmindPartnerActivityServiceUtil {
 				for (PartnerOfflineModeActivityListPartDo parts : activityDo.getPartsList()) {
 					PartLineItem recomandedItems = new PartLineItem();			
 					
-					if(parts.getMaterialLineType().equalsIgnoreCase("Printers")){
+					if("Printers".equalsIgnoreCase(parts.getMaterialLineType())){
 						materialTypePrinter = true;
 					}
 						boolean qntStringCheck = LangUtil.isNotEmpty(parts.getRecommendedQuantity());
@@ -330,9 +329,6 @@ public class AmindPartnerActivityServiceUtil {
 		return convertedParts;
 	}
 	
-	
-	//FIXME waiting for siebel.
-	
 	private static List<PartLineItem> populateRecommendedPartListPartnerActivity(PartnerActivityGridDo activityDo) {
 		List<PartLineItem> convertedParts = new ArrayList<PartLineItem>();
 		boolean activityDoChecked = false;
@@ -342,7 +338,7 @@ public class AmindPartnerActivityServiceUtil {
 				for (PartnerActivityListRecommPartDo parts : activityDo.getPartsList()) {
 					PartLineItem recomandedItems = new PartLineItem();	
 					
-					if(parts.getMaterialLineType().equalsIgnoreCase("Printers")){
+					if("Printers".equalsIgnoreCase(parts.getMaterialLineType())){
 						materialTypePrinter = true;
 						
 					}
@@ -1199,7 +1195,7 @@ public class AmindPartnerActivityServiceUtil {
 
 			attachmentLists = populateAttachmentList(attachmentList, activityBase.getServiceRequestAttachmentss());
 			portalActivity.setAttachmentList(attachmentLists);
-			
+			portalActivity.setDisplayWarning(claimDetail.getDisplayWarning());
 		}
 
 		portalActivity.setServiceRequest(populateServiceRequest(activityBase, false ));
@@ -1409,11 +1405,10 @@ public class AmindPartnerActivityServiceUtil {
 		return primaryContact;
 	}
 	private static void populateRecommendedAndPendingList(List<PartnerDetailPartBase> partsList, boolean activityDetailFlag, List<PartLineItem> recommendedPartList, List<PartLineItem> additionalPartList ) {
-	
 		Map<String,PartnerDetailPartBase> recommentedMap = new HashMap<String,PartnerDetailPartBase>();
 	
 		for(PartnerDetailPartBase part : partsList) {
-			if(StringUtils.isEmpty(part.getOrderLineItemId())) {
+			//if(StringUtils.isEmpty(part.getOrderLineItemId())) {
 				if(recommentedMap != null &&recommentedMap.containsKey(part.getProductId())){
 					PartnerDetailPartBase recommentedClaimPart = recommentedMap.get(part.getProductId());
 					if(recommentedClaimPart != null){
@@ -1422,7 +1417,7 @@ public class AmindPartnerActivityServiceUtil {
 				} else {
 					recommentedMap.put(part.getProductId(), part);
 				}
-			}
+			//}
 
 		}
 		
@@ -1447,6 +1442,11 @@ public class AmindPartnerActivityServiceUtil {
 				lineStatus.setValue(partBase.getLineStatus());
 				recommendedPart.setLineStatus(lineStatus);
 				recommendedPart.setExpedite(partBase.getShippingMethod());
+				
+				if ("Printers".equalsIgnoreCase(partBase.getMaterialLine())) {
+					recommendedPart.setTypePrinter(true);
+				}
+				
 				if(!activityDetailFlag) {
 					recommendedPart.setRequestedDate(partBase.getPartOrderedDate());
 				}
@@ -2306,15 +2306,11 @@ public class AmindPartnerActivityServiceUtil {
 			
 	
 	private static List<Part> populatePartList(PartnerActivityBase activityDo, boolean massUpload) {
-		
 		List<Part> parts = new ArrayList<Part>();
-		
+		boolean materialTypePrinter = false;
 		if(activityDo instanceof PartnerActivityDetailDo) {
-			
 			PartnerActivityDetailDo activityDetailDo = (PartnerActivityDetailDo)activityDo;
-			
 			List<PartnerActivityDetailPartDo> partDOs = AmindServiceUtil.removeNulls(activityDetailDo.getParts()); 
-			
 			if(LangUtil.isEmpty(partDOs)) {
 				return parts;
 			}
@@ -2331,16 +2327,17 @@ public class AmindPartnerActivityServiceUtil {
 					part.setUsedQuantity(partDo.getUsedQuantity());
 					part.setNotUsedQuantity(partDo.getNotUsedQuantity());
 					part.setDoaQuantity(partDo.getDoaQuantity());
+					if("Printers".equalsIgnoreCase(partDo.getMaterialLine())){
+						materialTypePrinter = true;
+					}
+					part.setTypePrinter(materialTypePrinter);
 					parts.add(part);
 				}
 			}
 		}
 		else if(activityDo instanceof PartnerActivityDo){
-			
 			PartnerActivityDo partnerActivityDo = (PartnerActivityDo)activityDo;
-			
 			List<PartnerActivityListPartDo> partDOs = AmindServiceUtil.removeNulls(partnerActivityDo.getPartsList()); 
-			
 			if(LangUtil.isEmpty(partDOs)) {
 				return parts;
 			}
@@ -2363,11 +2360,8 @@ public class AmindPartnerActivityServiceUtil {
 		}
 		
 		else if(activityDo instanceof PartnerOfflineModeActivityDo){
-			
 			PartnerOfflineModeActivityDo partnerActivityOfflineModeDo = (PartnerOfflineModeActivityDo)activityDo;
-			
 			List<PartnerOfflineModeActivityListPartDo> partDOs = AmindServiceUtil.removeNulls(partnerActivityOfflineModeDo.getPartsList()); 
-			
 			if(LangUtil.isEmpty(partDOs)) {
 				return parts;
 			}
@@ -2378,17 +2372,17 @@ public class AmindPartnerActivityServiceUtil {
 				part.setDescription(partDo.getProductDescription());
 				part.setOrderQuantity(partDo.getRecommendedQuantity());
 				part.setModel(partDo.getMachineTypeModel());
-				
+				if("Printers".equalsIgnoreCase(partDo.getMaterialLineType())){
+					materialTypePrinter = true;
+				}
+				part.setTypePrinter(materialTypePrinter);
 				parts.add(part);
 			}
 		}
 		
 		else if(activityDo instanceof ServiceRequestPartnerOfflineModeActivityDo){
-			
 			ServiceRequestPartnerOfflineModeActivityDo serviceRequestPartnerActivityOfflineModeDo = (ServiceRequestPartnerOfflineModeActivityDo)activityDo;
-			
 			List<ServiceRequestPartnerOfflineModeActivityListPartDo> partDOs = AmindServiceUtil.removeNulls(serviceRequestPartnerActivityOfflineModeDo.getPartsList()); 
-			
 			if(LangUtil.isEmpty(partDOs)) {
 				return parts;
 			}
@@ -2404,11 +2398,8 @@ public class AmindPartnerActivityServiceUtil {
 			}
 		}
 		else if(activityDo instanceof PartnerActivityGridDo){
-			
 			PartnerActivityGridDo serviceRequestPartnerActivityGridDo = (PartnerActivityGridDo)activityDo;
-					
 					List<PartnerActivityListRecommPartDo> partDOs = AmindServiceUtil.removeNulls(serviceRequestPartnerActivityGridDo.getPartsList()); 
-					
 					if(LangUtil.isEmpty(partDOs)) {
 						return parts;
 					}
@@ -2419,7 +2410,10 @@ public class AmindPartnerActivityServiceUtil {
 						part.setDescription(partDo.getProductDescription());
 						part.setOrderQuantity(partDo.getRecommendedQuantity());
 						part.setModel(partDo.getMachineTypeModel());
-						
+						if("Printers".equalsIgnoreCase(partDo.getMaterialLineType())){
+							materialTypePrinter = true;
+						}
+						part.setTypePrinter(materialTypePrinter);
 						parts.add(part);
 					}
 				}
@@ -2471,6 +2465,12 @@ public class AmindPartnerActivityServiceUtil {
 		installAddress.setAddressId(activityDetail.getAddressId());
 		installAddress.setCoordinatesXPreDebriefRFV(activityDetail.getCoordinatesXPreDebriefRFV());
 		installAddress.setCoordinatesYPreDebriefRFV(activityDetail.getCoordinatesYPreDebriefRFV());
+		installAddress.setLevelOfDetails(activityDetail.getLevelOfDetails());
+		installAddress.setLbsAddressLod(activityDetail.getLbsAddressLod());
+		installAddress.setBuildingId(activityDetail.getLbsBuildingId());
+		installAddress.setFloorId(activityDetail.getLbsFloorId());
+		installAddress.setFloorLevelOfDetails(activityDetail.getLbsFloorLod());
+		
 		return installAddress;
 	}
 	
@@ -2569,19 +2569,6 @@ public class AmindPartnerActivityServiceUtil {
 		}
 
 		OfflineModeRequestAttachmentDO attachmentDO = attachmentDOsList.get(0);
-//		for (OfflineModeRequestAttachmentDO offlineModeRequestAttachmentDOFromList : attachmentDOsList) {
-//			//TODO: Need to make sure what to do when "created" is null
-//			if(attachmentDO == offlineModeRequestAttachmentDOFromList 
-//					|| attachmentDO.getCreated() == null || offlineModeRequestAttachmentDOFromList.getCreated() == null) {
-//				continue;
-//			}
-//			Date currentDate = LangUtil.convertStringToGMTDate(attachmentDO.getCreated());
-//			Date newDate = LangUtil.convertStringToGMTDate(offlineModeRequestAttachmentDOFromList.getCreated());
-//			if(newDate.compareTo(currentDate) > 0) {
-//				attachmentDO = offlineModeRequestAttachmentDOFromList;
-//			}
-//		}
-		
 		attachment.setCreated(attachmentDO.getCreated());
 		attachment.setAttachmentId(attachmentDO.getAttachmentId());
 		attachment.setAutoUploadFlag(attachmentDO.getAutoUploadFlag());

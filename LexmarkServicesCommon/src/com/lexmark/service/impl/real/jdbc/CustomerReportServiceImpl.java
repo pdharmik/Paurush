@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -1621,7 +1622,9 @@ public class CustomerReportServiceImpl implements CustomerReportService {
 		    HibernateUtil.closeSession();
 		}
 		//added -- start
-		Set<ReportParameters> hs = new HashSet<ReportParameters>();
+		//Set<ReportParameters> hs = new HashSet<ReportParameters>();
+		// changed to linked hash set to maintain the order of the list 
+		Set<ReportParameters> hs = new LinkedHashSet<ReportParameters>();
 		List<ReportParameters> al = new ArrayList<ReportParameters>();
 		hs.addAll(resultFinal.getParameters());
 		al.addAll(hs);

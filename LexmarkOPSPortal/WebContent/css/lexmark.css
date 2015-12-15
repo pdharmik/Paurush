@@ -286,7 +286,11 @@ button.blue1 {
 button[disabled].button {
 	background-color: #c8c8c8;
 	color: #d8d8d8 !important;
-	cursor: default !important;
+	cursor: no-drop !important;
+}
+button[disabled]{
+	opacity:0.5;
+	filter: alpha(opacity = 50);
 }
 button.alt {
 	background-color:#ffffff;

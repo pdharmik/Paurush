@@ -139,6 +139,7 @@ import com.lexmark.services.portlet.BaseController;
 import com.lexmark.services.portlet.SharedPortletController;
 import com.lexmark.services.util.ChangeMgmtConstant;
 import com.lexmark.services.util.ContractFactory;
+import com.lexmark.services.util.JSONEncryptUtil;
 import com.lexmark.services.util.ObjectDebugUtil;
 import com.lexmark.services.util.PerformanceConstant;
 import com.lexmark.services.util.PortalSessionUtil;
@@ -217,6 +218,7 @@ public class CommonController extends BaseController{
 	private static final String METH_LOADFILTERCRITERIA ="loadFilterCriteria";
 	private static final String METH_GETCONTACTINFORMATION ="getContactInformation";
 	private static final String METH_RETRIEVEASSETDETAIL ="retrieveAssetDetail";
+	private static final String METH_RETRIEVEASSETDETAILSLIST ="retrieveAssetDetailsList";
 	private static final String METH_GETASSETCONTRACT ="getAssetContract";
 	private static final String METH_GETSERVICEREQCONTRACT ="getServiceReqContract";
 	private static final String METH_FORWARDTOJSP ="forwardToJsp";
@@ -533,7 +535,21 @@ public class CommonController extends BaseController{
 			model.addAttribute("includeGrid", req.getParameter("g"));
 		}
 		
-		
+		Map<String, String> lbsAddressLOD=null;
+		Map<String, String> isLbsAddress=null;
+		try {
+			
+			
+			lbsAddressLOD = retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_ADDRESSLOD.getValue(),req.getLocale());
+			isLbsAddress = retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_ISLBSADDRESS.getValue(),req.getLocale());
+		}catch (LGSDBException e) {
+			LOGGER.debug("Exception"+e.getMessage());
+		}catch (Exception e) {
+			LOGGER.debug("Exception"+e.getMessage());
+		}
+	
+		model.addAttribute("lbsAddressLOD",lbsAddressLOD);
+		model.addAttribute("isLbsAddress",isLbsAddress);
 		model.addAttribute("addressCleansedFlag", addressCleanseFlag);
 		retrieveGridSetting("serviceAddressGridbox", req, resp, model);
 		LOGGER.exit(this.getClass().getSimpleName(), METH_SHOWADDRESSLISTPOPUP);
@@ -1173,6 +1189,48 @@ public class CommonController extends BaseController{
 		LOGGER.exit(this.getClass().getSimpleName(), METH_RETRIEVEASSETDETAIL);
 		return assetResult;		
 	}
+	
+	/**
+	 * Method to retrieve list of device details 
+	 * @param contract 
+	 * @return List<AssetResult> 
+	 * @throws LGSRuntimeException  
+	 */
+	public List<AssetResult> retrieveAssetDetailsList(AssetContract contract)
+			throws LGSRuntimeException {
+		LOGGER.enter(this.getClass().getSimpleName(), METH_RETRIEVEASSETDETAILSLIST);
+		List<AssetResult> assetResultList= new ArrayList<AssetResult>();
+		try{
+			
+			
+			String assetList = contract.getAssetId();
+			String[] assetIdList = assetList.split(",");
+			int assetCntr = 0;
+			
+			while(assetCntr < assetIdList.length && assetIdList[assetCntr].length() > 0)
+			{
+				LOGGER.debug("assetIdList[assetCntr]::"+assetIdList[assetCntr]);
+				Long startTime = System.currentTimeMillis();
+				contract.setAssetId(assetIdList[assetCntr]);
+				assetCntr++;
+				AssetResult assetResult = orderSuppliesAssetService.retrieveDeviceDetail(contract);
+				LOGGER.debug("assetResult::"+assetResult);
+				assetResultList.add(assetResult);
+				LOGGER.debug("assetResultList1::"+assetResultList);
+				
+				Long endTime = System.currentTimeMillis();				
+				PerformanceUtil.calcTime(perfLogger, PerformanceConstant.COMMON_MSG_RETRIEVEDEVICEDETAIL, startTime,endTime, PerformanceConstant.SYSTEM_SIEBEL,contract);
+				LOGGER.debug("assetResultList2::"+assetResultList);
+				LOGGER.debug("assetCntr::"+assetCntr);
+			}
+			
+		}catch(Exception ex)
+		{
+			throw new LGSRuntimeException(ex.getMessage(), ex);
+		}
+		LOGGER.exit(this.getClass().getSimpleName(), METH_RETRIEVEASSETDETAILSLIST);
+		return assetResultList;		
+	}
 
 	/**
 	 * Method to set asset id for asset contract
@@ -1219,10 +1277,17 @@ public class CommonController extends BaseController{
 			serviceReqContract.getServiceRequest().setAsset(((ManageAssetForm) formData)
 					.getAssetDetail()); // Added for MPS2.1 wave4
 			
+			if(((Asset) serviceReqContract.getServiceRequest().getAsset()).getSerialNumber() == null)
+			{
+				LOGGER.debug("Serial nbr is null");
+				((Asset) serviceReqContract.getServiceRequest().getAsset()).setSerialNumber("");
+			}
 			//changes for page counts
-			List<PageCounts> pageCountList = ((ManageAssetForm) formData).getAssetDetail().getPageCounts();
+			List<PageCounts> pageCountList = ((ManageAssetForm) formData).getAssetDetail().getPageCounts();LOGGER.debug("Inside commonController r contract creation pageCountList::"+ pageCountList);
 			List<PageCounts> modifiedPageCountList = new ArrayList<PageCounts>();
 			
+			if(pageCountList != null)
+			{
 			for(int i=0;i<pageCountList.size();i++){
 				String convertedDate=pageCountList.get(i).getDate();
 				PageCounts modifiedPageCount = new PageCounts();
@@ -1254,7 +1319,7 @@ public class CommonController extends BaseController{
 				}
 				modifiedPageCountList.add(modifiedPageCount);
 			}
-			
+		}
 			
 			((ManageAssetForm) formData).getAssetDetail().setPageCounts(modifiedPageCountList);
 			
@@ -1357,11 +1422,19 @@ public class CommonController extends BaseController{
 			serviceReqContract.setServiceRequest(((MapsRequestForm) formData)
 					.getServiceRequest());
 			serviceReqContract.setPrevSrNo(((MapsRequestForm)formData).getPrevSRNumber());
-			serviceReqContract.getServiceRequest().setRequestor(accContact);		
-			serviceReqContract.getServiceRequest().setNotes(((MapsRequestForm)formData).getNotesOrComments());
-		
+			serviceReqContract.getServiceRequest().setRequestor(accContact);
 			
-			//Added for CR #17607
+			String requestForBuildingFloorNotes=((MapsRequestForm)formData).getNotesForNewBuilding();
+			if(requestForBuildingFloorNotes==null || requestForBuildingFloorNotes=="")
+			{
+				serviceReqContract.getServiceRequest().setNotes(((MapsRequestForm)formData).getNotesForNewBuilding());
+			}
+			else
+			{
+				serviceReqContract.getServiceRequest().setNotes(((MapsRequestForm)formData).getNotesOrComments()+" " +requestForBuildingFloorNotes);	
+			}
+			
+			//Added for #17607
 			serviceReqContract.setMoveAssetFlag(((MapsRequestForm)formData).isMoveAsset());		
 			serviceReqContract.setMoveContactSelectFlag(((MapsRequestForm)formData).isMoveContactSelect());
 			//Changes End #17607
@@ -2784,4 +2857,45 @@ public class CommonController extends BaseController{
 		}			
 	}
 	
+	/**
+	 * @param json 
+	 * @param response 
+	 */
+	@ResourceMapping("encryptJSON")
+	public void encryptJSON(@RequestParam("jsonString") String json,ResourceResponse response){
+		LOGGER.debug("[in encryptJSON]");
+		
+		
+		String encryptedJSON=null;
+		try {
+			encryptedJSON = JSONEncryptUtil.encrypt(json);
+		} catch (Exception e) {
+			LOGGER.error("Exception occured in encryption"+e.getMessage());
+		} 
+		LOGGER.debug(String.format("encrypted string is =[%s]", encryptedJSON));
+		
+		
+		try {
+			final PrintWriter out = response.getWriter();
+			response.setProperty("Cache-Control", "max-age=0,no-cache,no-store");
+			response.setProperty("Expires", "max-age=0,no-cache,no-store");
+			response.setContentType("text/html");
+			out.write(encryptedJSON);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			LOGGER.error("IOException while invoking response#getWriter(),"
+					+ e.getMessage());
+		}
+		
+				
+		LOGGER.debug("[out encryptJSON]");
+	}
+	
+	public void setModelParams(Model model,PortletSession session,String lbsFormPost){
+		model.addAttribute("mdmId",PortalSessionUtil.getMdmId(session));
+		model.addAttribute("mdmLevel",PortalSessionUtil.getMdmLevel(session));
+		model.addAttribute("formPost",lbsFormPost);
+		model.addAttribute("emailId", PortalSessionUtil.getEmailAddress(session));
+	}
 }

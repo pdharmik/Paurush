@@ -57,14 +57,6 @@
 		<prepopulate>true</prepopulate>
 	</field>
 	<field>
-		<name>orderStatus</name>
-		<csvHeader>serviceOrder.massUploadTemplate.ShipmentStatus</csvHeader>
-		<siebelHeader>LXK MPS Shipment Import.Status</siebelHeader>
-		<editable>true</editable>
-		<columnNumber>13</columnNumber>
-		<prepopulate>true</prepopulate>
-	</field>
-	<field>
 		<name>serialNumber</name>
 		<csvHeader>serviceOrder.massUploadTemplate.SerialNumber</csvHeader>
 		<siebelHeader></siebelHeader>
@@ -80,6 +72,14 @@
 		<columnNumber>15</columnNumber>
 		<prepopulate>true</prepopulate>
 	</field>	
+	<field>
+		<name>orderStatus</name>
+		<csvHeader>serviceOrder.massUploadTemplate.OrderStatus</csvHeader>
+		<siebelHeader>LXK MPS Order Line Item Import.Status</siebelHeader>
+		<editable>true</editable>
+		<columnNumber>16</columnNumber>
+		<prepopulate>true</prepopulate>
+	</field>
 
 <listFieldDetail beanName="shipments">
 	
@@ -130,6 +130,14 @@
 			<siebelHeader>LXK MPS Shipment Import.LXK MPS Carrier</siebelHeader>
 			<editable>true</editable>
 			<columnNumber>12</columnNumber>
+			<prepopulate>true</prepopulate>
+		</field>
+		<field>
+			<name>shipmentStatus</name>
+			<csvHeader>serviceOrder.massUploadTemplate.ShipmentStatus</csvHeader>
+			<siebelHeader>LXK MPS Shipment Import.Status</siebelHeader>
+			<editable>true</editable>
+			<columnNumber>13</columnNumber>
 			<prepopulate>true</prepopulate>
 		</field>		
 	

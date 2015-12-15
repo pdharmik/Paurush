@@ -61,18 +61,42 @@ public class MyRequestController {
 		LOGGER.debug("[ In  showDefaultView ]");
 		
 		PortletSession session = request.getPortletSession();
-		ControllerUtil.setAribaParam(request, session);
-		String supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
-		String acntType = null;
-		LOGGER.debug("supplierId::::"+supplierId);
-		
-		if(supplierId.equalsIgnoreCase(KAISER_ACNT))
-		{
-			acntType = "KAISER";
+		String currURL=response.createRenderURL().toString();
+		boolean fromAriba = currURL.indexOf("aribaParamUrl")!=-1;
+		LOGGER.debug("currURL==="+currURL);
+		HttpServletRequest httpReq = PortalUtil.getOriginalServletRequest(PortalUtil.getHttpServletRequest(request));
+		String aribaParamURL = httpReq.getParameter("aribaParamUrl");
+		LOGGER.debug("aribaParamURL in my request controller "+aribaParamURL);
+		if(null!=aribaParamURL){
+			fromAriba=true;
 		}
-		else if(supplierId.equalsIgnoreCase(REPUBLIC_ACNT))
-		{
-			acntType = "REPUBLIC";
+		String acntType = null;
+		boolean isKaiser = currURL.indexOf("kaiser")!=-1;
+		if(!fromAriba){
+			session.setAttribute("fromAriba", false, PortletSession.APPLICATION_SCOPE);	
+			if(isKaiser){
+				LOGGER.debug("account is Kaiser");
+				acntType = "KAISER";
+			}
+			else{
+				LOGGER.debug("account is Republic");
+				acntType = "REPUBLIC";
+			}
+		}
+		else{
+			ControllerUtil.setAribaParam(request, session);
+			String supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
+			LOGGER.debug("supplierId::::"+supplierId);
+			
+			if(supplierId.equalsIgnoreCase(KAISER_ACNT))
+			{
+				acntType = "KAISER";
+			}
+			else if(supplierId.equalsIgnoreCase(REPUBLIC_ACNT))
+			{
+				acntType = "REPUBLIC";
+			}
+			session.setAttribute("fromAriba", true, PortletSession.APPLICATION_SCOPE);	
 		}
 		session.setAttribute(PunchoutConstants.ACNT_TYPE, acntType, PortletSession.APPLICATION_SCOPE);
 		model.addAttribute(PunchoutConstants.ACNT_TYPE, acntType);

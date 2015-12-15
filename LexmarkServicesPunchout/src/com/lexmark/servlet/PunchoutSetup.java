@@ -167,7 +167,7 @@ public class PunchoutSetup extends HttpServlet {
 		}
 
 		String payloadId = buyerCookie + "@lexmark.com";
-		String url = "https://portal-qa.lexmark.com/LexmarkServicesPunchout/punchoutcatalog?";
+		String url = "https://portal.lexmark.com/LexmarkServicesPunchout/punchoutcatalog?";
 		String params = getParams(buyerCookie, supplierCookie, identity,
 				operation, formPostURL, networkUserId, sharedSecret, dept,
 				currency);

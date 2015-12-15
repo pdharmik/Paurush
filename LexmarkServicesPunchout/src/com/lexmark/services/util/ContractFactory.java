@@ -41,6 +41,8 @@ public class ContractFactory {
 	 */
 	public static AccountAgreementSoldToContract getAllSiebelAccountListContract(){
 		AccountAgreementSoldToContract contract = new AccountAgreementSoldToContract();
+		//contract.setAccountName("Deutsche Postbank AG");
+		
 		return contract;
 	}
 	
@@ -110,18 +112,18 @@ public class ContractFactory {
 	 * @param request 
 	 * @return CatalogListContract 
 	 */
-	public static CatalogListContract getPrinterAccessoriesContract(PortletRequest request){
+	public static CatalogListContract getPrinterAccessoriesContract(PortletRequest request,PunchoutAccount punchoutAccount){
 		
 		CatalogListContract contract = new CatalogListContract();
 		
 		Pagination pagination = PaginationUtil.getPainationFromRequest(request,new String[0], new String[0]);
 		SearchContractUtil.copyPaginationToContract(pagination, contract);
 		                                                                  		
-		PunchoutAccount account=(PunchoutAccount)request.getAttribute("punchoutAccount");
-		contract.setSoldToNumber(account.getSoldTo());
-		contract.setAgreementId(account.getAgreementId());
+		//PunchoutAccount account=(PunchoutAccount)request.getAttribute("punchoutAccount");
+		contract.setSoldToNumber(punchoutAccount.getSoldTo());
+		contract.setAgreementId(punchoutAccount.getAgreementId());
 	    contract.setHardwareFlag(false);
-		contract.setContractNumber(account.getContractNumber());
+		contract.setContractNumber(punchoutAccount.getContractNumber());
 		contract.setEffectiveDate(new Date());
 		contract.setProductType(StringUtils.isNotBlank(request.getParameter("prodTyp"))==true?request.getParameter("prodTyp"):"");
 		contract.setProductModel(StringUtils.isNotBlank(request.getParameter("prodMod"))==true?request.getParameter("prodMod"):"");
@@ -171,7 +173,7 @@ public class ContractFactory {
 	 * @param request 
 	 * @return HardwareCatalogContract 
 	 */
-	public static HardwareCatalogContract retrieveBundleListContract(PortletRequest request){
+	public static HardwareCatalogContract retrieveBundleListContract(PortletRequest request,PunchoutAccount punchoutAccount){
 		HardwareCatalogContract contract = new HardwareCatalogContract();
 		
 		Pagination pagination = PaginationUtil.getPainationFromRequest(request,new String[0]
@@ -190,9 +192,9 @@ public class ContractFactory {
 		//contract.setContractNumber(StringUtils.isNotBlank(request.getParameter("cNum"))==true?request.getParameter("cNum"):"");//contractNumber
 		contract.setProductType(StringUtils.isNotBlank(request.getParameter("pTyp"))==true?request.getParameter("pTyp"):"");//Producttype
 		contract.setPartType(partType);//partType		
-		contract.setContractNumber(account.getContractNumber());
-		contract.setAgreementId(account.getAgreementId());
-        contract.setSoldToNumber(account.getSoldTo());
+		contract.setContractNumber(punchoutAccount.getContractNumber());
+		contract.setAgreementId(punchoutAccount.getAgreementId());
+        contract.setSoldToNumber(punchoutAccount.getSoldTo());
         
         // contract.setPaymentType("Ship and Bill");
         //contract.setProductModel("W850n");

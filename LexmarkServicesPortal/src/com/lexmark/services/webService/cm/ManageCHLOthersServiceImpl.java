@@ -163,7 +163,12 @@ public class ManageCHLOthersServiceImpl implements ManageCHLOthersService{
 			LOGGER.info("contract.getRequestedFrom() :: "+ contract.getRequestedFrom());
 			if(contract.getRequestedFrom()!=null && contract.getRequestedFrom()!="" && (contract.getRequestedFrom().equalsIgnoreCase(ChangeMgmtConstant.SUPPLIES_REQ) || ("Upload".equalsIgnoreCase(serviceReq.getArea().getValue()) && ((ChangeMgmtConstant.UPLOADSUPPLIESREQUESTS.equalsIgnoreCase(serviceReq.getSubArea().getValue())))))){
 				serviceRequestData.setServiceRequestType(ChangeMgmtConstant.OM_SR_TYPE);//Type to be decided yet for cancel request
-			}else{
+			}
+			else if("Consumables SR".equalsIgnoreCase(serviceReq.getSubArea().getValue())){
+				LOGGER.debug("in consumables sr sub area");
+				serviceRequestData.setServiceRequestType(ChangeMgmtConstant.OM_SR_TYPE);
+			}
+			else{
 				serviceRequestData.setServiceRequestType(ChangeMgmtConstant.SERVICEREQTYPE);
 			}
 			//Ends June release

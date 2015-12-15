@@ -119,17 +119,14 @@ public class AmindContractedMeterReadServiceTest extends AmindServiceTest {
     
 
     @Test
-    public void testRetrieveMeterReadStatusList() throws Exception {
+    public void testRetrieveMeterReadStatusList_IOICDetails() throws Exception {
         MeterReadStatusContract contract = new MeterReadStatusContract();
         contract.setSessionHandle(crmSessionHandle);
-        contract.setMdmId("50801");
+        contract.setMdmId("623331717");
 //        contract.setUserFileName("mock-userFileName");
         MeterReadStatusListResult r = service.retrieveMeterReadStatusList(contract);
         MiscTest.print(r.getMeterReadStatusList());
-    
     }
-    
-    
     
     
 
@@ -908,6 +905,46 @@ public class AmindContractedMeterReadServiceTest extends AmindServiceTest {
 		List<Asset> assets = result.getAssets();
 		System.out.println(assets == null ? "Null" : result.getAssets().size());
 		System.out.println("Total count: " + result.getTotalCount());
+    }
+    
+    @Test
+    public void testRetrieveMeterReadAssetList_IOICDetails() throws Exception {
+    	MeterReadAssetListContract contract = new MeterReadAssetListContract();
+    	contract.setMdmLevel("Global");
+    	contract.setMdmID("623331717");
+    	contract.setContactId("1-16X93QX");
+    	contract.setFavoriteFlag(false);
+    	contract.setFavoriteContactId("1-16X93QX");
+    	contract.setEntitlementEndDate("08/14/2015");
+    	contract.setMeterReadType("Manual");
+//    	contract.setChlNodeId("1-3Z7PNBR");
+    	contract.setNumofDays(0);
+    	contract.setNewQueryIndicator(true);
+    	contract.setIncrement(40);
+    	contract.setStartRecordNumber(0);
+    	contract.setSessionHandle(crmSessionHandle);
+    	
+    	Map<String, Object> filterCriteria = new HashMap<String, Object>();
+//    	filterCriteria.put("installAddress.country", "USA");
+    	filterCriteria.put("installAddress.addressName", "Lex");
+    	filterCriteria.put("physicalLocation1", "WI");
+    	filterCriteria.put("productLine", "MS");
+    	filterCriteria.put("assetContact.firstName", "DA");
+    	filterCriteria.put("assetContact.lastName", "Re");
+    	filterCriteria.put("productTLI", "40");
+    	filterCriteria.put("serialNumber", "40");
+    	filterCriteria.put("assetTag", "40");
+    	filterCriteria.put("ipAddress", "10.");
+		contract.setFilterCriteria(filterCriteria );
+    	
+    	Map<String, Object> sortCriteria = new HashMap<String, Object>();
+    	sortCriteria.put("serialNumber", "ASCENDING");
+    	contract.setSortCriteria(sortCriteria);
+    	
+    	MeterReadAssetListResult result = service.retrieveMeterReadAssetList(contract);
+    	List<Asset> assets = result.getAssets();
+    	System.out.println(assets == null ? "Null" : result.getAssets().size());
+    	System.out.println("Total count: " + result.getTotalCount());
     }
     
     

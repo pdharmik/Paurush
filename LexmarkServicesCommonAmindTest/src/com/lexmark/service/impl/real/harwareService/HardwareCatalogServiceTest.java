@@ -770,5 +770,31 @@ public class HardwareCatalogServiceTest extends GlobalServiceStatefulBase {
 		System.out.println("TotalCount: " + result.getTotalCount());
 		assertNotNull("result is null!", result);
 	}
+	
+	@Test
+	public void testRetrievePrinterBundleListB2B_GlobalSearchBundles() throws Exception {
+		service = new AmindOrderHardwareService();
+		contract = new HardwareCatalogContract();
+		contract.setSessionHandle(handle);
+		contract.setSoldToNumber("0000126159");
+		contract.setAgreementId("1-P4I9ND0");
+		contract.setContractNumber("0040000406");
+//		contract.setLocationType("NCAL");
+		contract.setProductType("Laser");
+//		contract.setProductType("Mono Laser Printer");
+//		contract.setPartType("MFP Mono Laser Printer");
+//		contract.setPartType("MFP Color Laser Printer");
+		contract.setEffectiveDate(LangUtil.convertStringToGMTDate("09/03/2015 19:50:40"));
+		contract.setStartRecordNumber(0);
+		contract.setIncrement(40);
+		contract.setNewQueryIndicator(true);
+		
+		long t0 = System.currentTimeMillis();
+		BundleListResult result = service.retrievePrinterBundleListB2B(contract);
+		System.out.printf("Exec time=%s sec. \n", (System.currentTimeMillis() - t0) / 1000.0);
+		System.out.println("ListSize: " + result.getBundleList().size());
+		System.out.println("TotalCount: " + result.getTotalCount());
+		assertNotNull("result is null!", result);
+	}
 }
   

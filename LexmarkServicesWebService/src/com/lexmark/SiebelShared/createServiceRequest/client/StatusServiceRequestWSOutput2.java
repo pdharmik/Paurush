@@ -109,14 +109,14 @@ public class StatusServiceRequestWSOutput2  implements java.io.Serializable {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://dlxkswmis1.lex.lexmark.com/ServiceRequest/serviceRequestWS", "statusServiceRequestWSOutput2"));
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("documentMetaData");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://dlxkswmis1.lex.lexmark.com/ServiceRequest/serviceRequestWS", "DocumentMetaData"));
+        elemField.setXmlName(new javax.xml.namespace.QName("", "DocumentMetaData"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://dlxkswmis1.lex.lexmark.com/ServiceRequest/serviceRequestWS", "DocumentMetaData3"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("statusServiceRequestData");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://dlxkswmis1.lex.lexmark.com/ServiceRequest/serviceRequestWS", "StatusServiceRequestData"));
+        elemField.setXmlName(new javax.xml.namespace.QName("", "StatusServiceRequestData"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://dlxkswmis1.lex.lexmark.com/ServiceRequest/serviceRequestWS", "StatusServiceRequestData"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);

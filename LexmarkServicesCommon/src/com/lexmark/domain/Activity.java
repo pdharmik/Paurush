@@ -88,7 +88,14 @@ public class Activity implements Serializable {
 	private List<PartLineItem> partsList;
 	private List<PartLineItem> debriefPartsList;
 	private String claimCoveredService;
+	private String displayWarning;
 	
+	public String getDisplayWarning() {
+		return displayWarning;
+	}
+	public void setDisplayWarning(String displayWarning) {
+		this.displayWarning = displayWarning;
+	}
 
 	public Date getExpectedStartInterventionDate() {
 		return expectedStartInterventionDate;

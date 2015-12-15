@@ -8,9 +8,7 @@ import java.util.Locale;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
-import com.lexmark.contract.*;
-import com.lexmark.domain.CreateClaimId;
-import com.lexmark.service.impl.real.domain.PartnerClaimCreateIdDo;
+
 import com.lexmark.contract.GlobalAssetDetailContract;
 import com.lexmark.domain.Account;
 import com.lexmark.domain.AccountContact;
@@ -37,8 +35,6 @@ import com.lexmark.service.impl.real.domain.PartnerPaymentDo;
 import com.lexmark.service.impl.real.domain.PartnerPaymentRequestDO;
 import com.lexmark.service.impl.real.domain.PartnerPaymentRequestExpenseDO;
 import com.lexmark.service.impl.real.domain.PartnerTechnicianDo;
-import com.lexmark.service.impl.real.util.AmindServiceUtil;
-import com.lexmark.service.impl.real.util.AssetConversionUtil;
 
 public class AmindPartnerDataCoversionUtil  {
 	
@@ -129,7 +125,8 @@ public class AmindPartnerDataCoversionUtil  {
 		portalAsset.setProductLine(assetDo.getProductLine());
 		portalAsset.setProductTLI(assetDo.getProductTLI());
 		portalAsset.setCustomerReportingName(assetDo.getCustomerReportingName());
-		
+		portalAsset.setDisplayWarning(assetDo.getDisplayWarning());
+
 		/*
 		GenericAddress installAddress = new GenericAddress();
 		installAddress.setAddressId(assetDo.getAddressId());
@@ -155,7 +152,7 @@ public class AmindPartnerDataCoversionUtil  {
 			
 			/*partnerInfo*/
 			com.lexmark.domain.Account partnerAccount = new com.lexmark.domain.Account();
-			partnerAccount.setAccountId(assetDo.getPartnerAccountId());
+			partnerAccount.setAccountId(assetDo.getCustomerAccountId());   //changed as per Re: INC0129952
 			partnerAccount.setAccountName(assetDo.getPartnerAccountName());
 			partnerAccount.setOrganizationID(assetDo.getOrganizationId());
 			partnerAccount.setDefaultCurrency(assetDo.getPartnerAccountCurrency());	
@@ -294,12 +291,19 @@ public class AmindPartnerDataCoversionUtil  {
 
 	public static List<Part> convertFruPartDoToPortalFruPart(List<PartnerFruPartBaseDo> fruPartList, boolean locationFlag) {
 		List<Part> partList = new ArrayList<Part>();
+		boolean materialTypePrinter = false;
 		
 		for(PartnerFruPartBaseDo fruPartDo: fruPartList) {
 				Part portalPart = new Part();
 				portalPart.setPartName(fruPartDo.getPartName());
 				portalPart.setPartNumber(fruPartDo.getPartNumber());
 				portalPart.setPartId(fruPartDo.getId());
+				
+				if("Printers".equalsIgnoreCase(fruPartDo.getMaterialLine())){
+					materialTypePrinter = true;
+				}
+				
+				portalPart.setTypePrinter(materialTypePrinter);
 				
 				if(locationFlag) {
 					PartnerPartBaseLocations location = null;

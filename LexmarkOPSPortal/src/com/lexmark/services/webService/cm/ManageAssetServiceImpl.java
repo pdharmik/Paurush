@@ -256,6 +256,11 @@ public class ManageAssetServiceImpl implements ManageAssetService {
 		SiebelAssetManagementInformation siebelAssetManagementInformation = new SiebelAssetManagementInformation();
 		
 		Asset srDataAsset = serviceReqContract.getServiceRequest().getAsset();
+		if(srDataAsset.getPlacementId()!=null){
+			//System.out.println("Placement id is "+srDataAsset.getPlacementId());
+			siebelAssetManagementInformation.setPlacementId(srDataAsset.getPlacementId());
+		}
+		
 		if (srDataAsset!=null) {		
 		LOGGER.debug("ServiceRequest().getAsset is not null");
 		siebelAssetManagementInformation.setAssetId(srDataAsset.getAssetId());
@@ -319,13 +324,14 @@ public class ManageAssetServiceImpl implements ManageAssetService {
 		
 		//if ("Move Asset".equalsIgnoreCase(serviceReqContract.getServiceRequest().getSubArea().getValue())|| (srDataAsset.getMoveToAddress().getAddressLine1()!=null&&srDataAsset.getMoveToAddress().getAddressLine1()!="")) {
 		if ("Move Asset".equalsIgnoreCase(serviceReqContract.getServiceRequest().getSubArea().getValue())|| (srDataAsset.getMoveToAddress()!=null && "Map-Internal Portal".equalsIgnoreCase(sourceSystem)) ) {
-            LOGGER.debug("MOVE asset");
-            SiebelServiceAddr = srDataAsset.getMoveToAddress();
+           if(serviceReqContract.getServiceRequest().getAsset().isPlacementMove()){
+        	   SiebelServiceAddr=srDataAsset.getInstallAddress();
+           }else{
+			SiebelServiceAddr = srDataAsset.getMoveToAddress();
             LOGGER.debug("MOVE to asset");
-            //String installAddrforChange=createInstallChangeAddress(srDataAsset.getInstallAddress());        
-            //cmServiceReqData.setServiceRequestComments(installAddrforChange);
             SiebelInstallAddr=srDataAsset.getInstallAddress();
             LOGGER.debug("install asset");
+           }
     } else {
             SiebelServiceAddr = srDataAsset.getInstallAddress();
             LOGGER.debug("elase install asset");

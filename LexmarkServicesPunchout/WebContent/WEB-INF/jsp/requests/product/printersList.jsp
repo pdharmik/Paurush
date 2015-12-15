@@ -2,19 +2,21 @@
 
 <div id="printerList">
 <div id="portlet-wrap" style="width:100%!important">
-      <div id="breadcrum-cart-cntnr">
-        <jsp:include page="/WEB-INF/jsp/shoppingCart/totalItems.jsp"/>
-      </div>
+	 <c:if test="${fromAriba == 'true'}">
+     	 <div id="breadcrum-cart-cntnr">
+       		 <jsp:include page="/WEB-INF/jsp/shoppingCart/totalItems.jsp"/>
+      	</div>
+      </c:if>
       <div class="pageTitle"><spring:message code="meterRead.label.Printer"/></div>
       <div class="mid-cntnr">
       <c:if test="${fn:length(bundleList) == 0 }">
       
      <div><spring:message code="requestInfo.error.noRecordFound"/></div>
       </c:if>
-         <c:forEach var="pList" items="${bundleList}" varStatus="status">
+        <c:forEach items="${bundleList}" var="pList" varStatus="status">
         <div class="printer-block">
-          <div class="printer-title"><a href="#" id="${pList.value}">${pList.value}</a></div>
-          <div class="printer-img"><img src="<html:imagesPath/>color-laser.jpg" width="110" height="81" alt="${pList.name }"></div>
+          <div class="printer-title"><a href="#" id="${pList.key}">${pList.key}</a></div>
+          <div class="printer-img"><img src="<html:imagesPath/>color-laser.jpg" width="110" height="81" alt="${pList.key }"></div>
         </div>
      </c:forEach>
       </div>

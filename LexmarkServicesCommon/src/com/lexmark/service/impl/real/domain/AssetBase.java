@@ -72,6 +72,15 @@ public class AssetBase extends AccountBasedDo implements Serializable {
 	private String mdmModel;
     private String customerReportingName;
     private String lbsAddressFlag;
+    private String displayWarning;
+    private String levelOfDetails;
+	
+	public String getDisplayWarning() {
+		return displayWarning;
+	}
+	public void setDisplayWarning(String displayWarning) {
+		this.displayWarning = displayWarning;
+	}
     
 	public String getCustomerReportingName() {
 		return customerReportingName;
@@ -407,5 +416,13 @@ public class AssetBase extends AccountBasedDo implements Serializable {
 
 	public void setLbsAddressFlag(String lbsAddressFlag) {
 		this.lbsAddressFlag = lbsAddressFlag;
+	}
+
+	public String getLevelOfDetails() {
+		return levelOfDetails;
+	}
+
+	public void setLevelOfDetails(String levelOfDetails) {
+		this.levelOfDetails = levelOfDetails;
 	}
 }

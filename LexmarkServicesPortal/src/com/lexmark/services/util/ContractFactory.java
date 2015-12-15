@@ -183,8 +183,7 @@ public class ContractFactory {
 		"assetTag", "hostName", "ipAddress","account.accountName", "assetType","devicePhase", "assetCostCenter", "installAddress.addressName",  
 		"installAddress.addressLine1","installAddress.officeNumber", "installAddress.city","installAddress.state",
 		"installAddress.province","installAddress.county","installAddress.district","installAddress.country","installAddress.postalCode",
-		"assetContact.firstName", "assetContact.lastName", "assetContact.emailAddress",
-		"assetContact.workPhone"};
+		"assetContact.firstName", "assetContact.lastName", "assetContact.emailAddress","assetContact.workPhone","installAddress.levelOfDetails","lbsAddressFlag"};
 	/**
 	 * Variable Declaration
 	 */
@@ -239,7 +238,7 @@ public class ContractFactory {
 	/**
 	 * Variable Declaration
 	 */
-	private static final String[] accountAddressPopupColumns = new String[] {"addressName","storeFrontName","addressLine1","addressLine2","officeNumber","city","state","province","county","district","region","postalCode","country"};
+	private static final String[] accountAddressPopupColumns = new String[] {"addressName","storeFrontName","addressLine1","addressLine2","officeNumber","city","state","province","county","district","region","postalCode","country","lbsAddressFlag","levelOfDetails"};
 	/**
 	 * Variable Declaration
 	 */
@@ -663,7 +662,16 @@ public class ContractFactory {
 		contract.setMdmId(PortalSessionUtil.getMdmId(session));
 		contract.setMdmLevel(PortalSessionUtil.getMdmLevel(session));
 		contract.setLocale(request.getLocale());
-		contract.setContactId(PortalSessionUtil.getContactId(session));		
+		contract.setContactId(PortalSessionUtil.getContactId(session));
+		
+		Map<String,String> accDetails=(Map<String,String>)session.getAttribute("accountCurrentDetails",PortletSession.APPLICATION_SCOPE);
+		if(accDetails != null){
+			LOGGER.debug("Account id ::::   "+accDetails.get(ChangeMgmtConstant.ACCOUNTID));
+			LOGGER.debug("Account Name ::::   "+accDetails.get(ChangeMgmtConstant.ACCOUNTNAME));				
+			contract.setMdmId(accDetails.get(ChangeMgmtConstant.ACCOUNTID));
+			contract.setMdmLevel(LexmarkConstants.MDM_LEVEL_SIEBEL);			
+		}
+		
 		
 		LOGGER.debug("In ContractFactory MdmId ="+PortalSessionUtil.getMdmId(session));
 		LOGGER.debug("In ContractFactory MdmLevel ="+PortalSessionUtil.getMdmLevel(session));
@@ -724,8 +732,17 @@ public class ContractFactory {
 				contract.setMdmId(accDetails.get("accountId"));
 				contract.setMdmLevel("Siebel");
 			}else {
-				contract.setMdmId(PortalSessionUtil.getMdmId(session));
-				contract.setMdmLevel(PortalSessionUtil.getMdmLevel(session));
+				LOGGER.debug("fromMADC in creating contract is ============== "+request.getParameter("fromMADC"));
+				LOGGER.debug("Account id ::::   "+accDetails.get(ChangeMgmtConstant.ACCOUNTID));
+				LOGGER.debug("Account Name ::::   "+accDetails.get(ChangeMgmtConstant.ACCOUNTNAME));
+				if(null != request.getParameter("fromMADC")){
+					contract.setMdmId(accDetails.get(ChangeMgmtConstant.ACCOUNTID));
+					contract.setMdmLevel(LexmarkConstants.MDM_LEVEL_SIEBEL);
+				}
+				else{
+					contract.setMdmId(PortalSessionUtil.getMdmId(session));
+					contract.setMdmLevel(PortalSessionUtil.getMdmLevel(session));
+				}
 			}
 		}
 		else {

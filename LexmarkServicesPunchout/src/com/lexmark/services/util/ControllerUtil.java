@@ -337,9 +337,12 @@ public class ControllerUtil {
 	 * @param service 
 	 * @return CatalogListResult 
 	 */
-	public static CatalogListResult amindRetrievePrinterTypes(PortletRequest request,OrderSuppliesCatalogService service){
+	public static CatalogListResult amindRetrievePrinterTypes(PortletRequest request,OrderSuppliesCatalogService service,PunchoutAccount punchoutAccount){
 		CatalogListResult result=new CatalogListResult();
 		CatalogListContract contract=ContractFactory.retirevePrinterTypes(request);
+		contract.setAgreementId(punchoutAccount.getAgreementId());
+		contract.setContractNumber(punchoutAccount.getContractNumber());
+		contract.setSoldToNumber(punchoutAccount.getSoldTo());
 		ObjectDebugUtil.printObjectContent(contract, LOGGER);
 		try {
 			result=service.retrievePrinterTypesB2B(contract);
@@ -464,10 +467,15 @@ public class ControllerUtil {
 	 * @param prodId 
 	 * @param qty 
 	 */
-	public  static void addToShoppingCart(PortletSession session, String prodId,String qty,String cartType){
+	public  static void addToShoppingCart(PortletSession session, String prodId,String qty,String cartType,String unspscCode){
 		
 		List<Object> _productListSession = (List<Object>) session.getAttribute(PunchoutConstants.PRODUCT_BUNDLE);
-		LOGGER.debug(" size ="+_productListSession ==null?0:_productListSession .size());
+		if(null != session.getAttribute("supplyItems") && !"printers".equalsIgnoreCase(cartType)){
+			LOGGER.debug("supplies item is not null in session");
+			_productListSession = (List<Object>) session.getAttribute("supplyItems");
+		}
+		//LOGGER.debug(" size ="+_productListSession ==null?0:_productListSession .size());
+		LOGGER.debug(" size = "+_productListSession.size());
 			
 		Map<String, ShoppingCartForm> _shoppingForm = (Map<String, ShoppingCartForm>) session.getAttribute(PunchoutConstants.CART_SESSION);
 		List<Object> cartItems=_shoppingForm.get(cartType).getCartItems();
@@ -482,9 +490,25 @@ public class ControllerUtil {
 			//This is new item to be added to cart
 			//Prior to that need to get the data from the session list first
 			_cartItem=ControllerUtil.findInList(_productListSession , prodId,BeanFieldNames.ID.getValue(cartType));
+			
+			if(cartType.equalsIgnoreCase("supplies")){
+				OrderPart addedCartItem = (OrderPart)_cartItem;
+			}
+			else{
+				Bundle addedCartItem = (Bundle)_cartItem;
+				addedCartItem.setUnspscCode(unspscCode);
+			}
+			
 			//copy bundle properties
 			//copy part properties	
+			LOGGER.debug("cart item is "+cartItems);
+			ObjectDebugUtil.printObjectContent(_cartItem, LOGGER);			
 			cartItems.add(_cartItem);
+			
+		}
+		else{
+			Bundle addedCartItem = (Bundle)_cartItem;
+			addedCartItem.setUnspscCode(unspscCode);
 		}
 		
 		ControllerUtil.updateQty(_cartItem, BeanFieldNames.QUANTITY.getValue(cartType), qty);	
@@ -539,7 +563,7 @@ public class ControllerUtil {
 					(cNum.trim().length() == 0 && ac.getContractName().equalsIgnoreCase("base")))
 					return ac;
 			}
-			return accounts.get(5);
+			return accounts.get(0);
 			}else{
 			return new PunchoutAccount();
 			}
@@ -746,15 +770,15 @@ public class ControllerUtil {
 	 * @return List 
 	 * @throws Exception 
 	 */
-	public static List<Bundle> getBundlePrice(LoadPriceInformation loadPriceInformation, ResourceRequest request) throws Exception {
+	public static List<Bundle> getBundlePrice(LoadPriceInformation loadPriceInformation, ResourceRequest request,PunchoutAccount punchoutAccount) throws Exception {
 		List<Bundle> bundleList = null;
 		PunchoutAccount account=(PunchoutAccount)request.getAttribute("punchoutAccount");
 		if(!LoadPriceInformation.allBundlePriceMap.isEmpty()){
-			LOGGER.debug("Retrieving data from cache bundle price map" + account.getAccountId() +"----------------->>"+account.getContractNumber());	
+			LOGGER.debug("Retrieving data from cache bundle price map" + punchoutAccount.getAccountId() +"----------------->>"+punchoutAccount.getContractNumber());	
 		
 			Map<String, Map<String,List<HardwareCatalog>>> allBundlePriceMap = LoadPriceInformation.allBundlePriceMap;
-			Map<String, List<HardwareCatalog>> catalogMap = allBundlePriceMap.get(account.getAccountId());
-			List<HardwareCatalog> hardwareCatalogList= catalogMap.get(account.getContractNumber());
+			Map<String, List<HardwareCatalog>> catalogMap = allBundlePriceMap.get(punchoutAccount.getAccountId());
+			List<HardwareCatalog> hardwareCatalogList= catalogMap.get(punchoutAccount.getContractNumber());
 			if(hardwareCatalogList != null){
 			for(HardwareCatalog hardwareCatalog:hardwareCatalogList){
 				bundleList = hardwareCatalog.getBundleList();
@@ -762,10 +786,10 @@ public class ControllerUtil {
 			}
 			return bundleList;
 		}else{
-			LOGGER.debug("price cache is empty, loading from normal map"  + account.getAccountId() +"----------------->>"+account.getContractNumber());
+			LOGGER.debug("price cache is empty, loading from normal map"  + punchoutAccount.getAccountId() +"----------------->>"+punchoutAccount.getContractNumber());
 			Map<String, Map<String,List<HardwareCatalog>>> allBundlePriceMap = loadPriceInformation.getAllBundlePriceMap();
-			Map<String, List<HardwareCatalog>> catalogMap = allBundlePriceMap.get(account.getAccountId());
-			List<HardwareCatalog> hardwareCatalogList= catalogMap.get(account.getContractNumber());
+			Map<String, List<HardwareCatalog>> catalogMap = allBundlePriceMap.get(punchoutAccount.getAccountId());
+			List<HardwareCatalog> hardwareCatalogList= catalogMap.get(punchoutAccount.getContractNumber());
 			if(hardwareCatalogList != null){
 			for(HardwareCatalog hardwareCatalog:hardwareCatalogList){
 				bundleList = hardwareCatalog.getBundleList();
@@ -872,6 +896,48 @@ public class ControllerUtil {
 				certProductMap.put(fileExtensionKey, value);
 			}
 		}
+	}
+	
+	// added to return a list of PunchoutAccounts for parallel Call (multiple contract)
+	public static List<PunchoutAccount> getPunchoutAccountList(List<PunchoutAccount> accounts, PortletRequest request){
+		LOGGER.debug("IN PUNCHOUT ACCOUNTS");
+		List<PunchoutAccount> punchoutAccountList = new ArrayList<PunchoutAccount>();
+		if(accounts!=null && accounts.size()!=0){
+			LOGGER.debug("IN PUNCHOUT ACCOUNTS INSIDE IF");
+			
+		String cNum = StringUtils.isNotBlank(request.getParameter("cNum"))==true?request.getParameter("cNum"):"";
+		String cName = StringUtils.isNotBlank(request.getParameter("cName"))==true?request.getParameter("cName"):"";
+		
+		List<String> certifiedCNames = new ArrayList<String>();
+		certifiedCNames.add(NCAL_ACNT);
+		certifiedCNames.add(SCAL_ACNT);
+		
+		if(accounts.get(0)!=null){
+			LOGGER.debug("accounts.get(0) is not null");
+			for(int i = 0; i < accounts.size(); i++)
+			{
+				LOGGER.debug("In for "+i+"th loop");
+				PunchoutAccount ac = accounts.get(i);
+				if(cName.length() > 0 && ac.getContractName().contains(cName))
+					cNum = ac.getContractNumber();
+								
+				if((cNum.trim().length() > 0 && ac.getContractNumber().equalsIgnoreCase(cNum)) ||
+					(cNum.trim().length() == 0 && ac.getContractName().equalsIgnoreCase("base"))){
+					//punchoutAccountList.add(ac);
+					//LOGGER.debug("in return 1");
+					//return punchoutAccountList;
+				}
+				punchoutAccountList.add(ac);
+			}
+			LOGGER.debug("in return 2 list size is "+punchoutAccountList.size());
+			return punchoutAccountList;
+			}else{
+				LOGGER.debug("in return 3 list size is "+punchoutAccountList.size());
+			return punchoutAccountList;
+			}
+		}
+		LOGGER.debug("in return 4 list size is "+punchoutAccountList.size());
+		return punchoutAccountList;
 	}
 
 }

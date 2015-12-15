@@ -18,9 +18,11 @@ import org.apache.commons.lang.builder.CompareToBuilder;
 import org.junit.Test;
 
 import com.lexmark.contract.CatalogListContract;
+import com.lexmark.contract.GlobalCatalogListContract;
 import com.lexmark.domain.ListOfValues;
 import com.lexmark.domain.OrderPart;
 import com.lexmark.result.CatalogListResult;
+import com.lexmark.result.GlobalCatalogListResult;
 import com.lexmark.service.impl.real.domain.OrderPartDo;
 import com.lexmark.util.LangUtil;
 
@@ -1394,28 +1396,27 @@ public class AmindOrderSuppliesCatalogServiceTest extends AmindServiceTest {
     }
 	
 	 @Test
-	 public void testRetrieveCatalogFieldList_SearchSpec() throws Exception {
+	 public void testRetrieveCatalogFieldList_INC0146472() throws Exception {
 	  CatalogListContract contract = new CatalogListContract();
 	  contract.setSessionHandle(crmSessionHandle);
-	  contract.setAgreementId("1-5YV3Z4Y");
-	  contract.setSoldToNumber("0000166146");
+	  contract.setAgreementId("1-7PZOL4X");
+	  contract.setSoldToNumber("0000219524");
 	  contract.setPaymentType("Ship and Bill");
-	  contract.setContractNumber("0040000157");
-	  contract.setEffectiveDate(LangUtil.convertStringToGMTDate("06/1/2015 21:23:03"));
+	  contract.setContractNumber("0040000150");
+	  contract.setEffectiveDate(LangUtil.convertStringToGMTDate("09/21/2015 07:57:23"));
 	  contract.setStartRecordNumber(0);
 	  contract.setHardwareFlag(false);
 	  contract.setHardwareAccessoriesFlag(false);
 	  contract.setHardwareSuppliesFlag(false);
 	  contract.setPortalFlag(false);
-	  contract.setCatalogFlag(true);
+	  contract.setCatalogFlag(false);
 	  contract.setIncrement(40);
-	  contract.setNewQueryIndicator(true);
-	  Map<String, Object> sortCriteria = new HashMap<String, Object>();
-	  sortCriteria.put("partImage", "ASCENDING");
-	  contract.setSortCriteria(sortCriteria );
+	  contract.setNewQueryIndicator(false);
+//	  Map<String, Object> sortCriteria = new HashMap<String, Object>();
+//	  sortCriteria.put("partImage", "ASCENDING");
+//	  contract.setSortCriteria(sortCriteria );
 	  
 	  CatalogListResult result = service.retrieveCatalogFieldList(contract);
-	  
 	  System.out.println(result.getLovList().size());
 	 }
 	 
@@ -1650,6 +1651,85 @@ public class AmindOrderSuppliesCatalogServiceTest extends AmindServiceTest {
 	}
 	
 	@Test
+	public void testRetrievePrinterTypesB2B_DataComparission1() throws Exception {
+		CatalogListContract c = new CatalogListContract();
+		c.setSessionHandle(crmSessionHandle);
+		c.setEffectiveDate(LangUtil.convertStringToISTDate("9/9/2015 13:05:06"));
+		c.setHardwareAccessoriesFlag(false);
+		c.setHardwareFlag(false);
+		c.setHardwareSuppliesFlag(true);
+		c.setCatalogFlag(false);
+		c.setAgreementId("1-H91ALA");
+		c.setContractNumber("0005006808");
+		c.setSoldToNumber("0000126159");
+		c.setIncrement(0);
+		c.setStartRecordNumber(0);
+		c.setNewQueryIndicator(false);
+		CatalogListResult result = service.retrievePrinterTypesB2B(c);
+		System.out.println("Size: " + result.getLovList().size());
+	}
+	
+	@Test
+	public void testRetrievePrinterTypesB2B_DataComparission2() throws Exception {
+		CatalogListContract c = new CatalogListContract();
+		c.setSessionHandle(crmSessionHandle);
+		c.setEffectiveDate(LangUtil.convertStringToISTDate("9/9/2015 13:05:06"));
+		c.setHardwareAccessoriesFlag(false);
+		c.setHardwareFlag(false);
+		c.setHardwareSuppliesFlag(true);
+		c.setCatalogFlag(false);
+		c.setAgreementId("1-P4I9ND0");
+		c.setContractNumber("0040000406");
+		c.setSoldToNumber("0000126159");
+		c.setIncrement(0);
+		c.setStartRecordNumber(0);
+		c.setNewQueryIndicator(false);
+		CatalogListResult result = service.retrievePrinterTypesB2B(c);
+		System.out.println("Size: " + result.getLovList().size());
+	}
+	
+	@Test
+	public void testRetrievePrinterTypesB2B_DataComparission3() throws Exception {
+		CatalogListContract c = new CatalogListContract();
+		c.setSessionHandle(crmSessionHandle);
+		c.setEffectiveDate(LangUtil.convertStringToISTDate("9/9/2015 13:05:06"));
+		c.setHardwareAccessoriesFlag(false);
+		c.setHardwareFlag(false);
+		c.setHardwareSuppliesFlag(true);
+		c.setCatalogFlag(false);
+		c.setAgreementId("1-H91ALA");
+		c.setContractNumber("0040000252");
+		c.setSoldToNumber("0000126159");
+		c.setIncrement(0);
+		c.setStartRecordNumber(0);
+		c.setNewQueryIndicator(false);
+		CatalogListResult result = service.retrievePrinterTypesB2B(c);
+		System.out.println("Size: " + result.getLovList().size());
+	}
+	
+	@Test
+	public void testRetrievePrinterTypesB2B_GlobalSearchSupplies() throws Exception {
+		CatalogListContract c = new CatalogListContract();
+		c.setSessionHandle(crmSessionHandle);
+		c.setEffectiveDate(LangUtil.convertStringToISTDate("9/3/2015 19:46:07"));
+		c.setHardwareAccessoriesFlag(false);
+		c.setHardwareFlag(false);
+		c.setHardwareSuppliesFlag(true);
+		c.setCatalogFlag(false);
+		c.setAgreementId("1-P4I9ND0");
+		c.setContractNumber("0040000406");
+		c.setSoldToNumber("0000126159");
+		c.setIncrement(0);
+		c.setStartRecordNumber(0);
+		c.setNewQueryIndicator(false);
+		
+		long t0 = System.currentTimeMillis();
+		CatalogListResult result = service.retrievePrinterTypesB2B(c);
+		System.out.printf("Exec time=%s sec. \n", (System.currentTimeMillis() - t0) / 1000.0);
+		System.out.println("Size: " + result.getLovList().size());
+	}
+	
+	@Test
 	public void testRetrieveAccessoriesB2b_AccessoriesList() throws Exception {
 		CatalogListContract c = new CatalogListContract();
 		c.setSessionHandle(crmSessionHandle);
@@ -1731,4 +1811,113 @@ public class AmindOrderSuppliesCatalogServiceTest extends AmindServiceTest {
 		CatalogListResult result = service.retrieveAccessoriesB2b(c);
 		logger.debug(result);
 	}
+	
+	@Test
+	public void testRetrieveAccessoriesB2b_Nodata() throws Exception {
+		CatalogListContract c = new CatalogListContract();
+		c.setSessionHandle(crmSessionHandle);
+		c.setEffectiveDate(LangUtil.convertStringToISTDate("09/04/2015 09:44:48"));
+		c.setHardwareSuppliesFlag(false);
+		c.setHardwareAccessoriesFlag(false);
+		c.setCatalogFlag(true);
+		c.setContractNumber("0040000406");
+		c.setAgreementId("1-P4I9ND0");
+		c.setSoldToNumber("0000126159");
+//		c.setPartNumber("30G0802");
+//		c.setPartNumber("T650H31E");
+		c.setProductModel("C736dn");
+		c.setProductType("Color Laser Printer");
+		c.setIncrement(40);
+		c.setStartRecordNumber(0);
+		c.setNewQueryIndicator(true);
+		
+		CatalogListResult result = service.retrieveAccessoriesB2b(c);
+		logger.debug(result);
+	}
+	
+	@Test
+	public void testRetrieveAccessoriesB2b_bundleId() throws Exception {
+		CatalogListContract c = new CatalogListContract();
+		c.setSessionHandle(crmSessionHandle);
+		c.setEffectiveDate(LangUtil.convertStringToISTDate("09/04/2015 09:44:48"));
+		c.setHardwareSuppliesFlag(false);
+		c.setHardwareAccessoriesFlag(false);
+		c.setCatalogFlag(true);
+		c.setContractNumber("0040000406");
+		c.setAgreementId("1-P4I9ND0");
+		c.setSoldToNumber("0000126159");
+//		c.setPartNumber("30G0802");
+//		c.setPartNumber("T650H31E");
+//		c.setProductModel("C736dn");
+		c.setProductType("Ship and Bill");
+		c.setBundleId("1-P8J0MZR");
+		c.setIncrement(40);
+		c.setStartRecordNumber(0);
+		c.setNewQueryIndicator(true);
+		
+		CatalogListResult result = service.retrieveAccessoriesB2b(c);
+		logger.debug(result);
+	}
+	
+	@Test
+	public void testRetrieveAccessoriesB2b_GlobalSearchAccessories() throws Exception {
+		CatalogListContract c = new CatalogListContract();
+		c.setSessionHandle(crmSessionHandle);
+		c.setEffectiveDate(LangUtil.convertStringToGMTDate("09/03/2015 20:22:54"));
+		c.setHardwareSuppliesFlag(false);
+		c.setHardwareAccessoriesFlag(true);
+		c.setCatalogFlag(false);
+		c.setBundleId("1-P8J0MZR");
+		c.setSoldToNumber("0000126159");
+		c.setAgreementId("1-P4I9ND0");
+		c.setContractNumber("0040000406");
+		c.setPaymentType("Ship and Bill");
+//		c.setPartNumber("30G0802");
+//		c.setPartNumber("T650H31E");
+//		c.setProductModel("C736dn");
+		c.setIncrement(0);
+		c.setStartRecordNumber(0);
+		c.setNewQueryIndicator(false);
+		
+		long t0 = System.currentTimeMillis();
+		CatalogListResult result = service.retrieveAccessoriesB2b(c);
+		System.out.printf("Exec time=%s sec. \n", (System.currentTimeMillis() - t0) / 1000.0);
+		logger.debug(result);
+	}
+	
+	@Test
+	public void testRetrieveGlobalCatalogListB2B_FirstStart() throws Exception {
+		GlobalCatalogListContract c = new GlobalCatalogListContract();
+		c.setSessionHandle(crmSessionHandle);
+		//Supplies
+		c.setSupSoldToNumber("0000126159");
+		c.setSupAgreementId("1-P4I9ND0");
+		c.setSupContractNumber("0040000406");
+		c.setSupEffectiveDate(LangUtil.convertStringToGMTDate("09/03/2015 19:46:07"));
+		c.setSupHardwareSuppliesFlag(true);
+		
+		//Accessories
+		c.setAccBundleId("1-P8J0MZR");
+		c.setAccSoldToNumber("0000126159");
+		c.setAccAgreementId("1-P4I9ND0");
+		c.setAccContractNumber("0040000406");
+		c.setAccPaymentType("Ship and Bill");
+		c.setAccEffectiveDate(LangUtil.convertStringToGMTDate("09/03/2015 20:22:54"));
+		c.setAccHardwareAccessoriesFlag(true);
+		
+		//Bundles
+		c.setBunSoldToNumber("0000126159");
+		c.setBunAgreementId("1-P4I9ND0");
+		c.setBunContractNumber("0040000406");
+		c.setBunEffectiveDate(LangUtil.convertStringToGMTDate("09/03/2015 19:50:40"));
+		c.setBunProductType("Laser");
+		c.setBunIncrement(40);
+		c.setBunStartRecordNumber(0);
+		c.setBunNewQueryIndicator(true);
+		long t0 = System.currentTimeMillis();
+		GlobalCatalogListResult result = service.retrieveGlobalCatalogListB2B(c);
+		System.out.printf("Exec time=%s sec. \n", (System.currentTimeMillis() - t0) / 1000.0);
+		logger.debug(result);
+	}
+	
 }

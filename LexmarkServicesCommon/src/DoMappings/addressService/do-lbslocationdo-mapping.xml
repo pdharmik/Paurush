@@ -75,6 +75,10 @@
 	         		<key><value>buildingType</value></key>
 	         		<value>LXK LBS Building Type</value>
 				</entry>
+				<entry>
+	         		<key><value>floorLevelOfDetails</value></key>
+	         		<value>LXK LBS Level of Detail</value>
+				</entry>
 	     	</map>
 		</property>
     </bean>  

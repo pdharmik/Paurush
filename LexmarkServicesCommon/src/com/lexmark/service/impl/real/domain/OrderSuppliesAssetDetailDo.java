@@ -50,6 +50,7 @@ public class OrderSuppliesAssetDetailDo extends OrderSuppliesAssetDo {
     private String lbsLatitude;
     private String coordinatesXPreDebriefRFV;
     private String coordinatesYPreDebriefRFV;
+    private String levelOfDetails;
     
     public String getLbsLongitude() {
 		return lbsLongitude;
@@ -354,5 +355,13 @@ public class OrderSuppliesAssetDetailDo extends OrderSuppliesAssetDo {
 
 	public void setCoordinatesYPreDebriefRFV(String coordinatesYPreDebriefRFV) {
 		this.coordinatesYPreDebriefRFV = coordinatesYPreDebriefRFV;
+	}
+
+	public String getLevelOfDetails() {
+		return levelOfDetails;
+	}
+
+	public void setLevelOfDetails(String levelOfDetails) {
+		this.levelOfDetails = levelOfDetails;
 	}
 }

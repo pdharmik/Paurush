@@ -394,6 +394,55 @@ public class AmindLBSLocationServiceTest extends AmindServiceTest {
 	}
 	
 	@Test
+	public void testRetrieveLBSLocationsList_LBS1_5() throws Exception {
+		AddressListContract contract = new AddressListContract();
+		contract.setSessionHandle(crmSessionHandle);
+		contract.setMdmId("275242212");
+		contract.setMdmLevel("Global");
+		contract.setCountry("USA");
+		contract.setState("KY");
+		contract.setCity("Lexington");
+		contract.setLocationType("Floor");
+		contract.setLocationId("1-PE26302");
+//		contract.setLbsAddressId("1420WVS");
+		contract.setLbsFlag(true);
+		contract.setFirstLoccationCall(false);
+		contract.setNewQueryIndicator(true);
+		contract.setStartRecordNumber(0);
+		contract.setIncrement(40);
+		
+		AddressListResult result = service.retrieveLBSLocationList(contract);
+		for (LBSLocationFloor floor : result.getLbsLocationFloorList()) {
+			System.out.println("FloorLevelOfDetails: " + floor.getFloorLevelOfDetails());
+		}
+		MiscTest.print(result.getLbsLocationFloorList());
+	}
+	
+	@Test
+	public void testRetrieveLBSLocationsList_defect19350() throws Exception {
+		AddressListContract contract = new AddressListContract();
+		contract.setSessionHandle(crmSessionHandle);
+		contract.setMdmId("74949");
+		contract.setMdmLevel("Account");
+		contract.setCountry("France");
+		contract.setState("Bretagne");
+		contract.setCity("Redon");
+		contract.setLocationType("Floor");
+		contract.setLocationId("1-QH5KS12");
+		contract.setLbsFlag(true);
+		contract.setFirstLoccationCall(false);
+		contract.setNewQueryIndicator(true);
+		contract.setStartRecordNumber(0);
+		contract.setIncrement(40);
+		
+		AddressListResult result = service.retrieveLBSLocationList(contract);
+		for (LBSLocationFloor floor : result.getLbsLocationFloorList()) {
+			System.out.println("FloorLevelOfDetails: " + floor.getFloorLevelOfDetails());
+		}
+		MiscTest.print(result.getLbsLocationFloorList());
+	}
+	
+	@Test
 	public void testRetrieveLBSBuildingTypes() throws Exception {
 		AddressListContract contract = new AddressListContract();
 		contract.setSessionHandle(crmSessionHandle);

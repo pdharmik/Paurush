@@ -182,7 +182,8 @@ So that any changes to type of request there need not be code level changes
 									<td>${part.description}</td>
 									<td class="w100">${part.orderQuantity}</td>
 									<td class="w150">
-									<c:forEach items="${hardwareDebriefForm.recommendedPartlistStatus}" var="recomendedPartlistTypeMap">
+									<c:if test="${part.typePrinter}">
+									<c:forEach items="${hardwareDebriefForm.recommendedPartlistStatusForPrinterType}" var="recomendedPartlistTypeMap">
 											<c:choose>
 												<c:when test="${part.status eq recomendedPartlistTypeMap.key}">
 													${recomendedPartlistTypeMap.value}													
@@ -191,6 +192,18 @@ So that any changes to type of request there need not be code level changes
 												</c:otherwise>												
 											</c:choose>														
 									</c:forEach>
+									</c:if>
+									<c:if test="${not part.typePrinter}">
+									<c:forEach items="${hardwareDebriefForm.recommendedPartlistStatusForNonPrinterType}" var="recomendedPartlistTypeMap">
+											<c:choose>
+												<c:when test="${part.status eq recomendedPartlistTypeMap.key}">
+													${recomendedPartlistTypeMap.value}													
+												</c:when>
+												<c:otherwise>												
+												</c:otherwise>												
+											</c:choose>														
+									</c:forEach>
+									</c:if>
 									</td>
 									<%--removed as per defect 10408 
 									<td class="w150">${part.assetSerialNumber}</td> --%>
@@ -228,7 +241,30 @@ So that any changes to type of request there need not be code level changes
 								<td class="w100">${part.partNumber }</td>
 								<td>${part.description}</td>
 								<td class="w100">${part.orderQuantity}</td>
-								<td class="w150">${part.status}</td>
+								<td class="w150">
+								<c:if test="${part.typePrinter}">
+									<c:forEach items="${hardwareDebriefForm.recommendedPartlistStatusForPrinterType}" var="recomendedPartlistTypeMap">
+											<c:choose>
+												<c:when test="${part.status eq recomendedPartlistTypeMap.key}">
+													${recomendedPartlistTypeMap.value}													
+												</c:when>
+												<c:otherwise>												
+												</c:otherwise>												
+											</c:choose>														
+									</c:forEach>
+									</c:if>
+									<c:if test="${not part.typePrinter}">
+									<c:forEach items="${hardwareDebriefForm.recommendedPartlistStatusForNonPrinterType}" var="recomendedPartlistTypeMap">
+											<c:choose>
+												<c:when test="${part.status eq recomendedPartlistTypeMap.key}">
+													${recomendedPartlistTypeMap.value}													
+												</c:when>
+												<c:otherwise>												
+												</c:otherwise>												
+											</c:choose>														
+									</c:forEach>
+									</c:if>
+								</td>
 								<%--removed as per defect 10408
 								<td class="w150">${part.assetSerialNumber}</td>--%>
 							</tr>
@@ -289,7 +325,7 @@ So that any changes to type of request there need not be code level changes
 		<input type="hidden" name="status" id="status" value="Accepted"/>
 		<input type="hidden" name="acceptUpdate" id="acceptUpdate" value="true"/>
 		<input type="hidden" name="<%=TIMEZONE_OFFSET%>" id="<%=TIMEZONE_OFFSET%>" value="${tzOffset}"/>
-		<input type="hidden" name="<%=BACKURL%>" value="/group/partner-portal/services-requests?back=hw"/>
+		<input type="hidden" name="<%=BACKURL%>" value="${hardwareDebriefForm.backURL}"/>
 		
     </form:form>
     </div>
@@ -298,13 +334,15 @@ So that any changes to type of request there need not be code level changes
 		<div class="buttonContainer">
           <button class="button_cancel" id="returnRequests_but" name="view" ><spring:message code="button.return.to.requests"/></button>
         </div>
-  
+  <%-- Added for LBS 1.5 View Grid--%>
+   <jsp:include page="/WEB-INF/jsp/common/mapPopup.jsp" />
+  <%-- ENDS for LBS 1.5 View Grid--%>
  <script>
  var backURL={
 			backURLocation:"${hardwareDebriefForm.backURL}"	 
 	 };
  </script>  
- <script type="text/javascript" src="<html:rootPath/>js/hardwareDebreif.js?version=1"></script>
+ <script type="text/javascript" src="<html:rootPath/>js/hardwareDebreif.js?version=2"></script>
  
  <script>
  <%-- Below value is for BACK URL--%>

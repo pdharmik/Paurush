@@ -3,7 +3,7 @@
 <%@page import=" static com.lexmark.constants.LexmarkConstants.JSON_COMBO_FILTER"%>
 <%@page import=" static com.lexmark.constants.LexmarkConstants.JSON_RESOURCE_URL"%>
 <%@page import=" static com.lexmark.constants.LexmarkConstants.gridSavingParams" %>
-
+<jsp:include page="../../common/mapViewPopup.jsp"></jsp:include>
 <%-- Added for CI BRD13-10-02--ENDS --%>
 <%-- This subtab.jsp is for the Request History/Change Request tab at the top --%>
 <% request.setAttribute("subTabSelected","createNewRequest"); %>
@@ -97,21 +97,21 @@ padding: 10px 7px 9px 0;
       <!-- MAIN CONTENT BEGIN -->
       <%-- This section shows the server side validation errors --%>
           <spring:hasBindErrors name="manageAssetFormForDecommission">
-          	<div class="error">
+          	<div class="serviceError">
 				<c:forEach var="error" items="${errors.allErrors}">
-			   		<li><strong><spring:message code="${error.code}"/></strong></li>
+			   		<li class="portlet-msg-error"><strong><spring:message code="${error.code}"/></strong></li>
             	</c:forEach>
      		</div>	
 	     </spring:hasBindErrors>
 	     <spring:hasBindErrors name="fileUploadForm">
-				<div class="error" id="errors">
+				<div class="serviceError" id="errors">
 					<c:forEach var="error" items="${errors.allErrors}">
-						<li><strong><spring:message code="${error.code}"/></strong></li>
+						<li class="portlet-msg-error"><strong><spring:message code="${error.code}"/></strong></li>
 					</c:forEach>
 				</div>	
 			</spring:hasBindErrors>
 	     <%--End of server side validation errors --%>
-	        <div class="error" id="errorDiv" style="display: none;"></div> 
+	        <div class="serviceError" id="errorDiv" style="display: none;"></div> 
 	        <div id="jsValidationErrors" class="error" style="display: none;"></div>	
 	        <div id="validationErrors" class="error" style="display: none;"></div>
 	        <%-- This div has been renamed to errorMsgPopup_CatalogDtl because contact popup validations div id was conflicting --%>
@@ -133,7 +133,7 @@ padding: 10px 7px 9px 0;
 						  <li class="pModelName"><%-- ${manageAssetFormForDecommission.assetDetail.productTLI} --%>
 						  ${manageAssetFormForDecommission.assetDetail.descriptionLocalLang}
 						  <br/>
-						  <a href="javascript:redirectToAssetListPage('<%=redirectToAssetListPage%>');">
+						  <a id="differentAssetlink" href="javascript:redirectToAssetListPage('<%=redirectToAssetListPage%>');">
 						  <spring:message code="requestInfo.link.chooseAdifferentAsset"/></a></li>
                 </ul></td>
 				<td class="pDetail"><!-- Inner table: 4 row2 & 2 colums -->
@@ -283,6 +283,9 @@ padding: 10px 7px 9px 0;
 	<input type="hidden" name="backJson" id="backJson" value="${manageAssetFormForDecommission.backToMap}"/>
 </form>
 <script type="text/javascript">
+<c:if test="${fleetManagementFlag == true }">
+jQuery("#differentAssetlink").hide();
+</c:if>
 function onCancelClick() {
 	//showOverlay();
 	
@@ -431,7 +434,7 @@ var isError="${exceptn}";
 			if(isError)
 				{
 				jQuery("#errorDiv").show();
-				jQuery("#errorDiv").append('<li><strong><spring:message code="exception.unableToRetrieveDeviceDetail"/></strong></li>');
+				jQuery("#errorDiv").append('<li class="portlet-msg-error"><strong><spring:message code="exception.unableToRetrieveDeviceDetail"/></strong></li>');
 				}
 			if(currentURL.indexOf('/partner-portal') == -1)
 			  {	
@@ -558,7 +561,7 @@ var isError="${exceptn}";
 					{
 						validationflag=true;
 						jQuery('#'+elementIdsToValidate[i]).addClass('errorColor');
-						jQuery("#errorDiv").append('<li><strong>'+patRes+'</strong></li>');	
+						jQuery("#errorDiv").append('<li class="portlet-msg-error"><strong>'+patRes+'</strong></li>');	
 					}
 				}
 			}
@@ -566,7 +569,7 @@ var isError="${exceptn}";
 			if(!(jQuery('#installAssetYes').is(':checked')) && !(jQuery('#installAssetNo').is(':checked')))
 			{	
 				validationflag=true;
-				jQuery("#errorDiv").append("<li><strong>"+"<spring:message code='validation.Asset.decomissionFlag.format.errorMsg'/>" 
+				jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"<spring:message code='validation.Asset.decomissionFlag.format.errorMsg'/>" 
 				+ "</strong></li>");
 				
 			}
@@ -581,16 +584,18 @@ var isError="${exceptn}";
 			if(jQuery('#installAssetYes').is(':checked')){
 			
 			var lbsaddressflagins=jQuery("#installLBSAddressFlag").val();
-			if(lbsaddressflagins=="true"){
+			var installLevelOfDetails = $.trim(jQuery("#installLevelOfDetails").val()).toLowerCase();
+			
+			if(lbsaddressflagins=="true" && installLevelOfDetails.match("floor level|grid level|mix - see floor")){
 				if(jQuery('#physicalLocation2h').val() == ''|| jQuery('#physicalLocation2h').val()== null){
 					//alert("error"+jQuery('#physicalLocation2h').val());
 					validationflag=true;
-					jQuery("#errorDiv").append("<li><strong><spring:message code='lbs.label.pickup.floor'/></strong></li>");
+					jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong><spring:message code='lbs.label.pickup.floor'/></strong></li>");
 				}
 				if(jQuery('#physicalLocation1h').val() == ''|| jQuery('#physicalLocation1h').val()== null){
 					
 					validationflag=true;
-					jQuery("#errorDiv").append("<li><strong><spring:message code='lbs.label.pickup.building'/></strong></li>");
+					jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong><spring:message code='lbs.label.pickup.building'/></strong></li>");
 				}
 				
 				
@@ -603,7 +608,7 @@ var isError="${exceptn}";
 					if(pageCountsDate[j] != null && pageCountsDate[j] != ""){
 						var currentDate=new Date(formatDateToDefault(pageCountsDate[j])).toUTCString();	
 						if(new Date(currentDate)>new Date(new Date().toUTCString())){					
-							jQuery("#errorDiv").append("<li><strong>"+"<spring:message code='requestInfo.validation.currentDateExceed'/> " 
+							jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"<spring:message code='requestInfo.validation.currentDateExceed'/> " 
 									+(j+1)+ "</strong></li>");
 							jQuery('#errorDiv').show();
 							jQuery(document).scrollTop(0);
@@ -614,14 +619,14 @@ var isError="${exceptn}";
 				
 				if(pageCountValueListArray[j] != null && pageCountValueListArray[j] != ""){
 				if(parseInt(pageCountValueListArray[j])>parseInt(pageCountValue[j])){						
-					jQuery("#errorDiv").append("<li><strong>"+"<spring:message code='requestInfo.validation.newPageCountValue'/> " 
+					jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"<spring:message code='requestInfo.validation.newPageCountValue'/> " 
 							+(j+1)+ "</strong></li>");
 					jQuery('#errorDiv').show();
 					jQuery(document).scrollTop(0);
 					validationflag=true;
 			}
 				if((pageCountValue[j]-pageCountValueListArray[j])>500000){
-					jQuery("#errorDiv").append("<li><strong>"+"<spring:message code='requestInfo.validation.newPageCountValue1'/> " 
+					jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"<spring:message code='requestInfo.validation.newPageCountValue1'/> " 
 							+(j+1)+ "</strong></li>");
 					jQuery('#errorDiv').show();
 					jQuery(document).scrollTop(0);
@@ -651,6 +656,7 @@ var isError="${exceptn}";
 			jQuery('#attachmentDescriptionID').val(jQuery('#attachmentDescription').val());
 			jQuery('#pageCountValue').val(pageCountValueListArray);
 			jQuery('#pageCountDateValid').val(pageCountsDateListArray);
+			jQuery("#installFloorLevelOfDetails").val($("#flr option:selected").attr("lod"));
 			jQuery("#decommAssetForm").attr("action", decommAssetConfirmUrl);
 			jQuery("#decommAssetForm").submit();
 							

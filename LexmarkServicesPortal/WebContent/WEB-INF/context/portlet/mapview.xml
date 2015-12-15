@@ -28,6 +28,7 @@
 			<value>${fleetManagement.lbs.endPoint}</value>
 		</property>
 	</bean>
+	<bean id="deviceStatusController" class="com.lexmark.services.portlet.fleetmanagement.DeviceStatusController"/>
 	<bean id="cannedQueryServiceimpl" class="com.lexmark.service.impl.real.CannedQueryServiceImpl"></bean>
 	<bean id="filterManagementController" class="com.lexmark.services.portlet.fleetmanagement.FilterManagementController">
 		<property name="cannedQueryService" ref="cannedQueryServiceimpl"></property>
@@ -52,6 +53,7 @@
     	</property>
 	</bean>
 	
+<bean id="multiplePageCountsUpdateController" class="com.lexmark.services.portlet.fleetmanagement.MultiplePageCountsUpdateController"></bean>
 	<!-- Handler Mappings -->
 
 	<bean class="org.springframework.web.portlet.mvc.annotation.DefaultAnnotationHandlerMapping">
@@ -85,6 +87,20 @@
    		<property name="attMaxCount">
     			<value>${attachment.maxcount}</value>
     	</property>
+		<property name="lbsFormPost">
+			<value>${fleetManagement.lbs.endPoint}</value>
+		</property>
+	</bean>
+	<bean id="manageMultiAssetsController" class="com.lexmark.services.portlet.cm.ManageMultiAssetsController"> 
+		<property name="listOfFileTypes">
+    			<value>${attachment.fileType.list}</value>
+    	</property>
+   		<property name="attMaxCount">
+    			<value>${attachment.maxcount}</value>
+    	</property>
+    	<property name="lbsFormPost">
+			<value>${fleetManagement.lbs.endPoint}</value>
+		</property>
 	</bean>
 	<bean id="lBSFloorPlanService" class="com.lexmark.service.impl.real.AmindLBSFloorPlanService"></bean>	
 	<bean id="lbsLocationService" class="com.lexmark.service.impl.real.AmindLBSLocationService"></bean>
@@ -92,10 +108,21 @@
 	<bean id="changeAssetValidator" class="com.lexmark.services.form.validator.ManageAssetFormValidator" scope="prototype"></bean>
 	<bean id="preferenceMgmtController" class="com.lexmark.services.portlet.fleetmanagement.PreferenceManagementController" ></bean>
 	<bean id="mapsRequestController" class="com.lexmark.services.portlet.cm.MapsRequestController"></bean>
-	<bean id="pageCountsController" class="com.lexmark.services.portlet.PageCountsController"></bean>
+	
 	<bean id="historyController" class="com.lexmark.services.portlet.common.HistoryController"> </bean>
 	<bean id="serviceRequestController" class="com.lexmark.services.portlet.ServiceRequestController"/>
-	
+	<bean id="deviceStatusService" class="com.lexmark.services.webService.DeviceStatusServiceImpl">
+		<property name="username">
+    			<value>${createServiceRequest.userName}</value>
+    	</property>
+   		<property name="password">
+    			<value>${createServiceRequest.password}</value>
+    	</property>
+    	<property name="endPoint">
+    			<value>${fleetmanagement.ws.deviceStatus}</value>
+    	</property>
+   		
+	</bean>
 	<util:map id ="historyPageMap" key-type="java.lang.String" value-type="java.lang.String" >	
 			
 		<entry key="ALL_REQUESTS" value="allRequestHistory" />

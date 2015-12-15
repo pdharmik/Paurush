@@ -627,7 +627,26 @@ public class XmlOutputGenerator {
 			xml.append("  <cell><![CDATA[" + XMLEncodeUtil.escapeXMLForDMCM(asset.getAssetContact().getEmailAddress()) + "]]></cell>\n");
 			
 			xml.append("  <cell><![CDATA[" + XMLEncodeUtil.escapeXMLForDMCM(asset.getAssetContact().getWorkPhone()) + "]]></cell>\n");			
-			
+			if(asset.getInstallAddress().getLevelOfDetails()=="Mix-See-Floor"){
+				xml.append("  <cell><![CDATA[" + XMLEncodeUtil.escapeXMLForDMCM("Mix") + "]]></cell>\n");	
+			}
+			else{
+				String value=""; //asset.getInstallAddress().getLevelOfDetails();
+				if(null != asset.getInstallAddress().getLevelOfDetails()){
+					value = asset.getInstallAddress().getLevelOfDetails();
+				}
+				if(value.contains("Level")){
+					xml.append("  <cell><![CDATA[" + XMLEncodeUtil.escapeXMLForDMCM(value.replace("Level",""))+ "]]></cell>\n");		
+				}
+				else{
+					xml.append("  <cell><![CDATA[" + XMLEncodeUtil.escapeXMLForDMCM(value)+ "]]></cell>\n");
+				}	
+			}
+			if(asset.isLbsAddressFlag()){
+				xml.append("  <cell><![CDATA[" + XMLEncodeUtil.escapeXMLForDMCM("Yes") + "]]></cell>\n");
+			}else{
+				xml.append("  <cell><![CDATA[" + XMLEncodeUtil.escapeXMLForDMCM("No") + "]]></cell>\n");
+			}
 			logger.debug("Account name is coming as "+asset.getAccount().getAccountName());
 			xml.append(" </row>\n");
 			i++;

@@ -10,6 +10,7 @@ import org.junit.Test;
 import com.lexmark.contract.AccountAgreementSoldToContract;
 import com.lexmark.contract.AccountReceivableListContract;
 import com.lexmark.domain.AccountCustomerReceivable;
+import com.lexmark.domain.PunchoutAccount;
 import com.lexmark.result.AccountAgreementSoldToResult;
 import com.lexmark.result.AccountCustomerReceivableListResult;
 import com.lexmark.service.impl.real.AmindServiceTest;
@@ -233,18 +234,46 @@ public class AmindCustomerPaymentServiceTest extends AmindServiceTest {
     }
     
     @Test
-    public void testRetrieveMPSB2BList_Punchout_AccountAgreemnetType() throws Exception {
+    public void testRetrieveMPSB2BList_listSize_1() throws Exception {
     	AccountAgreementSoldToContract contract = new AccountAgreementSoldToContract();
-    	contract.setAccountType("KAISER"); //REPUBLIC
+    	contract.setAccountName("AUTODISTRIBUTION");
     	contract.setIncrement(0);
     	contract.setStartRecordNumber(0);
     	contract.setNewQueryIndicator(false);
     	contract.setSessionHandle(crmSessionHandle);
     	
     	AccountAgreementSoldToResult result = service.retrieveMPSB2BList(contract);
-    	
-    	logger.debug(result.getMpsB2bList());
+    	System.out.println("size: " + result.getMpsB2bList().size());
     }
-
+    
+    @Test
+    public void testRetrieveMPSB2BList_listSize_2() throws Exception {
+    	AccountAgreementSoldToContract contract = new AccountAgreementSoldToContract();
+    	contract.setAccountName("Autodistribution");
+    	contract.setIncrement(0);
+    	contract.setStartRecordNumber(0);
+    	contract.setNewQueryIndicator(false);
+    	contract.setSessionHandle(crmSessionHandle);
+    	
+    	AccountAgreementSoldToResult result = service.retrieveMPSB2BList(contract);
+    	System.out.println("size: " + result.getMpsB2bList().size());
+    }
+    
+    @Test
+    public void testRetrieveMPSB2BList_listSize_3() throws Exception {
+    	AccountAgreementSoldToContract contract = new AccountAgreementSoldToContract();
+    	contract.setAccountName("Deutsche Postbank AG");
+    	contract.setIncrement(0);
+    	contract.setStartRecordNumber(0);
+    	contract.setNewQueryIndicator(false);
+    	contract.setSessionHandle(crmSessionHandle);
+    	
+    	AccountAgreementSoldToResult result = service.retrieveMPSB2BList(contract);
+    	for (PunchoutAccount acc : result.getMpsB2bList()) {
+			System.out.println(acc.getContractNumber());
+		}
+    	System.out.println("size: " + result.getMpsB2bList().size());
+    }
+    
     
 }

@@ -2844,7 +2844,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 					sb.append("<div class=\"comboAlterColor\">");
 				}
 				if(billTo.getAddressLine1()!=null && !billTo.getAddressLine1().equals("")){
-					sb.append(replaceNullWithBlankString(StringEscapeUtils.escapeJavaScript(billTo.getAddressLine1())));
+					sb.append((replaceNullWithBlankString(StringEscapeUtils.escapeJavaScript(XMLEncodeUtil.escapeXML(billTo.getAddressLine1())))));
 					if(billTo.getAddressLine2()!=null && !billTo.getAddressLine2().equals("")){
 						sb.append(",");
 					}else{
@@ -2852,12 +2852,12 @@ public class OrderSuppliesCatalogController extends BaseController {
 					}
 				}
 				if(billTo.getAddressLine2()!=null && !billTo.getAddressLine2().equals("")){
-					sb.append(replaceNullWithBlankString(StringEscapeUtils.escapeJavaScript(billTo.getAddressLine2())));
+					sb.append(replaceNullWithBlankString(StringEscapeUtils.escapeJavaScript(XMLEncodeUtil.escapeXML(billTo.getAddressLine2()))));
 					sb.append("<br/>&nbsp;");
 				}
 				
 				if(billTo.getCity()!=null && !billTo.getCity().equals("")){
-					sb.append(replaceNullWithBlankString(billTo.getCity()));
+					sb.append(replaceNullWithBlankString(XMLEncodeUtil.escapeXML(billTo.getCity())));
 					if((billTo.getState()!=null && !billTo.getState().equals("")) || (billTo.getCountry()!=null && 
 							!billTo.getCountry().equals(""))){
 						sb.append(",");
@@ -2865,20 +2865,20 @@ public class OrderSuppliesCatalogController extends BaseController {
 				}
 				
 				if(billTo.getState()!=null && !billTo.getState().equals("")){
-					sb.append(replaceNullWithBlankString(billTo.getState()));
+					sb.append(replaceNullWithBlankString(XMLEncodeUtil.escapeXML(billTo.getState())));
 					if(billTo.getCountry()!=null && !billTo.getCountry().equals("")){
 						sb.append(",");
 					}
 				}
 				
 				if(billTo.getCountry()!=null && !billTo.getCountry().equals("")){
-					sb.append(replaceNullWithBlankString(billTo.getCountry()));
+					sb.append(replaceNullWithBlankString(XMLEncodeUtil.escapeXML(billTo.getCountry())));
 					if(billTo.getPostalCode()!=null && !billTo.getPostalCode().equals("")){
 						sb.append("<br/>&nbsp;");
 					}
 				}					
 				if(billTo.getPostalCode()!=null && !billTo.getPostalCode().equals("")){
-					sb.append(replaceNullWithBlankString(billTo.getPostalCode()));
+					sb.append(replaceNullWithBlankString(XMLEncodeUtil.escapeXML(billTo.getPostalCode())));
 				}
 				
 				sb.append("</div>");

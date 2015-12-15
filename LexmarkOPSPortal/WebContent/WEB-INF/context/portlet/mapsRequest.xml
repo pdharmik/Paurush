@@ -17,6 +17,7 @@
 		<property name="locations">
 			<list>
 				<value>/WEB-INF/context/common.properties</value>
+				<value>/WEB-INF/context/webservice.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -42,6 +43,9 @@
 		<property name="chlTempMaxCount">
 			<value>${chl.template.maxcount}</value>
 		</property>
+		<property name="lbsFormPost">
+    		<value>${fleetManagement.lbs.endPoint}</value>
+    	</property>
 	</bean>
 	<bean id="commonController" class="com.lexmark.services.portlet.common.CommonController" />
 	<bean id="addressCleansing" class="com.lexmark.services.portlet.common.AddressCleansingController"> </bean>

@@ -405,6 +405,10 @@
 					<key><value>madcProductLine</value></key>
 					<value>LXK HW Install Product Line</value>
 				</entry>
+				<entry>
+					<key><value>displayWarning</value></key>
+					<value>LXK C Product and Asset Warning Display</value>
+				</entry>
 	     	</map>
 		</property>
     </bean>  

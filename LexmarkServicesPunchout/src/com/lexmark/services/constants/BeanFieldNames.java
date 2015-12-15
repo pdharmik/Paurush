@@ -12,7 +12,10 @@ public enum BeanFieldNames {
 	/** Constant for BeanFieldNames */
 	PRODUCTID("bundleProductId","productId"),
 	/** Constant for BeanFieldNames */
-	DESCRIPTION("description","description");
+	DESCRIPTION("description","description"),
+	SAPLINEID("sapLineID",""),
+	CONTRACTNO("contractNumber",""),
+	UNSPSCCODE("unspscCode","unspscCode");
 	/**.
 	 * 
 	 * This method gives the Bean field names

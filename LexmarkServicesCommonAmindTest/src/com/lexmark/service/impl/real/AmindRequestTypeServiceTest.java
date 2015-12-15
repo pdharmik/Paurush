@@ -8381,9 +8381,10 @@ public class AmindRequestTypeServiceTest extends AmindServiceTest {
 	}
 	
 	@Test
-	public void testRetrieveRequestList_qweryRun() throws Exception {
+	public void testRetrieveRequestList_IOICDetails() throws Exception {
 		reqListContract.setMdmLevel("Global");
-		reqListContract.setMdmId("006415160");
+		reqListContract.setMdmId("623331717");
+		reqListContract.setAccountId("1-P7PY8H");
 		reqListContract.setShowAllFlag(true);
 		reqListContract.setHardwareRequestsPermission(true);
 		reqListContract.setChangeRequestsPermission(true);
@@ -8393,9 +8394,109 @@ public class AmindRequestTypeServiceTest extends AmindServiceTest {
 		reqListContract.setNewQueryIndicator(true);
 		
 		Map<String, Object> filterMap = new HashMap<String, Object>();
-		filterMap.put("serviceRequest.endDate", "07/08/2015 13:52:06");
-		filterMap.put("serviceRequest.startDate", "06/22/2015 18:30:00");
+		filterMap.put("serviceRequest.endDate", "08/14/2015 18:33:18");
+		filterMap.put("serviceRequest.startDate", "07/30/2015 04:00:00");
+		filterMap.put("asset.serialNumber", "12345");
+		filterMap.put("requestType", Arrays.asList("Consumables Management", "Fleet Management", "BreakFix", "Fleet Management"));
 		reqListContract.setFilterCriteria(filterMap);
+		
+		Map<String, Object> sortMap = new HashMap<String, Object>();
+		sortMap.put("serviceRequestNumber", "DESCENDING");
+		reqListContract.setSortCriteria(sortMap);
+		
+		long t0 = System.currentTimeMillis();
+		RequestListResult result = service.retrieveRequestList(reqListContract);
+		System.out.printf("Exec time=%s sec. \n", (System.currentTimeMillis() - t0) / 1000.0);
+		List<ServiceRequest> list = result.getRequestList();
+		System.out.println("Total count: " + result.getTotalCount());
+		System.out.println("END");
+	}
+	
+	@Test
+	public void testRetrieveRequestList_IOICDetails_AllRequest() throws Exception {
+		reqListContract.setMdmLevel("Global");
+		reqListContract.setMdmId("205529410");
+//		reqListContract.setAccountId("1-P7PY8H");
+		reqListContract.setShowAllFlag(true);
+		reqListContract.setHardwareRequestsPermission(false);
+		reqListContract.setChangeRequestsPermission(true);
+		reqListContract.setIncrement(40);
+		reqListContract.setStartRecordNumber(0);
+		reqListContract.setSessionHandle(crmSessionHandle);
+		reqListContract.setNewQueryIndicator(true);
+		
+		Map<String, Object> filterMap = new HashMap<String, Object>();
+		filterMap.put("serviceRequest.endDate", "10/19/2015 12:12:28");
+		filterMap.put("serviceRequest.startDate", "10/03/2015 18:30:00");
+//		filterMap.put("asset.serialNumber", "12345");
+		filterMap.put("requestType", Arrays.asList("Consumables Management", "Fleet Management", "BreakFix"));
+		reqListContract.setFilterCriteria(filterMap);
+		
+		Map<String, Object> sortMap = new HashMap<String, Object>();
+		sortMap.put("serviceRequestNumber", "DESCENDING");
+		reqListContract.setSortCriteria(sortMap);
+		
+		long t0 = System.currentTimeMillis();
+		RequestListResult result = service.retrieveRequestList(reqListContract);
+		System.out.printf("Exec time=%s sec. \n", (System.currentTimeMillis() - t0) / 1000.0);
+		List<ServiceRequest> list = result.getRequestList();
+		System.out.println("Total count: " + result.getTotalCount());
+		System.out.println("END");
+	}
+	
+	@Test
+	public void testRetrieveRequestList_IOICDetails_Supplies() throws Exception {
+		reqListContract.setMdmLevel("Global");
+		reqListContract.setMdmId("205529410");
+//		reqListContract.setAccountId("1-P7PY8H");
+		reqListContract.setShowAllFlag(true);
+		reqListContract.setHardwareRequestsPermission(false);
+		reqListContract.setChangeRequestsPermission(true);
+		reqListContract.setIncrement(40);
+		reqListContract.setStartRecordNumber(0);
+		reqListContract.setSessionHandle(crmSessionHandle);
+		reqListContract.setNewQueryIndicator(true);
+		
+		Map<String, Object> filterMap = new HashMap<String, Object>();
+		filterMap.put("serviceRequest.endDate", "10/19/2015 12:13:25");
+		filterMap.put("serviceRequest.startDate", "10/03/2015 18:30:00");
+//		filterMap.put("asset.serialNumber", "12345");
+		filterMap.put("requestType", Arrays.asList("Consumables Management"));
+		reqListContract.setFilterCriteria(filterMap);
+		
+		Map<String, Object> sortMap = new HashMap<String, Object>();
+		sortMap.put("serviceRequestNumber", "DESCENDING");
+		reqListContract.setSortCriteria(sortMap);
+		
+		long t0 = System.currentTimeMillis();
+		RequestListResult result = service.retrieveRequestList(reqListContract);
+		System.out.printf("Exec time=%s sec. \n", (System.currentTimeMillis() - t0) / 1000.0);
+		List<ServiceRequest> list = result.getRequestList();
+		System.out.println("Total count: " + result.getTotalCount());
+		System.out.println("END");
+	}
+	
+	@Test
+	public void testRetrieveRequestList_IOICDetails_ChangeManagement() throws Exception {
+		reqListContract.setMdmLevel("Global");
+		reqListContract.setMdmId("205529410");
+//		reqListContract.setAccountId("1-P7PY8H");
+		reqListContract.setShowAllFlag(true);
+		reqListContract.setHardwareRequestsPermission(false);
+		reqListContract.setChangeRequestsPermission(true);
+		reqListContract.setChangeRequestFlag(true);
+		reqListContract.setIncrement(40);
+		reqListContract.setStartRecordNumber(0);
+		reqListContract.setSessionHandle(crmSessionHandle);
+		reqListContract.setNewQueryIndicator(true);
+		
+		Map<String, Object> filterMap = new HashMap<String, Object>();
+		filterMap.put("serviceRequest.endDate", "10/19/2015 12:14:02");
+		filterMap.put("serviceRequest.startDate", "10/03/2015 18:30:00");
+//		filterMap.put("asset.serialNumber", "12345");
+		filterMap.put("requestType", Arrays.asList("Fleet Management"));
+		reqListContract.setFilterCriteria(filterMap);
+		
 		Map<String, Object> sortMap = new HashMap<String, Object>();
 		sortMap.put("serviceRequestNumber", "DESCENDING");
 		reqListContract.setSortCriteria(sortMap);
@@ -8682,6 +8783,30 @@ public class AmindRequestTypeServiceTest extends AmindServiceTest {
 		reqContract.setCreateChildSR(false);
 		reqContract.setVisibilityRole("Customer");
 		reqContract.setMadcServiceRequestFlag(true);
+		reqContract.setIncrement(0);
+		reqContract.setStartRecordNumber(0);
+		RequestResult result = service.retrieveSupplyRequestDetail(reqContract);
+	}	
+	
+	@Test
+	public void testRetrieveSupplyRequestDetail_INC0136099_Error() throws Exception {
+		reqContract.setSessionHandle(crmSessionHandle);
+		reqContract.setServiceRequestNumber("1-82791375321");
+		reqContract.setCreateChildSR(false);
+//		reqContract.setVisibilityRole("Customer");
+		reqContract.setMadcServiceRequestFlag(false);
+		reqContract.setIncrement(0);
+		reqContract.setStartRecordNumber(0);
+		RequestResult result = service.retrieveSupplyRequestDetail(reqContract);
+	}	
+	
+	@Test
+	public void testRetrieveSupplyRequestDetail_INC0157768() throws Exception {
+		reqContract.setSessionHandle(crmSessionHandle);
+		reqContract.setServiceRequestNumber("1-105920919851");
+		reqContract.setCreateChildSR(false);
+//		reqContract.setVisibilityRole("Customer");
+		reqContract.setMadcServiceRequestFlag(false);
 		reqContract.setIncrement(0);
 		reqContract.setStartRecordNumber(0);
 		RequestResult result = service.retrieveSupplyRequestDetail(reqContract);

@@ -36,6 +36,7 @@ import com.lexmark.domain.AccountContact;
 import com.lexmark.domain.GlobalAccount;
 import com.lexmark.domain.LexmarkTransaction;
 import com.lexmark.domain.ServicesUser;
+import com.lexmark.domain.UserDetails;
 import com.lexmark.result.ProcessCustomerContactResult;
 import com.lexmark.result.SiebelAccountListResult;
 import com.lexmark.service.api.GlobalLegalEntityService;
@@ -43,6 +44,7 @@ import com.lexmark.service.api.GlobalService;
 import com.lexmark.service.api.ServiceRequestService;
 import com.lexmark.services.api.ProcessCustomerContact;
 import com.lexmark.services.form.EmployeeAccountSelectionForm;
+import com.lexmark.services.hook.LBSAccess;
 import com.lexmark.services.hook.RequestCreateFlags;
 import com.lexmark.services.hook.SiebelRoleImportAction;
 import com.lexmark.services.util.AccountUtil;
@@ -372,6 +374,10 @@ public class EmployeeAccountSelectionController extends BaseController {
 			Map<String,String> requestAccessMap=RequestCreateFlags.retrieveReqHistoryAccess4Portal(PortalUtil.getHttpServletRequest(request),
 					PortalSessionUtil.getUserSegment(request.getPortletSession()), accountListCustomer, LexmarkUserUtil.getUserRoleNameList(request));
 			request.getPortletSession().setAttribute(ChangeMgmtConstant.USERACCESSMAPATTRIBUTEFORSR, requestAccessMap, portletSession.APPLICATION_SCOPE);
+			//Added for LBS 1.5 access for Device status and Device Utilization
+			UserDetails userDetails=(UserDetails)request.getPortletSession().getAttribute("USERDETAILS",PortletSession.APPLICATION_SCOPE);
+			userDetails.setShowDeviceStatus(true);
+			userDetails.setShowDeviceUtilizationTerms(true);
 			boolean isMPSAccountType = false;
 			boolean isCSSAccountType = false;
 

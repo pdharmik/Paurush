@@ -68,6 +68,7 @@ import com.lexmark.constants.LexmarkConstants;
 import com.lexmark.contract.AssetContract;
 import com.lexmark.contract.AttachmentContract;
 import com.lexmark.contract.CreateServiceRequestContract;
+import com.lexmark.contract.LBSAssetListContract;
 import com.lexmark.contract.ProductImageContract;
 import com.lexmark.domain.AccountContact;
 import com.lexmark.domain.Asset;
@@ -85,8 +86,12 @@ import com.lexmark.framework.exception.LGSDBException;
 import com.lexmark.framework.logging.LEXLogger;
 import com.lexmark.result.AssetResult;
 import com.lexmark.result.CreateServiceRequestResult;
+import com.lexmark.result.LBSFloorPlanListResult;
 import com.lexmark.result.ProductImageResult;
 import com.lexmark.service.api.AttachmentService;
+import com.lexmark.service.api.CrmSessionHandle;
+import com.lexmark.service.api.GlobalService;
+import com.lexmark.service.api.LBSFloorPlanService;
 import com.lexmark.service.api.OrderSuppliesAssetService;
 import com.lexmark.service.api.ProductImageService;
 import com.lexmark.services.LexmarkSPConstants;
@@ -98,6 +103,7 @@ import com.lexmark.services.form.validator.ManageAssetFormValidator;
 import com.lexmark.services.portlet.BaseController;
 import com.lexmark.services.portlet.common.CommonController;
 import com.lexmark.services.util.ChangeMgmtConstant;
+import com.lexmark.services.util.ContractFactory;
 import com.lexmark.services.util.ObjectDebugUtil;
 import com.lexmark.services.util.PerformanceConstant;
 import com.lexmark.services.util.PerformanceUtil;
@@ -107,9 +113,7 @@ import com.lexmark.util.DateUtil;
 import com.lexmark.util.PropertiesMessageUtil;
 import com.lexmark.util.StringUtil;
 import com.liferay.portal.util.PortalUtil;
-
 import com.lexmark.services.portlet.common.ContactController;
-
 import com.lexmark.service.api.AttachmentService;
 
 /**
@@ -138,6 +142,10 @@ public class ManageAssetsController extends BaseController {
 	private AttachmentService attachmentService;
 	@Autowired
 	private OrderSuppliesAssetService amindOrderSuppliesAssetService;
+	@Autowired
+	private GlobalService globalService;
+	@Autowired
+	private LBSFloorPlanService lBSFloorPlanService;
 	
 	/**
 	 * variable Declaration
@@ -230,6 +238,7 @@ public class ManageAssetsController extends BaseController {
 	 * attMaxCount
 	 */
 	private String attMaxCount;
+	private String lbsFormPost;
 	/**
 	 * @return listOfFileTypes 
 	 */
@@ -256,6 +265,21 @@ public class ManageAssetsController extends BaseController {
 	 */
 	public void setAttMaxCount(String attMaxCount) {
 		this.attMaxCount = attMaxCount;
+	}
+	
+	/**
+	 * @return lbsFormPost 
+	 */
+	public String getLbsFormPost() {
+		LOGGER.debug("formPost=> "+lbsFormPost);
+		return lbsFormPost;
+	}
+	
+	/**
+	 * @param lbsFormPost 
+	 */
+	public void setLbsFormPost(String lbsFormPost) {
+		this.lbsFormPost = lbsFormPost;
 	}
 
 	
@@ -323,9 +347,10 @@ public class ManageAssetsController extends BaseController {
 		AssetContract contract =null;
 		String assetId = (String)request.getAttribute("assetId");
 		String backToMap=(String)request.getAttribute("backJSON");
+		String placementId=(String)request.getAttribute("placementId");
 		LOGGER.debug("back json= " +backToMap);
 		
-		if(assetId!=null)
+		if(assetId!=null && !assetId.isEmpty())
 		{
 			LOGGER.info("Asset Id is " + assetId);			
 			contract= commonController.getAssetContract(assetId, request);
@@ -333,7 +358,8 @@ public class ManageAssetsController extends BaseController {
 			assetResult=commonController.retrieveAssetDetail(contract);
 		}
 		
-		
+		setLbsFormPost(lbsFormPost);
+		setModelParams(model, session);
 	
 		if(!StringUtil.isEmpty(request.getParameter(ChangeMgmtConstant.ISUPDATEFLAG)))
 		{	
@@ -342,6 +368,15 @@ public class ManageAssetsController extends BaseController {
 		if(!StringUtil.isStringEmpty(selectedVal) && (selectedVal.equalsIgnoreCase(ChangeMgmtConstant.ADDONE)))
 		{
 				ManageAssetForm masForm=new ManageAssetForm();
+				String fleetManagementFlag = (String)request.getAttribute("fleetManagementFlag");
+				if(fleetManagementFlag != null && fleetManagementFlag.equalsIgnoreCase("true")){
+					LOGGER.debug("Setting Account information from asset details call ");
+					Map<String,String> accDetails=new HashMap<String, String>();
+					accDetails.put(ChangeMgmtConstant.ACCOUNTNAME,"");
+					accDetails.put(ChangeMgmtConstant.ACCOUNTID,(String)request.getAttribute("account.accountId"));
+					session.setAttribute(ChangeMgmtConstant.ACNTCURRDETAILS, accDetails ,PortletSession.APPLICATION_SCOPE);
+					
+				}
 
 				ServiceRequest serviceReq=new ServiceRequest();
 				masForm.setServiceRequest(serviceReq);
@@ -406,13 +441,18 @@ public class ManageAssetsController extends BaseController {
 				LOGGER.debug("Setting LBS Flag to false");
 				model.addAttribute("fleetManagementFlag", "false");
 				masForm.setFleetManagementFlag("false");
-			
+				Asset asset = new Asset();
+				
+				//Added for placement
+				asset.setPlacementId(placementId==null?"":placementId);
+				GenericAddress shippedAddress= new GenericAddress();
 				
 				//For LBS
 				if (assetResult != null && assetResult.getAsset() != null) {
-					Asset asset = assetResult.getAsset();
+				    asset = assetResult.getAsset();
+				    shippedAddress=asset.getInstallAddress();
 					
-					String isFleetManagement=(String)request.getAttribute("fleetManagementFlag");
+					/*String isFleetManagement=(String)request.getAttribute("fleetManagementFlag");
 					if(StringUtils.isNotBlank(isFleetManagement) && "true".equalsIgnoreCase(isFleetManagement)){
 						GenericAddress shippedAddress=asset.getInstallAddress();
 						GenericAddress moveToAddress=(GenericAddress)request.getAttribute("installAddress");
@@ -428,7 +468,7 @@ public class ManageAssetsController extends BaseController {
 						
 						shippedAddress.setLbsAddressFlag(StringUtils.isNotBlank(moveToAddress.getAddressId())==true?true:false);
 						
-					}
+					}/*
 					
 					
 					/* This portion has been added for Asset Image */
@@ -450,7 +490,7 @@ public class ManageAssetsController extends BaseController {
 					masForm.setAssetDetail(asset);
 					
 					//LBS
-					String fleetManagementFlag = (String)request.getAttribute("fleetManagementFlag");
+					
 					if(fleetManagementFlag != null && fleetManagementFlag.equalsIgnoreCase("true")){
 						LOGGER.debug("Setting Account information from asset details call ");
 						Map<String,String> accDetails=new HashMap<String, String>();
@@ -467,6 +507,35 @@ public class ManageAssetsController extends BaseController {
 					}
 				}
 				//ends here	
+				String isFleetManagement=(String)request.getAttribute("fleetManagementFlag");
+				if(StringUtils.isNotBlank(isFleetManagement) && "true".equalsIgnoreCase(isFleetManagement)){
+					GenericAddress moveToAddress=(GenericAddress)request.getAttribute("installAddress");
+					if(asset.getAssetId()!=null){
+						shippedAddress.setBuildingId(moveToAddress.getBuildingId());
+						shippedAddress.setPhysicalLocation1(moveToAddress.getPhysicalLocation1());
+						
+						shippedAddress.setFloorId(moveToAddress.getFloorId());
+						shippedAddress.setPhysicalLocation2(moveToAddress.getPhysicalLocation2());
+						
+						shippedAddress.setZoneId(moveToAddress.getZoneId());
+						shippedAddress.setZoneName(moveToAddress.getZoneName());
+						
+						shippedAddress.setLbsAddressFlag(StringUtils.isNotBlank(moveToAddress.getAddressId())==true?true:false);
+						asset.setInstallAddress(shippedAddress);
+					}
+					else{
+						moveToAddress.setLbsAddressFlag(StringUtils.isNotBlank(moveToAddress.getAddressId())==true?true:false);
+						asset.setInstallAddress(moveToAddress);
+					}
+					
+					LOGGER.debug("Setting LBS Flag to true ");
+					model.addAttribute("fleetManagementFlag", "true");
+					masForm.setFleetManagementFlag(isFleetManagement);
+					
+					masForm.setAssetDetail(asset);
+					
+				}
+				
 				
 				attachForm.setAttachmentList(modifiedAttachmentList);
 				modelMap.addAttribute(ChangeMgmtConstant.ADDASSETFORM, masForm);
@@ -515,7 +584,7 @@ public class ManageAssetsController extends BaseController {
 		//end
 		
 		
-		
+		model.addAttribute("placementId", placementId);
 		LOGGER.exit(this.getClass().getSimpleName(), METH_REDIRECTTOADDASSET);
 		//If no error, go for the add asset page		
 		return ChangeMgmtConstant.ADDASSETPATH;
@@ -646,9 +715,45 @@ public class ManageAssetsController extends BaseController {
 		if(masForm.getInstallAssetFlag()!=null && masForm.getInstallAssetFlag().equalsIgnoreCase(ChangeMgmtConstant.YES))
 		{
 			LOGGER.debug("User choose yes");
-			masForm.setArea(ChangeMgmtConstant.AREA_ADDASSET_YES);		
-			masForm.setSubArea(ChangeMgmtConstant.SUBAREA_ADDASSET_YES);
-		}
+			if(masForm.getAssetDetail().getPlacementId()!=null && !"".equalsIgnoreCase(masForm.getAssetDetail().getPlacementId()) && !"".equalsIgnoreCase(masForm.getAssetDetail().getSerialNumber()) && !"".equalsIgnoreCase(masForm.getAssetDetail().getProductLine())){
+				Map<String,String> accDetails=(Map<String,String>)session.getAttribute(ChangeMgmtConstant.ACNTCURRDETAILS,PortletSession.APPLICATION_SCOPE);
+				LBSAssetListContract LBSAssetListContract = ContractFactory.getLBSPlacementContract(masForm);
+				CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil
+						.getSiebelCrmSessionHandle(actRequest));
+				LBSAssetListContract.setSessionHandle(crmSessionHandle);
+				if(accDetails != null){
+				LBSAssetListContract.setAccountId(accDetails.get(ChangeMgmtConstant.ACCOUNTID));
+				}
+				ObjectDebugUtil.printObjectContent(LBSAssetListContract,LOGGER);
+				LOGGER.info("end printing lex loggger");
+				LBSFloorPlanListResult res=null;
+
+				try{
+					res= lBSFloorPlanService.retrieveLBSFloorPlanAssetList(LBSAssetListContract);
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+				if(res != null && res.getAssetList().size() > 0){
+				String assetLifecycle=res.getAssetList().get(0).getAssetLifeCycle();
+				LOGGER.debug("assetLifecycle-------------->>"+assetLifecycle);
+				if("installed".equalsIgnoreCase(assetLifecycle)){
+					masForm.getAssetDetail().setPlacementMove(true);
+					masForm.setArea(ChangeMgmtConstant.AREA_CHANGEASSET_YES);		
+					masForm.setSubArea(ChangeMgmtConstant.SUBAREA_CHANGEASSET_YES);	
+				}else{
+					masForm.setArea(ChangeMgmtConstant.AREA_ADDASSET_YES);		
+					masForm.setSubArea(ChangeMgmtConstant.SUBAREA_ADDASSET_YES);
+				}
+				}else{					
+					masForm.setArea(ChangeMgmtConstant.AREA_ADDASSET_YES);		
+					masForm.setSubArea(ChangeMgmtConstant.SUBAREA_ADDASSET_YES);
+				
+				}
+				}else{			
+					masForm.setArea(ChangeMgmtConstant.AREA_ADDASSET_YES);		
+					masForm.setSubArea(ChangeMgmtConstant.SUBAREA_ADDASSET_YES);
+				}
+				}
 		else{
 			LOGGER.debug("User did not choose");
 			masForm.setArea(ChangeMgmtConstant.AREA_ADDASSET_NO);		
@@ -657,7 +762,7 @@ public class ManageAssetsController extends BaseController {
 		
 		
 		
-		
+	
 		
 		/****************This section has been added to prevent resubmit by browser refresh ***********/
 		if (PortalSessionUtil.isDuplicatedSubmit(actRequest,masForm)) {
@@ -1476,6 +1581,10 @@ public class ManageAssetsController extends BaseController {
 		Boolean isUpdateFlag=false;
 		AttachmentForm attachForm = new AttachmentForm();
 		PortletSession session = req.getPortletSession();
+		setLbsFormPost(lbsFormPost);
+		LOGGER.debug("Calling Method setModelParams");
+		setModelParams(model,session);
+		LOGGER.debug("Outside Method setModelParams");
 		//added for page counts
 		Map<String, String> pageCountsMap=null;
 		List<String> pageCountsList=new ArrayList<String>();
@@ -2566,5 +2675,11 @@ public class ManageAssetsController extends BaseController {
 		response.sendRedirect(request.getParameter("friendlyURL"));
 	}
 	/*END*/
-
+	
+	public void setModelParams(Model model,PortletSession session){
+		model.addAttribute("mdmId",PortalSessionUtil.getMdmId(session));
+		model.addAttribute("mdmLevel",PortalSessionUtil.getMdmLevel(session));
+		model.addAttribute("formPost",getLbsFormPost());
+		model.addAttribute("emailId", PortalSessionUtil.getEmailAddress(session));
+	}
 }

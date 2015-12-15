@@ -4,12 +4,13 @@
 <%@page import="com.liferay.portal.util.PortalUtil"%>
 <jsp:include page="../../common/validationMPS.jsp" />
 <jsp:include page="/WEB-INF/jsp/includeGrid.jsp"/>
+<jsp:include page="../../common/mapViewPopup.jsp"></jsp:include>
 <%@ page import = "com.lexmark.services.util.LexmarkSPOmnitureConstants" %>
 <script type="text/javascript"><%@ include file="../../../../js/portletRedirection.js"%></script>
 <script type="text/javascript" src="<html:rootPath/>js/grid/dhtmlxcommon.js"></script>
 <script type="text/javascript" src="<html:rootPath/>js/combo/dhtmlxcombo.js"></script>
 <script type="text/javascript" src="<html:rootPath/>js/combo/dhtmlxcombo_whp.js"></script>
-
+<script type="text/javascript"><%@ include file="../../../../js/showCoordinates.js"%></script>
 <style type="text/css"><%@ include file="/WEB-INF/css/combo/dhtmlxcombo.css" %></style>
 <link rel="stylesheet" type="text/css" href="<html:rootPath/>css/mps.css"/>
 <!--[if IE 7]>
@@ -126,128 +127,180 @@ ul.form img.dhx_combo_img {
 					
 					<div class="columnsTwo">
 					<div class="columnInner">
-					<ul class="form">
-	                
-	                  <li>
-	                   <label for="rqstDesc"> <span class="req">*</span><spring:message code="requestInfo.label.notesMaps"/></label>
-	             		 <span> <form:textarea path="notesOrComments" id="notesOrComments" rows="3" maxlength="2000"/>  </span>
-					  </li>
-	  	                </ul>
-	  	                <div>
-	  	               
-	                <span><form:checkbox path="moveAsset" id="moveAsset" onclick="wantMove();"/>  </span>
-	              <label><spring:message code="requestInfo.label.moveAsset"/></label> 
-					 </div>
-					 <div id="contactDiv" style="display:none;">
-	                <span><form:checkbox path="moveContactSelect" id="moveContactSelect" onclick="mapsMoveContactSelect();"/>  </span>
-	              <label><spring:message code="requestInfo.label.moveContactSelect"/></label> 
-					  </li>
-	  	                </div>
-	  	                
-             
-	                </div>
-	                 <div class="infoBox columnInner rounded shadow" id="mapsRequestContact" style="display:none;">
-                     <h4 id="mapContactHeading" title='<spring:message code="requestInfo.link.selectContactForMove"/>'><spring:message code="requestInfo.heading.ContactForMapsRequest"/></h4>
-             
-                <ul class="form wordBreak">
-                  <li>
-                    <label><spring:message code="requestInfo.label.name"/></label>
+						<ul class="form">
 
-                    <span id="mapsRequestLastNameLabel"></span>                    
-                    </li>
-                  <li>
-                    <label><spring:message code="requestInfo.label.phoneNumber"/></label>
-                    <span id="mapsRequestWorkPhoneLabel"></span>
-                     </li>
-                  <li>
-                    <label><spring:message code="requestInfo.label.emailAddress"/></label>
-                    <span id="mapsRequestEmailAddressLabel"></span>
-                     </li>
-                </ul>
-                 </div>
-                <!-- Hidden fields to bind the maps Request contact data with form -->
-                <span style="display: none">
-						<form:input id="mapsRequestContactId" path="serviceRequest.mapsRequestContact.contactId" /> 
-						<form:input id="mapsRequestFirstName" path="serviceRequest.mapsRequestContact.firstName" /> 
-						<form:input id="mapsRequestLastName" path="serviceRequest.mapsRequestContact.lastName" /> 
-						<form:input id="mapsRequestWorkPhone" path="serviceRequest.mapsRequestContact.workPhone" /> 
-						<form:input id="mapsRequestAltPhone" path="serviceRequest.mapsRequestContact.alternatePhone" />
-						<form:input id="mapsRequestEmailAddr" path="serviceRequest.mapsRequestContact.emailAddress" />
-						<form:input id="mapsRequestUpdateContactFlag" path="serviceRequest.mapsRequestContact.updateContactFlag" />
-						<form:input id="mapsRequestNewContactFlag" path="serviceRequest.mapsRequestContact.newContactFlag" />
-				</span>
-             
-	                </div>
-	                <div class="columnsTwo">
-			<div class="infoBox columnInner rounded shadow">
-				<h4>
-					<span class="req">*</span><a href="${addressListPopUpUrl}" class="lightboxLarge" title="<spring:message code="requestInfo.link.selectAnAddress"/>" id="diffAddressLink" 
-						onclick="return popupAddress(id);">
-						
-						<spring:message code="requestInfo.link.selectAnAddress"/>						
-						</a>
-						
-					<spring:message code="requestInfo.heading.mapchangerequest"/>
-				</h4>
-				<ul class="roDisplay">
-					<li><div id="pickupAddressNameLbl"></div> 
-					 <div id="pickupStoreFrontNameLbl"></div> 
-									<div id="pickupAddressLine1Lbl"></div>
-									<div id="pickupAddressofficeNumberLbl"></div>
-									<div id="pickupAddressLine2Lbl"></div>
-									<div id="city_state_zip_popup_span">
-									<div style="display:inline;" id="pickupAddressCityLbl"></div>
-									<div style="display:inline;" id="pickupAddresscountyLbl"></div>
-									<div style="display:inline;" id="pickupAddressStateLbl"></div>
-									<div style="display:inline;" id="pickupAddressProvinceLbl"></div>
-									<div style="display:inline;" id="pickupAddressRegionLB"></div>
-									</div>
-									<div id="pickupAddressPostCodeLbl"></div>
-									<div id="pickupAddressCountryLbl"></div></li>
-				</ul>
-				<div id="selectLocalAddress1" style="display: none;">
-				<ul class="form division">
-					<li><label for="building"><span class="req">*</span><spring:message
-						code="requestInfo.addressInfo.label.building" /> </label> <span><input
-						id="physicalLocation1" class="w100"
-						 maxlength="100" /></span></li>
-					<li><label for="floor"><span class="req">*</span><spring:message
-						code="requestInfo.addressInfo.label.floor" /> </label> <span><input
-						id="physicalLocation2" class="w100"
-						 maxlength="100" /></span></li>
-					<li><label for="office"><span class="req">*</span><spring:message
-						code="requestInfo.addressInfo.label.office" /> </label> <span><input
-						id="physicalLocation3" class="w100"
-						 maxlength="100" /></span></li>
-				</ul>
-				</div>	
-				<div id="selectLocalAddress" style="display: none;">									 	 
-				<ul class="form division1">
-					<li><label for="building"><spring:message
-						code="requestInfo.addressInfo.label.building" /> *</label> <span><select
-						id="bldng"  
-						  ></select></span></li>
-					<li><label for="floor"><spring:message
-						code="requestInfo.addressInfo.label.floor" /> *</label> <span><select
-						id="flr"  ></select></span></li>
-					<li><label for="zone"><spring:message code='lbs.label.zone'/>: </label> <span><select
-						id="zone"  ></select></span></li>
-					<li><label for="office"><spring:message
-						code="requestInfo.addressInfo.label.office" /> </label> <span><input
-						id="office"  value=""
-						 /></span></li>
-						 <li><span style="display: none;"><select
-						id="campus"  
-						></select></span></li>
-						<%--For LBS Adresses display names--%>
-				</ul>
-						<span style="display: none;">
-						<form:input path="serviceRequest.installAddress.physicalLocation1" id="bldng1"/>
-						<form:input path="serviceRequest.installAddress.physicalLocation2" id="flr1"/>
-						<form:input path="serviceRequest.installAddress.zoneName" id="zone1"/>
-						<form:input	id="campus1" path="serviceRequest.installAddress.campusName"   />
-						</span>
+							<li><label for="rqstDesc"> <span class="req">*</span>
+								<spring:message code="requestInfo.label.notesMaps" /></label> <span>
+									<form:textarea path="notesOrComments" id="notesOrComments"
+										rows="3" maxlength="2000" />
+							</span></li>
+						</ul>
+						<div>
+
+							<span><form:checkbox path="moveAsset" id="moveAsset"
+									onclick="wantMove();" /> </span> <label><spring:message
+									code="requestInfo.label.moveAsset" /></label>
+						</div>
+						<div id="contactDiv" style="display: none;">
+							<span><form:checkbox path="moveContactSelect"
+									id="moveContactSelect" onclick="mapsMoveContactSelect();" /> </span> <label><spring:message
+									code="requestInfo.label.moveContactSelect" /></label>
+							</li>
+						</div>
+
+
+					</div>
+					<div class="infoBox columnInner rounded shadow"
+						id="mapsRequestContact" style="display: none;">
+						<h4 id="mapContactHeading"
+							title='<spring:message code="requestInfo.link.selectContactForMove"/>'>
+							<spring:message code="requestInfo.heading.ContactForMapsRequest" />
+						</h4>
+
+						<ul class="form wordBreak">
+							<li><label><spring:message
+										code="requestInfo.label.name" /></label> <span
+								id="mapsRequestLastNameLabel"></span></li>
+							<li><label><spring:message
+										code="requestInfo.label.phoneNumber" /></label> <span
+								id="mapsRequestWorkPhoneLabel"></span></li>
+							<li><label><spring:message
+										code="requestInfo.label.emailAddress" /></label> <span
+								id="mapsRequestEmailAddressLabel"></span></li>
+						</ul>
+					</div>
+					<!-- Hidden fields to bind the maps Request contact data with form -->
+					<span style="display: none"> <form:input
+							id="mapsRequestContactId"
+							path="serviceRequest.mapsRequestContact.contactId" /> <form:input
+							id="mapsRequestFirstName"
+							path="serviceRequest.mapsRequestContact.firstName" /> <form:input
+							id="mapsRequestLastName"
+							path="serviceRequest.mapsRequestContact.lastName" /> <form:input
+							id="mapsRequestWorkPhone"
+							path="serviceRequest.mapsRequestContact.workPhone" /> <form:input
+							id="mapsRequestAltPhone"
+							path="serviceRequest.mapsRequestContact.alternatePhone" /> <form:input
+							id="mapsRequestEmailAddr"
+							path="serviceRequest.mapsRequestContact.emailAddress" /> <form:input
+							id="mapsRequestUpdateContactFlag"
+							path="serviceRequest.mapsRequestContact.updateContactFlag" /> <form:input
+							id="mapsRequestNewContactFlag"
+							path="serviceRequest.mapsRequestContact.newContactFlag" />
+					</span>
+
 				</div>
+				<div class="columnsTwo">
+					<div class="infoBox columnInner rounded shadow">
+						<h4>
+							<span class="req">*</span><a href="${addressListPopUpUrl}"
+								class="lightboxLarge"
+								title="<spring:message code="requestInfo.link.selectAnAddress"/>"
+								id="diffAddressLink" onclick="return popupAddress(id);"> <spring:message
+									code="requestInfo.link.selectAnAddress" />
+							</a>
+
+							<spring:message code="requestInfo.heading.mapchangerequest" />
+						</h4>
+						<ul class="roDisplay">
+							<li>
+								<div id="pickupStoreFrontNameLbl"></div>
+								<div id="pickupAddressLine1Lbl"></div>
+								<div id="pickupAddressofficeNumberLbl"></div>
+								<div id="pickupAddressLine2Lbl"></div>
+								<div id="city_state_zip_popup_span">
+									<div style="display: inline;" id="pickupAddressCityLbl"></div>
+									<div style="display: inline;" id="pickupAddresscountyLbl"></div>
+									<div style="display: inline;" id="pickupAddressStateLbl"></div>
+									<div style="display: inline;" id="pickupAddressProvinceLbl"></div>
+									<div style="display: inline;" id="pickupAddressRegionLB"></div>
+								</div>
+								<div id="pickupAddressPostCodeLbl"></div>
+								<div id="pickupAddressCountryLbl"></div>
+							</li>
+						</ul>
+						<br/>
+						<h4 id="changeHeader" style="display: none;">Change Request</h4>
+						<ul class="form division1">
+							<li id="lbsAD" style="display: none;">
+								<label>
+									<span class="req">*</span>LBS Address :
+								</label> 
+								<select	id="lbsAddressFlagSelect" class="smallSelect">
+										<option value="">Select</option>
+									<c:forEach var="isLbsAddress" items="${isLbsAddress}">
+                                    	<option value="${isLbsAddress.key}">${isLbsAddress.value}</option>
+                                    </c:forEach>
+							    </select>
+							</li>
+							
+							<li id="lod" style="display: none;">
+								<label><spring:message code="lbs.label.addresslod"/> :</label>
+									 <select id="lodAddress" class="smallSelect">
+										<option value="">Select</option>
+											<c:forEach var="lbsAddressLOD" items="${lbsAddressLOD}">
+                                  				 <option value="${lbsAddressLOD.key}">${lbsAddressLOD.value}</option>
+                                    		</c:forEach>
+									</select>
+							</li>
+							<li class="borderBelow" style="display: none;"></li>
+						</ul>
+						<div id="selectLocalAddress1" style="display: none;">
+							<ul class="form division1">
+								<li><label for="building"><spring:message
+											code="requestInfo.addressInfo.label.building" /> </label> <span><input
+										id="physicalLocation1" class="w100" maxlength="100" /></span></li>
+								<li><label for="floor"><spring:message
+											code="requestInfo.addressInfo.label.floor" /> </label> <span><input
+										id="physicalLocation2" class="w100" maxlength="100" /></span></li>
+										
+								<%-- <li><label for="office"><spring:message
+											code="requestInfo.addressInfo.label.office" /> </label> <span><input
+										id="physicalLocation3" class="w100" maxlength="100" /></span></li> --%>
+							</ul>
+						</div>
+						<div id="selectLocalAddress" style="display: none;">
+							<ul class="form division1">
+								<li><label for="building"><span class="req">*</span>Building:</label>
+									<select id="bldng" class="bigInputs"></select><input type="text" id="building1" class="bigInputs"
+									style="display: none;" /></li>
+								<li><label for="floor"><span class="req">*</span>Floor:</label>
+									<select id="flr" class="bigInputs"></select><input type="text" id="floor1" class="bigInputs"
+									style="display: none;" /></li>
+									
+								<%--<li style="display:none;"><label for="office">Office:</label> <select id="campus"
+									class="bigInputs"></select><br/></li> --%>
+									
+							<li class="borderBelow"></li>
+							</ul>
+						</div>
+
+						<ul class="form division1">
+							<li id="lod1" style="display: none;"><label><spring:message code="lbs.label.floorlod"/> :</label>
+								<select id="lodFloor"
+								class="smallSelect">
+									<option value="">Select</option>
+									<c:forEach var="lbsFloorLOD" items="${lbsFloorLOD}">
+                                   <option value="${lbsFloorLOD.key}">${lbsFloorLOD.value}</option>
+                                    </c:forEach>
+							</select></li>
+							<li id="viewGrid" style="display: none;">
+								<a href="#" id="addressGridLink">View Grid</a>
+								<div id="addressXYLblDiv">
+									<label id="addressXYLbl">Grid X/Y : </label><label id="addressCoords"></label>
+								</div>
+							</li>
+						</ul>
+
+						<span style="display: none;"> <form:input
+								path="serviceRequest.installAddress.physicalLocation1"
+								id="bldng1" /> <form:input
+								path="serviceRequest.installAddress.physicalLocation2" id="flr1" />
+							<form:input path="serviceRequest.installAddress.zoneName"
+								id="zone1" /> <form:input id="campus1"
+								path="serviceRequest.installAddress.campusName" />
+						</span>
+					</div>
 					<!-- Hidden fields to bind the address data with form -->
 					<span style="display: none">
 						<form:input id="pickupAddressId" path="serviceRequest.installAddress.addressId" />
@@ -284,6 +337,23 @@ ul.form img.dhx_combo_img {
 							        <form:input id="pickupAddresssavedErrorMessage" path="serviceRequest.installAddress.savedErrorMessage" />
 							        <form:input id="pickupAddressisAddressCleansed" path="serviceRequest.installAddress.isAddressCleansed" />
 						<form:input	id="installLBSAddressFlag" path="serviceRequest.installAddress.lbsAddressFlag" />
+						
+						
+						<form:input	id="isRequestForBuilding" path="serviceRequest.installAddress.isRequestForBuilding" />
+						<form:input	id="isRequestForFloor" path="serviceRequest.installAddress.isRequestForFloor" />
+						
+						<form:input	id="notesForNewBuilding" path="notesForNewBuilding" />
+						
+						<form:input	id="lodAddressInput" path="serviceRequest.installAddress.levelOfDetails" />
+						<form:input	id="lodFloorInput" path="serviceRequest.installAddress.floorLevelOfDetails" />
+						
+						<form:input
+						id="addressCoordinatesXPreDebriefRFV" path="serviceRequest.installAddress.coordinatesXPreDebriefRFV" />
+						<form:input
+						id="addressCoordinatesYPreDebriefRFV" path="serviceRequest.installAddress.coordinatesYPreDebriefRFV" />
+						
+					
+						
 						
 					</span>
 			</div><!-- infoBox columnInner rounded shadow -->
@@ -416,15 +486,169 @@ function urlParams(){
 }
 var urlParamsObj=new urlParams();
 
+$('#lbsAddressFlagSelect').change(function(){
+
+	 setDefaultValues(null);
+
+	  var lbsAddressFlagSelect = $("#lbsAddressFlagSelect").val();     
+	  if(lbsAddressFlagSelect=="Y")
+			{
+				$("#installLBSAddressFlag").val("true");
+			}
+      else
+			{
+				$("#installLBSAddressFlag").val("false");	
+			}
+	
+	   if(lbsAddressFlagSelect=="Y")
+			{
+        		lodCheck();
+			}
+	   else
+			{
+				loadBuildingFloorText();
+				jQuery("#lbsAD,.borderBelow").show();
+				jQuery("#viewGrid").hide();
+				clearGridValues();
+			}
+	
+});
+
+
+$('#lodAddress').change(function(){
+	   
+	  setDefaultValues("lodchange");
+	  lodCheck();		
+});
+
+$('#lodFloor').change(function(){
+
+	if($('#lodFloor').val().toLowerCase()=== "grid level")
+		{
+			
+			$("#viewGrid").show();
+		}
+	else
+		{
+			$("#viewGrid").hide();
+			clearGridValues();
+			
+		}
+		
+});
+
+
+function lodCheck()
+{
+
+	jQuery("#bldng").val("");
+	jQuery("#physicalLocation1h").val("");
+	jQuery("#physicalLocation2h").val("");
+	jQuery("#physicalLocation3h").val("");
+	jQuery("#physicalLocation1").val("");
+	jQuery("#physicalLocation2").val("");
+	jQuery("#physicalLocation3").val("");
+	jQuery("#notesForNewBuilding").val("");
+	jQuery("#office").val("");
+	jQuery("#building1").hide();
+	jQuery("#floor1").hide();
+	jQuery("#viewGrid").hide();
+	jQuery("#lodFloor").val("");
+	
+	
+	var lodAddress= $("#lodAddress").val();
+	
+	    if(lodAddress.toLowerCase()=="")
+	     {
+	      	loadBuildingFloorText();
+	      	jQuery("#lbsAD,.borderBelow").show();
+	      	jQuery("#lod").show();
+	     }
+	    else if(lodAddress.toLowerCase() === "street level")
+		{
+			loadBuildingFloorText();
+			jQuery("#lbsAD,.borderBelow").show();
+			jQuery("#lod").show();
+		}
+	    else if(lodAddress.toLowerCase() === "floor level" || lodAddress.toLowerCase() === "grid level")
+		{
+			loadBuildingFloorDropDown();
+			var addressId=document.getElementById("pickupAddressId").value;
+        	loadCoutrySateCitySiteBuilding(addressId);
+        	jQuery("#lodFloor").val(lodAddress);
+        	jQuery('#lodFloor').attr('disabled', true);
+        
+        if(lodAddress.toLowerCase()=== "grid level")
+        	{
+        		jQuery("#viewGrid").show();
+        	}
+		}
+		else if(lodAddress.toLowerCase() === "mix - see floor")
+		{
+			
+			loadBuildingFloorDropDown();
+			var addressId=document.getElementById("pickupAddressId").value;
+    		loadCoutrySateCitySiteBuilding(addressId);
+    		var lodFloor=$("#lodFloorInput").val();
+    		jQuery('#lodFloor').attr('disabled', true);
+			jQuery("#lodFloor").val(lodFloor);
+	    		if(lodFloor !=undefined && lodFloor!="" && lodFloor.toLowerCase() === "grid level")
+	   			 {
+					jQuery("#viewGrid").show();
+	   			 }
+ 
+	}
+else
+	{
+	loadBuildingFloorText();
+	jQuery("#lbsAD,.borderBelow").show();
+	}
+	    
+}
 
 $('#bldng').change(function(){
-	urlParamsObj.setDefaultHTMlAt('flr');
-	urlParamsObj.setDefaultHTMlAt('campus');
 	
-		jQuery('#bldng1').val(jQuery("#bldng option:selected").text());
+	
+	 $("#building1").hide();
+	 $("#floor1").hide();
+	 $("#building1").val("");
+	 $("#floor1").val(""); 
+     var selectedBuilding=$("#bldng").val();
+       
+       urlParamsObj.setDefaultHTMlAt('flr');
+        $('#flr').append("<option value='requestforfloor'>Request For Floor</option>");
+       urlParamsObj.setDefaultHTMlAt('campus');
+	
+		
+	 if(selectedBuilding.toLowerCase()=="requestforbuilding")
+	 {
+		$("#building1").show();
+		jQuery("#flr option[value='requestforfloor']").attr("selected", "selected");
+		jQuery("#flr").attr('disabled',"true");
+		$("#floor1").show();
+		
+	 }
+	 else
+	{ 
+    	jQuery('#bldng1').val(jQuery("#bldng option:selected").text());
 		jQuery('#physicalLocation1h').val(jQuery("#bldng option:selected").val());
+	}
+
+ 	var addressLevelOfDetails = $.trim($("#lodAddress").val());
+	if(addressLevelOfDetails.toLowerCase() === "mix - see floor")
+	{
+		$("#viewGrid").hide();
+		clearGridValues();
+		jQuery("#lodFloor").attr('disabled',true);
+		jQuery('#lodFloor').val("");
+		$("#lodFloorInput").val("");
+
+		if(selectedBuilding.toLowerCase()=="requestforbuilding")
+			jQuery("#lodFloor").attr('disabled',false);
+	}
 	
 	if($(this).val()==""){
+		$('#flr').attr('disabled',false);
 		return;
 	}
 	urlParamsObj.setDropParamsToObj();	
@@ -432,6 +656,8 @@ $('#bldng').change(function(){
 	$('#btnContinue').attr('disabled',true);
 	getSite("buildingchange");
 	getFloor("buildingchange");
+	
+ 
 });
 function getFloor(p){
 	
@@ -471,7 +697,8 @@ urlParamsObj["state"]=district+"^d";
 	var url=appendURLPrams("${floorURL}",urlParamsObj);
 	
 	$.get(url,function(response){
-		$('#flr').attr('disabled',false);
+		if($("#bldng").val().toLowerCase()!=="requestforbuilding")
+			$('#flr').attr('disabled',false);
 		$('#btnContinue').attr('disabled',false);
 		$('#flr').append(response);
 		
@@ -530,16 +757,47 @@ urlParamsObj["state"]=district+"^d";
 
 $('#flr').change(function(){
 	
-		jQuery('#flr1').val(jQuery("#flr option:selected").text());
-		jQuery('#physicalLocation2h').val(jQuery("#flr option:selected").val());
+	    $("#floor1").hide();
+		$("#floor1").val("");
+		
+		var selectedFloor=$("#flr").val();
+		if(selectedFloor.toLowerCase()=="requestforfloor")
+		{
+			jQuery('#floor1').show();
+		}
+		else
+		{
+			jQuery('#flr1').val(jQuery("#flr option:selected").text());
+			jQuery('#physicalLocation2h').val(jQuery("#flr option:selected").val());
+		}
 		$("#campus option").each(function() {
            
-       if( $(this).prop('text') != "" ) { 
-        	$(this).attr('selected','selected');
+       		if( $(this).prop('text') != "" ) { 
+        		$(this).attr('selected','selected');
         	}
-    });
+   		});
 		jQuery('#campus1').val(jQuery("#campus option:selected").text());
 		jQuery('#campush').val(jQuery("#campus option:selected").val());
+
+		if($("#lodAddress").val().toLowerCase() === "mix - see floor")
+		{ 
+			var lodFloorAttr=$("#flr option:selected").attr("lod");
+			jQuery('#lodFloor').val(lodFloorAttr);
+			$("#viewGrid").hide();
+			clearGridValues();
+			
+			if($("#flr option:selected").attr("lod") != undefined &&
+				$.trim($("#flr option:selected").attr("lod").toLowerCase()) === "grid level")
+			{
+				
+				$("#viewGrid").show();
+			}
+
+			if( $(this).val())
+				$("#lodFloor").attr("disabled", false);
+			else
+				$("#lodFloor").attr("disabled", true);
+		}
 	
 });
 function getZone(p){
@@ -573,47 +831,96 @@ function appendURLPrams(url,paramsObj){
 
 function loadCoutrySateCitySiteBuilding(addressId){
 	
-	urlParamsObj.clearHtmlAfter('bldng');
+	 jQuery("#lbsAddressFlagSelect option[value='Y']").attr("selected", "selected");
+	 urlParamsObj.clearHtmlAfter('bldng');
+	 urlParamsObj.setDefaultHTMlAt('bldng');
 	
-	urlParamsObj.setDefaultHTMlAt('bldng');
-	
+	 $("#bldng").append("<option value='requestforbuilding'>Request For Building</option>");
+	 $('#flr').append("<option value='requestforfloor'>Request For Floor</option>");
+	 
 	urlParamsObj=new urlParams();
 	var url=appendURLPrams("${getAllLocationURL}&frCal=true&aid="+addressId,urlParamsObj);
 	urlParamsObj.disableAll();
 	$.getJSON(url,function(response){
 		urlParamsObj.enableAll();	
+		if(response.building =="")
+			{
+				$("#bldng").val("requestforbuilding");
+				$("#bldng").attr("disabled",true);
+				$("#building1").show();
+				$("#building1").val($("#bldng1").val());
+				$('#flr').val("requestforfloor");
+				$("#flr").attr("disabled",true);
+				$("#floor1").show();
+				$("#floor1").val($("#flr1").val());
+				
+					if($("#lodAddress").val().toLowerCase() === "mix - see floor")
+						$("#lodFloor").attr("disabled", false);
+			}
+		
 		$('#bldng').append(response.building);
 		$('#zone').append(response.zone);
 		lbsInstall();
 		lbsZone();
 	});
-	
 }
 
-//For LBS dropdowns
-if(document.getElementById("installLBSAddressFlag").value !="" && document.getElementById("installLBSAddressFlag").value !=null && document.getElementById("installLBSAddressFlag").value =="true"){
+function loadBuildingFloorText(){
 	
+	jQuery("#selectLocalAddress1").show();
+	jQuery("#selectLocalAddress").hide();
+	//jQuery("#changeHeader").hide();
+	jQuery("#lod").hide();
+	jQuery("#lod1").hide();
+	lbsInstall();
+	lbsFloor();
+	lbsZone();
+	lbsSite();
+	
+}
+function loadBuildingFloorDropDown(){
+
 	jQuery("#selectLocalAddress1").hide();
 	jQuery("#selectLocalAddress").show();
-	var addressId=document.getElementById("pickupAddressId").value;
+	jQuery("#changeHeader").show();
+	jQuery("#lbsAD,.borderBelow").show();
+	jQuery("#lod").show();
+	jQuery("#lod1").show();
+		
+}
+//For LBS dropdowns
+
+
+ coordinates($('#addressCoordinatesXPreDebriefRFV').val(),$('#addressCoordinatesYPreDebriefRFV').val());
+if(document.getElementById("installLBSAddressFlag").value !="" && document.getElementById("installLBSAddressFlag").value !=null && document.getElementById("installLBSAddressFlag").value =="true"){
+	jQuery("#lbsAddressFlagSelect").val("Y");
+	if($("#lodAddressInput").val()!=null && $("#lodAddressInput").val().length >0)
+		{
+			jQuery("#lodAddress").val($('#lodAddressInput').val());
+		}
+	if($("#lodFloorInput").val()!=null && $("#lodFloorInput").val().length >0)
+	{
+		jQuery("#lodFloor").val($('#lodFloorInput').val());
+	}
+	 lodCheck();
 	
-	loadCoutrySateCitySiteBuilding(addressId);
 	}
 
 if(document.getElementById("installLBSAddressFlag").value =='' || document.getElementById("installLBSAddressFlag").value ==null || document.getElementById("installLBSAddressFlag").value =="false"){
 	document.getElementById("installLBSAddressFlag").value="false";
 	
-	jQuery("#selectLocalAddress1").show();
-	jQuery("#selectLocalAddress").hide();
-	lbsInstall();
-	lbsFloor();
-	lbsZone();
-	lbsSite();
+	
+	jQuery("#lbsAddressFlagSelect").val("N");
+	loadBuildingFloorText();
+	if(jQuery("#pickupAddressLine1").val()!="")
+		{
+			jQuery("#lbsAD,.borderBelow").show();
+		}	
+	
 	}
 
 
 	jQuery("#pickupStoreFrontNameLbl").html(document.getElementById("pickupStoreFrontName").value);
-	jQuery("#pickupAddressNameLbl").html(document.getElementById("pickupAddressName").value);
 	document.getElementById("pickupAddressLine1Lbl").innerHTML=document.getElementById("pickupAddressLine1").value;
 	
 	if(document.getElementById("pickupAddressLine2").value !="" && document.getElementById("pickupAddressLine2").value !=null){
@@ -668,71 +975,122 @@ if(document.getElementById("installLBSAddressFlag").value =='' || document.getEl
 	
 	//For LBS dropdowns
 	function lbsInstall(){
-	if(document.getElementById("bldng1").value !="" && document.getElementById("bldng1").value !=null){
-		if(jQuery("#installLBSAddressFlag").val()=="true"){
-			var bldDrop=jQuery("#bldng1").val();
+		if(document.getElementById("bldng1").value !="" && document.getElementById("bldng1").value !=null)
+		{
 			
-			var flrDrop=jQuery("#flr1").val();
-			var insflg=false;
-			
-                       $(function() {
-                           $("#bldng option").each(function() {
-                                
-                               if( $(this).prop('text') == bldDrop ) { $(this).attr('selected','selected');insflg=true; }
-                           });
-                           
-                        	   if(insflg){
-			                        		 $('#bldng').attr('disabled', true);
-			                        	 }
-                           jQuery('#bldng1').val(jQuery("#bldng option:selected").text());
-                           jQuery('#physicalLocation1h').val(jQuery("#bldng option:selected").val());
-                           $('#flr').attr('disabled',true);
-                           $('#btnContinue').attr('disabled',true);
-                           getSite(null);
-                           getFloor(null);
-                                                                      
-                       });
-                    
-                     
-                     installAddressFlag=true;
-		}else{
-			
-		jQuery("#physicalLocation1").val(document.getElementById("bldng1").value);
-		installAddressFlag=true;
+			if(jQuery("#installLBSAddressFlag").val()=="true" &&  jQuery("#lodAddress").val().toLowerCase() !="street level" && jQuery("#lodAddress").val() !="")
+			{
+				if(jQuery('#isRequestForBuilding').val()=="true")
+				{
+					jQuery("#bldng").val('requestforbuilding');
+					jQuery("#flr").val('requestforfloor');
+					$('#bldng').attr('disabled', true);
+					$('#flr').attr('disabled', true);
+					jQuery("#building1").val(jQuery("#bldng1").val())
+					jQuery("#floor1").val(jQuery("#flr1").val())
+					jQuery("#building1").show();
+					jQuery("#floor1").show();
+					jQuery('#bldng1').val(jQuery("#building1").val());
+	                //jQuery('#physicalLocation1h').val(jQuery("#building1").val());
+				}
+				else
+					{
+						var bldDrop=jQuery("#bldng1").val();
+						var flrDrop=jQuery("#flr1").val();
+		
+						var insflg=false;
+				
+	                    $(function() 
+	                    		{
+	                           		$("#bldng option").each(function()
+	                           				{
+	                              
+	                              			 if( $(this).prop('text') == bldDrop )
+	                              			 	{ 
+	                            	  				$(this).attr('selected','selected');
+	                            	  				insflg=true; 
+	                            	  		  	}
+	                           				});
+	                           
+	                        	   if(insflg)
+	                        	   	{
+				                         $('#bldng').attr('disabled', true);
+				                    }
+	                           			jQuery('#bldng1').val(jQuery("#bldng option:selected").text());
+	                           			jQuery('#physicalLocation1h').val(jQuery("#bldng option:selected").val());
+	                           			$('#flr').attr('disabled',true);
+	                           			$('#btnContinue').attr('disabled',true);
+	                           			getSite(null);
+	                           			getFloor(null);
+	                                                                      
+	                        	});
+	                    
+	                     installAddressFlag=true;
+	                  }
+			}
+			else
+			{	
+				jQuery("#physicalLocation1").val(document.getElementById("bldng1").value);
+				installAddressFlag=true;
+			}
 		}
-	}
 	}
 	
-	function lbsFloor(p){
+	function lbsFloor(p)
+	{
 		
-	if(document.getElementById("flr1").value !="" && document.getElementById("flr1").value !=null){
-		if(jQuery("#installLBSAddressFlag").val()=="true"){
-			
-			var flrflg=false;
-			 $(function() {
-				 if(p!="buildingchange"){
+		if(document.getElementById("flr1").value !="" && document.getElementById("flr1").value !=null)
+		{
+			 
+			if(jQuery("#installLBSAddressFlag").val()=="true" &&  jQuery("#lodAddress").val().toLowerCase() !="street level" && jQuery("#lodAddress").val() !="")
+			{
+				if(jQuery('#isRequestForFloor').val()=="true")
+				{
+					jQuery("#flr").val('requestforfloor');
+			        jQuery("#floor1").val(jQuery("#flr1").val())
+			        jQuery("#floor1").show();
+					 $('#flr').attr('disabled', true);
+					 jQuery('#flr1').val(jQuery("#floor1").val());
+	                 jQuery('#physicalLocation2h').val(jQuery("#floor1").val());
+				}
+					
+				else
+				{
+					var flrflg=false;
+					$(function()
+							{
+					 			if(p!="buildingchange")
+					 			{
+									 $("#flr option").each(function()
+											 {
+												if($(this).prop('text') == jQuery("#flr1").val() ) 
+												{ 
+													$(this).attr('selected','selected');
+													flrflg=true; 
+												}
+	                                         });
+					
+					            }   	
+	                            if(flrflg)
+	                            {
+				                 	$('#flr').attr('disabled', true);
+				                }
 					 
-				 $("#flr option").each(function() {
-                        
-                     if( $(this).prop('text') == jQuery("#flr1").val() ) { $(this).attr('selected','selected');flrflg=true; }
-                 });
+	                            jQuery('#flr1').val(jQuery("#flr option:selected").text());
+	                            jQuery('#physicalLocation2h').val(jQuery("#flr option:selected").val());
+	               
+	                        });
 				
-				 }   	
-             if(flrflg){
-			                        		 $('#flr').attr('disabled', true);
-			                        	 }
-				 
-                 jQuery('#flr1').val(jQuery("#flr option:selected").text());
-                 jQuery('#physicalLocation2h').val(jQuery("#flr option:selected").val());
-               
-             });
+								installAddressFlag=true;
+				
+				}
+			}
+			else
+			   {
+				jQuery("#physicalLocation2").val(document.getElementById("flr1").value);
+				installAddressFlag=true;
+			   }
 			
-			installAddressFlag=true;
-		}else{
-		jQuery("#physicalLocation2").val(document.getElementById("flr1").value);
-		
-		installAddressFlag=true;
-		}
 		}
 	}
 	
@@ -740,7 +1098,7 @@ if(document.getElementById("installLBSAddressFlag").value =='' || document.getEl
 	function lbsSite(p){
 		
 		if(document.getElementById("campus1").value !="" && document.getElementById("campus1").value !=null){
-			if(jQuery("#installLBSAddressFlag").val()=="true"){
+			if(jQuery("#installLBSAddressFlag").val()=="true" &&  jQuery("#lodAddress").val().toLowerCase() !="street level" && jQuery("#lodAddress").val() !=""){
 				
 				var siteflg=false;
 				 $(function() {
@@ -869,7 +1227,62 @@ function removeFile(fileName) {
 
 function submitRequest(){
 	
+	var lbsAddressFlagSelect = $("#lbsAddressFlagSelect").val();  
+	if(lbsAddressFlagSelect=="Y")
+			{
+				$("#installLBSAddressFlag").val("true");
+			}
+    else
+			{
+				$("#installLBSAddressFlag").val("false");	
+			}
+       
+                $("#lodAddressInput").val($("#lodAddress").val());
+                $("#lodFloorInput").val($("#lodFloor").val());
+        
+       var buildingSelected=jQuery("#bldng option:selected").val();
+       var floorSelected=jQuery("#flr option:selected").val();
+       
+       if(buildingSelected ==='requestforbuilding')
+    	{
+    	   	jQuery('#isRequestForBuilding').val("true");
+    	}
+       if(floorSelected ==='requestforfloor')
+	   {
+	   		jQuery('#isRequestForFloor').val("true");
+	   } 
+       
+	if($("#building1").val()!="")
+	{
+		jQuery('#isRequestForBuilding').val("true");
+		jQuery('#bldng1').val(jQuery("#building1").val());
+		jQuery('#physicalLocation1h').val("");
+	}
+	if($("#floor1").val()!="")
+	{   
+		jQuery('#isRequestForFloor').val("true");
+        jQuery('#flr1').val(jQuery("#floor1").val());
+		jQuery('#physicalLocation2h').val("");
+	}
 	
+	
+	var isRequestForBuilding = $("#isRequestForBuilding").val();  
+	var isRequestForFloor = $("#isRequestForFloor").val();  
+	
+	if(isRequestForBuilding && isRequestForFloor )
+		{
+	
+	    if($("#notesForNewBuilding").val().indexOf("New building and floor is being requested") <0)
+		$("#notesForNewBuilding").val("New building and floor is being requested");
+		}
+	
+	else if(isRequestForFloor && !isRequestForBuilding)
+	{
+		if($("#notesForNewBuilding").val().indexOf("New floor is being requested") <0)
+		$("#notesForNewBuilding").val("New floor is being requested");
+	}
+	
+
 	
 	window.parent.document.getElementById("validationErrors").style.display = 'none';
 	window.parent.document.getElementById("exceptionsDiv").style.display = 'none';
@@ -919,49 +1332,49 @@ if(!selectAddressFlag)
 	}
 	<%--Changed for LBS --%>
 	var lbsaddressflagins=jQuery("#installLBSAddressFlag").val();
-	if(lbsaddressflagins=="true"){
+	var lodAddressLevel=jQuery("#lodAddress").val();
+	if(lbsaddressflagins=="true" && lodAddressLevel!="" && lodAddressLevel.toLowerCase()!="street level"){
 		
+		 if(isRequestForBuilding =="true")
+			 {
+				if(jQuery('#building1').val() ==''||jQuery('#building1').val() == null)
+					{
+					errorList = errorList +"<li><strong><spring:message code='lbs.label.install.building'/></strong></li>";
+					jQuery('#building1').addClass('errorColor');
+					jQuery(document).scrollTop(0);
+					}
+			 }
+		 else
+			 { 
+			 if(jQuery('#physicalLocation1h').val() ==''||jQuery('#physicalLocation1h').val() == null )
+			 	{
+				 
+					errorList = errorList +"<li><strong><spring:message code='lbs.label.install.building'/></strong></li>";
+					jQuery('#bldng').addClass('errorColor');
+					jQuery(document).scrollTop(0);
+				}
+			 }
+		 if(isRequestForFloor =="true")
+		 {
+			if(jQuery('#floor1').val() ==''||jQuery('#floor1').val() == null)
+				{
+				errorList = errorList +"<li><strong><spring:message code='lbs.label.install.floor'/></strong></li>";
+				jQuery('#floor1').addClass('errorColor');
+				jQuery(document).scrollTop(0);
+				}
+		 }
+		 else
+		 { 
+		 if(jQuery('#physicalLocation2h').val() ==''||jQuery('#physicalLocation2h').val() == null )
+		 	{
+			 
+			   	errorList = errorList +"<li><strong><spring:message code='lbs.label.install.floor'/></strong></li>";
+				jQuery('#flr').addClass('errorColor');
+				jQuery(document).scrollTop(0);
+			}
+		 }
 		
-		if(jQuery('#physicalLocation1h').val() == ''||jQuery('#physicalLocation1h').val() == null ){
-			
-			errorList = errorList +"<li><strong><spring:message code='lbs.label.install.building'/></strong></li>";
-			jQuery('#bldng').addClass('errorColor');
-			jQuery(document).scrollTop(0);
-			
-		}
-		if(jQuery('#physicalLocation2h').val() == ''||jQuery('#physicalLocation2h').val() == null){
-			
-			errorList = errorList +"<li><strong><spring:message code='lbs.label.install.floor'/></strong></li>";
-			jQuery('#flr').addClass('errorColor');
-			jQuery(document).scrollTop(0);
-			
-		}
 	}
-	else
-		{
-		if(document.getElementById('physicalLocation1').value ==''){
-	    	
-			errorList = errorList + "<li><strong><spring:message code='requestInfo.label.validation.buildingMandatory'/></strong></li>";
-			
-			jQuery('#physicalLocation1').addClass('errorColor');
-			
-		}
-	if(document.getElementById('physicalLocation2').value ==''){
-		
-		errorList = errorList +"<li><strong><spring:message code='requestInfo.label.validation.floorMandatory'/></strong></li>";
-		
-		jQuery('#physicalLocation2').addClass('errorColor');
-		
-	}
-	if(document.getElementById('physicalLocation3').value ==''){
-		
-		errorList = errorList + "<li><strong><spring:message code='requestInfo.label.validation.officeMandatory'/></strong></li>";
-		
-		jQuery('#physicalLocation3').addClass('errorColor');
-		
-	}
-
-		}
 	
 	if(errorList != ""){
 		jQuery('#jsValidationErrors',window.parent.document).empty();
@@ -1042,6 +1455,12 @@ function wantMove() {
 }
 
 jQuery(document).ready(function() {
+	
+	/* if($("#lodAddressInput").val()!="")
+		{
+		var levelOfDetails=$("#lodAddressInput").val();
+		jQuery("#lodAddress option[value="+levelOfDetails+"]").attr("selected", "selected");
+		} */
 	 if($("#moveAsset").is(":checked"))
 	   {
 	           $("#moveAsset").val(true);
@@ -1066,6 +1485,19 @@ jQuery(document).ready(function() {
 		}
 	
 		jQuery('#notesOrComments').bind('mousedown focus',function(){
+		jQuery(this).removeClass('errorColor');});
+	
+		
+		jQuery('#bldng').bind('mousedown focus',function(){
+		jQuery(this).removeClass('errorColor');});
+			
+		jQuery('#flr').bind('mousedown focus',function(){
+		jQuery(this).removeClass('errorColor');});
+		
+		jQuery('#building1').bind('mousedown focus',function(){
+		jQuery(this).removeClass('errorColor');});
+				
+		jQuery('#floor1').bind('mousedown focus',function(){
 		jQuery(this).removeClass('errorColor');});
 		
 		jQuery('#physicalLocation1').bind('mousedown focus',function(){
@@ -1211,12 +1643,12 @@ function popupAddress(hyperlinkId){
 	return false;
 }
 function addServiceAddressElement(addressId,addressName,addressLine1,addressLine2, 
-		addressCity,addressState,addressProvince,addressCountry,addressPostCode,storefrontName,physicalLoc1,physicalLoc2,physicalLoc3,favorite,officeNumber,district,county,countryISO,region,stateCode,lbsAddressFlag)
+		addressCity,addressState,addressProvince,addressCountry,addressPostCode,storefrontName,physicalLoc1,physicalLoc2,physicalLoc3,favorite,officeNumber,district,county,countryISO,region,stateCode,lbsAddressFlag,levelOfDetails)
 <%--Ends--%>
 {
 	<%--Changes for defect 7896 MPS 2.1 --%>
-	jQuery('#assetDetailErrors').hide();
-	jQuery('#errorMsgPopup_CatalogDtl').hide();
+	jQuery('#jsValidationErrors').hide();
+	jQuery(':input').removeClass('errorColor');	
 	jQuery('#diffAddressLink').html("<spring:message code="requestInfo.link.selectADifferentAddress"/>").attr('title',"<spring:message code="requestInfo.link.selectADifferentAddress"/>");
 	
 	<%--ENDS Changes for defect 7896 MPS 2.1 --%>
@@ -1238,30 +1670,39 @@ function addServiceAddressElement(addressId,addressName,addressLine1,addressLine
 		<%--Ends--%>
 		
 		//added for LBS
-		if(lbsAddressFlag=="true"){
-			
-		
-		jQuery("#selectLocalAddress1").hide();
-		jQuery("#selectLocalAddress").show();
-		//setting values to ""
-		jQuery("#bldng1").val("");
-		jQuery("#flr1").val("");
-		jQuery("#zone1").val("");
-		jQuery('#campus1').val("");
-		jQuery('#campush').val("");
-		jQuery("#physicalLocation1h").val("");
-		jQuery("#physicalLocation2h").val("");
-		jQuery("#physicalLocation3h").val("");
-		jQuery("#zoneh").val("");
-		jQuery("#physicalLocation1").val("");
-		jQuery("#physicalLocation2").val("");
-		jQuery("#physicalLocation3").val("");
-		jQuery("#office").val("");
-		loadCoutrySateCitySiteBuilding(addressId);
+		if(lbsAddressFlag=="true" || lbsAddressFlag=="Y"){	
+			//setting values to ""
+			jQuery("#bldng").val("");
+			jQuery("#bldng1").val("");
+			jQuery("#flr1").val("");
+			jQuery("#zone1").val("");
+			jQuery('#campus1').val("");
+			jQuery('#campush').val("");
+			jQuery("#physicalLocation1h").val("");
+			jQuery("#physicalLocation2h").val("");
+			jQuery("#physicalLocation3h").val("");
+			jQuery("#zoneh").val("");
+			jQuery("#physicalLocation1").val("");
+			jQuery("#physicalLocation2").val("");
+			jQuery("#physicalLocation3").val("");
+			jQuery("#office").val("");
+			jQuery("#lodAddressInput").val("");
+			jQuery("#lodFloorInput").val("");
+			jQuery("#notesForNewBuilding").val("");
+			jQuery("#lbsAddressFlagSelect").val("Y");
+			jQuery("#lodAddress").val(levelOfDetails);
+			jQuery("#flr").val("");
+			jQuery("#building1").val("");
+			jQuery("#floor1").val("");
+			jQuery("#isRequestForBuilding").val("");
+			jQuery("#isRequestForFloor").val("");
+			jQuery("#viewGrid").hide();
+			clearGridValues();
+			lodCheck();
+			//loadCoutrySateCitySiteBuilding(addressId);
 		
 		}
 		else{
-			
 			//setting values to ""
 			jQuery("#bldng1").val("");
 			jQuery("#flr1").val("");
@@ -1276,8 +1717,25 @@ function addServiceAddressElement(addressId,addressName,addressLine1,addressLine
 			jQuery("#physicalLocation2").val("");
 			jQuery("#physicalLocation3").val("");
 			jQuery("#office").val("");
-			jQuery("#selectLocalAddress1").show();
+			jQuery("#bldng").val("");
+			jQuery("#flr").val("");
+			jQuery("#building1").val("");
+			jQuery("#floor1").val("");
+			jQuery("#isRequestForBuilding").val("");
+			jQuery("#isRequestForFloor").val("");
+			jQuery("#notesForNewBuilding").val("");
+			jQuery("#lodAddressInput").val("");
+			jQuery("#lodFloorInput").val("");
+			jQuery("#lbsAddressFlagSelect").val("N");
 			jQuery("#selectLocalAddress").hide();
+			jQuery("#selectLocalAddress1").show();
+			jQuery("#changeHeader").hide();
+			jQuery("#lbsAD,.borderBelow").show();
+			jQuery("#lod").hide();
+			jQuery("#lod1").hide();
+			jQuery("#viewGrid").hide();
+			clearGridValues();
+			
 		}
 		
 	}
@@ -1413,4 +1871,44 @@ else {
 	showMapsContacts();
 }
 
+$('#addressGridLink').click(function(){openPopupMap("moveTo",'${mdmId}','${mdmLevel}','${formPost}','${emailId}',$("#physicalLocation1h").val(),$("physicalLocation2h").val());});
+
+
+
+function setDefaultValues(action)
+{
+	jQuery("#bldng").val("");
+	jQuery("#bldng1").val("");
+	jQuery("#flr1").val("");
+	jQuery("#flr").val("");
+	jQuery("#building1").val("");
+	jQuery("#floor1").val("");
+	jQuery("#isRequestForBuilding").val("");
+	jQuery("#isRequestForFloor").val("");
+	jQuery("#notesForNewBuilding").val("");
+	jQuery("#zone1").val("");
+	jQuery('#campus1').val("");
+	jQuery('#campush').val("");
+	jQuery("#physicalLocation1h").val("");
+	jQuery("#physicalLocation2h").val("");
+	jQuery("#physicalLocation3h").val("");
+	jQuery("#zoneh").val("");
+	jQuery("#physicalLocation1").val("");
+	jQuery("#physicalLocation2").val("");
+	jQuery("#physicalLocation3").val("");
+	jQuery("#office").val("");
+	jQuery("#lodAddressInput").val("");
+	jQuery("#lodFloor").val("");
+	jQuery("#lodFloorInput").val("");
+
+	if(action == undefined)
+		jQuery("#lodAddress").val("");
+}
+
+function clearGridValues()
+{
+	$('#addressXYLbl').html("Grid X/Y : ");
+	$('#addressCoordinatesXPreDebriefRFV').val("");
+	$('#addressCoordinatesYPreDebriefRFV').val("");
+}
 </script>

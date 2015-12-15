@@ -988,7 +988,7 @@ function goBack()
 				}
 			// region changed to district for MPS 2.1
 			if(${assetDetailPageForm.shipToAddress.district != '' && assetDetailPageForm.shipToAddress.district!=null}){
-				jQuery("#billToAddressRegionLB").html(',&nbsp;'+'${assetDetailPageForm.shipToAddress.district}');
+				jQuery("#billToAddressRegionLB").html(',&nbsp;'+"${assetDetailPageForm.shipToAddress.district}"); // Modified for the CR CHG0004596 AMS 15.11 Release 
 				jQuery("#billToAddressRegionLB").show();
 				}
 
