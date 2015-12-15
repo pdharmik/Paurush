@@ -95,7 +95,7 @@
 				
 				<table><thead><tr>
 				
-					<th style="border-left:0">Actual</th>
+					<th style="border-left:0"><spring:message code="fleetmanagement.deviceStatusPopup.headers.actual"/></th>
 					<th><spring:message code="deviceStatus.tbheader.expected"/></th>
 					<th><spring:message code="deviceStatus.tbheader.utilizationLevel"/></th>
 					</tr>
@@ -115,7 +115,7 @@
 			</script>
 			<script id="alert-popup-Details" type="text/x-handlebars-template">
 				
-				<table><thead><tr>	<th style="border-left:0">Alert Type</th>
+				<table><thead><tr>	<th style="border-left:0"><spring:message code="fleetmanagement.deviceStatusPopup.headers.alerttype"/></th>
 									<th><spring:message code="requestInfo.info.heading.datetime"/></th>
 									<th><spring:message code="pageCntUpload.ltpc"/></th>
 									<th><spring:message code="pageCntUpload.color"/></th>

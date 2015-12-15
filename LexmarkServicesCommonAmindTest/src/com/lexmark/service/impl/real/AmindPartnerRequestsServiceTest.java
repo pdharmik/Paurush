@@ -369,6 +369,14 @@ public class AmindPartnerRequestsServiceTest extends AmindServiceTest {
 		TechnicianListResult r = service.retrieveTechnicianList(c);
 		MiscTest.print(r.getAccountContactList());
 	}
+	
+	@Test
+	public void testRetrieveTechnicianList_Correct_Technician_Names_Missing() throws Exception {
+		TechnicianListContract c = new TechnicianListContract();
+		c.setPartnerAccountId("1-HOZ0YV");
+		TechnicianListResult r = service.retrieveTechnicianList(c);
+		MiscTest.print(r.getAccountContactList());
+	}
 
 	@Test
 	public void testUpdatePartnerUserFavoriteAddress() throws Exception {
@@ -4595,6 +4603,30 @@ public class AmindPartnerRequestsServiceTest extends AmindServiceTest {
 		contract.setSessionHandle(crmSessionHandle);
 		
 		PartnerAddressListResult result = service.retrievePartnerAddressList(contract);
+		System.out.println("List size: " + result.getAddressList().size());
+		System.out.println("TotalCount: " + result.getTotalCount());
+	}
+	
+	@Test
+	public void testRetrievePartnerAddressList_INC0162806() throws Exception {
+		PartnerAddressListContract contract = new PartnerAddressListContract();
+		contract.setAccountID("1-63A999F");
+		contract.setContactId("1-NJKMSAJ");
+		contract.setFavoriteFlag(false);
+		Map<String, Object> sortCriteria = new HashMap<String, Object>();
+		sortCriteria.put("storeFrontName", "DESCENDING");
+		contract.setSortCriteria(sortCriteria);
+		contract.setNewQueryIndicator(true);
+		contract.setStartRecordNumber(0);
+		contract.setIncrement(40);
+		contract.setSessionHandle(crmSessionHandle);
+		
+		PartnerAddressListResult result = service.retrievePartnerAddressList(contract);
+		for (GenericAddress addr : result.getAddressList()) {
+			System.out.println("AddressId: " + addr.getAddressId());
+//			System.out.println("AddressName: " + addr.getAddressName());
+//			System.out.println("AddressLine1: " + addr.getAddressLine1());
+		}
 		System.out.println("List size: " + result.getAddressList().size());
 		System.out.println("TotalCount: " + result.getTotalCount());
 	}

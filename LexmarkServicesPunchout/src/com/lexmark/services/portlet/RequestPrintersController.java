@@ -350,6 +350,11 @@ public class RequestPrintersController {
 				totalCount = totalCount + taskList.get(j).get().getTotalCount();
 			}
 		
+			
+		for(Bundle b:bundleItems){
+			LOGGER.debug(b);
+		}	
+			
 		model.addAttribute(PunchoutConstants.BUNDLE_ITEMS, bundleItems);		
 		model.addAttribute(PunchoutConstants.TOTAL_COUNT, totalCount);		
 		//model.addAttribute(PunchoutConstants.START_POS, contract.getStartRecordNumber());		
@@ -377,12 +382,17 @@ public class RequestPrintersController {
 	public String retrieveOptionsWarranties(ResourceRequest request,
 			@RequestParam(value="bundleId", required=false) String bundleId,
 			@RequestParam(value="cartType", required=false) String cartType,
+			@RequestParam(value="cNum",required=false) String contractnumber,
 			ResourceResponse response, Model model,
 			PortletSession session) throws Exception{
 		LOGGER.debug("[ in generate options warranties ]");
 		request.setAttribute("callType", "retrieveBundleGrid");
-		
-		PunchoutAccount punchAcnt = (PunchoutAccount) session.getAttribute(PunchoutConstants.PUNCHOUT_ACCOUNT, PortletSession.APPLICATION_SCOPE);
+		/* commented to remove hardcoding of punchout account from 
+		 * Changed on 18th Nov 2015
+		 * Pick the account from the contractnumber selected by the user from the bundle
+		 * */
+		//PunchoutAccount punchAcnt = (PunchoutAccount) session.getAttribute(PunchoutConstants.PUNCHOUT_ACCOUNT, PortletSession.APPLICATION_SCOPE);
+		PunchoutAccount punchAcnt=ControllerUtil.getPunchoutAccountByContractNumber(allAccountInformation.getAllAccountList(), contractnumber);
 		request.setAttribute(PunchoutConstants.PUNCHOUT_ACCOUNT, punchAcnt);
 		//Set the list to bundle which is present in session
 		List<OrderPart> accessories=(ControllerUtil.amindRetrieveAccessoriesB2B(request,orderSuppliesCatalogService,globalService)).getAccessoriesList();

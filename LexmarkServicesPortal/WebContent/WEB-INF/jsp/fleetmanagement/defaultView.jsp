@@ -1505,7 +1505,7 @@ function showPopupMessages(message,callback){
 		$('#assetPageCounts-Multiple').append("<button onClick=\"pgDialog.dialog('close');clearConditions();\" class=\"button_cancel\"><spring:message code="fleetmanagement.headers.backToMap"/></button>");
 		pgDialog=$('#assetPageCounts-Multiple').dialog({
 			autoOpen: false,
-			title: "Update Page Counts",
+			title: "<spring:message code='requestInfo.title.updatePageCounts'/>",
 			modal: true,
 			draggable: false,
 			resizable: false,
@@ -1616,7 +1616,7 @@ function highlightAsset(assetId){
 	
 var deviceStatusDialog=$('#deviceStatusPopUp').dialog({
 	autoOpen: false,
-	title: "Device Status",
+	title: "<spring:message code='fleetmanagement.headers.devicestatus'/>",
 	modal: true,
 	height: 550,
 	width: 800,

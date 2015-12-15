@@ -55,5 +55,13 @@ public class PunchoutAccount implements Serializable {
 	public void setSoldToType(String soldToType) {
 		this.soldToType = soldToType;
 	}
-	
+	public String toString(){
+		return "[Account id="+accountId
+				+" ,AgreementId="+agreementId
+				+" ,ContactId="+contactId
+				+" ,ContractName="+contractName
+				+" ,ContractNumber="+contractNumber
+				+" ,soldTo="+soldTo
+				+" ,soldToType="+soldToType+"]";
+	}
 }

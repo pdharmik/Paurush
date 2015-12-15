@@ -187,7 +187,7 @@
 <script>
 var alertSuppliesArray=[];
 alertSuppliesArray.push({"value":"", "displayValue":"Select Supplies Alert"});
-alertSuppliesArray.push({"value":"Select All", "displayValue":"Select All"});
+alertSuppliesArray.push({"value":"Select All", "displayValue":"<spring:message code='lbs.label.selectAll'/>"});
 <c:forEach items="${alertSupplies}" var="loopStatus">
 alertSuppliesArray.push({"value":"${loopStatus.key}","displayValue":"${loopStatus.value}"});
 </c:forEach>
@@ -195,7 +195,7 @@ alertSuppliesArray.push({"value":"${loopStatus.key}","displayValue":"${loopStatu
 var alertDeviceArray=[];
 
 alertDeviceArray.push({"value":"", "displayValue":"Select Device Alert"});
-alertDeviceArray.push({"value":"Select All", "displayValue":"Select All"});
+alertDeviceArray.push({"value":"Select All", "displayValue":"<spring:message code='lbs.label.selectAll'/>"});
 <c:forEach items="${alertDevice}" var="loopStatus">
 alertDeviceArray.push({"value":"${loopStatus.key}","displayValue":"${loopStatus.value}"});
 </c:forEach>
@@ -203,7 +203,7 @@ alertDeviceArray.push({"value":"${loopStatus.key}","displayValue":"${loopStatus.
 
 var utilizationArray=[];
 utilizationArray.push({"value":"", "displayValue":"Select Utilization Type"});
-utilizationArray.push({"value":"Select All", "displayValue":"Select All"});
+utilizationArray.push({"value":"Select All", "displayValue":"<spring:message code='lbs.label.selectAll'/>"});
 <c:forEach items="${utilization}" var="loopStatus">
 utilizationArray.push({"value":"${loopStatus.key}","displayValue":"${loopStatus.value}"});
 </c:forEach>
@@ -212,7 +212,7 @@ utilizationArray.push({"value":"${loopStatus.key}","displayValue":"${loopStatus.
 
 var reportingStatArray=[];
 reportingStatArray.push({"value":"", "displayValue":"Select Reporting Status"});
-reportingStatArray.push({"value":"Select All", "displayValue":"Select All"});
+reportingStatArray.push({"value":"Select All", "displayValue":"<spring:message code='lbs.label.selectAll'/>"});
 <c:forEach items="${reportingStatus}" var="loopStatus">
 reportingStatArray.push({"value":"${loopStatus.key}","displayValue":"${loopStatus.value}"});
 </c:forEach>

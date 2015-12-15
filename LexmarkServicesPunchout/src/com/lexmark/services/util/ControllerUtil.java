@@ -570,6 +570,20 @@ public class ControllerUtil {
 		}
 		return new PunchoutAccount();
 	}
+	
+	
+	public static PunchoutAccount getPunchoutAccountByContractNumber(List<PunchoutAccount> accounts, String contractnumber){
+		if(accounts.get(0)!=null){
+			for(PunchoutAccount acc:accounts){
+				if(StringUtils.isNotBlank(contractnumber) && StringUtils.isNotBlank(acc.getContractNumber())){
+					return acc;
+				}
+			}
+		}else{
+			return new PunchoutAccount();
+		}
+		return new PunchoutAccount();
+	}
 
 	/**
 	 * @param bulletList 

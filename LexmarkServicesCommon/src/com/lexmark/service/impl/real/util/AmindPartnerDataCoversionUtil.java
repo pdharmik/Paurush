@@ -152,7 +152,7 @@ public class AmindPartnerDataCoversionUtil  {
 			
 			/*partnerInfo*/
 			com.lexmark.domain.Account partnerAccount = new com.lexmark.domain.Account();
-			partnerAccount.setAccountId(assetDo.getCustomerAccountId());   //changed as per Re: INC0129952
+			partnerAccount.setAccountId(assetDo.getPartnerAccountId());   //Changes as per email "Same Account ID issue"
 			partnerAccount.setAccountName(assetDo.getPartnerAccountName());
 			partnerAccount.setOrganizationID(assetDo.getOrganizationId());
 			partnerAccount.setDefaultCurrency(assetDo.getPartnerAccountCurrency());	

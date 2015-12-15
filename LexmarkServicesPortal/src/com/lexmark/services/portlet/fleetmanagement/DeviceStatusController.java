@@ -41,7 +41,7 @@ public class DeviceStatusController {
 		
 		
 		retrieveDropdownValues(request,model);
-		
+		response.setContentType("text/html");
 		return "fleetmanagement/deviceStatus/deviceStatus";
 	}
 	
