@@ -56,6 +56,9 @@
 					<!-- end of addition for employee report -->
 				</div>
 				<div class="portlet-wrap-inner">
+				<div id="fileWindow" style="display:none"><h4><spring:message code="reports.fileerror"/><spring:message code="exception.contactAdmin"/></h4></div>
+			<iframe id="fileFrame" style="display:none ;border: 0px"></iframe>
+			</div>
 					<table >
 						  <tr><td width="800px">
 							<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${definitionDisplayForm.definitionDescription}</span>

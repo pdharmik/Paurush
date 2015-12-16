@@ -787,6 +787,21 @@ public class XmlOutputGenerator {
 					suppliesPartQuantity = session.getAttribute("suppliesPartQuantity",PortletSession.APPLICATION_SCOPE).toString();
 					logger.debug("suppliesPartQuantity from session is ==================== "+suppliesPartQuantity);
 				}
+				
+				Map<String, String> quantityServicesMap = (Map<String,String>)session.getAttribute("quantityServicesMap",PortletSession.APPLICATION_SCOPE);
+				Map<String, String> quantitySuppliesMap =(Map<String,String>)session.getAttribute("quantitySuppliesMap",PortletSession.APPLICATION_SCOPE);
+				
+				String agreementId = (String) session.getAttribute("agreementId");
+				if(null != quantityServicesMap.get(agreementId) && !"".equals(quantityServicesMap.get(agreementId))){
+					servicePartQuantity = quantityServicesMap.get(agreementId);
+				}
+				if(null != quantitySuppliesMap.get(agreementId) && !"".equals(quantitySuppliesMap.get(agreementId))){
+					suppliesPartQuantity = quantitySuppliesMap.get(agreementId);
+				}
+				logger.debug("final servicePartQuantity from session is ==================== "+servicePartQuantity);
+				logger.debug("final suppliesPartQuantity from session is ==================== "+suppliesPartQuantity);
+				logger.debug("aggrement id = "+agreementId);
+				
 				logger.debug("quantity is"+quantity);
 				/*Added for MPS 2.1 Wave 1 Consumables changes*/
 				if(splitterFlag.equalsIgnoreCase("true")){

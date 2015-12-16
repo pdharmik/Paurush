@@ -45,6 +45,9 @@
            		</c:if>
 				<!-- end of addition for employee report -->
             <div class="portlet-wrap-inner"">
+            <div id="fileWindow" style="display:none"><h4><spring:message code="reports.fileerror"/><spring:message code="exception.contactAdmin"/></h4></div>
+			<iframe id="fileFrame" style="display:none ;border: 0px"></iframe>
+			</div>
 					<table width="100%">
 						<tr><td>
 							<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${definitionDesc}</span>

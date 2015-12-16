@@ -25,6 +25,7 @@ import com.amind.session.Session;
 import com.lexmark.contract.SiebelAccountListContract;
 import com.lexmark.domain.Account;
 import com.lexmark.result.AccountFlagResult;
+import com.lexmark.service.impl.real.domain.AccountBasedDo;
 import com.lexmark.service.impl.real.domain.AgreementRelatedAccountsDO;
 import com.lexmark.service.impl.real.domain.CatalogEntitlementAccountDo;
 import com.lexmark.service.impl.real.util.AmindServiceUtil;
@@ -84,7 +85,7 @@ public class AccountFlagService {
 		searchExpressionBOBC.append(""
 					+ buildmdmSearchExpression(mdmId, mdmLevel, FIELD_MAPBOBC, false,
 							false));
-			searchExpressionBOBC.append("AND ([LXK MPS Agree Status] = 'Active' OR [LXK MPS Agree Status]='Current') AND(EXISTS ([LXK SW Entitlement Type] LIKE 'Consumable*' AND [LXK MPS Entitlement End Date] >= '"+dateFormat.format(date)+"'))");
+		searchExpressionBOBC.append("AND ([LXK MPS Agree Status] = 'Active' OR [LXK MPS Agree Status]='Current') AND(EXISTS ([LXK SW Entitlement Type] LIKE 'Consumable*' AND [LXK MPS Entitlement End Date] >= '"+dateFormat.format(date)+"'))");
 
 
 		searchExpression.append("EXISTS ("
@@ -219,6 +220,31 @@ public class AccountFlagService {
 				.query(criteria);
 		if (LangUtil.isNotEmpty(entitlementDoList)) {
 			result.setCatalogEntitlementFlag(true);
+			Map<String, String> tempQuantitySuppliesMap = new HashMap<String, String>();
+			Map<String, String> tempQuantityServicesMap = new HashMap<String, String>();
+			
+			for (AccountBasedDo accountBasedDo : entitlementDoList) {
+				if (accountBasedDo instanceof CatalogEntitlementAccountDo) {
+					CatalogEntitlementAccountDo entitlementDo = (CatalogEntitlementAccountDo) accountBasedDo;
+					if (entitlementDo != null) {
+						if ("Consumables Mgmt Services"
+								.equalsIgnoreCase(entitlementDo
+										.getEntitlementType())) {
+							
+							tempQuantityServicesMap.put(entitlementDo.getAgreementId(), entitlementDo.getMpsQuantity());
+							
+						}
+						if ("Consumables Mgmt Supply"
+								.equalsIgnoreCase(entitlementDo
+										.getEntitlementType())) {
+							tempQuantitySuppliesMap.put(entitlementDo.getAgreementId(), entitlementDo.getMpsQuantity());
+							
+						}
+					}
+				}
+			}
+			result.setQuantityServicesMap(tempQuantityServicesMap);
+			result.setQuantitySuppliesMap(tempQuantitySuppliesMap);
 			result.setAccountList(convertCatalogAccountToAccountList(notNull(entitlementDoList), contractNumber));
 		} else {
 			result.setCatalogEntitlementFlag(false);

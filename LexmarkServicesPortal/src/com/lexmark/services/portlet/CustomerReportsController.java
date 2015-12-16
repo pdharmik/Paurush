@@ -560,10 +560,31 @@ public class CustomerReportsController extends BaseController {
 
 		} catch (IOException e) {
 			logger.debug("IO Exception " + e.getMessage());
-			ServiceStatusUtil.responseResult(response, "exception.customerReports.downloadReport", request.getLocale());
+			
+
+			PrintWriter out = response.getWriter();
+			response.setContentType("text/html");
+			out.print("<h1>" +
+					PropertiesMessageUtil.getPropertyMessage(null,
+							"EXCEPTION_PAGE_COUNTS_FILE_NOT_FOUND",
+							request.getLocale()) +
+					"</h1>");
+			out.flush();
+			out.close();
+			//ServiceStatusUtil.responseResult(response, "exception.customerReports.downloadReport", request.getLocale());
 		} catch (Exception e) {
 			logger.debug("Exception " + e.getMessage());
-			ServiceStatusUtil.responseResult(response, "exception.customerReports.downloadReport", request.getLocale());
+
+			PrintWriter out = response.getWriter();
+			response.setContentType("text/html");
+			out.print("<h1>" +
+					PropertiesMessageUtil.getPropertyMessage(null,
+							"EXCEPTION_PAGE_COUNTS_FILE_NOT_FOUND",
+							request.getLocale()) +
+					"</h1>");
+			out.flush();
+			out.close();
+			//ServiceStatusUtil.responseResult(response, "exception.customerReports.downloadReport", request.getLocale());
 		}
 	}
 
@@ -765,7 +786,7 @@ public class CustomerReportsController extends BaseController {
 		logger.debug("---------------------------in saveReportSchedule b4 api call------------------------------ ");
 		// checking LBS Account Flag start
 		PortletSession session = request.getPortletSession();
-		try{
+	
 		Map<String, String> requestAccessMap = (Map<String, String>) session.getAttribute(ChangeMgmtConstant.USERACCESSMAPATTRIBUTEFORSR, PortletSession.APPLICATION_SCOPE);
 		String fleetManageFlag = requestAccessMap.get("FLEET MANAGER FLAG");
 		logger.debug("LBS account flag is -------------------->>>>>>>>> " + fleetManageFlag);
@@ -809,11 +830,7 @@ public class CustomerReportsController extends BaseController {
 		response.setRenderParameter("action", "showScheduleReportPage");
 		// PARTHA ADDED FOR PAGE REFRESH START
 		request.getPortletSession().setAttribute("navigationFromPage", "Schedule");
-		}catch(Exception e){
-			logger.error("BO report failed");
-			response.setRenderParameter("scheduleSuccess", "failed");
-			response.setRenderParameter("action", "showScheduleReportPage");
-		}
+		
 		// PARTHA ADDED FOR PAGE REFRESH END
 	}
 

@@ -90,6 +90,9 @@
 				<div class="portlet-footer">
 					<div class="portlet-footer-inner"></div>
 				</div>			
+				<div id="fileWindow" style="display:none"><h4><spring:message code="reports.fileerror"/><spring:message code="exception.contactAdmin"/></h4></div>
+			<iframe id="fileFrame" style="display:none ;border: 0px"></iframe>
+			</div>
 			</div>					
 		        <portlet:actionURL var="runNowReport">
 		        	<portlet:param name="action" value="runNowReport"></portlet:param>
@@ -275,7 +278,7 @@
 					var needRefresh = '${refreshStatus}';	
 					if(needRefresh && needRefresh == 'success'){						
 						showMessage("<spring:message code='customerReports.scheduleReport.success'/>","scheduleStatus");
-					}else if(needRefresh && needRefresh =='failed') {showError("<spring:message code='customerReports.scheduleReport.failure'/>","scheduleStatus");}
+					}else if(needRefresh && needRefresh =='failed') {showError("N gün, Başlangıç/Bitiş Günleri\\\'nde seçilen Toplam gün sayısından fazla olamaz.","scheduleStatus");}
 					//PARTHA ADDED FOR PAGE REFRESH END
 					
 					function closeDialog()

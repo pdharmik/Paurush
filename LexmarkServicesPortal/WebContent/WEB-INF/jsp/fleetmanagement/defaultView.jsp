@@ -815,7 +815,7 @@ function showPopupMessages(message,callback){
 			addressPrefPop.setCountry(addressCountry);
 			addressPrefPop.setPostalCode(addressPostCode);
 			dialog.dialog('close');
-			alert(JSON.stringify(addressPrefPop));
+			//alert(JSON.stringify(addressPrefPop));
 			c.__showAddress(addressPrefPop);
 			c.__loadCoutrySateCitySiteBuilding(addressId);//Defined in mapFilters.jsp
 			

@@ -6,8 +6,10 @@ import static org.apache.commons.lang.StringUtils.isNotEmpty;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -35,6 +37,7 @@ import com.lexmark.service.impl.real.domain.SupplyRequestDetailCustomerOrderItem
 import com.lexmark.service.impl.real.domain.SupplyRequestDetailDo;
 import com.lexmark.service.impl.real.util.AmindServiceUtil;
 import com.lexmark.util.LangUtil;
+import com.lowagie.text.pdf.events.IndexEvents.Entry;
 
 public class AmindRequestDataConversionUtil {
 	private static final Logger logger = LogManager.getLogger(AmindRequestDataConversionUtil.class);
@@ -217,27 +220,6 @@ public class AmindRequestDataConversionUtil {
 		if (accountsDo == null) {
 			return new ArrayList<Account>();
 		}
-		String tempQuantitySupplies = null;
-		String tempQuantityServices = null;
-		for (AccountBasedDo accountBasedDo : accountsDo) {
-			if (accountBasedDo instanceof CatalogEntitlementAccountDo) {
-				CatalogEntitlementAccountDo entitlementDo = (CatalogEntitlementAccountDo) accountBasedDo;
-				if (entitlementDo != null) {
-					if ("Consumables Mgmt Services"
-							.equalsIgnoreCase(entitlementDo
-									.getEntitlementType())) {
-						tempQuantityServices = entitlementDo.getMpsQuantity();
-					}
-					if ("Consumables Mgmt Supply"
-							.equalsIgnoreCase(entitlementDo
-									.getEntitlementType())) {
-						tempQuantitySupplies = entitlementDo.getMpsQuantity();
-					}
-				}
-			}
-
-		}
-		
 		List<Account> accounts = new ArrayList<Account>(accountsDo.size());
 		for (AccountBasedDo accountBasedDo : accountsDo) {
 
@@ -268,9 +250,6 @@ public class AmindRequestDataConversionUtil {
 							account.setOrganizationName(entitlementDo.getOrganizationName());
 							account.setEntitlementType(entitlementDo.getEntitlementType());
 							account.setMpsQuantity(entitlementDo.getMpsQuantity());
-							account.setQuantityServices(tempQuantityServices);
-							account.setQuantitySupplies(tempQuantitySupplies);
-							
 							GenericAddress address = new GenericAddress();
 							address.setCountry(accountDo.getAccountCountry());
 							account.setAddress(address);
@@ -795,7 +774,7 @@ public class AmindRequestDataConversionUtil {
 	
 	
 	private static void duplicateAccounts(CatalogEntitlementAccountDo entitlementDo, List<Account> accounts,AgreementRelatedAccountsDO accountDo) {
-
+		
 		for (SuppliesSAPCatalogDo suppliesCatalog : entitlementDo.getSuppliesCatalogDo()) {
 			Account account = new Account();
 			account.setCatalogEntitlementFlag(true);
@@ -814,7 +793,7 @@ public class AmindRequestDataConversionUtil {
 			account.setMpsQuantity(entitlementDo.getMpsQuantity());
 			AmindServiceUtil.populatePaymentMethod(account,entitlementDo.getPaymentMethod());
 
-			//Check for nulls
+//			//Check for nulls
 			ArrayList<String> soldToNumbers = new ArrayList<String>();
 			for (SuppliesSAPCatalogDo suppliesCatalogChild : entitlementDo.getSuppliesCatalogDo()) {
 				if (suppliesCatalogChild.getContractNumber().equalsIgnoreCase(suppliesCatalog.getContractNumber())) {
