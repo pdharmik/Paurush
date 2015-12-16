@@ -58,7 +58,7 @@
 	</div>
 	<div class="buttonContainer">
 		<%--<input type="button" class="button_cancel" value="Cancel" onClick="onClickAssetInfoPG('{{id}}')"/>--%>
-		<input class="button" type="button" value="Update" onClick="submitPageCount('{{id}}')"/>
+		<input class="button" type="button" value="<spring:message code='button.Update'/>" onClick="submitPageCount('{{id}}')"/>
 	</div>
 </div>
 {{/assets}}	
@@ -462,7 +462,7 @@ function MultiAssetSelect(){
 		
 	};
 	this.showError=function(){
-		jAlert("Please select atleast one asset to perform operation!","");
+		jAlert('<spring:message code="lbs.info.PageCount.Alert"/>',"");
 		
 		
 	};

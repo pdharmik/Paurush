@@ -540,7 +540,7 @@ function showPgCntMSlct(){
 	}
 	pgDialog=$('#assetPageCounts-Multiple').dialog({
 		autoOpen: false,
-		title: "Update Page Counts",
+		title: "<spring:message code='deviceDetail.link.updatePageCounts'/>",
 		modal: true,
 		draggable: false,
 		resizable: false,

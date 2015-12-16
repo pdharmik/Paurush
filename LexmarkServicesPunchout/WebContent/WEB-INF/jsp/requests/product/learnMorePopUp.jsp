@@ -171,7 +171,7 @@ $(document).ready(function(){
         		 //showOverlay();        	
         		//var url = "https://www.lexmark.com/en_US/epg/products/28E0100.json";
         		//parNum="28E0100";
-        		var url = "https://www.lexmark.com/en_US/epg/products/"+parNum.trim()+".json";
+        		var url = "https://www.lexmark.com/en_BE/epg/products/"+parNum.trim()+".json";
         		//$.getJSON(url,function(result){
         		//	document.getElementById('partId'+id).innerHTML = result.pid;
         		//	document.getElementById('partCatagory'+id).innerHTML = result.category;

@@ -464,6 +464,7 @@
 					var assetIfo=deviceInformations.getDeviceObjectFromList(deviceId);
 					fUrlVal=assetIfo.ipAddress;
 				}
+				 $( "#closeBtnCntrlPanel").unbind( "click" );
 					$('#closeBtnCntrlPanel').click(function(){
 						closeCntlPanelPopup();
 						//alert(fUrlVal);

@@ -2,7 +2,7 @@
 <div id="successMessage" class="info banner ok" style="display: none;"></div>
 <div id="errorMsgPopupCart" class="error" style="display: none;"></div>
 <c:forEach var="cartBundle" items="${shoppingCartFormBundles.cartItems}" varStatus="status">
-	<c:set var="cartDesc" value="${cartBundle.description}"/>
+	<c:set var="cartDesc" value="${cartBundle.mpsDescription}"/>
 	<c:set var="cartPrice" value="${cartBundle.price}"/>
 	
 	<c:if test="${not fn:containsIgnoreCase(cartBundle['class'], 'orderpart')}">
@@ -20,7 +20,7 @@
 	<div id="cartItem_${cartId}" class="printer-cntnr">
 	    <!--<div class="prdctpge-printerimg"><img src="<html:imagesPath/>product-printer.jpg" width="89" height="72" alt="Mono Laser Printers"></div>
 		--><div class="printer-details-cntnr">
-		    <h3>${cartId}</h3> <span style="font-size:12px;">${cartName}</span><br>
+		    <h3>${cartBundle.configId}</h3> <span style="font-size:12px;">${cartName}</span><br>
 		    <p style="width:305px; padding:0; font-size:11px; line-height:17px;">${cartDesc} </p>
 	    </div>
 		<div class="quntity-cart-cntnr2">

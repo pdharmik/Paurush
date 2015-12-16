@@ -140,7 +140,7 @@
 										<span id="chlNodeValueLabel_${assetDetail.key}">${assetDetail.value.chlNodeValue}</span>
 										<span id="chlNodeValueChangeLbl_${assetDetail.key}">
                     						<span><a class="link"id="chlTreeLink" href="<%=showCHLTreePopUp%>" 
-												onclick="showOverlay();return popUpChlTree('${assetDetail.key}');" title="Customer Hierarchy">
+												onclick="showOverlay();return popUpChlTree('${assetDetail.key}');" title="<spring:message code='link.customerHierarchy'/>">
 													<spring:message code="changemanagement.common.option.select"/>
 												    	<br />
 												   	<!--<c:choose>

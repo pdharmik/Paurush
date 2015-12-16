@@ -143,9 +143,8 @@ function doCart(detailsObj,buttonId){
     // this ajax call will be made only for printers to get the unspsc code.
     // addToCart() to be call for other scenarios from outside the ajax
     if(cartType == "printers"){
-    	 jQuery.ajax({
-    			type: 'GET', 
-    	         url:"http://www.lexmark.com/en_US/epg/products/"+printerTypeNum+".json",  // currnetly url is hardcoded. this will be dynamic later based on part number
+    	 jQuery.ajax({ 
+    	         url:"https://www.lexmark.com/en_BE/epg/products/"+printerTypeNum+".json",  // currnetly url is hardcoded. this will be dynamic later based on part number
     	         dataType : 'json',
     	          success: function (data) {
     	        	 unspsc = data.UNSPSCCode;

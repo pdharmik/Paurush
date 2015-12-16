@@ -419,6 +419,7 @@
 					var assetIfo=deviceInformations.getDeviceObjectFromList(deviceId);
 					fUrlVal=assetIfo.ipAddress;
 				}
+				    $( "#closeBtnCntrlPanel").unbind( "click" );
 					$('#closeBtnCntrlPanel').click(function(){
 						closeCntlPanelPopup();
 						//alert(fUrlVal);
@@ -778,7 +779,7 @@
 			var expirationArray=[];
 			var expirationArrayCode=[];
 			expirationArray.push({"value":"", "displayValue":"Select Expiring Terms"});
-			expirationArray.push({"value":"Select All", "displayValue":"Select All"});
+			expirationArray.push({"value":"Select All", "displayValue":"<spring:message code='lbs.label.selectAll'/>"});
 			<c:forEach items="${expiration}" var="loopStatus">
 			expirationArray.push({"value":"${loopStatus.key}","displayValue":"${loopStatus.value}"});
 			expirationArrayCode["${loopStatus.key}".toLowerCase()]="${loopStatus.value}";

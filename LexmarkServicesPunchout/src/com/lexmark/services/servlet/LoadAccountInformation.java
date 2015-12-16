@@ -41,7 +41,7 @@ public class LoadAccountInformation implements ApplicationContextAware{
 		
 		AccountAgreementSoldToContract contract =ContractFactory.getAllSiebelAccountListContract();
 		LOGGER.debug("acntType:::"+acntType);
-		contract.setAccountName(acntType);
+		//contract.setAccountName(acntType);
 		ObjectDebugUtil.printObjectContent(contract, LOGGER);
 		AccountAgreementSoldToResult siebelAccountListResult= customerPaymentsService.retrieveMPSB2BList(contract);
 		if(siebelAccountListResult.getMpsB2bList()!=null && siebelAccountListResult.getMpsB2bList().size()!=0){
@@ -54,6 +54,10 @@ public class LoadAccountInformation implements ApplicationContextAware{
 			
 		}
 		
+		
+		for(PunchoutAccount acc:allAccountList){
+			LOGGER.debug(acc);
+		}
 		LOGGER.debug("[ Out initAccountInformation ]");
 		
 	}

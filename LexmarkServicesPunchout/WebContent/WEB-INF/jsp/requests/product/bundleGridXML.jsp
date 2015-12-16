@@ -6,7 +6,7 @@
 	<c:forEach var="bundle" items="${bundleItems}" varStatus="status">
 		<row id="${bundle.bundleId}">
 		
-		<cell><![CDATA[${getOptionsAndWarrantiesVar}&bundleId=${bundle.bundleId}&cartType=printers<%-- Options warranties data goes here--%>]]>
+		<cell><![CDATA[${getOptionsAndWarrantiesVar}&bundleId=${bundle.bundleId}&cNum=${bundle.contractNumber}&cartType=printers<%-- Options warranties data goes here--%>]]>
 		</cell>
 		    <cell><![CDATA[<div id="bundle${status.index+1}">
         <div class="printer-cntnr">
