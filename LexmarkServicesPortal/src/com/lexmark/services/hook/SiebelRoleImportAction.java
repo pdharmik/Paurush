@@ -824,6 +824,9 @@ public class SiebelRoleImportAction extends Action {
 			//Added for Request TAB History roles..
 			Map<String,String> requestAccessMap=RequestCreateFlags.retrieveReqHistoryAccess4Portal(req, ldapuser.getUserSegment(), accountListCustomer, ldapuser.getRoles());
 			session.setAttribute(ChangeMgmtConstant.USERACCESSMAPATTRIBUTEFORSR, requestAccessMap);
+			
+			//Added for LBS 1.5 access for Device status and Device Utilization
+			LBSAccess.setDeviceStatusAccess(userDetails,accountListCustomer,ldapuser.getRoles());
 		}
 		if (processPartner){
 			PartnerAccountListContract contract = new PartnerAccountListContract();

@@ -12,7 +12,7 @@
                     		
               		</tr>
 
-		<c:forEach var="supply" items="${shoppingCartForm.cartItems}" varStatus="status">
+		<c:forEach var="supply" items="${shoppingCartFormSupplies.cartItems}" varStatus="status">
 				   
 				    
 				    

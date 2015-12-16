@@ -111,6 +111,7 @@ public class Part implements Serializable {
     private String deinstallBrand;
     private String deinstallComments;
     private String deinstallHostName;
+    private boolean typePrinter;
 
     public String getInstallProduct() {
 		return installProduct;
@@ -808,6 +809,14 @@ public class Part implements Serializable {
 	}
 	public void setAuthorizationReason(String authorizationReason) {
 		this.authorizationReason = authorizationReason;
+	}
+
+	public boolean isTypePrinter() {
+		return typePrinter;
+	}
+
+	public void setTypePrinter(boolean typePrinter) {
+		this.typePrinter = typePrinter;
 	}
 
 }

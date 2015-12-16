@@ -52,7 +52,7 @@
 						</div>
 					</div>
 					
-					<div id="selectLocalAddress">
+					<div id="selectLocalAddress" class="selectLocalAddress">
 						<ul>
 							<li>
 								<select id="${prefixId}site">

@@ -117,7 +117,7 @@
 	              		 </c:when>
 	              		 </c:choose>
 				</c:if>
-				<div class="lineClear">
+				<div class="lineClear" id="quantityId">
 				<span style="font-weight:bold;font-size:14px;">Qty</span><span class="spaceClear"/>${hardwareBundleListDetail.orderQuantity}</td>
              
             </tr>
@@ -406,6 +406,10 @@
 	</div><!-- content -->
 </div><!-- main-wrap -->
 <script type="text/javascript">
+	<c:if test="${hardwareDetailPageForm.pageFlow != null && hardwareDetailPageForm.pageFlow != '' && hardwareDetailPageForm.pageFlow =='map'}">
+		jQuery('#quantityId').hide();
+	</c:if>
+	
 function print(){
 	var url ="<portlet:renderURL windowState='<%= LiferayWindowState.POP_UP.toString() %>'><portlet:param name='action' value='hardwareOrderConfirmPrint' /></portlet:renderURL>";         
     var iWidth=900;

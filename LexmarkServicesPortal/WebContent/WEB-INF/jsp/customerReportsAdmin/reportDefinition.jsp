@@ -690,14 +690,15 @@ overflow: auto !important;
 	    var i=0;
 	    document.getElementById('localeIndex').value = index;
 	  //Below logics are to populate the respective arrays for display Names
-	    if(index=="0")
+	  // this if block is breaking the order for display name and its respective parameter name
+	   /*  if(index=="0")
     	{
     	var n=0;
 		<c:forEach items="${reportParams}" var="params">
 		reportsParamListArray_en[n]= '${params.displayName}';
 		n++;
 		</c:forEach>
-    	}
+    	} */
 	    if(index=="1")
 	    	{
 	    	var n=0;
@@ -1195,6 +1196,14 @@ overflow: auto !important;
             for (fieldIndex = 0; fieldIndex < parameterFieldsId.length; fieldIndex ++) {
                 document.getElementById('parameterList[' + i +'].' + parameterFieldsId[fieldIndex]).value = 
                     document.getElementById('parameterList[' + (i + 1) +'].' + parameterFieldsId[fieldIndex]).value;
+                if(parameterFieldsId[fieldIndex] == "listValues"){
+                	if(document.getElementById('parameterList[' + i +'].dataType').value == "LIST"){
+                		document.getElementById('parameterList[' + i +'].' + parameterFieldsId[fieldIndex]).disabled = false;
+                	}
+                	else{
+                		document.getElementById('parameterList[' + i +'].' + parameterFieldsId[fieldIndex]).disabled = true;
+                	}
+                }
             }
             document.getElementById('parameterList[' + i + '].isRequired').checked = 
                 document.getElementById('parameterList[' + (i + 1) + '].isRequired').checked;
@@ -1619,6 +1628,24 @@ overflow: auto !important;
 	        document.getElementById('parameterList[' + rowIndex +'].' + parameterFieldsId[fieldIndex]).value = 
 		        document.getElementById('parameterList[' + (rowIndex + addend) +'].' + parameterFieldsId[fieldIndex]).value;
 	        document.getElementById('parameterList[' + (rowIndex + addend) +'].' + parameterFieldsId[fieldIndex]).value = temp;
+	        // changes to make the list value text box disable and enable 
+	        if(parameterFieldsId[fieldIndex] == 'listValues'){
+	        	
+	        	if(document.getElementById('parameterList[' + rowIndex + '].dataType').value == "LIST"){
+		        	document.getElementById('parameterList[' + rowIndex +'].' + parameterFieldsId[fieldIndex]).disabled = false;
+		        }
+		        else{
+		        	document.getElementById('parameterList[' + rowIndex +'].' + parameterFieldsId[fieldIndex]).disabled = true;
+		        }
+	        	
+	        	if(document.getElementById('parameterList[' + (rowIndex + addend) + '].dataType').value == "LIST"){
+		        	document.getElementById('parameterList[' + (rowIndex + addend) +'].' + parameterFieldsId[fieldIndex]).disabled = false;
+		        }
+		        else{
+		        	document.getElementById('parameterList[' + (rowIndex + addend) +'].' + parameterFieldsId[fieldIndex]).disabled = true;
+		        }
+	        }
+	        
 		}
 		var tempIsRequired = document.getElementById('parameterList[' + rowIndex + '].isRequired').checked;
 		document.getElementById('parameterList[' + rowIndex + '].isRequired').checked = 

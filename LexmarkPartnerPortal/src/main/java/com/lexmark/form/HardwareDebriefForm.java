@@ -51,6 +51,10 @@ public class HardwareDebriefForm extends BaseForm {
 	private boolean saveCloseoutFlag;
 	private boolean offlineDebrief;
 	
+	private MapForm mapForm;
+	private  Map<String,String> RecommendedPartlistStatusForPrinterType;
+	private  Map<String,String> RecommendedPartlistStatusForNonPrinterType;
+	
 	/**
 	 * @return srType 
 	 */
@@ -320,6 +324,52 @@ public class HardwareDebriefForm extends BaseForm {
 	public void setSpecialUsageMap(Map<String, String> specialUsageMap) {
 		this.specialUsageMap = specialUsageMap;
 	}
+
+	/**
+	 * @param mapForm the mapForm to set
+	 */
+	public void setMapForm(MapForm mapForm) {
+		this.mapForm = mapForm;
+	}
+
+	/**
+	 * @return the mapForm
+	 */
+	public MapForm getMapForm() {
+		return mapForm;
+	}
+
+	/**
+	 * @return the recommendedPartlistStatusForPrinterType
+	 */
+	public Map<String,String> getRecommendedPartlistStatusForPrinterType() {
+		return RecommendedPartlistStatusForPrinterType;
+	}
+
+	/**
+	 * @param recommendedPartlistStatusForPrinterType the recommendedPartlistStatusForPrinterType to set
+	 */
+	public void setRecommendedPartlistStatusForPrinterType(
+			Map<String,String> recommendedPartlistStatusForPrinterType) {
+		RecommendedPartlistStatusForPrinterType = recommendedPartlistStatusForPrinterType;
+	}
+
+	/**
+	 * @return the recommendedPartlistStatusForNonPrinterType
+	 */
+	public Map<String,String> getRecommendedPartlistStatusForNonPrinterType() {
+		return RecommendedPartlistStatusForNonPrinterType;
+	}
+
+	/**
+	 * @param recommendedPartlistStatusForNonPrinterType the recommendedPartlistStatusForNonPrinterType to set
+	 */
+	public void setRecommendedPartlistStatusForNonPrinterType(
+			Map<String,String> recommendedPartlistStatusForNonPrinterType) {
+		RecommendedPartlistStatusForNonPrinterType = recommendedPartlistStatusForNonPrinterType;
+	}
+
+
 
 	
 

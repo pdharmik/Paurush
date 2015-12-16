@@ -523,7 +523,7 @@ var shipToaddrFlag = [];
 				                                           <div id="serviceProvStatusDiv">
 				                                           		<select name="activity.serviceProviderStatus" id="serviceproviderstatus">
 																
-																<option value=""  SELECTED></option>
+																<option value=""><spring:message code="requestsDetailUpdate.label.SELECTED"/></option>
 																<c:forEach items="${serviceRequestDetailForm.activityStatusList}" var="activityStatusEntry" varStatus="loop">
 																	<option value="${activityStatusEntry.key}">${activityStatusEntry.value}</option>
 																</c:forEach>
@@ -867,7 +867,7 @@ var shipToaddrFlag = [];
 								gridRDVOrderedPartsTable.setColSorting("na,str,str,str,str,str,str,str,str,str,str,str,str");
 								gridRDVOrderedPartsTable.setLockColVisibility("false,false,false,false,false,false,false,false,false,false,false,false,false");
 								//Changes for CI7 BRD 14-06-07
-								gridRDVOrderedPartsTable.setInitWidths("20,80,50,80,120,150,100,120,80,100,100,*,0");
+								gridRDVOrderedPartsTable.setInitWidths("20,80,50,80,120,150,100,120,80,100,100,120,0");
 								//gridRDVOrderedPartsTable.enableAutoWidth(true);
 								gridRDVOrderedPartsTable.enableAutoHeight(true);
 								gridRDVOrderedPartsTable.enableMultiline(true);
@@ -2498,6 +2498,6 @@ var shipToaddrFlag = [];
 							
 					</script>
 					<div id="shipToDefaultPopUp" style="display: none;">
-						<div>Please select an address.
+						<div><spring:message code='requestsDetailUpdate.label.selectAddress'/>.
 						</div>
 					</div>

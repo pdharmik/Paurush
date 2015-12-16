@@ -2,6 +2,7 @@ package com.lexmark.services.portlet;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,11 +54,12 @@ public class ShoppingCartController {
 			@RequestParam("quantity") String qty,@RequestParam("prodId") String prodId,
 			@RequestParam(value="isOptnWarr", required=false) String partsOrdering,
 			@RequestParam("bundleId") String bundleId,
-			@RequestParam("cartType") String cartType)
+			@RequestParam("cartType") String cartType,
+			@RequestParam("unspscCode") String unspscCode)
 			throws IOException {
 		LOGGER.debug(" in addToShoppingCart");
 		
-		LOGGER.debug("prod id="+prodId +" qty = "+qty);
+		LOGGER.debug("prod id="+prodId +" qty = "+qty+" cart type is"+cartType+" unspscCode is "+unspscCode);
 		
 		Map<String, ShoppingCartForm> _shoppingFormList = (Map<String, ShoppingCartForm>) session.getAttribute(PunchoutConstants.CART_SESSION);		
 		
@@ -66,10 +68,16 @@ public class ShoppingCartController {
 			ControllerUtil.addShoppingCartParts(session, prodId, qty, bundleId, cartType);
 		}else{
 			LOGGER.debug("addToShoppingCart");
-			ControllerUtil.addToShoppingCart(session,prodId,qty,cartType);
+			ControllerUtil.addToShoppingCart(session,prodId,qty,cartType,unspscCode);
 		}		
 	
 		int cartSize = getCartSize(request, cartType);
+		if(null != session.getAttribute("forGlobalSearch") && (Boolean)session.getAttribute("forGlobalSearch")){
+			LOGGER.debug("for global search add to shopping cart");
+			cartSize = getCartSize(request, "supplies")+getCartSize(request, "printers");
+			cartType = "globalSearch";
+		}
+		
 		LOGGER.debug("fROM SESSION ITEMS IN CART===========>" + cartSize);
 		Map<String,String> params=new HashMap<String,String>();
 		params.put(PunchoutConstants.SIZE,String.valueOf(cartSize));
@@ -129,18 +137,53 @@ public class ShoppingCartController {
 			ResourceResponse response, Model model, PortletSession session,
 			@RequestParam("cartType") String cartType) {
 		LOGGER.debug(("[ In  showShoppingCart ]"));
+		LOGGER.debug("cart type is "+cartType);
+		Map<String, ShoppingCartForm> shoppingCartForm = new HashMap<String, ShoppingCartForm>();
+		List<Object> cartItems = new ArrayList<Object>();
+		BigDecimal total = new BigDecimal(0);
+		if(!cartType.equalsIgnoreCase("globalSearch")){
+			LOGGER.debug("cartType in if block is "+cartType);
+			shoppingCartForm=(Map<String, ShoppingCartForm>)session.getAttribute(PunchoutConstants.CART_SESSION);
+		    cartItems=shoppingCartForm.get(cartType).getCartItems();
+		    total=ControllerUtil.calculateTotal(cartItems,
+					BeanFieldNames.PRICE.getValue(cartType),
+							BeanFieldNames.QUANTITY.getValue(cartType));
+		    if("printers".equalsIgnoreCase(cartType)){
+		    	model.addAttribute("shoppingCartFormBundles", shoppingCartForm.get(cartType));
+		    }
+		    else{
+		    	model.addAttribute("shoppingCartFormSupplies", shoppingCartForm.get(cartType));
+		    }
+		    model.addAttribute("shoppingCartType", cartType);
+		}
+		else{
+			LOGGER.debug("in shopping cart controller, else block");
+		    shoppingCartForm=(Map<String, ShoppingCartForm>)session.getAttribute(PunchoutConstants.CART_SESSION);
+			cartItems=shoppingCartForm.get("printers").getCartItems();
+			LOGGER.debug("printer type added to cart item");
+			 total=ControllerUtil.calculateTotal(cartItems,
+						BeanFieldNames.PRICE.getValue("printers"),
+								BeanFieldNames.QUANTITY.getValue("printers"));
+			 LOGGER.debug("total is "+total);
+			 cartItems = shoppingCartForm.get("supplies").getCartItems();
+			 LOGGER.debug("supplies type added to cart item");
+			 total=total.add(ControllerUtil.calculateTotal(cartItems,
+						BeanFieldNames.PRICE.getValue("supplies"),
+						BeanFieldNames.QUANTITY.getValue("supplies")));
+			 LOGGER.debug("total is "+total);
+			 ShoppingCartForm bundlesform = shoppingCartForm.get("printers");
+			 LOGGER.debug("bundles size is "+bundlesform.getCartItems().size());
+			 ShoppingCartForm suppliesform = shoppingCartForm.get("supplies");
+			 LOGGER.debug("suppliesform size is "+suppliesform.getCartItems().size());
+			 model.addAttribute("shoppingCartFormBundles", shoppingCartForm.get("printers"));
+			 model.addAttribute("shoppingCartFormSupplies", shoppingCartForm.get("supplies"));
+			 model.addAttribute("shoppingCartType", "globalSearch");
+		}
 		
-		Map<String, ShoppingCartForm> shoppingCartForm=(Map<String, ShoppingCartForm>)session.getAttribute(PunchoutConstants.CART_SESSION);
-		List<Object> cartItems=shoppingCartForm.get(cartType).getCartItems();
-		
-		BigDecimal total=ControllerUtil.calculateTotal(cartItems,
-				BeanFieldNames.PRICE.getValue(cartType),
-						BeanFieldNames.QUANTITY.getValue(cartType));
 		
         LOGGER.debug("total pr"+total);
         
-		model.addAttribute("shoppingCartForm", shoppingCartForm.get(cartType));
-		model.addAttribute("shoppingCartType", cartType);
+		
 		model.addAttribute(PunchoutConstants.TOTAL_PRICE, total);
 		return "shoppingCart/shoppingCartPage";
 	}

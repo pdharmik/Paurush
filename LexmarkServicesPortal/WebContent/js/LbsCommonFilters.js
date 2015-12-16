@@ -74,12 +74,36 @@ function CommonFilters(){
 		
 	};
 	this.__createMultiSelects=function(){
-		new MultiSelect(parentContext+'productType',width,productTypeArray);
-		new MultiSelect(parentContext+'productSeries',width,productSeriesArray);
-		new MultiSelect(parentContext+'requestType',width,requestTypeArray);
-		new MultiSelect(parentContext+'requestStatus',width,requestStatusArray);
-		new MultiSelect(parentContext+'areaDrop',width,areaArray);
-		new MultiSelect(parentContext+'subAreaDrop',width,subAreaArray);
+	new MultiSelect({
+			"elementId":parentContext+'productType',
+			"elementWidth":width,
+			"dataList":productTypeArray
+		});
+		new MultiSelect({
+			"elementId":parentContext+'productSeries',
+			"elementWidth":width,
+			"dataList":productSeriesArray
+		});
+		new MultiSelect({
+			"elementId":parentContext+'requestType',
+			"elementWidth":width,
+			"dataList":requestTypeArray
+		});
+		new MultiSelect({
+			"elementId":parentContext+'requestStatus',
+			"elementWidth":width,
+			"dataList":requestStatusArray
+		});
+		new MultiSelect({
+			"elementId":parentContext+'areaDrop',
+			"elementWidth":width,
+			"dataList":areaArray
+		});
+		new MultiSelect({
+			"elementId":parentContext+'subAreaDrop',
+			"elementWidth":width,
+			"dataList":subAreaArray
+		});
 		//new MultiSelect(parentContext+'assetLifeCycle',width,assetLifeCycleArray);
 		//new MultiSelect(parentContext+'devicePhase',width,devicePhaseArray);
 		//new MultiSelect(parentContext+'hardwareStatus',width,hardwareStatusArray);

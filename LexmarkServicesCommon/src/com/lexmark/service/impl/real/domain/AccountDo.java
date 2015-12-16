@@ -44,7 +44,26 @@ public class AccountDo extends AccountBasedDo {
 	private String lbsDisplayWeb;
 	private String lbsFlag;
 	private String b2bFlag;
+	private String deviceStatus;
+	private String lbsUtilization;
+
+	public String getDeviceStatus() {
+		return deviceStatus;
+	}
+
+	public void setDeviceStatus(String deviceStatus) {
+		this.deviceStatus = deviceStatus;
+	}
+
 	
+	public String getLbsUtilization() {
+		return lbsUtilization;
+	}
+
+	public void setLbsUtilization(String lbsUtilization) {
+		this.lbsUtilization = lbsUtilization;
+	}
+
 	public String getLbsFlag() {
 		return lbsFlag;
 	}

@@ -95,7 +95,7 @@
 			localizedStr = convertDateFormat("mm/dd/yyyy", "/", convertDateToString(date), dateFormat, separator);
 
 			if (includeTime) {
-				var hours = date.getHours();
+				var hours = (date.getHours()+1);
 				var minutes = date.getMinutes();
 				var seconds = date.getSeconds();
 				if (hours < 10) hours = "0" + hours;
@@ -174,5 +174,17 @@
 		}
 		return Date.parse(localizedStr+timeStr);
 		
+	}
+	function localizeDateTimeFromInputDate(dateStr){
+		var dtTimStr=formatDateToDefaultLBS(dateStr);
+		var date = new Date(dtTimStr);
+		date.setMinutes(date.getMinutes() - offsetMinute);
+		dtTimStr = localizeDate(convertDateToString(date));
+		return (dtTimStr +" " +(date.getHours())+":"+date.getMinutes()+":"+date.getSeconds());
+	}
+	//Added for LBS 1.5
+	function formatDateToDefaultLBS(date) {
+		var dateDefaultFormat = convertDateFormat("mm-dd-yyyy", "-", date, "mm/dd/yyyy", "/");
+		return dateDefaultFormat;
 	}
 </script>

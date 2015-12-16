@@ -49,7 +49,7 @@ jQuery(document).ready( function() {
 
 <tr>
 <td>
-<table width="600" border="0" cellspacing="0" cellpadding="0" align="center" class="emailPrintWraper" id="emailPrintWraper">
+<table width="800" border="0" cellspacing="0" cellpadding="0" align="center" class="emailPrintWraper" id="emailPrintWraper">
  
   <tr>
     <td class="table-td-style10"><table width="100%" border="0" cellspacing="0" cellpadding="0">

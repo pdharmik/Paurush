@@ -368,21 +368,41 @@ public interface ChangeMgmtConstant {
 
   /********Added for ASSETSUMMARYPATH *******/
 	 String ASSETSUMMARYPATH = "changemanagement/manageAsset/assetSummary";
+	 
+  /********Added for MULTIASSETSUMMARYPATH *******/
+	 String MULTIASSETSUMMARYPATH = "changemanagement/manageMultiAsset/multiAssetSummary";
 
   /********Added for ADDASSETCONFPATH *******/
 	 String ADDASSETCONFPATH = "changemanagement/manageAsset/addAssetConfirmation";
 
   /********Added for CHANGEASSETPATH *******/
 	 String CHANGEASSETPATH = "changemanagement/manageAsset/changeAsset";
-
+	 /********Added for ADDASSETPATH *******/
+	 String ADDMULTIASSETPATH = "changemanagement/manageMultiAsset/addMultiAsset";
+	 
+	 /********Added for ADDMULTIASSETCONFPATH *******/
+     String ADDMULTIASSETCONFPATH = "changemanagement/manageMultiAsset/addMultiAssetConfirmation";
+	 
+  /********Added for CHANGEMULTIASSETPATH *******/
+	 String CHANGEMULTIASSETPATH = "changemanagement/manageMultiAsset/changeMultiAsset";
+	 
+  /********Added for DECOMMULTIASSETPATH *******/
+	 String DECOMMULTIASSETPATH = "changemanagement/manageMultiAsset/decomMultiAsset";
+	 
   /********Added for CHANGEASSETCONFPATH *******/
 	 String CHANGEASSETCONFPATH = "changemanagement/manageAsset/changeAssetConfirmation";
+	 
+  /********Added for CHANGEASSETCONFPATH *******/
+     String CHANGEMULTIASSETCONFPATH = "changemanagement/manageMultiAsset/changeMultiAssetConfirmation";
 
   /********Added for DECOMMASSETPATH *******/
 	 String DECOMMASSETPATH = "changemanagement/manageAsset/decommissionAsset";
 
   /********Added for DECOMMASSETCONFPATH *******/
 	 String DECOMMASSETCONFPATH = "changemanagement/manageAsset/decommissionAssetConfirmation";
+	 
+	 /********Added for DECOMMASSETCONFPATH *******/
+	 String DECOMMMULTIASSETCONFPATH = "changemanagement/manageMultiAsset/decommissionMultiAssetConfirmation";
 
   /********Added for PRINTASSETPATH *******/
 	 String PRINTASSETPATH = "changemanagement/manageAsset/printAsset";
@@ -391,6 +411,12 @@ public interface ChangeMgmtConstant {
 	 String ASSETEMAILPATH = "changemanagement/manageAsset/AssetEmail";
 
 
+  /********Added for PRINTMULTIASSETPATH *******/
+	 String PRINTMULTIASSETPATH = "changemanagement/manageMultiAsset/printMultiAsset";
+	 
+  /********Added for MULTIASSETEMAILPATH*******/
+	 String MULTIASSETEMAILPATH = "changemanagement/manageMultiAsset/multiAssetEmail";
+	 
   /********Added for ALLREQHISTPAGENM *******/
 	 String ALLREQHISTPAGENM = "lgsHistoryDetails/allRequestHistory";
 
@@ -416,6 +442,8 @@ public interface ChangeMgmtConstant {
 	 
   /********Added for ADDONE *******/
 	 String ADDONE = "addone";
+	 /********Added for ADDMULTIPLE *******/
+	 String ADDMULTIPLE = "addMultiple";
   /********Added for PREVSRNO*******/
 	 String PREVSRNO = "prevSrNo";
   /********Added for ISUPDATEFLAG *******/
@@ -544,6 +572,8 @@ public interface ChangeMgmtConstant {
 
 /********Added for assetSummary*******/
 	 String ASSETSUMMARY = "assetSummary";
+/********Added for multiAssetSummary*******/
+	 String MULTIASSETSUMMARY = "multiAssetSummary";
 /********Added for isLexmarkEmployee*******/
 	 String ISLEXEMPLOYEE = "isLexmarkEmployee";
 /********Added for requestorContact*******/ 
@@ -575,6 +605,9 @@ public interface ChangeMgmtConstant {
 	 String CSVTYPEMANAGEADDRESS = "ManageAddress";
 /********Added for ManageContact*******/
 	 String CSVTYPEMANAGECONTACT = "ManageContact";
+	 
+/********Added for ManageMultiAsset*******/
+	 String CSVTYPEMANAGEMULTIASSET = "multi_asset_info";
 	
 /********Added for SERVICEREQTYPE*******/
 	 String SERVICEREQTYPE = "Fleet Management";
@@ -1327,6 +1360,14 @@ public interface ChangeMgmtConstant {
 	 
 	/** Changed Area for MADC Address/Contact/CHL/AssetAcceptance */
 	String DATAMANAGEMENTAREA = "Data Management";
+	
+	String DATAMANAGEMENTSUBAREA = "Change Asset Data";
+	
+	/********Added for MULTIASSETLIST  *******/
+	 String ASSETLIST = "multiAssetList";
+	/********Added for changeMultiAssetRequest*******/
+	 String CHANGEMULTIASSETREQTYPE = "changeMultiAssetRequest";
+	 String DECOMMMULTIASSETREQTYPE = "decomMultiAssetRequest";
 	
 	/** added to improve performance*/
 	String DEVICE_DETAIL = "DeviceDetail";

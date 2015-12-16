@@ -33,10 +33,9 @@
 
 <div class="filterLBS" id="parentFilter">
 <div id="divFilter" onClick="showOrHideFilter()"><span><spring:message code='lbs.label.filters'/></span><img id="arrow" src="<html:imagesPath/>arrow-down-grayed.png"/></div>
-			<br/>
 			<div id="filterDivs" style="display: none;">
-				<div id="Filters"><img src="<html:imagesPath/>asc.gif"><span><spring:message code='lbs.label.filters'/></span>
-				</div><br/>
+				<div id="Filters"><img src="<html:imagesPath/>asc.gif"><span><spring:message code='lbs.label.savedfilters'/></span>
+				</div>
 				<div id="FiltersMenu">
 					<span class="popup_arrow">
 						<span class="popup_arrow-inner"></span>
@@ -44,9 +43,9 @@
 					<div id="filtersSetPreference" onclick='checkOption("setPref")'><spring:message code='lbs.label.setpreference'/></div>
 					<div id="filtersLoadPreference" onclick='checkOption("loadPref")'><spring:message code='lbs.label.loadpreference'/></div>
 					<div id="filterBookmarkedDevices" onclick='checkOption("bookmark")'><spring:message code='lbs.label.bookmarkedDevices'/></div>
-					<span id="savedFiltersPrefPop" class="popupHeader popupSubHeader"><b>Saved Filters</b></span>
+					<span id="savedFiltersPrefPop" class="popupHeader popupSubHeader"><b><spring:message code="fleetmanagement.headers.savedfilters"/></b></span>
 					<%--Below section is for canned queries --%>
-					<span class="popupHeader popupSubHeader clearBoth"><b>Canned Queries</b></span><br/>
+					<span class="popupHeader popupSubHeader clearBoth"><b><spring:message code="fleetmanagement.headers.cannedqueries"/></b></span><br/>
 					
 					
 				</div>
@@ -85,7 +84,7 @@
 						</div>
 					</div>
 					
-					<div id="selectLocalAddress">
+					<div id="selectLocalAddress"  class="selectLocalAddress">
 						<ul>
 							<li>
 								<select id="site">
@@ -189,16 +188,6 @@
 							
 						</li>
 						<li>
-							
-							<select id="meterReadTypeAsset">
-								<option value=""><spring:message code='lbs.label.meterreadtype'/></option>
-								<c:forEach items="${meterReads}" var="requestStatus" varStatus = "status" >
-									<option value="${requestStatus.key}">${requestStatus.value}</option>
-								</c:forEach>																
-							</select>			
-
-						</li>
-						<li>
 							<input id="assetTag" type="text" name="assetTag" value="<spring:message code='lbs.label.assettag'/>" />
 							
 						</li>
@@ -217,6 +206,16 @@
 						</li>
 						<li>
 							<input type="text" id="deviceHostName" name="DeviceHostName" value="<spring:message code='lbs.label.devicehostname'/>" />
+						</li>						
+						<li>
+							
+							<select id="meterReadTypeAsset">
+								<option value=""><spring:message code='lbs.label.meterreadtype'/></option>
+								<c:forEach items="${meterReads}" var="requestStatus" varStatus = "status" >
+									<option value="${requestStatus.key}">${requestStatus.value}</option>
+								</c:forEach>																
+							</select>			
+
 						</li>
 						<li class="width-100per">
 						
@@ -228,7 +227,7 @@
 								<img id="imgLocalizedEndDateAsset" src="<html:imagesPath/>transparent.png" class="ui_icon_sprite calendar-icon cursor-pointer" />
 								</li>
 							</ul>
-						<li>
+						</li>
 						
 						
 						</ul>
@@ -283,10 +282,12 @@
 				</div>
 			
 			</div>
+			<div class="clearBoth"> </div>
 			</div>
 				<div id="preferenceAndFilter">
 						<input id="applyFilter" class="buttonBlue" type="button" value="<spring:message code='lbs.label.applyFilter'/>" />
-						<input id="clearFilter" class="buttonGrey" type="button" value="<spring:message code='lbs.label.clearFilter'/>" />						
+						<input id="clearFilter" class="buttonGrey" type="button" value="<spring:message code='lbs.label.clearFilter'/>" />
+						<div class="clearBoth"> </div>						
 				</div>
 			</div>
 			<div style="display: none;" id="popupCustomize">
@@ -438,7 +439,7 @@ function urlParams(){
 var urlParamsObj=new urlParams();
 
 $('#selectCountry').change(function(){
-	breadCrumpObject.resetRestFields(1);//Defined in defaultview.jsp
+	breadCrumpObject.resetRestFields(2);//Defined in defaultview.jsp
 	breadCrumpObject.updateCountry($('#selectCountry option:selected').text(),$(this).val());//Defined in defaultview.jsp
 	breadCrumpObject.updateBreadCrump();//Defined in defaultview.jsp
 	urlParamsObj.clearHtmlAfter($(this).attr('id'));
@@ -783,18 +784,36 @@ subAreaArray.push({"value":"","displayValue":"<spring:message code='lbs.label.su
 subAreaArray.push({"value":"${requestStatus.key}","displayValue":"${requestStatus.value}"});
 </c:forEach>
 
+<%-- Added for LBS 1.5 --%>
+var addressLOD = {};
+<c:forEach items="${addressLOD}" var="requestStatus" varStatus = "status" >
+addressLOD["{requestStatus.key}"]="${requestStatus.value}";
+</c:forEach>
+
+var floorLOD ={};
+<c:forEach items="${floorLOD}" var="requestStatus" varStatus = "status" >
+floorLOD["${requestStatus.key}"]="${requestStatus.value}";
+</c:forEach>
+<%-- Ends Added for LBS 1.5 --%>
 
 
 
-
-
-var width="90%";
+var width="85%";
+var widthAuto="auto";
 	<%-- Below objects are for Device Filters !!  --%>
 	//var modelObj=new MultiSelect('productModel',width,modelArray);
 	//var assetProductObj=new MultiSelect('assetProduct',width,assetProductArray);
 	//var modelTypeObj=new MultiSelect('modelType',width,modelTypeArray);
-	var productTypeObj=new MultiSelect('productType',width,productTypeArray);
-	var productSeriesObj=new MultiSelect('productSeries',width,productSeriesArray);
+	var productTypeObj=new MultiSelect({
+		"elementId":'productType',
+		"elementWidth":width,
+		"dataList":productTypeArray
+	});
+	var productSeriesObj=new MultiSelect({
+		"elementId":'productSeries',
+		"elementWidth":width,
+		"dataList":productSeriesArray
+	});
 	
 	//var brandObj=new MultiSelect('brand',width,brandArray);
 	
@@ -812,13 +831,31 @@ var width="90%";
 		var hardwareStatusObj=new MultiSelect('hardwareStatus',width,hardwareStatusArray);
 	</c:if>--%>
 	<%-- Below objects are for Request Filters !!  --%>
-	var reqTypeObj=new MultiSelect('requestType',width,requestTypeArray);
+		var reqTypeObj=new MultiSelect({
+		"elementId":'requestType',
+		"elementWidth":width,
+		"dataList":requestTypeArray
+	});
+	var reqStatusObj=new MultiSelect({
+		"elementId":'requestStatus',
+		"elementWidth":width,
+		"dataList":requestStatusArray
+	});
+	var areaDropObj=new MultiSelect({
+		"elementId":'areaDrop',
+		"elementWidth":width,
+		"dataList":areaArray
+	});
 	
-	var reqStatusObj=new MultiSelect('requestStatus',width,requestStatusArray);
+	var subAreadDropObj=new MultiSelect({
+		"elementId":'subAreaDrop',
+		"elementWidth":width,
+		"dataList":subAreaArray
+	});
 	
-	var areaDropObj=new MultiSelect('areaDrop',width,areaArray);
 	
-	var subAreadDropObj=new MultiSelect('subAreaDrop',width,subAreaArray);
+	
+	
 		
 	
 	
@@ -863,7 +900,7 @@ function showOrHideFilter()
 	}
 	else{
 		$(".filterLBS #filterDivs").css('display','none');
-		$('.filterLBS').css('background','#E8E8E8');
+		$('.filterLBS').css('background','#eff0f6');
 		$(".filterLBS #arrow").attr('src','<html:imagesPath/>arrow-down-grayed.png');
 	}
 	
@@ -1024,7 +1061,7 @@ function OpenCustomizePopup(x) {
 		}
 		else
 		{
-			if($(x).is(':checked')){$("#"+n).css("display","inline");}
+			if($(x).is(':checked')){$("#"+n).css("display","block");}
 			else{$("#"+n).css("display","none");}	
 			saveCustomizeSetting(n,$(x).is(':checked'),"${saveCustomzieSettingsPopupURL}");
 		}
@@ -1047,6 +1084,7 @@ function showCHLFilter()
 		//Below code is for saving the customer hierarchy display as customize popup
 		customizeIndexSetting['filterLocation'][1]=false;//This is locatted in LBSService.js
 		saveCustomizeSetting('customerHierarchy',true,"${saveCustomzieSettingsPopupURL}");
+		popUpChlTree();
 }
 function showLocationFilter()
 {
@@ -1095,6 +1133,7 @@ function checkOption(option){
 	}
 }
 var chlDialog;
+var popUpChlOpened = false;
 function popUpChlTree()
 {
 	
@@ -1106,7 +1145,7 @@ function popUpChlTree()
 		chlDialog=jQuery('#content_chlTree').dialog({
 		autoOpen: false,
 		title: jQuery('#chlTreeLink').attr('title'),
-		modal: true,
+		modal: false,
 		draggable: false,
 		resizable: false,
 		width: 400,
@@ -1131,16 +1170,36 @@ function popUpChlTree()
 				}*/
 			}
 	});
-	
 	chlDialog.dialog('open');
+	popUpChlOpened = true;	
+	jQuery('.ui-dialog').position({
+		  my: "left top",
+		  at: "left",
+		  of: "#customerHierarchyDir"
+		});
+	initialiseCHLTree();	
 	
-	
-	initialiseCHLTree();		
 });
 return false;
 };
+var outOfChlDialog = true;
+
+$(".ui-dialog").live("mouseenter", function() {
+	outOfChlDialog = false;
+});
+
+$(".ui-dialog").live("mouseleave", function() {
+	outOfChlDialog = true;
+});
+
+$('body').live('click',function(){
+	if(outOfChlDialog && popUpChlOpened){
+		closeDialog();
+	}
+});
 function closeDialog(){
 	chlDialog.dialog('close');
+	popUpChlOpened = false;
 }
 function setCHLValue(v){
 	$('#chlNodeValueLabel').html(v);
@@ -1247,7 +1306,7 @@ function isResponseBlank(resp){
 	}return false;
 }
 
-var cannedMsgs=["<spring:message code='lbs.filter.canned0'/>","<spring:message code='lbs.filter.canned1'/>","<spring:message code='lbs.filter.canned2'/>","<spring:message code='lbs.filter.canned3'/>"];
+var cannedMsgs=["<spring:message code='lbs.filter.canned0'/>","<spring:message code='lbs.filter.canned1'/>","<spring:message code='lbs.filter.canned2'/>","<spring:message code='lbs.filter.canned3'/>","<spring:message code='lbs.filter.canned4'/>"];
 var cannedObj=[];
 var cannedString="";
 <c:forEach items="${fleetMgmtForm.cannedQueries}" var="cannedQuery">

@@ -134,22 +134,56 @@ function doCart(detailsObj,buttonId){
     jQuery("#"+buttonId).val("Update Cart");
     jQuery("#"+buttonId).html("Update Cart");
     var id=jQuery('#printerId').html();
-
-    jQuery.ajax({
-    	url:addToCartObj.url,
-    	data:{
-	    	quantity:quantity,
-	    	prodId:detailsObj.productId,
-	    	isOptnWarr:detailsObj.optionWarranty,
-	    	cartType:detailsObj.cartType,
-	    	bundleId:detailsObj.bundleId
-    	},
-    	type:'POST',
-    	dataType:'JSON',
-    	success:function(cartResponse){
-    		showValueinCart(cartResponse,obj);
-    	}
-    });
+    
+    // added for UNSPSC start  
+    var cartType=detailsObj.cartType;
+    var unspsc ="";
+    var printerTypeNum=$('#'+detailsObj.productId+"_partType").val();
+    //printerTypeNum="28E0100";
+    // this ajax call will be made only for printers to get the unspsc code.
+    // addToCart() to be call for other scenarios from outside the ajax
+    if(cartType == "printers"){
+    	 jQuery.ajax({
+    			type: 'GET', 
+    	         url:"http://www.lexmark.com/en_US/epg/products/"+printerTypeNum+".json",  // currnetly url is hardcoded. this will be dynamic later based on part number
+    	         dataType : 'json',
+    	          success: function (data) {
+    	        	 unspsc = data.UNSPSCCode;
+    	        	 addToCart();
+    	          },
+    				failure:function (data){
+    					jAlert("UNSPSC Code is blank","");    					
+    				},
+    				error:function(){
+    					jAlert("UNSPSC Code is blank","");    					
+    				}
+    	       });
+    }
+    else{
+    	addToCart();
+    }
+   
+    // end for UNSPSC
+    
+    function addToCart(){
+    	jQuery.ajax({
+        	url:addToCartObj.url,
+        	data:{
+    	    	quantity:quantity,
+    	    	prodId:detailsObj.productId,
+    	    	isOptnWarr:detailsObj.optionWarranty,
+    	    	cartType:detailsObj.cartType,
+    	    	bundleId:detailsObj.bundleId,
+    	    	unspscCode:unspsc
+        	},
+        	type:'POST',
+        	dataType:'JSON',
+        	success:function(cartResponse){
+        		showValueinCart(cartResponse,obj);
+        	}
+        });
+    }
+    
 }
 function addOptnsWarranties(obj){
 	var buttonId=jQuery(obj).attr('id');
@@ -161,8 +195,8 @@ function addOptnsWarranties(obj){
 	
 	
 }
-function showShoppingCart(){
-	var shoppingCartObject={cart:"",id:"shoppingCart"};
+function showShoppingCart(cartType){
+	var shoppingCartObject={cart:"",id:"shoppingCart",cartType:cartType};
     
     	//printerObject.printerType=jQuery(this).attr('id');
     	global_click_msgs.clickedFrom="showShoppingCart";//defined in rightNavHome.jsp

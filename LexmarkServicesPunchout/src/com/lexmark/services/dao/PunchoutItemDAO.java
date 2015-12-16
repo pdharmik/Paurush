@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
+import javax.portlet.PortletSession;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.xerces.dom.DocumentImpl;
@@ -30,9 +32,9 @@ public class PunchoutItemDAO {
 	 * @throws Exception Exception 
 	 */
 	
-	public Document createCXML(SessionInformation information, String cartType)throws Exception {
+	public Document createCXML(SessionInformation information, String cartType,PortletSession session)throws Exception {
 		Document doc = new DocumentImpl();
-
+		LOGGER.debug("cart type in createCXML is "+cartType);
 		try {
 			LOGGER.debug("[in cXML creation ]");
 			Element root = doc.createElement("cXML");
@@ -41,7 +43,16 @@ public class PunchoutItemDAO {
 			root.setAttribute("timestamp", getTimestamp());
 			root.setAttribute("xml:lang", "en-US");
 			buildHeader(doc, root,information);
-			buildBody(doc, root, information, cartType);
+			
+			if(null != session.getAttribute("forGlobalSearch") && (Boolean)session.getAttribute("forGlobalSearch")){
+				LOGGER.debug("in if block of createCXML");
+				buildBody(doc, root, information, "printers");
+				buildBody(doc, root, information, "supplies");
+			}
+			else{
+				LOGGER.debug("in else block of createCXML");
+				buildBody(doc, root, information, cartType);
+			}
 
 		} catch (Exception ex) {
 			LOGGER.error("[exception occured in generating cxml]",ex);
@@ -173,6 +184,7 @@ public class PunchoutItemDAO {
 		String prdQty = null;
 		String contractNo = "";
 		String sapLineId = "";
+		String unspscCode = "";
 		for(Object _cartItem:_sform.getCartItems()){
 						
 			description=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.DESCRIPTION.getValue(cartType));
@@ -180,6 +192,8 @@ public class PunchoutItemDAO {
 			//supplierPartId=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.ID.getValue(cartType));
 			manufactureId=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.PRODUCTID.getValue(cartType));
 			prdQty=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.QUANTITY.getValue(cartType));
+			unspscCode=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.UNSPSCCODE.getValue(cartType));
+			LOGGER.debug("unspsc code in punchoutItemDAO is "+unspscCode);
 			
 			contractNo=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.CONTRACTNO.getValue("printers"));
 			sapLineId=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.SAPLINEID.getValue("printers"));
@@ -240,7 +254,8 @@ public class PunchoutItemDAO {
 			Element elmClassification = doc.createElement("Classification");
 			elmItemDetail.appendChild(elmClassification);
 			elmClassification.setAttribute("domain", "UNSPSC");
-			LOGGER.debug("after domain");
+			elmClassification.appendChild(doc.createTextNode(unspscCode));
+			LOGGER.debug("after domain" +unspscCode);
 			//log.debug("unspsc=" + cartItem.getUnspsc());
 			//Hardcoded for the timebeing
 			

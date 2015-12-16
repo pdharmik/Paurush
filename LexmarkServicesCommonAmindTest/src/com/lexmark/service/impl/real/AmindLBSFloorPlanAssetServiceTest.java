@@ -14,6 +14,7 @@ import com.lexmark.contract.LBSAssetListContract;
 import com.lexmark.contract.SiebelAccountListContract;
 import com.lexmark.result.AddressListResult;
 import com.lexmark.result.LBSFloorPlanListResult;
+import com.lexmark.service.impl.real.domain.LBSAsset;
 
 
 /**
@@ -119,6 +120,57 @@ public class AmindLBSFloorPlanAssetServiceTest extends AmindServiceTest {
 		List<String> assets = Arrays.asList("1-5AVGVHY");
 		contract.setAssetIds(assets);
 		LBSFloorPlanListResult result = service.retrieveLBSFloorPlanAssetList(contract);
+		MiscTest.print(result.getAssetList());
+	}
+	
+	@Test
+	public void testRetrieveAddressList_LBS1_5() throws Exception {
+		LBSAssetListContract contract = new LBSAssetListContract();
+		contract.setSessionHandle(crmSessionHandle);
+		contract.setNewQueryIndicator(true);
+		contract.setStartRecordNumber(0);
+		contract.setIncrement(0);
+		contract.setLbsFlag(true);
+		List<String> assets = Arrays.asList("1-GFLG8F");
+		contract.setAssetIds(assets);
+		LBSFloorPlanListResult result = service.retrieveLBSFloorPlanAssetList(contract);
+		for (LBSAsset asset : result.getAssetList()) {
+			System.out.println("LevelOfDetails: " + asset.getLevelOfDetails());
+		}
+		MiscTest.print(result.getAssetList());
+	}
+	
+	@Test
+	public void testRetrieveAddressList_addressLevelDetails() throws Exception {
+		LBSAssetListContract contract = new LBSAssetListContract();
+		contract.setSessionHandle(crmSessionHandle);
+		contract.setNewQueryIndicator(true);
+		contract.setStartRecordNumber(0);
+		contract.setIncrement(0);
+		contract.setLbsFlag(true);
+		List<String> assets = Arrays.asList("1-OVVEWTP");
+		contract.setAssetIds(assets);
+		LBSFloorPlanListResult result = service.retrieveLBSFloorPlanAssetList(contract);
+		for (LBSAsset asset : result.getAssetList()) {
+			System.out.println("AddressLevelDetails: " +asset.getAddressLevelDetails());
+		}
+		MiscTest.print(result.getAssetList());
+	}
+	
+	@Test
+	public void testRetrieveAddressList_defect18413() throws Exception {
+		LBSAssetListContract contract = new LBSAssetListContract();
+		contract.setSessionHandle(crmSessionHandle);
+		contract.setNewQueryIndicator(true);
+		contract.setStartRecordNumber(0);
+		contract.setIncrement(0);
+		contract.setLbsFlag(true);
+		List<String> assets = Arrays.asList("1-OVVEWTP");
+		contract.setAssetIds(assets);
+		LBSFloorPlanListResult result = service.retrieveLBSFloorPlanAssetList(contract);
+		for (LBSAsset asset : result.getAssetList()) {
+			System.out.println("BuildingType: " + asset.getBuildingType());
+		}
 		MiscTest.print(result.getAssetList());
 	}
 	

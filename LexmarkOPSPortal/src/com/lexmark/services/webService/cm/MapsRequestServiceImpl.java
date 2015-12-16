@@ -316,6 +316,22 @@ public class MapsRequestServiceImpl implements MapsRequestService{
 			installAddr.setPhysicalLocation2(SiebelServiceAddr.getPhysicalLocation2());
 			installAddr.setPhysicalLocation3(SiebelServiceAddr.getPhysicalLocation3());
 			
+			//added by be for maps request address lod start
+			if(SiebelServiceAddr.getLbsAddressFlag()){
+				installAddr.setLBSAddressFlag("Y");
+			}
+			else
+			{
+				installAddr.setLBSAddressFlag("N");
+			}
+			installAddr.setAddressLevelOfDetails(SiebelServiceAddr.getLevelOfDetails());
+			installAddr.setFloorLevelOfDetails(SiebelServiceAddr.getFloorLevelOfDetails());
+			
+			installAddr.setGridCoordinateX(SiebelServiceAddr.getCoordinatesXPreDebriefRFV());
+			installAddr.setGridCoordinateY(SiebelServiceAddr.getCoordinatesYPreDebriefRFV());
+			
+			//added by be for maps request address lod end
+			
 			//Added for LBS
 			if(StringUtils.isNotBlank(SiebelServiceAddr.getCampusId())){
 				LOGGER.debug("CampusID install");
@@ -366,7 +382,7 @@ public class MapsRequestServiceImpl implements MapsRequestService{
 			//Added for LBS CR 17607 15.7 
 			SiebelContact additionalMapsRequest = new SiebelContact();
 			AssetContacts assetContacts = new AssetContacts();
-
+			
 			AccountContact additionalContact=serviceReq.getMapsRequestContact();
 			if(additionalContact!=null)
 			{

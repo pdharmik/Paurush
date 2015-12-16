@@ -464,7 +464,7 @@
         <%--  <c:if test='${fleetManagementFlag ne "true"}'> --%>
 					<li class="cloumnsTwo float-left" style="display: inline;">
 					<div class="cloumnsTwo div-style71" id="backtomap" style="display:none;">
-						<button class="button_cancel" onclick="javascript:backToMapView();"	type="button">Back to Map</button>
+						<button class="button_cancel" onclick="javascript:backToMapView();"	type="button"><spring:message code="fleetmanagement.headers.backToMap"/></button>
 						</div>
 					</li>
 	<%--	</c:if> --%>

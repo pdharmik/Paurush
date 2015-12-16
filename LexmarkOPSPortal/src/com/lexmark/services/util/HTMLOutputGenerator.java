@@ -11,6 +11,7 @@ import org.apache.commons.lang.StringEscapeUtils;
 import com.amind.common.util.StringUtils;
 import com.lexmark.constants.LexmarkConstants;
 import com.lexmark.domain.Asset;
+import com.lexmark.domain.PageCounts;
 
 import com.lexmark.service.impl.real.domain.LBSAddress;
 import com.lexmark.service.impl.real.domain.LBSAsset;
@@ -60,7 +61,7 @@ public class HTMLOutputGenerator {
 			return html.toString();
 		}
 		for(LBSLocationFloor location:address){
-			html.append("<option value=\""+(location.getFloorId()==null?location.getFloor():location.getFloorId())+"\">"+StringEscapeUtils.escapeHtml(location.getFloor())+"</option>\n");			
+			html.append("<option value=\""+(location.getFloorId()==null?location.getFloor():location.getFloorId())+"\" lod=\""+(location.getFloorLevelOfDetails()==null?"":location.getFloorLevelOfDetails())+"\">"+StringEscapeUtils.escapeHtml(location.getFloor())+"</option>\n");			
 		}
 		return html.toString();
 		
@@ -200,6 +201,28 @@ public class HTMLOutputGenerator {
 				sb.append("<option value=\"").append(bType.getBuildingType()).append("\">").append(bType.getBuildingType()).append("</option>\n");
 			}
 		}
+		return sb.toString();		
+	}
+	public static String generatePageCountsJson(List<PageCounts> pageCounts,String id){
+		StringBuffer sb=new StringBuffer("{");
+		sb.append("\"id\":").append("\"").append(id).append("\",");
+		sb.append("\"pageCount\":{");
+		int index=0;
+		for(PageCounts count:pageCounts){
+			sb.append("\"").append(count.getName()).append("\":");
+			sb.append("{\"name\":\"").append(count.getName()).append("\",");
+			sb.append("\"index\":").append(index++).append(",");
+			String dt=count.getDate();String val=count.getCount();
+			sb.append("\"date\":\"").append(dt==null?"":dt).append("\",");
+			sb.append("\"count\":\"").append(val==null?"":val).append("\"},");
+		}
+		
+		int listCount = pageCounts.size();
+		if(listCount>0){
+			
+		sb.deleteCharAt(sb.length()-1);
+		}
+		sb.append("}}");
 		return sb.toString();		
 	}
 }

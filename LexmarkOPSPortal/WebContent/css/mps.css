@@ -388,10 +388,13 @@ p {
 	width:300px;
 	font-size:11px;
 }
-ul.serviceSuccess, ul.serviceError { list-style-type:none!important; margin:10px!important }
+ul.serviceError{list-style-type:none!important; padding:0px 10px!important }
+ul.serviceSuccess{ list-style-type:none!important; margin:10px!important }
 ul.serviceSuccess li, ul.serviceError li { 
 	list-style-type:none!important; 	
 	padding: 8px 35px !important;
+	color: #1d1d25 !important;
+    font-weight: bold;
 }
 div.portletBlock {
 	width:auto;
@@ -656,7 +659,7 @@ ul.form li {
 ul.form li label {
 	display:inline-block;
 	float:left;
-	padding:2px 0 2px 0;
+	padding:2px 5px 2px 0;
 	width: 40%;
 	margin-left:0;
 	color: #1d1d25;
@@ -694,17 +697,39 @@ ul.form li img {
 	position:relative;
 	vertical-align:top
 }
+#selectLocalAddress1 ul li input:focus {
+    padding: 2px !important;
+	border: 1px solid rgba(82, 168, 236, 0.8);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(82, 168, 236, 0.6);
+    outline: 0 none;
+}
 .division,.division1{
-	border-top: 1px dotted #aaa;
 	margin-top:5px;
 	padding-top: 5px;
 }
-.division1 input{
+.division1 li {
+    margin-bottom: 5px;
+}
+.division1 label,.division1 select,.division1 input[type="text"]{
+    margin-top: 5px !important;
+}
+.division1 label {
+    padding: 0 !important;
+}
+.division1 input[type="text"]{
 	width: 140px !important;	
-	}
-.division1 select{
-	padding: 0px !important;
-	}
+	height: 15px !important;
+    line-height: 15px !important;
+    padding: 3px !important;
+}
+.division1 input[type="text"]:focus{
+	padding: 3px !important;	
+}
+.division1 select {
+    margin-right: 10px;
+    margin-top: 0;
+    padding: 0 !important;
+}
 /* For Radio Buttons */
 ul.form li span.radio input {
 	float:left;
@@ -866,16 +891,19 @@ li.error input[type="text"], li.error input[type="password"], li.error select {
 	border-right:1px solid #FCC;
 	background-color:#ffe9e9
 }
-div.error {
-	color:#F00;
-	border:2px #F00 solid;
-	margin:0 5px 10px 5px;
-	padding:5px 10px;
-	overflow:hidden;
-	background-color:#ffe9e9;
-	list-style-type: none !important;/*By offshore, for error list */
+div.error li {
+    background-color: #fbd1d8;
+    background-image: url("/LexmarkOPSPortal/images/errorMessage.png");
+    background-position: 6px 50%;
+    background-repeat: no-repeat;
+    color: #1d1d25;
+    list-style: outside none none;
+    padding: 3px 30px;
+    border: 1px solid #ea1b3d;
+    margin-bottom:5px;
 }
-div.error ul {
+div.error ul {	
+	margin:0 5px 10px 5px;
 	margin: 0 15px;
 	padding:0;
 }
@@ -1343,8 +1371,8 @@ img.download { margin:3px 5px }
 /*POPUP ALERTS*/
 
 #popup_content { padding:5px !important;} /* changed by offshore */
-#popup_content.confirm { background: url("/LexmarkOPSPortal/images/attention.png") no-repeat 10px 7px !important;} /* Added by offshore */
-#popup_message { overflow: hidden; min-height:30px; margin:0; padding:10px 10px 10px 50px}
+#popup_content.confirm,#popup_content.alert { background: url("/LexmarkOPSPortal/images/attention.png") no-repeat 10px 7px !important;} /* Added by offshore */
+#popup_message { overflow: hidden; min-height:30px; margin:0; padding:10px 10px 10px 50px;color:#1d1d25;}
 #popup_panel { display:block; float:none; backround: red; overflow:hidden; margin:0 auto!important; padding:10px }
 
 .oneblock { overflow:hidden }
@@ -2748,29 +2776,33 @@ height: 29px !important;
     background-color: #c9c9d1 !important;
 }
 .checkbox_Span,.radio_Span{
+	background-image:url(/LexmarkOPSPortal/images/radio-checkbox-sprite.png);
 	width:15px;
 	height:15px;
 	color:transparent;
-	display:inline-block;
 	background-repeat:no-repeat;
 	cursor:pointer;
-	margin-right:5px;
 	padding:0px !important;
-	vertical-align:middle;
+	margin-top:4px;
+	display:inline-block !important;
+	vertical-align: text-bottom;
+	margin-right: 5px;
 }
 .check_On{
-	background-image:url(/LexmarkOPSPortal/images/checkbox_checked.png);
+	background-position: -20px 0;
+}
+.checkbox_Span.check_Off,.checkbox_Span.check_On {
+    padding: 0;
 }
 .check_Off{
-	background-image:url(/LexmarkOPSPortal/images/checkbox_unchecked.png);
+	background-position: 0 0;
 }
 .radio_On{
-	background-image:url(/LexmarkOPSPortal/images/radio_checked.png);
+	background-position: -20px -20px;
 }
 .radio_Off{
-	background-image:url(/LexmarkOPSPortal/images/radio_unchecked.png);
+	background-position: 0 -20px;
 }
-
 .w91{
 	width: 91px !important;
 }
@@ -2793,4 +2825,13 @@ overflow:auto;
 }
 .radio_confirm span {
     margin-top: 2px;
+}
+.borderBelow{
+	border-bottom:1px solid #c9c9c1;
+}
+#list7 input {
+    width: 140px !important;
+}
+.portlet-msg-error{
+	margin:5px 0 !important;
 }

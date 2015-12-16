@@ -1,7 +1,7 @@
 <%@ include file="/WEB-INF/jsp/include2.jsp"%>
 <div id="successMessage" class="info banner ok" style="display: none;"></div>
 <div id="errorMsgPopupCart" class="error" style="display: none;"></div>
-<c:forEach var="cartBundle" items="${shoppingCartForm.cartItems}" varStatus="status">
+<c:forEach var="cartBundle" items="${shoppingCartFormBundles.cartItems}" varStatus="status">
 	<c:set var="cartDesc" value="${cartBundle.description}"/>
 	<c:set var="cartPrice" value="${cartBundle.price}"/>
 	

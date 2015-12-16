@@ -1,12 +1,20 @@
 package com.lexmark.service.impl.real;
 
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 import com.amind.session.Session;
 import com.lexmark.contract.CatalogListContract;
+import com.lexmark.contract.GlobalCatalogListContract;
 import com.lexmark.result.CatalogListResult;
+import com.lexmark.result.GlobalCatalogListResult;
 import com.lexmark.service.api.OrderSuppliesCatalogService;
 import com.lexmark.service.api.SiebelCrmServiceException;
 import com.lexmark.service.impl.real.catalogService.CatalogFieldListService;
 import com.lexmark.service.impl.real.catalogService.CatalogListService;
+import com.lexmark.service.impl.real.catalogService.GlobalCatalogListService;
 import com.lexmark.service.impl.real.util.AmindServiceUtil;
 import com.lexmark.service.impl.real.util.LogUtil;
 
@@ -162,5 +170,66 @@ public class AmindOrderSuppliesCatalogService extends AmindSiebelCrmService impl
 		}
 		logger.debug("[OUT] retrieveCatalogListWithContractNumber");
 		return result;
-}
+	}
+	
+	
+	@Override
+	public GlobalCatalogListResult retrieveGlobalCatalogListB2B(GlobalCatalogListContract globalCatalogListContract) throws Exception {
+		logger.debug("[IN] retrieveGlobalCatalogListB2B");
+		GlobalCatalogListResult result = new GlobalCatalogListResult();
+		ExecutorService executor = null;
+		final GlobalCatalogListContract contract = globalCatalogListContract;
+		try {
+			final GlobalCatalogListService service = new GlobalCatalogListService();
+				executor = Executors.newFixedThreadPool(3);
+				
+				//Supplies
+				Future<GlobalCatalogListResult> supplies = executor.submit(new Callable <GlobalCatalogListResult>() {
+					@Override
+					public GlobalCatalogListResult call() throws Exception {
+						return service.retrieveCatalogList(contract);
+					}
+				});
+				
+				//Accessories
+				Future<GlobalCatalogListResult> accessories = executor.submit(new Callable <GlobalCatalogListResult>() {
+					@Override
+					public GlobalCatalogListResult call() throws Exception {
+						return service.retrieveAccessoriesB2b(contract);
+					}
+				});
+				
+				//Bundles
+				Future<GlobalCatalogListResult> bundles = executor.submit(new Callable <GlobalCatalogListResult>() {
+					@Override
+					public GlobalCatalogListResult call() throws Exception {
+						return service.retrievePrinterBundleListB2B(contract);
+					}
+				});
+				
+				//Supplies
+				result.setSuppliesPartsList(supplies.get().getSuppliesPartsList());
+				result.setSuppliesTotalCount(supplies.get().getSuppliesTotalCount());
+				//Accessories
+				result.setPartsList(accessories.get().getPartsList());
+				result.setAccessoriesList(accessories.get().getAccessoriesList());
+				result.setSuppliesList(accessories.get().getSuppliesList());
+				result.setAccessoriesTotalCount(accessories.get().getAccessoriesTotalCount());
+				//Bundles
+				result.setBundleList(bundles.get().getBundleList());
+				result.setBundlesTotalCount(bundles.get().getBundlesTotalCount());
+			
+		} catch (Exception e) {
+			LogUtil.logAmindServiceCallException(LogUtil.stackTraceExecutionPoint(), e, globalCatalogListContract);		    
+			throw new SiebelCrmServiceException("retrieveGlobalCatalogListB2B failed!", e);
+		} finally {
+            if (executor!=null && !executor.isShutdown()) {
+				executor.shutdown();
+			}
+			logger.debug("[OUT] retrieveGlobalCatalogListB2B");
+		}
+		
+		return result;
+	}
+	
 }

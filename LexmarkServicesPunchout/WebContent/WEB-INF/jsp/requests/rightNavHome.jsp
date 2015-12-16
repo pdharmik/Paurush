@@ -7,6 +7,7 @@
 <portlet:resourceURL var="loadHistoryList" id="loadHistoryList"></portlet:resourceURL>
 <portlet:resourceURL var="loadPrinterList" id="loadPrinterList"></portlet:resourceURL>
 <portlet:resourceURL var="loadSuppliesList" id="loadSuppliesList"></portlet:resourceURL>
+<portlet:resourceURL var="loadGlobalSearchList" id="loadGlobalSearchList"></portlet:resourceURL>
 
 <portlet:actionURL var="loadPrinterProducts" windowState="<%=LiferayWindowState.EXCLUSIVE.toString()%>">
 	<portlet:param name="action" value="loadPrinterProducts"/>
@@ -27,6 +28,7 @@
 		<div id="suppliesProduct"></div>
 		<div id="eQuote"></div>
 		<div id="printersList"><!--<jsp:include page="/WEB-INF/jsp/requests/product/printersList.jsp"/>--></div>
+		<div id="globalSearchList"></div>
 </div>
 <div id="shoppingCartPopup" style="display:none" ></div>
 <div style="display: none;" id="cxmlDiv"></div>
@@ -36,22 +38,27 @@ var global_click_msgs={clickedFrom:""};//This will be used in certifiedProducts.
 //Whether it came from certifiedproducts.jsp or printerlist.jsp 
 
 var divResourceMapping={
-		divId:[ "historyList",       "printersList",      "suppliesList",       "printerProducts",       "suppliesProduct","shoppingCart"],
-		linkId:["historyLink",       "reqPrinterLink",    "reqSupplyLink",      "printerProduct",        "suppliesProduct","shoppingCart"],
-		activeLinkId:["historyLink",       "reqPrinterLink",    "reqSupplyLink",      "reqPrinterLink",        "reqSupplyLink","shoppingCart"],
-		url:[   "${loadHistoryList}","${loadPrinterList}","${loadSuppliesList}","${loadPrinterProducts}","${loadSuppliesProduct}","${loadShoppingCart}"]
+		divId:[ "historyList",       "printersList",      "suppliesList",       "printerProducts",       "suppliesProduct","shoppingCart","globalSearchList"],
+		linkId:["historyLink",       "reqPrinterLink",    "reqSupplyLink",      "printerProduct",        "suppliesProduct","shoppingCart","globalSearchList"],
+		activeLinkId:["historyLink",       "reqPrinterLink",    "reqSupplyLink",      "reqPrinterLink",        "reqSupplyLink","shoppingCart","globalSearchList"],
+		url:[   "${loadHistoryList}","${loadPrinterList}","${loadSuppliesList}","${loadPrinterProducts}","${loadSuppliesProduct}","${loadShoppingCart}","${loadGlobalSearchList}"]
 		
 };
 var cartCheckObj={cartType:"printers",qty:0};
 var flag=true;
 var acntType;
 var continueShoppingFlag=true;
-
+var searchNumber = "";
 
 jQuery(document).bind("loadOtherPortlet",eventHandler);
 function eventHandler(e,params){
 	var qty = jQuery('#totItems').html();
-
+	if(params.indexOf("globalSearchList_") > -1){
+		var searchArray = params.split("_"); 
+		params = "globalSearchList";
+		searchNumber = searchArray[1];
+		jQuery("#historyLink,#reqPrinterLink,#reqSupplyLink").removeClass("active");
+	}
 	if((params=="reqSupplyLink" && cartCheckObj.cartType=="printers" && cartCheckObj.qty>0)||(params=="reqPrinterLink" && cartCheckObj.cartType=="supplies" && cartCheckObj.qty>0)){
 		flag=false;
 		calledFromLEftNav(params);
@@ -90,30 +97,34 @@ function calledFromLEftNav(linkIdFromLeftNav){
 	});
 	
 	 var qty = jQuery('#totItems').html();
-	
-	 if((activeLink=="reqPrinterLink" && (linkClicked=="reqSupplyLink" || linkClicked=="historyLink") && qty!=0 && !continueShoppingFlag) || (activeLink=="reqSupplyLink" && (linkClicked=="reqPrinterLink" || linkClicked=="historyLink") && qty!=0 && !continueShoppingFlag))
-	 {		
-		jConfirm("Selected Quantities will be lost. Do you want to continue?", "", function(confirmResult) {
-		
-		if(confirmResult){
-			jQuery.ajax({
-				  type: "POST",
-				  url: "${clearCartSession}",
-				  success:function(){					
-					continueCallFromLeftNav(linkIdFromLeftNav);
-				  }
-			});			
-		}else{
-			 jQuery('#'+activeLink).addClass("active");
-			 jQuery('#historyLink').removeClass("active");
-			 
-			 return false;
+	 if("${fromAriba}"=="false"){
+		 continueCallFromLeftNav(linkIdFromLeftNav);
+	 }
+	 else{
+		 if((activeLink=="reqPrinterLink" && (linkClicked=="reqSupplyLink" || linkClicked=="historyLink") && qty!=0 && !continueShoppingFlag) || (activeLink=="reqSupplyLink" && (linkClicked=="reqPrinterLink" || linkClicked=="historyLink") && qty!=0 && !continueShoppingFlag))
+			 {		
+				jConfirm("Selected Quantities will be lost. Do you want to continue?", "", function(confirmResult) {
+				
+				if(confirmResult){
+					jQuery.ajax({
+						  type: "POST",
+						  url: "${clearCartSession}",
+						  success:function(){					
+							continueCallFromLeftNav(linkIdFromLeftNav);
+						  }
+					});			
+				}else{
+					 jQuery('#'+activeLink).addClass("active");
+					 jQuery('#historyLink').removeClass("active");
+					 
+					 return false;
+				}
+				});		 
+			}
+		else{
+			continueCallFromLeftNav(linkIdFromLeftNav);
 		}
-		});		 
-	}	
-	else{
-		continueCallFromLeftNav(linkIdFromLeftNav);
-	}	
+	 }
 }
 
 function continueCallFromLeftNav(linkIdFromLeftNav){
@@ -163,11 +174,21 @@ function continueCallFromLeftNav(linkIdFromLeftNav){
 	}
 	else
 	{
+		if(linkIdFromLeftNav.cartType == "printers"){
+			cartCheckObj.cartType = "printers";
+		}
+		if(linkIdFromLeftNav.cartType == "supplies"){
+			cartCheckObj.cartType = "supplies";
+		}
+		if(linkIdFromLeftNav.cartType == "globalSearch"){
+			cartCheckObj.cartType = "globalSearch";
+		}
 		jQuery.ajax({
 			  type: "POST",
 			  url: divResourceMapping.url[index],
 			  data:{linkIdFromLeftNav: linkIdFromLeftNav,
-					cartType: cartCheckObj.cartType},
+					cartType: cartCheckObj.cartType,
+					searchNumber: searchNumber},
 			  success:function(content){
 				  hideOverlay();
 				  jQuery("#storeContent").hide();
@@ -176,13 +197,16 @@ function continueCallFromLeftNav(linkIdFromLeftNav){
 					  jQuery(this).hide();
 					  jQuery(this).html('');
 				  });
-				  jQuery('.leftNavLinks li').each(function(){
-					  jQuery(this).find("a").removeClass("active");
-				  });
+				  if(linkIdFromLeftNav != 'globalSearchList'){
+					  jQuery('.leftNavLinks li').each(function(){
+						  jQuery(this).find("a").removeClass("active");
+					  }); 
+				  }
 				  jQuery('#'+divResourceMapping.divId[index]).html(content);
 				  jQuery('#'+divResourceMapping.divId[index]).show();
-				  jQuery('#'+divResourceMapping.activeLinkId[index]).addClass("active");
-
+				  if(linkIdFromLeftNav != 'globalSearchList'){
+				  	jQuery('#'+divResourceMapping.activeLinkId[index]).addClass("active");
+				  }
 				  if(global_click_msgs.clickedFrom === "showShoppingCart")
 				  {
 					  jQuery('#backBtn').show();

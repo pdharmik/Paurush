@@ -79,6 +79,7 @@ import com.lexmark.contract.NotificationDisplayOrderContract;
 import com.lexmark.contract.ObieeReportParameterContract;
 import com.lexmark.contract.PageCountsContract;
 import com.lexmark.contract.PaymentListContract;
+import com.lexmark.contract.PlacementContract;
 import com.lexmark.contract.PriceContract;
 import com.lexmark.contract.ProcessCustomerContactContract;
 import com.lexmark.contract.ReportDefinitionDetailContract;
@@ -110,6 +111,7 @@ import com.lexmark.contract.UserNotificationContract;
 import com.lexmark.contract.UserNotificationListContract;
 import com.lexmark.contract.api.SearchContractBase;
 import com.lexmark.contract.source.ReturnServiceRequestContract;
+import com.lexmark.domain.Account;
 import com.lexmark.domain.AccountContact;
 import com.lexmark.domain.Bundle;
 import com.lexmark.domain.DocumentDefinition;
@@ -145,6 +147,7 @@ import com.lexmark.services.LexmarkSPConstants;
 import com.lexmark.services.form.AssetDetailPageForm;
 import com.lexmark.services.form.CatalogDetailPageForm;
 import com.lexmark.services.form.HardwareDetailPageForm;
+import com.lexmark.services.form.ManageAssetForm;
 import com.lexmark.services.form.ManageReturnsForm;
 import com.lexmark.services.form.ReportParameterForm;
 import com.lexmark.services.form.ScheduleReportForm;
@@ -178,7 +181,7 @@ public class ContractFactory {
 		"installAddress.addressLine1","installAddress.officeNumber", "installAddress.city","installAddress.state",
 		"installAddress.province","installAddress.county","installAddress.district","installAddress.country","installAddress.postalCode",
 		"assetContact.firstName", "assetContact.lastName", "assetContact.emailAddress",
-		"assetContact.workPhone","lbsAddresFlagValue"};
+		"assetContact.workPhone","installAddress.levelOfDetails","lbsAddressFlag"};
 	/**
 	 * Variable Declaration
 	 */
@@ -233,11 +236,11 @@ public class ContractFactory {
 	/**
 	 * Variable Declaration
 	 */
-	private static final String[] accountAddressPopupColumns = new String[] {"addressName","storeFrontName","addressLine1","addressLine2","officeNumber","city","state","province","county","district","region","postalCode","country","lbsAddressFlag"};
+	private static final String[] accountAddressPopupColumns = new String[] {"addressName","storeFrontName","addressLine1","addressLine2","officeNumber","city","state","province","county","district","region","postalCode","country","lbsAddressFlag","levelOfDetails"};
 	/**
 	 * Variable Declaration
 	 */
-	private static final String[] accountAddressColumns = new String[] {"addressName","storeFrontName","addressLine1","addressLine2","officeNumber","city","state","province","county","district","region","postalCode","country"};
+	private static final String[] accountAddressColumns = new String[] {"addressName","storeFrontName","addressLine1","addressLine2","officeNumber","city","state","province","county","district","region","postalCode","country","lbsAddressFlag"};
 	/**
 	 * Variable Declaration
 	 */
@@ -3185,6 +3188,7 @@ public class ContractFactory {
 			}
 		}
 		
+contract.setPlacementId(hardwareDetailPageForm.getPlacementId());
 		return contract;
 	}	
 	
@@ -3245,6 +3249,7 @@ public class ContractFactory {
 		}else{
 			contract.getServiceRequest().setId("");
 		}
+		contract.setPlacementId(hardwareDetailPageForm.getPlacementId());
 		return contract;
 	}
 	
@@ -3572,5 +3577,66 @@ public class ContractFactory {
 	public static LocationReportingHierarchyContract getCustomerHierarchyChildNodeContract() {
 		LocationReportingHierarchyContract contract = new LocationReportingHierarchyContract();
 		return contract;
+	}
+	
+	/**
+	 * @return 
+	 */
+	public static PlacementContract getPlacementContract(PortletRequest request, String action) {
+		PlacementContract contract = new PlacementContract();
+		PortletSession session=request.getPortletSession();
+		if("addPlacement".equalsIgnoreCase(action)){
+
+			GenericAddress address = new GenericAddress();
+			String addressArray[] = {"lat","lng","floorNumber","id","buildingId","buildingName","regionId","regionName",
+					"address","city","state","country","zipCode",
+					"extAddressId","campusId","campusName","floorId","floorName","placementId","gridX","gridY","storeFrontName"}; 
+			 Map<String,String> addressMap= new HashMap<String, String>();
+			for (int i=0;i<addressArray.length;i++){
+				String val=request.getParameter(addressArray[i]);				
+				addressMap.put(addressArray[i], val==null?"":val);				
+				LOGGER.debug("array Values for Add--- "+addressArray[i]+"--- "+request.getParameter(addressArray[i]));
+			}
+			
+			contract.setAddressMap(addressMap);
+			Account acc= new Account();
+			acc.setAccountId(request.getParameter("accountId"));
+			contract.setAccount(acc);
+			contract.setPlacementName(request.getParameter("plcName"));
+			contract.setModelName(request.getParameter("plcModel"));
+			contract.setIpAddress(request.getParameter("plcIp"));
+			
+		}
+		else if("changePlacement".equalsIgnoreCase(action)){
+			GenericAddress address = new GenericAddress();
+			String addressArray[] = {"lat","lng","floorNumber","id","buildingId","buildingName","regionId","regionName",
+					"address","city","state","country","zipCode",
+					"extAddressId","campusId","campusName","floorId","floorName","placementId","gridX","gridY"}; 
+			 Map<String,String> addressMap= new HashMap<String, String>();
+			for (int i=0;i<addressArray.length;i++){
+				String val=request.getParameter(addressArray[i]);				
+				addressMap.put(addressArray[i], val==null?"":val);				
+				LOGGER.debug("array Values--- "+addressArray[i]+"--- "+request.getParameter(addressArray[i]));
+			}
+			
+			contract.setAddressMap(addressMap);
+			contract.setPlacementId(request.getParameter("placementId"));
+			contract.setPlacementName(request.getParameter(""));
+			contract.setModelName(request.getParameter(""));
+			contract.setIpAddress(request.getParameter(""));
+		}
+		else if("removePlacement".equalsIgnoreCase(action)){
+		contract.setPlacementId(request.getParameter("placementId"));
+		}
+		return contract;
+	}
+	public static LBSAssetListContract getLBSPlacementContract(ManageAssetForm masForm) {
+		LBSAssetListContract contract = new LBSAssetListContract();
+		contract.setNewQueryIndicator(true);
+		contract.setLbsFlag(true);
+		contract.setSerialNumber(masForm.getAssetDetail().getSerialNumber());
+		contract.setProductName(masForm.getAssetDetail().getProductLine());
+		return contract;
+		
 	}
 }

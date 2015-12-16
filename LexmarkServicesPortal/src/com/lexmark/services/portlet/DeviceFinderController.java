@@ -217,6 +217,16 @@ public class DeviceFinderController extends BaseController {
 			String zoomLevelInfo = (String)session.getAttribute("zoomLevelInfo",PortletSession.APPLICATION_SCOPE);
 			model.addAttribute("zoomLevelInfo",zoomLevelInfo);
 		}
+		
+		Map<String, String> lbsAddressLOD=null;
+		try {
+			lbsAddressLOD = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_ADDRESSLOD.getValue(),request.getLocale());
+		} catch (LGSDBException e) {
+			logger.debug("Exception"+e.getMessage());
+		}
+		lbsAddressLOD.remove("Mix - See Floor");
+		model.addAttribute("lbsAddressLOD", lbsAddressLOD);
+		
 		/*End Change for CR 17284*/
 		logger.exit(this.getClass().getSimpleName(), METH_SHOWDEVICELISTPAGE);
 		return "deviceFinder/deviceFinder";

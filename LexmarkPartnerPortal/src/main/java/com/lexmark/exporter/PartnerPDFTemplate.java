@@ -719,13 +719,16 @@ public class PartnerPDFTemplate {
 			buf.append("<tr>" +
 						"<td>" + localizeDateTimeString(partLineItem.getPartOrderedDate(),false) + "</td>" +
 						"<td>" + partLineItem.getQuantity() + "</td>" +
+						"<td>" + showString(partLineItem.getExpedite()) +"</td>" + //AMS 15.11 manish
 						"<td>" + showString(partLineItem.getPartNumber()) +"</td>" +
 						"<td>" + showString(partLineItem.getPartName()) +"</td>" +
-						"<td>" + showString(partLineItem.getLineStatus().getName()) +"</td>" +
-						"<td>" + showString(partLineItem.getSerialNumber()) +"</td>" +
+						"<td>" + showString(partLineItem.getStatus()) +"</td>" +
+						"<td>" + showString(partLineItem.getLineStatus().getName()) +"</td>" +   //manish
+					    "<td>" + showString(partLineItem.getSerialNumber()) +"</td>" +
 						"<td>" + formattedShipDate + "</td>" +
 						"<td>" + showString(partLineItem.getCarrier().getName()) +"</td>" +
 						"<td>" + showString(partLineItem.getTrackingNumber()) + "</td>" +
+						 "<td>" + showString("")+"</td>"+     //manish
 						"</tr>");
 			}
 			catch(Exception e)

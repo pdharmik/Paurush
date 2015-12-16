@@ -101,7 +101,7 @@ if(addressFlag!="null"){
   						<button class="button_cancel" id="cancelAddressButton" onclick="dialog.dialog('close'); callOmnitureAction('<%=LexmarkSPOmnitureConstants.SELECTANADDRESSPOPUP%>','<%=LexmarkSPOmnitureConstants.ADDRESSPOPUPCANCELADDRESSPOPUP%>');" type="button"><spring:message code="button.cancel"/></button>
   						<button class="button" id="createNewAddressButton" onclick="javascript:showAddAddress();" type="button"><spring:message code="requestInfo.popup.button.createNewAddress"/></button>
   					</div>
-					<div class="error" id="errorMsg_popup" style="display:none"></div>
+					<div class="serviceError" id="errorMsg_popup" style="display:none"></div>
 					<!-- CREATE NEW ADDRESS FORM START -->
 					<div class="oneblock" id="update" style="display:none">
 					<h3 class="pageTitle"><spring:message code="requestInfo.popup.button.createNewAddress"/> <span><spring:message code="requestInfo.label.fieldsMarked"/> <span class="req">*</span><spring:message code="requestInfo.label.areRequired"/></span>
@@ -169,6 +169,30 @@ if(addressFlag!="null"){
 										<span><input type="text" id="zipCode" maxlength="30" onfocus="jQuery(this).removeClass('errorColor'); jQuery('#state_popup').removeClass('errorColor');" onmousedown="jQuery(this).removeClass('errorColor');jQuery('#state_popup').removeClass('errorColor');jQuery('#cleansedAddress').hide(function(){jQuery('#button_popup').show();});" /></span>
 										
 									</li>
+									<li id="list8" style="display:none;"> <!--ID given for UI Change under CI BRD 13-10-08 -->
+										<label for="lbsFlag1" >LBS Address:<span class="req">**</span>
+										</label> 
+										<span><select name="lbsFlag1" id="lbsFlag1" onChange="changeLBSFlag();" onfocus="jQuery(this).removeClass('errorColor');" onmousedown="jQuery(this).removeClass('errorColor');jQuery('#cleansedAddress').hide(function(){jQuery('#button_popup').show();});">
+										 <option value="">Select</option>
+										<c:forEach var="isLbsAddress" items="${isLbsAddress}">
+                                         <option value="${isLbsAddress.key}">${isLbsAddress.value}</option>
+                                    </c:forEach>
+                                    </select>
+										</span>
+									</li>
+									<li id="list9" style="display:none;"> <!--ID given for UI Change under CI BRD 13-10-08 -->
+										<label for="lodAddressLabel" >Address Level of Detail:<span class="req">**</span>
+										</label> 
+										<span>
+										<select name="lodAddress1" id="lodAddress1" onfocus="jQuery(this).removeClass('errorColor'); " onmousedown="jQuery(this).removeClass('errorColor');jQuery('#cleansedAddress').hide(function(){jQuery('#button_popup').show();});" >
+										 <option value="">Select</option>
+										<c:forEach var="lbsAddressLOD" items="${lbsAddressLOD}">
+                                       <option value="${lbsAddressLOD.key}">${lbsAddressLOD.value}</option>
+                                       </c:forEach>
+										
+										</select></span>
+										
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -209,7 +233,12 @@ if(addressFlag!="null"){
 									<div class="dBlock dBlock5" id="addregionPopup"></div>
 									</div>
 									<div id="zip_popup_span"></div>
-									<div id="country_popup_span"></div></li>
+									<div id="country_popup_span"></div>
+									
+									
+									<div id="lbsFlagDisplay" style="display:none;"> LBS Address : <span id="lbsFlag_popup_span"></span></div>
+									<div id="lodLevelDiv" style="display:none;"> Address Level of Detail : <span id="lodAddress_popup_span"></span></div>
+									</li>
 									
 
 								</ul>
@@ -246,21 +275,53 @@ var lbsAddressFlagFilter=[];
 lbsAddressFlagFilter[0]=["Y","Yes"];
 lbsAddressFlagFilter[1]=["N","No"];
 
+var lbsAddressLODList = [];		
+<c:forEach items="${lbsAddressLOD}" var="lbsAddressLOD" varStatus = "status" >
+lbsAddressLODList[${status.index}] = ["${lbsAddressLOD.key}","${lbsAddressLOD.value}"];
+</c:forEach>
+
 var goForCleanseAddrFlg = false;
 //following variables are declared in dynamicGridInitialize
 pagingArea="pagingArea5";infoArea="infoArea";headerMenuButton="headerMenuButton";loadingNotification="loadingNotification_addr";backFilterValues="";
 gridCreationId="serviceAddressGridbox";
 pageSize=5,pagesIngrp=6;
-JSON_Param["<%=gridConfigurationValues[0]%>"]="<spring:message code='serviceRequest.listHeader.serviceAddressListPopUp'/>";
-JSON_Param["<%=gridConfigurationValues[1]%>"]=",,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#combo_filter";
-JSON_Param["<%=gridConfigurationValues[2]%>"]="left,left,left,left,left,left,left,left,left,left,left,left,left,center,left";
-JSON_Param["<%=gridConfigurationValues[3]%>"]="100,40,100,100,100,100,80,50,60,80,75,80,80,80,80,80";
-JSON_Param["<%=gridConfigurationValues[4]%>"]="ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro";
-JSON_Param["<%=gridConfigurationValues[5]%>"]="na,na,str,str,str,str,str,str,str,str,str,str,str,str,str,na";
+
+//Added for addition of two column LBS Flag And lodAddress 
+
+
+var gridHeaderCode="<spring:message code='serviceRequest.listHeader.serviceAddressListPopUp'/>"
+var gridFilterText = ",,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#combo_filter";
+var gridColumnAlignment="left,left,left,left,left,left,left,left,left,left,left,left,left,center";
+var gridWidth="100,40,100,100,100,100,80,50,60,80,75,80,80,80,80,80";
+var gridReadOnly="ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro";
+var gridColumnSort="na,na,str,str,str,str,str,str,str,str,str,str,str,str,str,str";
+
+var currentURL = window.location.href;
+var isMapRequest = false;
+if(currentURL.indexOf('/mapsrequest') >-1)
+ {	
+	 isMapRequest = true;
+	 jQuery("#list8").show();
+	 jQuery("#lbsFlagDisplay").show();
+	 gridHeaderCode="<spring:message code='serviceRequest.listHeader.serviceAddressListPopUpMapsRequest'/>";
+	 gridFilterText=gridFilterText+",#combo_filter";
+	 gridColumnAlignment=gridColumnAlignment+",left";
+	 gridWidth=gridWidth+",80";
+	 gridReadOnly=gridReadOnly+",ro";
+	 gridColumnSort=gridColumnSort+",str";
+	//Added for addition of two column LBS Flag And lodAddress  Ends
+ }
+JSON_Param["<%=gridConfigurationValues[0]%>"]=gridHeaderCode;
+JSON_Param["<%=gridConfigurationValues[1]%>"]=gridFilterText;
+JSON_Param["<%=gridConfigurationValues[2]%>"]=gridColumnAlignment
+JSON_Param["<%=gridConfigurationValues[3]%>"]=gridWidth;
+JSON_Param["<%=gridConfigurationValues[4]%>"]=gridReadOnly;
+JSON_Param["<%=gridConfigurationValues[5]%>"]=gridColumnSort;
 JSON_Param["<%=gridConfigurationValues[6]%>"]="0,1";
 JSON_Param["<%=gridConfigurationValues[7]%>"]="2,des";
 JSON_Param["<%=gridConfigurationValues[8]%>"]="9,10,11,12";
 JSON_Param["<%=JSON_COMBO_FILTER%>1"]=lbsAddressFlagFilter;
+JSON_Param["<%=JSON_COMBO_FILTER%>2"]=lbsAddressLODList;
 JSON_Param["<%=JSON_RESOURCE_URL%>"]="<portlet:resourceURL id="addressListPopulate"/>";
 JSON_Param["<%=gridSavingParams[0]%>"]="${gridSettings.colsOrder}";
 JSON_Param["<%=gridSavingParams[1]%>"]="${gridSettings.colsWidth}";
@@ -486,6 +547,26 @@ function hideAddAddress() {
 			jQuery('#state_popup').addClass('errorColor');
 			jQuery('#zipCode').addClass('errorColor');
 			}
+			
+		if(currentURL.indexOf('/mapsrequest') >-1){
+		 if(jQuery('#lbsFlag1 option:selected').val()=="")
+		  {
+					
+		validationFlag=false;
+	    jQuery('#address_error_div_popup').append('<li><strong>LBS address flag is mandatory</strong></li>');
+		jQuery('#lbsFlag1').addClass('errorColor');
+		}
+		        
+		 if(jQuery('#lbsFlag1').val()=="Y")
+		            	{
+		        	      	if(jQuery('#lodAddress1 option:selected').val()=="")
+		        		 	{
+		    					validationFlag=false;
+		    					jQuery('#address_error_div_popup').append('<li><strong>LOD address level is mandatory</strong></li>');
+		    					jQuery('#lodAddress1').addClass('errorColor');
+		    				}
+		            	}
+		}
 		if(validationFlag==false)
 			return false;
 		else 
@@ -573,6 +654,21 @@ function hideAddAddress() {
 								}
 								jQuery('#zip_popup_span').html(obj2.postalCode);
 								jQuery('#country_popup_span').html(obj2.country);
+								
+								if(jQuery("#lbsFlag1").val()=="Y")
+									{
+									jQuery('#lbsFlag_popup_span').html(jQuery('#lbsFlag1 option:selected').text());
+									jQuery('#lodAddress_popup_span').html(jQuery('#lodAddress1 option:selected').text());
+									jQuery('#lodLevelDiv').show();
+									}
+								else
+									{
+									jQuery('#lbsFlag_popup_span').html(jQuery('#lbsFlag1 option:selected').text());
+									jQuery('#lodAddress_popup_span').html("");
+									jQuery('#lodLevelDiv').hide();
+									}
+								
+								
 								if(obj2.province == '' || obj2.province == ' ' || obj2.province == null ){
 									jQuery('#addprovincePopup').hide();
 								}
@@ -605,7 +701,7 @@ function hideAddAddress() {
 								}
 							else if(error=="cleanseError")
 								{
-								jQuery('#errorMsg_popup').html(obj2.cleansedError);
+								jQuery('#errorMsg_popup').html('<li class="portlet-msg-error">'+obj2.cleansedError+'</li>');
 								jQuery('#errorMsg_popup').show();
 								jQuery("#ignoreSaveAddress").show();
 								}
@@ -613,7 +709,7 @@ function hideAddAddress() {
 									jQuery('#errorMsg_popup').html('');
 									jQuery.each(obj2, function(name, value) {
 										if(value!="yes")
-										jQuery('#errorMsg_popup').append('<li><strong>'+value+'</strong></li>');
+										jQuery('#errorMsg_popup').append('<li class="portlet-msg-error"><strong>'+value+'</strong></li>');
 										
 									});
 									jQuery('#errorMsg_popup').show();
@@ -629,7 +725,7 @@ function hideAddAddress() {
 							}
 					},
 				failure: function(results){
-							jQuery('#errorMsg_popup').html('<li><strong>Unable to cleanse address</strong></li>');
+							jQuery('#errorMsg_popup').html('<li class="portlet-msg-error"><strong>Unable to cleanse address</strong></li>');
 							jQuery('#errorMsg_popup').show();
 						}
 			});
@@ -775,18 +871,19 @@ function hideAddAddress() {
 			goForCleanseAddrFlg = false;
 			addServiceAddressElement(null,null,cleanseAddrLine1,cleanseAddrLine2,cleanseaddrCity,
 			cleanseaddrStateProv,null,cleanseaddrCountry,cleanseaddrZipPostal,
-			cleanseAddrStoreFrNm,null, null, null,null,cleanseOffice, cleanseDistrict,null,cleanseCountryISO,cleanseRegion,cleanseStateCode);
+			cleanseAddrStoreFrNm,null, null, null,null,cleanseOffice, cleanseDistrict,null,cleanseCountryISO,cleanseRegion,cleanseStateCode,jQuery('#lbsFlag1').val(),jQuery('#lodAddress1').val());
 			<%-- Changes for MPS phase 2--%>
-			addRestFieldsOfCleanseAddress();
+		
 			<%-- ENDS --%>
 		}
 		else{
+			
 		goForCleanseAddrFlg = false;
 	
 		<%-- Changes for MPS 2.1--%>
 		addServiceAddressElement(null,null,jQuery('#addrLine1').val(),jQuery('#addrLine2').val(),
 		jQuery('#cityPopup').val(),jQuery('#state_popup').val(),null,jQuery('#country_popup').val(),jQuery('#zipCode').val(),
-		jQuery('#storeName').val(),null, null, null,null,jQuery('#officeNo').val(),null,null,null,null,null);
+		jQuery('#storeName').val(),null, null, null,null,jQuery('#officeNo').val(),null,null,null,null,null,jQuery('#lbsFlag1').val(),jQuery('#lodAddress1').val());
 		<%--Ends--%>
 		}
 	}
@@ -812,6 +909,19 @@ function hideAddAddress() {
 	function ignoreAndSave(){		
 		addServiceAddressElement(null,null,jQuery('#addrLine1').val(),jQuery('#addrLine2').val(),
 		jQuery('#cityPopup').val(),jQuery('#state_popup').val(),null,jQuery('#country_popup').val(),jQuery('#zipCode').val(),
-		jQuery('#storeName').val(),null, null, null,null,jQuery('#officeNo').val(),null,null,null,null,null);
+		jQuery('#storeName').val(),null, null, null,null,jQuery('#officeNo').val(),null,null,null,null,null,jQuery('#lbsFlag1').val(),jQuery('#lodAddress1').val());
+	}
+	function changeLBSFlag()
+	{
+		jQuery('#lodAddress1').val("");
+		var lbsFlagSelected=jQuery('#lbsFlag1').val();
+		if(lbsFlagSelected.toLowerCase()=="y")
+			{
+			jQuery('#list9').show();
+			}
+		else
+			{
+			jQuery('#list9').hide();
+			}
 	}
 </script>

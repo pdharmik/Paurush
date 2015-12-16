@@ -7,7 +7,18 @@ public class LBSLocationFloor implements Serializable {
 
 	private String floor;
 	private String floorId;
+	
+	/* Added for LBS 1.5- Level of Details- Floor Level */
+	private String floorLevelOfDetails;
 
+	public String getFloorLevelOfDetails() {
+		return floorLevelOfDetails;
+	}
+	public void setFloorLevelOfDetails(String floorLevelOfDetails) {
+		this.floorLevelOfDetails = floorLevelOfDetails;
+	}
+	/* LOD functions ends here */
+	
 	public String getFloor() {
 		return floor;
 	}

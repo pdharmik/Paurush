@@ -200,6 +200,10 @@
 					<key><value>serviceProvider</value></key>
 					<value>LXK Par Agree SP</value>
 				</entry>
+				<entry>
+				<key><value>displayWarning</value></key>
+				<value>LXK C Product and Asset Warning Display</value>
+				</entry>
 	     	</map>
 		</property>
     </bean>  

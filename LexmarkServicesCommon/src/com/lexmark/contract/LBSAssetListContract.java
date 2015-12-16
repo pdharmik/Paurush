@@ -16,7 +16,28 @@ public class LBSAssetListContract extends SearchContractBase implements Serializ
 	private String mdmLevel;
 	private boolean lbsFlag;
 	private List<String> assetIds;
+	private String accountId;
+	private String productName;
+	private String serialNumber;
 	
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public String getSerialNumber() {
+		return serialNumber;
+	}
+	public void setSerialNumber(String serialNumber) {
+		this.serialNumber = serialNumber;
+	}
+	public String getAccountId() {
+		return accountId;
+	}
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
+	}
 	public CrmSessionHandle getSessionHandle() {
 		return sessionHandle;
 	}

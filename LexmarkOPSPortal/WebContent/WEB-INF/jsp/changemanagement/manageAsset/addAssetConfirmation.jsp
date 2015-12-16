@@ -337,6 +337,17 @@
                     <span>${manageAssetForm.assetDetail.installAddress.physicalLocation3}</span>
                       </li>
                       
+                      
+                      <c:if test="${manageAssetForm.assetDetail.installAddress.levelOfDetails.toLowerCase() eq 'grid level'
+                                                ||  (manageAssetForm.assetDetail.installAddress.levelOfDetails.toLowerCase() eq 'mix - see floor' 
+                                                     &&  manageAssetForm.assetDetail.installAddress.floorLevelOfDetails.toLowerCase() eq 'grid level') }">
+        
+                      	<li id="gridLiAdd>
+							<div id="installedXYLblDiv">
+							<label id="installedXYLbl">Grid X/Y : </label><label id="installedCoords"></label>
+							</div>
+						</li>
+						</c:if>
 					 
                       </c:when>
                       <c:when test="${manageAssetForm.assetDetail.installAddress.lbsAddressFlag ne 'true' }">
@@ -482,6 +493,14 @@
 
 
   jQuery(document).ready(function() {
+  
+  var xCordInstall='${manageAssetForm.assetDetail.installAddress.coordinatesXPreDebriefRFV}';
+  var yCordInstall='${manageAssetForm.assetDetail.installAddress.coordinatesYPreDebriefRFV}';
+  
+  
+
+  coordinates(xCordInstall,yCordInstall,"installed");
+  
 		var currentURL = window.location.href;
 //		Change Account Link Hide/Show for CI-7 Defect #12274
 		if(currentURL.indexOf('/partner-portal') == -1)
@@ -713,6 +732,27 @@ function(A) {
 
 });
 
+function coordinates(xCo,yCo,flag){
+	var xCoordinate="";
+	var yCoordinate="";
+	var seperator="/";
+	if(!(xCo && yCo))
+	{
+			seperator="";
+	}
+	if(xCo){xCoordinate=xCo;}
+	if(yCo){yCoordinate=yCo;}
+	if(flag=="moveTo"){
+		$('#moveToCoords').html(xCoordinate+seperator+yCoordinate);
+		$('#moveToAddresscoordinatesXPreDebriefRFV').val(xCoordinate);
+		$('#moveToAddresscoordinatesYPreDebriefRFV').val(yCoordinate);
+	}
+	else if(flag=="installed"){
+		$('#installedCoords').html(xCoordinate+seperator+yCoordinate);
+		$('#installcoordinatesXPreDebriefRFV').val(xCoordinate);
+		$('#installcoordinatesYPreDebriefRFV').val(yCoordinate);
+	}	
+}
 
 </script>
 </body>

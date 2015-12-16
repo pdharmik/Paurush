@@ -477,7 +477,7 @@ public class RequestController extends BaseController {
 		//Added for Partner Portal Request TAb Allow Child SR July Release 2014
 		ControllerUtil.sortActivityListOnCHildSR(activityListResult, contract.getSortCriteria());
 		List<Activity> activityList = activityListResult.getActivityList();
-		if(activityList!=null){
+		/*if(activityList!=null){
 			logger.debug("The list size is---->>>"+activityList.size());
 			for(Activity acv : activityList){
 				logger.debug("IsChild Flag is  "+acv.isIsChildSR());
@@ -486,7 +486,7 @@ public class RequestController extends BaseController {
 				logger.debug("Must Resolve By is "+acv.getCommittedDate());
 				logger.debug("Parent SR Num is "+acv.getParentSRNum());
 			}
-		}
+		}*/
 		activityList = activityList == null ? EMPTY_LIST : activityList;
 		
 		// localize request list

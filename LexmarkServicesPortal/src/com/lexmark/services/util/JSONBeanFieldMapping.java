@@ -76,8 +76,9 @@ public enum JSONBeanFieldMapping {
 	/**
 	 * 
 	 */
-	CONTACTWORKPHONE("workPhone","primaryContactWorkPhone"),CONTACTALTERNATEPHONE("alternatePhone","primaryContactAlternatePhone");
+	CONTACTWORKPHONE("workPhone","primaryContactWorkPhone"),CONTACTALTERNATEPHONE("alternatePhone","primaryContactAlternatePhone"),
 	
+	ADDRESSLEVELLOD("addressLevelLOD","addressLevelDetails"),FLOORLEVELLOD("floorLevelLOD","floorLevelDetails"),BUILDINGTYPE("buildingType","buildingType");
 	
 	
 	private String jsonParam;

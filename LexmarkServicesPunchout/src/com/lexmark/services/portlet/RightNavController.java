@@ -73,33 +73,60 @@ public class RightNavController {
 	@RequestMapping
 	public String showDefaultView(RenderRequest request, RenderResponse response,Model model,PortletSession session) {
 		LOGGER.debug(("[ In  showDefaultView ]"));
-				
-		ControllerUtil.setAribaParam(request, session);
-		String supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
+		String currURL=response.createRenderURL().toString();		
+		boolean fromAriba = false;
+		LOGGER.debug("currURL==="+currURL);
+		HttpServletRequest httpReq = PortalUtil.getOriginalServletRequest(PortalUtil.getHttpServletRequest(request));
+		String aribaParamURL = httpReq.getParameter("aribaParamUrl");
+		LOGGER.debug("aribaParamURL in right nav controller "+aribaParamURL);
+		if(null!=aribaParamURL){
+			fromAriba=true;
+		}
 		String acntType = null;
-		LOGGER.debug("supplierId::::"+supplierId);
+		boolean isKaiser = currURL.indexOf("kaiser")!=-1;
+		if(!fromAriba){
+			session.setAttribute("fromAriba", false, PortletSession.APPLICATION_SCOPE);	
+			if(isKaiser){
+				LOGGER.debug("account is kaiser");
+				acntType = "KAISER";
+			}
+			else{
+				LOGGER.debug("account is republic");
+				acntType = "REPUBLIC";
+			}
+		}
+		else{		
+			ControllerUtil.setAribaParam(request, session);
+			String supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
+			
+			LOGGER.debug("supplierId::::"+supplierId);
+			if(supplierId.equalsIgnoreCase(KAISER_ACNT))
+			{
+				acntType = "KAISER";
+			}
+			else if(supplierId.equalsIgnoreCase(REPUBLIC_ACNT))
+			{
+				acntType = "REPUBLIC";
+			}
+			session.setAttribute("fromAriba", true, PortletSession.APPLICATION_SCOPE);	
+		}
+			
+			if(session.getAttribute(PunchoutConstants.ACCOUNT_LIST, PortletSession.APPLICATION_SCOPE) != null){
+				session.setAttribute(PunchoutConstants.ACCOUNT_LIST, null, PortletSession.APPLICATION_SCOPE);			
+			}
+			
+			if(session.getAttribute(PunchoutConstants.ACNT_TYPE, PortletSession.APPLICATION_SCOPE) != null){
+				session.setAttribute(PunchoutConstants.ACNT_TYPE, null, PortletSession.APPLICATION_SCOPE);			
+			}
+			
+			
 		
-		if(session.getAttribute(PunchoutConstants.ACCOUNT_LIST, PortletSession.APPLICATION_SCOPE) != null){
-			session.setAttribute(PunchoutConstants.ACCOUNT_LIST, null, PortletSession.APPLICATION_SCOPE);			
-		}
-		
-		if(session.getAttribute(PunchoutConstants.ACNT_TYPE, PortletSession.APPLICATION_SCOPE) != null){
-			session.setAttribute(PunchoutConstants.ACNT_TYPE, null, PortletSession.APPLICATION_SCOPE);			
-		}
-		
-		if(supplierId.equalsIgnoreCase(KAISER_ACNT))
-		{
-			acntType = "KAISER";
-		}
-		else if(supplierId.equalsIgnoreCase(REPUBLIC_ACNT))
-		{
-			acntType = "REPUBLIC";
-		}
 		session.setAttribute(PunchoutConstants.ACNT_TYPE, acntType, PortletSession.APPLICATION_SCOPE);
 		model.addAttribute(PunchoutConstants.ACNT_TYPE, acntType);
+		model.addAttribute("fromAriba", fromAriba);
 		
-		allAccountInformation.acntType = "AUTODISTRIBUTION";
-		allAccountInformation.forceRefresh();
+		/*allAccountInformation.acntType = "Deutsche Postbank AG";
+		allAccountInformation.forceRefresh();*/
 		List<PunchoutAccount> acntList = allAccountInformation.getAllAccountList();
 		session.setAttribute(PunchoutConstants.ACCOUNT_LIST, acntList, PortletSession.APPLICATION_SCOPE);
 		request.setAttribute("callType", "showDefaultView");

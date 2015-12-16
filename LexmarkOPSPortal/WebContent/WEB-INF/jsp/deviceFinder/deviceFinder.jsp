@@ -387,35 +387,64 @@ callOmnitureAction('<%=LexmarkSPOmnitureConstants.DEVICEFINDER%>', '<%=LexmarkSP
 	deviceListGrid.setImagePath("<html:imagesPath/>/gridImgs/");
 	//Modified for MPS
 	//House Number, District and County Added for CI BRD 13-10-08--STARTS
-	deviceListGrid.setHeader(autoAppendPlaceHolder("<spring:message code='deviceFinder.listHeader.deviceFields'/>",25));
+	var gridHeaderCode="<spring:message code='deviceFinder.listHeader.deviceFields'/>";
+	var gridFilterText=",#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#combo_filter";
+	var gridColumnAlignment="left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left";
+	var gridWidth="30,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,80";
+	var gridReadOnly="sub_row,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro";
+	var gridColumnSort="na,str,str,str,str,str,str,str,str,str,str,na,na,str,str,str,str,str,str,str,na,na,str,na,na,na";
+	var gridColumnVisibility="true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false";
+	
+	var currentURL = window.location.href;
+    var isGridView = false;
+	if(currentURL.indexOf('/grid-view') >-1)
+     {	
+    	isGridView = true;
+    	 gridHeaderCode="<spring:message code='deviceFinder.listHeader.deviceFields.gridview'/>";
+    	 gridFilterText=gridFilterText+",#combo_filter";
+    	 gridColumnAlignment=gridColumnAlignment+",left";
+    	 gridWidth=gridWidth+",80";
+    	 gridReadOnly=gridReadOnly+",ro";
+    	 gridColumnSort=gridColumnSort+",na";
+    	 gridColumnVisibility=gridColumnVisibility+",false";
+    	//Added for addition of two column LBS Flag And lodAddress  Ends
+     }
+	    deviceListGrid.setHeader(gridHeaderCode);
+		
+		//Modified for MPS
+		deviceListGrid.attachHeader(gridFilterText);
+		//Modified for MPS
+		deviceListGrid.setInitWidths(gridWidth);
+		
+		//Modified for MPS	
+		deviceListGrid.setColAlign(gridColumnAlignment);
+		
+		//Modified for MPS
+		deviceListGrid.setColTypes(gridReadOnly);
+		
 	
 	//Modified for MPS
-	deviceListGrid.attachHeader(",#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#combo_filter");
-	
-	//Modified for MPS
-	deviceListGrid.setInitWidths("30,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120");
-	
-	//Modified for MPS	
-	deviceListGrid.setColAlign("left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left,left");
-	
-	//Modified for MPS
-	deviceListGrid.setColTypes("sub_row,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro,ro");
-	
-	//Modified for MPS
-	deviceListGrid.setColSorting("na,str,str,str,str,str,str,str,str,str,str,na,na,str,str,str,str,str,str,str,na,na,str,na,na,str");
+	deviceListGrid.setColSorting(gridColumnSort);
     deviceListGrid.enableAutoHeight(true);
     deviceListGrid.enableMultiline(true);
     deviceListGrid.enableHeaderMenuForButton('headerImageButton');
     
     deviceListGrid.setSkin("light");
-    deviceListGrid.setLockColVisibility("true,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false");
+    deviceListGrid.setLockColVisibility(gridColumnVisibility);
     deviceListGrid.enableColumnMove(true);
 
     deviceListGrid.sortIndex = 1;
     deviceListGrid.columnChanged = true;
-	
     
-    
+    var lbsAddressLODList = [];		
+    <c:forEach items="${lbsAddressLOD}" var="lbsAddressLOD" varStatus = "status" >
+    lbsAddressLODList[${status.index}] = ["${lbsAddressLOD.key}","${lbsAddressLOD.value}"];
+    </c:forEach>
+    deviceListGrid.setCustomizeCombo(lbsAddressLODList,25);
+    var lbsAddressFlagFilter=[];
+    lbsAddressFlagFilter[0]=["Y","Yes"];
+    lbsAddressFlagFilter[1]=["N","No"];    
+    deviceListGrid.setCustomizeCombo(lbsAddressFlagFilter,26);
     deviceListGrid.attachEvent("onXLS", function() {
     	resetValue = false;
     	if(colsWidth==""){
@@ -445,12 +474,6 @@ callOmnitureAction('<%=LexmarkSPOmnitureConstants.DEVICEFINDER%>', '<%=LexmarkSP
         
     });
 
-    var lbsAddressFlagFilter=[];
-    lbsAddressFlagFilter[0]=["Y","Yes"];
-    lbsAddressFlagFilter[1]=["N","No"];
-    
-    deviceListGrid.setCustomizeCombo(lbsAddressFlagFilter,25);
-    
 	deviceListGrid.init();
 	deviceListGrid.prftInit();
 	deviceListGrid.enableHeaderMenuForButton('headerMenuButton');
@@ -539,23 +562,6 @@ callOmnitureAction('<%=LexmarkSPOmnitureConstants.DEVICEFINDER%>', '<%=LexmarkSP
 		}
     });
     
-	
-	//For LBS flag
-    var currURL=window.location.href;
-    if(currURL.indexOf('/grid-view')==-1){
-  
-   deviceListGrid.setColumnHidden(25,true);
-  
-   deviceListGrid.setColLabel(25,"");
-  
-    }
-    else{
-    	deviceListGrid.setColumnHidden(25,false);
-    	deviceListGrid.setColLabel(25,"<spring:message code='asset.lbsidentifierflag'/>");
-    }
-	
-	
-	
 	deviceListGrid.attachEvent("onBeforeSorting", customColumnSort);
 	deviceListGrid.sortRows = function(col, type, order) {}
 	
@@ -704,7 +710,7 @@ callOmnitureAction('<%=LexmarkSPOmnitureConstants.DEVICEFINDER%>', '<%=LexmarkSP
 	function resetCallback() {
 		clearMessage();
 		colsOrder = "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24";
-		colsWidth = "px:20,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120";
+		colsWidth = "20,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120";
 		colsSorting = "1,asc";
 		colsHidden = "";
 		gridToBeReset = true;
@@ -713,7 +719,7 @@ callOmnitureAction('<%=LexmarkSPOmnitureConstants.DEVICEFINDER%>', '<%=LexmarkSP
 		deviceListGrid.setColumnsVisibility("false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false");
         deviceListGrid.loadOrder(colsOrder);
         deviceListGrid.loadPagingSorting(colsSorting,1);
-        deviceListGrid.loadSize(colsWidth);
+        deviceListGrid.setInitWidths(colsWidth);
 		customizedGridURL = updateGridURL(customizedGridURL, 1, 'asc', deviceListGrid.filterValues);
 		deviceListGrid.clearAndLoad(customizedGridURL);
 	};

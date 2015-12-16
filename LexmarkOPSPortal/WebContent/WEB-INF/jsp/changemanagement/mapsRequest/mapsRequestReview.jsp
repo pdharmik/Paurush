@@ -5,6 +5,7 @@
 <jsp:include page="/WEB-INF/jsp/includeGrid.jsp"/>
 <%@ page import="com.lexmark.services.form.FileUploadForm"%>
 <script type="text/javascript"><%@ include file="../../../../js/portletRedirection.js"%></script>
+<script type="text/javascript"><%@ include file="../../../../js/showCoordinates.js"%></script>
 <link rel="stylesheet" type="text/css" href="<html:rootPath/>css/mps.css"/>
 <!--[if IE 7]>
 	<style type="text/css"><%@ include file="/WEB-INF/css/mps_ie7.css" %></style>
@@ -67,6 +68,8 @@ function openTemplate(type,fileName){
 }
 
 jQuery(document).ready(function() {
+	
+	 coordinates($('#addressCoordinatesXPreDebriefRFV').val(),$('#addressCoordinatesYPreDebriefRFV').val());	
 	var currentURL = window.location.href;
 	if(currentURL.indexOf('/partner-portal') == -1)
 	  {	
@@ -295,13 +298,13 @@ ajaxSuccessFunction=function updateRequest(){
 	                
 	                  <li>
 	                    <label for="rqstDesc"><spring:message code="requestInfo.label.notesMapReview"/></label>
-	                    <span id="rqstDesc">${mapsRequestForm.notesOrComments }</span>
+	                    <span id="rqstDesc">${mapsRequestForm.notesOrComments }<br>${mapsRequestForm.notesForNewBuilding }</br></span>
 					  </li>
 					  <li>
                            <label for="moveAsset"><spring:message code="requestInfo.label.moveAsset"/></label>
                            <span id="moveAsset">
-                           <c:choose><c:when test="${mapsRequestForm.moveAsset==true}"><p>Yes</p></c:when>
-                           <c:otherwise><p>No</p></c:otherwise></c:choose></span>
+                           <c:choose><c:when test="${mapsRequestForm.moveAsset==true}">Yes</c:when>
+                           <c:otherwise>No</c:otherwise></c:choose></span>
                            <script>
                          
                            </script>
@@ -341,6 +344,8 @@ ajaxSuccessFunction=function updateRequest(){
 	                  </li>
 	                </ul>
                </div>
+               
+				</c:if>
                 <!-- Hidden fields to bind the secondary contact data with form -->
                 <span style="display: none">
 						<form:input  path="serviceRequest.mapsRequestContact.contactId" /> 
@@ -353,7 +358,6 @@ ajaxSuccessFunction=function updateRequest(){
 				</span>
              
 				</div>
-				</c:if>
 					   <div class="columnsTwo">
 					   <div class="columnInner">
 						<div class="infoBox columnInner rounded shadow">
@@ -396,9 +400,9 @@ ajaxSuccessFunction=function updateRequest(){
                        <span>${mapsRequestForm.serviceRequest.installAddress.physicalLocation2}</span>
                       </li>
 					
-					  <li><label><spring:message code="requestInfo.addressInfo.label.office"/> </label> 
+					  <%-- <li><label><spring:message code="requestInfo.addressInfo.label.office"/> </label> 
                     <span>${mapsRequestForm.serviceRequest.installAddress.physicalLocation3}</span>
-                      </li>
+                      </li> --%>
                       </c:when>
                       <c:when test="${mapsRequestForm.serviceRequest.installAddress.lbsAddressFlag eq 'true' }">
                       
@@ -414,13 +418,43 @@ ajaxSuccessFunction=function updateRequest(){
                        <span>${mapsRequestForm.serviceRequest.installAddress.physicalLocation2}</span>
                       </li>
 					
-					  <li><label><spring:message code="requestInfo.addressInfo.label.office"/> </label> 
-                    <span>${mapsRequestForm.serviceRequest.installAddress.physicalLocation3}</span>
-                      </li>
+					 <%-- <c:if test="${mapsRequestForm.serviceRequest.installAddress.levelOfDetails eq 'Street Level' or mapsRequestForm.serviceRequest.installAddress.levelOfDetails eq ''}">
+						  <li><label><spring:message code="requestInfo.addressInfo.label.office"/> </label> 
+	                    	<span>${mapsRequestForm.serviceRequest.installAddress.physicalLocation3}</span>
+	                      </li>
+                  	  </c:if> --%>
+                     
+                
+                       <c:forEach var="isLbsAddress" items="${isLbsAddress}">
+                                  <c:if test="${isLbsAddress.key=='Y'}">
+                                  <li><label>LBS Address : </label>
+                                  <span>${isLbsAddress.value}</span>
+                                  </li>
+                                  </c:if>
+                      </c:forEach>
                       
-					 <li><label><spring:message code='lbs.label.zone'/>: </label> 
-                    <span>${mapsRequestForm.serviceRequest.installAddress.zoneName}</span>
-                      </li>
+                       <c:forEach var="lbsAddressLOD" items="${lbsAddressLOD}">
+                                  <c:if test="${lbsAddressLOD.key==mapsRequestForm.serviceRequest.installAddress.levelOfDetails}">
+                                  <li><label><spring:message code="lbs.label.addresslod"/> : </label> 
+                                  <span>${lbsAddressLOD.value}</span>
+                                  </li>
+                                  </c:if>
+                      </c:forEach>
+                      <c:forEach var="lbsFloorLOD" items="${lbsFloorLOD}">
+                                  <c:if test="${lbsFloorLOD.key==mapsRequestForm.serviceRequest.installAddress.floorLevelOfDetails}">
+                                  <li><label><spring:message code="lbs.label.floorlod"/> : </label> 
+                                  <span>${lbsFloorLOD.value}</span>
+                                  </li>
+                                  </c:if>
+                      </c:forEach>
+                      
+                      
+                      <c:if test="${mapsRequestForm.serviceRequest.installAddress.floorLevelOfDetails=='Grid Level'}">
+                                  <li><label id="addressXYLbl">Grid X/Y  : </label> 
+                                 	<label id="addressCoords"></label>
+                                  </li>
+                      </c:if>
+                      
                       </c:when>
                       <c:when test="${mapsRequestForm.serviceRequest.installAddress.lbsAddressFlag ne 'true' }">
                       <li>
@@ -438,6 +472,15 @@ ajaxSuccessFunction=function updateRequest(){
 					  <li><label><spring:message code="requestInfo.addressInfo.label.office"/> </label> 
                     <span>${mapsRequestForm.serviceRequest.installAddress.physicalLocation3}</span>
                       </li>
+                     
+                      
+                       <c:forEach var="isLbsAddress" items="${isLbsAddress}">
+                                  <c:if test="${isLbsAddress.key=='N'}">
+                                  <li><label>LBS Address : </label> 
+                                  <span>${isLbsAddress.value}</span>
+                                  </li>
+                                  </c:if>
+                      </c:forEach>
                       </c:when>
                       </c:choose>
                       <%--</c:when>
@@ -488,6 +531,24 @@ ajaxSuccessFunction=function updateRequest(){
 					    <form:input  path="serviceRequest.installAddress.savedErrorMessage" />
 					    <form:input  path="serviceRequest.installAddress.isAddressCleansed" />
 					    <form:input	id="installLBSAddressFlag" path="serviceRequest.installAddress.lbsAddressFlag" />
+					    
+					    <form:input	id="isRequestForBuilding" path="serviceRequest.installAddress.isRequestForBuilding" />
+						<form:input	id="isRequestForFloor" path="serviceRequest.installAddress.isRequestForFloor" />
+						
+						<form:input	id="notesForNewBuilding" path="notesForNewBuilding" />
+						
+						<form:input	id="lodAddressInput" path="serviceRequest.installAddress.levelOfDetails" />
+						<form:input	id="lodFloorInput" path="serviceRequest.installAddress.floorLevelOfDetails" />
+						
+						
+						<form:input
+						id="addressCoordinatesXPreDebriefRFV" path="serviceRequest.installAddress.coordinatesXPreDebriefRFV" />
+						<form:input
+						id="addressCoordinatesYPreDebriefRFV" path="serviceRequest.installAddress.coordinatesYPreDebriefRFV" />
+						
+					
+						
+						
 						<!-- Ends Cleansing address -->
 						
 					</span>
@@ -497,7 +558,9 @@ ajaxSuccessFunction=function updateRequest(){
 			  </div>
 			  
 	          </form:form>
+	          
 	          <c:if test="${fileMap != null}">
+	        
 			
 				<p class="info"><spring:message code="requestInfo.heading.attachments"/></p>
 				

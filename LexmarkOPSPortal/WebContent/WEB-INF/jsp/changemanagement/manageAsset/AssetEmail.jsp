@@ -29,7 +29,7 @@
 	</tr>-->
 <tr>
 		<td>
-<table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="border-width:1px; border-color:#3A7FA8; border-style:solid; background-color:#ffffff" id="emailPrintWraper">
+<table width="800" border="0" cellspacing="0" cellpadding="0" align="center" style="border-width:1px; border-color:#3A7FA8; border-style:solid; background-color:#ffffff" id="emailPrintWraper">
  
   <tr>
     <td style="background-color:#3A7FA8;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -209,6 +209,10 @@
                 <td valign="top" width="100" class="lableWidth" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong><spring:message code="requestInfo.addressInfo.label.office" /></strong></td>
                 <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;" id="office_add"></td>
               </tr>
+              <tr id="gridTdAdd">
+                <td valign="top" width="100" class="lableWidth" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong>Grid X/Y : </strong></td>
+                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;" id="gridLi_add"></td>
+              </tr>
             </table>
            
             </td>
@@ -277,7 +281,7 @@
 	<tr>
 	
 		<td>
-<table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="border-width:1px; border-color:#3A7FA8; border-style:solid; background-color:#ffffff" id="emailPrintWraper">
+<table width="800" border="0" cellspacing="0" cellpadding="0" align="center" style="border-width:1px; border-color:#3A7FA8; border-style:solid; background-color:#ffffff" id="emailPrintWraper">
  
   <tr>
     <td style="background-color:#3A7FA8;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -454,6 +458,10 @@
                 <td valign="top" width="100" class="lableWidth" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong><spring:message code="requestInfo.addressInfo.label.office" /></strong></td>
                 <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;" id="office_change"></td>
               </tr>
+              <tr id="gridTdChange">
+                <td valign="top" width="100" class="lableWidth" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong>Grid X/Y : </strong></td>
+                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;" id="gridLi_change"></td>
+              </tr>
             </table>
             <table width="100%" border="0" cellspacing="0" cellpadding="5" style="border-top-width:1px; border-top-style:solid; border-top-color:#cccccc; margin-top:5px">
             </table>
@@ -477,6 +485,10 @@
               <tr>
                 <td valign="top" width="100" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong><spring:message code="requestInfo.addressInfo.label.office" /></strong></td>
                 <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;" id="moveoffice_change"></td>
+              </tr>
+              <tr id="gridTdMove">
+                <td valign="top" width="100" class="lableWidth" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong>Grid X/Y : </strong></td>
+                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;" id="gridLi_Move"></td>
               </tr>
             </table></td>
         </tr>
@@ -559,7 +571,7 @@
 	</tr> -->
 <tr>
 		<td>	
-<table width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="border-width:1px; border-color:#3A7FA8; border-style:solid; background-color:#ffffff" id="emailPrintWraper">
+<table width="800" border="0" cellspacing="0" cellpadding="0" align="center" style="border-width:1px; border-color:#3A7FA8; border-style:solid; background-color:#ffffff" id="emailPrintWraper">
  
   <tr>
     <td style="background-color:#3A7FA8;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -725,6 +737,10 @@
                 <td valign="top" width="100" class="lableWidth" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong><spring:message code="requestInfo.addressInfo.label.office" /></strong></td>
                 <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;" id="office_del"></td>
               </tr>
+               <tr id="gridTdDecom">
+                <td valign="top" width="100" class="lableWidth" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong>Grid X/Y : </strong></td>
+                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;" id="gridLi_Decom"></td>
+              </tr>
               </tr>
             </table></td>
           
@@ -786,6 +802,17 @@
 
 <script type="text/javascript">
 jQuery(document).ready(function(){
+	
+	/* var currentURL = window.location.href;
+	if(currentURL.indexOf('/fleet-management') > -1){
+		
+		jQuery('#gridTdDecom').hide();
+		jQuery('#gridTdChange').hide();
+			}
+	else{
+		jQuery('#gridTdDecom').show();
+		jQuery('#gridTdChange').show();
+	} */
 	if(window.opener.window.document.getElementById("div_pageCountsPagingArea") !=null){
 	jQuery("#div_pageCountsPagingArea").remove();
 	}
@@ -827,6 +854,11 @@ window.document.getElementById("installAddressAdd").innerHTML = window.opener.wi
 window.document.getElementById("building_add").innerHTML = window.opener.window.document.getElementById("building_add").innerHTML;
 window.document.getElementById("floor_add").innerHTML = window.opener.window.document.getElementById("floor_add").innerHTML;
 window.document.getElementById("office_add").innerHTML = window.opener.window.document.getElementById("office_add").innerHTML;
+
+if(window.opener.window.document.getElementById("installedCoords") !=null)
+	{
+	window.document.getElementById("gridLi_add").innerHTML = window.opener.window.document.getElementById("installedCoords").innerHTML;
+	}
 window.document.getElementById("installAssetFlag_add").innerHTML = window.opener.window.document.getElementById("installAssetFlag_add").innerHTML;
 window.document.getElementById("attachmentDescription").innerHTML = window.opener.window.document.getElementById("attachmentDescription").innerHTML;
 window.document.getElementById("div_attachmentListPrint").innerHTML = window.opener.window.document.getElementById("div_attachmentListPrint").innerHTML;
@@ -841,6 +873,14 @@ if(window.opener.window.document.getElementById("addiContact").style.display!="n
 else {
 	jQuery('#secondaryContactRow_add').remove();
 }
+
+if(window.opener.window.document.getElementById("gridLiAdd") && !(window.opener.window.document.getElementById("gridLiAdd").style.display=='none')){
+	jQuery('#gridTdAdd').show();	
+}
+else
+	{
+	jQuery('#gridTdAdd').hide();	
+	}
 
 </c:if>
 // Script for Add_Asset end
@@ -872,6 +912,7 @@ if(window.opener.window.document.getElementById("installAssetFlag_change").inner
 //window.document.getElementById("installAssetFlag_change_value").innerHTML = window.opener.window.document.getElementById("installAssetFlag_change_value").innerHTML;
 //window.document.getElementById("moveTypeHide").style.display='block';
 jQuery('#hideMoveToAddress').show();
+
 }else{
 	//window.document.getElementById("moveTypeHide").style.display='none';
 	jQuery('#hideMoveToAddress').hide();
@@ -886,6 +927,14 @@ window.document.getElementById("movebuilding_change").innerHTML = window.opener.
 window.document.getElementById("movefloor_change").innerHTML = window.opener.window.document.getElementById("floor_move").innerHTML;
 window.document.getElementById("moveoffice_change").innerHTML = window.opener.window.document.getElementById("office_move").innerHTML;
 
+if(window.opener.window.document.getElementById("moveToCoords") !=null)
+{
+	window.document.getElementById("gridLi_Move").innerHTML = window.opener.window.document.getElementById("moveToCoords").innerHTML;
+}
+if(window.opener.window.document.getElementById("installedCoords") !=null)
+{
+window.document.getElementById("gridLi_change").innerHTML = window.opener.window.document.getElementById("installedCoords").innerHTML;
+}
 
 if(window.opener.window.document.getElementById("addiContact").style.display!="none") {
 	jQuery('#secondaryContactRow_change').show();
@@ -893,6 +942,20 @@ if(window.opener.window.document.getElementById("addiContact").style.display!="n
 else {
 	jQuery('#secondaryContactRow_change').remove();
 }
+if(window.opener.window.document.getElementById("gridLiAdd") && !(window.opener.window.document.getElementById("gridLiAdd").style.display=='none')){
+	jQuery('#gridTdChange').show();	
+}
+else
+	{
+	jQuery('#gridTdChange').hide();	
+	}
+if(window.opener.window.document.getElementById("gridLiMove") && !(window.opener.window.document.getElementById("gridLiMove").style.display=='none')){
+	jQuery('#gridTdMove').show();	
+}
+else
+	{
+	jQuery('#gridTdMove').hide();
+	}
 
 </c:if>
 // Script for change_Asset end
@@ -919,6 +982,10 @@ window.document.getElementById("ipAddress_del").innerHTML = window.opener.window
 window.document.getElementById("hostName_del").innerHTML = window.opener.window.document.getElementById("hostName_del").innerHTML;
 window.document.getElementById("deviceTag_del").innerHTML = window.opener.window.document.getElementById("deviceTag_del").innerHTML;
 window.document.getElementById("decommAssetFlag_del").innerHTML = window.opener.window.document.getElementById("decommAssetFlag_del").innerHTML;
+if(window.opener.window.document.getElementById("installedCoords") !=null)
+{
+window.document.getElementById("gridLi_Decom").innerHTML = window.opener.window.document.getElementById("installedCoords").innerHTML;
+}
 
 if(window.opener.window.document.getElementById("decommAssetFlag_del").innerHTML.trim()=="no"){
 	jQuery("#hidePickUp2").hide();
@@ -947,6 +1014,13 @@ if(window.opener.window.document.getElementById("addiContact").style.display!="n
 else {
 	jQuery('#secondaryContactRow_del').remove();
 }
+if(window.opener.window.document.getElementById("gridLiAdd") && !(window.opener.window.document.getElementById("gridLiAdd").style.display=='none')){
+	jQuery('#gridTdDecom').show();	
+}
+else
+	{
+	jQuery('#gridTdDecom').hide();
+	}
 
 </c:if>
 </script>

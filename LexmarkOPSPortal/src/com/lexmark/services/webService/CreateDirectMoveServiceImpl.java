@@ -80,9 +80,7 @@ public class CreateDirectMoveServiceImpl implements CreateDirectMoveService{
 				"","","","","",
 				"","","","","",
 				"","","","","",
-				"","","","","",
-				"","","","","", "","","","","", "","","","","",
-				"","");
+				"","","","","");
 		
 		
 		

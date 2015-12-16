@@ -15,6 +15,8 @@ public class CatalogListDo extends BaseEntity implements Serializable {
 	
 	public static final String BO = "LXK MPS Supplies Catalog Distinct";
     public static final String BC = "LXK MPS Supplies Catalog Distinct";
+    public static final String GLOBAL_BO = "LXK MPS Supplies Catalog";
+    public static final String GLOBAL_BC = "LXK MPS Supplies Catalog";
 
 	private String partNumber;
 	private String description;

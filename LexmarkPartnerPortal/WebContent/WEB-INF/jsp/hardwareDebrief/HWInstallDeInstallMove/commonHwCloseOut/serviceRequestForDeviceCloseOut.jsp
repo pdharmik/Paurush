@@ -10,6 +10,7 @@
 <portlet:resourceURL var="zoneURL" id="getZone"/>
 <portlet:resourceURL var="getAllLocationURL" id="getAllLocation"/>
 <portlet:resourceURL var="siteBuildingListPopulateURL" id="getSiteBuildingZone"/>
+<portlet:resourceURL var="encryptJSONVar" id="encryptJSON"></portlet:resourceURL>
 <link rel="stylesheet" type="text/css" href="<html:rootPath/>css/in-styles.css?version=<html:fileCacheVersion/>" />
 <div class="portletBlock infoBox rounded shadow position-static" >
           <div class="columnsOne position-static" >
@@ -97,6 +98,7 @@
               </ul>--%>
              	
              <%--For Non LBS Adresses --%>
+             <%-- Commented for LBS 1.5 LOD changes 
              <c:choose>
                   <c:when test="${address.lbsAddressFlag ==null || address.lbsAddressFlag == false}">
                   	<div id="selectLocalAddress1">
@@ -119,7 +121,7 @@
                  </c:when>
                  <c:otherwise>
                   <%--For LBS Adresses --%>
-						<div id="selectLocalAddress">
+				<%-- 		<div id="selectLocalAddress">
 						<ul class="form division1">
 							<li><label for="building"><span class="req">*</span><spring:message code="claimCreate.addressInfo.label.building"/></label> 
 							<span><select name="userEnteredActivity.serviceRequest.asset.installAddress.buildingId"	id="bldng"><option value=""><spring:message code="hardware.massUploadTemplate.Building"/></option></select>
@@ -137,10 +139,10 @@
 							value="${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.physicalLocation3}"
 							id="office"  value="" class="width-144px"/></span>
 							</li>
-						 	<li><label for="coordinateX">Coordinate X</label> 
+						 	<li><label for="coordinateX"><spring:message code='hardwareDebrief.closeOut.coordinateX'/></label> 
 						 	<span><input type="text" name="${preName}.coordinatesXPreDebriefRFV" class="w100" maxlength="100" value="${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.coordinatesXPreDebriefRFV}" /></span>
 						 	</li>
-							<li><label for="coordinateY">Coordinate Y</label>
+							<li><label for="coordinateY"><spring:message code='hardwareDebrief.closeOut.coordinateY'/></label>
 							<span><input type="text" name="${preName}.coordinatesYPreDebriefRFV"  class="w100" maxlength="100" value="${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.coordinatesYPreDebriefRFV}" /></span>
 							</li>
 							
@@ -148,13 +150,107 @@
 						 	
 						 
 						<%--For LBS Adresses display names--%>
-						</ul>				
+						<%--  </ul>				
 						
 					</div>		
                   </c:otherwise>
+            </c:choose>--%>
+            
+             
+             
+             <c:set var="isLbsAddress" value="false" scope="request"/>
+             <c:set var="islod" value="false" scope="request"/>
+             <%--
+             address.lbsAddressFlag=${address.lbsAddressFlag}
+             address.lbsAddressLod=${address.lbsAddressLod}
+			--%>
+             <c:if test="${address.lbsAddressFlag != null && address.lbsAddressFlag != false}">
+             <c:set var="isLbsAddress" value="true"/>
+             </c:if>
+             
+             <c:if test="${address.lbsAddressLod != null && address.lbsAddressLod != ''}">
+             <c:set var="islod" value="true"/>
+             </c:if>
+             
+             <%-- LOD Changes LBS 1.5 --%>
+             <c:choose>
+                  <c:when test="${(isLbsAddress == false &&  islod == false) ||
+                   (isLbsAddress == true &&  islod == false) ||
+                  (isLbsAddress == true && islod == true && address.lbsAddressLod == 'Street Level')}">
+                  	<div id="selectLocalAddress1">
+					<ul class="form division">
+						<li>
+							<label for="building"><spring:message code="claimCreate.addressInfo.label.building"/></label> 
+							<span><input type="text" id="physicalLocation1" name="userEnteredActivity.serviceRequest.asset.installAddress.physicalLocation1" value="${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.physicalLocation1}" class="w100" maxlength="100" /></span>
+						</li>
+						<li>
+							<label for="floor"><spring:message code="claimCreate.addressInfo.label.floor"/> </label> 
+							<span><input type="text" id="physicalLocation2" name="userEnteredActivity.serviceRequest.asset.installAddress.physicalLocation2" value="${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.physicalLocation2}" class="w100" maxlength="100" /></span>
+						</li>
+						<li>
+						 	<label for="office"><spring:message code="claimCreate.addressInfo.label.office"/> </label> 
+						 	<span><input type="text" id="physicalLocation3" name="userEnteredActivity.serviceRequest.asset.installAddress.physicalLocation3" value="${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.physicalLocation3}" class="w100" maxlength="100" /></span>
+						</li>						 
+					</ul>
+				
+					</div>
+                 </c:when>
+                 
+                  <c:when test="${isLbsAddress==true && islod== true}">
+                  
+                  <div id="selectLocalAddress">
+						<ul class="form division1">
+							<li><label for="building"><span class="req">*</span><spring:message code="claimCreate.addressInfo.label.building"/></label> 
+							<span><select name="userEnteredActivity.serviceRequest.asset.installAddress.buildingId"	id="bldng"><option value=""><spring:message code="hardware.massUploadTemplate.Building"/></option></select>
+							<input type="hidden" id="physicalLocation1" name="userEnteredActivity.serviceRequest.asset.installAddress.physicalLocation1"  value="${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.physicalLocation1}" />
+							</span>
+							</li>
+							<li><label for="floor"><span class="req">*</span><spring:message code="claimCreate.addressInfo.label.floor"/></label> 
+							<span><select name="userEnteredActivity.serviceRequest.asset.installAddress.floorId" id="flr"  ><option value=""><spring:message code="hardware.massUploadTemplate.Floor"/></option></select>
+							<input type="hidden" id="physicalLocation2" name="userEnteredActivity.serviceRequest.asset.installAddress.physicalLocation2" value="${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.physicalLocation2}" />
+							</span>
+							</li>
+							
+							<li><label for="office"><spring:message code="claimCreate.addressInfo.label.office"/></label> 
+							<span><input type="text" name="userEnteredActivity.serviceRequest.asset.installAddress.physicalLocation3" 
+							value="${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.physicalLocation3}"
+							id="office"  value="" style="width:144px"/></span>
+							</li>
+							<c:set var="showGrid" value="display:block;"/>
+							<%-- <c:if test="${address.lbsAddressLod == 'Floor Level' || address.lbsAddressLod == 'Grid Level'}">
+                  			</c:if>--%>
+    	              		<c:if test="${address.lbsAddressLod == 'Mix - See Floor'}">
+                  				<c:set var="showGrid" value="display:none;"/>
+        	          		</c:if>
+							
+							</ul>
+							<c:if test="${address.lbsAddressLod != 'Floor Level'}">
+								<ul id="lod-floor-grid" style="${showGrid}" class="form division1">
+								 	<li><label for="coordinateX"><span class="req">*</span>Coordinate X</label>
+								 	<span> <input type="text" id="co-X" class="disable" disabled style="width:144px;background-color:#F0F0F5!important;"/></span> 
+								 	<span><input type="hidden" name="${preName}.coordinatesXPreDebriefRFV" class="w100" maxlength="100" value="${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.coordinatesXPreDebriefRFV}" /></span>
+								 	</li>
+									<li><label for="coordinateY"><span class="req">*</span>Coordinate Y</label>
+									<span><input type="text" id="co-Y" class="disable" disabled style="width:144px;background-color:#F0F0F5!important;"/></span>
+									<span><input type="hidden" name="${preName}.coordinatesYPreDebriefRFV"  class="w100" maxlength="100" value="${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.coordinatesYPreDebriefRFV}" /></span>
+									</li>
+									<li> <a onclick="showMapPopup()" style="cursor: pointer;"><spring:message code="hardwareDebrief.closeOut.viewGrid"/></a></li>
+									<%--For LBS Adresses display names--%>
+							 	</ul>	
+							</c:if>
+									
+						
+					</div>
+                  
+                  
+                  		
+                  
+			 				
+                 </c:when>
+                 
             </c:choose>
              
-            
+           
 				
 											
 				
@@ -279,7 +375,7 @@
     			$('#'+this.htmlInputIds[i]).removeAttr('disabled');
     		}
     	};
-    }
+    };
     var urlParamsObj=new urlParams();
     
     $('#bldng').change(function(){
@@ -297,6 +393,17 @@
     
     $('#flr').change(function(){
     	$('#physicalLocation2').val($('#flr :selected').text());
+    	<%-- Changes for LBS 1.5--%>
+    	<c:if test="${address.lbsAddressLod == 'Mix - See Floor'}">
+    	if($('#flr :selected').attr('lod')=='Grid Level'){
+    		$('#lod-floor-grid').show();	
+    	}else{
+    		$('#lod-floor-grid').hide();
+    	}
+    	</c:if>
+    	
+    	<%--Ends Changes for LBS 1.5--%>
+    	
     });
     function getFloor(p){
     	$('#flr').attr('disabled',true);
@@ -340,12 +447,20 @@
 						return false;
 					}
 				});
+				
+				<%-- Changes for LBS 1.5--%>
+		    	<c:if test="${address.lbsAddressLod == 'Mix - See Floor'}">
+		    	if($('#flr :selected').attr('lod')=='Grid Level'){
+		    		$('#lod-floor-grid').show();	
+		    	}
+		    	</c:if>		    	
+		    	<%--Ends Changes for LBS 1.5--%>
 				//$('#flr').val("${address.floorId}");	
 			}
 			
 		});	
 	
-}
+};
  
 function appendURLPrams(url,paramsObj){
 	var urlT=url;
@@ -355,7 +470,7 @@ function appendURLPrams(url,paramsObj){
 	}
 	
 	return urlT;
-}
+};
 
 function loadCoutrySateCitySiteBuilding(addressId){
 	urlParamsObj=new urlParams();
@@ -378,12 +493,35 @@ function loadCoutrySateCitySiteBuilding(addressId){
 		//$('#bldng').val("${address.buildingId}");
 	});
 
-}
+};
 
-<c:if test="${address.lbsAddressFlag !=null || address.lbsAddressFlag == true}">
+<c:if test="${isLbsAddress && islod}">
 	loadCoutrySateCitySiteBuilding("${address.addressId}");	
 </c:if>	
 	
 	
-        
-        </script>
+function successMap(obj){
+	$('#co-X').val(obj.info.gridX);
+	$('#co-Y').val(obj.info.gridY);
+	$("input[name='${preName}.coordinatesXPreDebriefRFV']").val(obj.info.gridX);
+	$("input[name='${preName}.coordinatesYPreDebriefRFV']").val(obj.info.gridY);
+	mapPopupObj.closePopup();
+	
+}
+
+function showMapPopup(){
+	mapPopupObj.showPopup({
+		"id":'',
+		"buildingId":$('#bldng').val(),//"${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.physicalLocation1}",
+		"floorId":$('#flr').val(),//"${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.physicalLocation2}",
+		"successFunc":successMap,
+		"encryptionURL":"${encryptJSONVar}",
+		"lbsPostURL":"${hardwareDebriefForm.mapForm.formPostUrl}",
+		"locale":"<%=request.getLocale()%>",
+		"mdmId":"${hardwareDebriefForm.userEnteredActivity.customerAccount.accountId}",
+		"mdmLevel":"Siebel",
+		"emailAddress":"${hardwareDebriefForm.mapForm.emailaddress}"
+	});
+	return false;
+}
+</script>

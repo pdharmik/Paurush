@@ -23,9 +23,13 @@ jQuery(document).ready( function() {
 		jQuery('#changeaccount').hide();
 		}
 	if(currentURL.indexOf('/fleet-management') == -1){
+		
+		
+		jQuery('#gridLiDecom').show();
 		jQuery('#fleet_cancel').hide();
 		jQuery('#cancel').show();
 	}else{
+		jQuery('#gridLiDecom').hide();
 		jQuery('#fleet_cancel').show();
 		jQuery('#cancel').hide();
 	}
@@ -363,6 +367,16 @@ ajaxSuccessFunction=function updateRequest(){
                     <span>${manageAssetFormForDecommission.assetDetail.installAddress.physicalLocation3}</span>
                       </li>
                       
+                      <c:if test="${manageAssetFormForDecommission.assetDetail.installAddress.levelOfDetails.toLowerCase() eq 'grid level' 
+                                                  ||  (manageAssetFormForDecommission.assetDetail.installAddress.levelOfDetails.toLowerCase() eq 'mix - see floor' 
+                                                     &&  manageAssetFormForDecommission.assetDetail.installAddress.floorLevelOfDetails.toLowerCase() eq 'grid level')}">
+                      	<li id="gridLiDecom">
+							<div id="installedXYLblDiv">
+							<label id="installedXYLbl">Grid X/Y : </label><label id="installedCoords"></label>
+							</div>
+						</li>
+						</c:if>
+                      
 					 
                       </c:when>
                       <c:when test="${manageAssetFormForDecommission.assetDetail.installAddress.lbsAddressFlag ne 'true' }">
@@ -527,6 +541,12 @@ function openAttachment(fileName){
 
 /*********This is for the error div to show***********/
 jQuery(document).ready(function() {
+
+var xCordInstall='${manageAssetFormForDecommission.assetDetail.installAddress.coordinatesXPreDebriefRFV}';
+var yCordInstall='${manageAssetFormForDecommission.assetDetail.installAddress.coordinatesYPreDebriefRFV}';
+
+coordinates(xCordInstall,yCordInstall,"installed");
+
 	jQuery('#pageCountValue').val('${pageCountsOriginalval}');
 	jQuery('#pageCountDateValid').val('${pageCountsOriginaldate}');
 var isError="${errorOccurred}";
@@ -578,6 +598,26 @@ function(A) {
 
 
 });
-
+function coordinates(xCo,yCo,flag){
+	var xCoordinate="";
+	var yCoordinate="";
+	var seperator="/";
+	if(!(xCo && yCo))
+	{
+			seperator="";
+	}
+	if(xCo){xCoordinate=xCo;}
+	if(yCo){yCoordinate=yCo;}
+	if(flag=="moveTo"){
+		$('#moveToCoords').html(xCoordinate+seperator+yCoordinate);
+		$('#moveToAddresscoordinatesXPreDebriefRFV').val(xCoordinate);
+		$('#moveToAddresscoordinatesYPreDebriefRFV').val(yCoordinate);
+	}
+	else if(flag=="installed"){
+		$('#installedCoords').html(xCoordinate+seperator+yCoordinate);
+		$('#installcoordinatesXPreDebriefRFV').val(xCoordinate);
+		$('#installcoordinatesYPreDebriefRFV').val(yCoordinate);
+	}	
+}
 
 </script>

@@ -50,9 +50,16 @@ jQuery(document).ready( function() {
 	}
 	
 	if(currentURL.indexOf('/fleet-management') == -1){
+		var flowPage="${pageFlow}";
+		if(flowPage == 'Change')
+			{
+			jQuery('#gridLiChange').show();
+			}
+			
 		jQuery('#fleet_cancel').hide();
 		jQuery('#cancel').show();
 	}else{
+		jQuery('#gridLiChange').hide();
 		jQuery('#fleet_cancel').show();
 		jQuery('#cancel').hide();
 	}
@@ -467,6 +474,16 @@ jQuery(document).ready( function() {
                     <span>${manageAssetFormForChange.assetDetail.installAddress.physicalLocation3}</span>
                       </li>
                       
+                      	<c:if test="${manageAssetFormForChange.assetDetail.installAddress.levelOfDetails.toLowerCase() eq 'grid level'
+                                                   ||  (manageAssetFormForChange.assetDetail.installAddress.levelOfDetails.toLowerCase() eq 'mix - see floor' 
+                                                     &&  manageAssetFormForChange.assetDetail.installAddress.floorLevelOfDetails.toLowerCase() eq 'grid level')   }">
+                      	<li id="gridLiChange" style="display:none">
+							<div id="installedXYLblDiv">
+							<label id="installedXYLbl">Grid X/Y : </label><label id="installedCoords"></label>
+							</div>
+						</li>
+						</c:if>
+                      
 					
                       </ul>
                       </div>
@@ -571,6 +588,19 @@ jQuery(document).ready( function() {
                    
                    
 				</c:choose>
+				<ul class="roDisplay">
+                   <c:if test="${manageAssetFormForChange.assetDetail.moveToAddress.levelOfDetails.toLowerCase() eq 'grid level'
+                                           ||  ( manageAssetFormForChange.assetDetail.moveToAddress.levelOfDetails.toLowerCase() eq 'mix - see floor' 
+                                                     &&  manageAssetFormForChange.assetDetail.moveToAddress.floorLevelOfDetails.toLowerCase() eq 'grid level') }">
+                      	
+                      	<li id="gridLiMoveTo">
+							<div id="moveToXYLblDiv">
+								<label id="moveToXYLbl">Grid X/Y : </label><label id="moveToCoords"></label>
+							</div>
+						</li>
+						
+						</c:if>
+						</ul>
 			</div>		
 		</div>
 			  
@@ -716,6 +746,17 @@ function goBack()
 /******************end****************************/
 
 jQuery(document).ready(function() {
+	
+	var xCordInstall='${manageAssetFormForChange.assetDetail.installAddress.coordinatesXPreDebriefRFV}';
+	var yCordInstall='${manageAssetFormForChange.assetDetail.installAddress.coordinatesYPreDebriefRFV}';
+	
+	var xCordMove='${manageAssetFormForChange.assetDetail.moveToAddress.coordinatesXPreDebriefRFV}';
+	var yCordMove='${manageAssetFormForChange.assetDetail.moveToAddress.coordinatesYPreDebriefRFV}';
+			
+	
+	coordinates(xCordInstall,yCordInstall,"installed");
+	coordinates(xCordMove,yCordMove,"moveTo");
+	
 	var offsetMinute = new Date().getTimezoneOffset();
 	  var timezoneOffset = (offsetMinute/60);
 	  jQuery('#timezoneOffset').val(timezoneOffset);
@@ -867,6 +908,26 @@ function(A) {
 
 
 });
-
+function coordinates(xCo,yCo,flag){
+	var xCoordinate="";
+	var yCoordinate="";
+	var seperator="/";
+	if(!(xCo && yCo))
+	{
+			seperator="";
+	}
+	if(xCo){xCoordinate=xCo;}
+	if(yCo){yCoordinate=yCo;}
+	if(flag=="moveTo"){
+		$('#moveToCoords').html(xCoordinate+seperator+yCoordinate);
+		$('#moveToAddresscoordinatesXPreDebriefRFV').val(xCoordinate);
+		$('#moveToAddresscoordinatesYPreDebriefRFV').val(yCoordinate);
+	}
+	else if(flag=="installed"){
+		$('#installedCoords').html(xCoordinate+seperator+yCoordinate);
+		$('#installcoordinatesXPreDebriefRFV').val(xCoordinate);
+		$('#installcoordinatesYPreDebriefRFV').val(yCoordinate);
+	}	
+}
 
 </script>

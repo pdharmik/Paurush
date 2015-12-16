@@ -199,10 +199,11 @@ behavior: url(/LexmarkServicesPortal/WEB-INF/css/PIE.htc) !important;
 															<input type="hidden" name="userEnteredActivity.serviceRequest.parts[${counter.index}].orderQuantity" value="${partItem.orderQuantity}"/>
 															
 														</td>
+														<c:if test="${partItem.typePrinter}">
 														<td class="w150">
 															<select class="w130" id="assetPartList[${counter.index}].status" name="userEnteredActivity.serviceRequest.parts[${counter.index}].status">
 															<option value=""></option>
-															<c:forEach items="${hardwareDebriefForm.recommendedPartlistStatus}" var="recomendedPartlistTypeMap">
+															<c:forEach items="${hardwareDebriefForm.recommendedPartlistStatusForPrinterType}" var="recomendedPartlistTypeMap">
 																<c:choose>
 																	<c:when test="${partItem.status eq recomendedPartlistTypeMap.key }">
 																	<option value="${recomendedPartlistTypeMap.key}"  selected="selected">${recomendedPartlistTypeMap.value}</option>
@@ -216,7 +217,26 @@ behavior: url(/LexmarkServicesPortal/WEB-INF/css/PIE.htc) !important;
 															<input type="hidden" name="userEnteredActivity.serviceRequest.parts[${counter.index}].orderNumber" value="${partItem.orderNumber}"/>
 															
 														</td>
-														
+														</c:if>
+														<c:if test="${not partItem.typePrinter}">
+														<td class="w150">
+															<select class="w130" id="assetPartList[${counter.index}].status" name="userEnteredActivity.serviceRequest.parts[${counter.index}].status">
+															<option value=""></option>
+															<c:forEach items="${hardwareDebriefForm.recommendedPartlistStatusForNonPrinterType}" var="recomendedPartlistTypeMap">
+																<c:choose>
+																	<c:when test="${partItem.status eq recomendedPartlistTypeMap.key }">
+																	<option value="${recomendedPartlistTypeMap.key}"  selected="selected">${recomendedPartlistTypeMap.value}</option>
+																	</c:when>
+																	<c:otherwise>
+																	<option value="${recomendedPartlistTypeMap.key}">${recomendedPartlistTypeMap.value}</option>
+																	</c:otherwise>
+																</c:choose>														
+															</c:forEach>
+															</select>
+															<input type="hidden" name="userEnteredActivity.serviceRequest.parts[${counter.index}].orderNumber" value="${partItem.orderNumber}"/>
+															
+														</td>
+														</c:if>
 														</tr>
 														
 														
@@ -278,9 +298,10 @@ behavior: url(/LexmarkServicesPortal/WEB-INF/css/PIE.htc) !important;
 										${addPartListInfo.orderQuantity}
 										<input type="hidden" name="userEnteredActivity.additionalPartList[${status.index}].orderQuantity" value="${addPartListInfo.orderQuantity}"/>
 										</td>
+										<c:if test="${addPartListInfo.typePrinter }">
 										<td>
 											<select class="w130" name="userEnteredActivity.additionalPartList[${status.index}].status">
-																<c:forEach items="${hardwareDebriefForm.recommendedPartlistStatus}" var="recomendedPartlistTypeMap">
+																<c:forEach items="${hardwareDebriefForm.recommendedPartlistStatusForPrinterType}" var="recomendedPartlistTypeMap">
 																<c:choose>
 																	<c:when test="${addPartListInfo.status eq recomendedPartlistTypeMap.key }">
 																	<option value="${recomendedPartlistTypeMap.key}"  selected="selected">${recomendedPartlistTypeMap.value}</option>
@@ -291,7 +312,23 @@ behavior: url(/LexmarkServicesPortal/WEB-INF/css/PIE.htc) !important;
 																</c:choose>														
 															</c:forEach>
 															</select>									
-										</td></tr>
+										</td></c:if>
+										<c:if test="${not addPartListInfo.typePrinter }">
+										<td>
+											<select class="w130" name="userEnteredActivity.additionalPartList[${status.index}].status">
+																<c:forEach items="${hardwareDebriefForm.recommendedPartlistStatusForNonPrinterType}" var="recomendedPartlistTypeMap">
+																<c:choose>
+																	<c:when test="${addPartListInfo.status eq recomendedPartlistTypeMap.key }">
+																	<option value="${recomendedPartlistTypeMap.key}"  selected="selected">${recomendedPartlistTypeMap.value}</option>
+																	</c:when>
+																	<c:otherwise>
+																	<option value="${recomendedPartlistTypeMap.key}">${recomendedPartlistTypeMap.value}</option>
+																	</c:otherwise>
+																</c:choose>														
+															</c:forEach>
+															</select>									
+										</td></c:if>
+										</tr>
 						</c:forEach>
 				  		</c:if>
 				  	</tbody>
@@ -313,13 +350,45 @@ behavior: url(/LexmarkServicesPortal/WEB-INF/css/PIE.htc) !important;
 										<td>
 											<select class="w130" name="userEnteredActivity.additionalPartList[-1].status">
 															
-															<c:forEach items="${hardwareDebriefForm.recommendedPartlistStatus}" var="recomendedPartlistTypeMap">
+															<c:forEach items="${hardwareDebriefForm.recommendedPartlistStatusForPrinterType}" var="printerPartStatusMap">
 																<c:choose>
-																<c:when test="${recomendedPartlistTypeMap.key == 'Used' }">
-																	<option value="${recomendedPartlistTypeMap.key}"  selected="selected">${recomendedPartlistTypeMap.value}</option>
+																<c:when test="${printerPartStatusMap.key == 'Used' }">
+																	<option value="${printerPartStatusMap.key}"  selected="selected">${printerPartStatusMap.value}</option>
 																</c:when>	
 																<c:otherwise>
-																	<option value="${recomendedPartlistTypeMap.key}" >${recomendedPartlistTypeMap.value}</option>
+																	<option value="${printerPartStatusMap.key}" >${printerPartStatusMap.value}</option>
+																</c:otherwise>																
+																</c:choose>														
+															</c:forEach>
+															</select>									
+										</td>
+										
+         				
+         			</tr>
+         			</tbody>
+         		</table>
+         		<table id="defaultAddPartTableTemplate11">
+         			<tbody>
+         			<tr class="altRow">
+         								<td>
+										<span id="display[-1]partNumber"></span>
+										<input type="hidden" name="userEnteredActivity.additionalPartList[-1].partNumber" value=""/>
+										</td><td>										
+										<span id="display[-1]description"></span>
+										<input type="hidden" name="userEnteredActivity.additionalPartList[-1].description" value=""/>
+										</td><td>
+										<input type="text" class="w100" name="userEnteredActivity.additionalPartList[-1].orderQuantity" value="0"/>
+										</td>
+										<td>
+											<select class="w130" name="userEnteredActivity.additionalPartList[-1].status">
+															
+															<c:forEach items="${hardwareDebriefForm.recommendedPartlistStatusForNonPrinterType}" var="nonPrinterPartStatusMap">
+																<c:choose>
+																<c:when test="${nonPrinterPartStatusMap.key == 'Used' }">
+																	<option value="${nonPrinterPartStatusMap.key}"  selected="selected">${nonPrinterPartStatusMap.value}</option>
+																</c:when>	
+																<c:otherwise>
+																	<option value="${nonPrinterPartStatusMap.key}" >${nonPrinterPartStatusMap.value}</option>
 																</c:otherwise>																
 																</c:choose>														
 															</c:forEach>
@@ -432,6 +501,10 @@ behavior: url(/LexmarkServicesPortal/WEB-INF/css/PIE.htc) !important;
   <div style="display: none;" id="tempAdditionalPartsDiv"></div>
   <spring:message code="requestInfo.hardwareDebreief.debriefInstallCloseOut.partList" var="partListTitle"/>
   <spring:message code="requestInfo.hardwareDebreief.common.closeOut.pageCount.header" var="pageCountTitle"/>
+  <%-- Added for LBS 1.5 View Grid--%>
+  
+  <jsp:include page="/WEB-INF/jsp/common/mapPopup.jsp" />
+  <%-- ENDS for LBS 1.5 View Grid--%>
 <script>
 <%-- Below value is for BACK URL--%>
 var backURL={
@@ -568,7 +641,8 @@ function callbackGetResult(result) {
 	var strs = data.split("///");
 	var rowData={
 			partNumber:strs[0],
-			description:strs[1]
+			description:strs[1],
+			typePrinter:strs[4]
 	};
 	addAnotherPartlistRow(rowData);
 	
@@ -620,8 +694,21 @@ if("${fn:length(hardwareDebriefForm.userEnteredActivity.additionalPartList)}">0)
 	additionalPartlistLen--;
 }
 function addAnotherPartlistRow(rowData){
-	
- 	var trHtml=jQuery('#defaultAddPartTableTemplate tbody').html();
+	//alert("addAnotherPartlistRow");
+	 //var result = userEnteredActivity.additionalPartList;
+	 //alert("result = " + result);
+	 //alert("rowData.partNumber = " + rowData.partNumber);
+	 //alert("rowData.description = " + rowData.description);
+	 //alert("rowData.typePrinter = " + rowData.typePrinter);
+	if(rowData.typePrinter == "true"){
+ 		var trHtml=jQuery('#defaultAddPartTableTemplate tbody').html();
+ 		//alert("1 = " + trHtml);
+	}
+	else if(rowData.typePrinter == "false"){
+		var trHtml=jQuery('#defaultAddPartTableTemplate11 tbody').html();
+		//alert("2 = " + trHtml);
+	}
+ 	
  	additionalPartlistLen++;
  	formatValidation[8][3]=additionalPartlistLen;
  	if(additionalPartlistLen==0){
@@ -655,6 +742,7 @@ function addAnotherPartlistRow(rowData){
 <jsp:include page="/WEB-INF/jsp/hardwareDebrief/HWInstallDeInstallMove/commonHwCloseOut/commonHardwareValidation.jsp"></jsp:include>  
 <script>
 
+
 addRequiredFieldToInput();
 var mandatoryFieldObj={
 		1:["actualStartDate","<spring:message code="requestInfo.hardwareDebreief.common.closeOut.validation.actualStartDate" javaScriptEscape="true"/>"],
@@ -665,7 +753,7 @@ var mandatoryFieldObj={
 		6:["technicianNameArea","<spring:message code="requestInfo.hardwareDebreief.common.closeOut.validation.technicianName" javaScriptEscape="true"/>"],
 		7:["assetSerialNumber","<spring:message code="requestInfo.hardwareDebreief.common.closeOut.validation.serialNumber" javaScriptEscape="true"/>"],
 		8:["userEnteredActivity.serviceRequest.asset.installAddress.addressLine1","<spring:message code="requestInfo.hardwareDebreief.common.closeOut.validation.deviceInstallAddress" javaScriptEscape="true"/>"],
-		<c:if test="${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.lbsAddressFlag !=null && hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.lbsAddressFlag == true}">
+		<c:if test="${isLbsAddress==true && islod== true}">
 		12:["userEnteredActivity.serviceRequest.asset.installAddress.buildingId","<spring:message code="requestInfo.hardwareDebrief.validation.building" javaScriptEscape="true"/>"],
 		13:["userEnteredActivity.serviceRequest.asset.installAddress.floorId","<spring:message code="requestInfo.hardwareDebrief.validation.floor" javaScriptEscape="true"/>"],
 		</c:if>

@@ -53,6 +53,9 @@ display:inline-block;
 .overflow-xAuto-yHidden{
 	overflow-x:auto;overflow-y:hidden;
 }
+.width-20per{
+	width: 20% !important;
+}
 .width-25per{
 	width:25%;
 }
@@ -398,8 +401,17 @@ display:inline-block;
 .p-style1{
 	height:auto;text-align:center;
 }
+.max-width-170px{
+	max-width:170px;
+}
+.max-width-150px{
+	max-width:170px;
+}
 .max-width-180px{
 	max-width:180px;
+}
+.max-width-200px{
+	max-width:200px;
 }
 .table-style6{
 	border-collapse: separate;border-spacing: 3px;
@@ -583,4 +595,7 @@ display:inline-block;
 }
 .divEmployeeAccountSelection{
 	width:420px; height:30px;
+}
+.iframe-style2{
+	height:600px;width:100%; float:left; border: 1px solid #e8e8e8;
 }

@@ -93,7 +93,25 @@ public class Account implements Serializable {
 	private String entitlementType;
 	private String quantityServices;
 	private String quantitySupplies;
+	private String deviceStatus;
+	private String lbsUtilization;
+
+	public String getDeviceStatus() {
+		return deviceStatus;
+	}
+
+	public void setDeviceStatus(String deviceStatus) {
+		this.deviceStatus = deviceStatus;
+	}
+
 	
+	public String getLbsUtilization() {
+		return lbsUtilization;
+	}
+
+	public void setLbsUtilization(String lbsUtilization) {
+		this.lbsUtilization = lbsUtilization;
+	}
 	public String getQuantityServices() {
 		return quantityServices;
 	}

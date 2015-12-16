@@ -279,6 +279,15 @@ background: none repeat scroll 0 0 #E6E6E6!important;
 <input type="text" id="paymentTypeBox"/>
 </div>
 <script type="text/javascript">
+var pageSource="";
+var placementId="";
+if ('${pageSource}' != null && '${pageSource}' != ""){
+	pageSource='${pageSource}';
+	placementId='${placementId}';
+}
+if(pageSource=='map'){
+	jQuery(".cart").hide();
+}
 <%-- Changes for MPS 2.1--%>
 var isCartUpdated=false;
 var singlePaymentType=false;
@@ -306,7 +315,12 @@ var orderCurrency = "${orderedCurrentcy}";
 			return false;
 		}
 		showOverlay();
-		window.location.href='<portlet:renderURL><portlet:param name="action" value="showHardwareDetailPage" /></portlet:renderURL>';
+		if(pageSource=='map'){
+			window.location.href='<portlet:renderURL><portlet:param name="action" value="showHardwareDetailPage" /></portlet:renderURL>&pageSource=map&placementId='+placementId;
+		}else{
+			window.location.href='<portlet:renderURL><portlet:param name="action" value="showHardwareDetailPage" /></portlet:renderURL>';
+		}
+		
 	}
 	/* End of hardware details page function */
 	
@@ -843,6 +857,9 @@ var orderCurrency = "${orderedCurrentcy}";
 	
 	/*The following function is used for searching all kind of Hardwares based on Product Type and Product Model*/
 	function doSearchHardwareByModel(hardwareType){	
+		if(pageSource=="map"){
+			jQuery('#tabLi2').hide();
+		}
 		var partNumber;
 		var productType;
 		var productModel;
@@ -942,7 +959,8 @@ var orderCurrency = "${orderedCurrentcy}";
 					url:connectUrl,
 					data:{
 							productModel:productModel,
-						  	productType:productType
+						  	productType:productType,
+						  	pageSource:pageSource
 						 },
 					type:'POST',
 					dataType: 'JSON',		
@@ -974,7 +992,7 @@ var orderCurrency = "${orderedCurrentcy}";
 										if(count != 0){
 											updateGridsBundle(resultJSON);
 										}else{
-											if(hardwareType == 'bundle'){
+											if(hardwareType == 'bundle' || pageSource=="map"){
 												hideDiv('accessories_container');
 												show_load('bundles_container');
 												updateGridsBundle(resultJSON);
@@ -1037,6 +1055,9 @@ var orderCurrency = "${orderedCurrentcy}";
 		jQuery('#tabs-2').addClass('ui-tabs-hiden');
 		jQuery('#tabs-3').addClass('ui-tabs-hiden');
 		
+		if(pageSource=="map"){
+			jQuery('#tabLi2').hide();
+		}
 		var partNumber = document.getElementById("partNumber").value;
 		var validationFlagPopup = true;
 		document.getElementById("productType").value = "";
@@ -1056,7 +1077,8 @@ var orderCurrency = "${orderedCurrentcy}";
 			jQuery.ajax({
 				url:"<portlet:resourceURL id='retriveHardwarePartListURL'></portlet:resourceURL>",
 				data:{
-						partNumber:partNumber
+						partNumber:partNumber,
+						pageSource:pageSource
 					 },
 				type:'POST',
 				dataType: 'JSON',		
@@ -1166,11 +1188,16 @@ var orderCurrency = "${orderedCurrentcy}";
 	
 	/*The following function is used for adding hardware items to cart*/
 	function addToCart(rowID, partNumber, supplyId, partDesc, partType, proModel, catalogId, lineId, currency, hardwareType,partNumArr,descArr,qtyArr,salesOrg,imagePath, element) {
-			//alert('inside addToCart main page');
+			//alert('inside addToCart main page');			
 			jQuery(this).removeClass('errorColor');
 			var validationFlagPopup = true;
 			var queryParam = "partQuantity"+rowID;
-			var quantity = document.getElementById(queryParam).value;
+			var quantity="";
+			if(pageSource=='map'){
+				quantity ="1";
+			}else{
+				quantity = document.getElementById(queryParam).value;
+			}
 			var mpsDesc=partDesc;
 			var localDesc="";
 			document.getElementById('errorMsgPopup').style.display = "none";
@@ -1223,7 +1250,12 @@ var orderCurrency = "${orderedCurrentcy}";
 			}
 			jQuery(element).val("<spring:message code='requestInfo.button.updateOrder'/>");
 			var queryParam = "partQuantity"+rowID;
-			var quantity = document.getElementById(queryParam).value;
+			var quantity = "";
+			if(pageSource=='map'){
+				quantity ="1";
+			}else{
+				quantity = document.getElementById(queryParam).value;
+			}
 			jQuery('#'+queryParam).val(quantity);
 			/*if(hardwareType == 'bundle')
 			{
@@ -1317,8 +1349,12 @@ var orderCurrency = "${orderedCurrentcy}";
 		//}
 		
 		/*The following function is used for checkout link click from cart view page*/
-		function goToHardwareDetailPage(){
-			window.location.href='<portlet:renderURL><portlet:param name="action" value="showHardwareDetailPage"/></portlet:renderURL>';
+		function goToHardwareDetailPage(){			
+		if(pageSource=='map'){
+			window.location.href='<portlet:renderURL><portlet:param name="action" value="showHardwareDetailPage" /></portlet:renderURL>&pageSource=map&placementId='+placementId;
+		}else{
+				window.location.href='<portlet:renderURL><portlet:param name="action" value="showHardwareDetailPage" /></portlet:renderURL>';
+			}
 		}
 		
 		/*The following function is used for storing the selected Sold To number, Billing address and payment type values to session*/
@@ -1432,7 +1468,7 @@ var orderCurrency = "${orderedCurrentcy}";
 											document.getElementById("showPaymentType").innerHTML = response;
 										}); */
 										showOverlay();
-										window.location.href = "<portlet:renderURL></portlet:renderURL>";										
+										window.location.href = "<portlet:renderURL></portlet:renderURL>&source="+pageSource+"&placementId="+placementId+"&method=newselect";										
 									</c:when>
 									<c:otherwise>
 										combo.clearAll();

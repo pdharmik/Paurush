@@ -22,7 +22,7 @@ public class ServiceRequestWSLocator extends org.apache.axis.client.Service impl
     }
 
     // Use to get a proxy class for ServiceRequest_serviceRequestWS_Port
-    private java.lang.String ServiceRequest_serviceRequestWS_Port_address = "http://dashrwmis002.lex.lexmark.com:8700/ws/ServiceRequest:serviceRequestWS/ServiceRequest_serviceRequestWS_Port";
+    private java.lang.String ServiceRequest_serviceRequestWS_Port_address = "http://qashrwmis010.lex.lexmark.com:9000/ws/ServiceRequest:serviceRequestWS/ServiceRequest_serviceRequestWS_Port";
 
     public java.lang.String getServiceRequest_serviceRequestWS_PortAddress() {
         return ServiceRequest_serviceRequestWS_Port_address;

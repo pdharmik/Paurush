@@ -4,6 +4,7 @@
 
 	 <div id="uam-mps-view-map">
         <iframe id="uam-mps-view-map-iframe" class="uam-test-iframe map-img iframe-style2" name="uam-mps-view-map-iframe" scrolling="no" ></iframe>
+        <div class="clearBoth"></div>
     </div>
     <form id="uam-mps-map-form" target="uam-mps-view-map-iframe" method="post" action="" >
         <input id="uam-mps-map-input" type="hidden" name="formPayload"/>

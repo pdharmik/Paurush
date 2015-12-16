@@ -195,17 +195,17 @@ function trim(strValue){
 												</tr>
 											</table>
 										</div>
-										<div class="second-column">
+										<div class="second-column width-40per-important">
 											<br/>
 											<br/>
-											<table border="0">
+											<table border="0" class="width-100per">
 												<tr>
-												 	<td width="150px" align="right"></td>
+												 	<td align="right"></td>
 													<td width="10px" ></td>
 												  	<td class="labelTD"></td>
 												</tr>
 												<tr>
-												 	<td width="150px" align="right"><b><spring:message code="claim.label.serialNumber"/></b></td>
+												 	<td align="right"><b><spring:message code="claim.label.serialNumber"/></b></td>
 													<td width="10px" ></td>
 												  	<td class="labelTD">${claimDetailFormForUpdate.claimDetail.serviceRequest.asset.serialNumber}</td>
 												</tr>	 
@@ -218,6 +218,11 @@ function trim(strValue){
 													<td class="labelTD" align="right"><b><spring:message code="claim.label.productPN/TLI"/></b></td>
 													<td></td>
 													<td class="labelTD">${claimDetailFormForUpdate.claimDetail.serviceRequest.asset.productTLI}</td>
+												</tr>
+												<tr>
+													<td class="labelTD" align="right" style="vertical-align:top"><b><spring:message code="claim.label.productAndAssetWarningMsg"/></b></td>
+													<td></td>
+													<td class="labelTD max-width-150px">${claimDetailFormForUpdate.claimDetail.displayWarning}</td>
 												</tr>
 											</table>
 										</div>

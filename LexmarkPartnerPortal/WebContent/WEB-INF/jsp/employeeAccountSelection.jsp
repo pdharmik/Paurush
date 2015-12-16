@@ -67,7 +67,7 @@
 					<td width="180"></td>
 					<td align="left">
 						<c:if test="${showFseSelector==true}">
-							<select id="selectFseAccount" name="accountNumber" class="selectFseAccount">
+							<select id="selectFseAccount" name="accountNumber" class="selectFseAccount" style= "width: 420px ! important;" >
 								<option value=""></option>
 			 	  				<c:forEach items="${fSEAccountListResult.accountList}" var="accounts">
 			 	  					<option value="${accounts.accountId}">${accounts.accountName} (${accounts.accountId})</option>

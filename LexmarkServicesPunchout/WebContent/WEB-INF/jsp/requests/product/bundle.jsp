@@ -20,6 +20,13 @@ div.gridbox_light table.obj td img {
     float: right;
     padding: 7px 3px;
 }
+div.gridbox_light table.obj tr.rowselected td{
+	background-color: inherit;
+}
+tr.altRow td { background-color:#f0f0f0 !important; }
+.objbox table .rowselected td a{
+	color:#1e68bc !important;
+}
 </style>    
 
 <div class="mid-cntnr"> 
@@ -27,10 +34,9 @@ div.gridbox_light table.obj td img {
                          <div id="div_bundleGrid">
 							<div id="tab_bundleGrid"  style="display:block;">
 								<div id="printerBundle_container" style="width:100%;"></div>
-								<div id="loadingNotification_printer" class='gridLoading'>
-	        	<br/><spring:message code='loadingNotification'/>&nbsp;&nbsp;<img src="<html:imagesPath/>gridloading.gif"/><br/>
+								<div id="loadingNotification_printer" class='gridLoading'><img src="<html:imagesPath/>gridloading.gif"/><br/>
 	    	  </div>
-	  							<div class="pagination"><span id=pagingArea></span><span id="infoArea"></span></div>
+	  							<div class="pagination"><span id="bundlesPagingArea"></span><span id="bundlesInfoArea"></span></div>
 	  						</div>
 	    				</div><!-- mygrid_container -->
 	              	 	</div>
@@ -39,10 +45,10 @@ div.gridbox_light table.obj td img {
 <script>
 
 	var bundleGrid;
-	
+	if("${forGlobalSearch}" != "true"){
 	var url= "${retrieveBundleGrid}";
 	if(global_click_msgs.clickedFrom=="printerList"){//defined in rightNavHome.jsp
-		url+="&pTyp="+printerObject.printerType+"&cType="+cartCheckObj.cartType;//Printerype object resides in printerlist jsp
+		url+="&pTyp="+printerObject.printerType+"&cType="+cartCheckObj.cartType+"&fromPrinterList=true";//Printerype object resides in printerlist jsp
 	}
 	else if(global_click_msgs.clickedFrom=="homePageProducts" && objLinkProducts.isPrinter=="true"){//for dot matrix printers
 		url+="&pTyp="+objLinkProducts.partType+"&cType="+cartCheckObj.cartType;
@@ -65,6 +71,7 @@ div.gridbox_light table.obj td img {
 				&& objLinkProducts.certType.length > 0)
 			url+="&certType="+objLinkProducts.certType;
 	}
+	}
 	//var headerString = "Request No.,Date/Time Created,Request Type,Area,Status,&nbsp;";
 	var plus_minus_path="<html:imagesPath/>";
 	bundleGrid = new dhtmlXGridObject('printerBundle_container');
@@ -82,11 +89,21 @@ div.gridbox_light table.obj td img {
 	bundleGrid.enableColumnMove(false);
 	bundleGrid.enableAlterCss("even_row","odd_row");
 	bundleGrid.init();
-	bundleGrid.enablePaging(true,15, 2, "pagingArea", true, "infoArea");
+	if("${forGlobalSearch}"=="true"){
+		bundleGrid.enablePaging(true,2, 2, "bundlesPagingArea", true, "bundlesInfoArea");
+	}
+	else{
+		bundleGrid.enablePaging(true,15, 2, "bundlesPagingArea", true, "bundlesInfoArea");
+	}
 	bundleGrid.setPagingSkin("bricks");
 	bundleGrid.attachEvent("onXLE", function() {
     	jQuery('#loadingNotification_printer').hide();
-    	loadCartSize(cartObj);
+    	if("${fromAriba}"=="true"){
+    		if("${forGlobalSearch}" != "true"){
+    			loadCartSize(cartObj);
+    		}
+    	}    	
+    	
 	});
 	bundleGrid.attachEvent("onXLS", function() {
 		jQuery('#loadingNotification_printer').show();
@@ -101,7 +118,13 @@ div.gridbox_light table.obj td img {
 			return true;
 			}
 		});
-	bundleGrid.loadXML(url);
+	if("${forGlobalSearch}"=="true"){
+		bundleGrid.parse("${bundleListXml}");
+	}
+	else{
+		bundleGrid.loadXML(url);
+	}
+	
 	
 	function openSubRow(rowId,imgObj){
 		if(imgObj.src.indexOf("minus.png")==-1){

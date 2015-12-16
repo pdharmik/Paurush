@@ -64,9 +64,15 @@ public class SiebelAddress  implements java.io.Serializable {
 
     private java.lang.String gridCoordinateY;
 
+    private java.lang.String addressLevelOfDetails;
+
+    private java.lang.String floorLevelOfDetails;
+
     private java.lang.String addressCleansedFlag;
 
     private java.lang.String addressMessage;
+
+    private java.lang.String LBSAddressFlag;
 
     private java.lang.String newAddressFlag;
 
@@ -102,8 +108,11 @@ public class SiebelAddress  implements java.io.Serializable {
            java.lang.String longitude,
            java.lang.String gridCoordinateX,
            java.lang.String gridCoordinateY,
+           java.lang.String addressLevelOfDetails,
+           java.lang.String floorLevelOfDetails,
            java.lang.String addressCleansedFlag,
            java.lang.String addressMessage,
+           java.lang.String LBSAddressFlag,
            java.lang.String newAddressFlag) {
            this.addressId = addressId;
            this.addressName = addressName;
@@ -133,8 +142,11 @@ public class SiebelAddress  implements java.io.Serializable {
            this.longitude = longitude;
            this.gridCoordinateX = gridCoordinateX;
            this.gridCoordinateY = gridCoordinateY;
+           this.addressLevelOfDetails = addressLevelOfDetails;
+           this.floorLevelOfDetails = floorLevelOfDetails;
            this.addressCleansedFlag = addressCleansedFlag;
            this.addressMessage = addressMessage;
+           this.LBSAddressFlag = LBSAddressFlag;
            this.newAddressFlag = newAddressFlag;
     }
 
@@ -700,6 +712,46 @@ public class SiebelAddress  implements java.io.Serializable {
 
 
     /**
+     * Gets the addressLevelOfDetails value for this SiebelAddress.
+     * 
+     * @return addressLevelOfDetails
+     */
+    public java.lang.String getAddressLevelOfDetails() {
+        return addressLevelOfDetails;
+    }
+
+
+    /**
+     * Sets the addressLevelOfDetails value for this SiebelAddress.
+     * 
+     * @param addressLevelOfDetails
+     */
+    public void setAddressLevelOfDetails(java.lang.String addressLevelOfDetails) {
+        this.addressLevelOfDetails = addressLevelOfDetails;
+    }
+
+
+    /**
+     * Gets the floorLevelOfDetails value for this SiebelAddress.
+     * 
+     * @return floorLevelOfDetails
+     */
+    public java.lang.String getFloorLevelOfDetails() {
+        return floorLevelOfDetails;
+    }
+
+
+    /**
+     * Sets the floorLevelOfDetails value for this SiebelAddress.
+     * 
+     * @param floorLevelOfDetails
+     */
+    public void setFloorLevelOfDetails(java.lang.String floorLevelOfDetails) {
+        this.floorLevelOfDetails = floorLevelOfDetails;
+    }
+
+
+    /**
      * Gets the addressCleansedFlag value for this SiebelAddress.
      * 
      * @return addressCleansedFlag
@@ -736,6 +788,26 @@ public class SiebelAddress  implements java.io.Serializable {
      */
     public void setAddressMessage(java.lang.String addressMessage) {
         this.addressMessage = addressMessage;
+    }
+
+
+    /**
+     * Gets the LBSAddressFlag value for this SiebelAddress.
+     * 
+     * @return LBSAddressFlag
+     */
+    public java.lang.String getLBSAddressFlag() {
+        return LBSAddressFlag;
+    }
+
+
+    /**
+     * Sets the LBSAddressFlag value for this SiebelAddress.
+     * 
+     * @param LBSAddressFlag
+     */
+    public void setLBSAddressFlag(java.lang.String LBSAddressFlag) {
+        this.LBSAddressFlag = LBSAddressFlag;
     }
 
 
@@ -854,12 +926,21 @@ public class SiebelAddress  implements java.io.Serializable {
             ((this.gridCoordinateY==null && other.getGridCoordinateY()==null) || 
              (this.gridCoordinateY!=null &&
               this.gridCoordinateY.equals(other.getGridCoordinateY()))) &&
+            ((this.addressLevelOfDetails==null && other.getAddressLevelOfDetails()==null) || 
+             (this.addressLevelOfDetails!=null &&
+              this.addressLevelOfDetails.equals(other.getAddressLevelOfDetails()))) &&
+            ((this.floorLevelOfDetails==null && other.getFloorLevelOfDetails()==null) || 
+             (this.floorLevelOfDetails!=null &&
+              this.floorLevelOfDetails.equals(other.getFloorLevelOfDetails()))) &&
             ((this.addressCleansedFlag==null && other.getAddressCleansedFlag()==null) || 
              (this.addressCleansedFlag!=null &&
               this.addressCleansedFlag.equals(other.getAddressCleansedFlag()))) &&
             ((this.addressMessage==null && other.getAddressMessage()==null) || 
              (this.addressMessage!=null &&
               this.addressMessage.equals(other.getAddressMessage()))) &&
+            ((this.LBSAddressFlag==null && other.getLBSAddressFlag()==null) || 
+             (this.LBSAddressFlag!=null &&
+              this.LBSAddressFlag.equals(other.getLBSAddressFlag()))) &&
             ((this.newAddressFlag==null && other.getNewAddressFlag()==null) || 
              (this.newAddressFlag!=null &&
               this.newAddressFlag.equals(other.getNewAddressFlag())));
@@ -958,11 +1039,20 @@ public class SiebelAddress  implements java.io.Serializable {
         if (getGridCoordinateY() != null) {
             _hashCode += getGridCoordinateY().hashCode();
         }
+        if (getAddressLevelOfDetails() != null) {
+            _hashCode += getAddressLevelOfDetails().hashCode();
+        }
+        if (getFloorLevelOfDetails() != null) {
+            _hashCode += getFloorLevelOfDetails().hashCode();
+        }
         if (getAddressCleansedFlag() != null) {
             _hashCode += getAddressCleansedFlag().hashCode();
         }
         if (getAddressMessage() != null) {
             _hashCode += getAddressMessage().hashCode();
+        }
+        if (getLBSAddressFlag() != null) {
+            _hashCode += getLBSAddressFlag().hashCode();
         }
         if (getNewAddressFlag() != null) {
             _hashCode += getNewAddressFlag().hashCode();
@@ -1078,13 +1168,14 @@ public class SiebelAddress  implements java.io.Serializable {
         elemField.setXmlName(new javax.xml.namespace.QName("", "Site"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
-        elemField.setNillable(true);
+        elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("siteId");
         elemField.setXmlName(new javax.xml.namespace.QName("", "SiteId"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(true);
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("physicalLocation1");
@@ -1097,7 +1188,8 @@ public class SiebelAddress  implements java.io.Serializable {
         elemField.setFieldName("buildingId");
         elemField.setXmlName(new javax.xml.namespace.QName("", "BuildingId"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(true);
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("physicalLocation2");
@@ -1110,7 +1202,8 @@ public class SiebelAddress  implements java.io.Serializable {
         elemField.setFieldName("floorId");
         elemField.setXmlName(new javax.xml.namespace.QName("", "FloorId"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(true);
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("physicalLocation3");
@@ -1131,13 +1224,14 @@ public class SiebelAddress  implements java.io.Serializable {
         elemField.setXmlName(new javax.xml.namespace.QName("", "Zone"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
-        elemField.setNillable(true);
+        elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("zoneId");
         elemField.setXmlName(new javax.xml.namespace.QName("", "ZoneId"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(true);
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("latitude");
@@ -1158,11 +1252,25 @@ public class SiebelAddress  implements java.io.Serializable {
         elemField.setXmlName(new javax.xml.namespace.QName("", "GridCoordinateX"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
-        elemField.setNillable(true);
+        elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("gridCoordinateY");
         elemField.setXmlName(new javax.xml.namespace.QName("", "GridCoordinateY"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("addressLevelOfDetails");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "AddressLevelOfDetails"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(true);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("floorLevelOfDetails");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "FloorLevelOfDetails"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(true);
@@ -1180,6 +1288,13 @@ public class SiebelAddress  implements java.io.Serializable {
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(false);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("LBSAddressFlag");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "LBSAddressFlag"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(true);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("newAddressFlag");

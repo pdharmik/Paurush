@@ -10,20 +10,6 @@ package com.lexmark.lbs.directMove;
 public class Update_Asset_Output  implements java.io.Serializable {
     private java.lang.String accountId;
 
-    private java.lang.String assetCHLId;
-
-    private java.lang.String assetCostCenter;
-
-    private java.lang.String assetDevicetag;
-
-    private java.lang.String assetGridCoordinatesX;
-
-    private java.lang.String assetGridCoordinatesY;
-
-    private java.lang.String assetHostName;
-
-    private java.lang.String assetIPAddress;
-
     private java.lang.String assetId;
 
     private java.lang.String building;
@@ -48,33 +34,13 @@ public class Update_Asset_Output  implements java.io.Serializable {
 
     private java.lang.String gridCoordinatesY;
 
-    private java.lang.String installAddressId;
-
     private java.lang.String latitude;
 
     private java.lang.String longitude;
 
-    private java.lang.String MADCProductName;
-
-    private java.lang.String MADCSerialNumber;
-
     private java.lang.String object_spcId;
 
     private java.lang.String process_spcInstance_spcId;
-
-    private java.lang.String SRAccountId;
-
-    private java.lang.String SRCHLID;
-
-    private java.lang.String SRCostCenter;
-
-    private java.lang.String SRDeviceTag;
-
-    private java.lang.String SRHostname;
-
-    private java.lang.String SRIPAddress;
-
-    private java.lang.String SRId;
 
     private java.lang.String siebel_spcOperation_spcObject_spcId;
 
@@ -97,13 +63,6 @@ public class Update_Asset_Output  implements java.io.Serializable {
 
     public Update_Asset_Output(
            java.lang.String accountId,
-           java.lang.String assetCHLId,
-           java.lang.String assetCostCenter,
-           java.lang.String assetDevicetag,
-           java.lang.String assetGridCoordinatesX,
-           java.lang.String assetGridCoordinatesY,
-           java.lang.String assetHostName,
-           java.lang.String assetIPAddress,
            java.lang.String assetId,
            java.lang.String building,
            java.lang.String buildingId,
@@ -116,20 +75,10 @@ public class Update_Asset_Output  implements java.io.Serializable {
            java.lang.String floorId,
            java.lang.String gridCoordinatesX,
            java.lang.String gridCoordinatesY,
-           java.lang.String installAddressId,
            java.lang.String latitude,
            java.lang.String longitude,
-           java.lang.String MADCProductName,
-           java.lang.String MADCSerialNumber,
            java.lang.String object_spcId,
            java.lang.String process_spcInstance_spcId,
-           java.lang.String SRAccountId,
-           java.lang.String SRCHLID,
-           java.lang.String SRCostCenter,
-           java.lang.String SRDeviceTag,
-           java.lang.String SRHostname,
-           java.lang.String SRIPAddress,
-           java.lang.String SRId,
            java.lang.String siebel_spcOperation_spcObject_spcId,
            java.lang.String site,
            java.lang.String siteId,
@@ -139,13 +88,6 @@ public class Update_Asset_Output  implements java.io.Serializable {
            java.lang.String zone,
            java.lang.String zoneId) {
            this.accountId = accountId;
-           this.assetCHLId = assetCHLId;
-           this.assetCostCenter = assetCostCenter;
-           this.assetDevicetag = assetDevicetag;
-           this.assetGridCoordinatesX = assetGridCoordinatesX;
-           this.assetGridCoordinatesY = assetGridCoordinatesY;
-           this.assetHostName = assetHostName;
-           this.assetIPAddress = assetIPAddress;
            this.assetId = assetId;
            this.building = building;
            this.buildingId = buildingId;
@@ -158,20 +100,10 @@ public class Update_Asset_Output  implements java.io.Serializable {
            this.floorId = floorId;
            this.gridCoordinatesX = gridCoordinatesX;
            this.gridCoordinatesY = gridCoordinatesY;
-           this.installAddressId = installAddressId;
            this.latitude = latitude;
            this.longitude = longitude;
-           this.MADCProductName = MADCProductName;
-           this.MADCSerialNumber = MADCSerialNumber;
            this.object_spcId = object_spcId;
            this.process_spcInstance_spcId = process_spcInstance_spcId;
-           this.SRAccountId = SRAccountId;
-           this.SRCHLID = SRCHLID;
-           this.SRCostCenter = SRCostCenter;
-           this.SRDeviceTag = SRDeviceTag;
-           this.SRHostname = SRHostname;
-           this.SRIPAddress = SRIPAddress;
-           this.SRId = SRId;
            this.siebel_spcOperation_spcObject_spcId = siebel_spcOperation_spcObject_spcId;
            this.site = site;
            this.siteId = siteId;
@@ -200,146 +132,6 @@ public class Update_Asset_Output  implements java.io.Serializable {
      */
     public void setAccountId(java.lang.String accountId) {
         this.accountId = accountId;
-    }
-
-
-    /**
-     * Gets the assetCHLId value for this Update_Asset_Output.
-     * 
-     * @return assetCHLId
-     */
-    public java.lang.String getAssetCHLId() {
-        return assetCHLId;
-    }
-
-
-    /**
-     * Sets the assetCHLId value for this Update_Asset_Output.
-     * 
-     * @param assetCHLId
-     */
-    public void setAssetCHLId(java.lang.String assetCHLId) {
-        this.assetCHLId = assetCHLId;
-    }
-
-
-    /**
-     * Gets the assetCostCenter value for this Update_Asset_Output.
-     * 
-     * @return assetCostCenter
-     */
-    public java.lang.String getAssetCostCenter() {
-        return assetCostCenter;
-    }
-
-
-    /**
-     * Sets the assetCostCenter value for this Update_Asset_Output.
-     * 
-     * @param assetCostCenter
-     */
-    public void setAssetCostCenter(java.lang.String assetCostCenter) {
-        this.assetCostCenter = assetCostCenter;
-    }
-
-
-    /**
-     * Gets the assetDevicetag value for this Update_Asset_Output.
-     * 
-     * @return assetDevicetag
-     */
-    public java.lang.String getAssetDevicetag() {
-        return assetDevicetag;
-    }
-
-
-    /**
-     * Sets the assetDevicetag value for this Update_Asset_Output.
-     * 
-     * @param assetDevicetag
-     */
-    public void setAssetDevicetag(java.lang.String assetDevicetag) {
-        this.assetDevicetag = assetDevicetag;
-    }
-
-
-    /**
-     * Gets the assetGridCoordinatesX value for this Update_Asset_Output.
-     * 
-     * @return assetGridCoordinatesX
-     */
-    public java.lang.String getAssetGridCoordinatesX() {
-        return assetGridCoordinatesX;
-    }
-
-
-    /**
-     * Sets the assetGridCoordinatesX value for this Update_Asset_Output.
-     * 
-     * @param assetGridCoordinatesX
-     */
-    public void setAssetGridCoordinatesX(java.lang.String assetGridCoordinatesX) {
-        this.assetGridCoordinatesX = assetGridCoordinatesX;
-    }
-
-
-    /**
-     * Gets the assetGridCoordinatesY value for this Update_Asset_Output.
-     * 
-     * @return assetGridCoordinatesY
-     */
-    public java.lang.String getAssetGridCoordinatesY() {
-        return assetGridCoordinatesY;
-    }
-
-
-    /**
-     * Sets the assetGridCoordinatesY value for this Update_Asset_Output.
-     * 
-     * @param assetGridCoordinatesY
-     */
-    public void setAssetGridCoordinatesY(java.lang.String assetGridCoordinatesY) {
-        this.assetGridCoordinatesY = assetGridCoordinatesY;
-    }
-
-
-    /**
-     * Gets the assetHostName value for this Update_Asset_Output.
-     * 
-     * @return assetHostName
-     */
-    public java.lang.String getAssetHostName() {
-        return assetHostName;
-    }
-
-
-    /**
-     * Sets the assetHostName value for this Update_Asset_Output.
-     * 
-     * @param assetHostName
-     */
-    public void setAssetHostName(java.lang.String assetHostName) {
-        this.assetHostName = assetHostName;
-    }
-
-
-    /**
-     * Gets the assetIPAddress value for this Update_Asset_Output.
-     * 
-     * @return assetIPAddress
-     */
-    public java.lang.String getAssetIPAddress() {
-        return assetIPAddress;
-    }
-
-
-    /**
-     * Sets the assetIPAddress value for this Update_Asset_Output.
-     * 
-     * @param assetIPAddress
-     */
-    public void setAssetIPAddress(java.lang.String assetIPAddress) {
-        this.assetIPAddress = assetIPAddress;
     }
 
 
@@ -584,26 +376,6 @@ public class Update_Asset_Output  implements java.io.Serializable {
 
 
     /**
-     * Gets the installAddressId value for this Update_Asset_Output.
-     * 
-     * @return installAddressId
-     */
-    public java.lang.String getInstallAddressId() {
-        return installAddressId;
-    }
-
-
-    /**
-     * Sets the installAddressId value for this Update_Asset_Output.
-     * 
-     * @param installAddressId
-     */
-    public void setInstallAddressId(java.lang.String installAddressId) {
-        this.installAddressId = installAddressId;
-    }
-
-
-    /**
      * Gets the latitude value for this Update_Asset_Output.
      * 
      * @return latitude
@@ -644,46 +416,6 @@ public class Update_Asset_Output  implements java.io.Serializable {
 
 
     /**
-     * Gets the MADCProductName value for this Update_Asset_Output.
-     * 
-     * @return MADCProductName
-     */
-    public java.lang.String getMADCProductName() {
-        return MADCProductName;
-    }
-
-
-    /**
-     * Sets the MADCProductName value for this Update_Asset_Output.
-     * 
-     * @param MADCProductName
-     */
-    public void setMADCProductName(java.lang.String MADCProductName) {
-        this.MADCProductName = MADCProductName;
-    }
-
-
-    /**
-     * Gets the MADCSerialNumber value for this Update_Asset_Output.
-     * 
-     * @return MADCSerialNumber
-     */
-    public java.lang.String getMADCSerialNumber() {
-        return MADCSerialNumber;
-    }
-
-
-    /**
-     * Sets the MADCSerialNumber value for this Update_Asset_Output.
-     * 
-     * @param MADCSerialNumber
-     */
-    public void setMADCSerialNumber(java.lang.String MADCSerialNumber) {
-        this.MADCSerialNumber = MADCSerialNumber;
-    }
-
-
-    /**
      * Gets the object_spcId value for this Update_Asset_Output.
      * 
      * @return object_spcId
@@ -720,146 +452,6 @@ public class Update_Asset_Output  implements java.io.Serializable {
      */
     public void setProcess_spcInstance_spcId(java.lang.String process_spcInstance_spcId) {
         this.process_spcInstance_spcId = process_spcInstance_spcId;
-    }
-
-
-    /**
-     * Gets the SRAccountId value for this Update_Asset_Output.
-     * 
-     * @return SRAccountId
-     */
-    public java.lang.String getSRAccountId() {
-        return SRAccountId;
-    }
-
-
-    /**
-     * Sets the SRAccountId value for this Update_Asset_Output.
-     * 
-     * @param SRAccountId
-     */
-    public void setSRAccountId(java.lang.String SRAccountId) {
-        this.SRAccountId = SRAccountId;
-    }
-
-
-    /**
-     * Gets the SRCHLID value for this Update_Asset_Output.
-     * 
-     * @return SRCHLID
-     */
-    public java.lang.String getSRCHLID() {
-        return SRCHLID;
-    }
-
-
-    /**
-     * Sets the SRCHLID value for this Update_Asset_Output.
-     * 
-     * @param SRCHLID
-     */
-    public void setSRCHLID(java.lang.String SRCHLID) {
-        this.SRCHLID = SRCHLID;
-    }
-
-
-    /**
-     * Gets the SRCostCenter value for this Update_Asset_Output.
-     * 
-     * @return SRCostCenter
-     */
-    public java.lang.String getSRCostCenter() {
-        return SRCostCenter;
-    }
-
-
-    /**
-     * Sets the SRCostCenter value for this Update_Asset_Output.
-     * 
-     * @param SRCostCenter
-     */
-    public void setSRCostCenter(java.lang.String SRCostCenter) {
-        this.SRCostCenter = SRCostCenter;
-    }
-
-
-    /**
-     * Gets the SRDeviceTag value for this Update_Asset_Output.
-     * 
-     * @return SRDeviceTag
-     */
-    public java.lang.String getSRDeviceTag() {
-        return SRDeviceTag;
-    }
-
-
-    /**
-     * Sets the SRDeviceTag value for this Update_Asset_Output.
-     * 
-     * @param SRDeviceTag
-     */
-    public void setSRDeviceTag(java.lang.String SRDeviceTag) {
-        this.SRDeviceTag = SRDeviceTag;
-    }
-
-
-    /**
-     * Gets the SRHostname value for this Update_Asset_Output.
-     * 
-     * @return SRHostname
-     */
-    public java.lang.String getSRHostname() {
-        return SRHostname;
-    }
-
-
-    /**
-     * Sets the SRHostname value for this Update_Asset_Output.
-     * 
-     * @param SRHostname
-     */
-    public void setSRHostname(java.lang.String SRHostname) {
-        this.SRHostname = SRHostname;
-    }
-
-
-    /**
-     * Gets the SRIPAddress value for this Update_Asset_Output.
-     * 
-     * @return SRIPAddress
-     */
-    public java.lang.String getSRIPAddress() {
-        return SRIPAddress;
-    }
-
-
-    /**
-     * Sets the SRIPAddress value for this Update_Asset_Output.
-     * 
-     * @param SRIPAddress
-     */
-    public void setSRIPAddress(java.lang.String SRIPAddress) {
-        this.SRIPAddress = SRIPAddress;
-    }
-
-
-    /**
-     * Gets the SRId value for this Update_Asset_Output.
-     * 
-     * @return SRId
-     */
-    public java.lang.String getSRId() {
-        return SRId;
-    }
-
-
-    /**
-     * Sets the SRId value for this Update_Asset_Output.
-     * 
-     * @param SRId
-     */
-    public void setSRId(java.lang.String SRId) {
-        this.SRId = SRId;
     }
 
 
@@ -1037,27 +629,6 @@ public class Update_Asset_Output  implements java.io.Serializable {
             ((this.accountId==null && other.getAccountId()==null) || 
              (this.accountId!=null &&
               this.accountId.equals(other.getAccountId()))) &&
-            ((this.assetCHLId==null && other.getAssetCHLId()==null) || 
-             (this.assetCHLId!=null &&
-              this.assetCHLId.equals(other.getAssetCHLId()))) &&
-            ((this.assetCostCenter==null && other.getAssetCostCenter()==null) || 
-             (this.assetCostCenter!=null &&
-              this.assetCostCenter.equals(other.getAssetCostCenter()))) &&
-            ((this.assetDevicetag==null && other.getAssetDevicetag()==null) || 
-             (this.assetDevicetag!=null &&
-              this.assetDevicetag.equals(other.getAssetDevicetag()))) &&
-            ((this.assetGridCoordinatesX==null && other.getAssetGridCoordinatesX()==null) || 
-             (this.assetGridCoordinatesX!=null &&
-              this.assetGridCoordinatesX.equals(other.getAssetGridCoordinatesX()))) &&
-            ((this.assetGridCoordinatesY==null && other.getAssetGridCoordinatesY()==null) || 
-             (this.assetGridCoordinatesY!=null &&
-              this.assetGridCoordinatesY.equals(other.getAssetGridCoordinatesY()))) &&
-            ((this.assetHostName==null && other.getAssetHostName()==null) || 
-             (this.assetHostName!=null &&
-              this.assetHostName.equals(other.getAssetHostName()))) &&
-            ((this.assetIPAddress==null && other.getAssetIPAddress()==null) || 
-             (this.assetIPAddress!=null &&
-              this.assetIPAddress.equals(other.getAssetIPAddress()))) &&
             ((this.assetId==null && other.getAssetId()==null) || 
              (this.assetId!=null &&
               this.assetId.equals(other.getAssetId()))) &&
@@ -1094,48 +665,18 @@ public class Update_Asset_Output  implements java.io.Serializable {
             ((this.gridCoordinatesY==null && other.getGridCoordinatesY()==null) || 
              (this.gridCoordinatesY!=null &&
               this.gridCoordinatesY.equals(other.getGridCoordinatesY()))) &&
-            ((this.installAddressId==null && other.getInstallAddressId()==null) || 
-             (this.installAddressId!=null &&
-              this.installAddressId.equals(other.getInstallAddressId()))) &&
             ((this.latitude==null && other.getLatitude()==null) || 
              (this.latitude!=null &&
               this.latitude.equals(other.getLatitude()))) &&
             ((this.longitude==null && other.getLongitude()==null) || 
              (this.longitude!=null &&
               this.longitude.equals(other.getLongitude()))) &&
-            ((this.MADCProductName==null && other.getMADCProductName()==null) || 
-             (this.MADCProductName!=null &&
-              this.MADCProductName.equals(other.getMADCProductName()))) &&
-            ((this.MADCSerialNumber==null && other.getMADCSerialNumber()==null) || 
-             (this.MADCSerialNumber!=null &&
-              this.MADCSerialNumber.equals(other.getMADCSerialNumber()))) &&
             ((this.object_spcId==null && other.getObject_spcId()==null) || 
              (this.object_spcId!=null &&
               this.object_spcId.equals(other.getObject_spcId()))) &&
             ((this.process_spcInstance_spcId==null && other.getProcess_spcInstance_spcId()==null) || 
              (this.process_spcInstance_spcId!=null &&
               this.process_spcInstance_spcId.equals(other.getProcess_spcInstance_spcId()))) &&
-            ((this.SRAccountId==null && other.getSRAccountId()==null) || 
-             (this.SRAccountId!=null &&
-              this.SRAccountId.equals(other.getSRAccountId()))) &&
-            ((this.SRCHLID==null && other.getSRCHLID()==null) || 
-             (this.SRCHLID!=null &&
-              this.SRCHLID.equals(other.getSRCHLID()))) &&
-            ((this.SRCostCenter==null && other.getSRCostCenter()==null) || 
-             (this.SRCostCenter!=null &&
-              this.SRCostCenter.equals(other.getSRCostCenter()))) &&
-            ((this.SRDeviceTag==null && other.getSRDeviceTag()==null) || 
-             (this.SRDeviceTag!=null &&
-              this.SRDeviceTag.equals(other.getSRDeviceTag()))) &&
-            ((this.SRHostname==null && other.getSRHostname()==null) || 
-             (this.SRHostname!=null &&
-              this.SRHostname.equals(other.getSRHostname()))) &&
-            ((this.SRIPAddress==null && other.getSRIPAddress()==null) || 
-             (this.SRIPAddress!=null &&
-              this.SRIPAddress.equals(other.getSRIPAddress()))) &&
-            ((this.SRId==null && other.getSRId()==null) || 
-             (this.SRId!=null &&
-              this.SRId.equals(other.getSRId()))) &&
             ((this.siebel_spcOperation_spcObject_spcId==null && other.getSiebel_spcOperation_spcObject_spcId()==null) || 
              (this.siebel_spcOperation_spcObject_spcId!=null &&
               this.siebel_spcOperation_spcObject_spcId.equals(other.getSiebel_spcOperation_spcObject_spcId()))) &&
@@ -1174,27 +715,6 @@ public class Update_Asset_Output  implements java.io.Serializable {
         if (getAccountId() != null) {
             _hashCode += getAccountId().hashCode();
         }
-        if (getAssetCHLId() != null) {
-            _hashCode += getAssetCHLId().hashCode();
-        }
-        if (getAssetCostCenter() != null) {
-            _hashCode += getAssetCostCenter().hashCode();
-        }
-        if (getAssetDevicetag() != null) {
-            _hashCode += getAssetDevicetag().hashCode();
-        }
-        if (getAssetGridCoordinatesX() != null) {
-            _hashCode += getAssetGridCoordinatesX().hashCode();
-        }
-        if (getAssetGridCoordinatesY() != null) {
-            _hashCode += getAssetGridCoordinatesY().hashCode();
-        }
-        if (getAssetHostName() != null) {
-            _hashCode += getAssetHostName().hashCode();
-        }
-        if (getAssetIPAddress() != null) {
-            _hashCode += getAssetIPAddress().hashCode();
-        }
         if (getAssetId() != null) {
             _hashCode += getAssetId().hashCode();
         }
@@ -1231,47 +751,17 @@ public class Update_Asset_Output  implements java.io.Serializable {
         if (getGridCoordinatesY() != null) {
             _hashCode += getGridCoordinatesY().hashCode();
         }
-        if (getInstallAddressId() != null) {
-            _hashCode += getInstallAddressId().hashCode();
-        }
         if (getLatitude() != null) {
             _hashCode += getLatitude().hashCode();
         }
         if (getLongitude() != null) {
             _hashCode += getLongitude().hashCode();
         }
-        if (getMADCProductName() != null) {
-            _hashCode += getMADCProductName().hashCode();
-        }
-        if (getMADCSerialNumber() != null) {
-            _hashCode += getMADCSerialNumber().hashCode();
-        }
         if (getObject_spcId() != null) {
             _hashCode += getObject_spcId().hashCode();
         }
         if (getProcess_spcInstance_spcId() != null) {
             _hashCode += getProcess_spcInstance_spcId().hashCode();
-        }
-        if (getSRAccountId() != null) {
-            _hashCode += getSRAccountId().hashCode();
-        }
-        if (getSRCHLID() != null) {
-            _hashCode += getSRCHLID().hashCode();
-        }
-        if (getSRCostCenter() != null) {
-            _hashCode += getSRCostCenter().hashCode();
-        }
-        if (getSRDeviceTag() != null) {
-            _hashCode += getSRDeviceTag().hashCode();
-        }
-        if (getSRHostname() != null) {
-            _hashCode += getSRHostname().hashCode();
-        }
-        if (getSRIPAddress() != null) {
-            _hashCode += getSRIPAddress().hashCode();
-        }
-        if (getSRId() != null) {
-            _hashCode += getSRId().hashCode();
         }
         if (getSiebel_spcOperation_spcObject_spcId() != null) {
             _hashCode += getSiebel_spcOperation_spcObject_spcId().hashCode();
@@ -1310,48 +800,6 @@ public class Update_Asset_Output  implements java.io.Serializable {
         org.apache.axis.description.ElementDesc elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("accountId");
         elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "AccountId"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("assetCHLId");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "AssetCHLId"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("assetCostCenter");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "AssetCostCenter"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("assetDevicetag");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "AssetDevicetag"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("assetGridCoordinatesX");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "AssetGridCoordinatesX"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("assetGridCoordinatesY");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "AssetGridCoordinatesY"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("assetHostName");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "AssetHostName"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("assetIPAddress");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "AssetIPAddress"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
@@ -1428,12 +876,6 @@ public class Update_Asset_Output  implements java.io.Serializable {
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("installAddressId");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "InstallAddressId"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("latitude");
         elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "Latitude"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
@@ -1446,18 +888,6 @@ public class Update_Asset_Output  implements java.io.Serializable {
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);
         elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("MADCProductName");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "MADCProductName"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("MADCSerialNumber");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "MADCSerialNumber"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("object_spcId");
         elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "Object_spcId"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
@@ -1466,48 +896,6 @@ public class Update_Asset_Output  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("process_spcInstance_spcId");
         elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "Process_spcInstance_spcId"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("SRAccountId");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "SRAccountId"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("SRCHLID");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "SRCHLID"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("SRCostCenter");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "SRCostCenter"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("SRDeviceTag");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "SRDeviceTag"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("SRHostname");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "SRHostname"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("SRIPAddress");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "SRIPAddress"));
-        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
-        elemField.setNillable(false);
-        typeDesc.addFieldDesc(elemField);
-        elemField = new org.apache.axis.description.ElementDesc();
-        elemField.setFieldName("SRId");
-        elemField.setXmlName(new javax.xml.namespace.QName("http://siebel.com/CustomUI", "SRId"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setNillable(false);
         typeDesc.addFieldDesc(elemField);

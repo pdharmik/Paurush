@@ -30,19 +30,19 @@
 		selectRowFunction=selectSuccessFunction;
 		partsListGrid = new dhtmlXGridObject('gridCCVPartsList');
 		partsListGrid.setImagePath("<html:imagesPath/>gridImgs/");
-		partsListGrid.setHeader(autoAppendPlaceHolder('<spring:message code="claim.headerList.partsList"/>',4));
-		partsListGrid.setInitWidths("150,500,0,*");
-		partsListGrid.attachHeader("#text_filter,#text_filter,&nbsp;,&nbsp;");
-		partsListGrid.setColAlign("left,left,left,left");
-		partsListGrid.setColTypes("ro,ro,ro,ro");
-		partsListGrid.setColSorting("str,str,na,na");
+		partsListGrid.setHeader(autoAppendPlaceHolder('<spring:message code="claim.headerList.partsList"/>',5));
+		partsListGrid.setInitWidths("150,500,0,*,0");
+		partsListGrid.attachHeader("#text_filter,#text_filter,&nbsp;,&nbsp;,&nbsp;");
+		partsListGrid.setColAlign("left,left,left,left,left");
+		partsListGrid.setColTypes("ro,ro,ro,ro,ro");
+		partsListGrid.setColSorting("str,str,na,na,na");
 		partsListGrid.enableAutoWidth(true);
 		partsListGrid.enableAutoHeight(true);
 		partsListGrid.init();
 		partsListGrid.enablePaging(true, 10, 5, "pagingAreaPartList", true);
 		partsListGrid.setPagingSkin("bricks");
 		partsListGrid.setSkin("light");
-		partsListGrid.enableResizing("false,false,false,false");
+		partsListGrid.enableResizing("false,false,false,false,false");
 		partsListGrid.attachEvent("onMouseOver", function(id,ind){		
 			return false;
 		});
@@ -73,7 +73,8 @@
 	function selectRow(id,ele){
 		var rowData={
 				partNumber:partsListGrid.cells(id,0).getValue(),
-				description:partsListGrid.cells(id,1).getValue()
+				description:partsListGrid.cells(id,1).getValue(),
+				typePrinter:partsListGrid.cells(id,4).getValue()
 		};
 		selectRowFunction(rowData);
 		dialog.dialog('close');			

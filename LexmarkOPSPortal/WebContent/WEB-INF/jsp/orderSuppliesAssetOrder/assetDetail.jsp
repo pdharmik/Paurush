@@ -1335,7 +1335,7 @@ jQuery(document).ready(function() {
 						
 										var defaultArea={											
 									                lat: lat,
-									                lng: lon,							                		           
+									                lng: lon							                		           
 									               
 
 												

@@ -8,6 +8,8 @@ public class Constraint {
 	private List<Value> value;
 	private String siebelLOV;
 	private String defaultCSVValue;
+	private String type;
+
 	@XmlElement
 	public void setValue(List<Value> value) {
 		this.value = value;
@@ -31,6 +33,15 @@ public class Constraint {
 
 	public String getDefaultCSVValue() {
 		return defaultCSVValue;
+	}
+	
+	@XmlElement
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 }

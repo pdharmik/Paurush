@@ -304,6 +304,10 @@
                    <key><value>lbsAddressFlag</value></key>
                    <value>LXK LBS Address Flag</value>
                </entry>
+               <entry>
+                   <key><value>levelOfDetails</value></key>
+                   <value>LXK LBS Level of Detail</value>
+               </entry>
            </map>
        </property>
    </bean>

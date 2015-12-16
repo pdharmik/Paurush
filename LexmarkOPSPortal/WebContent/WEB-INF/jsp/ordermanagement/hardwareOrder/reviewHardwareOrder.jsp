@@ -156,7 +156,7 @@ function backDisable() {
 	              		 </c:when>
 	              		 </c:choose>
 				</c:if>
-				<div class="lineClear"><span class="fontQty">
+				<div class="lineClear" id="quantityId"><span class="fontQty">
 				<spring:message code="requestInfo.heading.Qty"/></span><span class="spaceClear" />${hardwareBundleListDetail.orderQuantity}</td>
              
             </tr>
@@ -517,6 +517,10 @@ function backDisable() {
 	</div><!-- content -->
 
 <script type="text/javascript">
+	<c:if test="${hardwareDetailPageForm.pageFlow != null && hardwareDetailPageForm.pageFlow != '' && hardwareDetailPageForm.pageFlow =='map'}">
+		jQuery('#quantityId').hide();
+	</c:if>
+	
 <%-- Changes CI 7 BRD 12 --%>
 isHardwarePage="true";
 ajaxSuccessFunction=function updateRequest(){

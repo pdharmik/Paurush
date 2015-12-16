@@ -17,9 +17,16 @@ public class MapsRequestForm extends BaseForm{
 	private String cmSubArea;
 	private String cmSubAreaValue;
 	private String notesOrComments;
+	private String notesForNewBuilding;
 	private String listOfFileTypes;
 	private String attMaxCount;
 	private String chlTempMaxCount;
+	public String getNotesForNewBuilding() {
+		return notesForNewBuilding;
+	}
+	public void setNotesForNewBuilding(String notesForNewBuilding) {
+		this.notesForNewBuilding = notesForNewBuilding;
+	}
 	private String flowType;
 	private boolean moveAsset;
 	private boolean moveContactSelect;

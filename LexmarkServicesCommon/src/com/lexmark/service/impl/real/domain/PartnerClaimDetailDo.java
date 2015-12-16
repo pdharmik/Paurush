@@ -63,6 +63,14 @@ public class PartnerClaimDetailDo extends PartnerActivityDo  {
 	private ArrayList<PartnerClaimDetailOrderLineDo> orderLines;
 	private ArrayList<PartnerClaimDetailPartDo> parts;
 	private ArrayList<PartnerClaimDetailFlagDo> flags;
+	private String displayWarning;
+	
+	public String getDisplayWarning() {
+		return displayWarning;
+	}
+	public void setDisplayWarning(String displayWarning) {
+		this.displayWarning = displayWarning;
+	}
 		public ArrayList<PartnerClaimDetailExpenseDo> getExpenses() {
 		return expenses;
 	}

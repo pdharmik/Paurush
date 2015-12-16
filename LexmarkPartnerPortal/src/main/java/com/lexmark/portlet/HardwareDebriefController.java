@@ -83,6 +83,7 @@ import com.lexmark.exporter.DataExporter;
 import com.lexmark.exporter.DataExporterFactory;
 import com.lexmark.form.FileUploadForm;
 import com.lexmark.form.HardwareDebriefForm;
+import com.lexmark.form.MapForm;
 import com.lexmark.portlet.common.AttachmentController;
 import com.lexmark.result.ActivityDetailResult;
 import com.lexmark.result.ActivityListResult;
@@ -112,6 +113,7 @@ import com.lexmark.util.ControllerUtil;
 import com.lexmark.util.DateUtil;
 import com.lexmark.util.ExceptionUtil;
 import com.lexmark.util.ImageUtil;
+import com.lexmark.util.JSONEncryptUtil;
 import com.lexmark.util.JsonUtil;
 import com.lexmark.util.LexmarkUserUtil;
 import com.lexmark.util.ObjectDebugUtil;
@@ -172,6 +174,7 @@ public class HardwareDebriefController extends BaseController{
 	@Autowired
 	private LBSLocationService lbsLocationService;
 	
+	private String lbsEndpointURL;
 	
 	/**
 	 * @param binder 
@@ -339,6 +342,10 @@ public class HardwareDebriefController extends BaseController{
 				form.setTimezoneOffset(Float.valueOf(httpReq.getParameter(LexmarkConstants.TIMEZONE_OFFSET)));
 				form.refreshSubmitToken(request);
 				if(result!=null && result.getActivity() != null){
+					
+					
+					
+					
 					List<PageCounts> deInstalledPageCount=new ArrayList<PageCounts>();
 					List<PageCounts> InstalledPageCount=new ArrayList<PageCounts>();
 					for(PageCounts pageCount:result.getActivity().getServiceRequest().getAsset().getPageCounts()){
@@ -406,7 +413,7 @@ public class HardwareDebriefController extends BaseController{
 		
 		model.addAttribute(LexmarkPPConstants.SRTYPE,srType );
 		
-		
+		setModelParams(form,session);//Addded for LBS 1.5
 		
 		
 		
@@ -414,6 +421,7 @@ public class HardwareDebriefController extends BaseController{
 			
 			changePartList(form);
 			changeAdditionalPartList(form);
+			LOGGER.debug("Page is hwdebriefInstallDeInstallMoveView");
 			return "/hardwareDebrief/HWInstallDeInstallMove/hwdebriefInstallDeInstallMoveView";
 		}else {
 			if(srType.toUpperCase().contains("INSTALL/DECOMMISSION")){
@@ -428,13 +436,17 @@ public class HardwareDebriefController extends BaseController{
 					changePartList(form);
 					changeAdditionalPartList(form);
 				}
+				
+				LOGGER.debug("Page is hwDebriefInstallCloseOut 1");
 				return "/hardwareDebrief/HWInstallDeInstallMove/hwDebriefInstallCloseOut";
 			}
 			else if(srType.toUpperCase().contains("DECOMMISSION")){
 				model.addAttribute(LexmarkPPConstants.isHWDEINSTALL,true);
+				LOGGER.debug("Page is hwDebriefDeinstallCloseOut");
 				return "/hardwareDebrief/HWInstallDeInstallMove/hwDebriefDeinstallCloseOut";
 			}else if(srType.toUpperCase().contains("MOVE")){
 				model.addAttribute(LexmarkPPConstants.isHWMOVE,true);
+				LOGGER.debug("Page is hwDebriefMoveCloseOut");
 				return "/hardwareDebrief/HWInstallDeInstallMove/hwDebriefMoveCloseOut";
 				
 			}else if(srType.toUpperCase().contains("INSTALL")||srType.toUpperCase().contains("CHANGE")){
@@ -449,6 +461,8 @@ public class HardwareDebriefController extends BaseController{
 					changePartList(form);
 					changeAdditionalPartList(form);
 				}
+				
+				LOGGER.debug("Page is hwDebriefInstallCloseOut 2");
 				return "/hardwareDebrief/HWInstallDeInstallMove/hwDebriefInstallCloseOut";
 			}
 			
@@ -511,17 +525,23 @@ public class HardwareDebriefController extends BaseController{
 				SiebelLocalizationOptionEnum.PARTNER_SERVICE_REQUEST_STATUS.getValue(), partnerType,
 				serviceRequestLocaleService, locale);
 		
+		HttpServletRequest httpReq = PortalUtil.getOriginalServletRequest(PortalUtil.getHttpServletRequest(request));
+		String srType=httpReq.getParameter(LexmarkPPConstants.SRTYPE);
+		if(StringUtils.isBlank(srType)){
+			//This will satisfy when returning from save or closeout debrief
+			srType=request.getParameter(LexmarkPPConstants.SRTYPE);
+			
+			LOGGER.debug("srtype is coming as "+srType);
+		}
+		LOGGER.debug("SR TYPE = " + srType);
+		form.setSrType(srType);
+		if(srType.toUpperCase().contains("DECOMMISSION") || srType.toUpperCase().contains("MOVE")){
+			Map<String, String> partlistStatusMapPrinterType = ControllerUtil.retrieveLocalizedLOVMap(
+					SiebelLocalizationOptionEnum.PARTNER_PRINTER_PART_STATUS.getValue(), partnerType,
+					serviceRequestLocaleService, locale);
+			form.setRecommendedPartlistStatusForPrinterType(partlistStatusMapPrinterType);
+		}
 		
-		
-		
-		
-		Map<String, String> partlistStatusMap = ControllerUtil.retrieveLocalizedLOVMap(
-				SiebelLocalizationOptionEnum.PARTNER_PART_STATUS.getValue(), partnerType,
-				serviceRequestLocaleService, locale);
-		
-		
-	
-		form.setRecommendedPartlistStatus(partlistStatusMap);
 		
 		
 		Map<String, String> deviceWorkingCondition = ControllerUtil.retrieveLocalizedLOVMap(
@@ -550,6 +570,7 @@ public class HardwareDebriefController extends BaseController{
 		LOGGER.debug("specialUsage ::: " + specialUsage);
 		form.setSpecialUsageMap(specialUsage);
 		Activity activity=form.getActivity();
+		Activity actv = form.getUserEnteredActivity();
 		if(activity!=null){
 			if(activity.getActivityType()!=null && activity.getActivityType().getValue()!=null){
 				
@@ -590,12 +611,37 @@ public class HardwareDebriefController extends BaseController{
 			{
 			device.setProductImageURL(ImageUtil.getPartImage(device.getProductTLI()));	
 		}
+			if(srType.toUpperCase().contains("INSTALL") || srType.toUpperCase().contains("INSTALL/DECOMMISSION") || srType.toUpperCase().contains("CHANGE")){
+				if(activity.getRecommendedPartList()!=null){
+					LOGGER.debug("Recommended Parts");
+					Map<String, String> partlistStatusMapPrinterType = ControllerUtil.retrieveLocalizedLOVMap(
+						SiebelLocalizationOptionEnum.PARTNER_PRINTER_PART_STATUS.getValue(), partnerType,
+						serviceRequestLocaleService, locale);
+				form.setRecommendedPartlistStatusForPrinterType(partlistStatusMapPrinterType);
+				Map<String, String> nonPrinterPartlistStatusMap = ControllerUtil.retrieveLocalizedLOVMap(
+						SiebelLocalizationOptionEnum.PARTNER_NON_PRINTER_PART_STATUS.getValue(), partnerType,
+						serviceRequestLocaleService, locale);
+				form.setRecommendedPartlistStatusForNonPrinterType(nonPrinterPartlistStatusMap);
+				}
+		}
+			}
+		if(actv != null){
+			if(srType.toUpperCase().contains("INSTALL") || srType.toUpperCase().contains("INSTALL/DECOMMISSION") || srType.toUpperCase().contains("CHANGE")){
+				if(actv.getAdditionalPartList() != null){
+					LOGGER.debug("Additional Parts");
+					Map<String, String> partlistStatusMapPrinterType = ControllerUtil.retrieveLocalizedLOVMap(
+							SiebelLocalizationOptionEnum.PARTNER_PRINTER_PART_STATUS.getValue(), partnerType,
+							serviceRequestLocaleService, locale);
+					form.setRecommendedPartlistStatusForPrinterType(partlistStatusMapPrinterType);
+					Map<String, String> nonPrinterPartlistStatusMap = ControllerUtil.retrieveLocalizedLOVMap(
+							SiebelLocalizationOptionEnum.PARTNER_NON_PRINTER_PART_STATUS.getValue(), partnerType,
+							serviceRequestLocaleService, locale);
+					form.setRecommendedPartlistStatusForNonPrinterType(nonPrinterPartlistStatusMap);
+				}
+		
+			}
 			
 		}
-		
-		
-		
-		
 		
 	}
 	
@@ -624,6 +670,7 @@ public class HardwareDebriefController extends BaseController{
 		if(StringUtils.isNotBlank(offlineRequests)){
 			LOGGER.debug("This request is for offline REquests");
 			contract.setOfflineInstallDebrief(true);
+			contract.setChangeManagementFlag(true);
 			Map<String,Object> filterCriteria=	contract.getFilterCriteria();
 			if(StringUtils.isNotBlank(srID)){			
 				filterCriteria.put("Activity.serviceRequest.serviceRequestNumber", srID);
@@ -635,6 +682,15 @@ public class HardwareDebriefController extends BaseController{
 			}
 			
 			
+		}
+		
+		if(request.getParameter("isRequests")!=null && request.getParameter("isRequests").equalsIgnoreCase("true")){
+			//LOGGER.debug("isRequests Flag = " + request.getParameter("isRequests"));
+			contract.setChangeManagementFlag(false);
+		}
+		else if(request.getParameter("isMassUpload")!=null && request.getParameter("isMassUpload").equalsIgnoreCase("true")){
+			//LOGGER.debug("isMassUpload Flag = " + request.getParameter("isMassUpload"));
+			contract.setChangeManagementFlag(true);
 		}
 		
 		CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil
@@ -1740,14 +1796,19 @@ public class HardwareDebriefController extends BaseController{
 		                }
 		            }
 		            int usedQty=part.getUsedQuantity()==null?0:part.getUsedQuantity();
+		            LOGGER.debug("Used Qty = " + usedQty);
 		            int notUsedQty=part.getNotUsedQuantity()==null?0:part.getNotUsedQuantity();
+		            LOGGER.debug("Not Used Qty = " + notUsedQty);
 		            int doaQty=part.getDoaQuantity()==null?0:part.getDoaQuantity();
+		            LOGGER.debug("DOA = " + doaQty);
+		            
 		            LOGGER.debug("used qty="+usedQty+"notUsedQty="+notUsedQty+"DOA="+doaQty);
 		          
 		           	
 		            setStatusToPart(usedQty,part,newPartList,"Used");
 		            setStatusToPart(notUsedQty,part,newPartList,"Not Used");
 		            setStatusToPart(doaQty,part,newPartList,"Defective On Arrival");
+		            
 		            if(intOrderQuantity<(usedQty+notUsedQty+doaQty)){
 		                LOGGER.debug(" the quantity doesnot match removing extra from the list");
 		                newPartList.subList(0, intOrderQuantity);
@@ -1774,11 +1835,17 @@ public class HardwareDebriefController extends BaseController{
 	            Part tempPart=new Part();
 	            
 	                tempPart.setDescription(source.getDescription());
+	                LOGGER.debug("Desc =" + tempPart.getDescription());
 	                tempPart.setOrderQuantity("1");
+	                LOGGER.debug("Quantity =" + tempPart.getOrderQuantity());
 	                tempPart.setPartNumber(source.getPartNumber());
+	                LOGGER.debug("Part No. =" + tempPart.getPartNumber());
 	                tempPart.setPartName(source.getPartName());
-	               
+	                LOGGER.debug("Part Name =" + tempPart.getPartName());
 	                tempPart.setStatus(status);
+	                LOGGER.debug("Status =" + tempPart.getStatus());
+	                tempPart.setTypePrinter(source.isTypePrinter());
+					LOGGER.debug("Type Printer =" + source.isTypePrinter());
 	            
 	            totalPart.add(tempPart);
 	        }
@@ -1810,38 +1877,58 @@ public class HardwareDebriefController extends BaseController{
 			                }
 			            }*/
 			            int usedQty=part.getUsedQuantity()==null?0:part.getUsedQuantity();
+			            LOGGER.debug("Used Qty = " + usedQty);
 			            int notUsedQty=part.getNotUsedQuantity()==null?0:part.getNotUsedQuantity();
+			            LOGGER.debug("Not Used Qty = " + notUsedQty);
 			            int doaQty=part.getDoaQuantity()==null?0:part.getDoaQuantity();
+			            LOGGER.debug("DOA = " + doaQty);
+			            
 			            LOGGER.debug("used qty="+usedQty+"notUsedQty="+notUsedQty+"DOA="+doaQty);
 			          
 			            
 			            if(usedQty!=0){
 			            	PartLineItem newPart = new PartLineItem();
 				            newPart.setPartNumber(part.getPartNumber());
+				            LOGGER.debug("UsedPartNo. = " + newPart.getPartNumber());
 				            newPart.setDescription(part.getDescription());
+				            LOGGER.debug("UsedDesc = " + newPart.getDescription());
 				            newPart.setOrderQuantity(part.getOrderQuantity());
+				            LOGGER.debug("UsedOrderQty1 = " + newPart.getOrderQuantity());
 			            	newPart.setStatus("Used");
+			            	LOGGER.debug("UsedStatus = " + newPart.getStatus());
 			            	newPart.setOrderQuantity(String.valueOf(usedQty));
+			            	LOGGER.debug("UsedOrderQty2 = " + newPart.getOrderQuantity());
 			            	newPartList.add(newPart);
 			            }
 			            if(notUsedQty!=0){
 			            	PartLineItem newPart = new PartLineItem();
 				            newPart.setPartNumber(part.getPartNumber());
+				            LOGGER.debug("NotUsedPartNo. = " + newPart.getPartNumber());
 				            newPart.setDescription(part.getDescription());
+				            LOGGER.debug("NotUsedDesc = " + newPart.getDescription());
 				            newPart.setOrderQuantity(part.getOrderQuantity());
+				            LOGGER.debug("NotUsedOrderQty1 = " + newPart.getOrderQuantity());
 			            	newPart.setStatus("Not Used");
+			            	LOGGER.debug("NotUsedStatus = " + newPart.getStatus());
 			            	newPart.setOrderQuantity(String.valueOf(notUsedQty));
+			            	LOGGER.debug("NotUsedOrderQty2 = " + newPart.getOrderQuantity());
 			            	newPartList.add(newPart);
 			            }
 			            if(doaQty!=0){
 			            	PartLineItem newPart = new PartLineItem();
 				            newPart.setPartNumber(part.getPartNumber());
+				            LOGGER.debug("DOAPartNo. = " + newPart.getPartNumber());
 				            newPart.setDescription(part.getDescription());
+				            LOGGER.debug("DOADesc = " + newPart.getDescription());
 				            newPart.setOrderQuantity(part.getOrderQuantity());
+				            LOGGER.debug("DOAOrderQty1 = " + newPart.getOrderQuantity());
 			            	newPart.setStatus("Defective On Arrival");
+			            	LOGGER.debug("DOAStatus = " + newPart.getStatus());
 			            	newPart.setOrderQuantity(String.valueOf(doaQty));
+			            	LOGGER.debug("DOAOrderQty2 = " + newPart.getOrderQuantity());
 			            	newPartList.add(newPart);
 			            }
+			            
 			        }
 			        
 			        form.getUserEnteredActivity().getAdditionalPartList().clear();
@@ -2111,144 +2198,205 @@ public class HardwareDebriefController extends BaseController{
 		writeResonse(response,sb.toString());
 	}
 	
-/**
- * @param address 
- * @param type 
- * @return String 
- */
-public static String convertToOptions(List<LBSAddress> address,String type){
+	/**
+	 * @param address 
+	 * @param type 
+	 * @return String 
+	 */
+	public static String convertToOptions(List<LBSAddress> address,String type){
+			
+			StringBuffer html = new StringBuffer();
+			if(address==null){
+				return html.toString();
+			}
+			for(LBSAddress location:address){
+				
+				if(LexmarkConstants.COUNTRY.equalsIgnoreCase(type)){
+					html.append("<option value=\""+location.getCountry()+"\">"+StringEscapeUtils.escapeHtml(location.getCountry())+"</option>\n");
+				}/*else if(LexmarkConstants.STATE.equalsIgnoreCase(type)){
+					html.append("<option value=\""+(location.getStateId()==null?location.getState():location.getStateId())+"\">"+StringEscapeUtils.escapeHtml(location.getState())+"</option>\n");
+				}*/else if (LexmarkConstants.CITY.equalsIgnoreCase(type) && StringUtils.isNotBlank(location.getCity())){				
+					html.append("<option value=\""+location.getCity()+"\">"+StringEscapeUtils.escapeHtml(location.getCity())+"</option>\n");
+				}
+			}
+			return html.toString();
+			
+		}
+		
+	/**
+	 * @param address 
+	 * @return String 
+	 */
+	public static String convertBuildingToOptions(List<LBSLocationBuilding> address){
 		
 		StringBuffer html = new StringBuffer();
 		if(address==null){
 			return html.toString();
 		}
+		for(LBSLocationBuilding location:address){
+			html.append("<option value=\""+(location.getBuildingId()==null?location.getBuilding():location.getBuildingId())+"\">"+StringEscapeUtils.escapeXml(location.getBuilding())+"</option>\n");			
+		}
+		return html.toString();
+		
+	}
+	/**
+	 * @param address 
+	 * @return String 
+	 */
+	public static String convertFloorToOptions(List<LBSLocationFloor> address){
+		
+		StringBuffer html = new StringBuffer();
+		if(address==null){
+			return html.toString();
+		}
+		for(LBSLocationFloor location:address){
+			html.append("<option value=\""+(location.getFloorId()==null?location.getFloor():location.getFloorId())+"\" lod=\""+location.getFloorLevelOfDetails()+"\">"+StringEscapeUtils.escapeXml(location.getFloor())+"</option>\n");			
+		}
+		return html.toString();
+		
+	}
+	/**
+	 * @param address 
+	 * @return String 
+	 */
+	public static String convertZoneToOptions(List<LBSLocationZone> address){
+	
+		StringBuffer html = new StringBuffer();
+		if(address==null){
+			return html.toString();
+		}
+		for(LBSLocationZone location:address){
+			html.append("<option value=\""+(location.getZoneId()==null?location.getZone():location.getZoneId())+"\">"+StringEscapeUtils.escapeXml(location.getZone())+"</option>\n");			
+		}
+		return html.toString();
+	
+	}
+	/**
+	 * @param address 
+	 * @return String 
+	 */
+	public static String convertSiteToOptions(List<LBSLocationSite> address){
+	
+		StringBuffer html = new StringBuffer();
+		if(address==null){
+			return html.toString();
+		}
+		for(LBSLocationSite location:address){
+			html.append("<option value=\""+(location.getSiteId()==null?location.getSite():location.getSiteId())+"\">"+StringEscapeUtils.escapeXml(location.getSite())+"</option>\n");			
+		}
+		return html.toString();
+	
+	}
+	
+	/**
+	 * @param response 
+	 * @param val 
+	 */
+	private void writeResonse(ResourceResponse response,String val){
+		try {
+			final PrintWriter out = response.getWriter();
+			response.setProperty("Cache-Control", "max-age=0,no-cache,no-store");
+			response.setProperty("Expires", "max-age=0,no-cache,no-store");
+			response.setContentType("text/html");
+			out.write(val);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			LOGGER.error("IOException while invoking response#getWriter(),"
+					+ e.getMessage());
+	}
+	}
+	
+	
+	/**
+	 * This method is to check whether 
+	 * state , or county or province or district is 
+	 * present in list. On that basis the state/region will be generated.
+	 * */
+	/**
+	 * @param address 
+	 * @return String 
+	 */
+	public static String generateRegions(List<LBSAddress> address){
+		StringBuffer regionHtml=new StringBuffer();
 		for(LBSAddress location:address){
 			
-			if(LexmarkConstants.COUNTRY.equalsIgnoreCase(type)){
-				html.append("<option value=\""+location.getCountry()+"\">"+StringEscapeUtils.escapeHtml(location.getCountry())+"</option>\n");
-			}/*else if(LexmarkConstants.STATE.equalsIgnoreCase(type)){
-				html.append("<option value=\""+(location.getStateId()==null?location.getState():location.getStateId())+"\">"+StringEscapeUtils.escapeHtml(location.getState())+"</option>\n");
-			}*/else if (LexmarkConstants.CITY.equalsIgnoreCase(type) && StringUtils.isNotBlank(location.getCity())){				
-				html.append("<option value=\""+location.getCity()+"\">"+StringEscapeUtils.escapeHtml(location.getCity())+"</option>\n");
+			
+			
+			if(StringUtils.isNotBlank(location.getState())){
+				regionHtml.append("<option value=\""+(location.getStateId()==null?location.getState():location.getStateId())+"^s\">"+StringEscapeUtils.escapeHtml(location.getState())+"</option>\n");
+			}
+			if(StringUtils.isNotBlank(location.getCounty())){
+				regionHtml.append("<option value=\""+location.getCounty()+"^c\">"+StringEscapeUtils.escapeHtml(location.getCounty())+"</option>\n");
+			}if(StringUtils.isNotBlank(location.getProvince())){
+				regionHtml.append("<option value=\""+location.getProvince()+"^p\">"+StringEscapeUtils.escapeHtml(location.getProvince())+"</option>\n");
+			}if(StringUtils.isNotBlank(location.getDistrict())){
+				regionHtml.append("<option value=\""+location.getDistrict()+"^d\">"+StringEscapeUtils.escapeHtml(location.getDistrict())+"</option>\n");
 			}
 		}
-		return html.toString();
-		
-	}
-	
-/**
- * @param address 
- * @return String 
- */
-public static String convertBuildingToOptions(List<LBSLocationBuilding> address){
-	
-	StringBuffer html = new StringBuffer();
-	if(address==null){
-		return html.toString();
-	}
-	for(LBSLocationBuilding location:address){
-		html.append("<option value=\""+(location.getBuildingId()==null?location.getBuilding():location.getBuildingId())+"\">"+StringEscapeUtils.escapeHtml(location.getBuilding())+"</option>\n");			
-	}
-	return html.toString();
-	
-}
-/**
- * @param address 
- * @return String 
- */
-public static String convertFloorToOptions(List<LBSLocationFloor> address){
-	
-	StringBuffer html = new StringBuffer();
-	if(address==null){
-		return html.toString();
-	}
-	for(LBSLocationFloor location:address){
-		html.append("<option value=\""+(location.getFloorId()==null?location.getFloor():location.getFloorId())+"\">"+StringEscapeUtils.escapeHtml(location.getFloor())+"</option>\n");			
-	}
-	return html.toString();
-	
-}
-/**
- * @param address 
- * @return String 
- */
-public static String convertZoneToOptions(List<LBSLocationZone> address){
-
-	StringBuffer html = new StringBuffer();
-	if(address==null){
-		return html.toString();
-	}
-	for(LBSLocationZone location:address){
-		html.append("<option value=\""+(location.getZoneId()==null?location.getZone():location.getZoneId())+"\">"+StringEscapeUtils.escapeHtml(location.getZone())+"</option>\n");			
-	}
-	return html.toString();
-
-}
-/**
- * @param address 
- * @return String 
- */
-public static String convertSiteToOptions(List<LBSLocationSite> address){
-
-	StringBuffer html = new StringBuffer();
-	if(address==null){
-		return html.toString();
-	}
-	for(LBSLocationSite location:address){
-		html.append("<option value=\""+(location.getSiteId()==null?location.getSite():location.getSiteId())+"\">"+StringEscapeUtils.escapeHtml(location.getSite())+"</option>\n");			
-	}
-	return html.toString();
-
-}
-
-/**
- * @param response 
- * @param val 
- */
-private void writeResonse(ResourceResponse response,String val){
-	try {
-		final PrintWriter out = response.getWriter();
-		response.setProperty("Cache-Control", "max-age=0,no-cache,no-store");
-		response.setProperty("Expires", "max-age=0,no-cache,no-store");
-		response.setContentType("text/html");
-		out.write(val);
-		out.flush();
-		out.close();
-	} catch (IOException e) {
-		LOGGER.error("IOException while invoking response#getWriter(),"
-				+ e.getMessage());
-}
-}
-
-
-/**
- * This method is to check whether 
- * state , or county or province or district is 
- * present in list. On that basis the state/region will be generated.
- * */
-/**
- * @param address 
- * @return String 
- */
-public static String generateRegions(List<LBSAddress> address){
-	StringBuffer regionHtml=new StringBuffer();
-	for(LBSAddress location:address){
 		
 		
+		return regionHtml.toString();
+	}
+
+	/**
+	 * @param json 
+	 * @param response 
+	 */
+	@ResourceMapping("encryptJSON")
+	public void encryptJSON(@RequestParam("jsonString") String json,ResourceResponse response){
+		LOGGER.debug("[in encryptJSON]");
 		
-		if(StringUtils.isNotBlank(location.getState())){
-			regionHtml.append("<option value=\""+(location.getStateId()==null?location.getState():location.getStateId())+"^s\">"+StringEscapeUtils.escapeHtml(location.getState())+"</option>\n");
+		
+		String encryptedJSON=null;
+		try {
+			encryptedJSON = JSONEncryptUtil.encrypt(json);
+		} catch (Exception e) {
+			LOGGER.error("Exception occured in encryption"+e.getMessage());
+		} 
+		LOGGER.debug(String.format("encrypted string is =[%s]", encryptedJSON));
+		
+		
+		try {
+			final PrintWriter out = response.getWriter();
+			response.setProperty("Cache-Control", "max-age=0,no-cache,no-store");
+			response.setProperty("Expires", "max-age=0,no-cache,no-store");
+			response.setContentType("text/html");
+			out.write(encryptedJSON);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			LOGGER.error("IOException while invoking response#getWriter(),"
+					+ e.getMessage());
 		}
-		if(StringUtils.isNotBlank(location.getCounty())){
-			regionHtml.append("<option value=\""+location.getCounty()+"^c\">"+StringEscapeUtils.escapeHtml(location.getCounty())+"</option>\n");
-		}if(StringUtils.isNotBlank(location.getProvince())){
-			regionHtml.append("<option value=\""+location.getProvince()+"^p\">"+StringEscapeUtils.escapeHtml(location.getProvince())+"</option>\n");
-		}if(StringUtils.isNotBlank(location.getDistrict())){
-			regionHtml.append("<option value=\""+location.getDistrict()+"^d\">"+StringEscapeUtils.escapeHtml(location.getDistrict())+"</option>\n");
-		}
+		
+				
+		LOGGER.debug("[out encryptJSON]");
+	}
+	
+	private void setModelParams(HardwareDebriefForm form,PortletSession session){
+		MapForm mapForm=new MapForm();
+		mapForm.setMdmId(PortalSessionUtil.getMdmId(session));
+		mapForm.setMdmLevel(PortalSessionUtil.getMdmLevel(session));
+		mapForm.setFormPostUrl(getLbsEndpointURL());
+		mapForm.setEmailaddress(PortalSessionUtil.getEmailAddress(session));
+		form.setMapForm(mapForm);
+				
+	}
+
+	/**
+	 * @param lbsEndpointURL the lbsEndpointURL to set
+	 */
+	public void setLbsEndpointURL(String lbsEndpointURL) {
+		this.lbsEndpointURL = lbsEndpointURL;
 	}
 	
 	
-	return regionHtml.toString();
-}
+	
+	/**
+	 * @return the lbsEndpointURL
+	 */
+	public String getLbsEndpointURL() {
+		return lbsEndpointURL;
+	}
 }

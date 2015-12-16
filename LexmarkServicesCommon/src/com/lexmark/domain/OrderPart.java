@@ -64,7 +64,16 @@ public class OrderPart implements Serializable {
 	private String printerDescription;
 	private String mpsQuantity;
 	private List<SuppliesSplitterCatalog> suppliesCatalogList;
+	private String unspscCode;
 	
+	public String getUnspscCode() {
+		return unspscCode;
+	}
+
+	public void setUnspscCode(String unspscCode) {
+		this.unspscCode = unspscCode;
+	}
+
 	public List<SuppliesSplitterCatalog> getSuppliesCatalogList() {
 		return suppliesCatalogList;
 	}

@@ -1,7 +1,10 @@
 package com.lexmark.services.form;
 
 import java.util.List;
+import java.util.Map;
 
+import com.lexmark.domain.Asset;
+import com.lexmark.domain.Account;
 import com.lexmark.domain.CannedQuery;
 import com.lexmark.domain.GenericAddress;
 import com.lexmark.service.impl.real.domain.LBSCHLMapping;
@@ -26,6 +29,7 @@ public class FleetManagementForm {
 	private String buildingTypes;
 	private boolean showSupplies;
 	private GenericAddress moveToAddress;
+	private GenericAddress installAddress;
 	private String supportDwnldURL;
 	private String controlPanelURL;
 	private List<CannedQuery> cannedQueries;
@@ -36,6 +40,24 @@ public class FleetManagementForm {
 	
 	private String emailAddress;
 	private String endPointURL;//LBS endpoint url.
+	private String multiAssetRequestType;
+	private String multiAssetList;
+	private boolean showHardware;
+	
+	//Added for LBS 1.5 placement Hw order
+	private Account account;
+	private String source;//To be used for Hardware 
+	private	String placementId;
+
+	private List<Asset> assetDetailsList; //added for multi select
+	private	String companyName;
+	
+	public String getPlacementId() {
+		return placementId;
+	}
+	public void setPlacementId(String placementId) {
+		this.placementId = placementId;
+	}
 	
 	/**
 	 * @param mdmLevel 
@@ -292,6 +314,91 @@ public class FleetManagementForm {
 	public String getBuildingTypes() {
 		return buildingTypes;
 	}
-	
+	/**
+	 * @param multiAssetRequestType the multiAssetRequestType to set
+	 */
+	public void setMultiAssetRequestType(String multiAssetRequestType) {
+		this.multiAssetRequestType = multiAssetRequestType;
+	}
+	/**
+	 * @return the multiAssetRequestType
+	 */
+	public String getMultiAssetRequestType() {
+		return multiAssetRequestType;
+	}
+	/**
+	 * @param multiAssetList the multiAssetList to set
+	 */
+	public void setMultiAssetList(String multiAssetList) {
+		this.multiAssetList = multiAssetList;
+	}
+	/**
+	 * @return the multiAssetList
+	 */
+	public String getMultiAssetList() {
+		return multiAssetList;
+	}
+	/**
+	 * @return the showHardware
+	 */
+	public boolean isShowHardware() {
+		return showHardware;
+	}
+	/**
+	 * @param showHardware the showHardware to set
+	 */
+	public void setShowHardware(boolean showHardware) {
+		this.showHardware = showHardware;
+	}
+	/**
+	 * @param account the account to set
+	 */
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+	/**
+	 * @return the account
+	 */
+	public Account getAccount() {
+		return account;
+	}
+	/**
+	 * @param source the source to set
+	 */
+	public void setSource(String source) {
+		this.source = source;
+	}
+	/**
+	 * @return the source
+	 */
+	public String getSource() {
+		return source;
+	}
+
+	public List<Asset> getAssetDetailsList() {
+		return assetDetailsList;
+	}
+	public void setAssetDetailsList(List<Asset> assetDetailsList) {
+		this.assetDetailsList = assetDetailsList;
+	}
+	public void setInstallAddress(GenericAddress installAddress) {
+		this.installAddress = installAddress;
+	}
+	public GenericAddress getInstallAddress() {
+		return installAddress;
+	}
+	/**
+	 * @return the companyName
+	 */
+	public String getCompanyName() {
+		return companyName;
+	}
+	/**
+	 * @param companyName the companyName to set
+	 */
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
 	
 }

@@ -443,7 +443,7 @@ function reloadGrid(type, value) {
 function updateLinkBreadcrumb(type, value) {
  var anchors = document.links;
  for (i=0; i<anchors.length; i++) {
-        anchors[i].style.fontWeight = '';
+        anchors[i].style.fontWeight = 'normal';  //AMS 15.11 Release CR CHG0006280 Manish
       }
 
       if (type == 'CATEGORY') {

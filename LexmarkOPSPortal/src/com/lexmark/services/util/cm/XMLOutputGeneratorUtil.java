@@ -774,7 +774,7 @@ public class XMLOutputGeneratorUtil {
 							.getPhysicalLocation1() : "").replaceAll("\"", "&quot;")
 					+ "','"
 					+ StringEscapeUtils.escapeJavaScript(genericAddress.getPhysicalLocation2() != null ? genericAddress
-							.getPhysicalLocation1() : "").replaceAll("\"", "&quot;")
+							.getPhysicalLocation2() : "").replaceAll("\"", "&quot;")
 					+ "','"
 					+ StringEscapeUtils.escapeJavaScript(genericAddress.getPhysicalLocation3() != null ? genericAddress
 							.getPhysicalLocation3() : "").replaceAll("\"", "&quot;")
@@ -795,6 +795,8 @@ public class XMLOutputGeneratorUtil {
 					+StringEscapeUtils.escapeJavaScript(genericAddress.getState()!= null ? genericAddress.getState(): "").replaceAll("\"", "&quot;")
 					+"','"
 					+genericAddress.getLbsAddressFlag()
+					+"','"
+					+StringEscapeUtils.escapeJavaScript(genericAddress.getLevelOfDetails()!= null ? genericAddress.getLevelOfDetails(): "").replaceAll("\"", "&quot;")
 					//+StringEscapeUtils.escapeJavaScript(genericAddress.getLbsAddressFlag()!= null ? genericAddress.getLbsAddressFlag(): "").replaceAll("\"", "&quot;")
 					
 					//Ends
@@ -857,8 +859,11 @@ public class XMLOutputGeneratorUtil {
 							.getPostalCode() : "")+ "]]></cell>\n");
 			xml.append("  <cell><![CDATA[" + (genericAddress.getCountry() != null ? genericAddress
 							.getCountry() : "")+ "]]></cell>\n");
-			xml.append("  <cell><![CDATA[" + (genericAddress.getLbsAddressFlag()!=null?(genericAddress.getLbsAddressFlag()?"Yes":"No"):"No"
-)+ "]]></cell>\n");
+			
+			
+			xml.append("  <cell><![CDATA[" + (genericAddress.getLbsAddressFlag()!= null && genericAddress.getLbsAddressFlag()==true ? "Yes" : "No")+ "]]></cell>\n");
+	        xml.append("  <cell><![CDATA[" + (genericAddress.getLevelOfDetails()!= null ? genericAddress
+					.getLevelOfDetails() : "")+ "]]></cell>\n");
 			
 			/*Phase 2 Ends*/	
 			

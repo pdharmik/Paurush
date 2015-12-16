@@ -14,9 +14,14 @@
 <![endif]-->
 
 <style>
+ .ui-tabs .ui-tabs-nav li{
+	 margin-top:2px !important;
+	 height:26px !important
+ }
  .ui-tabs .ui-tabs-nav li a {
-  min-width:109px;
-   width: auto!important;
+	padding-top:2px !important;
+  	min-width:109px;
+   	width: auto!important; 
 }
 
 .ui-tabs li a, .ui-tabs li a:hover, .ui-tabs li span, .ui-tabs li span:hover {

@@ -51,7 +51,7 @@ public class RequestSubmitController {
 		 html.append("<input type=\"hidden\" name=\"cxml-base64\" value=\"");
 		 String encodedText=null; 
 		 try{
-		 Document doc=new PunchoutItemDAO().createCXML(information, request.getParameter("cartType"));
+		 Document doc=new PunchoutItemDAO().createCXML(information, request.getParameter("cartType"),session);
 		 encodedText=ControllerUtil.generateCXMLResponse(doc);
 		 }catch(Exception e){
 			 LOGGER.debug("Exception occured" + e.getMessage());
@@ -61,6 +61,15 @@ public class RequestSubmitController {
 		 html.append(encodedText);
 		 html.append("\"/></form>");
 		 session.setAttribute(PunchoutConstants.CART_SESSION, ControllerUtil.initShoppingCart());
+		 if(null != session.getAttribute("printerTypeMap",PortletSession.APPLICATION_SCOPE)){
+			 session.removeAttribute("printerTypeMap");
+		 }
+		 if(null != session.getAttribute("productModelMap",PortletSession.APPLICATION_SCOPE)){
+			 session.removeAttribute("productModelMap");
+		 }
+		 if(null != session.getAttribute("printerMap",PortletSession.APPLICATION_SCOPE)){
+			 session.removeAttribute("printerMap");
+		 }
 		ControllerUtil.prepareResponse(response, html.toString());
 		
 		 

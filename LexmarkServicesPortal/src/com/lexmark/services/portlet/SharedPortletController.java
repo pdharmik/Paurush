@@ -226,6 +226,7 @@ public class SharedPortletController {
 	 */
 	public void showServiceRequestDrillDownPage(RenderRequest request,
 			RenderResponse response, Model model) throws Exception {
+		try{
 		logger.debug("-------------serviceRequestDrillDown started---------");
 		String serviceRequestNumber = request
 				.getParameter("serviceRequestNumber");
@@ -507,14 +508,28 @@ public class SharedPortletController {
 						serviceRequestForm.getServiceRequest().setServiceRequestDateETA(serviceReqAcc.getServiceRequestDateETA());
 						logger.debug("setting DATE value in form is "+serviceRequestForm.getServiceRequest().getServiceRequestDateETA());
 						HttpServletRequest httpReq = PortalUtil.getOriginalServletRequest(PortalUtil.getHttpServletRequest(request));
+						
 						String timeZoneOffset = httpReq.getParameter(ChangeMgmtConstant.TIMEZNOFFSET);
+						//added start for the CR CHG0006531 AMS 15.11 Release.
+						String gridReq=request.getParameter("g");		
+						logger.debug("include in shared portlet "+gridReq);
+						if(StringUtils.isNotBlank(gridReq) && ("true".equalsIgnoreCase(gridReq) || "false".equalsIgnoreCase(gridReq))){
+							//model.addAttribute("grid",true);
+							timeZoneOffset = request.getParameter("timezoneOffset");
+							logger.debug("timeZoneOffset in shared portlet "+timeZoneOffset);
+						}
+						//end
 						logger.debug("timeZOne is 1 "+timeZoneOffset);
-						Float timeZoneOffset1 = Float.valueOf(timeZoneOffset);
-						logger.debug("timeZOne is 2 "+timeZoneOffset1);
+						Float timeZoneOffset1= 0f;
+						if(timeZoneOffset!=null){
+						 timeZoneOffset1 = Float.valueOf(timeZoneOffset); 
+						logger.debug("timeZOne is 2 "+timeZoneOffset1);}
+
 						String dt =  DateLocalizationUtil.localizeDateTime(DateUtil.adjustDateWithOffset(serviceRequestForm.getServiceRequest().getServiceRequestDateETA(), timeZoneOffset1), true, request.getLocale());
 						logger.debug("localized date is "+dt);
 						//model.addAttribute("serviceProviderETADate", dt);
 						//serviceRequestETA
+
 						serviceRequestForm.getServiceRequest().setServiceRequestETA(dt);
 					}
 					
@@ -525,7 +540,6 @@ public class SharedPortletController {
 				}
 			}
 		}
-		
 		
 		// Down Load Attachments CI6		
 		ResourceURL resOutPutURL = response.createResourceURL();
@@ -539,6 +553,11 @@ public class SharedPortletController {
 			{model.addAttribute("requestedFrom",request.getParameter("sourcePage"));}
 		
 		logger.debug("-------------serviceRequestDrillDown end---------");
+		}catch(Exception e) {
+			logger.debug("error !!!!! ");
+			e.printStackTrace();
+			e.getMessage();
+		}
 	}
 
 	/**

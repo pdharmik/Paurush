@@ -541,9 +541,9 @@ public class ClaimCloseOutController {
 			SiebelLOVListContract lovListcontract = ContractFactory.createSiebelLOVListContract(SiebelLocalizationOptionEnum.PARTNER_RESOLUTION_CODE.getValue(), null);
 			SiebelLOVListResult listResult;
 			listResult = globalService.retrieveSiebelLOVList(lovListcontract);
-			for(int i=0; i<listResult.getLovList().size();i++){
+			/*for(int i=0; i<listResult.getLovList().size();i++){
 				logger.debug(i+"th value is "+listResult.getLovList().get(i).getValue());
-			}
+			}*/
 			
 			// retrieve map from db start
 			LocalizedSiebelLOVListContract localizedLOVListContract = ContractFactory.createLocalizedSiebelLOVListContract(SiebelLocalizationOptionEnum.PARTNER_DEBRIEF_RESOLUTION_CODE.getValue(), null, locale);
@@ -554,7 +554,7 @@ public class ClaimCloseOutController {
 					dbLOVMap.put(localizedLOV.getValue(), localizedLOV.getName());
 				}
 			}
-			logger.debug("db lov map for new resolution code is "+dbLOVMap);
+			//logger.debug("db lov map for new resolution code is "+dbLOVMap);
 			Map<String, String> resolutionCodeMap = new HashMap<String, String>();
 			for(int i=0; i<listResult.getLovList().size();i++){
 				//logger.debug(i+"th value is "+listResult.getLovList().get(i));
@@ -592,9 +592,9 @@ public class ClaimCloseOutController {
 			// adding to show only new values for part status code start  ========================================
 						lovListcontract = ContractFactory.createSiebelLOVListContract(SiebelLocalizationOptionEnum.PARTNER_PART_STATUS.getValue(), null);						 
 						listResult = globalService.retrieveSiebelLOVList(lovListcontract);
-						for(int i=0; i<listResult.getLovList().size();i++){
+						/*for(int i=0; i<listResult.getLovList().size();i++){
 							logger.debug(i+"th value is "+listResult.getLovList().get(i).getValue());
-						}
+						}*/
 						
 						// retrieve map from db start
 						 localizedLOVListContract = ContractFactory.createLocalizedSiebelLOVListContract(SiebelLocalizationOptionEnum.PARTNER_DEBRIEF_PART_STATUS.getValue(), null, locale);
@@ -605,10 +605,10 @@ public class ClaimCloseOutController {
 								dbLOVMap.put(localizedLOV.getValue(), localizedLOV.getName());
 							}
 						}
-						logger.debug("db lov map for new part status code is "+dbLOVMap);
+						//logger.debug("db lov map for new part status code is "+dbLOVMap);
 						Map<String, String> partStatusMap = new HashMap<String, String>();
 						for(int i=0; i<listResult.getLovList().size();i++){
-							logger.debug(i+"th value is "+listResult.getLovList().get(i));
+							//logger.debug(i+"th value is "+listResult.getLovList().get(i));
 							String key = listResult.getLovList().get(i).getValue();
 							String value = dbLOVMap.get(key);
 							if(null != value && !value.toCharArray().equals("")){

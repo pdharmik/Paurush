@@ -400,11 +400,11 @@ public class CreateHardwareRequestImpl implements CreateHardwareRequest {
 								.setProductId(bundlePart.getSupplyId());
 						bundlePartDetails.setProductNumber(bundlePart
 								.getPartNumber());
+						bundlePartDetails.setPlacementId(contract.getPlacementId());
 						materialDetailsArray[materialArrIndex] = bundlePartDetails;
 						materialArrIndex++;
 					}
 				}
-
 				materialDetailsArray[materialArrIndex] = materialDetails;
 				materialArrIndex++;
 			}

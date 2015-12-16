@@ -13,9 +13,9 @@ var strFrntPatrn=/^[a-zA-Z]{1,30}$/;
 var cityPatrn=/^[a-zA-Z0-9\s]{1,50}$/;
 //var zipPatrn=/^[0-9]{1,30}$/;
 var zipPatrn=/^[a-zA-Z0-9\s]{1,5}[-]?[a-zA-Z0-9]{1,5}?$/;
-var bulidingPatrn=/^[a-zA-Z0-9]{1,50}$/;
-var floorPatrn=/^[a-zA-Z0-9]{1,50}$/;
-var officePatrn=/^[a-zA-Z0-9]{1,50}$/;
+var bulidingPatrn=/^[a-zA-Z0-9\s]{1,50}$/;     //modified for the CR CHG0004246 AMS Release 15.11
+var floorPatrn=/^[a-zA-Z0-9\s]{1,50}$/;
+var officePatrn=/^[a-zA-Z0-9\s]{1,50}$/;
 var numberPatrn = /^\s*\d+\s*$/;
 
 var popup="";

@@ -623,12 +623,26 @@ public class XmlOutputGenerator {
 			xml.append("  <cell><![CDATA[" + XMLEncodeUtil.escapeXMLForDMCM(asset.getAssetContact().getWorkPhone()) + "]]></cell>\n");			
 			//asset.getInstallAddress().setLBSIdentifierFlag("true");
 			//xml.append("  <cell><![CDATA[" + XMLEncodeUtil.escapeXMLForDMCM(asset.getInstallAddress().getLBSIdentifierFlag()) + "]]></cell>\n");
+			if(asset.getInstallAddress().getLevelOfDetails()=="Mix-See-Floor"){
+				xml.append("  <cell><![CDATA[" + XMLEncodeUtil.escapeXMLForDMCM("Mix") + "]]></cell>\n");	
+			}
+			else{
+				String value=""; //asset.getInstallAddress().getLevelOfDetails();
+				if(null != asset.getInstallAddress().getLevelOfDetails()){
+					value = asset.getInstallAddress().getLevelOfDetails();
+				}
+				if(value.contains("Level")){
+					xml.append("  <cell><![CDATA[" + XMLEncodeUtil.escapeXMLForDMCM(value.replace("Level",""))+ "]]></cell>\n");		
+				}
+				else{
+					xml.append("  <cell><![CDATA[" + XMLEncodeUtil.escapeXMLForDMCM(value)+ "]]></cell>\n");
+				}	
+			}
 			if(asset.isLbsAddressFlag()){
 				xml.append("  <cell><![CDATA[" + XMLEncodeUtil.escapeXMLForDMCM("Yes") + "]]></cell>\n");
 			}else{
 				xml.append("  <cell><![CDATA[" + XMLEncodeUtil.escapeXMLForDMCM("No") + "]]></cell>\n");
 			}
-			
 			logger.debug("Account name is coming as "+asset.getAccount().getAccountName());
 		
 			xml.append(" </row>\n");
@@ -1291,6 +1305,220 @@ public class XmlOutputGenerator {
 			session.setAttribute("bundlePartListMap", bundlePartMap ,PortletSession.APPLICATION_SCOPE);
 			session.setAttribute(ChangeMgmtConstant.HWPRICEMAP, hardwarePriceMap ,PortletSession.APPLICATION_SCOPE);
 			return xml.toString();
+	}
+	
+	/**
+	 * @param hardwareCatalogResult 
+	 * @param session 
+	 * @param priceResult 
+	 * @param paymentType  
+	 * @return String 
+	 */
+	public String mapsBundleViewXml(HardwareCatalogResult hardwareCatalogResult, PortletSession session, PriceResult priceResult, String paymentType){
+
+		logger.debug ("Enter bundleViewXml");
+		boolean partAddedTOCart = false;
+		String quantity = "";
+		boolean nullFlag=false;
+		if(hardwareCatalogResult.getHardwareCatalog()==null)
+		{	nullFlag=true;
+					
+		}else{
+			if(hardwareCatalogResult.getHardwareCatalog().getBundleList()==null){
+				nullFlag=true;
+			}else{
+				if(hardwareCatalogResult.getHardwareCatalog().getBundleList().isEmpty()){
+					nullFlag=true;
+				}
+			}
+		}
+		
+		if(nullFlag){
+			StringBuffer blankXml = new StringBuffer("<?xml version=\'1.0\' ?>\n");
+			blankXml.append("<rows>\n");
+			blankXml.append("<row>\n");
+			blankXml.append("<cell><![CDATA[");				
+			blankXml.append("<p>No Records Found</p>");
+			blankXml.append("]]></cell>\n");
+			blankXml.append(" </row>\n");
+			blankXml.append(" </rows>\n");
+			return blankXml.toString();			
+		}
+		//List<OrderPart> catalogOrderListToSession = (ArrayList<OrderPart>) session.getAttribute("hardwareOrderListToSession");
+		//Part hardware = hardwareListResult.getHardware();
+		StringBuffer xml = new StringBuffer("<?xml version=\'1.0\' ?>\n");			
+		xml.append("<rows>\n");
+		
+		List<Bundle> bundleList = hardwareCatalogResult.getHardwareCatalog().getBundleList();
+		List<OrderPart> hardwareOrderListToSession = (ArrayList<OrderPart>) session.getAttribute("hardwareOrderListToSession");
+		
+				
+		Map<String,Boolean> hardwareFinalFlags=(Map<String,Boolean>)session.getAttribute(ChangeMgmtConstant.HWFINALFLAGS,PortletSession.APPLICATION_SCOPE);
+		boolean finalShowPriceFlag = hardwareFinalFlags.get("finalShowPriceFlag");
+		int index = 0;
+		Map<String, List<Part>> bundlePartMap = new HashMap<String, List<Part>>();
+		Map<String,String> hardwarePriceMap= new HashMap<String,String>();
+		if(session.getAttribute(ChangeMgmtConstant.HWPRICEMAP,PortletSession.APPLICATION_SCOPE)!=null){
+			hardwarePriceMap = (Map<String,String>)session.getAttribute(ChangeMgmtConstant.HWPRICEMAP,PortletSession.APPLICATION_SCOPE);
+		}
+		for(Bundle bundle:bundleList){
+			String longDescription = "";
+			String localDescription = "";
+			String price = "";
+			String currency = "";				
+			partAddedTOCart = false;	
+			String bundleId = "";
+			String contractLineItemId = "";
+			String salesOrg = "";
+			String bundlePartId = "";
+			String bundleMaterialID = "";
+			String sapLineID = "";
+			String deviceType=hardwareCatalogResult.getHardwareCatalog().getDeviceType(); 
+			String model=hardwareCatalogResult.getHardwareCatalog().getProductModel();
+			logger.debug ("deviceType -->" + deviceType + "--model -->"+model);
+			if(bundle.getBundleId()!=null){
+				bundleId = bundle.getBundleId();
+			}else{
+				bundleId = Integer.toString(index);
+			}
+			if(bundle.getMpsDescription()!=null){
+				longDescription = bundle.getMpsDescription();
+			}
+			if(bundle.getAssetId()!=null){
+				localDescription = bundle.getAssetId();				
+			}
+			if(bundle.getBundleMaterialID()!=null){
+				bundleMaterialID = bundle.getBundleMaterialID();
+			}
+			if(bundle.getContractLineItemId()!=null){
+				contractLineItemId = bundle.getContractLineItemId();
+			}
+			if(bundle.getSapLineID()!=null){
+				sapLineID = bundle.getSapLineID();
+			}
+			if(bundle.getSalesOrg()!=null){
+				salesOrg = bundle.getSalesOrg();
+			}
+			if(bundle.getBundleProductId()!=null){
+				bundlePartId = bundle.getBundleProductId();
+			}
+			
+			
+			if(priceResult!=null){
+				for(Price priceOutputLine:priceResult.getPriceOutputList()){
+					if(priceOutputLine.getContractLineItemId().equalsIgnoreCase(contractLineItemId)){
+						if(priceOutputLine.getPrice()!=null && priceOutputLine.getPrice()!=""){							
+							price = priceOutputLine.getPrice();
+							currency = priceOutputLine.getCurrency();
+							logger.debug("bundle price is "+price);
+							logger.debug("bundle currency is "+currency);
+							break;
+						}
+					}
+				}
+			}
+			
+			
+			hardwarePriceMap.put(bundleId, price);
+			
+			if(hardwareOrderListToSession!=null){
+				for(int i=0;i<hardwareOrderListToSession.size();i++){
+					if(bundleId.equalsIgnoreCase(hardwareOrderListToSession.get(i).getCatalogId())){
+						//Update is required. So need to add existing quantity with new one
+						logger.debug("Update is required for this catalog id. so it will show update order for bundle with ID "+bundleId);
+						quantity = hardwareOrderListToSession.get(i).getPartQuantity();
+						logger.debug("Quantity value to be there is "+quantity);
+						partAddedTOCart = true;
+						break;
+					}
+				}				
+			}
+			
+			String partNumberArr = "";
+			String descriptionArr = "";
+			String qtyArr = "";			
+			
+			if(bundle.getPartList()!=null){
+				bundlePartMap.put(bundleId, bundle.getPartList());				
+			}
+			
+			boolean partSelection=false;
+			if(finalShowPriceFlag){
+				if("".equals(price) || "0".equals(price) || "0.0".equals(price) || "0.00".equals(price)){
+					if(ChangeMgmtConstant.HW_PAYMENT_TYPE_PAY_LATER.equalsIgnoreCase(paymentType)){
+						partSelection=true;
+					}
+				}else{
+						partSelection=true;
+				}
+			}else{
+				partSelection=true;
+			}
+			xml.append("<row id=\'"+ bundleId +"\'>\n");
+			xml.append("<cell><![CDATA[");
+			if(partSelection){
+				xml.append("<input class=\'w50\' type=\'radio\' name=\'bundleItem\' ");
+			}else{
+				xml.append("<input class=\'w50\' type=\'radio\' name=\'bundleItem\' disabled ");
+			}
+			xml.append(" onclick=\'addToCart('"+bundleId+"', '"+bundlePartId+"', '"+bundleMaterialID+"','','"+deviceType+"', '"+model+"', 'partQuantity"+bundleId+"','"+sapLineID+"','"+currency+"','bundle','"+partNumberArr+"','"+descriptionArr+"','"+qtyArr+"','"+salesOrg+"','', this);\' id=\'partQuantity"+bundleId+"\'></div>");
+			xml.append(" <p class=\'noWordBreak\'>"+localDescription+"</p>");
+			xml.append(" ]]></cell>\n");
+			xml.append("<cell><![CDATA[" + localDescription+ "]]></cell>\n");
+			xml.append("<cell><![CDATA[" + longDescription+ "]]></cell>\n");
+			xml.append("<cell><![CDATA[");
+			xml.append("<div><input type=\'hidden\' id=\'hardwareTypeBundle\' value=\'bundle\'/>");
+			String partNo = PropertiesMessageUtil.getPropertyMessage(LexmarkSPConstants.MESSAGE_BUNDLE_NAME,
+					"requestInfo.heading.partNumber",locale);
+			String description = PropertiesMessageUtil.getPropertyMessage(LexmarkSPConstants.MESSAGE_BUNDLE_NAME,
+					"requestInfo.heading.description", locale);
+			String qty = PropertiesMessageUtil.getPropertyMessage(LexmarkSPConstants.MESSAGE_BUNDLE_NAME,
+					"requestInfo.heading.Qty", locale);
+			if(bundle.getPartList()!=null){
+				if(bundle.getPartList().size()>0){
+					xml.append("<table class=\'displayGrid rounded shadow wFull\' id=\'partTableBundle\'><thead><tr style=\'font-size:12px!important;\'><th class=\'w100\' style=\'width: 12%\'>"+partNo+"</th><th style=\'width: 76%\'>"+description+"</th><th class=\'w100\' style=\'width: 12%\'>"+qty+"</th></tr></thead><tbody>");
+					int i=0;
+					for(Part bundlePart:bundle.getPartList()){
+						if(i%2==0){
+							xml.append("<tr class=\'altRow\'>");
+						}else{
+							xml.append("<tr>");
+						}i++;
+						xml.append("<td class=\'w100\'>"+bundlePart.getPartNumber()+"</td><td>"+bundlePart.getDescription()+"</td><td class=\'w100\'>"+bundlePart.getOrderQuantity()+"</td></tr>");
+					}
+				}
+			}
+			xml.append("]]></cell>\n");
+			xml.append("<cell><![CDATA[");
+					if("".equals(price) || "0".equals(price) || "0.0".equals(price) || "0.00".equals(price)){
+						//Msg displayed if price is not available for the part and no text field to enter qty to be shown
+						xml.append("<div id=\'priceDiv"+bundleId+"\' class=\'errorText\'>"+PropertiesMessageUtil.getPropertyMessage(BUNDLENAME_BUTTON_MSG, "requestInfo.error.priceUnavailable", locale)+"</div><div class=\'lineClear\'/>"); //Changed currency font on 11June
+												
+					}else{
+						if(price.indexOf(".")>0){
+						
+							String priceSplit[] = price.split("\\.");
+							
+							logger.debug("price1 -- > "+priceSplit[0]);
+							logger.debug("price2 -- > "+priceSplit[1]);
+							xml.append("<div id=\'priceDiv"+bundleId+"\'><span class=\'f200\'>"+priceSplit[0]+"</span><span class=\'minimum\'>.</span><span  class=\'f150\'>"+priceSplit[1]+"</span>"+"&nbsp;"+"<span class=\'f200\'>("+currency+")<span>"+"</div><div class=\'lineClear\'/>");
+							
+						}else{
+							xml.append("<div id=\'priceDiv"+bundleId+"\'><span class=\'f200\'>"+price+"</span><span class=\'f200\'>("+currency+")</span></div><div class=\'lineClear\'/>");
+						}
+					}
+				
+			xml.append("]]></cell>\n");
+			xml.append(" </row>\n");
+			index++;
+		}
+			//posStart = posStart+1;
+		
+			xml.append(" </rows>\n");
+			session.setAttribute("bundlePartListMap", bundlePartMap ,PortletSession.APPLICATION_SCOPE);
+			session.setAttribute(ChangeMgmtConstant.HWPRICEMAP, hardwarePriceMap ,PortletSession.APPLICATION_SCOPE);
+			return xml.toString();
+	
 	}
 	
 		//Translate the HardwarePart list to Data View XML still not used

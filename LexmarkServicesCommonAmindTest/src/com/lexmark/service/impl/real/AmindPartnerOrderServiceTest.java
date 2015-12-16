@@ -853,6 +853,26 @@ public class AmindPartnerOrderServiceTest extends AmindServiceTest {
     	System.out.println("size: " + result.getOrderLineItemsList().size());
     }
     
+    @Test
+    public void testRetrieveMassUploadTemplateList_CR12742() throws Exception {
+    	MassUploadTemplateContract contract = new MassUploadTemplateContract();
+    	contract.setStatus("Open");
+    	contract.setMdmLevel("Global");
+    	contract.setMdmId("519926455");
+    	Map<String, Object> sortCriteria = new HashMap<String, Object>();
+    	sortCriteria.put("createdDate", "DESCENDING");
+    	contract.setSortCriteria(sortCriteria );
+    	Map<String, Object> filterCriteria = new HashMap<String, Object>();
+    	filterCriteria.put("order.startDate", "07/28/2015 18:30:00");
+    	filterCriteria.put("order.endDate", "08/28/2015 18:30:00");
+    	contract.setFilterCriteria(filterCriteria );
+    	MassUploadTemplateResult result = service.retrieveMassUploadTemplateList(contract);
+    	for (MassUploadTemplateOrderLineItem lineItem : result.getOrderLineItemsList()) {
+    		System.out.println("OrderStatus: " + lineItem.getOrderStatus());
+    	}
+    	System.out.println("size: " + result.getOrderLineItemsList().size());
+    }
+    
 	
 	
 	@Test

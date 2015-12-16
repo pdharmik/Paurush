@@ -23,6 +23,7 @@ public class Bundle {
 	private String billingModel;
 	private String configId;
 	private List<OrderPart> orderParts;//This will contain details of order part added to session B2B
+	private String unspscCode;
 	
 	public String getAssetId() {
 		return assetId;
@@ -159,6 +160,14 @@ public class Bundle {
 
 	public void setConfigId(String configId) {
 		this.configId = configId;
+	}
+
+	public String getUnspscCode() {
+		return unspscCode;
+	}
+
+	public void setUnspscCode(String unspscCode) {
+		this.unspscCode = unspscCode;
 	}
 	
 }

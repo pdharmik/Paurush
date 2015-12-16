@@ -389,12 +389,11 @@ behavior: url(/LexmarkServicesPortal/WEB-INF/css/PIE.htc) !important;
                   <span class="width-100per">
                   <form:checkbox id="coveredCheck" path="installationOnlyFlag" onclick="showTemplate();"/>
                   <%-- Changes for MPS 2.1 7895 --%>
-                  <img class="helpIcon ui_icon_sprite info-icon"  src="<html:imagesPath/>transparent.png" title="<spring:message code="hardwareDetail.installFlag.tooltip"/>" ></span>
-                  
-                 	
+                  <img class="helpIcon ui_icon_sprite info-icon"  src="<html:imagesPath/>transparent.png" title="<spring:message code="hardwareDetail.installFlag.tooltip"/>" >
+                  </span>
                  </li>
                  </ul>
-                 <div id="downloadTemp" style="display:none;">
+                 <div id="downloadTemp"  style="display:none;">
                  		<div class="div-style64">
                  		<button type="button" class="button positionShift iePositionShift" onClick="downloadHWInstallTemplate()"><spring:message code="requestInfo.hardwareInstall.downloadTemplate"/></button>
                  		</div>

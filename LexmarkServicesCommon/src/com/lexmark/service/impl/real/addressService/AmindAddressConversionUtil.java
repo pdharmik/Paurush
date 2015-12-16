@@ -1,5 +1,7 @@
 package com.lexmark.service.impl.real.addressService;
 
+import static com.lexmark.util.LangUtil.isEmpty;
+import static com.lexmark.util.LangUtil.isNotEmpty;
 import static com.lexmark.util.LangUtil.notNull;
 
 import java.util.ArrayList;
@@ -67,6 +69,8 @@ public class AmindAddressConversionUtil {
 			address.setCountryISOCode(addressDo.getCountyCode());
 			address.setRegion(addressDo.getRegion());
 			address.setLbsAddressFlag(addressDo.isLbsAddressFlag());
+			
+			address.setLevelOfDetails(addressDo.getLevelOfDetails());
 
 			if (favoriteSet != null && favoriteSet.contains(addressDo.getId())) {
 				address.setUserFavorite(true);
@@ -145,45 +149,37 @@ public class AmindAddressConversionUtil {
 					convertedAddress.add(addressObj);
 				}
 			} else if (convertionType != null && convertionType.equalsIgnoreCase("State")) {
-				if (LangUtil.isNotEmpty(lbsAddress.getState())) {
-					distinctTest = checkdistinc(convertedAddress,
-							lbsAddress.getState(), convertionType);
+				if (isNotEmpty(lbsAddress.getState())) {
+					distinctTest = checkdistinc(convertedAddress, lbsAddress.getState(), convertionType);
 					if (distinctTest) {
 						addressObj.setState(lbsAddress.getState());
-						convertedAddress.add(addressObj);
 					}
 				}
-				else if(LangUtil.isNotEmpty(lbsAddress.getProvince())){
-					distinctTest = checkdistinc(convertedAddress,
-							lbsAddress.getProvince(), convertionType);
+				else if(isNotEmpty(lbsAddress.getProvince())){
+					distinctTest = checkdistinc(convertedAddress, lbsAddress.getProvince(), convertionType);
 					if (distinctTest) {
 						addressObj.setProvince(lbsAddress.getProvince());
-						convertedAddress.add(addressObj);
 					}
 				}
-				else if(LangUtil.isNotEmpty(lbsAddress.getCounty())){
-					distinctTest = checkdistinc(convertedAddress,
-							lbsAddress.getCounty(), convertionType);
+				else if(isNotEmpty(lbsAddress.getCounty())){
+					distinctTest = checkdistinc(convertedAddress, lbsAddress.getCounty(), convertionType);
 					if (distinctTest) {
 						addressObj.setCounty(lbsAddress.getCounty());
-						convertedAddress.add(addressObj);
 					}		
 				}
-				else if(LangUtil.isNotEmpty(lbsAddress.getDistrict())){
-					distinctTest = checkdistinc(convertedAddress,
-							lbsAddress.getDistrict(), convertionType);
+				else if(isNotEmpty(lbsAddress.getDistrict())){
+					distinctTest = checkdistinc(convertedAddress, lbsAddress.getDistrict(), convertionType);
 					if (distinctTest) {
 						addressObj.setDistrict(lbsAddress.getDistrict());
-						convertedAddress.add(addressObj);
 					}
 				}
 				if(checkCity(lbsAddress)){
 					distinctTest = checkdistinc(convertedAddress, lbsAddress.getCity(), "City");
 					if (distinctTest) {
 						addressObj.setCity(lbsAddress.getCity());
-						convertedAddress.add(addressObj);
 					}
 				}
+				convertedAddress.add(addressObj);
 			} else if (convertionType != null && convertionType.equalsIgnoreCase("City")) {
 				distinctTest = checkdistinc(convertedAddress, lbsAddress.getCity(), convertionType);
 				if (distinctTest) {
@@ -191,7 +187,6 @@ public class AmindAddressConversionUtil {
 					convertedAddress.add(addressObj);
 				}
 			}
-//			convertedAddress.add(addressObj);
 		}
 		return convertedAddress;
 	}
@@ -226,6 +221,7 @@ public class AmindAddressConversionUtil {
 								if(distinctTest){
 									lbsLocationFloorObj.setFloor(lbsAddress.getLocationName());
 									lbsLocationFloorObj.setFloorId(lbsAddress.getLocationId());
+									lbsLocationFloorObj.setFloorLevelOfDetails(lbsAddress.getFloorLevelOfDetails());
 									convertedFloor.add(lbsLocationFloorObj);
 								}						
 						}
@@ -353,8 +349,7 @@ public class AmindAddressConversionUtil {
 	/**	 
 	 * @author David Tsamalashvili 
 	 */
-	public static LBSFloorPlanListResult convertLBSAsset(
-			List<LBSFloorPlanAssetDo> asset) {
+	public static LBSFloorPlanListResult convertLBSAsset(List<LBSFloorPlanAssetDo> asset) {
 		LBSFloorPlanListResult convertedAssetReturn = new LBSFloorPlanListResult();
 		List<LBSAsset> convertedAsset = new ArrayList<LBSAsset>();
 
@@ -363,6 +358,7 @@ public class AmindAddressConversionUtil {
 			for (LBSFloorPlanAssetDo item : asset) {
 				LBSAsset converted = new LBSAsset();
 				converted.setAccountName(item.getAccountName());
+				converted.setAccountId(item.getAccountId());
 				converted.setAssetCostCenter(item.getAssetCostCenter());
 				converted.setAssetNumber(item.getAssetNumber());
 				converted.setBrandMFGProduct(item.getBrandMFGProduct());
@@ -389,6 +385,11 @@ public class AmindAddressConversionUtil {
 				converted.setAssetLifeCycle(item.getAssetLifeCycle());
 				converted.setHardwareStatus(item.getHardwareStatus());
 				converted.setPartType(item.getPartType());
+				converted.setLevelOfDetails(item.getLevelOfDetails());
+				converted.setFloorLevelDetails(item.getFloorLevelDetails());
+				converted.setAddressLevelDetails(item.getAddressLevelDetails());
+				converted.setBuildingType(item.getBuildingType());
+				converted.setSerialNumber(item.getSerialNumber());
 				
 				if (LangUtil.isNotEmpty(item.getMaterialPartType())) {
 					if (item.getMaterialPartType().contains("Mono")) {
@@ -477,8 +478,9 @@ public class AmindAddressConversionUtil {
 	
 	private static boolean checkCity(AddressDo lbsAddress) {
 		boolean passCity = false;
-		if(LangUtil.isEmpty(lbsAddress.getState()) && LangUtil.isEmpty(lbsAddress.getProvince()) && LangUtil.isEmpty(lbsAddress.getCounty()) && LangUtil.isEmpty(lbsAddress.getDistrict())){
+		if(isEmpty(lbsAddress.getState()) && isEmpty(lbsAddress.getCounty())){
 			passCity= true;
+			// && LangUtil.isEmpty(lbsAddress.getProvince()) && LangUtil.isEmpty(lbsAddress.getDistrict())
 		}
 		return passCity;
 	}

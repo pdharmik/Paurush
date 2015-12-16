@@ -32,18 +32,30 @@ var isChange;
 var isSearch;
 var found;
 var searchItem;//='1-GOSNU1';//'1-7YYU6D';//'1-7YYUH5';//'1-GOSNU1';//'1-EEX-144';
-function initialiseCHLTree()
+var dynChlNodeId = "chlNodeId";
+var dynChlNodeValue = "chlNodeValue";
+var dynChlLbl = "chlNodeValueLabel";
+var dynAssetId;
+function initialiseCHLTree(assetId)
 {
 	//alert("Under initialise chl tree");
 	//Below code is to set the flags for Change in CHL location
 	//Below queue is used for searching the node
+	
+	if(assetId !== undefined)
+	{
+		dynAssetId = assetId;
+		dynChlNodeId = assetId + "_" + dynChlNodeId;
+		dynChlNodeValue = assetId + "_" + dynChlNodeValue;
+		dynChlLbl = dynChlLbl + "_" + assetId;
+	}
 	queue=new Array();
 	queue.push('0_0');//adding the first node
-	if(jQuery("#chlNodeId").val()!=""){
+	if(jQuery("#"+dynChlNodeId).val()!=""){
 		isChange=true;
 		isSearch=true;
 		found=false;
-		searchItem=jQuery("#chlNodeId").val();
+		searchItem=jQuery("#"+dynChlNodeId).val();
 	}
 	//Ends
 	var chlTreeXMLUrl='<portlet:resourceURL id="chlTreeXMLURL"/>';
@@ -171,7 +183,7 @@ function initialiseDeviceLocatnTree()
 
 function viewDeviceListByCHL(chlNodeId, chlValue) {
 	
-	//alert("Node Id "+chlNodeId + "Node Value " + chlValue);
+	
 	//set the data to variables for future use when user clicks on select
 	
 	cId=chlNodeId;
@@ -182,11 +194,11 @@ function viewDeviceListByCHL(chlNodeId, chlValue) {
 function setValToPage(){
 	//Please keep a span with id chlNodeValueLabel for display on screen
 	
-	jQuery("#chlNodeValueLabel").html(cValue);
+	jQuery("#"+dynChlLbl).html(cValue);
 	
 	//Bind the id & value with the form element	
-	jQuery("#chlNodeId").val(cId);
-	jQuery("#chlNodeValue").val(cValue);
+	jQuery("#"+dynChlNodeId).val(cId);
+	jQuery("#"+dynChlNodeValue).val(cValue);
 	closeDialog();
 }
 </script>

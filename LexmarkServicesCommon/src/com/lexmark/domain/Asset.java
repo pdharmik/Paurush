@@ -159,6 +159,20 @@ public class Asset implements Serializable {
 	private boolean duplicateDevice;
 	private String mki;
 	private String serviceProvider;
+	private String displayWarning;
+	
+	
+	private String placementId;
+	private boolean placementMove;
+	
+	
+	public String getDisplayWarning() {
+		return displayWarning;
+	}
+	public void setDisplayWarning(String displayWarning) {
+		this.displayWarning = displayWarning;
+	}
+
 	
 	public String getMki() {
 		return mki;
@@ -1177,6 +1191,24 @@ public class Asset implements Serializable {
 
 	public List<PageCounts> getDeInstAssetPageCounts() {
 		return deInstAssetPageCounts;
+	}
+	public String getPlacementId() {
+		return placementId;
+	}
+	public void setPlacementId(String placementId) {
+		this.placementId = placementId;
+	}
+	/**
+	 * @return the placementMove
+	 */
+	public boolean isPlacementMove() {
+		return placementMove;
+	}
+	/**
+	 * @param placementMove the placementMove to set
+	 */
+	public void setPlacementMove(boolean placementMove) {
+		this.placementMove = placementMove;
 	}
 
 

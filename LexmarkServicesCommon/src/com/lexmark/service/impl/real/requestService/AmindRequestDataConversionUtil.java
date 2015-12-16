@@ -141,6 +141,9 @@ public class AmindRequestDataConversionUtil {
 				account.setHardwareRequestFlag(accountDo.getHardwareFlag());
 				account.setLbsFlag(accountDo.getLbsFlag());
 				account.setB2bFlag(accountDo.getB2bFlag());
+				account.setDeviceStatus(accountDo.getDeviceStatus());
+				account.setLbsUtilization(accountDo.getLbsUtilization());
+				
 				if(isNotEmpty(accountDo.getLbsDisplayWeb())){
 					if(accountDo.getLbsDisplayWeb().equalsIgnoreCase("Show")){
 						lbsDisplayCheck = true;

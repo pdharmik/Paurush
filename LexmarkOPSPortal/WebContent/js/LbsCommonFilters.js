@@ -74,23 +74,68 @@ function CommonFilters(){
 		
 	};
 	this.__createMultiSelects=function(){
-		new MultiSelect(parentContext+'productType',width,productTypeArray);
-		new MultiSelect(parentContext+'productSeries',width,productSeriesArray);
-		new MultiSelect(parentContext+'requestType',width,requestTypeArray);
-		new MultiSelect(parentContext+'requestStatus',width,requestStatusArray);
-		new MultiSelect(parentContext+'areaDrop',width,areaArray);
-		new MultiSelect(parentContext+'subAreaDrop',width,subAreaArray);
-		new MultiSelect(parentContext+'assetLifeCycle',width,assetLifeCycleArray);
-		new MultiSelect(parentContext+'devicePhase',width,devicePhaseArray);
-		new MultiSelect(parentContext+'hardwareStatus',width,hardwareStatusArray);
-		new MultiSelect(parentContext+'srOPSStatus',width,srOPSStatusArray);
-		new MultiSelect(parentContext+'srSubStatus',width,srSubStatusArray);
-		new MultiSelect(parentContext+'srSource',width,srSourceArray);
+		new MultiSelect({
+			"elementId":parentContext+'productType',
+			"elementWidth":width,
+			"dataList":productTypeArray
+		});
+		new MultiSelect({
+			"elementId":parentContext+'productSeries',
+			"elementWidth":width,
+			"dataList":productSeriesArray
+		});
+		new MultiSelect({
+			"elementId":parentContext+'requestType',
+			"elementWidth":width,
+			"dataList":requestTypeArray
+		});
+		new MultiSelect({
+			"elementId":parentContext+'requestStatus',
+			"elementWidth":width,
+			"dataList":requestStatusArray
+		});
+		new MultiSelect({
+			"elementId":parentContext+'areaDrop',
+			"elementWidth":width,
+			"dataList":areaArray
+		});
+		new MultiSelect({
+			"elementId":parentContext+'subAreaDrop',
+			"elementWidth":width,
+			"dataList":subAreaArray
+		});
+		new MultiSelect({
+			"elementId":parentContext+'assetLifeCycle',
+			"elementWidth":width,
+			"dataList":assetLifeCycleArray
+		});
+		new MultiSelect({
+			"elementId":parentContext+'devicePhase',
+			"elementWidth":width,
+			"dataList":devicePhaseArray
+		});
+		new MultiSelect({
+			"elementId":parentContext+'hardwareStatus',
+			"elementWidth":width,
+			"dataList":hardwareStatusArray
+		});
+		new MultiSelect({
+			"elementId":parentContext+'srOPSStatus',
+			"elementWidth":width,
+			"dataList":srOPSStatusArray
+		});
+		new MultiSelect({
+			"elementId":parentContext+'srSubStatus',
+			"elementWidth":width,
+			"dataList":srSubStatusArray
+		});
+		new MultiSelect({
+			"elementId":parentContext+'srSource',
+			"elementWidth":width,
+			"dataList":srSourceArray
+		});
 			
-		//	var LXKAssetTagObj=new MultiSelect('LXKAssetTag',width,LXKAssetTagArray);
-			//var assetLifeCycleObj=new MultiSelect('assetLifeCycle',width,assetLifeCycleArray);
-			//var devicePhaseObj=new MultiSelect('devicePhase',width,devicePhaseArray);
-			//var hardwareStatusObj=new MultiSelect('hardwareStatus',width,hardwareStatusArray);
+		
 		
 		
 		

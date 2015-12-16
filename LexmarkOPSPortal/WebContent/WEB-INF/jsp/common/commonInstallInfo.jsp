@@ -25,6 +25,12 @@
 <script type="text/javascript">	
 	<%@ include file="../../../../js/commonAddress.js"%>	
 </script>
+
+<!-- Javascript added for LBS 1.5- Level of Details checking -->
+<script type="text/javascript">	
+	<%@ include file="../../../../js/assetLodCheck.js"%>	
+</script>
+
 <div class="columnsOne">
 	<div class="infoBox columnInner rounded shadow">
 			<c:choose>
@@ -39,7 +45,7 @@
 								  <li class="move_type1"><%--Changed for CI Defect #7853 --%>
 									<div style="">
 			                        <%-- <label><spring:message code="requestInfo.cm.manageAsset.label.doYouRequireLexmarkToInstallThisDevice"/></label> --%>
-									<div id="" class="move_type_confirmation" style="width:auto;;float:left;"><spring:message code="requestInfo.cm.manageAsset.label.doYouRequireLexmarkToPhysicallyMoveThisDevice"/></div>
+									<div id="" class="move_type_confirmation" style="width:auto;;float:left;"><spring:message code="requestInfo.cm.manageAsset.label.doYouRequireLexmarkToPhysicallyMoveThisDevice"/>&nbsp;<span class="req">*</span></div>
 									<div class="radio radio_confirm" style="width:auto;float:left;">
 									<div style="width:auto;float:left;"><form:radiobutton name="installAsset" path="installAssetFlag" value="Yes" 
 									id="installAssetYes" onclick="showHideMoveType('installAssetYes');"/>	
@@ -67,7 +73,7 @@
 								  <li class="move_type1"><%--Changed for CI Defect #7853 --%>
 									<div style="">
 			                        <%-- <label><spring:message code="requestInfo.cm.manageAsset.label.doYouRequireLexmarkToInstallThisDevice"/></label> --%>
-									<div id="" class="move_type_confirmation" style="width:auto;;float:left;"><spring:message code="requestInfo.cm.manageAsset.label.doYouRequireLexmarkToPhysicallyMoveThisDevice"/></div>
+									<div id="" class="move_type_confirmation" style="width:auto;;float:left;"><spring:message code="requestInfo.cm.manageAsset.label.doYouRequireLexmarkToPhysicallyMoveThisDevice"/>&nbsp;<span class="req">*</span></div>
 									<div class="radio radio_confirm" style="width:auto;float:left;">
 									<div style="width:auto;float:left;"><form:radiobutton name="installAsset" path="installAssetFlag" value="Yes" 
 									id="installAssetYes" onclick="showHideMoveType('installAssetYes');"/>	
@@ -95,7 +101,7 @@
 								  <li class="move_type1"><%--Changed for CI Defect #7853 --%>
 									<div style="">
 			                        <%-- <label><spring:message code="requestInfo.cm.manageAsset.label.doYouRequireLexmarkToInstallThisDevice"/></label> --%>
-									<div id="" class="move_type_confirmation" style="width:auto;;float:left;"><spring:message code="requestInfo.cm.manageAsset.label.doYouRequireLexmarkToPhysicallyMoveThisDevice"/></div>
+									<div id="" class="move_type_confirmation" style="width:auto;;float:left;"><spring:message code="requestInfo.cm.manageAsset.label.doYouRequireLexmarkToPhysicallyMoveThisDevice"/>&nbsp;<span class="req">*</span></div>
 									<div class="radio radio_confirm" style="width:auto;float:left;">
 									<div style="width:auto;float:left;"><form:radiobutton name="installAsset" path="installAssetFlag" value="Yes" 
 									id="installAssetYes" onclick="showHideFleetMoveType('installAssetYes');"/>	
@@ -130,18 +136,18 @@
 			
 			
 			if(currentURL.indexOf('/fleet-management') == -1){
-				
+				jQuery('#diffAddressLink').attr("fleet-management", "false");
 				jQuery('#diffAddressLink').show();
 				}
 			else{
-				
+				jQuery('#diffAddressLink').attr("fleet-management", "true");
 				jQuery('#diffAddressLink').hide();
 			}
 			
 		});
 		</script>
 	
-		<div class="columnsTwo">
+		<div class="columnsTwo installSection">
 			<div class="infoBox columnInner rounded shadow">
 				<h4><a href="${addressListPopUpUrl}"
 					title="<spring:message code="requestInfo.title.selectAddress"/>"
@@ -220,6 +226,13 @@
 						 <li><span style="display: none;"><select
 						id="campus"  
 						></select></span></li>
+						
+					<li id="gridLi" style="display: none;">
+						<a href="#" id="installedGridLink">View Grid</a>
+						<div id="installedXYLblDiv">
+							<label id="installedXYLbl">Grid X/Y : </label><label id="installedCoords"></label>
+						</div>
+					</li>
 						 
 						<%--For LBS Adresses display names--%>
 				</ul>
@@ -282,6 +295,9 @@
 						id="installcoordinatesYPreDebriefRFV" path="assetDetail.installAddress.coordinatesYPreDebriefRFV" /> 
 		
 						
+						<!-- LOD fields added for LBS 1.5- LOD logic -->
+						<form:input	id="installLevelOfDetails" path="assetDetail.installAddress.levelOfDetails"  />
+						<form:input	id="installFloorLevelOfDetails" path="assetDetail.installAddress.floorLevelOfDetails"  /> 
 		</span>
 	
 	<c:choose>
@@ -289,7 +305,7 @@
 	<c:when test="${pageFlow eq 'Change'}">
 
 			<!-- Move to Address -->
-			<div class="columnsTwo" style="display: none;" id="hideMoveToAddress">
+			<div class="columnsTwo moveToAddressSection" style="display: none;" id="hideMoveToAddress">
 			<div class="infoBox columnInner rounded shadow">
 				<h4><a href="${addressListPopUpUrl}"
 					title="<spring:message code="requestInfo.title.selectAddress"/>"
@@ -352,6 +368,14 @@
 						  <li><span style="display: none;"><select
 						id="campusm"  
 						></select></span></li>
+						
+						<li id="gridLi" style="display: none;">
+							<a href="#" id="moveToGridLink">View Grid</a>
+							<div id="moveToXYLblDiv">
+								<label id="moveToXYLbl">Grid X/Y : </label><label id="moveToCoords"></label>
+							</div>
+						</li>
+						
 						</ul>
 						<%--For LBS Adresses display names--%>
 						<span style="display: none;">
@@ -411,7 +435,8 @@
 						<form:input
 						id="moveToAddresscoordinatesYPreDebriefRFV" path="assetDetail.moveToAddress.coordinatesYPreDebriefRFV" /> 
 		
-						
+						<form:input	id="moveToAddressLevelOfDetails" path="assetDetail.moveToAddress.levelOfDetails"  />
+						<form:input	id="moveToFloorLevelOfDetails" path="assetDetail.moveToAddress.floorLevelOfDetails"  />
 					</span>
 					
 			
@@ -420,7 +445,7 @@
 	<c:when test="${pageFlow eq 'fleetMgmtMove'}">
 
 			<!-- Move to Address -->
-			<div class="columnsTwo" id="hideMoveToAddress">
+			<div class="columnsTwo moveToAddressSection" id="hideMoveToAddress">
 			<div class="infoBox columnInner rounded shadow">
 				<h4><a href="${addressListPopUpUrl}"
 					title="<spring:message code="requestInfo.title.selectAddress"/>"
@@ -450,21 +475,21 @@
 					<div id="selectMoveToAddress1" style="display: none;">
 					<ul class="form division">
 					<li><label for="building"><spring:message
-						code="requestInfo.addressInfo.label.building" /> *</label> <span><input
+						code="requestInfo.addressInfo.label.building" /> </label> <span><input
 						id="moveTophysicalLocation1" class="w100"
 						  maxlength="100" /></span></li>
 					<li><label for="floor"><spring:message
-						code="requestInfo.addressInfo.label.floor" /> *</label> <span><input
+						code="requestInfo.addressInfo.label.floor" /> </label> <span><input
 						id="moveTophysicalLocation2" class="w100"
 						  maxlength="100" /></span></li>
 					
 					<li><label for="zone"><spring:message code='lbs.label.zone'/>: </label> <span><input
-						id="zonemove"  value="" class="w100"
+						id="zonemove"  value="" class="w100" type="text"
 						 /></span></li>
 						
 					<li><label for="office"><spring:message
 						code="requestInfo.addressInfo.label.office" /> </label> <span><input
-						id="moveTophysicalLocation3" class="w100"
+						id="moveTophysicalLocation3" class="w100" type="text"
 						 maxlength="100" /></span></li>
 						</ul>
 						</div>
@@ -490,7 +515,16 @@
 						 <li><span style="display: none;"><select
 						id="campusm"  
 						></select></span></li>
-						</ul>
+						
+					<li id="gridLi" style="display: none;">
+						<a href="#" id="moveToGridLink">View Grid</a>
+						<div id="moveToXYLblDiv">
+							<label id="moveToXYLbl">Grid X/Y : </label><label id="moveToCoords"></label>
+						</div>
+					</li>
+					</ul>
+						
+						
 						
 						<span style="display: none;">
 						<form:input path="assetDetail.moveToAddress.physicalLocation1" id="bldngm1"/>
@@ -548,7 +582,8 @@
 						<form:input
 						id="moveToAddresscoordinatesYPreDebriefRFV" path="assetDetail.moveToAddress.coordinatesYPreDebriefRFV" /> 
 		
-						
+						<form:input	id="moveToAddressLevelOfDetails" path="assetDetail.moveToAddress.levelOfDetails"  />
+						<form:input	id="moveToFloorLevelOfDetails" path="assetDetail.moveToAddress.floorLevelOfDetails"  />
 					</span>
 					
 			
@@ -666,6 +701,11 @@ $('#bldng').change(function(){
 	jQuery('#physicalLocation1h').val(jQuery("#bldng option:selected").val());
 	
 	if($(this).val()==""){
+		if($.trim($("#installLevelOfDetails").val()).toLowerCase() === "mix - see floor")
+		{
+			$(".installSection").find("#gridLi").hide();
+			clearGridValues("installed");
+		}
 		return;
 	}
 	urlParamsObj.setDropParamsToObj();	
@@ -686,6 +726,12 @@ $('#bldngm').change(function(){
 		
 	
 	if($(this).val()==""){
+		var moveToAddressLevelOfDetails = $.trim($("#moveToAddressLevelOfDetails").val());
+		if(moveToAddressLevelOfDetails.toLowerCase() === "mix - see floor")
+		{
+			$(".moveToAddressSection").find("#gridLi").hide();
+			clearGridValues("moveTo");
+		}
 		return;
 	}
 	urlParamsObj1.setDropParamsToObj();	
@@ -728,14 +774,23 @@ else if(district!=""){
 		urlParamsObj1["bldng"]=b;
 		urlParamsObj1["extra"]="blank"
 		var url=appendURLPrams1("${floorURL}",urlParamsObj1);
-		
+
+		var moveToAddressLevelOfDetails = $.trim($("#moveToAddressLevelOfDetails").val());
+		if(moveToAddressLevelOfDetails.toLowerCase() === "mix - see floor")
+		{
+			$(".moveToAddressSection").find("#gridLi").hide();
+			if(p == "buildingchange")
+				clearGridValues("moveTo");
+		}
 		$.get(url,function(response){
 			$('#flrm').attr('disabled',false);
 			$('#btnContinue').attr('disabled',false);	
 			$('#flrm').append(response);
-			
-			lbsFloorm(p);
-			
+
+			if(p == "buildingselect" || p == "buildingchange")
+				selectFloorMove(p);
+			else
+				lbsFloorm(p);
 		});	
 	
 }
@@ -779,7 +834,11 @@ urlParamsObj1["state"]=district+"^d";
 			
 		
 		$('#campusm').append(response);
-		lbsSitem(p);
+
+		if(p == "buildingselect" || p == "buildingchange")
+			selectSiteMove(p);
+		else
+			lbsSitem(p);
 		
 	});	
 
@@ -819,16 +878,20 @@ else if(district!=""){
 		urlParamsObj["bldng"]=bId;
 		urlParamsObj["extra"]="blank"
 		var url=appendURLPrams("${floorURL}",urlParamsObj);
-	
+
+		if($.trim($("#installLevelOfDetails").val()).toLowerCase() === "mix - see floor")
+		{
+			$(".installSection").find("#gridLi").hide();
+			if(p == "buildingchange")
+				clearGridValues("installed");
+		}
 		$.get(url,function(response){
 			$('#flr').attr('disabled',false);
 			$('#btnContinue').attr('disabled',false);
 			$('#flr').append(response);
 			
 			lbsFloor(p);
-			
 		});	
-	
 }
 
 function getSite(p){
@@ -885,33 +948,66 @@ $('#flr').change(function(){
 		
 		$("#campus option").each(function() {
             
-       if( $(this).prop('text') != "" ) { 
-        	$(this).attr('selected','selected');
+       		if( $(this).prop('text') != "" ) { 
+        		$(this).attr('selected','selected');
         	}
-    });
+    	});
 		
 		jQuery('#campus1').val(jQuery("#campus option:selected").text());
 		jQuery('#campush').val(jQuery("#campus option:selected").val());
-		
+
+		if($("#installLevelOfDetails").val().toLowerCase() === "mix - see floor")
+		{ 
+			$(".installSection").find("#gridLi").hide();
+			clearGridValues("installed");
+			
+			if($("#flr option:selected").attr("lod") != undefined &&
+				$.trim($("#flr option:selected").attr("lod").toLowerCase()).indexOf("grid") > -1)
+			{
+				if(curURL.indexOf('/fleet-management') != -1)
+				{
+					$(".installSection").find("#gridLi").hide();
+
+					if(pageFlow.toLowerCase() === "addone")
+					{
+						$(".installSection").find("#gridLi").show();
+					}
+					else
+					{
+						$(".installSection").find("#installedGridLink").show();
+					}
+				}
+				else
+					$(".installSection").find("#gridLi").show();
+			}
+		}
 });
 $('#flrm').change(function(){
-	
 	
 		jQuery('#flrm1').val(jQuery("#flrm option:selected").text());
 		jQuery('#moveTophysicalLocation2h').val(jQuery("#flrm option:selected").val());
 		
-		
 		$("#campusm option").each(function() {
             
-       if( $(this).prop('text') != "" ) { 
-        	$(this).attr('selected','selected');
+        	if( $(this).prop('text') != "" ) { 
+        		$(this).attr('selected','selected');
         	}
-    });
+    	});
 		
 		jQuery('#campusm1').val(jQuery("#campusm option:selected").text());
 		jQuery('#campusmh').val(jQuery("#campusm option:selected").val());
-		
-		
+
+		if($("#moveToAddressLevelOfDetails").val().toLowerCase() === "mix - see floor")
+		{
+			$(".moveToAddressSection").find("#gridLi").hide();
+			clearGridValues("moveTo");
+			
+			if($("#flrm option:selected").attr("lod") != undefined &&
+				$.trim($("#flrm option:selected").attr("lod").toLowerCase()).indexOf("grid") > -1)
+			{
+				$(".moveToAddressSection").find("#gridLi").show();
+			}
+		}
 });
 function getZone(p){
 	var url=appendURLPrams("${zoneURL}",urlParamsObj);
@@ -943,8 +1039,11 @@ $('#zonem').change(function(){
 function appendURLPrams(url,paramsObj){
 	var urlT=url;
 	for(var i=0;i<paramsObj.paramNames.length;i++){
-		if(paramsObj[paramsObj.paramNames[i]]!=null && paramsObj[paramsObj.paramNames[i]]!="")
+		if(paramsObj[paramsObj.paramNames[i]]!=null && paramsObj[paramsObj.paramNames[i]]!=""){
+			if(paramsObj.paramNames[i] != "state"){
 			urlT+="&"+paramsObj.paramNames[i]+"="+encodeURI(paramsObj[paramsObj.paramNames[i]]);
+			}
+		}
 	}
 	
 	return urlT;
@@ -953,8 +1052,11 @@ function appendURLPrams(url,paramsObj){
 function appendURLPrams1(url,paramsObj1){
 	var urlT=url;
 	for(var i=0;i<paramsObj1.paramNames.length;i++){
-		if(paramsObj1[paramsObj1.paramNames[i]]!=null && paramsObj1[paramsObj1.paramNames[i]]!="")
+		if(paramsObj1[paramsObj1.paramNames[i]]!=null && paramsObj1[paramsObj1.paramNames[i]]!=""){
+			if(paramsObj1.paramNames[i] != "state"){
 			urlT+="&"+paramsObj1.paramNames[i]+"="+encodeURI(paramsObj1[paramsObj1.paramNames[i]]);
+		}
+		}
 	}
 	
 	return urlT;
@@ -1013,33 +1115,43 @@ var linkId;
 	var lon=document.getElementById("installAddresslongitude").value;
 	//alert("lon"+lon);
 	
+	coordinates($('#moveToAddresscoordinatesXPreDebriefRFV').val(),$('#moveToAddresscoordinatesYPreDebriefRFV').val(),"moveTo");
+	coordinates($('#installcoordinatesXPreDebriefRFV').val(),$('#installcoordinatesYPreDebriefRFV').val(),"installed");
 	
 	jQuery("#installStoreFrontNameLbl").html(document.getElementById("installStoreFrontName").value);
 	jQuery("#installAddressNameLbl").html(document.getElementById("installAddressName").value);
 	document.getElementById("installAddressLine1Lbl").innerHTML=document.getElementById("installAddressLine1").value;
 	//For LBS dropdowns
-	if(document.getElementById("installLBSAddressFlag").value !="" && document.getElementById("installLBSAddressFlag").value !=null && document.getElementById("installLBSAddressFlag").value =="true"){
-		
-		jQuery("#selectLocalAddress1").hide();
-		jQuery("#selectLocalAddress").show();
-		var addressId=document.getElementById("installAddressId").value;
-		
-		loadCoutrySateCitySiteBuilding(addressId);
-		
+	var curURL = window.location.href;
+	if(curURL.indexOf('/fleet-management') != -1)
+	{
+		if(document.getElementById("installLBSAddressFlag").value !="" && document.getElementById("installLBSAddressFlag").value !=null && document.getElementById("installLBSAddressFlag").value =="true"){
+
+			//alert(document.getElementById("installLBSAddressFlag").value);
+			/*jQuery("#selectLocalAddress1").hide();
+			jQuery("#selectLocalAddress").show();
+			var addressId=document.getElementById("installAddressId").value;
+			
+			loadCoutrySateCitySiteBuilding(addressId);*/
+			showBuildingFloorZone("install");
 		}
 	
-	if(document.getElementById("installLBSAddressFlag").value =='' || document.getElementById("installLBSAddressFlag").value ==null || document.getElementById("installLBSAddressFlag").value =="false"){
-		document.getElementById("installLBSAddressFlag").value="false";
-		
-		jQuery("#selectLocalAddress1").show();
-		jQuery("#selectLocalAddress").hide();
-		lbsInstall();
-		lbsFloor();
-		lbsZone();
-		lbsSite();
+		if(document.getElementById("installLBSAddressFlag").value =='' || document.getElementById("installLBSAddressFlag").value ==null || document.getElementById("installLBSAddressFlag").value =="false"){
+			document.getElementById("installLBSAddressFlag").value="false";
+			
+			jQuery("#selectLocalAddress1").show();
+			jQuery("#selectLocalAddress").hide();
+			lbsInstall();
+			lbsFloor();
+			lbsZone();
+			lbsSite();
 		}
-		
-	
+	}
+	else
+	{
+		/* Addded for LBS 1.5- LOD Checking for Installed Address */
+		showBuildingFloorZone("install");
+	}
 	
 	if(document.getElementById("installAddressLine2").value !="" && document.getElementById("installAddressLine2").value !=null){
 		jQuery("#installAddressLine2Lbl").html(document.getElementById("installAddressLine2").value + ',');
@@ -1168,11 +1280,12 @@ if(pageFlow=="fleetMgmtMove"||pageFlow=="Change"){
 	if(moveAddressFlag){
 		jQuery('#moveToAddressLink').html("<spring:message code="requestInfo.link.selectADifferentAddress"/>").attr('title',"<spring:message code="requestInfo.link.selectADifferentAddress"/>");
 	}
+
+	showBuildingFloorZone("moveToAddress");
 }
 	//common section end 2
-	
-	if(pageFlow=="Change"){
-		
+	/*if(pageFlow=="Change"){
+		alert('change::document.getElementById("moveToAddressLBSAddressFlag").value::'+document.getElementById("moveToAddressLBSAddressFlag").value);
 		if(document.getElementById("moveToAddressLBSAddressFlag").value !="" && document.getElementById("moveToAddressLBSAddressFlag").value !=null && document.getElementById("moveToAddressLBSAddressFlag").value =="true"){
 			var addressId=document.getElementById("moveToAddressId").value;
 			if(addressId!=''&&addressId!=null){
@@ -1265,7 +1378,7 @@ if(pageFlow=="fleetMgmtMove"){
 	
 		}
 	
-	}
+	}*/
 
 //For LBS dropdowns
 	function lbsInstall(){
@@ -1284,6 +1397,7 @@ if(pageFlow=="fleetMgmtMove"){
                           
                         	   if(insflg){
 			                        		 $('#bldng').attr('disabled', true);
+			                        		 $('#zone').attr('disabled', true);
 			                        	 }
                            jQuery('#bldng1').val(jQuery("#bldng option:selected").text());
                            jQuery('#physicalLocation1h').val(jQuery("#bldng option:selected").val());
@@ -1311,6 +1425,8 @@ if(pageFlow=="fleetMgmtMove"){
 		if(jQuery("#installLBSAddressFlag").val()=="true"){
 			
 			var flrflg=false;
+			var installAddressLevelOfDetails = $("#installLevelOfDetails").val();
+			
 			 $(function() {
 				 
 				 if(p!="buildingchange"){
@@ -1322,6 +1438,31 @@ if(pageFlow=="fleetMgmtMove"){
 					 }
 				 if(flrflg){
 			                        		 $('#flr').attr('disabled', true);
+			                        		 $('#zone').attr('disabled', true);
+
+			                        		 if(installAddressLevelOfDetails.toLowerCase() === "mix - see floor" 
+			     					    		&& $("#flr option:selected").attr("lod") != undefined
+			     					    		&& $("#flr option:selected").attr("lod").toLowerCase() === "grid level")
+			     						 	{
+			     					    		if(curURL.indexOf('/fleet-management') != -1)
+			     								{
+			     									//$(".installSection").find("#gridLi").hide();
+			     									
+			     									if(pageFlow.toLowerCase() === "addone")
+			     									{
+			     										$(".installSection").find("#gridLi").show();
+			     									}
+			     									else
+			     									{
+			     										$(".installSection").find("#gridLi").show();
+			     										$(".installSection").find("#installedXYLblDiv").hide();
+			     									}
+			     								}
+			     					    		else
+			     					    		{
+			     					    			$(".installSection").find("#gridLi").show();
+			     					    		}			     										     					    		
+			     						 	}
 			                        	 }
 				 
                  jQuery('#flr1').val(jQuery("#flr option:selected").text());
@@ -1383,9 +1524,9 @@ if(pageFlow=="fleetMgmtMove"){
                            });
                       
                       
-                    	  if(zonflg){
-			                        		 $('#zone').attr('disabled', true);
-			                        	 }
+                           if(zonflg==true || ( ($('#bldng').prop('disabled')==true) && ($('#flr').prop('disabled')==true) )){
+			                   $('#zone').attr('disabled', true);
+			              }
                     	  
                        jQuery('#zone1').val(jQuery("#zone option:selected").text());
                        jQuery('#zoneh').val(jQuery("#zone option:selected").val());
@@ -1729,7 +1870,7 @@ function addRestFieldsOfCleanseAddress(){
 <%--Changes for Phase 2.1--%>
 //Changed for LBS dropdowns
 function addServiceAddressElement(addressId,addressName,addressLine1,addressLine2, 
-		addressCity,addressState,addressProvince,addressCountry,addressPostCode,storefrontName,physicalLoc1,physicalLoc2,physicalLoc3,favorite,officeNumber,district,county,countryISO,region,stateCode,lbsAddressFlag,lbsIdentifierFlag)
+		addressCity,addressState,addressProvince,addressCountry,addressPostCode,storefrontName,physicalLoc1,physicalLoc2,physicalLoc3,favorite,officeNumber,district,county,countryISO,region,stateCode,lbsAddressFlag,levelOfDetails)
 <%--Ends--%>
 {
 	jQuery('#errorDiv').hide();
@@ -1749,29 +1890,30 @@ function addServiceAddressElement(addressId,addressName,addressLine1,addressLine
 		<%--Changes for Phase 2.1--%>
 		//call to addConsumablesAddress in the commonAsset.js
 		addPickupAddress(addressId,addressName,addressLine1,addressLine2,addressCity,addressState,addressProvince,
-				addressCountry,addressPostCode,storefrontName,favorite,officeNumber,district,county,countryISO,region,stateCode,lbsAddressFlag,lbsIdentifierFlag);
+				addressCountry,addressPostCode,storefrontName,favorite,officeNumber,district,county,countryISO,region,stateCode,lbsAddressFlag,levelOfDetails);
 		//added for LBS
 		if(lbsAddressFlag=="true"){
+			//For LOD -- jQuery("#selectLocalAddress1").hide();
+			//For LOD -- jQuery("#selectLocalAddress").show();
 			
-		
-		jQuery("#selectLocalAddress1").hide();
-		jQuery("#selectLocalAddress").show();
-		//setting values to ""
-		jQuery("#bldng1").val("");
-		jQuery("#flr1").val("");
-		jQuery("#zone1").val("");
-		jQuery('#campus1').val("");
-		jQuery('#campush').val("");
-		jQuery("#physicalLocation1h").val("");
-		jQuery("#physicalLocation2h").val("");
-		jQuery("#physicalLocation3h").val("");
-		jQuery("#zoneh").val("");
-		jQuery("#physicalLocation1").val("");
-		jQuery("#physicalLocation2").val("");
-		jQuery("#physicalLocation3").val("");
-		jQuery("#office").val("");
-		
-		loadCoutrySateCitySiteBuilding(addressId);
+			//setting values to ""
+			jQuery("#bldng1").val("");
+			jQuery("#flr1").val("");
+			jQuery("#zone1").val("");
+			jQuery('#campus1').val("");
+			jQuery('#campush').val("");
+			jQuery("#physicalLocation1h").val("");
+			jQuery("#physicalLocation2h").val("");
+			jQuery("#physicalLocation3h").val("");
+			jQuery("#zoneh").val("");
+			jQuery("#physicalLocation1").val("");
+			jQuery("#physicalLocation2").val("");
+			jQuery("#physicalLocation3").val("");
+			jQuery("#office").val("");
+			
+			//For LOD -- loadCoutrySateCitySiteBuilding(addressId);
+			showBuildingFloorDropDOwns(addressId, "install", "selectLocalAddress");
+			clearGridValues("installed");
 		}
 		else{
 			//setting values to ""
@@ -1790,6 +1932,7 @@ function addServiceAddressElement(addressId,addressName,addressLine1,addressLine
 			jQuery("#office").val("");
 			jQuery("#selectLocalAddress1").show();
 			jQuery("#selectLocalAddress").hide();
+			clearGridValues("installed");
 		}
 		<%--Ends--%>
 	}
@@ -1799,13 +1942,14 @@ function addServiceAddressElement(addressId,addressName,addressLine1,addressLine
 		<%--Changes for Phase 2.1--%>
 		//call to addConsumablesAddress in the commonAsset.js
 		addMoveToAddress(addressId,addressName,addressLine1,addressLine2,addressCity,addressState,addressProvince,
-				addressCountry,addressPostCode,storefrontName,favorite,officeNumber,district,county,countryISO,region,stateCode,lbsAddressFlag,lbsIdentifierFlag);
+				addressCountry,addressPostCode,storefrontName,favorite,officeNumber,district,county,countryISO,region,stateCode,lbsAddressFlag,levelOfDetails);
 		//added for LBS
+		
 		if(lbsAddressFlag=="true"){
 			var addressId=document.getElementById("moveToAddressId").value;
 			
-			jQuery("#selectMoveToAddress1").hide();
-			jQuery("#selectMoveToAddress").show();
+			//For LOD jQuery("#selectMoveToAddress1").hide();
+			//For LOD jQuery("#selectMoveToAddress").show();
 			//setting values to ""
 			jQuery("#bldngm1").val("");
 			jQuery("#flrm1").val("");
@@ -1821,7 +1965,9 @@ function addServiceAddressElement(addressId,addressName,addressLine1,addressLine
 			jQuery("#moveTophysicalLocation3").val("");
 			jQuery("#moveTophysicalLocation3m").val("");
 			
-			loadCoutrySateCitySiteBuildingm(addressId);
+			//For LOD loadCoutrySateCitySiteBuildingm(addressId);
+			showBuildingFloorDropDOwns(addressId, "moveToAddress", "selectMoveToAddress");
+			clearGridValues("moveTo");
 						
 		}else{
 			//setting values to ""
@@ -1841,7 +1987,8 @@ function addServiceAddressElement(addressId,addressName,addressLine1,addressLine
 			
 			jQuery("#selectMoveToAddress1").show();
 			jQuery("#selectMoveToAddress").hide();
-			}
+			clearGridValues("moveTo");
+		}
 		
 			<%--Ends--%>
 	}
@@ -1857,7 +2004,7 @@ function addServiceAddressElement(addressId,addressName,addressLine1,addressLine
 	closeDialog();
 }
 function addPickupAddress(addressId,addressName,addressLine1,addressLine2,addressCity,addressState,addressProvince,
-		addressCountry,addressPostCode,storefrontName,favorite,officeNumber,district,county,countryISO,region,stateCode,lbsAddressFlag,lbsIdentifierFlag)
+		addressCountry,addressPostCode,storefrontName,favorite,officeNumber,district,county,countryISO,region,stateCode,lbsAddressFlag,levelOfDetails)
 
 {	
 	if(addressProvince == null){
@@ -1961,10 +2108,12 @@ function addPickupAddress(addressId,addressName,addressLine1,addressLine2,addres
 		jQuery("#installAddressCityLbl").text("");
 		}
 	//changes for MPS 2.1 end
-	
+
+	//Change for LBS 1.5- LOD checking
+	$("#installLevelOfDetails").val(levelOfDetails);
 }
 function addMoveToAddress(addressId,addressName,addressLine1,addressLine2,addressCity,addressState,addressProvince,
-		addressCountry,addressPostCode,storefrontName,favorite,officeNumber,district,county,countryISO,region,stateCode,lbsAddressFlag,lbsIdentifierFlag)
+		addressCountry,addressPostCode,storefrontName,favorite,officeNumber,district,county,countryISO,region,stateCode,lbsAddressFlag,levelOfDetails)
 
 {	
 	if(addressProvince == null){
@@ -2073,9 +2222,50 @@ function addMoveToAddress(addressId,addressName,addressLine1,addressLine2,addres
 		}
 	
 	//changes for MPS 2.1 end
-	
+
+	//Change for LBS 1.5- LOD checking
+	$("#moveToAddressLevelOfDetails").val(levelOfDetails);
 }
 
+$('#moveToGridLink').click(function(){openPopupMap("moveTo",'${mdmId}','${mdmLevel}','${formPost}','${emailId}',$("#moveTophysicalLocation1h").val(),$("#moveTophysicalLocation2h").val());});
+$('#installedGridLink').click(function(){openPopupMap("installed",'${mdmId}','${mdmLevel}','${formPost}','${emailId}',$("#physicalLocation1h").val(),$("#physicalLocation2h").val());});
 
+function coordinates(xCo,yCo,flag){
+	var xCoordinate="";
+	var yCoordinate="";
+	var seperator="/";
+	if(!(xCo && yCo))
+	{
+			seperator="";
+	}
+	if(xCo){xCoordinate=xCo;}
+	if(yCo){yCoordinate=yCo;}
+	if(flag=="moveTo"){
+		$('#moveToCoords').html(xCoordinate+seperator+yCoordinate);
+		$('#moveToAddresscoordinatesXPreDebriefRFV').val(xCoordinate);
+		$('#moveToAddresscoordinatesYPreDebriefRFV').val(yCoordinate);
+	}
+	else if(flag=="installed"){
+		$('#installedCoords').html(xCoordinate+seperator+yCoordinate);
+		$('#installcoordinatesXPreDebriefRFV').val(xCoordinate);
+		$('#installcoordinatesYPreDebriefRFV').val(yCoordinate);
+	}	
+}
+
+function clearGridValues(action)
+{
+	if(action === "moveTo")
+	{
+		$('#moveToCoords').html("");
+		$('#moveToAddresscoordinatesXPreDebriefRFV').val("");
+		$('#moveToAddresscoordinatesYPreDebriefRFV').val("");
+	}
+	else if(action === "installed")
+	{
+		$('#installedCoords').html("");
+		$('#installcoordinatesXPreDebriefRFV').val("");
+		$('#installcoordinatesYPreDebriefRFV').val("");
+	}
+}
 
 </script>

@@ -17,7 +17,8 @@
 	function changeView(param){
 		//alert("Param:: "+ param);
 		if(param == 'grid'){
-			zoomAndCenter();
+			zoomProcessor.saveSession=true;
+			zoomProcessor.postZoom();
 					
 		}else if(param == 'map'){
 			var zoomInfo = '${zoomLevelInfo}';

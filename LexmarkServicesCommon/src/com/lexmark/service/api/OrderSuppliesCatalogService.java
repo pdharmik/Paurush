@@ -1,7 +1,9 @@
 package com.lexmark.service.api;
 
 import com.lexmark.contract.CatalogListContract;
+import com.lexmark.contract.GlobalCatalogListContract;
 import com.lexmark.result.CatalogListResult;
+import com.lexmark.result.GlobalCatalogListResult;
 
 public interface OrderSuppliesCatalogService {
     
@@ -14,4 +16,6 @@ public interface OrderSuppliesCatalogService {
 	public CatalogListResult retrievePrinterTypesB2B(CatalogListContract contract) throws Exception;
 
 	public CatalogListResult retrieveAccessoriesB2b(CatalogListContract contract) throws Exception;
+
+	public GlobalCatalogListResult retrieveGlobalCatalogListB2B(GlobalCatalogListContract globalCatalogListContract) throws Exception;
 }

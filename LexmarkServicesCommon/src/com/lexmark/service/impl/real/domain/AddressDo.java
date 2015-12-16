@@ -33,6 +33,8 @@ public class AddressDo extends AccountBasedDo implements Serializable {
 	private String countyCode;
 	private Boolean lbsAddressFlag;
 	
+	private String levelOfDetails;
+	
 	public String getStatus() {
 		return status;
 	}
@@ -182,5 +184,13 @@ public class AddressDo extends AccountBasedDo implements Serializable {
 
 	public void setLbsAddressFlag(Boolean lbsAddressFlag) {
 		this.lbsAddressFlag = lbsAddressFlag;
+	}
+
+	public String getLevelOfDetails() {
+		return levelOfDetails;
+	}
+
+	public void setLevelOfDetails(String levelOfDetails) {
+		this.levelOfDetails = levelOfDetails;
 	}	
 }

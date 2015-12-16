@@ -1722,6 +1722,65 @@ public class AmindContractedServiceRequestServiceTest extends AmindServiceTest {
 		SiebelAccountListResult result = service.retrieveSiebelAccountList(contract);
 		System.out.println("size: " + result.getAccountList().size());
 	}
+	
+	@Test
+	public void testRetrieveSiebelAccountList_LBS1_5() throws Exception {
+		contract.setMdmLevel("Legal");
+		contract.setMdmId("33228");
+//		contract.setAccountId("1-LBTR7B");
+		contract.setNewQueryIndicator(false);
+		contract.setAgreementFlag(false);
+		contract.setHardwareFlag(false);
+		SiebelAccountListResult result = service.retrieveSiebelAccountList(contract);
+		System.out.println("size: " + result.getAccountList().size());
+	}
+	
+	@Test
+	public void testRetrieveSiebelAccountList_INC0139413() throws Exception {
+		contract.setMdmLevel("Domestic");
+		contract.setMdmId("370514358");
+//		contract.setAccountId("1-LBTR7B");
+		contract.setNewQueryIndicator(true);
+		contract.setAgreementFlag(false);
+		contract.setHardwareFlag(false);
+		SiebelAccountListResult result = service.retrieveSiebelAccountList(contract);
+		for (Account account : result.getAccountList()) {
+			System.out.println("Acc Name: " + account.getAccountName());
+		}
+		System.out.println("size: " + result.getAccountList().size());
+	}
+	
+	@Test
+	public void testRetrieveSiebelAccountList_INC0144014() throws Exception {
+		contract.setMdmLevel("Global");
+		contract.setMdmId("077583318");
+//		contract.setAccountId("1-LBTR7B");
+		contract.setNewQueryIndicator(true);
+		contract.setAgreementFlag(false);
+		contract.setHardwareFlag(false);
+		SiebelAccountListResult result = service.retrieveSiebelAccountList(contract);
+		for (Account account : result.getAccountList()) {
+			System.out.println("AgreementId: " + account.getAgreementId());
+			System.out.println("AccountId: " + account.getAccountId());
+		}
+		System.out.println("size: " + result.getAccountList().size());
+	}
+	
+	@Test
+	public void testRetrieveSiebelAccountList_defect19173() throws Exception {
+		contract.setMdmLevel("Legal");
+		contract.setMdmId("134191");
+//		contract.setAccountId("1-LBTR7B");
+		contract.setNewQueryIndicator(false);
+		contract.setAgreementFlag(false);
+		contract.setHardwareFlag(false);
+		SiebelAccountListResult result = service.retrieveSiebelAccountList(contract);
+		for (Account account : result.getAccountList()) {
+			System.out.println("Hardware flag: " + account.isHardwareRequestFlag());
+		}
+		System.out.println("size: " + result.getAccountList().size());
+	}
+	
 
 	@Test
 	public void testRetrieveAddressList_Defect_16135_1() throws Exception {
@@ -1911,6 +1970,51 @@ public class AmindContractedServiceRequestServiceTest extends AmindServiceTest {
 	 }
 	
 	@Test
+	public void testRetrieveLBSAddressList_defect19723() throws Exception {
+		AddressListContract contract = new AddressListContract();
+		contract.setSessionHandle(crmSessionHandle);
+		contract.setMdmId("315016972");
+		contract.setMdmLevel("Global");
+		contract.setNewQueryIndicator(true);
+		contract.setStartRecordNumber(0);
+		contract.setIncrement(40);
+		contract.setLbsFlag(true); 
+		contract.setCountry("Germany");
+		//contract.setState("KY");
+		AddressListResult result = service.retrieveLBSAddressList(contract);
+//		for (LBSAddress address : result.getLbsAddressList()) {
+//			System.out.println("Province: " + address.getProvince());
+//		}
+		for (LBSAddress address : result.getLbsAddressList()) {
+			System.out.println("City: " + address.getCity());
+		}
+		MiscTest.print(result.getLbsAddressList());
+	}
+	
+	@Test
+	public void testRetrieveLBSAddressList_defect19723_ProvinceSelected() throws Exception {
+		AddressListContract contract = new AddressListContract();
+		contract.setSessionHandle(crmSessionHandle);
+		contract.setMdmId("315016972");
+		contract.setMdmLevel("Global");
+		contract.setNewQueryIndicator(true);
+		contract.setStartRecordNumber(0);
+		contract.setIncrement(40);
+		contract.setLbsFlag(true); 
+		contract.setCountry("Germany");
+		contract.setProvince("Bayern");
+		//contract.setState("KY");
+		AddressListResult result = service.retrieveLBSAddressList(contract);
+		for (LBSAddress address : result.getLbsAddressList()) {
+			System.out.println("Province: " + address.getProvince());
+		}
+		for (LBSAddress address : result.getLbsAddressList()) {
+			System.out.println("City: " + address.getCity());
+		}
+		MiscTest.print(result.getLbsAddressList());
+	}
+	
+	@Test
 	public void testRetrieveAddressList_LBSFlagFilter() throws Exception {
 		AddressListContract contract = new AddressListContract();
 		contract.setSessionHandle(crmSessionHandle);
@@ -1959,6 +2063,128 @@ public class AmindContractedServiceRequestServiceTest extends AmindServiceTest {
 		for (GenericAddress address : result.getAddressList()) {
 			System.out.println("LBS flag: " + address.getLbsAddressFlag());
 		}
+		System.out.println("AddressList size: " + result.getAddressList().size());
+	}
+	
+	@Test
+	public void testRetrieveAddressList_INC0129520() throws Exception {
+		AddressListContract contract = new AddressListContract();
+		contract.setSessionHandle(crmSessionHandle);
+		contract.setLocale(new Locale("en_US"));
+		contract.setContactId("1-8NGPUBX");
+		contract.setMdmId("006961700");
+		contract.setMdmLevel("Global");
+		contract.setNewQueryIndicator(true);
+		contract.setStartRecordNumber(0);
+		contract.setIncrement(40);
+		contract.setLbsFlag(false);
+		Map<String, Object> filterCriteria = new HashMap<String, Object>();
+		filterCriteria.put("addressName", "T-0613");
+		contract.setFilterCriteria(filterCriteria );
+		Map<String, Object> sortCriteria = new HashMap<String, Object>();
+		sortCriteria.put("addressName", "DESCENDING");
+		contract.setSortCriteria(sortCriteria );
+		
+		AddressListResult result = service.retrieveAddressList(contract);
+		System.out.println("AddressList size: " + result.getAddressList().size());
+	}
+	
+	@Test
+	public void testRetrieveAddressList_LBS1_5() throws Exception {
+		AddressListContract contract = new AddressListContract();
+		contract.setSessionHandle(crmSessionHandle);
+		contract.setLocale(new Locale("en_US"));
+		contract.setContactId("1-MON94I1");
+		contract.setMdmId("15580");
+		contract.setMdmLevel("Legal");
+		contract.setNewQueryIndicator(true);
+		contract.setStartRecordNumber(0);
+		contract.setIncrement(40);
+		contract.setLbsFlag(true);
+//		Map<String, Object> filterCriteria = new HashMap<String, Object>();
+//		filterCriteria.put("addressName", "T-0613");
+//		contract.setFilterCriteria(filterCriteria );
+		Map<String, Object> sortCriteria = new HashMap<String, Object>();
+		sortCriteria.put("addressName", "DESCENDING");
+		contract.setSortCriteria(sortCriteria );
+		
+		AddressListResult result = service.retrieveAddressList(contract);
+		for (GenericAddress address : result.getAddressList()) {
+			System.out.println("LevelOfDetails: " + address.getLevelOfDetails());
+		}
+		System.out.println("AddressList size: " + result.getAddressList().size());
+	}
+	
+	@Test
+	public void testRetrieveAddressList_INC0137985() throws Exception {
+		AddressListContract contract = new AddressListContract();
+		contract.setSessionHandle(crmSessionHandle);
+		contract.setLocale(new Locale("en_US"));
+		contract.setContactId("1-5GJ091L");
+		contract.setMdmId("7276");
+		contract.setMdmLevel("Legal");
+		contract.setNewQueryIndicator(true);
+		contract.setStartRecordNumber(0);
+		contract.setIncrement(40);
+		contract.setLbsFlag(false);
+//		Map<String, Object> filterCriteria = new HashMap<String, Object>();
+//		filterCriteria.put("addressName", "T-0613");
+//		contract.setFilterCriteria(filterCriteria );
+		Map<String, Object> sortCriteria = new HashMap<String, Object>();
+		sortCriteria.put("addressName", "DESCENDING");
+		contract.setSortCriteria(sortCriteria );
+		
+		long t0 = System.currentTimeMillis();
+		AddressListResult result = service.retrieveAddressList(contract);
+		System.out.printf("Exec time=%s sec. \n", (System.currentTimeMillis() - t0) / 1000.0);
+		System.out.println("AddressList size: " + result.getAddressList().size());
+	}
+	
+	@Test
+	public void testRetrieveAddressList_defect18674_RecordCount() throws Exception {
+		AddressListContract contract = new AddressListContract();
+		contract.setSessionHandle(crmSessionHandle);
+		contract.setLocale(new Locale("en_US"));
+		contract.setContactId("1-16X93QX");
+		contract.setMdmId("1-DZ9CDJ");
+		contract.setMdmLevel("Siebel");
+		contract.setNewQueryIndicator(true);
+		contract.setStartRecordNumber(0);
+		contract.setIncrement(40);
+		contract.setLbsFlag(false);
+//		Map<String, Object> filterCriteria = new HashMap<String, Object>();
+//		filterCriteria.put("addressName", "T-0613");
+//		contract.setFilterCriteria(filterCriteria );
+		Map<String, Object> sortCriteria = new HashMap<String, Object>();
+		sortCriteria.put("addressName", "ASCENDING");
+		contract.setSortCriteria(sortCriteria );
+		
+		AddressListResult result = service.retrieveAddressList(contract);
+		System.out.println("Total count: " + result.getTotalCount());
+		System.out.println("AddressList size: " + result.getAddressList().size());
+	}
+	
+	@Test
+	public void testRetrieveAddressList_defect19790_Filter() throws Exception {
+		AddressListContract contract = new AddressListContract();
+		contract.setSessionHandle(crmSessionHandle);
+		contract.setLocale(new Locale("en_US"));
+		contract.setContactId("1-NVKU6J7");
+		contract.setMdmId("623331717");
+		contract.setMdmLevel("Global");
+		contract.setNewQueryIndicator(true);
+		contract.setStartRecordNumber(0);
+		contract.setIncrement(40);
+		contract.setLbsFlag(true);
+		Map<String, Object> filterCriteria = new HashMap<String, Object>();
+		filterCriteria.put("lbsAddressFlag", "Y");
+		contract.setFilterCriteria(filterCriteria );
+		Map<String, Object> sortCriteria = new HashMap<String, Object>();
+		sortCriteria.put("addressName", "DESCENDING");
+		contract.setSortCriteria(sortCriteria );
+		
+		AddressListResult result = service.retrieveAddressList(contract);
+		System.out.println("Total count: " + result.getTotalCount());
 		System.out.println("AddressList size: " + result.getAddressList().size());
 	}
 	

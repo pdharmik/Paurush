@@ -1,7 +1,10 @@
 package com.lexmark.services.util.cm;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.portlet.PortletSession;
 import javax.portlet.ResourceRequest;
@@ -14,6 +17,7 @@ import org.apache.logging.log4j.LogManager;
 import com.lexmark.constants.LexmarkConstants;
 import com.lexmark.contract.GeographyCountryContract;
 import com.lexmark.contract.GeographyStateContract;
+import com.lexmark.contract.LocalizedSiebelLOVListContract;
 import com.lexmark.contract.LocalizedSiebelValueContract;
 import com.lexmark.domain.Account;
 import com.lexmark.domain.AccountContact;
@@ -25,15 +29,19 @@ import com.lexmark.domain.ServiceRequest;
 import com.lexmark.domain.SiebelLocalization.SiebelLocalizationOptionEnum;
 import com.lexmark.exceptionimpl.runtime.LGSRuntimeException;
 import com.lexmark.framework.logging.LEXLogger;
+import com.lexmark.result.LocalizedSiebelLOVListResult;
 import com.lexmark.result.LocalizedSiebelValueResult;
 import com.lexmark.service.api.ServiceRequestLocale;
 import com.lexmark.service.impl.real.jdbc.InfrastructureException;
 import com.lexmark.service.impl.real.jdbc.ServiceRequestLocaleImpl;
 import com.lexmark.services.LexmarkSPConstants;
+import com.lexmark.services.hook.LBSAccess;
 import com.lexmark.services.util.ChangeMgmtConstant;
 import com.lexmark.services.util.ContractFactory;
+import com.lexmark.services.util.PortalSessionUtil;
 import com.lexmark.services.util.XMLEncodeUtil;
 import com.lexmark.util.DateLocalizationUtil;
+import com.lexmark.util.LOVComparator;
 import com.lexmark.util.PropertiesMessageUtil;
 import com.lexmark.util.TimezoneUtil;
 
@@ -707,7 +715,8 @@ public class XMLOutputGeneratorUtil {
 		String removeTitle = PropertiesMessageUtil.getPropertyMessage(
 				LexmarkSPConstants.MESSAGE_BUNDLE_NAME,
 				"requestInfo.tooltip.address.delete", locale);
-
+		Map<String,String> lbsAddressMap=localizeLbsFlag(SiebelLocalizationOptionEnum.LBS_ISLBSADDRESS.getValue(),locale);
+		Map<String,String> lbsAddressLODMap=localizeLbsFlag(SiebelLocalizationOptionEnum.LBS_ADDRESSLOD.getValue(),locale);
 		StringBuffer xml = new StringBuffer("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 		xml.append("<rows total_count=\"" + totalCount + "\" pos=\"" + posStart
 				+ "\">\n");
@@ -775,7 +784,7 @@ public class XMLOutputGeneratorUtil {
 							.getPhysicalLocation1() : "").replaceAll("\"", "&quot;")
 					+ "','"
 					+ StringEscapeUtils.escapeJavaScript(genericAddress.getPhysicalLocation2() != null ? genericAddress
-							.getPhysicalLocation1() : "").replaceAll("\"", "&quot;")
+							.getPhysicalLocation2() : "").replaceAll("\"", "&quot;")
 					+ "','"
 					+ StringEscapeUtils.escapeJavaScript(genericAddress.getPhysicalLocation3() != null ? genericAddress
 							.getPhysicalLocation3() : "").replaceAll("\"", "&quot;")
@@ -796,6 +805,8 @@ public class XMLOutputGeneratorUtil {
 					+StringEscapeUtils.escapeJavaScript(genericAddress.getState()!= null ? genericAddress.getState(): "").replaceAll("\"", "&quot;")
 					+"','"
 					+genericAddress.getLbsAddressFlag()
+					+"','"
+					+StringEscapeUtils.escapeJavaScript(genericAddress.getLevelOfDetails()!= null ? genericAddress.getLevelOfDetails(): "").replaceAll("\"", "&quot;")
 					//+StringEscapeUtils.escapeJavaScript(genericAddress.getLbsAddressFlag()!= null ? genericAddress.getLbsAddressFlag(): "").replaceAll("\"", "&quot;")
 					
 					//Ends
@@ -859,6 +870,10 @@ public class XMLOutputGeneratorUtil {
 			xml.append("  <cell><![CDATA[" + (genericAddress.getCountry() != null ? genericAddress
 							.getCountry() : "")+ "]]></cell>\n");
 			
+			
+			xml.append("  <cell><![CDATA[" + (genericAddress.getLbsAddressFlag()!= null && genericAddress.getLbsAddressFlag()==true ? lbsAddressMap.get("Y"): lbsAddressMap.get("N") )+ "]]></cell>\n");
+			xml.append("  <cell><![CDATA[" + (genericAddress.getLevelOfDetails()!= null && genericAddress.getLevelOfDetails()!="" ? lbsAddressLODMap.get(genericAddress
+					.getLevelOfDetails()) : "")+ "]]></cell>\n");
 			/*Phase 2 Ends*/	
 			
 			
@@ -897,6 +912,7 @@ public class XMLOutputGeneratorUtil {
 				+ "\">\n");
 		int i=0;
 		LOGGER.debug("IN XML -> isCatalogPage="+isCatalogPage+" isVendorFlag="+isVendorFlag);
+		
 		for (Account account: accountList) {
 			
 			String accountId = account.getAccountId() != null ? XMLEncodeUtil.escapeXMLForDMCM(account.getAccountId()) : "";
@@ -949,6 +965,12 @@ public class XMLOutputGeneratorUtil {
 			if (accountId == ""){
 				continue;
 			}
+			
+			//Added for LBS 1.5
+			boolean showDeviceStatus=LBSAccess.checkDeviceStatusFlag(account,"deviceStatus");
+			boolean showDeviceUtilization=LBSAccess.checkDeviceStatusFlag(account,"deviceUtilization");
+			
+			//Ends LBS 1.5
 			xml.append(" <row id=\"" + (accountId)+i + "\">\n");
 			
 			xml.append("  <cell><![CDATA[" + account.isCatalogEntitlementFlag() + "]]></cell>\n");
@@ -975,7 +997,8 @@ public class XMLOutputGeneratorUtil {
 				}else{
 					
 					xml.append("  <cell><![CDATA[ <input name=\"btn_select\" class=\"button\"  type=\"button\" id=\"button"+accountId+i+"\" onclick=\"setAccount('"
-							+accountId+ "','"+vendorAccountId+ "','"+isCreateClaimFlag+ "','"+isViewOrderFlag+ "','"+(accountId+i)+"','"+ account.isCatalogExpediteFlag()+"','"+soldToList+"','"+showPrice+"','"+poFlag+"','"+creditCardFlag+"','"+accountSplitterFlag+"','"+salesOrg+"','"+contractNumber+"','"+contractLine+"');\" value=\""
+							+accountId+ "','"+vendorAccountId+ "','"+isCreateClaimFlag+ "','"+isViewOrderFlag+ "','"+(accountId+i)+"','"+ account.isCatalogExpediteFlag()+"','"+soldToList+"','"+showPrice+"','"+poFlag+"','"+creditCardFlag+"','"+accountSplitterFlag+"','"+salesOrg+"','"+
+							contractNumber+"','"+contractLine+"',"+showDeviceStatus+","+showDeviceUtilization+");\" value=\""
 							+ getLocalizeSelectButton() + "\"/>]]></cell>\n");
 				}
 			}
@@ -1359,6 +1382,27 @@ public class XMLOutputGeneratorUtil {
 			return siebelValue;
 		}
 		return localLovValue.getName();
+	}
+	
+	private Map<String,String> localizeLbsFlag(String lovType, Locale locale){
+		Map<String,String> lovMap=new HashMap<String,String>();
+		LocalizedSiebelLOVListContract contract = ContractFactory.createLocalizedSiebelLOVListContract(lovType, null, locale);
+		
+		LocalizedSiebelLOVListResult result = new LocalizedSiebelLOVListResult();
+		ServiceRequestLocale srlocale = getServiceRequestLocale();
+		try {
+			result = srlocale.retrieveLocalizedSiebelLOVList(contract);
+		} catch (InfrastructureException ex) {
+			
+		}
+		List<ListOfValues> localLovValue = result.getLocalizedSiebelLOVList();
+		
+		Collections.sort(localLovValue, new LOVComparator(locale));
+		for(ListOfValues lov : localLovValue){
+			lovMap.put(lov.getValue(), lov.getName());
+		}
+
+		return lovMap;
 	}
 	
 	/**.

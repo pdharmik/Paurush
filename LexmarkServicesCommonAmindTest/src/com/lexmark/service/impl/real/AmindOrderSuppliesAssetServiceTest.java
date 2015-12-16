@@ -1868,6 +1868,20 @@ public class AmindOrderSuppliesAssetServiceTest extends AmindServiceTest {
 		PageCountsContract contract = new PageCountsContract();
 		contract.setAssetId("1-832GUBG");
 		PageCountsResult result = service.retrievePageCounts(contract);
+		
+		for (PageCounts pageCounts : result.getPageCounts()) {
+			System.out.println("Name: " + pageCounts.getName());
+			System.out.println("Count: " + pageCounts.getCount());
+			System.out.println("Date: " + pageCounts.getDate());
+			System.out.println("---------------");
+		}
+	}
+	
+	@Test
+	public void testRetrievePageCounts_defect19556() throws Exception {
+		PageCountsContract contract = new PageCountsContract();
+		contract.setAssetId("1-JSB2-2852");
+		PageCountsResult result = service.retrievePageCounts(contract);
 
 		for (PageCounts pageCounts : result.getPageCounts()) {
 			System.out.println("Name: " + pageCounts.getName());
@@ -2842,6 +2856,206 @@ public class AmindOrderSuppliesAssetServiceTest extends AmindServiceTest {
 	}
 	
 	@Test
+	public void testRetrieveAllDeviceList_CHG0004184() throws Exception {
+		AssetListContract contract = new AssetListContract();
+		contract.setLocale(new Locale("en_US"));
+		contract.setContactId("1-8NGPUBX");
+		contract.setMdmLevel("Global");
+		contract.setMdmId("219469751");
+		contract.setEntitlementEndDate("09/01/2015");
+		contract.setSortCriteria((Map<String, Object>) MiscTest.newHashMap("serialNumber", "ASCENDING"));
+		Map<String, Object> filterCriteria = new HashMap<String, Object>();
+		filterCriteria.put("installAddress.city", "Luxemburg");
+//		filterCriteria.put("installAddress.country", "Luxembourg");
+		contract.setFilterCriteria(filterCriteria );
+//		contract.setLbsFilterCriteriaFlag("N");
+		contract.setIncrement(40);
+		contract.setStartRecordNumber(0);
+		contract.setNewQueryIndicator(true);
+		AmindCrmSessionHandle handle = new AmindCrmSessionHandle();
+		handle.setSessionFactory(new StatefulSessionFactory());
+		contract.setSessionHandle(handle);
+		
+		AssetListResult result = service.retrieveAllDeviceList(contract);
+		System.out.println("ListSize: " + result.getAssets().size());
+		System.out.println(result.getTotalCount());
+	}
+	
+	@Test
+	public void testRetrieveAllDeviceList_INC0141420() throws Exception {
+		AssetListContract contract = new AssetListContract();
+		contract.setLocale(new Locale("en_US"));
+		contract.setContactId("1-3LEPYGX");
+		contract.setMdmLevel("Global");
+		contract.setMdmId("487201915");
+		contract.setChlNodeId("1-14GEUTO5");
+		contract.setEntitlementEndDate("09/03/2015");
+		contract.setSortCriteria((Map<String, Object>) MiscTest.newHashMap("serialNumber", "ASCENDING"));
+//		Map<String, Object> filterCriteria = new HashMap<String, Object>();
+//		filterCriteria.put("installAddress.city", "Luxemburg");
+//		filterCriteria.put("installAddress.country", "Luxembourg");
+//		contract.setFilterCriteria(filterCriteria );
+//		contract.setLbsFilterCriteriaFlag("N");
+		contract.setIncrement(40);
+		contract.setStartRecordNumber(0);
+		contract.setNewQueryIndicator(true);
+		AmindCrmSessionHandle handle = new AmindCrmSessionHandle();
+		handle.setSessionFactory(new StatefulSessionFactory());
+		contract.setSessionHandle(handle);
+		
+		AssetListResult result = service.retrieveAllDeviceList(contract);
+		System.out.println("ListSize: " + result.getAssets().size());
+		System.out.println(result.getTotalCount());
+	}
+	
+	@Test
+	public void testRetrieveAllDeviceList_INC0141420_2() throws Exception {
+		AssetListContract contract = new AssetListContract();
+		contract.setLocale(new Locale("en_US"));
+		contract.setContactId("1-3LEPYGX");
+		contract.setMdmLevel("Global");
+		contract.setMdmId("487201915");
+		contract.setChlNodeId("1-18FQKH2");
+		contract.setEntitlementEndDate("09/03/2015");
+		contract.setSortCriteria((Map<String, Object>) MiscTest.newHashMap("serialNumber", "ASCENDING"));
+//		Map<String, Object> filterCriteria = new HashMap<String, Object>();
+//		filterCriteria.put("installAddress.city", "Luxemburg");
+//		filterCriteria.put("installAddress.country", "Luxembourg");
+//		contract.setFilterCriteria(filterCriteria );
+//		contract.setLbsFilterCriteriaFlag("N");
+		contract.setIncrement(40);
+		contract.setStartRecordNumber(0);
+		contract.setNewQueryIndicator(true);
+		AmindCrmSessionHandle handle = new AmindCrmSessionHandle();
+		handle.setSessionFactory(new StatefulSessionFactory());
+		contract.setSessionHandle(handle);
+		
+		AssetListResult result = service.retrieveAllDeviceList(contract);
+		for (Asset asset : result.getAssets()) {
+			System.out.println("Serial Number: " + asset.getSerialNumber());
+		}
+		System.out.println("ListSize: " + result.getAssets().size());
+		System.out.println(result.getTotalCount());
+	}
+	
+	@Test
+	public void testRetrieveAllDeviceList_LOD() throws Exception {
+		AssetListContract contract = new AssetListContract();
+		contract.setLocale(new Locale("en_US"));
+		contract.setContactId("1-16X93QX");
+		contract.setMdmLevel("Global");
+		contract.setMdmId("623331717");
+//		contract.setChlNodeId("1-18FQKH2");
+		contract.setEntitlementEndDate("09/08/2015");
+		contract.setSortCriteria((Map<String, Object>) MiscTest.newHashMap("installAddress.levelOfDetails", "ASCENDING"));
+//		Map<String, Object> filterCriteria = new HashMap<String, Object>();
+//		filterCriteria.put("installAddress.levelOfDetails", "xxxxxxxxxxxxxxxxxx");
+//		filterCriteria.put("installAddress.country", "Luxembourg");
+//		contract.setFilterCriteria(filterCriteria );
+//		contract.setLbsFilterCriteriaFlag("N");
+		contract.setIncrement(40);
+		contract.setStartRecordNumber(0);
+		contract.setNewQueryIndicator(true);
+		AmindCrmSessionHandle handle = new AmindCrmSessionHandle();
+		handle.setSessionFactory(new StatefulSessionFactory());
+		contract.setSessionHandle(handle);
+		
+		AssetListResult result = service.retrieveAllDeviceList(contract);
+//		for (Asset asset : result.getAssets()) {
+//			System.out.println("LOD: " + asset.getInstallAddress().getLevelOfDetails());
+//		}
+		System.out.println("ListSize: " + result.getAssets().size());
+		System.out.println(result.getTotalCount());
+	}
+	
+	@Test
+	public void testRetrieveAllDeviceList_PerformanceTest_DeviceFinderTab() throws Exception {
+		AssetListContract contract = new AssetListContract();
+		contract.setLocale(new Locale("en_US"));
+		contract.setContactId("1-1DVZUXX");
+		contract.setMdmLevel("Global");
+		contract.setMdmId("315000554");
+//		contract.setChlNodeId("1-18FQKH2");
+		contract.setEntitlementEndDate("10/26/2015");
+		contract.setSortCriteria((Map<String, Object>) MiscTest.newHashMap("serialNumber", "ASCENDING"));
+//		Map<String, Object> filterCriteria = new HashMap<String, Object>();
+//		filterCriteria.put("installAddress.levelOfDetails", "xxxxxxxxxxxxxxxxxx");
+//		filterCriteria.put("installAddress.country", "Luxembourg");
+//		contract.setFilterCriteria(filterCriteria );
+//		contract.setLbsFilterCriteriaFlag("N");
+		contract.setIncrement(40);
+		contract.setStartRecordNumber(0);
+		contract.setNewQueryIndicator(true);
+		AmindCrmSessionHandle handle = new AmindCrmSessionHandle();
+		handle.setSessionFactory(new StatefulSessionFactory());
+		contract.setSessionHandle(handle);
+		
+		long t = System.currentTimeMillis();
+		AssetListResult result = service.retrieveAllDeviceList(contract);
+		System.out.println("Exec time: " + (System.currentTimeMillis() - t)	/ 1000.0);
+		System.out.println("ListSize: " + result.getAssets().size());
+		System.out.println(result.getTotalCount());
+	}
+	
+	@Test
+	public void testRetrieveAllDeviceList_PerformanceTest_DeviceFinderTab2() throws Exception {
+		AssetListContract contract = new AssetListContract();
+		contract.setLocale(new Locale("en_US"));
+		contract.setContactId("1-1DVZUXX");
+		contract.setMdmLevel("Global");
+		contract.setMdmId("051957769");
+//		contract.setChlNodeId("1-18FQKH2");
+		contract.setEntitlementEndDate("10/26/2015");
+		contract.setSortCriteria((Map<String, Object>) MiscTest.newHashMap("serialNumber", "ASCENDING"));
+//		Map<String, Object> filterCriteria = new HashMap<String, Object>();
+//		filterCriteria.put("installAddress.levelOfDetails", "xxxxxxxxxxxxxxxxxx");
+//		filterCriteria.put("installAddress.country", "Luxembourg");
+//		contract.setFilterCriteria(filterCriteria );
+//		contract.setLbsFilterCriteriaFlag("N");
+		contract.setIncrement(40);
+		contract.setStartRecordNumber(0);
+		contract.setNewQueryIndicator(true);
+		AmindCrmSessionHandle handle = new AmindCrmSessionHandle();
+		handle.setSessionFactory(new StatefulSessionFactory());
+		contract.setSessionHandle(handle);
+		
+		long t = System.currentTimeMillis();
+		AssetListResult result = service.retrieveAllDeviceList(contract);
+		System.out.println("Exec time: " + (System.currentTimeMillis() - t)	/ 1000.0);
+		System.out.println("ListSize: " + result.getAssets().size());
+		System.out.println(result.getTotalCount());
+	}
+	
+	@Test
+	public void testRetrieveAllDeviceList_PerformanceTest_DeviceFinderTab3() throws Exception {
+		AssetListContract contract = new AssetListContract();
+		contract.setLocale(new Locale("en_US"));
+		contract.setContactId("1-1DVZUXX");
+		contract.setMdmLevel("Global");
+		contract.setMdmId("006415160");
+//		contract.setChlNodeId("1-18FQKH2");
+		contract.setEntitlementEndDate("10/26/2015");
+		contract.setSortCriteria((Map<String, Object>) MiscTest.newHashMap("serialNumber", "ASCENDING"));
+//		Map<String, Object> filterCriteria = new HashMap<String, Object>();
+//		filterCriteria.put("installAddress.levelOfDetails", "xxxxxxxxxxxxxxxxxx");
+//		filterCriteria.put("installAddress.country", "Luxembourg");
+//		contract.setFilterCriteria(filterCriteria );
+//		contract.setLbsFilterCriteriaFlag("N");
+		contract.setIncrement(40);
+		contract.setStartRecordNumber(0);
+		contract.setNewQueryIndicator(true);
+		AmindCrmSessionHandle handle = new AmindCrmSessionHandle();
+		handle.setSessionFactory(new StatefulSessionFactory());
+		contract.setSessionHandle(handle);
+		
+		long t = System.currentTimeMillis();
+		AssetListResult result = service.retrieveAllDeviceList(contract);
+		System.out.println("Exec time: " + (System.currentTimeMillis() - t)	/ 1000.0);
+		System.out.println("ListSize: " + result.getAssets().size());
+		System.out.println(result.getTotalCount());
+	}
+	
+	@Test
 	public void testRetrieveDeviceList_performanceTest() {
 		AssetListContract contract = new AssetListContract();
 		contract.setMdmLevel("Global");
@@ -2928,6 +3142,104 @@ public class AmindOrderSuppliesAssetServiceTest extends AmindServiceTest {
 		contract.setSessionHandle(crmSessionHandle);
 		
 		AssetListResult result = service.retrieveDeviceList(contract);
+		
+		System.out.println("totalCount=" + result.getTotalCount());
+		System.out.println("assets count=" + result.getAssets().size());
+	}
+	
+	@Test
+	public void testRetrieveDeviceList_defect18471() {
+		AssetListContract contract = new AssetListContract();
+		contract.setMdmLevel("Global");
+		contract.setMdmId("232112404");
+		contract.setContactId("1-16X93QX");
+		contract.setFavoriteFlag(false);
+		contract.setLoadAllFlag(false);
+		contract.setEntitlementEndDate("08/18/2015");
+		Map<String, Object> sortMap = new HashMap<String, Object>();
+		sortMap.put("serialNumber", "ASCENDING");
+		contract.setSortCriteria(sortMap);
+		contract.setIncrement(40);
+		contract.setStartRecordNumber(0);
+		contract.setNewQueryIndicator(true);
+		contract.setSessionHandle(crmSessionHandle);
+		
+		AssetListResult result = service.retrieveDeviceList(contract);
+		
+		System.out.println("totalCount=" + result.getTotalCount());
+		System.out.println("assets count=" + result.getAssets().size());
+	}
+	
+	@Test
+	public void testRetrieveDeviceList_performanceTest_ConsumableAssetGrid() {
+		AssetListContract contract = new AssetListContract();
+		contract.setMdmLevel("Global");
+		contract.setMdmId("006415160");
+		contract.setContactId("1-1DVZUXX");
+		contract.setFavoriteFlag(false);
+		contract.setLoadAllFlag(false);
+		contract.setEntitlementEndDate("10/26/2015");
+		Map<String, Object> sortMap = new HashMap<String, Object>();
+		sortMap.put("serialNumber", "ASCENDING");
+		contract.setSortCriteria(sortMap);
+		contract.setIncrement(40);
+		contract.setStartRecordNumber(0);
+		contract.setNewQueryIndicator(true);
+		contract.setSessionHandle(crmSessionHandle);
+		
+		Long t = System.currentTimeMillis();
+		AssetListResult result = service.retrieveDeviceList(contract);
+		System.out.println("Time: " + (System.currentTimeMillis() - t) / 1000.0);
+		
+		System.out.println("totalCount=" + result.getTotalCount());
+		System.out.println("assets count=" + result.getAssets().size());
+	}
+	
+	@Test
+	public void testRetrieveDeviceList_performanceTest_ConsumableAssetGrid2() {
+		AssetListContract contract = new AssetListContract();
+		contract.setMdmLevel("Global");
+		contract.setMdmId("315000554");
+		contract.setContactId("1-1DVZUXX");
+		contract.setFavoriteFlag(false);
+		contract.setLoadAllFlag(false);
+		contract.setEntitlementEndDate("10/26/2015");
+		Map<String, Object> sortMap = new HashMap<String, Object>();
+		sortMap.put("serialNumber", "ASCENDING");
+		contract.setSortCriteria(sortMap);
+		contract.setIncrement(40);
+		contract.setStartRecordNumber(0);
+		contract.setNewQueryIndicator(true);
+		contract.setSessionHandle(crmSessionHandle);
+		
+		Long t = System.currentTimeMillis();
+		AssetListResult result = service.retrieveDeviceList(contract);
+		System.out.println("Time: " + (System.currentTimeMillis() - t) / 1000.0);
+		
+		System.out.println("totalCount=" + result.getTotalCount());
+		System.out.println("assets count=" + result.getAssets().size());
+	}
+	
+	@Test
+	public void testRetrieveDeviceList_performanceTest_ConsumableAssetGrid3() {
+		AssetListContract contract = new AssetListContract();
+		contract.setMdmLevel("Global");
+		contract.setMdmId("051957769");
+		contract.setContactId("1-1DVZUXX");
+		contract.setFavoriteFlag(false);
+		contract.setLoadAllFlag(false);
+		contract.setEntitlementEndDate("10/26/2015");
+		Map<String, Object> sortMap = new HashMap<String, Object>();
+		sortMap.put("serialNumber", "ASCENDING");
+		contract.setSortCriteria(sortMap);
+		contract.setIncrement(40);
+		contract.setStartRecordNumber(0);
+		contract.setNewQueryIndicator(true);
+		contract.setSessionHandle(crmSessionHandle);
+		
+		Long t = System.currentTimeMillis();
+		AssetListResult result = service.retrieveDeviceList(contract);
+		System.out.println("Time: " + (System.currentTimeMillis() - t) / 1000.0);
 		
 		System.out.println("totalCount=" + result.getTotalCount());
 		System.out.println("assets count=" + result.getAssets().size());
@@ -3044,6 +3356,32 @@ public class AmindOrderSuppliesAssetServiceTest extends AmindServiceTest {
 		Asset asset = result.getAsset();
 		System.out.println("HostNmae: " + asset.getHostName());
 		System.out.println("AssetTag: " + asset.getAssetTag());
+	}
+	
+	@Test
+	public void testRetrieveDeviceDetail_LBS1_5(){
+		AssetContract contract = new AssetContract();
+		contract.setAssetId("1-NEBZNRV");
+		contract.setContactId("1-MP8Y1F1");
+		contract.setPageName("CmDeviceDetail");
+//		contract.setCurrentDate(LangUtil.convertStringToGMTDate("04/23/2015 00:00:00"));
+//		contract.setEffectiveDate(LangUtil.convertStringToGMTDate("04/23/2015 21:00:40"));
+		AssetResult result = service.retrieveDeviceDetail(contract);
+		Asset asset = result.getAsset();
+		System.out.println("LevelOfDetails: " + asset.getInstallAddress().getLevelOfDetails());
+	}
+	
+	@Test
+	public void testRetrieveDeviceDetail_INC0136640(){
+		AssetContract contract = new AssetContract();
+		contract.setAssetId("1-GYIZ-10");
+//		contract.setContactId("1-MP8Y1F1");
+		contract.setPageName("ConsumableDeviceDetail");
+		contract.setCurrentDate(LangUtil.convertStringToGMTDate("08/21/2015 00:00:00"));
+		contract.setEffectiveDate(LangUtil.convertStringToGMTDate("08/21/2015 10:10:04"));
+		AssetResult result = service.retrieveDeviceDetail(contract);
+		Asset asset = result.getAsset();
+		System.out.println("splitterFlag: " + asset.getAccount().isAccountSplitterFlag());
 	}
 	
 }

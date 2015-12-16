@@ -3,7 +3,7 @@
 
 <portlet:resourceURL var="refreshCart" id="getCartSize"></portlet:resourceURL>
 <script type="text/javascript" src="<html:rootPath/>/js/cart/cart.js?v=1"></script>
-<div class="orderCart" id="cart-cntnr" style="cursor: pointer;"><spring:message code="requestInfo.label.order"/> <img id="cartLoading" src="<html:imagesPath/>loading-icon.gif"/><span id="totItems" style="display:none;">0</span> <spring:message code="requestInfo.label.items"/></div>
+<div class="orderCart" id="cart-cntnr" style="cursor: pointer;"><spring:message code="requestInfo.label.order"/><c:if test="${forGlobalSearch != 'true'}"><img id="cartLoading" src="<html:imagesPath/>loading-icon.gif"/></c:if><span id="totItems" style="display:none;">0</span> <spring:message code="requestInfo.label.items"/></div>
 
 <div id="shoppingCart" style="display:none"></div>
 
@@ -34,8 +34,13 @@ var addQtyCartObj={
 var validationmsg={
 		qtyInvalid:"<spring:message code="validation.quantity.format.errorMsg"/>"
 }
-jQuery(document).ready(function(){	
-	loadCartSize(cartObj);
+jQuery(document).ready(function(){
+	if("${forGlobalSearch}" != "true"){
+	  	loadCartSize(cartObj);
+	}
+	else{
+		jQuery("#totItems").show();
+	}
 });
 
 function removeFromCart(bId, cartType){

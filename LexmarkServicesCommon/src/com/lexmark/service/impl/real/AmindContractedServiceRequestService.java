@@ -385,7 +385,7 @@ public class AmindContractedServiceRequestService extends AmindSiebelCrmService 
 		addressFieldMap.put("accountTransFlag", "LXK SW L5 Account Transactable Flag");
 		addressFieldMap.put("lbsAddressFlag", "LXK LBS Flag");
 		
-		addressFieldMap.put("addressName", "Address Name");
+		addressFieldMap.put("addressName", "Custom Address Name");
 		addressFieldMap.put("storeFrontName", "LXK MPS Store Front Name");
 		addressFieldMap.put("addressLine1", "Street Address");
 		addressFieldMap.put("addressLine2", "Street Address 2");
@@ -400,6 +400,8 @@ public class AmindContractedServiceRequestService extends AmindSiebelCrmService 
 		addressFieldMap.put("county", "County");
 		addressFieldMap.put("district", "District");
 		addressFieldMap.put("officeNumber", "House #");
+		addressFieldMap.put("levelOfDetails", "LXK LBS Level of Detail");
+		
 		
 		return Collections.unmodifiableMap(addressFieldMap);
 	}

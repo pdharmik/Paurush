@@ -580,7 +580,6 @@
 	<c:if test="${typeOfRequest eq 'Add_Asset' || typeOfRequest eq 'Change_Asset' || typeOfRequest eq 'Decomm_Asset' && manageAssetFormForDecommission.decommAssetFlag ne 'no' }">
 	<div class="columnsTwo">
     <div class="infoBox columnInner rounded shadow">
-    </c:if>
     <c:choose>
 	<c:when test="${typeOfRequest eq 'Add_Asset'}">
 	<h4></><spring:message code="requestInfo.heading.installAddress"/></h4>
@@ -613,6 +612,7 @@
 					  <li><label><spring:message code="requestInfo.addressInfo.label.office"/> </label> 
                     <span id="office_add">${manageAssetForm.assetDetail.installAddress.physicalLocation3}</span>
                       </li>
+                      
                       </c:when>
                       <c:when test="${manageAssetForm.assetDetail.installAddress.lbsAddressFlag eq 'true' }">
                       
@@ -635,8 +635,18 @@
                     <span id="office_add">${manageAssetForm.assetDetail.installAddress.physicalLocation3}</span>
                       </li>
                       
-					
-                      </c:when>
+                      <c:if test="${manageAssetForm.assetDetail.installAddress.levelOfDetails.toLowerCase() eq 'grid level' 
+                                                  ||  (manageAssetForm.assetDetail.installAddress.levelOfDetails.toLowerCase() eq 'mix - see floor' 
+                                                     &&  manageAssetForm.assetDetail.installAddress.floorLevelOfDetails.toLowerCase() eq 'grid level')}">
+                      	
+                      	<li id="gridLiAdd">
+							<div id="installedXYLblDiv">
+							<label id="installedXYLbl">Grid X/Y : </label><label id="installedCoords"></label>
+							</div>
+						</li>
+						
+						</c:if>
+						</c:when>
                        <c:when test="${manageAssetForm.assetDetail.installAddress.lbsAddressFlag ne 'true' }">
                       <li id="installAddressAdd">
 						<div>${manageAssetForm.assetDetail.installAddress.storeFrontName}</div>						
@@ -657,8 +667,7 @@
                       </c:choose>
                       
 					 </ul>
-					 </c:if>
-<c:if test="${typeOfRequest eq 'Add_Asset' || typeOfRequest eq 'Change_Asset' || typeOfRequest eq 'Decomm_Asset' && manageAssetFormForDecommission.decommAssetFlag ne 'no' }">		 
+					 </c:if>		 
     </div>
   </div>
  </c:if>
@@ -714,6 +723,8 @@
 					  <li><label><spring:message code="requestInfo.addressInfo.label.office"/> </label> 
                     <span id="office_move">${manageAssetFormForChange.assetDetail.moveToAddress.physicalLocation3}</span>
                       </li>
+                      
+                      
 					 </ul>
                   </c:when>
                    <c:when test="${manageAssetFormForChange.assetDetail.moveToAddress.lbsAddressFlag ne 'true' }"> 
@@ -739,6 +750,18 @@
 					 </ul>
 					 </c:when>
 					 </c:choose>
+					 <ul class="roDisplay">
+					 <c:if test="${manageAssetFormForChange.assetDetail.moveToAddress.levelOfDetails.toLowerCase() eq 'grid level' 
+                                                  ||  (manageAssetFormForChange.assetDetail.moveToAddress.levelOfDetails.toLowerCase() eq 'mix - see floor' 
+                                                     &&  manageAssetFormForChange.assetDetail.moveToAddress.floorLevelOfDetails.toLowerCase() eq 'grid level')}">
+                      	<li id="gridLiMove">
+							<div id="installedXYLblDiv">
+							<label id="installedXYLbl">Grid X/Y : </label><label id="moveToCoords"></label>
+							</div>
+						</li>
+						</c:if>
+					 
+					 </ul>
             </div>
           </div>
           </c:when>
@@ -789,7 +812,7 @@
 				</div>
 </div>
 
-	<div class="filterLinks floatR" style="width: 100%; margin-right: -60%;">
+	<div class="filterLinks floatR" style="width: 100%;">
 		 
         <%--  <c:if test='${fleetManagementFlag ne "true"}'> --%>
 					<div class="cloumnsTwo" id="backtomap" style="float: left; display: none; width: 12%;">
@@ -797,14 +820,14 @@
 					</div>
 		<%-- </c:if>--%>
 			
-					<div class="columnsTwo" style="display: inline;">
+					<div style="float: right;">
 						<ul>
-							<li class="first"><a href="javascript:email();"><img
-									src="<html:rootPath/>images/mail2_16x16.gif" title="email"
+							<li class="first"><a href="javascript:email();"><img class="ui_icon_sprite email-icon"
+									src="<html:rootPath/>images/transparent.png" title="email"
 									title="email" height="23" width="27" /> <spring:message
 										code="requestInfo.link.emailThisPage" /></a></li>
-							<li><a href="javascript:print();"><img
-									src="<html:rootPath/>images/print_16x16.gif" title="print"
+							<li><a href="javascript:print();"><img class="ui_icon_sprite print-icon"
+									src="<html:rootPath/>images/transparent.png" title="print"
 									title="print" height="27" width="27" /> <spring:message
 										code="requestInfo.tooltip.printThisPage" /></a></li>
 						</ul>
@@ -847,8 +870,36 @@
 	//alert('${requestForm.srStausXML}');
 	pageCountsGrid.loadXMLString('${pageCountsString}');
   jQuery(document).ready(function() {
+  
+  var xCordInstall='${manageAssetForm.assetDetail.installAddress.coordinatesXPreDebriefRFV}';
+  var yCordInstall='${manageAssetForm.assetDetail.installAddress.coordinatesYPreDebriefRFV}';
+  
+  var xCordMove='${manageAssetFormForChange.assetDetail.moveToAddress.coordinatesXPreDebriefRFV}';
+  var yCordMove='${manageAssetFormForChange.assetDetail.moveToAddress.coordinatesYPreDebriefRFV}';
+
+  coordinates(xCordInstall,yCordInstall,"installed");
+  coordinates(xCordMove,yCordMove,"moveTo");
+  
+  
 	  var installFlag ="${manageAssetFormForChange.installAssetFlag}";
 	  var currentURL = window.location.href;
+
+		if(currentURL.indexOf('/fleet-management') > -1){
+			var typeOfReq="${typeOfRequest}";
+			if(typeOfReq =='Add_Asset')
+				{
+				jQuery('#gridLiAdd').show();
+				}
+			else
+				{
+				jQuery('#gridLiAdd').hide();
+				}
+			
+			}
+		else
+			{
+			jQuery('#gridLiAdd').show();
+			}
 		if(installFlag=='No'||installFlag==''||installFlag==null)
 		{
 			//jQuery('#hideMoveToAddress').hide();
@@ -857,6 +908,8 @@
 			//alert("flowPage"+flowPage);
 			if(flowPage=="fleetMgmtMove"){
 				jQuery('#hideMoveToAddress').show();
+				jQuery('#gridLiAdd').hide();
+				
 			}
 			else{
 			jQuery('#hideMoveToAddress').hide();
@@ -928,6 +981,7 @@
 		}
 		
 		if(!(currentURL.indexOf('/fleet-management') == -1)){
+			
 			jQuery('#backtomap').show();
 			}
 		
@@ -1047,4 +1101,26 @@ $('#backFormMap').submit();
 			
 			//window.location.href='fleet-management';
 		}
+		
+		function coordinates(xCo,yCo,flag){
+	var xCoordinate="";
+	var yCoordinate="";
+	var seperator="/";
+	if(!(xCo && yCo))
+	{
+			seperator="";
+	}
+	if(xCo){xCoordinate=xCo;}
+	if(yCo){yCoordinate=yCo;}
+	if(flag=="moveTo"){
+		$('#moveToCoords').html(xCoordinate+seperator+yCoordinate);
+		$('#moveToAddresscoordinatesXPreDebriefRFV').val(xCoordinate);
+		$('#moveToAddresscoordinatesYPreDebriefRFV').val(yCoordinate);
+	}
+	else if(flag=="installed"){
+		$('#installedCoords').html(xCoordinate+seperator+yCoordinate);
+		$('#installcoordinatesXPreDebriefRFV').val(xCoordinate);
+		$('#installcoordinatesYPreDebriefRFV').val(yCoordinate);
+	}	
+}
   </script>

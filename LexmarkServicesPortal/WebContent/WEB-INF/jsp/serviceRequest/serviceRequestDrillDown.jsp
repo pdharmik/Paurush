@@ -129,7 +129,7 @@ jQuery(document).ready(function() {
 							<dt><spring:message code="serviceRequest.label.resolutionCode" /></dt>
 							<dd>${fn:replace(serviceRequestForm.serviceRequest.resolutionCode, newLineChar, "<br/>")}</dd>
 							<!-- end of addition for CI5 -->
-							</br>
+							<br/>
 							
 							<!-- Added For Printer Error Code for CI 13.10.17 -->
 							<%--<dt><spring:message code="serviceRequest.label.printerErrorCode" /></dt>
@@ -939,7 +939,7 @@ jQuery(document).ready(function() {
  		<button class="button" type="button" onclick="backToHistory();"><spring:message code="Details.changeRequestDetails.button.back"/></button>
  	</td></tr>
 </table>
-</div>
+
 <div id="dialog_createNew" style="display:none;">
 <div id="totalContent">
 
@@ -1336,8 +1336,10 @@ var timezoneOffsetServiceRequest="";
     	closeCustomizedWindow();
 		callOmnitureAction('Service Request', 'Service Request View Detail');
         var iLeft = (window.screen.availWidth-820)/2; 
+        var timezoneOffset = ${timezoneOffset};    // Added for CR CHG0006531 AMS 15.11
+       
         
-        var url="<portlet:renderURL windowState='<%= LiferayWindowState.EXCLUSIVE.toString() %>'><portlet:param name='action' value='serviceRequestDrillDownLightBox' /></portlet:renderURL>&serviceRequestNumber="+ serviceRequestNumber+"&lightBox=lightBox"+"&g="+(typeof dhtmlXGridObject=="function"?false:true);
+        var url="<portlet:renderURL windowState='<%= LiferayWindowState.EXCLUSIVE.toString() %>'><portlet:param name='action' value='serviceRequestDrillDownLightBox' /></portlet:renderURL>&serviceRequestNumber="+ serviceRequestNumber+"&lightBox=lightBox"+"&timezoneOffset="+timezoneOffset+"&g="+(typeof dhtmlXGridObject=="function"?false:true); //modified for AMS 15.11 Release
        
         showOverlay();
         $('#serviceRequestDetailDiv').load(url,function(){
@@ -1457,10 +1459,10 @@ var timezoneOffsetServiceRequest="";
     	 }
     	 function expandAssociatedAndHistory(){
     	  		document.getElementById("tab_associatedTicketsGrid").style.display = 'block';
-    	  		document.getElementById("img_tab_associatedTicketsGrid").setAttribute("src", "<html:imagesPath/>collapsed.jpg");
+    	  		jQuery("#img_tab_associatedTicketsGrid").removeClass("expand-icon").addClass("minimize-icon");
     	  		//Code commented for CI-7 Defect #8217
     	  		//document.getElementById("tab_historyGrid").style.display = 'block';
-    	  		//document.getElementById("img_tab_historyGrid").setAttribute("src", "<html:imagesPath/>collapsed.jpg"); 
+    	  		//jQuery("img_tab_historyGrid").removeClass("expand-icon").addClass("minimize-icon"); 
     	  	  	};
     	  	 function popupNotificationDecDetail(selectedRowId){
     	    		var date = SRNotificationsGrid.cellByIndex(selectedRowId,0).cell.innerHTML;

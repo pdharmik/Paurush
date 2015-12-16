@@ -1420,7 +1420,13 @@ public class HistoryController extends BaseController{
 			  String moveToAddressGrouped = requestForm.getServiceRequest().getAsset().getMoveToAddressGrouped();
 			  LOGGER.debug("address grouped == "+moveToAddressGrouped);
 			  if(StringUtils.isNotBlank(moveToAddressGrouped)){
-				  requestForm.getServiceRequest().getAsset().setInstallAddress(createAddressfromString(moveToAddressGrouped));				  
+				  GenericAddress physicalAddress= requestForm.getServiceRequest().getAsset().getInstallAddress();
+				  LOGGER.debug("----------------->>"+physicalAddress.getPhysicalLocation1()+"---------->"+physicalAddress.getPhysicalLocation2());
+				  requestForm.getServiceRequest().getAsset().setInstallAddress(createAddressfromString(moveToAddressGrouped));
+				  requestForm.getServiceRequest().getAsset().getInstallAddress().setPhysicalLocation1(physicalAddress.getPhysicalLocation1());
+				  requestForm.getServiceRequest().getAsset().getInstallAddress().setPhysicalLocation2(physicalAddress.getPhysicalLocation2());
+				  requestForm.getServiceRequest().getAsset().getInstallAddress().setPhysicalLocation3(physicalAddress.getPhysicalLocation3());
+				  
 			  }
 			  //Ends Added for CR 16731 LBS 		
 			// retrieve Technician List
@@ -2834,8 +2840,7 @@ public class HistoryController extends BaseController{
 		String[] concatFields={"addressId","addressName","addressLine1","addressLine2",
 				"officeNumber","city","stateCode",
                 "province","district","county","region","country","countryISOCode","postalCode","campusName","campusId",
-                "physicalLocation1","buildingId","physicalLocation2","floorId","physicalLocation3",
-                "stateFullName","zoneName","zoneId","latitude","longitude","coordinatesXPreDebriefRFV","coordinatesYPreDebriefRFV",
+                "stateFullName","latitude","longitude","coordinatesXPreDebriefRFV","coordinatesYPreDebriefRFV",
                 "isAddressCleansed","savedErrorMessage","newAddressFlag"};
 
 

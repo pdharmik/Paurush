@@ -100,9 +100,9 @@ public class ContactListService {
 	private void buildAllContactSearchExpression() {
 		StringBuilder builder = new StringBuilder();
 
-		if (!SIEBEL_MDMLEVEL.equals(contract.getMdmLevel())) {
+//		if (!SIEBEL_MDMLEVEL.equals(contract.getMdmLevel())) {
 			builder.append("EXISTS ");
-		}
+//		}
 		
 		builder.append(" ( ");
 		builder.append(buildmdmSearchExpression(contract.getMdmId(),

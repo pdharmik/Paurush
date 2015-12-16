@@ -84,6 +84,8 @@ public class SiebelAssetManagementInformation  implements java.io.Serializable {
 
     private java.lang.String customerAssetData3;
 
+    private java.lang.String placementId;
+
     private com.lexmark.SiebelShared.createServiceRequest.client.SiebelAddress installedAtAddress;
 
     private com.lexmark.SiebelShared.createServiceRequest.client.SiebelMeterReadInformation[] meterReadInformation;
@@ -130,6 +132,7 @@ public class SiebelAssetManagementInformation  implements java.io.Serializable {
            java.lang.String customerAssetData1,
            java.lang.String customerAssetData2,
            java.lang.String customerAssetData3,
+           java.lang.String placementId,
            com.lexmark.SiebelShared.createServiceRequest.client.SiebelAddress installedAtAddress,
            com.lexmark.SiebelShared.createServiceRequest.client.SiebelMeterReadInformation[] meterReadInformation) {
            this.assetId = assetId;
@@ -170,6 +173,7 @@ public class SiebelAssetManagementInformation  implements java.io.Serializable {
            this.customerAssetData1 = customerAssetData1;
            this.customerAssetData2 = customerAssetData2;
            this.customerAssetData3 = customerAssetData3;
+           this.placementId = placementId;
            this.installedAtAddress = installedAtAddress;
            this.meterReadInformation = meterReadInformation;
     }
@@ -936,6 +940,26 @@ public class SiebelAssetManagementInformation  implements java.io.Serializable {
 
 
     /**
+     * Gets the placementId value for this SiebelAssetManagementInformation.
+     * 
+     * @return placementId
+     */
+    public java.lang.String getPlacementId() {
+        return placementId;
+    }
+
+
+    /**
+     * Sets the placementId value for this SiebelAssetManagementInformation.
+     * 
+     * @param placementId
+     */
+    public void setPlacementId(java.lang.String placementId) {
+        this.placementId = placementId;
+    }
+
+
+    /**
      * Gets the installedAtAddress value for this SiebelAssetManagementInformation.
      * 
      * @return installedAtAddress
@@ -1100,6 +1124,9 @@ public class SiebelAssetManagementInformation  implements java.io.Serializable {
             ((this.customerAssetData3==null && other.getCustomerAssetData3()==null) || 
              (this.customerAssetData3!=null &&
               this.customerAssetData3.equals(other.getCustomerAssetData3()))) &&
+            ((this.placementId==null && other.getPlacementId()==null) || 
+             (this.placementId!=null &&
+              this.placementId.equals(other.getPlacementId()))) &&
             ((this.installedAtAddress==null && other.getInstalledAtAddress()==null) || 
              (this.installedAtAddress!=null &&
               this.installedAtAddress.equals(other.getInstalledAtAddress()))) &&
@@ -1230,6 +1257,9 @@ public class SiebelAssetManagementInformation  implements java.io.Serializable {
         }
         if (getCustomerAssetData3() != null) {
             _hashCode += getCustomerAssetData3().hashCode();
+        }
+        if (getPlacementId() != null) {
+            _hashCode += getPlacementId().hashCode();
         }
         if (getInstalledAtAddress() != null) {
             _hashCode += getInstalledAtAddress().hashCode();
@@ -1516,6 +1546,13 @@ public class SiebelAssetManagementInformation  implements java.io.Serializable {
         elemField = new org.apache.axis.description.ElementDesc();
         elemField.setFieldName("customerAssetData3");
         elemField.setXmlName(new javax.xml.namespace.QName("", "CustomerAssetData3"));
+        elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
+        elemField.setMinOccurs(0);
+        elemField.setNillable(true);
+        typeDesc.addFieldDesc(elemField);
+        elemField = new org.apache.axis.description.ElementDesc();
+        elemField.setFieldName("placementId");
+        elemField.setXmlName(new javax.xml.namespace.QName("", "PlacementId"));
         elemField.setXmlType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         elemField.setMinOccurs(0);
         elemField.setNillable(true);

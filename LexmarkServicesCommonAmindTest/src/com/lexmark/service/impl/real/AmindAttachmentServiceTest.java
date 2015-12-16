@@ -273,7 +273,7 @@ public class AmindAttachmentServiceTest extends AmindServiceTest {
 //		contract.setIdentifier("1-8TF9QVN");
 //		contract.setUserFileName("MassUploadTemplateServiceOrder~3~_1394445440732");
 		
-//		contract.setUserFileName("009420159~Lista_de_Contadores_LeÃ-dos~20140227025759057.csv");
+//		contract.setUserFileName("009420159~Lista_de_Contadores_LeÃƒ-dos~20140227025759057.csv");
 //		contract.setUserFileName("009420159~MeterReadList~20140307064413044.csv");
 //		contract.setUserFileName("1-8ON4TPX");
 		contract.setUserFileName("1-92K04V5");
@@ -391,7 +391,7 @@ public class AmindAttachmentServiceTest extends AmindServiceTest {
      c.setRequestType("Service Request");
      c.setIdentifier("1-PBPVSFB");
      Attachment a = new Attachment();
-     a.setAttachmentName("ContÃ¡ctos_new_testing_now_14328390204100.xlsx");
+     a.setAttachmentName("ContÃƒÂ¡ctos_new_testing_now_14328390204100.xlsx");
      a.setVisibility("Employee");
      a.setSize(0);
      c.setAttachments(MiscTest.newArrayList(a));
@@ -404,11 +404,26 @@ public class AmindAttachmentServiceTest extends AmindServiceTest {
     	c.setRequestType("Service Request");
     	c.setIdentifier("1-PPNYERX");
     	Attachment a = new Attachment();
-    	a.setAttachmentName("资产数据提交模板~2_1435297651675.xls");
-    	a.setDisplayAttachmentName("资产数据提交模板(2)_1435297651675.xls");
+    	a.setAttachmentName("èµ„äº§æ•°æ�®æ��äº¤æ¨¡æ�¿~2_1435297651675.xls");
+    	a.setDisplayAttachmentName("èµ„äº§æ•°æ�®æ��äº¤æ¨¡æ�¿(2)_1435297651675.xls");
     	a.setVisibility("Customer");
     	a.setSize(35328);
     	a.setSizeForDisplay("34.50");
+    	c.setAttachments(MiscTest.newArrayList(a));
+    	service.uploadAttachments(c);
+    }
+    
+    @Test
+    public void testUploadAttachments_Prod_defect19628() throws Exception {
+    	AttachmentContract c = new AttachmentContract();
+    	c.setRequestType("Service Request");
+    	c.setIdentifier("1-RKXGT33");
+    	Attachment a = new Attachment();
+    	a.setAttachmentName("MassUploadTemplateMADC(3).xls");
+    	a.setDisplayAttachmentName("MassUploadTemplateMADC(3).xls");
+    	a.setVisibility("Employee");
+    	a.setSize(430);
+    	a.setSizeForDisplay("0.43");
     	c.setAttachments(MiscTest.newArrayList(a));
     	service.uploadAttachments(c);
     }

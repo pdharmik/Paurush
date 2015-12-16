@@ -175,8 +175,9 @@ public class DateLocalizationUtil {
 	 * 
 	 */
 	
-	public static String localizeDateTimeObject (Object dateObject, boolean showTime, Locale locale) {
-		Date date = (Date)dateObject;
+	public static String localizeDateTimeObject (Object dateObject, boolean showTime, Locale locale) throws ParseException {
+		//Date date = (Date)dateObject;
+		String date=(String)dateObject;
 		if(date==null)
 			return "";
 		String dateFormat = getDateFormatByLanguage(locale.getLanguage());
@@ -185,7 +186,8 @@ public class DateLocalizationUtil {
 		}
 		
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
-		return simpleDateFormat.format(date);
+		Date d= simpleDateFormat.parse(date);
+		return simpleDateFormat.format(d);
 	}
 	
 	/**

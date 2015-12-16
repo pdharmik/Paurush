@@ -230,6 +230,7 @@ public class ManageAssetsController extends BaseController {
 	 * attMaxCount
 	 */
 	private String attMaxCount;
+	private String lbsFormPost;
 	/**
 	 * @return listOfFileTypes 
 	 */
@@ -256,6 +257,21 @@ public class ManageAssetsController extends BaseController {
 	 */
 	public void setAttMaxCount(String attMaxCount) {
 		this.attMaxCount = attMaxCount;
+	}
+	
+	/**
+	 * @return lbsFormPost 
+	 */
+	public String getLbsFormPost() {
+		LOGGER.debug("formPost=> "+lbsFormPost);
+		return lbsFormPost;
+	}
+	
+	/**
+	 * @param lbsFormPost 
+	 */
+	public void setLbsFormPost(String lbsFormPost) {
+		this.lbsFormPost = lbsFormPost;
 	}
 
 	
@@ -333,7 +349,8 @@ public class ManageAssetsController extends BaseController {
 			assetResult=commonController.retrieveAssetDetail(contract);
 		}
 		
-		
+		setLbsFormPost(lbsFormPost);
+		setModelParams(model, session);
 	
 		if(!StringUtil.isEmpty(request.getParameter(ChangeMgmtConstant.ISUPDATEFLAG)))
 		{	
@@ -1484,6 +1501,10 @@ public class ManageAssetsController extends BaseController {
 		Boolean isUpdateFlag=false;
 		AttachmentForm attachForm = new AttachmentForm();
 		PortletSession session = req.getPortletSession();
+		setLbsFormPost(lbsFormPost);
+		LOGGER.debug("Calling Method setModelParams");
+		setModelParams(model,session);
+		LOGGER.debug("Outside Method setModelParams");
 		//added for page counts
 		Map<String, String> pageCountsMap=null;
 		List<String> pageCountsList=new ArrayList<String>();
@@ -2591,5 +2612,11 @@ public class ManageAssetsController extends BaseController {
 		response.sendRedirect(request.getParameter("friendlyURL"));
 	}
 	/*END*/
-
+	
+	public void setModelParams(Model model,PortletSession session){
+		model.addAttribute("mdmId",PortalSessionUtil.getMdmId(session));
+		model.addAttribute("mdmLevel",PortalSessionUtil.getMdmLevel(session));
+		model.addAttribute("formPost",getLbsFormPost());
+		model.addAttribute("emailId", PortalSessionUtil.getEmailAddress(session));
+	}
 }

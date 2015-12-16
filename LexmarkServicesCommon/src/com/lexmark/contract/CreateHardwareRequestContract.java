@@ -53,6 +53,7 @@ public class CreateHardwareRequestContract extends ContractBase implements Seria
 	private String billToNumber;
 	private String paymentType;
 	private String paymentMethod;
+	private String placementId;
 	
 	
 	public String getCreditCardEncryptedNo() {
@@ -304,6 +305,18 @@ public class CreateHardwareRequestContract extends ContractBase implements Seria
 	}
 	public void setPaymentMethod(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
+	}
+	/**
+	 * @return the placementId
+	 */
+	public String getPlacementId() {
+		return placementId;
+	}
+	/**
+	 * @param placementId the placementId to set
+	 */
+	public void setPlacementId(String placementId) {
+		this.placementId = placementId;
 	}
 	
 }

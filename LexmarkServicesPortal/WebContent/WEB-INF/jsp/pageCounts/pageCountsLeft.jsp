@@ -33,13 +33,13 @@
 				<br>
 				
 				<div id='chlInfoDiv' style="display:none;">
-					<span>Customer Hierarchy</span><br/>
+					<span><spring:message code="lbs.label.customerhierarchy"/></span><br/>
 					<span id="chlNodeValueLabel"></span>
 					<div class="div-style39"><img class="ui_icon_sprite trash-icon" src="<html:imagesPath/>transparent.png" height="15px" width="15px" id="deleteChlBtn" onClick="removeFilters(this.id);"/></div>
 				</div>
 
 				<div id='deviceLocInfoDiv' style="display:none;">
-					<span>Device Location</span><br/>
+					<span><spring:message code="requestInfo.link.deviceLocation"/></span><br/>
 					<span id="deviceLocNodeValueLabel"></span>
 					<div class="div-style39"><img class="ui_icon_sprite trash-icon" src="<html:imagesPath/>transparent.png" height="15px" width="15px" id="deleteDeviceLocBtn" onClick="removeFilters(this.id);"/></div>
 				</div>
@@ -634,7 +634,8 @@
     function turnBold (speclink) {
    	 var anchors = document.links;
    	 for (i=0; i<anchors.length; i++) {
-       anchors[i].style.fontWeight = '';
+      // anchors[i].style.fontWeight = '';
+	   anchors[i].style.fontWeight = 'normal'; //Modified for the CR #CHG0006280 AMS Realse 15.11 
    	 }
    	 speclink.style.fontWeight = 'Bold';
    }

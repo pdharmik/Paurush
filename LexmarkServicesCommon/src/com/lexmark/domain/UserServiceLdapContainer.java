@@ -9,8 +9,10 @@ import java.rmi.Remote;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
 import java.util.Hashtable;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import javax.naming.Binding;
 import javax.naming.Context;
@@ -21,12 +23,18 @@ import javax.naming.NamingEnumeration;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+
+
 public class UserServiceLdapContainer implements Remote, Serializable, DataSource, Context{
 
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = -8796906702968479424L;
+	public Logger getParentLogger()  throws SQLFeatureNotSupportedException{
+		return null;
+		
+	}
 
 	public Connection getConnection() throws SQLException {
         try {

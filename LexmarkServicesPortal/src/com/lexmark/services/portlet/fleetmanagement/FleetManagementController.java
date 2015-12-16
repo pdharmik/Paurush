@@ -38,6 +38,7 @@ import com.lexmark.contract.AssetListContract;
 import com.lexmark.contract.LBSAssetListContract;
 import com.lexmark.contract.LBSCHLContract;
 import com.lexmark.domain.Asset;
+import com.lexmark.domain.UserDetails;
 import com.lexmark.domain.SiebelLocalization.SiebelLocalizationOptionEnum;
 import com.lexmark.domain.UserFieldsViewSetting;
 import com.lexmark.framework.exception.LGSDBException;
@@ -140,6 +141,16 @@ public class FleetManagementController extends BaseController{
 		LOGGER.debug("backJSON == "+backJson);
 		form.setBackInfo(StringUtils.isNotBlank(backJson)==true?StringEscapeUtils.escapeJavaScript(backJson):"");
 		setFleetManagementDataToForm(request,form,model);
+		
+		//Added for lbs 1.5
+		UserDetails userDetails=(UserDetails)session.getAttribute("USERDETAILS",PortletSession.APPLICATION_SCOPE);
+		form.setShowDeviceStatus(userDetails.isShowDeviceStatus());
+		form.setShowDeviceUtilization((userDetails.isShowDeviceUtilizationTerms()));
+		List<String> roles=PortalSessionUtil.getUserRoles(session);
+		form.setRoleList(roles);
+		form.setShowLod(roles!=null?roles.contains(LexmarkConstants.ROLE_ACCOUNT_MANAGEMENT):false);
+		form.setCompanyName(PortalSessionUtil.getLdapUserData(session,LexmarkConstants.COMPANYNAME));
+		//Ends lbs 1.5
 		
 		model.addAttribute("fleetMgmtForm", form);
 		request.setAttribute("fleetManagementFlag", "true");
@@ -260,16 +271,22 @@ public class FleetManagementController extends BaseController{
 		StringBuffer imgUrls=new StringBuffer("[");
 		for(String device:splitDeviceID){
 			String partImage="";
-			try {
-				 partImage= URLImageUtil.getPartImageFromLocal(device);
-			} catch (Exception e) {
-				LOGGER.debug("Exception"+e.getMessage());
-				LOGGER.error("[Exception occured while retireving the url ]");				
-			} finally{
+			if(StringUtils.isNotBlank(device)){
+				try {
+					 partImage= URLImageUtil.getPartImageFromLocal(device);
+				} catch (Exception e) {
+					LOGGER.debug("Exception"+e.getMessage());
+					LOGGER.error("[Exception occured while retireving the url ]");				
+				} 
+			}else{
+				partImage="Not found";
+			}
+			
 				imgUrls.append("\"");
 				imgUrls.append(partImage);
 				imgUrls.append("\",");
-			}
+			
+			
 		}
 		imgUrls.deleteCharAt(imgUrls.length()-1);
 		imgUrls.append("]");
@@ -435,6 +452,11 @@ public class FleetManagementController extends BaseController{
 		Map<String, String> srArea=null;
 		Map<String, String> srSubArea=null;
 		Map<String, String> meterReadType=null;
+		Map<String, String> addressLOD=null;
+		Map<String, String> floorLOD=null;
+		Map<String, String>lbsMultiselect=null;
+		Map<String, String> expiration=null;
+		Map<String, String> alertCodes=null;
 		
 		try {
 			
@@ -447,6 +469,12 @@ public class FleetManagementController extends BaseController{
 			srSubArea = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_SUB_AREA.getValue(), request.getLocale());
 			meterReadType = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_METER_READ.getValue(), request.getLocale());
 			productType=commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_PRODUCT_TYPE.getValue(), request.getLocale());
+			addressLOD=commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_ADDRESSLOD.getValue(), request.getLocale());
+			floorLOD=commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_FLOORLOD.getValue(), request.getLocale());
+			lbsMultiselect=commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_MULTISELECT_OPTIONS.getValue(), request.getLocale());
+			expiration = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_DEVICE_STATUS_EXPIRATION.getValue(), request.getLocale());
+			alertCodes = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_DEVICE_STATUS_ALERTS.getValue(), request.getLocale());
+			//LOGGER.debug("LBS multiselect "+lbsMultiselect);
 			
 		}catch (LGSDBException e) {
 			// TODO Auto-generated catch block
@@ -463,7 +491,11 @@ public class FleetManagementController extends BaseController{
 		model.addAttribute("srSubArea",srSubArea);
 		model.addAttribute("meterReads",meterReadType);
 		model.addAttribute("productType",productType);
-		
+		model.addAttribute("addressLOD",addressLOD);
+		model.addAttribute("floorLOD",floorLOD);
+		model.addAttribute("lbsMultiselect",lbsMultiselect);
+		model.addAttribute("expiration",expiration);
+		model.addAttribute("alertCodes",alertCodes);
 		 	
 	}
 	

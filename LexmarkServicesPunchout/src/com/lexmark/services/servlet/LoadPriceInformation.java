@@ -50,7 +50,7 @@ public class LoadPriceInformation{
 	/**
 	 * @return List 
 	 */
-	@Cacheable(cacheName="retrieveAccountAgreementList", keyGeneratorName="myKeyGenerator")
+	//@Cacheable(cacheName="retrieveAccountAgreementList", keyGeneratorName="myKeyGenerator")
 	public List<PunchoutAccount> getAllAccountList(){
 		LOGGER.debug("[ In getAllAccountList ]");
 		
@@ -75,7 +75,7 @@ public class LoadPriceInformation{
 	 * @return Map 
 	 * @throws Exception 
 	 */
-	 @Cacheable(cacheName="retrievePriceList", keyGeneratorName="myKeyGenerator")
+	 //@Cacheable(cacheName="retrievePriceList", keyGeneratorName="myKeyGenerator")
 	 public Map<String, Map<String,List<HardwareCatalog>>> getAllBundlePriceMap() throws Exception{
 		 allAccountList = getAllAccountList();
 		 List<String> accountList = new ArrayList<String>();
@@ -87,7 +87,7 @@ public class LoadPriceInformation{
 			 acntCnt = acntCnt + 1;
 			 PunchoutAccount punchoutAcct = new PunchoutAccount();
 			 
-			 if(accountList.isEmpty() && acntCnt == 6 && account.getAccountId()!=null)
+			 if(accountList.isEmpty()  && account.getAccountId()!=null)
 			 {
 				 accountList.add(account.getAccountId());
 				 punchoutAcct.setAgreementId(account.getAgreementId());

@@ -63,15 +63,15 @@ public class MeterReadUpdateFavoriteTest extends MeterReadServiceTestBase {
 	public void testUpdateAssetMeterRead_defect10023() throws Exception {
 		UpdateAssetMeterReadContract contract = new UpdateAssetMeterReadContract();
 		contract.setSessionHandle(handle);
-		contract.setContactId("1-526QV0B");
+		contract.setContactId("1-16X93QX");
 		
 		Asset asset = new Asset();
 		asset.setAssetId("1-9XMW-4462");
-		PageCounts pageCount = new PageCounts();
-		pageCount.setName("LTPC");
-		pageCount.setCount("1000000");
-		pageCount.setDate("12/13/2013 08:00:00");
-		asset.setPageCounts(Arrays.asList(pageCount));
+//		PageCounts pageCount = new PageCounts();
+//		pageCount.setName("LTPC");
+//		pageCount.setCount("1000000");
+//		pageCount.setDate("12/13/2013 08:00:00");
+//		asset.setPageCounts(Arrays.asList(pageCount));
 		contract.setAsset(asset);
 
 		UpdateAssetMeterReadResult result = new UpdateAssetMeterReadResult(); 

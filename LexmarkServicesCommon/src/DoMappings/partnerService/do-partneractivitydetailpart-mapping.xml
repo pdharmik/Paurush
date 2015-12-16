@@ -111,6 +111,10 @@
 	         		<key><value>doaQuantity</value></key>
 	         		<value>LXK MPS DOA Qty</value>
 				</entry> 	
+				<entry>
+	         		<key><value>materialLine</value></key>
+	         		<value>LXK MPS Material Line</value>
+				</entry> 	
 				
 	     	</map>
 		</property>

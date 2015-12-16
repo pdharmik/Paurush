@@ -129,7 +129,7 @@ div.portletBodyWrap {
  
          <%-- <c:if test='${fleetManagementFlag ne "true"}'>--%>
 					<div class="cloumnsTwo float-left" id="backtomap" style="display: none;">
-						<button class="button_cancel" onclick="javascript:backToMapView();"	type="button">Back to Map</button>
+						<button class="button_cancel" onclick="javascript:backToMapView();"	type="button"><spring:message code="fleetmanagement.headers.backToMap"/></button>
 					</div>
 		<%--</c:if>--%>
 

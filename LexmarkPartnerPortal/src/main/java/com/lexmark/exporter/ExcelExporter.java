@@ -23,9 +23,16 @@ import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.hssf.util.CellRangeAddressList;
+import org.apache.poi.hssf.usermodel.HSSFDataValidation.ErrorStyle;
+//import org.apache.poi.hssf.util.CellRangeAddressList;
+import org.apache.poi.ss.util.CellRangeAddressList;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Row;
+
+
+
 
 import com.lexmark.domain.Field;
 import com.lexmark.domain.ListFieldDetail;
@@ -542,7 +549,7 @@ public class ExcelExporter {
 			
 		
 			 DVConstraint constraint = DVConstraint.createFormulaListConstraint("hidden"+key);
-			 @SuppressWarnings("deprecation")
+			 //@SuppressWarnings("deprecation")
 			CellRangeAddressList addressList = new CellRangeAddressList(7, Integer.parseInt(rowsEditable), key,key);
 			 HSSFDataValidation validation = new HSSFDataValidation(addressList, constraint);
 			 sheet.addValidationData(validation);
@@ -596,6 +603,14 @@ public class ExcelExporter {
 		writeExcelHeader(templateInformation,firstSheet,++rowNumber,true);
 		generateExcel(dataList, templateInformation, firstSheet);
 		setDropDownValues(firstSheet,dropDownValuesForExcel);
+		setNumericConstraints(firstSheet,"0",null,28);// Quantity
+		setNumericConstraints(firstSheet,"0",null,29);// Used Quantity
+		setNumericConstraints(firstSheet,"0",null,30);// Not Used Quantity
+		setNumericConstraints(firstSheet,"0",null,31);// DOA Quantity
+		setNumericConstraints(firstSheet,"0",null,62);// Page Count
+		setNumericConstraints(firstSheet,"0",null,46);// Port Number
+		setEmailConstraints(firstSheet,10);// Email Address
+		setIPConstraints(firstSheet,"0","255",36);// IP Address
 		makeRestRowsEditable(firstSheet,rowNumber,templateInformation);
 		writeExcelResponse(firstSheet,response,templateInformation);
 		}catch(Exception e){
@@ -603,4 +618,76 @@ public class ExcelExporter {
 		}
 		LOGGER.exit("ExcelExporter.java", "generateHardwareDebriefTemplate");
 	}
+	
+	/**
+	 * @param sheet
+	 * @param lowerLimit
+	 * @param higherLimit
+	 * @param columnIndex
+	 */
+	private void setNumericConstraints(HSSFSheet sheet,String lowerLimit,String higherLimit,int columnIndex){
+		DVConstraint numericConstraint = DVConstraint.createNumericConstraint(
+			    DVConstraint.ValidationType.INTEGER,DVConstraint.OperatorType.GREATER_THAN, lowerLimit,higherLimit);
+		CellRangeAddressList addressList = new CellRangeAddressList(7, Integer.parseInt(rowsEditable),columnIndex, columnIndex);
+		HSSFDataValidation validation1 = new HSSFDataValidation(addressList, numericConstraint);
+		String errorMsg=PropertiesMessageUtil.getPropertyMessage("com.lexmark.resources.messages","exception.errorMsg.numeric",locale);
+		validation1.setErrorStyle(ErrorStyle.STOP);
+		validation1.createErrorBox("Error", errorMsg + lowerLimit);
+		sheet.addValidationData(validation1);
+	}
+	
+	/**
+	 * @param sheet
+	 * @param columnIndex
+	 */
+	private void setEmailConstraints(HSSFSheet sheet, int columnIndex){
+		LOGGER.debug("setEmailAddressConstraints = " + columnIndex);
+		for(Row r : sheet) {
+			Cell c = r.getCell(10);
+			if(c != null) {
+		      if(c.getCellType() == Cell.CELL_TYPE_STRING) {
+		    	 LOGGER.debug("In IF Condition === ");
+		    	 String formula = "COUNTIF($K1,\"?*@?*.??*\")";
+		         CellRangeAddressList addressList = new CellRangeAddressList(7, Integer.parseInt(rowsEditable),columnIndex, columnIndex);
+				 DVConstraint	emailConstraint = DVConstraint.createCustomFormulaConstraint(formula);
+				 HSSFDataValidation validation2 = new HSSFDataValidation(addressList, emailConstraint);
+				 String errorMsg=PropertiesMessageUtil.getPropertyMessage("com.lexmark.resources.messages","exception.errorMsg.emailAddress",locale);
+				 validation2.setErrorStyle(ErrorStyle.STOP);
+				 validation2.createErrorBox("Error", errorMsg);
+				 sheet.addValidationData(validation2);
+		      } else if(c.getCellType() == Cell.CELL_TYPE_FORMULA && c.getCachedFormulaResultType() == Cell.CELL_TYPE_STRING) {
+		    	  LOGGER.debug("In ELSE IF Condition === ");
+		    	}
+		   }
+		}
+	}
+	
+	/**
+	 * @param sheet
+	 * @param lowerLimit
+	 * @param higherLimit
+	 * @param columnIndex
+	 */
+	private void setIPConstraints(HSSFSheet sheet, String lowerLimit,String higherLimit, int columnIndex){
+		LOGGER.debug("setIPAddressConstraints = " + columnIndex);
+		for(Row r : sheet) {
+			Cell c = r.getCell(36);
+			if(c != null) {
+		      if(c.getCellType() == Cell.CELL_TYPE_STRING) {
+		    	 LOGGER.debug("In IF Condition === ");
+		    	 String formula = "AND((LEN($AK1)-LEN(SUBSTITUTE($AK1,\".\",\"\")))=3,ISNUMBER(SUBSTITUTE($AK1,\".\",\"\")+0))";
+		         CellRangeAddressList addressList = new CellRangeAddressList(7, Integer.parseInt(rowsEditable),columnIndex, columnIndex);
+				 DVConstraint	ipConstraint = DVConstraint.createCustomFormulaConstraint(formula);
+				 HSSFDataValidation validation2 = new HSSFDataValidation(addressList, ipConstraint);
+				 String errorMsg=PropertiesMessageUtil.getPropertyMessage("com.lexmark.resources.messages","exception.errorMsg.ipAddress",locale);
+				 validation2.setErrorStyle(ErrorStyle.STOP);
+				 validation2.createErrorBox("Error", errorMsg);
+				 sheet.addValidationData(validation2);
+		      } else if(c.getCellType() == Cell.CELL_TYPE_FORMULA && c.getCachedFormulaResultType() == Cell.CELL_TYPE_STRING) {
+		    	  LOGGER.debug("In ELSE IF Condition === ");
+		    	}
+		   }
+		}
+	}
+	
 }

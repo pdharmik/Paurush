@@ -701,8 +701,7 @@ public class CustomerReportsAdminController extends BaseController {
 			List<ReportDefinition> reportDefinitionList =result.getReportDefinitionList();
 			Integer reportDefId=null;
 			for (ReportDefinition reportDefinitionFetched : reportDefinitionList) {
-				
-				if(reportDefinitionFetched.getName().equals(reportDefinitionName.trim())){
+				if(reportDefinitionFetched.getName().trim().equals(reportDefinitionName.trim())){
 					reportDefId=reportDefinitionFetched.getId();
 					
 					break;

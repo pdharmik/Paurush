@@ -61,6 +61,9 @@ public class HardwareDetailPageForm extends BaseForm implements Serializable{
 	private String templateFileCount;
 	private String templateFileLOV;
 	private String templateFileName;
+	//added for LBS1.5
+	private String pageFlow;
+	private String placementId;
 	
 	public String getCreditCardEncryptedNo() {
 		return creditCardEncryptedNo;
@@ -326,6 +329,30 @@ public class HardwareDetailPageForm extends BaseForm implements Serializable{
 	 */
 	public void setPaymentMethod(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
+	}
+	/**
+	 * @return the pageFlow
+	 */
+	public String getPageFlow() {
+		return pageFlow;
+	}
+	/**
+	 * @param pageFlow the pageFlow to set
+	 */
+	public void setPageFlow(String pageFlow) {
+		this.pageFlow = pageFlow;
+	}
+	/**
+	 * @return the placementId
+	 */
+	public String getPlacementId() {
+		return placementId;
+	}
+	/**
+	 * @param placementId the placementId to set
+	 */
+	public void setPlacementId(String placementId) {
+		this.placementId = placementId;
 	}
 
 }

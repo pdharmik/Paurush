@@ -1,16 +1,12 @@
 .journal-content-article {
-	margin:0 0 0 20px;
-	width:96.5%;
+	margin:0 20px;
 	border: none;
 	background-color:#fff !important;
 	height:25px !important;
-	//padding-top: 5px !important;
 }
 .journal-content-article h2{
 background:none;
-padding-left:0 !important;
 color:#000;
-padding: 0px !important;
 margin:0px !important;
 height: auto;
 line-height:20px !important;
@@ -24,7 +20,7 @@ line-height:20px !important;
 	color:#464243;
 	padding:5px;
 	width:160px;
-	z-index:1000;
+	z-index:1002!important;
 	position:absolute;
 	right:60px;
 }
@@ -142,34 +138,31 @@ background-repeat:no-repeat;
 }
 .filterLBS{
 background:#eff0f6;
-margin: 0px 0px 5px 20px;
+margin: 0px 20px 5px 20px;
 height:auto;
-width: 94%;
 border:1px solid #c9c9d1;
-float: left;
 position:relative;
 padding: 3px 15px;
 color:#1d1d25!important;
 }
 #divFilter
 {
+text-align:center;
 width:100%;
 cursor:pointer;
 font-weight:bold;
-float:left;
 }
 #divFilter span{
 font-size: 18px; 
 font-weight:normal;
 }
 #divFilter img{
-margin-top:3px;
 padding-right: 9px;
 }
-#arrow{float:right;}
-
-#filterDivs{
- 
+#arrow {
+    margin-left: 10px;
+}
+#filterDivs{ 
 width:99.95%;
 height:auto;
 }
@@ -231,24 +224,24 @@ float:left;
 color:#00f;
 text-decoration: underline;
 }
-#selectLocalAddress{
+.selectLocalAddress{
 text-align:center;
 float:left;
 width:49%;
 }
 
-#selectLocalAddress select{
+.selectLocalAddress select{
 width:97% !important;
 margin-top: 2px;
 padding:0px;
 }
-#selectLocalAddress ul{
+.selectLocalAddress ul{
 width:100%;
 float:right;
 margin:0;
 padding:0;
 }
-#selectLocalAddress ul li{
+.selectLocalAddress ul li{
 float:right;
 width:95%;
 }
@@ -272,6 +265,14 @@ width:103%;
     float:left;
     width:50%;
 }
+#DeviceProperties ul li > div,#RequestDetails ul li > div{
+    margin-top: 2px;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	#DeviceProperties ul li > div,#RequestDetails ul li > div{
+    	height:23px;
+	} 
+}
 #DeviceProperties input{
 width:85%;
 margin:2px 2px 0 1px !important;
@@ -284,9 +285,10 @@ padding:4px !important;
 }
 #DeviceProperties select{
 float:left;
-margin: 1% 0 0 0% !important;
+margin: 2px 0 0 !important;
 width:90% !important;
-height:20px;
+width:calc(85% + 12px) !important;   
+padding: 0 !important;
 }
 #assetInstallDateDiv input{
 width:70%;
@@ -294,11 +296,9 @@ width:70%;
 #filterRequestsDiv{
 float:left;
 width:33.33%;
-//height:99%;
 margin-top:2px;
 }
 #RequestDetails{
- border: 1px solid #fff;
     height: auto;
     width: 102%;
     
@@ -405,7 +405,6 @@ padding:0px !important;
 	*padding-top:5px !important;
 }
 #actionsDiv ,#Filters{
-width:300px;
 float:right;
 padding:0px;
 margin:0;
@@ -431,9 +430,11 @@ position:relative;
 top:8px;
 }
 .map,.map1{
-margin-left:20px;
-width:96.5%;
+margin:0 20px;
 height:100%;
+}
+.map, x:-moz-any-link, x:default {
+    //margin-top: -5px;
 }
 #model,#type,#requestType,#requestStatus,#areaDrop,#subAreaDrop{
 /*height:60px !important;*/
@@ -580,15 +581,11 @@ margin-top: 5px;
 
 }
 
-#leftNavDevices #firstBlock{
-float: left;
-width:97%;
-min-height: 130px;
+.leftNavDevicesStyle #firstBlock,#leftNavDevices #firstBlock,#moveMultiAssetLeftNav .firstBlock{
 height:auto;
 background-color:#fff;
 border:1px solid #c9c9d1;
 color:#1d1d25;
-margin-bottom: 5px;
 position:relative;
 }
 /*
@@ -601,7 +598,7 @@ height:100%;
 width:100%;
 height:100%;
 }*/
-#leftNavDevices #installedAdd{
+#leftNavDevices #installedAdd,.leftNavDevicesStyle #installedAdd{
     float: left;
     padding: 5px 0 5px 5px;
     width: 48%;
@@ -609,19 +606,11 @@ height:100%;
 #installedAdd u{
 	font-size:15px;
 }
-#leftNavDevices #totalDiv{
+#leftNavDevices #totalDiv, .leftNavDevicesStyle #totalDiv{
  	bottom: 0;
-	padding: 5px 5px 5px 0;
-    position: absolute;
-    right: 0;
-	max-width:48%;
-}
-
-#deviceDetailsList{
-height:100%;
-width:98%;
-border:1px solid #E1E1E1;
-padding:0px;
+	max-width: 48%;
+    padding: 5px 5px 5px 0;
+    float:right;
 }
 #deviceHeader{
     background:#c9c9d1;
@@ -656,7 +645,6 @@ vertical-align:middle;
 position:relative;
 width:100%;
 float:left;
-margin-top: 20px;
 }
 
 .deviceRequests{
@@ -769,7 +757,7 @@ border-radius:5px;
 color:#1d1d25;
 padding:5px;
 width:200px;
-z-index:1000;
+z-index:1002!important;
 box-shadow:2px 2px rgba(100,100,100,0.2);
 position:absolute;
 margin-top: 10px!important;
@@ -802,25 +790,21 @@ width:120px;
 z-index:1000;
 position:absolute;
 background:#FFFFFF;
-top:90%;
-left:58%;
+/*top:90%;
+left:58%;*/
 clear:both;
 }
 
-#leftNavDevices{
+#leftNavDevices,.leftNavDevicesStyle,#moveMultiAssetLeftNav{
 float: left;
-width: 29.5%;
+width: 30%;
 }
-#leftNavDevices #secondBlock{
-float: left;
-clear:both;
-width:98%;
+#leftNavDevices #secondBlock,.leftNavDevicesStyle #secondBlock,#moveMultiAssetLeftNav .secondBlock{
 height: 464px;
 background-color:#ffffff;
 }
 #deviceDetailsList{
 height:100%;
-width:99%;
 border:1px solid #c9c9d1;
 padding:0px;
 }
@@ -985,3 +969,270 @@ float:right;
    cursor: auto;
 }
 
+
+/*------------- Device Status Css ------------------------*/
+
+.arrow_icon{
+	background-image: url("/LexmarkServicesPortal/images/arrow-sprite.gif");
+	cursor: pointer;
+	display: inline-block;
+	height: 15px;
+	vertical-align: top;
+	width: 15px;
+	margin-top: 2px;
+}
+
+.arrow_up{
+	background-position: -15px -15px;
+}
+.arrow_down{
+	background-position: 0 -15px;
+}
+.arrow_left{
+	background-position: 0px 0px;
+}
+.arrow_right{
+	background-position: -15px 0px;
+}
+.open .arrow_right {
+    background-position: 0 0;
+}
+.greyBg{background-color:#eeeeee;}
+#first th,#second th,#third th,#fourth th {
+	border-left: 1px solid;
+	text-align: center;
+}
+.popUpBody tr {
+    height: 20px;
+}
+.popUpBody div.openSub {
+   // padding: 0;
+}
+	#fleet-Manager-Maps {
+		position: relative;
+	}
+	.options{
+		//display: block !important;
+	}
+	#fleetMainMapId{
+		border: 1px solid #c9c9c1;
+	}
+	.mapDeviceStatus input[type="radio"] {
+		margin-left: 0;
+	}
+	.mapDeviceStatusSpan {
+	    width: 100%;
+	}
+	.mapDeviceStatus span{
+		cursor: pointer;
+	}
+	.mapDeviceStatusSpan span{
+		cursor: pointer;
+		float: right;
+		margin: 0 3px;
+	}
+	.mapDeviceStatus a {
+		font-size: 10px;
+		text-decoration: none;
+	}
+	#fleetMainMapId {
+		border: 1px solid #c9c9c1;
+		height: 600px;
+	}
+	.mapDeviceStatus{
+	    background: #eff0f6 none repeat scroll 0 0;
+	    border-color: #c9c9c1;
+	    border-style: solid;
+	    border-width: 1px;
+	    display: inline-block;
+	    padding: 6px 0;
+	    position: relative;
+	    width: 100%;
+	    z-index: 1000;
+	}
+	.mapDeviceStatus.open{
+		background: #ffffff none repeat scroll 0 0;
+	    border-color: #c9c9c1 #fff #c9c9c1 #c9c9c1;
+	    min-width: 250px;
+	    padding-right: 4%;
+	}
+	.mapDeviceStatusBody,.mapUTStatusBody{
+		background: #fff none repeat scroll 0 0;
+	    border: 1px solid #c9c9c1;
+	    left: 104%;
+	    padding: 5px;
+	    position: absolute;
+	    top: 0;
+	    width: 80%;
+	}
+	.mapDeviceStatusBody,.mapUTStatusBody{
+		display: none;
+	}
+	
+	.deviceStatusSubHeader{
+		background: #eff0f6;
+		padding: 3px 6px;
+		margin: 3px 0;
+		cursor:pointer;
+	}
+	.popUpBody .deviceStatusSubHeader {
+	    margin-bottom: 15px;
+	    border: 1px solid #eff0f6;
+	}
+	
+	.arrow_icon.up-down{
+		background-position: 0 -15px;
+	}
+	.mapDeviceStatusHeader{
+		font-size: 14px;
+		font-weight: bold;
+	}
+	.subHeader{
+		font-size: 12px;
+		font-weight: bold;
+	}
+	.mapDeviceStatusHeader span{
+		float: left;
+	}
+	.deviceStatusSubMenu{
+		display:none;
+		padding:5px;
+	}
+	@media screen and (-webkit-min-device-pixel-ratio:0) {
+		.mapDeviceStatusSpan {
+			float:left; /* on Safari and Chrome  */
+		}
+	}
+	.open span.left-right {
+		background-position: -15px 0;
+	}
+	.openSub span.up-down {
+		background-position: -15px -15px;
+	}
+	div.openSub {
+		//background: #fffaff none repeat scroll 0 0;
+		background: #fff;
+	}
+	.subMenuPanel {
+		background: #fff;
+	}
+	.button[disabled=""],.button[disabled="disabled"]{
+		background: #b9d1e7;
+	}
+	.small-italic {
+		font-size: 10px;
+		font-style: italic;
+	}
+	#alertsSuppliesStatus, #alertsHardwareStatus, #utilizationPagesPrintedStatus{
+		display: inline;
+	}
+				
+	.subMenuPanel select {
+		width: 90% !important;
+	}
+	.shaded{
+		opacity: 0.5;
+		//filter: alpha(opacity = 50);
+	}
+	.mapAssetTag.highlight {
+		height: 50px;
+		width: 50px;
+		border: 3px solid #444444;
+	}
+	.highlight span.popup_arrow_asset {
+		left: 12px;
+	}
+	
+.highlight div.mapAssetTagHeader {
+    width: 48px;
+}
+.highlight div.mapAssetTagCount{
+    background: rgb(25, 100, 180) none repeat scroll 0 0;
+    border: 1px solid rgb(25, 100, 180);
+    font-size: 35px;
+    height: 24px;
+    padding: 10px 5px 5px;
+    width: 38px;
+}
+.highlight span.popup_arrow_asset_dark {
+    border-color: rgb(25,100,180) transparent transparent;
+}
+
+.highlight span.popup_arrow_asset {
+    border-width: 15px;
+    left: 13px;bottom: -30px;
+	border-color: #444444 transparent transparent;
+}
+.highlight span.popup_arrow_asset_inner {
+    border-width: 10px; 
+	left: -10px;
+}
+
+.highlight span.popup_arrow_asset_dark {left: -10px;
+    border-color: rgb(25, 100, 180) transparent transparent !important;
+    border-width: 10px;
+}
+.device.highlight {
+    background-color: transparent;
+}
+#utilizationStatusDescription th {
+    width: 45px;
+}
+.statusDescription{
+	display: none;
+}
+#deviceStatusContent {
+	opacity: 0.88;
+	filter: alpha(opacity=88);
+    position: absolute;
+    width: 27%;
+}
+.bottomRight {
+    bottom: 0;
+    position: absolute;
+    right: 0;
+}
+.statusDescriptionBlock{
+	border-top: 1px solid #c9c9c1;
+    margin: 5px;
+    max-height: 100px;
+    overflow: auto;
+    text-align: left;
+    display:none;
+}
+.fontBold{
+	font-weight:bold;
+}
+.span-apart{
+	margin-right: 20px;
+	float: none !important;
+}
+.statusDescriptionBlock table tr td a{
+	cursor:pointer;
+	}
+#closelocation_history {
+    margin: 3px 1px !important;
+}
+#closelocation_history:focus {
+    padding: 0 6px !important;
+}
+.greyBg{
+	background-color:#eeeeee;
+}
+.openSub thead {
+    background: #e6e6f0 none repeat scroll 0 0;
+}
+.openSub thead th, .openSub td,#multi-select-move-table th {
+    padding: 0 10px;
+    text-align: left;
+}
+.openSub thead th{
+    border-left: 1px solid;
+}
+
+#multi-select-map{
+	max-width:48%;
+}
+.noDisplay{
+	display:none;	
+}

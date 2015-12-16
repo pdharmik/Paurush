@@ -39,6 +39,9 @@ public class UserDetails implements Serializable {
 	//added for LBS
 	private boolean fleetMngtFlag;
 	private boolean deviceFinder;
+	//LBS 1.5
+	private boolean showDeviceStatus;
+	private boolean showDeviceUtilizationTerms;
 	
 	public boolean isAlliancePartner() {
 		return alliancePartner;
@@ -214,6 +217,30 @@ public class UserDetails implements Serializable {
 	}
 	public void setDeviceFinder(boolean deviceFinder) {
 		this.deviceFinder = deviceFinder;
+	}
+	/**
+	 * @param showDeviceStatus the showDeviceStatus to set
+	 */
+	public void setShowDeviceStatus(boolean showDeviceStatus) {
+		this.showDeviceStatus = showDeviceStatus;
+	}
+	/**
+	 * @return the showDeviceStatus
+	 */
+	public boolean isShowDeviceStatus() {
+		return showDeviceStatus;
+	}
+	/**
+	 * @param showDeviceUtilizationTerms the showDeviceUtilizationTerms to set
+	 */
+	public void setShowDeviceUtilizationTerms(boolean showDeviceUtilizationTerms) {
+		this.showDeviceUtilizationTerms = showDeviceUtilizationTerms;
+	}
+	/**
+	 * @return the showDeviceUtilizationTerms
+	 */
+	public boolean isShowDeviceUtilizationTerms() {
+		return showDeviceUtilizationTerms;
 	}
 	
 	

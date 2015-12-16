@@ -15,15 +15,15 @@
             <br/><span style="font-size:24px;font-weight:bold;" id="printerId">${bundle.configId}</span><br/>
             <span style="font-size:12px;">${bundle.mpsDescription}</span><br/><br/>
             <span style="font-size:12px;">${bundle.bundleName}</span><br/>
-            <p style="width:90%; padding:0; font-size:12px; line-height:17px;">${bundle.description} <a href = "javascript:learnMorePopup('${bundle.bundleId}');"><spring:message code="shoppingCart.printers.link"/></a>
+            <p style="width:90%; padding:0; font-size:12px; line-height:17px;">${bundle.description} <a href = "javascript:learnMorePopup('${bundle.bundleId}');">&nbsp;&nbsp;<B><spring:message code="shoppingCart.printers.link"/></B></a>
             </p>
                
             
             <table width="300" border="0" cellspacing="0" cellpadding="0" class="discrptn-table-parts">
                   <tr>
-                <td bgcolor="#e6e6f0" class="table-title"><spring:message code="orderSupplies.placeOrderHeader.partNumber"/></td>
-                <td bgcolor="#e6e6f0" class="table-title"><spring:message code="orderSupplies.placeOrderHeader.description"/></td>
-                <td bgcolor="#e6e6f0" class="table-title"><spring:message code="requestInfo.heading.Qty"/></td>
+                <td style="background-color:#A9A9A9 !important" class="table-title" style="font-size: 15px;"><b><spring:message code="orderSupplies.placeOrderHeader.partNumber"/></b></td>
+                <td style="background-color:#A9A9A9 !important" class="table-title" style="font-size: 15px;"><b><spring:message code="orderSupplies.placeOrderHeader.description"/></b></td>
+                <td style="background-color:#A9A9A9 !important" class="table-title" style="font-size: 15px;"><b><spring:message code="requestInfo.heading.Qty"/></b></td>
               </tr>
        <c:choose>
                <c:when test="${fn:length(bundle.partList) eq 0}">
@@ -33,8 +33,11 @@
                    <td bgcolor="#e6e6f0"></td>
                </c:when>
              <c:otherwise>
-           
-                <c:forEach var="partList" items="${bundle.partList}" varStatus="counter" begin="0"> 
+           <c:set var="partType" value=""/>
+                <c:forEach var="partList" items="${bundle.partList}" varStatus="counter" begin="0">
+                <c:if test="${partList.partType == 'Printers'}">
+           			<c:set var="partType" value="${partList.partNumber}"/>     	
+                </c:if> 
                    <tr class="<c:if test="${counter.index % 2 ne 0}">altRow</c:if>">
                      <td style="border-right:1px solid #8c8c8c;" class="table-txt">${partList.partNumber} </td>
                      <td class="table-txt" style="border-right:1px solid #8c8c8c;">${partList.description}</td>
@@ -44,10 +47,11 @@
             </c:otherwise>
       </c:choose>
               
-             
+             <input type="hidden" id="${bundle.bundleId}_partType" value="${partType}" />
                 
                 </table>
           </div>
+          <c:if test="${fromAriba == 'true'}">
           <c:choose>
             	<c:when test="${not empty bundle.price}">
               <div class="quntity-cart-cntnr">
@@ -107,6 +111,7 @@
           </div>
                   </c:otherwise>
                 </c:choose>
+                </c:if>
           <div id="accObj" style="width: 100%;float:left;"></div>
           <div class="gridSubrowHeader">
           <div style="width:80%;float: left;"><spring:message code="product.bundleGridXml.optionsAndWarranties"/></div>
@@ -118,3 +123,5 @@
 		</row>
 </c:forEach>
 </rows>
+
+

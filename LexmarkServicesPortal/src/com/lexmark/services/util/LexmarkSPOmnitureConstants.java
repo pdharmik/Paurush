@@ -83,6 +83,10 @@ public interface LexmarkSPOmnitureConstants {
 	/**
 	 * Static variable declaration
 	 */
+	String CHANGEMULTIASSET = "Change Multi Asset";
+	/**
+	 * Static variable declaration
+	 */
 	String DECOMMISSIONASSET = "Decommission Asset";
 	/**
 	 * Static variable declaration
@@ -881,6 +885,10 @@ public interface LexmarkSPOmnitureConstants {
 	 * Static variable declaration
 	 */
 	String REVIEWCHANGEASSETSUBMIT = "Review change asset submit";
+	/**
+	 * Static variable declaration
+	 */
+	String REVIEWCHANGEMULTIASSETSUBMIT = "Review change multi asset submit";
 	/**
 	 * Static variable declaration
 	 */

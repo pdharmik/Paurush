@@ -200,7 +200,7 @@ jQuery(document).ready(function(){
 	JSON_Param["<%=gridConfigurationValues[7]%>"]="3,asc";
 	JSON_Param["<%=gridConfigurationValues[8]%>"]="2,7,11,12";
 	JSON_Param["<%=JSON_COMBO_FILTER%>1"]="";
-	JSON_Param["<%=JSON_RESOURCE_URL%>"]="<portlet:resourceURL id="addressListPopulate"/>";
+	JSON_Param["<%=JSON_RESOURCE_URL%>"]="<portlet:resourceURL id="addressListPopulate"/>"+"&fromMADC=true";
 	JSON_Param["<%=gridSavingParams[0]%>"]="${gridSettings.colsOrder}";
 	JSON_Param["<%=gridSavingParams[1]%>"]="${gridSettings.colsWidth}";
 	JSON_Param["<%=gridSavingParams[2]%>"]="${gridSettings.colsSorting}";

@@ -202,7 +202,7 @@ div.portlet-footer, div.portlet-footer-inner{background-image:none}
 	         <portlet:param name="action" value="removeAttachment"/>
         </portlet:actionURL> 
 		
-		<div class="error" id="errorDiv" style="display: none;"></div>
+		<div class="serviceError" id="errorDiv" style="display: none;"></div>
  		<!-- JS Validation Errors displayed in the below html:statusBanner -->
            <div id="jsValidationErrors" class="error" style="display: none;"></div>
         <!-- Validation Errors displayed in the below div -->
@@ -726,7 +726,7 @@ div.portlet-footer, div.portlet-footer-inner{background-image:none}
 				{
 				
 				jQuery("#errorDiv").show();
-				jQuery("#errorDiv").append('<li><strong><spring:message code="exception.unableToRetrieveDeviceDetail"/></strong></li>');
+				jQuery("#errorDiv").append('<li class=\"portlet-msg-error\"><strong><spring:message code="exception.unableToRetrieveDeviceDetail"/></strong></li>');
 			}
 		
 		 //Script for Request History Grid CI (BRD13-10-02) STARTS 

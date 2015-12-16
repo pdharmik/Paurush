@@ -205,7 +205,9 @@ behavior: url(/LexmarkServicesPortal/WEB-INF/css/PIE.htc) !important;
 				<div class="expand-min1"></div>
             </div>
 	</div>
-	
+	<%-- Added for LBS 1.5 View Grid--%>
+   <jsp:include page="/WEB-INF/jsp/common/mapPopup.jsp" />
+  <%-- ENDS for LBS 1.5 View Grid--%>
 <script>
 <%-- Below value is for BACK URL--%>
 var backURL={
@@ -259,7 +261,7 @@ var mandatoryFieldObj={
 		7:["assetSerialNumber","<spring:message code="requestInfo.hardwareDebreief.common.closeOut.validation.serialNumber" javaScriptEscape="true"/>"],
 		8:["userEnteredActivity.serviceRequest.asset.installAddress.addressLine1","<spring:message code="requestInfo.hardwareDebreief.common.closeOut.validation.deviceInstallAddress" javaScriptEscape="true"/>"],
 		10:["desc","<spring:message code="requestInfo.hardwareDebreief.common.reject" javaScriptEscape="true"/>"],
-		<c:if test="${hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.lbsAddressFlag !=null && hardwareDebriefForm.userEnteredActivity.serviceRequest.asset.installAddress.lbsAddressFlag == true}">
+		<c:if test="${isLbsAddress==true && islod== true}">
 		12:["userEnteredActivity.serviceRequest.asset.installAddress.buildingId","<spring:message code="requestInfo.hardwareDebrief.validation.building" javaScriptEscape="true"/>"],
 		13:["userEnteredActivity.serviceRequest.asset.installAddress.floorId","<spring:message code="requestInfo.hardwareDebrief.validation.floor" javaScriptEscape="true"/>"],
 		</c:if>
