@@ -46,7 +46,7 @@ public class AmindPartnerActivitySearchSpecUtil {
 			searchSpec.append(buildActivityListFilterCriteria(contract.getFilterCriteria(), activityFieldMap, activityListCall, contract.getCurrentTimeStamp()));
 		}
 		if (contract.isChangeManagementFlag() && !containsActivitiesTypes) {
-			searchSpec.append(" AND ([Type] = 'HW Install' OR [Type] = 'HW Install Move' OR [Type] = 'HW Install Change' OR [Type] = 'HW Install Decommission' OR [Type] = 'HW BAU Install' OR [Type] = 'HW BAU Install Move' OR [Type] = 'HW BAU Install Change' OR [Type] = 'HW BAU Install Decommission' OR [Type] = 'HW MADC Install' OR [Type] = 'HW MADC Move' OR [Type] = 'HW MADC Change' OR [Type] = 'HW MADC Decommission')");
+			searchSpec.append(" AND ([Type] = 'HW Install' OR [Type] = 'HW Install Move' OR [Type] = 'HW Install Change' OR [Type] = 'HW Install Decommission' OR [Type] = 'HW BAU Install' OR [Type] = 'HW BAU Install Move' OR [Type] = 'HW BAU Install Change' OR [Type] = 'HW BAU Install Decommission' OR [Type] = 'HW MADC Install' OR [Type] = 'HW MADC Move' OR [Type] = 'HW MADC Change' OR [Type] = 'HW MADC Decommission' OR [Type] = 'HW Proj Install/Decommission' OR [Type] = 'HW BAU Install/Decommission' OR [Type] = 'HW MADC Install/Decommission') ");
 		}
 		return searchSpec.toString();
 	}
