@@ -237,14 +237,15 @@ public class HTMLOutputGenerator {
 		}
 		return sb.toString();		
 	}
-	public static String generatePageCountsJson(List<PageCounts> pageCounts,String id){
+	public static String generatePageCountsJson(List<PageCounts> pageCounts,String id,Map<String,String> localizedValues){
 		StringBuffer sb=new StringBuffer("{");
 		sb.append("\"id\":").append("\"").append(id).append("\",");
 		sb.append("\"pageCount\":{");
 		int index=0;
 		for(PageCounts count:pageCounts){
 			sb.append("\"").append(count.getName()).append("\":");
-			sb.append("{\"name\":\"").append(count.getName()).append("\",");
+			String localized=localizedValues.get(count.getName());
+			sb.append("{\"name\":\"").append(localized==null?count.getName():localized).append("\",");
 			sb.append("\"index\":").append(index++).append(",");
 			String dt=count.getDate();String val=count.getCount();
 			sb.append("\"date\":\"").append(dt==null?"":dt).append("\",");

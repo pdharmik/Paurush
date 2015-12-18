@@ -179,7 +179,7 @@
 					  	<td width="20px">&nbsp;</td>
 	 	  				<td align="left">
 	 	  				<%--Below width changed for CI 13.10 BRD13-10-07 --%>
-	 	  					<select id="selectPartnerAgreement" name="selectPartnerAgreement" onclick="partnerAgreementOnClick();" onchange="partnerAgreementOnChange();" class="width-209px" onmouseover="this.title=this.options[this.selectedIndex].title">
+	 	  					<select id="selectPartnerAgreement" name="selectPartnerAgreement" onchange="partnerAgreementOnChange();" class="width-209px" onmouseover="this.title=this.options[this.selectedIndex].title">
 								<option value=""></option>	
 								<c:if test="${condition == '3' ||  condition == '1'}">													
 			 	  				<c:forEach items="${claimRequestConfirmationForm.partnerIndirectAccountList}" var="accounts">
@@ -337,7 +337,7 @@
 						}
 					});
 				}
-				
+				document.getElementById("PartnerAccountOptionValue").value = document.getElementById("selectPartnerAgreement").value;
 			}
 			
 			function partnerAgreementOnClick(){

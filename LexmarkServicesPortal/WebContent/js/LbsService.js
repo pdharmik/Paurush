@@ -101,7 +101,7 @@ function DeviceFields(){
 	                       "ProductName","InstallStartDate","InstallEndDate","ProductModelType",
 	                       "ProductType","ProductSeries" ,"ProductBrand",
 	                       "CostCenter","DepartmentName",
-	                       "CustomerAssetTag","AgreeName","HostName",
+	                       "CustomerAssetTag","AgreementName","HostName",
 	                       "AssetLifeCycle","DevicePhase","AssetMeterSource"];
 	//These are JSON field names for storing in DB in portal
 	 this.dbFieldNames=    ["srNm","ipAddr","prmdl",

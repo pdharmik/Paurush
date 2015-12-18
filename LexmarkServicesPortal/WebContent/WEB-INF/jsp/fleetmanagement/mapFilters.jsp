@@ -383,7 +383,7 @@ function deviceIdsHTML(){
 	this.productSeries="<spring:message code='lbs.label.productseries'/>";
 	this.productType="<spring:message code='lbs.label.producttype'/>";	
 	this.serialNumber="<spring:message code='lbs.label.serialno'/>";
-	//this.thirdpartyDevicesDiv="<spring:message code='lbs.label.thirdpartydevices'/>";
+	
 
 	
 	//this.colorMono="<spring:message code='lbs.label.color_mono'/>";	
@@ -787,7 +787,7 @@ subAreaArray.push({"value":"${requestStatus.key}","displayValue":"${requestStatu
 <%-- Added for LBS 1.5 --%>
 var addressLOD = {};
 <c:forEach items="${addressLOD}" var="requestStatus" varStatus = "status" >
-addressLOD["{requestStatus.key}"]="${requestStatus.value}";
+addressLOD["${requestStatus.key}"]="${requestStatus.value}";
 </c:forEach>
 
 var floorLOD ={};

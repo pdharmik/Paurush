@@ -1494,6 +1494,7 @@ function showPopupMessagesOPS(message,callback){
 			html+="<li>"+"<spring:message code='lbs.label.invalidipaddress'/>"+"</li>";
 			valid=false;
 		}
+		<%-- commented for 20547
 		if($('#serialNumber').val()!=allhtmlTextIdsObj["serialNumber"] &&!onlyAlphaNumeric($('#serialNumber').val())){
 			html+="<li>"+"<spring:message code='lbs.label.invalidserialnumber'/>"+"</li>";
 			valid=false;
@@ -1505,7 +1506,7 @@ function showPopupMessagesOPS(message,callback){
 		if($('#agreement').val()!=allhtmlTextIdsObj["agreement"] && !onlyAlphaNumeric($('#agreement').val())){
 			html+="<li>"+"<spring:message code='lbs.label.invalidagreement'/>"+"</li>";
 			valid=false;
-		}
+		}--%>
 		if($('#requestNo').val()!=allhtmlTextIdsObj["requestNo"] && !isTel($('#requestNo').val())){
 			html+="<li>"+"<spring:message code='lbs.label.invalidrequestnumber'/>"+"</li>";
 			valid=false;

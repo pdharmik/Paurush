@@ -52,6 +52,7 @@ import com.lexmark.domain.Part;
 import com.lexmark.domain.PartLineItem;
 import com.lexmark.domain.ServiceRequest;
 import com.lexmark.domain.ServicesUser;
+import com.lexmark.domain.TechnicianInstruction;
 import com.lexmark.result.ActivityDetailResult;
 import com.lexmark.result.ActivityListResult;
 import com.lexmark.result.AssignedTechnicianUpdateResult;
@@ -4969,6 +4970,26 @@ public class AmindPartnerRequestsServiceTest extends AmindServiceTest {
 		System.out.println(result.getActivity().getServiceRequest().getAsset().getInstallAddress().getCoordinatesXPreDebriefRFV());
 		System.out.println(result.getActivity().getServiceRequest().getAsset().getInstallAddress().getCoordinatesYPreDebriefRFV());
 		System.out.println();
+	}
+	
+	@Test
+	public void testRetrieveActivityDetail_INC0167702() throws Exception {
+		ActivityDetailContract contract = new ActivityDetailContract();
+		contract.setActivityId("1-1DXKXT6Y");
+		contract.setServiceRequestId("1-1DXGW0W2");
+//		contract.setPageName("Debrief");
+		contract.setDebriefFlag(false);
+		contract.setServicesUser(new ServicesUser());
+		ActivityDetailResult result = service.retrieveActivityDetail(contract);
+		for (TechnicianInstruction tech : result.getActivity().getServiceInstructionList()) {
+			System.out.println("InstructionId: " + tech.getInstructionId());
+			System.out.println("ActualInstruction: " + tech.getActualInstruction());
+			System.out.println("InstructionType: " + tech.getInstructionType());
+			System.out.println("InstructionDate: " + tech.getInstructionDate());
+		}
+		
+		System.out.println("ServiceInstructionList size: " + result.getActivity().getServiceInstructionList().size());
+		System.out.println(result.getActivity().getActivityServiceInstructions());
 	}
 	
 	@Test
