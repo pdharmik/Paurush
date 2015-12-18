@@ -457,6 +457,7 @@ public class FleetManagementController extends BaseController{
 		Map<String, String>lbsMultiselect=null;
 		Map<String, String> expiration=null;
 		Map<String, String> alertCodes=null;
+		Map<String, String> reportingCodes=null;
 		
 		try {
 			
@@ -474,6 +475,7 @@ public class FleetManagementController extends BaseController{
 			lbsMultiselect=commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_MULTISELECT_OPTIONS.getValue(), request.getLocale());
 			expiration = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_DEVICE_STATUS_EXPIRATION.getValue(), request.getLocale());
 			alertCodes = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_DEVICE_STATUS_ALERTS.getValue(), request.getLocale());
+			reportingCodes = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.LBS_DEVICE_STATUS_REPROTINGSTATUS.getValue(), request.getLocale());
 			//LOGGER.debug("LBS multiselect "+lbsMultiselect);
 			
 		}catch (LGSDBException e) {
@@ -496,7 +498,7 @@ public class FleetManagementController extends BaseController{
 		model.addAttribute("lbsMultiselect",lbsMultiselect);
 		model.addAttribute("expiration",expiration);
 		model.addAttribute("alertCodes",alertCodes);
-		 	
+		model.addAttribute("reportingCodes",reportingCodes); 	
 	}
 	
 	/**

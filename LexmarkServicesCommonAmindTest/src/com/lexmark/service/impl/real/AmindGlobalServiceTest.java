@@ -1875,6 +1875,48 @@ public class AmindGlobalServiceTest extends AmindServiceTest {
 	}	
 	
 	@Test
+	public void testRetrieveCatalogAgreementList_INC0162901() throws Exception {
+		SiebelAccountListContract contract = new SiebelAccountListContract();
+		contract.setMdmLevel("Global");
+		contract.setMdmId("008908956");
+//		contract.setAccountId("1-LBTR7B");
+		contract.setNewQueryIndicator(true);
+		contract.setAgreementFlag(true);
+		contract.setHardwareFlag(true);
+		contract.setSessionHandle(crmSessionHandle);
+		SiebelAccountListResult result = amindGlobalService.retrieveCatalogAgreementList(contract);
+		for (Account account : result.getAccountList()) {
+			System.out.println("AccountId: " + account.getAccountId());
+			System.out.println("AccountName: " + account.getAccountName());
+			for (String soldto : account.getSoldToNumbers()) {
+				System.out.println("Soldto: " + soldto);
+			}
+		}
+		System.out.println("size: " + result.getAccountList().size());
+	}	
+	
+    @Test
+    public void testRetrieveCatalogAgreementList_duplicate_INC0168189() throws Exception {
+        SiebelAccountListContract contract = new SiebelAccountListContract();
+        contract.setMdmLevel("Global");
+        contract.setMdmId("103391843");
+//        contract.setAccountId("1-LBTR7B");
+        contract.setNewQueryIndicator(true);
+        contract.setAgreementFlag(true);
+        contract.setHardwareFlag(true);
+        contract.setSessionHandle(crmSessionHandle);
+        SiebelAccountListResult result = amindGlobalService.retrieveCatalogAgreementList(contract);
+        for (Account account : result.getAccountList()) {
+            System.out.println("AccountId: " + account.getAccountId());
+            System.out.println("AccountName: " + account.getAccountName());
+            for (String soldto : account.getSoldToNumbers()) {
+                System.out.println("Soldto: " + soldto);
+            }
+        }
+        System.out.println("size: " + result.getAccountList().size());
+    }
+	
+	@Test
 	public void testRetrieveBillToAddressList_defect12215() throws Exception {
 		AddressListContract contract = new AddressListContract();
 		contract.setSessionHandle(AmindServiceTest.crmSessionHandle);

@@ -28,6 +28,7 @@ import com.lexmark.contract.PageCountsContract;
 import com.lexmark.domain.Account;
 import com.lexmark.domain.AccountContact;
 import com.lexmark.domain.Asset;
+import com.lexmark.domain.EntitlementServiceDetail;
 import com.lexmark.domain.GenericAddress;
 import com.lexmark.domain.PageCounts;
 import com.lexmark.domain.Part;
@@ -3382,6 +3383,38 @@ public class AmindOrderSuppliesAssetServiceTest extends AmindServiceTest {
 		AssetResult result = service.retrieveDeviceDetail(contract);
 		Asset asset = result.getAsset();
 		System.out.println("splitterFlag: " + asset.getAccount().isAccountSplitterFlag());
+	}
+	
+	@Test
+	public void testRetrieveDeviceDetail_INC0163868(){
+		AssetContract contract = new AssetContract();
+		contract.setAssetId("1-3CGPH4E");
+//		contract.setContactId("1-MP8Y1F1");
+		contract.setPageName("BreakfixDeviceDetail");
+//		contract.setCurrentDate(LangUtil.convertStringToGMTDate("08/21/2015 00:00:00"));
+//		contract.setEffectiveDate(LangUtil.convertStringToGMTDate("08/21/2015 10:10:04"));
+		AssetResult result = service.retrieveDeviceDetail(contract);
+		Asset asset = result.getAsset();
+		for (EntitlementServiceDetail serviceDetail : asset.getEntitlement().getServiceDetails()) {
+			System.out.println("ServiceDetailDescription: " + serviceDetail.getServiceDetailDescription());
+		}
+		System.out.println();
+	}
+	
+	@Test
+	public void testRetrieveDeviceDetail_INC0165819(){
+		AssetContract contract = new AssetContract();
+		contract.setAssetId("1-X587-83");
+		contract.setContactId("1-NMDWLJL");
+		contract.setPageName("DeviceDetail");
+//		contract.setCurrentDate(LangUtil.convertStringToGMTDate("08/21/2015 00:00:00"));
+//		contract.setEffectiveDate(LangUtil.convertStringToGMTDate("08/21/2015 10:10:04"));
+		AssetResult result = service.retrieveDeviceDetail(contract);
+		Asset asset = result.getAsset();
+//		for (EntitlementServiceDetail serviceDetail : asset.getEntitlement().getServiceDetails()) {
+//			System.out.println("ServiceDetailDescription: " + serviceDetail.getServiceDetailDescription());
+//		}
+		System.out.println();
 	}
 	
 }

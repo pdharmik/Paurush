@@ -2533,7 +2533,7 @@ public class XmlOutputGenerator {
 			//xml.append("  <cell><![CDATA["+ serviceRequest.getServiceRequestStatus() +"]]></cell>\n");
 			//xml.append("  <cell><![CDATA["+replaceNullWithBlankString (serviceRequest.getStatusType().getValue()) +"]]></cell>\n");
 			//xml.append("  <cell><![CDATA["+serviceRequest.getStatusType()==null?"":getLocalizeSiebelValue(serviceRequest.getStatusType().getValue(),SiebelLocalizationOptionEnum.REQUEST_STATUS.getValue(),locale) +"]]></cell>\n");
-			xml.append("  <cell><![CDATA["+(serviceRequest.getStatusType()==null?"":replaceNullWithBlankString(serviceRequest.getStatusType().getValue()) )+"]]></cell>\n");
+			xml.append("  <cell><![CDATA["+(serviceRequest.getStatusType()==null?"":replaceNullWithBlankString(getLocalizeSiebelValue(serviceRequest.getStatusType().getValue(),SiebelLocalizationOptionEnum.REQUEST_STATUS.getValue(),locale) ))+"]]></cell>\n");
 			//customerReportingName fetched for CI Defect #10118
 			xml.append("  <cell><![CDATA["+ (serviceRequest.getAsset()==null?"":replaceNullWithBlankString(serviceRequest.getAsset().getCustomerReportingName())) +"]]></cell>\n");
 			xml.append("  <cell><![CDATA["+replaceNullWithBlankString (serviceRequest.getHelpdeskReferenceNumber()) +"]]></cell>\n");

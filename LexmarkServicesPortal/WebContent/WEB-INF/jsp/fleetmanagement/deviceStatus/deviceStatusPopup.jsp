@@ -82,7 +82,7 @@
 						</tr></thead>
 				{{#if DeviceStatus.Reporting}}
 				{{#DeviceStatus.Reporting}}
-				<tr><td>{{ReportingStatus}}</td>
+				<tr><td>{{localizeReportingStatus ReportingStatus}}</td>
 				<td>{{localizeExpiredDate LastReportedDateTime}}</td></tr>
 				{{/DeviceStatus.Reporting}}	
 				{{else}}
@@ -118,7 +118,7 @@
 				<table><thead><tr>	<th style="border-left:0"><spring:message code="fleetmanagement.deviceStatusPopup.headers.alerttype"/></th>
 									<th><spring:message code="requestInfo.info.heading.datetime"/></th>
 									<th><spring:message code="pageCntUpload.ltpc"/></th>
-									<th><spring:message code="pageCntUpload.color"/></th>
+									<th><spring:message code="deviceStatusPopup.label.color"/></th>
 								</tr></thead>
 				{{#if alert}}
 				{{#alert}}
@@ -192,6 +192,13 @@
 						 return formatDateToDefaultLBS(dateVal);
 					 else 
 						 return "";
+					});
+				 Y.Handlebars.registerHelper('localizeReportingStatus', function (val) {
+				 	 val = val.replace(/ /g, "");
+					 if(reportingCodesLOV[val])
+						 return reportingCodesLOV[val];
+					 else 
+						 return val;
 					});
 					Y.Handlebars.registerHelper('alternate', function (index) {
 						//if(index%2==0)return "greyBg";

@@ -82,7 +82,9 @@
 						toggleDeviceStatus();
 					});	
 				}else{
-					toggleDeviceStatus();	
+					toggleDeviceStatus();
+					toggleClass('#device-utilization-terms-main','open',false);
+					$('.mapUTStatusBody').hide();	
 				}
 			}
 			function openDeviceUT(){
@@ -96,6 +98,8 @@
 					});	
 				}else{
 					toggleDeviceUtilizationTerms();	
+					toggleClass('#device-status-main','open',false);
+					$('.mapDeviceStatusBody').hide();
 				}
 			}
 			function toggleDeviceStatus(){

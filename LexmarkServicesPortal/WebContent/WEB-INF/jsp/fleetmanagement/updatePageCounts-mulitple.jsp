@@ -47,7 +47,7 @@
 	<div style="margin-bottom:5px" id="assetInfo-PgCount{{id}}" onClick="onClickAssetInfoPG('{{id}}')">
 		<div style="background-color:#eeeeee;padding:2px 10px;cursor:pointer">
 			<span class="fontBold"><spring:message code="fleetmanagement.tableheaders.serialnumber"/>: </span><span class="span-apart">{{serialNumber}}</span>
-			<span class="fontBold"><spring:message code="fleetmanagement.headers.deviceAlerts"/>: </span><span class="span-apart">{{ipAddress}}</span>
+			<span class="fontBold"><spring:message code='lbs.label.ipaddress'/>: </span><span class="span-apart">{{ipAddress}}</span>
 			<span class="fontBold"><spring:message code="lbs.label.model"/>: </span><span class="span-apart">{{name}}</span>
 			<span class="fontBold"><spring:message code="lbs.label.assettag"/>: </span class="span-apart"><span>{{customerDeviceTag}}</span>
 			<span id="openPopupGridArrow{{id}}" class="arrow_icon arrow_down floatR"></span>

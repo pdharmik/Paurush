@@ -464,7 +464,8 @@
 					}else{
 						f="Street Level";
 					}
-					$("#totalDevicesOnFloor_assetDetails_addressLOD,#assetDetails_locHistry_addressLOD").html(f);
+					
+					$("#totalDevicesOnFloor_assetDetails_addressLOD,#assetDetails_locHistry_addressLOD").html(addressLOD[f]);
 					//Set the address for location history too.. need for future click...
 					$('#addressDetails_locHistry').html(generateAddressDisplayForAsset(addressObj));
 					$('#building_assetDetails_locHistry').html(addressObj["buildingName"]);
@@ -788,6 +789,11 @@
 			var alertTypeCodesLOV={};
 			<c:forEach items="${alertCodes}" var="loopStatus">
 			alertTypeCodesLOV["${loopStatus.key}"]="${loopStatus.value}";
+			</c:forEach>
+			
+			var reportingCodesLOV={};
+			<c:forEach items="${reportingCodes}" var="loopStatus">
+			reportingCodesLOV["${loopStatus.key}"]="${loopStatus.value}";
 			</c:forEach>
 	</script>
 		<jsp:include page="/WEB-INF/jsp/fleetmanagement/deviceStatus/deviceStatusPopup.jsp"></jsp:include>

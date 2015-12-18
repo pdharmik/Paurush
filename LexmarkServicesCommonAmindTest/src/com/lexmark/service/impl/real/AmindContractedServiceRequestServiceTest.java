@@ -1781,6 +1781,23 @@ public class AmindContractedServiceRequestServiceTest extends AmindServiceTest {
 		System.out.println("size: " + result.getAccountList().size());
 	}
 	
+	@Test
+	public void testRetrieveSiebelAccountList_INC0162901() throws Exception {
+		contract.setMdmLevel("Global");
+		contract.setMdmId("008908956");
+//		contract.setAccountId("1-LBTR7B");
+		contract.setNewQueryIndicator(true);
+		contract.setAgreementFlag(true);
+		contract.setHardwareFlag(true);
+		SiebelAccountListResult result = service.retrieveSiebelAccountList(contract);
+		for (Account account : result.getAccountList()) {
+			for (String soldto : account.getSoldToNumbers()) {
+				System.out.println(soldto);
+			}
+		}
+		System.out.println("size: " + result.getAccountList().size());
+	}
+	
 
 	@Test
 	public void testRetrieveAddressList_Defect_16135_1() throws Exception {

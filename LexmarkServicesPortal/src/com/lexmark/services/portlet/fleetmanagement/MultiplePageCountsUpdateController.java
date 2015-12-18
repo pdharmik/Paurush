@@ -2,6 +2,8 @@ package com.lexmark.services.portlet.fleetmanagement;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.portlet.PortletSession;
 import javax.portlet.ResourceRequest;
@@ -22,6 +24,8 @@ import com.lexmark.contract.UpdateAssetMeterReadContract;
 import com.lexmark.domain.Asset;
 import com.lexmark.domain.LexmarkTransaction;
 import com.lexmark.domain.PageCounts;
+import com.lexmark.domain.SiebelLocalization.SiebelLocalizationOptionEnum;
+import com.lexmark.framework.exception.LGSDBException;
 import com.lexmark.result.PageCountsResult;
 import com.lexmark.result.UpdateAssetMeterReadResult;
 import com.lexmark.service.api.CrmSessionHandle;
@@ -29,6 +33,7 @@ import com.lexmark.service.api.GlobalService;
 import com.lexmark.service.api.MeterReadService;
 import com.lexmark.service.api.OrderSuppliesAssetService;
 import com.lexmark.services.LexmarkSPConstants;
+import com.lexmark.services.portlet.common.CommonController;
 import com.lexmark.services.util.ChangeMgmtConstant;
 import com.lexmark.services.util.ContractFactory;
 import com.lexmark.services.util.HTMLOutputGenerator;
@@ -51,6 +56,9 @@ public class MultiplePageCountsUpdateController {
 	
 	@Autowired
 	private MeterReadService meterReadService;
+	
+	@Autowired
+	private CommonController commonController;
 	
 	/**
      * this method is used for getPageCount data
@@ -76,7 +84,16 @@ public class MultiplePageCountsUpdateController {
 			PerformanceTracker.endTracking(lexmarkTran);
 			PageCountsResult deviceResult = orderSuppliesAssetService.retrievePageCounts(contract);
 			PerformanceTracker.endTracking(lexmarkTran);
-			String resp=HTMLOutputGenerator.generatePageCountsJson(deviceResult.getPageCounts(),id);
+			Map<String,String> pageCountstype=null;
+			try {
+				pageCountstype = commonController.retrieveLocalizedLOVMap(SiebelLocalizationOptionEnum.PAGE_COUNTS_FOR_ASSET.getValue(), request.getLocale());
+			} catch (LGSDBException e) {
+				// TODO Auto-generated catch block
+				LOGGER.error("Exception occured while retrieving page counts lov");
+				pageCountstype=new HashMap<String,String>();
+			}
+			
+			String resp=HTMLOutputGenerator.generatePageCountsJson(deviceResult.getPageCounts(),id,pageCountstype);
 			writeResponse(response,resp);
 		}
 		catch (Exception ex) {
