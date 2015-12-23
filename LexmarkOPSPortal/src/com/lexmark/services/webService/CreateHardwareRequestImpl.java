@@ -127,7 +127,7 @@ public class CreateHardwareRequestImpl implements CreateHardwareRequest {
 
 		final String synchOrAsynch = "asynch";
 		final String debug = "$null";
-		final String sourceSystem = "Web";
+		String sourceSystem = "";
 		SellableItemsServiceRequestWSInput sellableServiceRequestWSInput = new SellableItemsServiceRequestWSInput();
 		WebServiceDocumentMetaData documentMetaData = new WebServiceDocumentMetaData();
 		documentMetaData.setSenderId(getSenderId());
@@ -140,6 +140,14 @@ public class CreateHardwareRequestImpl implements CreateHardwareRequest {
 		// Setting up ConsumablesServiceRequestData
 		SellableItemsServiceRequestData sellableServiceRequestData = new SellableItemsServiceRequestData();
 		sellableServiceRequestData.setServiceRequestType(contract.getSrType());
+		if(contract.getFleetManagementFlag()!=null && contract.getFleetManagementFlag().equalsIgnoreCase("true")){
+			LOGGER.debug("Setting Map-Web");
+			sourceSystem = "Map-Internal Portal";
+			}
+			else{
+				LOGGER.debug("Setting Web");
+				sourceSystem = "Internal Portal";
+			}
 		sellableServiceRequestData.setServiceRequestSource(sourceSystem);
 		if (contract.getSRStatus() != null) {
 			LOGGER.debug("service Request status is " + contract.getSRStatus());

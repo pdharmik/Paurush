@@ -123,7 +123,7 @@ public class ManageCHLOthersServiceImpl implements ManageCHLOthersService{
 			LOGGER.debug("Initialising static values");
 			String synchOrAsynch = "asynch";
 			String debug="$null";
-			String sourceSystem = "Web";
+			String sourceSystem = null;
 			String serviceRequestNumber =null;
 			
 			ServiceRequestWS wsLocator = new ServiceRequestWSLocator();		 
@@ -168,6 +168,14 @@ public class ManageCHLOthersServiceImpl implements ManageCHLOthersService{
 			}
 			//Ends June release
 			
+			if(contract.getFleetManagementFlag()!=null && contract.getFleetManagementFlag().equalsIgnoreCase("true")){
+				LOGGER.debug("Setting Map-Web");
+				sourceSystem = "Map-LBS Internal";
+			}
+			else{
+				LOGGER.debug("Setting Web");
+				sourceSystem = "LBS Internal";
+			}
 			serviceRequestData.setServiceRequestSource(sourceSystem);
 			//Changes for June 14.6 release
 			if(serviceReq.getArea() != null){
