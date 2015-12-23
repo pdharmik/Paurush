@@ -921,7 +921,15 @@ function Filters(){};
 			if(typeof templateDevice !== 'function'){
 				initHandleBar();
 			}
-			$('#deviceContent').append(templateDevice(info));
+			var info1={}
+			if($('#showDeviceStatusInPopup').val()==="true" || $('#showDeviceStatusUtilInPopup').val()==="true"){
+				info1={"showDeviceStat":true,
+						"assetInfo":info};
+			}else{
+				info1={"showDeviceStat":false,
+						"assetInfo":info};
+			}
+			$('#deviceContent').append(templateDevice(info1));
 			
 			var arrDeviceId=[];
 			for(var i=0;i<info.assets.length;i++){

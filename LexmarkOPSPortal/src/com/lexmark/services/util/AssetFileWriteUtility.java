@@ -186,7 +186,7 @@ public class AssetFileWriteUtility {
 					"\"" + assetDetails.getProductLine()
 							+ "\"").append(CSVSEPERATOR);
 			stringBuff.append(
-					"\"" + assetDetails.getInstallDate()
+					"\"" + (assetDetails.getInstallDate()==null?"":assetDetails.getInstallDate()) // Changes for 16.2 
 							+ "\"").append(CSVSEPERATOR);
 		}
 		else

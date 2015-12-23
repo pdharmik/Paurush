@@ -32,7 +32,7 @@
 
 
 <script type="text/javascript" src="<html:rootPath/>js/toggler.js?version=0.1"></script>
-<script type="text/javascript" src="<html:rootPath/>js/LbsService.js?version=3.57"></script>
+<script type="text/javascript" src="<html:rootPath/>js/LbsService.js?version=3.58"></script>
 <script type="text/javascript" src="<html:rootPath/>js/LBSDbFilters.js?version=1.11"></script>
 <script type="text/javascript" src="<html:rootPath/>js/addressPopup.js?version=1"></script>
 
@@ -1181,6 +1181,7 @@ function showPopupMessages(message,callback){
 	
 	
 	function setAccountInformation(accId,accName){
+		hideNav();<%--Added for 16.2 Need to hide the left nav if its showing. --%>
 		//This is for setting MDM ID and MDM Level for Account Information 
 				initAccountInfor(accId,accName);
 		//Ends This is for setting MDM ID and MDM Level for Account Information
@@ -1631,6 +1632,21 @@ function showDeviceStatus(id)
 	//fire ajax to get data from server
 	showOverlay();
 	$.getJSON("${deviceStatusURL}&id="+id,function(response){
+		
+		<%-- Added for 16.2 - 19716 - Access checking in Device Status modal --%>
+		if($('#showDeviceStatusInPopup').val().toLowerCase() === "true"){
+			$("#alertsPopUpStatusSuppliesDiv,#alertsPopUpStatusDeviceDiv,#reportsStatusspopUpStatusDiv").show();				
+		}else{
+			$("#alertsPopUpStatusSuppliesDiv,#alertsPopUpStatusDeviceDiv,#reportsStatusspopUpStatusDiv").hide();
+		}
+		
+		if($('#showDeviceStatusUtilInPopup').val().toLowerCase() === "true"){
+			$("#utilisationPopUpStatusDiv,#expiredStatusspopUpStatusDiv").show();
+		}else{
+			$("#utilisationPopUpStatusDiv,#expiredStatusspopUpStatusDiv").hide();
+		}
+		<%-- Ends 16.2 - 19716 - Access checking in Device Status modal --%>
+		
 		if(response !=null){
 			$('#expired-status-popup').html(templateDeviceStatusPopup.generateExpiring(response.getDeviceStatusOutput));
 			$('#alert-device-status-popup').html(templateDeviceStatusPopup.generateAlert({alert:response.getDeviceStatusOutput.DeviceStatus.DeviceAlert}));
