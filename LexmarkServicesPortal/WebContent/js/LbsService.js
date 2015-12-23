@@ -921,7 +921,7 @@ function Filters(){};
 			if(typeof templateDevice !== 'function'){
 				initHandleBar();
 			}
-			var info1={}
+			var info1={};
 			if($('#showDeviceStatusInPopup').val()==="true" || $('#showDeviceStatusUtilInPopup').val()==="true"){
 				info1={"showDeviceStat":true,
 						"assetInfo":info};
