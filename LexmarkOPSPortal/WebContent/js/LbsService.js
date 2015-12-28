@@ -1588,3 +1588,7 @@ function handleMultiSelectCancel(){
 	showMapBtnClicked();hideOverlay();
 	deviceStatus.clearApplyFilter(false);
 }
+var addAssetRedirect={
+		assetId:"",
+		assetLifeCycle:""
+};
