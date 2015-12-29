@@ -32,7 +32,7 @@
 
 
 <script type="text/javascript" src="<html:rootPath/>js/toggler.js?version=0.2"></script>
-<script type="text/javascript" src="<html:rootPath/>js/LbsService.js?version=3.31"></script>
+<script type="text/javascript" src="<html:rootPath/>js/LbsService.js?version=3.35"></script>
 <script type="text/javascript" src="<html:rootPath/>js/LBSDbFilters.js?version=1.11"></script>
 <script type="text/javascript" src="<html:rootPath/>js/addressPopup.js?version=1.1"></script>
 <script type="text/javascript" src="<html:rootPath/>js/placement.js?version=1.43"></script>
@@ -833,6 +833,10 @@ function showPopupMessagesOPS(message,callback){
 		$("#fleetMgmtForm #lbs_buildingName").val(physicalLoca1);
 		$("#fleetMgmtForm #lbs_floorName").val(physicalLoca2);
 		$("#fleetMgmtForm #lbs_physicalLocation3").val(physicalLoca3);
+		if (addAssetRedirect.assetLifeCycle!=null && addAssetRedirect.assetLifeCycle=="Shipped"){
+			addAssetRequest(addAssetRedirect.assetId);
+			return;
+		}
 		jQuery("#fleetMgmtForm").submit();
 	}
 	
