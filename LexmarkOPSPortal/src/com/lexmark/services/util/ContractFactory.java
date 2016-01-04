@@ -1940,8 +1940,37 @@ public class ContractFactory {
 			}
 			if(request.getParameter("fromFleetManager")!=null && request.getParameter("fromFleetManager").equalsIgnoreCase("true")){
 				LOGGER.debug("FROM FLEET MANAGEMENT NO DATE RANGE");
-				requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE);
-				requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE);
+				//requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE);
+				//requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE);
+				
+				/* 16.2 release- defect 19989 starts */
+				Date before90Days = new Date();
+				try {
+					Date todayDt = new Date();
+					Calendar dtCal = new GregorianCalendar();
+					dtCal.setTime(todayDt);
+					
+					dtCal.add(Calendar.DAY_OF_MONTH, -90);
+					before90Days = dtCal.getTime();
+					//LOGGER.debug("19989 changes start here");
+					LOGGER.debug("ContractFactory.getHistoryListContract.before90Days--->"+before90Days);
+					
+					before90Days = LexmarkConstants.DEFAULT_DATE_FORMAT.parse(LexmarkConstants.DEFAULT_DATE_FORMAT.format(before90Days));
+					
+					LOGGER.debug("********* default date range Start date ["+before90Days+"]");				
+					LOGGER.debug("********* Setting default date range before 90 days ******************");				
+	
+					TimezoneUtil.adjustDate(before90Days, timezoneOffset); 
+					
+					requestListContract.getFilterCriteria().put(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE,DateUtil.convertDateToGMTString(before90Days).toString());
+					requestListContract.getFilterCriteria().put(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE,GetUTCdatetimeAsString());
+					//LOGGER.debug("19989 changes end here");
+				} catch (ParseException e) {
+					throw new IllegalArgumentException("Illegal date format,startDate[" + DateUtil.convertDateToGMTString(before90Days).toString() + "];endDate["
+							+ GetUTCdatetimeAsString() + "]");
+				}
+				//LOGGER.debug("19989 changes end after try block");
+				/* 16.2 release- defect 19989 ends here */
 			}
 		//End added for LBS	
 			
