@@ -544,7 +544,7 @@
 		<supported-locale>en</supported-locale>
 		<resource-bundle>com.lexmark.services.resources.filterSettings</resource-bundle>
 	</portlet>
-	<!-- Added for 16.2 Show selected Account -->
+	
 	<portlet>
 		<portlet-name>ShowAccountInformation</portlet-name>
 		<display-name>Account Infornmation</display-name>
@@ -561,5 +561,5 @@
 		<supported-locale>en</supported-locale>
 		<resource-bundle>com.lexmark.services.resources.accountInformation</resource-bundle>
 	</portlet>
-	<!-- Ends for 16.2 Show selected Account -->
+
 </portlet-app>
