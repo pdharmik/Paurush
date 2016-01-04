@@ -1279,6 +1279,22 @@ public class ClaimRequestCreateController {
 			model.addAttribute("accountName", accountName);	
 		}
 		
+		
+		// add for zip code validation start
+		LocalizedSiebelLOVListContract localizedLOVListContract = ContractFactory.createLocalizedSiebelLOVListContract("COUNTRYLIST_WITHOUT_ZIPCODE", null, request.getLocale());
+		LocalizedSiebelLOVListResult localizedLOVListResult = serviceRequestLocaleService.retrieveLocalizedSiebelLOVList(localizedLOVListContract);
+		List<String> countryListWithoutZip = new ArrayList<String>();
+		if(null != localizedLOVListResult && localizedLOVListResult.getLocalizedSiebelLOVList().size()>0){
+			for(int i=0; i<localizedLOVListResult.getLocalizedSiebelLOVList().size();i++){
+				LOGGER.debug(i+"th country code is "+localizedLOVListResult.getLocalizedSiebelLOVList().get(i).getValue());
+				countryListWithoutZip.add(localizedLOVListResult.getLocalizedSiebelLOVList().get(i).getValue());
+			}
+		}
+		model.addAttribute("countryListWithoutZip", countryListWithoutZip);
+		// end
+		
+		
+		
 		model.addAttribute("createNewFlag", createNewFlag);
 		model.addAttribute("accountId", accountId);
 		model.addAttribute("partnerAddressListURL", partnerAddressListURL);

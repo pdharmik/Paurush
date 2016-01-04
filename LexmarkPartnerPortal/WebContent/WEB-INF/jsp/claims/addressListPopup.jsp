@@ -423,6 +423,21 @@ function hideAddAddress() {
 			jQuery('#state_popup').addClass('errorColor');
 			jQuery('#zipCode').addClass('errorColor');
 			}
+			
+		var countriesWithoutZip = "${countryListWithoutZip}";
+		var countryListWithoutZip=[];
+		if(null != countriesWithoutZip){			
+			countriesWithoutZip = countriesWithoutZip.substring(1, countriesWithoutZip.length-1);
+			countryListWithoutZip = countriesWithoutZip.split(",");			
+		}
+		var selectedCountry = jQuery('#country_popup option:selected').val();
+		if(null != selectedCountry && selectedCountry!=""){
+			if(countryListWithoutZip.indexOf(selectedCountry) == -1){
+				validationFlag=false
+				jQuery('#address_error_div_popup').append('<li><strong><spring:message code="validation.address.zipCode"/></strong></li>');
+			}
+			
+		}
 	
 		if(validationFlag==false)
 			return false;
@@ -432,6 +447,9 @@ function hideAddAddress() {
 	}
 		
 	function showCleansedaddress() {
+		
+			
+			
 		 <%-- callOmnitureAction('<%=LexmarkPPOmnitureConstants.SELECTANADDRESSPOPUP%>','<%=LexmarkPPOmnitureConstants.ADDRESSPOPUPSAVENEWADDRESS%>'); --%>
 		//clear the div error contents
 			jQuery('#address_error_div_popup').html('');
