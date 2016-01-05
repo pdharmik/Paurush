@@ -1978,7 +1978,7 @@ public class ContractFactory {
 					requestListContract.setServiceType(cmType);
 				}
 			
-				if(!StringUtils.isNotBlank(request.getParameter("searchCriterias"))){
+				if(StringUtils.isBlank(request.getParameter("searchCriterias"))){
 					/* This denotes the request is NOT for Open Requests. Its for Request history.. So No Date Range.*/
 					requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE);
 					requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE);	
