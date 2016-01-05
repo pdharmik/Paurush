@@ -1,4 +1,4 @@
-<project name="DctmWebServiceClient" default="zip" basedir=".">
+<project name="LexmarkReportScheduler" default="zip" basedir=".">
     <description>
         simple example build file
     </description>
@@ -20,10 +20,6 @@
  	
   <fileset dir="../LexmarkServicesCommon/dist/lib" >
     <include name="**/*.jar"/>
-  </fileset>
- 
-  <fileset dir="../DctmWebServiceClient/dist/lib" >
- 	<include name="**/*.jar"/>
   </fileset>
  </path>
 	
@@ -100,7 +96,6 @@
   	<mkdir dir="${dist}/tmp/dist/lib"/>
   	
   	<copy file="../LexmarkServicesCommon/dist/lib/LexmarkServicesCommon.jar" todir="${dist}/tmp/lib" />
-	<copy file="../DctmWebServiceClient/dist/lib/DctmWebServiceClient.jar" todir="${dist}/tmp/lib" />
 	<copy file="${dist}/lib/${projectName}.jar" todir="${dist}/tmp/dist/lib" />
   	
   	<zip destfile="${dist}/${zipFileName}">
