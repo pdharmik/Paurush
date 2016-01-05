@@ -423,13 +423,11 @@ function hideAddAddress() {
 			jQuery('#state_popup').addClass('errorColor');
 			jQuery('#zipCode').addClass('errorColor');
 			}
-			
-		var countriesWithoutZip = "${countryListWithoutZip}";
-		var countryListWithoutZip=[];
-		if(null != countriesWithoutZip){			
-			countriesWithoutZip = countriesWithoutZip.substring(1, countriesWithoutZip.length-1);
-			countryListWithoutZip = countriesWithoutZip.split(",");			
-		}
+		
+		var countryListWithoutZip = [];	
+		<c:forEach items="${countryListWithoutZip}" var="listZip">
+		countryListWithoutZip.push("${listZip.value}");
+		</c:forEach>	 
 		var selectedCountry = jQuery('#country_popup option:selected').val();
 		if(null != selectedCountry && selectedCountry!=""){
 			if(countryListWithoutZip.indexOf(selectedCountry) == -1){
