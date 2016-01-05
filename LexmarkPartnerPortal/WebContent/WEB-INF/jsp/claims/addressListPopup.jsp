@@ -429,7 +429,7 @@ function hideAddAddress() {
 		countryListWithoutZip.push("${listZip.value}");
 		</c:forEach>	 
 		var selectedCountry = jQuery('#country_popup option:selected').val();
-		if(null != selectedCountry && selectedCountry!=""){
+		if(selectedCountry!=""){
 			if(countryListWithoutZip.indexOf(selectedCountry) == -1){
 				validationFlag=false
 				jQuery('#address_error_div_popup').append('<li><strong><spring:message code="validation.address.zipCode"/></strong></li>');
