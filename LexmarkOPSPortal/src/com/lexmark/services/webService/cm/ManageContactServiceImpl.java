@@ -390,7 +390,7 @@ public class ManageContactServiceImpl implements ManageContactService{
 			final String debug="$null";
 			ServiceRequest srData=null;
 			String serviceRequestNumber=null;
-			final String sourceSystem = "Web";
+			String sourceSystem = null;
 
 			WebServiceDocumentMetaData documentMetaData = new WebServiceDocumentMetaData();
 			documentMetaData.setSenderId(getSenderId());
@@ -428,6 +428,16 @@ public class ManageContactServiceImpl implements ManageContactService{
 			cmServiceReqData.setServiceRequestDescription(srData.getAddtnlDescription());
 			cmServiceReqData.setCustomerReferenceNumber(srData.getCustomerReferenceId());
 			cmServiceReqData.setCostCenter(srData.getCostCenter());
+			
+			if(serviceReqContract.getFleetManagementFlag()!=null && serviceReqContract.getFleetManagementFlag().equalsIgnoreCase("true")){
+				LOGGER.debug("Setting Map-Web");
+				sourceSystem = "Map-LBS Internal";
+			}
+			else{
+				LOGGER.debug("Setting Web");
+				sourceSystem = "LBS Internal";
+			}
+			
 			cmServiceReqData.setServiceRequestSource(sourceSystem);
 			//notes attachment start
 			cmServiceReqData.setAttachmentNotes(srData.getNotes());

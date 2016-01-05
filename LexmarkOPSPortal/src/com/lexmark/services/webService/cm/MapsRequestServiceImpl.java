@@ -131,7 +131,7 @@ public class MapsRequestServiceImpl implements MapsRequestService{
 			LOGGER.debug("Initialising static values");
 			String synchOrAsynch = "asynch";
 			String debug="$null";
-			String sourceSystem = "Web";
+			String sourceSystem = null;
 			String serviceRequestNumber =null;
 			
 			ServiceRequestWS wsLocator = new ServiceRequestWSLocator();		 
@@ -173,6 +173,16 @@ public class MapsRequestServiceImpl implements MapsRequestService{
 				serviceRequestData.setServiceRequestType(ChangeMgmtConstant.SERVICEREQTYPE);
 			
 			LOGGER.debug("serviceRequestData.setServiceRequestType"+serviceRequestData.getServiceRequestType());
+			
+			if(contract.getFleetManagementFlag()!=null && contract.getFleetManagementFlag().equalsIgnoreCase("true")){
+				LOGGER.debug("Setting Map-Web");
+				sourceSystem = "Map-LBS Internal";
+			}
+			else{
+				LOGGER.debug("Setting Web");
+				sourceSystem = "LBS Internal";
+			}
+			
 			serviceRequestData.setServiceRequestSource(sourceSystem);
 			LOGGER.debug("serviceRequestData.setServiceRequestSource"+serviceRequestData.getServiceRequestSource());
 			serviceRequestData.setRequestedService("Change Account Data");

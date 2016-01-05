@@ -511,6 +511,7 @@ public class ManageAssetsController extends BaseController {
 				if(StringUtils.isNotBlank(isFleetManagement) && "true".equalsIgnoreCase(isFleetManagement)){
 					GenericAddress moveToAddress=(GenericAddress)request.getAttribute("installAddress");
 					if(asset.getAssetId()!=null){
+						shippedAddress=moveToAddress;
 						shippedAddress.setBuildingId(moveToAddress.getBuildingId());
 						shippedAddress.setPhysicalLocation1(moveToAddress.getPhysicalLocation1());
 						
@@ -519,6 +520,8 @@ public class ManageAssetsController extends BaseController {
 						
 						shippedAddress.setZoneId(moveToAddress.getZoneId());
 						shippedAddress.setZoneName(moveToAddress.getZoneName());
+
+						shippedAddress.setPhysicalLocation3(moveToAddress.getPhysicalLocation3());
 						
 						shippedAddress.setLbsAddressFlag(StringUtils.isNotBlank(moveToAddress.getAddressId())==true?true:false);
 						asset.setInstallAddress(shippedAddress);

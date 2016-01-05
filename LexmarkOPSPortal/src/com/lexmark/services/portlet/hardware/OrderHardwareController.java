@@ -871,9 +871,11 @@ public class OrderHardwareController extends BaseController {
 		if(pageSource!=null && "map".equalsIgnoreCase(pageSource)){
 			hardwareDetailPageForm.setPageFlow("map");
 			hardwareDetailPageForm.setPlacementId(placementId);
+			hardwareDetailPageForm.setFleetManagementFlag(pageSource);
 		}else{
 			hardwareDetailPageForm.setPageFlow("");
 			hardwareDetailPageForm.setPlacementId("");
+			hardwareDetailPageForm.setFleetManagementFlag("");
 		}
 		List<OrderPart> hardwareOrderListToSession = new ArrayList<OrderPart>();
 		hardwareOrderListToSession = (ArrayList<OrderPart>) session.getAttribute("hardwareOrderListToSession");
@@ -1891,6 +1893,7 @@ public class OrderHardwareController extends BaseController {
 		}
 		LOGGER.debug("Let find oyt the server name "+request.getServerName());
 		LOGGER.debug("Lets find oyt the server port "+request.getServerPort());
+		LOGGER.debug("fleet management flag is "+hardwareDetailPageForm.getFleetManagementFlag());
 		//this is to enable re-submit of SR form on submit/draft exception
 		Long tokenInSession = (Long)session.getAttribute(LexmarkConstants.SUBMIT_TOKEN, session.PORTLET_SCOPE);
 		BaseForm baseForm = (BaseForm)hardwareDetailPageForm;

@@ -175,7 +175,7 @@ public class AssetAcceptanceServiceImpl implements AssetAcceptanceService {
 			try{
 				String synchOrAsynch = "asynch";
 				String debug="$null";
-				String sourceSystem = "Web";
+				String sourceSystem = null;
 				String serviceRequestNumber =null;
 				ServiceRequestWS wsLocator = new ServiceRequestWSLocator();		 
 				ServiceRequestWS_PortType port = wsLocator.getServiceRequest_serviceRequestWS_Port(new URL(getAddress()));		
@@ -201,6 +201,16 @@ public class AssetAcceptanceServiceImpl implements AssetAcceptanceService {
 				ChangeManagementServiceRequestData  serviceRequestData = new ChangeManagementServiceRequestData();
 				serviceRequestData.setAccountInformation(accInformation);
 				serviceRequestData.setServiceRequestType(ChangeMgmtConstant.SERVICEREQTYPE);
+				
+				if(contract.getFleetManagementFlag()!=null && contract.getFleetManagementFlag().equalsIgnoreCase("true")){
+					LOGGER.debug("Setting Map-Web");
+						sourceSystem = "Map-LBS Internal";
+				}
+				else{
+					LOGGER.debug("Setting Web");
+					sourceSystem = "LBS Internal";
+				}
+				
 				serviceRequestData.setServiceRequestSource(sourceSystem);
 				//serviceRequestData.setRequestedService(ChangeMgmtConstant.ADDASSETAREA);
 				serviceRequestData.setRequestedService(ChangeMgmtConstant.DATAMANAGEMENTAREA);

@@ -54,8 +54,15 @@ public class CreateHardwareRequestContract extends ContractBase implements Seria
 	private String paymentType;
 	private String paymentMethod;
 	private String placementId;
+	private String fleetManagementFlag;
 	
 	
+	public String getFleetManagementFlag() {
+		return fleetManagementFlag;
+	}
+	public void setFleetManagementFlag(String fleetManagementFlag) {
+		this.fleetManagementFlag = fleetManagementFlag;
+	}
 	public String getCreditCardEncryptedNo() {
 		return creditCardEncryptedNo;
 	}

@@ -165,11 +165,11 @@ public class ManageAssetServiceImpl implements ManageAssetService {
 		String sourceSystem=null;
 		if(serviceReqContract.getFleetManagementFlag()!=null && serviceReqContract.getFleetManagementFlag().equalsIgnoreCase("true")){
 		LOGGER.debug("Setting Map-Web");
-			sourceSystem = "Map-Internal Portal";
+			sourceSystem = "Map-LBS Internal";
 		}
 		else{
 			LOGGER.debug("Setting Web");
-		sourceSystem = "Internal Portal";
+		sourceSystem = "LBS Internal";
 		}
 		LOGGER.debug("Initialising Metadata object");
 		WebServiceDocumentMetaData documentMetaData = new WebServiceDocumentMetaData();
@@ -323,7 +323,7 @@ public class ManageAssetServiceImpl implements ManageAssetService {
 		}*/
 		
 		//if ("Move Asset".equalsIgnoreCase(serviceReqContract.getServiceRequest().getSubArea().getValue())|| (srDataAsset.getMoveToAddress().getAddressLine1()!=null&&srDataAsset.getMoveToAddress().getAddressLine1()!="")) {
-		if ("Move Asset".equalsIgnoreCase(serviceReqContract.getServiceRequest().getSubArea().getValue())|| (srDataAsset.getMoveToAddress()!=null && "Map-Internal Portal".equalsIgnoreCase(sourceSystem)) ) {
+		if ("Move Asset".equalsIgnoreCase(serviceReqContract.getServiceRequest().getSubArea().getValue())|| (srDataAsset.getMoveToAddress()!=null && "Map-LBS Internal".equalsIgnoreCase(sourceSystem)) ) {
            if(serviceReqContract.getServiceRequest().getAsset().isPlacementMove()){
         	   SiebelServiceAddr=srDataAsset.getInstallAddress();
            }else{
