@@ -15,7 +15,6 @@
 		<ant dir="../LexmarkServicesPortal" target="clean" inheritAll="false"/>
 		<ant dir="../LexmarkOPSPortal" target="clean" inheritAll="false"/>
 		<ant dir="../LexmarkServicesPunchout" target="clean" inheritAll="false"/>
-		<ant dir="../ReportScheduler" target="clean" inheritAll="false"/>
 		<antcall target="clean" />
 	</target>
 
@@ -29,7 +28,7 @@
     </target>
 	
 	<target name="dist" depends="init"  
-		description="Generate the war for LexmarkServicesPortal,LexmarkOPSPortal,LexmarkServicesPunchout,LexmarkServicesCHL and reportScheudler zip">
+		description="Generate the war for LexmarkServicesPortal,LexmarkOPSPortal,LexmarkServicesPunchout,LexmarkServicesCHL">
 		<if>
 			<isset property="build.env"/>
 		<then>
@@ -71,12 +70,6 @@
 			<copy file="../LexmarkGlobalServicesThemeCustomer/dist/LexmarkOPSPortal-theme-6.2.0.1.1.war" todir="${dist}" />	
 			<copy file="../LexmarkGlobalServicesThemeCustomer/dist/lexmark-punchout-theme-6.2.0.1.1.war" todir="${dist}" />
 			<copy file="../LexmarkGlobalServicesThemeCustomer/dist/PunchoutLayout-layouttpl-6.2.0.1.1.war" todir="${dist}" />
-			
-			<ant dir="../ReportScheduler" target="zip" inheritAll="false">
-    		    <property  name="build.env" value="${build.env}" />
-    		</ant>
-			<copy file="../ReportScheduler/dist/lib/LexmarkReportScheduler.jar" todir="${dist}/lib" />
-			<copy file="../ReportScheduler/dist/LexmarkReportScheduler.zip" todir="${dist}" />
 		</then>
 		<else>
 			<echo>If you want to package war please specify build.env</echo>
