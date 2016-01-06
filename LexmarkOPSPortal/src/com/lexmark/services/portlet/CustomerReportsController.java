@@ -61,8 +61,6 @@ import com.lexmark.domain.ObieeReportParameter;
 import com.lexmark.domain.Report;
 import com.lexmark.domain.ReportParameters;
 import com.lexmark.domain.ServicesUser;
-import com.lexmark.emc.client.servicesweb.DocumentumWebServiceFacade;
-import com.lexmark.properties.schema.sw.document.DocumentProperties.DocumentInfo;
 import com.lexmark.result.ObieeReportDefinitionResult;
 import com.lexmark.result.ObieeReportParameterListResult;
 import com.lexmark.result.ReportDefinitionDisplayResult;
@@ -531,7 +529,7 @@ public class CustomerReportsController extends BaseController{
 		out.close();
 	}
 	
-	@RequestMapping(params = "action=uploadFile")
+	/*@RequestMapping(params = "action=uploadFile")
 	public void uploadReport(ActionRequest request, ActionResponse response,
 							 @RequestParam("uploadFileInput")
 							 CommonsMultipartFile content,
@@ -573,8 +571,7 @@ public class CustomerReportsController extends BaseController{
 	    response.setRenderParameter("docDefinitionId", definitionId);
 		response.setRenderParameter("action", "showReports");
 		logger.debug("Exiting method uploadReport");
-	}
-	
+	}*/
 	
 	@RequestMapping(params = "action=runNowReport")
 	public void runNowReport(ActionRequest request, ActionResponse response,

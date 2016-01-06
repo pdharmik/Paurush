@@ -18,9 +18,6 @@ import javax.xml.ws.soap.SOAPFaultException;
 import com.lexmark.constants.LexmarkConstants;
 import com.lexmark.domain.GlobalAccount;
 import com.lexmark.domain.LexmarkTransaction;
-import com.lexmark.emc.client.servicesweb.DocumentumWebServiceFacade;
-import com.lexmark.emc.client.servicesweb.impl.DocumentumWebServiceFacadeImpl;
-import com.lexmark.properties.schema.sw.document.DocumentProperties.DocumentInfo;
 import com.lexmark.service.api.GlobalService;
 import com.lexmark.service.impl.real.GlobalServiceFacadeImpl;
 import com.lexmark.util.LocaleUtil;
@@ -48,14 +45,17 @@ public class DocumentumWebServiceUtil {
  	public static String OBJECT_TYPE = "portal_services_document";
  	public static String DOCUMENT_SERVER_TIMEZONE =  getConfigProperties().getProperty("documentum.ServerTimeZone");
 
- 	public static DocumentumWebServiceFacade  getDocumentumWebServiceFacade(){
+ 	/**
+ 	 * @return DocumentumWebServiceFacade 
+ 	 */
+ 	/*public static DocumentumWebServiceFacade  getDocumentumWebServiceFacade(){
  		DocumentumWebServiceFacade target = new DocumentumWebServiceFacadeImpl(SERVICE_END_POINT,
 					REPOSITORY_NAME, 
 					SUPERUSER_NAME,
 					PASSWORD, 
 					APPLICATION_NAME);
  		return target;
- 	}
+ 	}*/
  	
  	private static Properties documentumProperty;
 	public static Properties getConfigProperties() {
@@ -117,7 +117,7 @@ public class DocumentumWebServiceUtil {
  		return sb.toString(); 
  	}
  	
- 	public static DocumentInfo getDocumentInfo(ActionRequest request, String filePath, String definitionId, String reportUniqueId,  String docType, GlobalService globalService, Date fileContentDate){
+ 	/*public static DocumentInfo getDocumentInfo(ActionRequest request, String filePath, String definitionId, String reportUniqueId,  String docType, GlobalService globalService, Date fileContentDate){
 		DocumentInfo metaData = new DocumentInfo();
 		
 		String localeCode = LocaleUtil.getSupportLocaleCode(request.getLocale());
@@ -152,7 +152,7 @@ public class DocumentumWebServiceUtil {
 		metaData.setLegalName(account.getLegalName());
 
 		return metaData;
- 	}
+ 	}*/
 
  	public static boolean isFileFormatSupported(RuntimeException runtimeException) {
  		
