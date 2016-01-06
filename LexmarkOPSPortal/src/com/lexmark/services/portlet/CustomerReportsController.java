@@ -529,49 +529,7 @@ public class CustomerReportsController extends BaseController{
 		out.close();
 	}
 	
-	/*@RequestMapping(params = "action=uploadFile")
-	public void uploadReport(ActionRequest request, ActionResponse response,
-							 @RequestParam("uploadFileInput")
-							 CommonsMultipartFile content,
-							 @RequestParam("fileContentDate")
-							 String fileContentDate,
-							 @RequestParam("timezone")
-							 float timezone, //Done for CI Defect #8728
-							 @RequestParam("definitionIdHidden")
-							 String definitionId,
-							 @RequestParam("fileNameHidden")
-							 String filePath,
-							 @RequestParam("roleCategoryIdHidden")
-							 String roleCategoryId,
-							 Model model) throws Exception{
-		logger.debug("Entering method uploadReport");
-		SimpleDateFormat defaultDateFormat = new SimpleDateFormat("MM/dd/yyyy");
-		logger.debug("fileContentDate-------->>"+fileContentDate);
-		Date dateFileContentDate = defaultDateFormat.parse(fileContentDate);
-		logger.debug("dateFileContentDate after parsing-------->>"+dateFileContentDate);
-		TimezoneUtil.adjustDate(dateFileContentDate, 0 - timezone);
-		String reportUniqueId = reportScheduleService.getReportUniqueId().toString();
-		DocumentInfo docInfo = DocumentumWebServiceUtil.getDocumentInfo(request, filePath, definitionId, reportUniqueId, DocumentumWebServiceUtil.DOCUMENT_TYPE_REPORT, globalService, dateFileContentDate);
-		DocumentumWebServiceFacade facade = DocumentumWebServiceUtil.getDocumentumWebServiceFacade();
-		try {
-			facade.createDocument(docInfo, content.getBytes());
-			response.setRenderParameter("uploadResult", "success");
-		}catch(RuntimeException runtimeException) {
-			if(!DocumentumWebServiceUtil.isFileFormatSupported(runtimeException)) {
-				response.setRenderParameter("uploadResult", "uploadFileNotSupported");
-			} else {
-				logger.debug("Exception "+runtimeException.getMessage());
-				response.setRenderParameter("uploadResult", "fail");
-			}
-		} catch (Exception e) {
-			logger.debug("Exception message "+e.getMessage());
-			response.setRenderParameter("uploadResult", "fail");
-		}
-	    response.setRenderParameter("roleCategoryId", roleCategoryId);
-	    response.setRenderParameter("docDefinitionId", definitionId);
-		response.setRenderParameter("action", "showReports");
-		logger.debug("Exiting method uploadReport");
-	}*/
+	
 	
 	@RequestMapping(params = "action=runNowReport")
 	public void runNowReport(ActionRequest request, ActionResponse response,

@@ -81,17 +81,7 @@ public class DocumentumWebServiceUtil {
  	 */
  	public static String DOCUMENT_SERVER_TIMEZONE =  getConfigProperties().getProperty("documentum.ServerTimeZone");
 
- 	/**
- 	 * @return DocumentumWebServiceFacade 
- 	 */
- 	/*public static DocumentumWebServiceFacade  getDocumentumWebServiceFacade(){
- 		DocumentumWebServiceFacade target = new DocumentumWebServiceFacadeImpl(SERVICE_END_POINT,
-					REPOSITORY_NAME, 
-					SUPERUSER_NAME,
-					PASSWORD, 
-					APPLICATION_NAME);
- 		return target;
- 	}*/
+ 	
  	
  	private static Properties documentumProperty;
 	/**
