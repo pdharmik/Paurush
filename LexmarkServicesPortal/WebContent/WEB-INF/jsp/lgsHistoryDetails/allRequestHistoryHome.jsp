@@ -503,7 +503,7 @@
 		gridInitParams_Service_requests["<%=gridConfigurationValues[7]%>"]="1,des";
 		gridInitParams_Service_requests["<%=gridConfigurationValues[8]%>"]="5,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25";
 		gridInitParams_Service_requests["<%=JSON_COMBO_FILTER%>1"]=requestStatusList;
-		gridInitParams_Service_requests["<%=JSON_RESOURCE_URL%>"]="<portlet:resourceURL id="retrieveBreakfixSRList"/>";
+		gridInitParams_Service_requests["<%=JSON_RESOURCE_URL%>"]="<portlet:resourceURL id="retrieveBreakfixServiceRequestList"/>";
 		gridInitParams_Service_requests["settingsAlreadyAvailable"]=false;
 		
 				
@@ -685,7 +685,7 @@
 			}
 
 			if(gridType=="<%=SERVICE_REQUESTS%>")		
-				window.location="<portlet:resourceURL id="downloadServiceRequestsURL"/>"+"&downloadType=" + type+"&pageType="+gridType+"&timezoneOffset="+timezoneOffset;
+				window.location="<portlet:resourceURL id="downloadServiceRequestsCsvPdfURL"/>"+"&downloadType=" + type+"&pageType="+gridType+"&timezoneOffset="+timezoneOffset;
 			else
 				window.location="${downloadHistoryList}&downloadType=" + type+"&pageType="+gridType+"&timezoneOffset="+timezoneOffset;
 		}
