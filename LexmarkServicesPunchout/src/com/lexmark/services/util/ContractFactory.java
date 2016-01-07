@@ -41,7 +41,7 @@ public class ContractFactory {
 	 */
 	public static AccountAgreementSoldToContract getAllSiebelAccountListContract(){
 		AccountAgreementSoldToContract contract = new AccountAgreementSoldToContract();
-		contract.setAccountName("Deutsche Postbank AG");
+		contract.setAccountName("Kaiser Foundation Health Plan Inc");
 		
 		return contract;
 	}
