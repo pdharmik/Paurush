@@ -171,11 +171,11 @@ if(addressFlag!=null){
 						<p class="info banner"><spring:message code="requestInfo.popup.cleansedAddresses"/></p>
 						<div class="portletBlock infoBox">
 						<div class="columnsOne">
-						<div class="columnInner">
+						<div class="columnInner floatR">
 						<ul class="roDisplay">
 						
 						
-								<li><div id="storefront_popup_span"></div>
+								<li style="width:100%"><div id="storefront_popup_span"></div>
 									<div id="addrLine1_popup_span"></div>
 									<div id="houseNumber_popup_span"></div>
 									<div id="addrLine2_popup_span"></div>
@@ -194,13 +194,14 @@ if(addressFlag!=null){
 								</ul>
 								<p class="check">
 								<input type="checkbox" id="check_popup"	onclick="javascript:validate_popup();" /> 
-								<label for="modAddress">
+								<label for="modAddress" class="floatR">
 								<%-- <spring:message code="requestInfo.popup.cleansedAddresses"/> --%>
 								<spring:message code="requestInfo.popup.usecleansedAddresses"/>
 								</label>
 								</p>
 								
 							</div>
+							<div style="clear:both"></div>
 						</div>
 					</div>
 						<div class="buttonContainer">
@@ -627,6 +628,7 @@ function hideAddAddress() {
 		else{
 			goForCleanseAddrFlg = false;
 			enableInputs();
+			$('#state_popup').removeAttr('disabled');
 		}
 		
 	}
