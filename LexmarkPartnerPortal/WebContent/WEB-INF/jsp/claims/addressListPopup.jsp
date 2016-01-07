@@ -430,7 +430,7 @@ function hideAddAddress() {
 		</c:forEach>	 
 		var selectedCountry = jQuery('#country_popup option:selected').val();
 		if(selectedCountry!=""){
-			if(countryListWithoutZip.indexOf(selectedCountry) == -1){
+			if(countryListWithoutZip.indexOf(selectedCountry) == -1 &&  $('#zipCode').val().trim()==""){
 				validationFlag=false
 				jQuery('#address_error_div_popup').append('<li><strong><spring:message code="validation.address.zipCode"/></strong></li>');
 			}
@@ -543,7 +543,13 @@ function hideAddAddress() {
 									}
 									//modified for MPS 2.1 end
 
-									jQuery('#cleansedAddress').show();
+									jQuery('#cleansedAddress').show(function(){ 
+									<%-- Set the check box by default selected and rebrand it , 
+									check passing the extra values as it will be required during cleansing. --%>
+										$('#check_popup').attr('checked',true);
+										checkboxRebrandFunction($('#check_popup'));
+										validate_popup();
+									});
 									//if error div is already show hide it
 									jQuery('#errorMsg_popup').hide();
 									document.getElementById('button_popup').style.display = "none";
