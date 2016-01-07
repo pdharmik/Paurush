@@ -1647,8 +1647,8 @@ public class AmindPartnerActivityServiceUtil {
 				orderPart.setReturnTrackingNumber(orderLine.getReturnTrackingNumber());
 				orderPart.setShipDate(orderLine.getShipDate());
 			}
-			if("Ship".equalsIgnoreCase(orderLine.getLineType())) {
-				orderPart.setPartLineItemId(orderLine.getId());
+			if("Ship".equalsIgnoreCase(orderLine.getLineType()) || "Email Only".equalsIgnoreCase(orderLine.getLineType())) {   // changes as per "CHG0004882 -->>>Ordered parts are not showing in the portal"
+				orderPart.setPartLineItemId(orderLine.getId()); 
 				orderPart.setPartOrderedDate(orderLine.getPartOrderedDate());
 				orderPart.setQuantity(orderLine.getQuantity());
 				orderPart.setPartNumber(orderLine.getPartNumber());
