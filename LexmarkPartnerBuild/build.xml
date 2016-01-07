@@ -8,7 +8,6 @@
     </target>
 	
 	<target name="cleanAll">
-		<ant dir="../DctmWebServiceClient" target="clean" inheritAll="false"/>
 		<ant dir="../LexmarkServicesWebService" target="clean" inheritAll="false"/>
 		<ant dir="../LexmarkServicesCommon" target="clean" inheritAll="false"/>
 		<ant dir="../LexmarkPartnerPortal" target="clean" inheritAll="false"/>
@@ -47,7 +46,6 @@
 			<echo> ============= LexmarkPartnerPortalTheme Done.=============</echo>
 			
 			<copy file="../LexmarkServicesCommon/dist/lib/LexmarkServicesCommon.jar" todir="${dist}/lib" />
-			<copy file="../DctmWebServiceClient/dist/lib/DctmWebServiceClient.jar" todir="${dist}/lib" />
 			<copy file="../LexmarkServicesWebService/dist/lib/LexmarkServicesWebService.jar" todir="${dist}/lib" />
 			<copy file="../LexmarkPartnerPortal/dist/LexmarkPartnerPortal.war" todir="${dist}" />
 			<!--
