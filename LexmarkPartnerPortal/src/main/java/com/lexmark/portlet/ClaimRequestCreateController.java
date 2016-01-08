@@ -1279,6 +1279,15 @@ public class ClaimRequestCreateController {
 			model.addAttribute("accountName", accountName);	
 		}
 		
+		
+		/* Populating countries without zip code and adding it to model*/
+		LocalizedSiebelLOVListContract localizedLOVListContract = ContractFactory.createLocalizedSiebelLOVListContract("COUNTRYLIST_WITHOUT_ZIPCODE", null, request.getLocale());
+		LocalizedSiebelLOVListResult localizedLOVListResult = serviceRequestLocaleService.retrieveLocalizedSiebelLOVList(localizedLOVListContract);
+		model.addAttribute("countryListWithoutZip", localizedLOVListResult.getLocalizedSiebelLOVList());
+		
+		
+		
+		
 		model.addAttribute("createNewFlag", createNewFlag);
 		model.addAttribute("accountId", accountId);
 		model.addAttribute("partnerAddressListURL", partnerAddressListURL);
