@@ -1424,7 +1424,7 @@ function showPopupMessages(message,callback){
 	}
 	function openHistoryPopup(){
 		
-		 var url='${viewDeviceHistoryPopup}&requestTypeStr='+requestHistoryObj.getGridType();
+		 var url='${viewDeviceHistoryPopup}&requestTypeStr='+requestHistoryObj.getGridType()+"&inc="+(typeof dhtmlXGridObject=="function"?false:true);
 		 
 			showOverlay();
 			jQuery('#deviceHistoryPopup').load(url,function(){
