@@ -48,7 +48,6 @@ public class MyRequestEditController {
 	public String showDefaultView(){
 		LOGGER.debug("[ In  showDefaultView ]");
 		
-			LOGGER.debug(String.format("[ account list is not null size of account is %s ] ",allAccountInformation.getAllAccountList().size()));
 			
 			/*for(Account account:allAccountInformation.getAllAccountList()){
 				LOGGER.debug(String.format(" [ account id = %s]",account.getAccountId()));

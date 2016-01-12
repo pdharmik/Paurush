@@ -110,8 +110,8 @@ public class RequestSuppliesController {
 		//need to call product type list for drop down
 		
 		//starting here
-		LOGGER.debug("size for all account list is "+allAccountInformation.getAllAccountList().size());
-		List<PunchoutAccount> punchoutAccountList = ControllerUtil.getPunchoutAccountList(allAccountInformation.getAllAccountList(), request);
+		String supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
+		List<PunchoutAccount> punchoutAccountList = ControllerUtil.getPunchoutAccountList(allAccountInformation.getAllAccountList(supplierId), request);
 		LOGGER.debug("punchAcntList size in showPrinterList is === "+punchoutAccountList.size());
 		ExecutorService executor = Executors.newFixedThreadPool(punchoutAccountList.size());
 		List<FutureTask<CatalogListResult>> taskList = new ArrayList<FutureTask<CatalogListResult>>();
@@ -205,8 +205,8 @@ public class RequestSuppliesController {
 	public String retrieveSupplyGrid(ResourceRequest request,
 			ResourceResponse response,Model model,PortletSession session) throws InterruptedException, ExecutionException {
 		LOGGER.debug(("[ In  retrieveSupplyGrid ]"));
-		
-		request.setAttribute(PunchoutConstants.PUNCHOUT_ACCOUNT, ControllerUtil.getPunchoutAccount(allAccountInformation.getAllAccountList(), request));//This is for temporary purpose
+		String supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
+		request.setAttribute(PunchoutConstants.PUNCHOUT_ACCOUNT, ControllerUtil.getPunchoutAccount(allAccountInformation.getAllAccountList(supplierId), request));//This is for temporary purpose
 		
 		if(null != session.getAttribute("supplyItems")){
 			session.removeAttribute("supplyItems");
@@ -225,7 +225,7 @@ public class RequestSuppliesController {
 		 if(StringUtils.isNotBlank(request.getParameter("partNum"))){
 			 LOGGER.debug("For searching part number flow");
 			 List<PunchoutAccount> punchoutAccountList = new ArrayList<PunchoutAccount>();
-			 punchoutAccountList = ControllerUtil.getPunchoutAccountList(allAccountInformation.getAllAccountList(), request);			
+			 punchoutAccountList = ControllerUtil.getPunchoutAccountList(allAccountInformation.getAllAccountList(supplierId), request);			
 			 ExecutorService executor = Executors.newFixedThreadPool(punchoutAccountList.size());
 			 List<FutureTask<CatalogListResult>> taskList = new ArrayList<FutureTask<CatalogListResult>>();
 			 int i =0;			 

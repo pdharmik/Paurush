@@ -1,24 +1,42 @@
 package com.lexmark.services.servlet;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 import com.lexmark.contract.AccountAgreementSoldToContract;
+import com.lexmark.contract.LocalizedSiebelLOVListContract;
+import com.lexmark.contract.LocalizedSiebelValueContract;
+import com.lexmark.domain.ListOfValues;
 import com.lexmark.domain.PunchoutAccount;
+import com.lexmark.exceptionimpl.runtime.LGSRuntimeException;
+import com.lexmark.framework.exception.LGSDBException;
 import com.lexmark.result.AccountAgreementSoldToResult;
+import com.lexmark.result.LocalizedSiebelLOVListResult;
+import com.lexmark.result.LocalizedSiebelValueResult;
 import com.lexmark.service.api.CustomerPaymentsService;
+import com.lexmark.service.api.ServiceRequestLocale;
+import com.lexmark.service.impl.real.jdbc.HibernateUtil;
+import com.lexmark.service.impl.real.jdbc.InfrastructureException;
 import com.lexmark.services.util.ContractFactory;
+import com.lexmark.services.util.ControllerUtil;
 import com.lexmark.services.util.ObjectDebugUtil;
+import com.lexmark.util.LOVComparator;
 
-public class LoadAccountInformation implements ApplicationContextAware{
+public class LoadAccountInformation{
 	
 	@Autowired
 	private CustomerPaymentsService customerPaymentsService;
@@ -34,13 +52,14 @@ public class LoadAccountInformation implements ApplicationContextAware{
 	/**
 	 * Init Account Info
 	 */
-	private void initAccountInformation(){
+	private void initAccountInformation(String siebelValue){
 		LOGGER.debug("[ In initAccountInformation ]");
-		
+		LOGGER.debug("siebelValue------------->"+siebelValue);
+		String accName = ControllerUtil.portalSiebelLocalization("ARIBA_ACCOUNTS",siebelValue);
 		try{
-		
-		AccountAgreementSoldToContract contract =ContractFactory.getAllSiebelAccountListContract();
-		LOGGER.debug("acntType:::"+acntType);
+		AccountAgreementSoldToContract contract =ContractFactory.getAllSiebelAccountListContract();	
+		contract.setAccountName(accName);
+		LOGGER.debug("accName:::"+accName);
 		//contract.setAccountName(acntType);
 		ObjectDebugUtil.printObjectContent(contract, LOGGER);
 		AccountAgreementSoldToResult siebelAccountListResult= customerPaymentsService.retrieveMPSB2BList(contract);
@@ -65,34 +84,15 @@ public class LoadAccountInformation implements ApplicationContextAware{
   	/**
 	 * @return List 
 	 */
-	 public synchronized List<PunchoutAccount> getAllAccountList(){
+	 public synchronized List<PunchoutAccount> getAllAccountList(String siebelValue){
 		 if(allAccountList!=null && !allAccountList.isEmpty()){
 			 return allAccountList;
 		 }
-		 initAccountInformation();	
+		initAccountInformation(siebelValue);	
 		 return allAccountList;
 	 }
+	
 
-	/**
-	 * forcr refresh 
-	 */
-	public void forceRefresh(){
-		LOGGER.debug(" [ In force Refresh ]");
-		initAccountInformation();
-		LOGGER.debug(" [ Out force Refresh ]");
-	} 
-
-	 /**
-		 * @param arg0 
-		 * @throws BeansException 
-		 */
-	public void setApplicationContext(ApplicationContext arg0)
-			throws BeansException {
-		LOGGER.debug("[ In setApplicationContext Event ] ");
-		initAccountInformation();
-		LOGGER.debug("[ Out setApplicationContext Event ] ");
-		
-	}
 
 	
 }

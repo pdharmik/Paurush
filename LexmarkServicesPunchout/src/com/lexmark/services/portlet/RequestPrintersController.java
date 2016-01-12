@@ -141,8 +141,8 @@ public class RequestPrintersController {
 		//changes for parallel call start
 		//request.setAttribute(PunchoutConstants.PUNCHOUT_ACCOUNT, ControllerUtil.getPunchoutAccount(allAccountInformation.getAllAccountList(), request));
 		
-		LOGGER.debug("size for all account list is "+allAccountInformation.getAllAccountList().size());
-		List<PunchoutAccount> punchoutAccountList = ControllerUtil.getPunchoutAccountList(allAccountInformation.getAllAccountList(), request);
+		String supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
+		List<PunchoutAccount> punchoutAccountList = ControllerUtil.getPunchoutAccountList(allAccountInformation.getAllAccountList(supplierId), request);
 		LOGGER.debug("punchAcntList size in showPrinterList is === "+punchoutAccountList.size());
 		ExecutorService executor = Executors.newFixedThreadPool(punchoutAccountList.size());
 		List<FutureTask<CatalogListResult>> taskList = new ArrayList<FutureTask<CatalogListResult>>();
@@ -255,6 +255,7 @@ public class RequestPrintersController {
 		LOGGER.debug("IN RETRIEVE BUNDLE-------------");
 		
 		PunchoutAccount punchAcnt = ControllerUtil.getPunchoutAccount((List<PunchoutAccount>) session.getAttribute(PunchoutConstants.ACCOUNT_LIST, PortletSession.APPLICATION_SCOPE), request);
+		String supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
 		request.setAttribute(PunchoutConstants.PUNCHOUT_ACCOUNT, punchAcnt);
 		session.setAttribute(PunchoutConstants.PUNCHOUT_ACCOUNT, punchAcnt, PortletSession.APPLICATION_SCOPE);
 		
@@ -323,7 +324,7 @@ public class RequestPrintersController {
 		      }
 	      }
 	      else{
-	    	  punchoutAccountList = ControllerUtil.getPunchoutAccountList(allAccountInformation.getAllAccountList(), request);
+	    	  punchoutAccountList = ControllerUtil.getPunchoutAccountList(allAccountInformation.getAllAccountList(supplierId), request);
 	      }
 	      	LOGGER.debug("before Future Task punchoutAccountList size is "+punchoutAccountList.size());
 			ExecutorService executor = Executors.newFixedThreadPool(punchoutAccountList.size());
@@ -392,7 +393,8 @@ public class RequestPrintersController {
 		 * Pick the account from the contractnumber selected by the user from the bundle
 		 * */
 		//PunchoutAccount punchAcnt = (PunchoutAccount) session.getAttribute(PunchoutConstants.PUNCHOUT_ACCOUNT, PortletSession.APPLICATION_SCOPE);
-		PunchoutAccount punchAcnt=ControllerUtil.getPunchoutAccountByContractNumber(allAccountInformation.getAllAccountList(), contractnumber);
+		String supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
+		PunchoutAccount punchAcnt=ControllerUtil.getPunchoutAccountByContractNumber(allAccountInformation.getAllAccountList(supplierId), contractnumber);
 		request.setAttribute(PunchoutConstants.PUNCHOUT_ACCOUNT, punchAcnt);
 		//Set the list to bundle which is present in session
 		List<OrderPart> accessories=(ControllerUtil.amindRetrieveAccessoriesB2B(request,orderSuppliesCatalogService,globalService)).getAccessoriesList();

@@ -75,6 +75,7 @@ public class RightNavController {
 		LOGGER.debug(("[ In  showDefaultView ]"));
 		String currURL=response.createRenderURL().toString();		
 		boolean fromAriba = false;
+		String supplierId="";
 		LOGGER.debug("currURL==="+currURL);
 		HttpServletRequest httpReq = PortalUtil.getOriginalServletRequest(PortalUtil.getHttpServletRequest(request));
 		String aribaParamURL = httpReq.getParameter("aribaParamUrl");
@@ -97,7 +98,7 @@ public class RightNavController {
 		}
 		else{		
 			ControllerUtil.setAribaParam(request, session);
-			String supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
+			 supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
 			
 			LOGGER.debug("supplierId::::"+supplierId);
 			if(supplierId.equalsIgnoreCase(KAISER_ACNT))
@@ -127,7 +128,7 @@ public class RightNavController {
 		
 		/*allAccountInformation.acntType = "Deutsche Postbank AG";
 		allAccountInformation.forceRefresh();*/
-		List<PunchoutAccount> acntList = allAccountInformation.getAllAccountList();
+		List<PunchoutAccount> acntList = allAccountInformation.getAllAccountList(supplierId);
 		session.setAttribute(PunchoutConstants.ACCOUNT_LIST, acntList, PortletSession.APPLICATION_SCOPE);
 		request.setAttribute("callType", "showDefaultView");
 		
