@@ -2,8 +2,10 @@ package com.lexmark.services.servlet;
 
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,8 +23,7 @@ public class LoadAccountInformation{
 	@Autowired
 	private CustomerPaymentsService customerPaymentsService;
 	
-	
-	private List<PunchoutAccount> allAccountList=new LinkedList<PunchoutAccount>();
+	private Map<String,List<PunchoutAccount>> globalAccountMap= new HashMap<String, List<PunchoutAccount>>();
 	
 	
 	private static Logger LOGGER = LogManager.getLogger(LoadAccountInformation.class);
@@ -35,27 +36,22 @@ public class LoadAccountInformation{
 	private void initAccountInformation(String siebelValue){
 		LOGGER.debug("[ In initAccountInformation ]");
 		LOGGER.debug("siebelValue------------->"+siebelValue);
+		 List<PunchoutAccount> allAccountList=null;
 		String accName = ControllerUtil.portalSiebelLocalization("ARIBA_ACCOUNTS",siebelValue);
 		try{
 		AccountAgreementSoldToContract contract =ContractFactory.getAllSiebelAccountListContract();	
 		contract.setAccountName(accName);
-		LOGGER.debug("accName:::"+accName);
-		//contract.setAccountName(acntType);
 		ObjectDebugUtil.printObjectContent(contract, LOGGER);
 		AccountAgreementSoldToResult siebelAccountListResult= customerPaymentsService.retrieveMPSB2BList(contract);
 		if(siebelAccountListResult.getMpsB2bList()!=null && siebelAccountListResult.getMpsB2bList().size()!=0){
 			LOGGER.debug("INSIDE IF :SIZE IS NOT ZERO");
 		allAccountList=(Collections.unmodifiableList(siebelAccountListResult.getMpsB2bList()));
+		globalAccountMap.put(siebelValue, allAccountList); 
 		}
 		LOGGER.debug(String.format("[ account list size is %s]",allAccountList.size()));
 		}catch(Exception e){			
 			LOGGER.debug(" [ Failed to load All Siebel Account List Contract]");
 			
-		}
-		
-		
-		for(PunchoutAccount acc:allAccountList){
-			LOGGER.debug(acc);
 		}
 		LOGGER.debug("[ Out initAccountInformation ]");
 		
@@ -65,8 +61,12 @@ public class LoadAccountInformation{
 	 * @return List 
 	 */
 	 public synchronized List<PunchoutAccount> getAllAccountList(String siebelValue){
-		 if(allAccountList!=null && !allAccountList.isEmpty()){
-			 return allAccountList;
+		 List<PunchoutAccount> allAccountList=null;
+		 if(globalAccountMap.size()>0){
+			 allAccountList=globalAccountMap.get(siebelValue);
+		 }
+		 if(allAccountList != null){
+			return allAccountList;
 		 }
 		initAccountInformation(siebelValue);	
 		 return allAccountList;
