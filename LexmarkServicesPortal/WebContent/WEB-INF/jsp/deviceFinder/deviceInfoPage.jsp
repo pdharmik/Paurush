@@ -8,6 +8,7 @@
 <%@ page import="com.lexmark.services.util.LexmarkSPOmnitureConstants" %>
 <portlet:resourceURL var="updateURL" id="updateUserFavoriteAsset"/>
 <link rel="stylesheet" type="text/css" href="<html:rootPath/>css/mps.css" />
+<link rel="stylesheet" type="text/css" href="<html:rootPath/>css/lbs.css" />
 <style type="text/css"><jsp:include page="/WEB-INF/css/jquery/jquery-ui.css" /></style>
 
 <!--[if IE 7]>
@@ -197,49 +198,7 @@ var isSuccessfulUpdate=false;
 		
 	}
 	
-	function openPopUp(assetRowId, serialNumber, ipAddress, productLine, assetTag){
-		//brmandal changed for page count changes - MPS phase 2.1
-		callOmnitureAction('<%=LexmarkSPOmnitureConstants.DEVICEFINDERDETAIL%>', '<%=LexmarkSPOmnitureConstants.DEVICEFINDERDETAILUPDATEPAGECOUNT%>'); 
-		//alert("in openpop up");
-		showOverlay();
-		//alert("in openpop up1");
-		dialog=jQuery('#pageCount').dialog({
-			autoOpen: false,
-			title: "<spring:message code='requestInfo.title.updatePageCounts'/>",					
-			modal: true,
-			draggable: false,
-			resizable: false,
-			height: 550,
-			width: 780,
-			close: function(event,ui){
-				hideOverlay();						
-				dialog.dialog('destroy');
-				dialog=null;
-				clearContentsOfpopup1();
-				}
-			});				
-		jQuery('#pageCount').show();
-		dialog.dialog('open');	
-		/*alert("in openpop up2");
-		alert(assetRowId);
-		alert(serialNumber);
-		alert(ipAddress);
-		alert(productLine);
-		alert(assetTag);*/
-		initializePageCountGrid(assetRowId, serialNumber, ipAddress, productLine, assetTag);
-		jQuery('#serialNumber').html(serialNumber);
-		jQuery('#ipAddress').html(ipAddress);
-		jQuery('#productLine').html(productLine);
-		jQuery('#assetTag').html(assetTag);
-		//alert("assetRowId "+assetRowId);
-		//jQuery('#assetIdForPageCounts').html(assetRowId);
-		window.document.getElementById("assetRowId").innerHTML=assetRowId;
-		//pageCountGrid.loadXML("<portlet:resourceURL id='getPageCountPopUp'/>" + "&assetRowId=" + assetRowId + "&serialNumber=" + serialNumber + "&ipAddress=" + ipAddress + "&productLine=" + productLine +"&assetTag="+ assetTag);
-		//hideOverlayPopup();
 	
-	return false;	
-		
-	}
 	
 	function clearContentsOfpopup(){
 		jQuery('#newColorPgCnt').val("");
@@ -985,7 +944,7 @@ function onSRNmbrClick(serviceRequestNumber, requestType){
 		</c:if>		 
 				<%-- <c:if test="${hidePgCnts eq 'false'}"> --%> <!-- Changes for CRM-JFoster201503271546 update page count for employee -->
 				<li>
-				  <a id="updatePgCntsLnk" href="#" onclick="return openPopUp('${deviceDetailForm.device.assetId}', '${deviceDetailForm.device.serialNumber}', '${deviceDetailForm.device.ipAddress}', '${deviceDetailForm.device.productLine}', '${deviceDetailForm.device.assetTag}');">
+				  <a id="updatePgCntsLnk" href="#" onclick="return openPopUpPg('${deviceDetailForm.device.assetId}', '${deviceDetailForm.device.serialNumber}', '${deviceDetailForm.device.ipAddress}', '${deviceDetailForm.device.productLine}', '${deviceDetailForm.device.assetTag}');">
 				  <spring:message code="deviceDetail.link.updatePageCounts" /></a>
 				</li>
 				<%-- </c:if> --%>       <!-- Changes for CRM-JFoster201503271546 update page count for employee -->
@@ -1466,4 +1425,54 @@ function updateFavoriteFailCallBack(loader) {
     assetStatus[assetId].isLoading = false;
     return true;
 }
+
+
 </script>
+
+<jsp:include page="/WEB-INF/jsp/fleetmanagement/updatePageCounts-mulitple.jsp"/>
+
+<script>
+function openPopUpPg(assetRowId, serialNumber, ipAddress, productLine, assetTag){
+    multiSelectAsset.addAsset([{
+            "id":assetRowId,
+            "serialNumber":serialNumber,
+            "ipAddress":ipAddress,
+            "customerDeviceTag":assetTag,
+            "name":productLine
+            
+    }]);
+    showPgCntMSlct();
+}
+
+var pgDialog;
+function showPgCntMSlct(){
+    <%-- Update the html content firmst--%>
+    assetPgCntsObj.createAssetHTML(multiSelectAsset.getAssetList());
+    $(document).scrollTop(0);
+    if(pgDialog){
+            pgDialog.dialog('open');
+            return;
+    }
+    pgDialog=$('#assetPageCounts-Multiple').dialog({
+            autoOpen: false,
+            title: "Update Page Counts",
+            modal: true,
+            draggable: false,
+            resizable: false,
+            position: ['top'],
+            height: 500,
+            width: 950,
+            open:function(){
+                    multiSelectAsset.openAsset();
+            },
+            close:function(){
+                    
+                    multiSelectAsset.resetObj();
+            }
+            });
+    pgDialog.dialog('open');                
+    
+}
+
+</script>
+<script src="<html:rootPath/>js/toggler.js"/>
