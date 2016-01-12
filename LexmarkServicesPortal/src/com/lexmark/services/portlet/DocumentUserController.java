@@ -41,8 +41,7 @@ import com.lexmark.contract.DocumentUserListContract;
 import com.lexmark.contract.GeographyCountryContract;
 import com.lexmark.domain.Document;
 import com.lexmark.domain.RoleCategory;
-import com.lexmark.emc.client.servicesweb.DocumentumWebServiceFacade;
-import com.lexmark.properties.schema.sw.document.DocumentProperties.DocumentInfo;
+
 import com.lexmark.result.CategoryHierarchyResult;
 import com.lexmark.result.DocumentUserListResult;
 import com.lexmark.result.GeographyListResult;

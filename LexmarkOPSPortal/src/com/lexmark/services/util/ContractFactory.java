@@ -1940,8 +1940,22 @@ public class ContractFactory {
 			}
 			if(request.getParameter("fromFleetManager")!=null && request.getParameter("fromFleetManager").equalsIgnoreCase("true")){
 				LOGGER.debug("FROM FLEET MANAGEMENT NO DATE RANGE");
-				requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE);
-				requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE);
+				if(StringUtils.isBlank(request.getParameter("searchCriterias"))){
+					/* This denotes the request is NOT for Open Requests. Its for Request history.. So No Date Range.*/
+					requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE);
+					requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE);	
+				}else{
+					Date todayDt = new Date();
+					Calendar dtCal = new GregorianCalendar();
+					dtCal.setTime(todayDt);
+					dtCal.add(Calendar.DAY_OF_MONTH, -90);
+					Date before90Days = dtCal.getTime();
+					TimezoneUtil.adjustDate(before90Days, timezoneOffset); 
+					requestListContract.getFilterCriteria().put(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE,DateUtil.convertDateToGMTString(before90Days));
+					requestListContract.getFilterCriteria().put(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE,DateUtil.convertDateToGMTString(todayDt));
+							
+				}
+		
 			}
 		//End added for LBS	
 			

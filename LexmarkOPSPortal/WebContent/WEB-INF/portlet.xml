@@ -544,4 +544,22 @@
 		<supported-locale>en</supported-locale>
 		<resource-bundle>com.lexmark.services.resources.filterSettings</resource-bundle>
 	</portlet>
+	
+	<portlet>
+		<portlet-name>ShowAccountInformation</portlet-name>
+		<display-name>Account Infornmation</display-name>
+		<display-name xml:lang="en">Account Infornmation</display-name>
+		<portlet-class>org.springframework.web.portlet.DispatcherPortlet</portlet-class>
+		<init-param>
+			<name>contextConfigLocation</name>
+			<value>/WEB-INF/context/portlet/accountInformation.xml</value>
+		</init-param>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<supported-locale>en</supported-locale>
+		<resource-bundle>com.lexmark.services.resources.accountInformation</resource-bundle>
+	</portlet>
+
 </portlet-app>

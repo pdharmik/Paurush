@@ -30,5 +30,6 @@
 		<portlet id="MapView"></portlet>
 		<portlet id="OPSLevelSelection"></portlet>
 		<portlet id="FilterSettings"></portlet>
+		<portlet id="ShowAccountInformation"></portlet>
 	</category>
 </display>

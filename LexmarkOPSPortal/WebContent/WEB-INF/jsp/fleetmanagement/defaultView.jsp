@@ -1527,7 +1527,7 @@ function showPopupMessagesOPS(message,callback){
 		if(type == -2)
 			isTwoYearHistoryFlag="true";
 			
-		 var url='${viewDeviceHistoryPopup}&requestTypeStr='+requestHistoryObj.getGridType()+'&isTwoYearHistoryFlag='+isTwoYearHistoryFlag;
+		 var url='${viewDeviceHistoryPopup}&requestTypeStr='+requestHistoryObj.getGridType()+'&isTwoYearHistoryFlag='+isTwoYearHistoryFlag+"&inc="+(typeof dhtmlXGridObject=="function"?false:true);
 		 
 			showOverlay();
 			jQuery('#deviceHistoryPopup').load(url,function(){

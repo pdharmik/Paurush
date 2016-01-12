@@ -1,4 +1,4 @@
-<project name="DctmWebServiceClient" default="dist" basedir=".">
+<project name="LexmarkServicesWebService" default="dist" basedir=".">
     <description>
         simple example build file
     </description>

@@ -1977,9 +1977,24 @@ public class ContractFactory {
 					LOGGER.debug("Adding service Type");
 					requestListContract.setServiceType(cmType);
 				}
+			
+				if(StringUtils.isBlank(request.getParameter("searchCriterias"))){
+					/* This denotes the request is NOT for Open Requests. Its for Request history.. So No Date Range.*/
+					requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE);
+					requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE);	
+				}else{
+					Date todayDt = new Date();
+					Calendar dtCal = new GregorianCalendar();
+					dtCal.setTime(todayDt);
+					dtCal.add(Calendar.DAY_OF_MONTH, -90);
+					Date before90Days = dtCal.getTime();
+					TimezoneUtil.adjustDate(before90Days, timezoneOffset); 
+					requestListContract.getFilterCriteria().put(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE,DateUtil.convertDateToGMTString(before90Days));
+					requestListContract.getFilterCriteria().put(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE,DateUtil.convertDateToGMTString(todayDt));
+							
+				}
 				
-				requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE);
-				requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE);
+				
 			}
 		//End added for LBS	
 			
