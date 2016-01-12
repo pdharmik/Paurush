@@ -1,40 +1,20 @@
 package com.lexmark.services.servlet;
 
-import java.util.ArrayList;
+
 import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-
 import com.lexmark.contract.AccountAgreementSoldToContract;
-import com.lexmark.contract.LocalizedSiebelLOVListContract;
-import com.lexmark.contract.LocalizedSiebelValueContract;
-import com.lexmark.domain.ListOfValues;
 import com.lexmark.domain.PunchoutAccount;
-import com.lexmark.exceptionimpl.runtime.LGSRuntimeException;
-import com.lexmark.framework.exception.LGSDBException;
 import com.lexmark.result.AccountAgreementSoldToResult;
-import com.lexmark.result.LocalizedSiebelLOVListResult;
-import com.lexmark.result.LocalizedSiebelValueResult;
 import com.lexmark.service.api.CustomerPaymentsService;
-import com.lexmark.service.api.ServiceRequestLocale;
-import com.lexmark.service.impl.real.jdbc.HibernateUtil;
-import com.lexmark.service.impl.real.jdbc.InfrastructureException;
 import com.lexmark.services.util.ContractFactory;
 import com.lexmark.services.util.ControllerUtil;
 import com.lexmark.services.util.ObjectDebugUtil;
-import com.lexmark.util.LOVComparator;
 
 public class LoadAccountInformation{
 	
