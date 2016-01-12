@@ -753,7 +753,7 @@ function hideAddAddress() {
 		<%-- Changes for MPS 2.1--%>
 		addPartnerAddressElement(null,jQuery('#storeName').val(),null, null, 
 				jQuery('#addrLine1').val(), null, jQuery('#addrLine2').val(),jQuery('#cityPopup').val(),
-				jQuery('#officeNo').val(),jQuery('#state_popup').val(), null,null,jQuery('#country_popup').val(), jQuery('#zipCode').val(),
+				jQuery('#officeNo').val(),jQuery('#state_popup').val(), null,cleanseRegion,jQuery('#country_popup').val(), jQuery('#zipCode').val(),
 				null,null,null,null,null,null);
 		<%--Ends--%>
 		}

@@ -359,11 +359,6 @@ public class MapsRequestServiceImpl implements MapsRequestService{
 			if(SiebelServiceAddr.getIsAddressCleansed()){
 				installAddr.setAddressCleansedFlag("Y");
 			}else{
-				if(SiebelServiceAddr.getState() !=null && !"".equals(SiebelServiceAddr.getState().trim())){
-				installAddr.setRegion(SiebelServiceAddr.getState());
-				}else{
-					installAddr.setRegion("");
-				}
 				installAddr.setAddressCleansedFlag("N");
 			}		
 			installAddr.setAddressMessage(SiebelServiceAddr.getSavedErrorMessage());
