@@ -740,8 +740,13 @@
 				var assetLifeCycle=("assetLifeCycle" in assetIfo)?assetIfo.assetLifeCycle:null;
 				if(assetLifeCycle!=null && assetLifeCycle=="Shipped"){
 					<%-- Redirect it to Install Asset page  --%>
-					
-					addAssetRequest(assetId);
+					addAssetRedirect.assetId=assetId;
+					addAssetRedirect.assetLifeCycle=assetLifeCycle;
+					if($("#fleetMgmtForm #lbs_extAddressId").val().length == 0){
+					initOpenAddressPopup();
+					}else{
+						addAssetRequest(assetId);
+					}
 					return;
 				}
 				//alert($('#backInfo').val());
