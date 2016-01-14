@@ -66,7 +66,7 @@
                 </c:choose>
                 </div>
                    
-            <div class="price-btn-cntnr"><div class="price-btn-cntnr">${bundle.price}<c:if test="${not empty bundle.price}">(${bundle.currency})</c:if></div>
+            <div class="price-btn-cntnr"><div>${bundle.price}<c:if test="${not empty bundle.price}">(${bundle.currency})</c:if></div>
              <c:choose>
             	<c:when test="${bundle.bundleQty ne null && bundle.bundleQty ne 0}">
               <input name="Update Cart" title="" id="cartButton${bundle.bundleId}" type="button" class="button" value="Update Cart" border="0" onclick="moveToCart('${bundle.bundleId}',this.id)">
@@ -93,17 +93,17 @@
                 </c:choose>
                 </div>
                    
-           <div class="quntity-cart-cntnr"> 
-               <div class="price-btn-cntnr" style="width: 90%!important;"><spring:message code="requestInfo.error.priceUnavailable"/></div>
+           <div class="floatR"> 
+               <div class="price-btn-cntnr" style="width: 100%!important;"><spring:message code="requestInfo.error.priceUnavailable"/></div>
                 
                 </div>
              <c:choose>
             	<c:when test="${bundle.bundleQty ne null && bundle.bundleQty ne 0}">
-              <div><input name="Update Cart" title="" id="cartButton${bundle.bundleId}" type="button" class="button" value="Update Cart" border="0" onclick="moveToCart('${bundle.bundleId}',this.id)">
+              <div><input name="Update Cart" title="" id="cartButton${bundle.bundleId}" type="button" class="button floatR" value="Update Cart" border="0" onclick="moveToCart('${bundle.bundleId}',this.id)">
             </div>
                </c:when>
                 <c:otherwise>
-                 <input name="Add to Cart" title="" id="cartButton${bundle.bundleId}" type="button" class="button" value="Add to Cart" border="0" onclick="moveToCart('${bundle.bundleId}',this.id)">
+                 <input name="Add to Cart" title="" id="cartButton${bundle.bundleId}" type="button" class="button floatR" value="Add to Cart" border="0" onclick="moveToCart('${bundle.bundleId}',this.id)">
                  </c:otherwise>
                 </c:choose>
               </div>

@@ -424,7 +424,7 @@ header {
 .quntity-cart-cntnr {
 	float:left;
 	width:23.07692307692308%;
-	margin:40px 0 0 -15px;
+	margin:20px 0 0;
 }
 .quntity-cart-cntnr2 {
 	float:right;
@@ -451,7 +451,6 @@ header {
 	width:33%;
 	font-size:14px;
 	color:#9b9b9b;
-	margin-top:20px;
 }
 .quntyty-refresh-cntnr {
 	float:right;
