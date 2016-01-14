@@ -144,7 +144,7 @@ function doCart(detailsObj,buttonId){
     // addToCart() to be call for other scenarios from outside the ajax
     if(cartType == "printers"){
     	 jQuery.ajax({ 
-    	         url:"https://www.lexmark.com/en_BE/epg/products/"+printerTypeNum+".json",  // currnetly url is hardcoded. this will be dynamic later based on part number
+    	         url:"https://www.lexmark.com/en_US/epg/products/"+printerTypeNum+".json",  // currnetly url is hardcoded. this will be dynamic later based on part number
     	         dataType : 'json',
     	          success: function (data) {
     	        	 unspsc = data.UNSPSCCode;
