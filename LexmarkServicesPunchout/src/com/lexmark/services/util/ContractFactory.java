@@ -3,6 +3,7 @@ package com.lexmark.services.util;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.portlet.PortletRequest;
 
@@ -14,6 +15,8 @@ import com.lexmark.contract.AccountAgreementSoldToContract;
 import com.lexmark.contract.CatalogListContract;
 import com.lexmark.contract.CreateServiceRequestB2bContract;
 import com.lexmark.contract.HardwareCatalogContract;
+import com.lexmark.contract.LocalizedSiebelLOVListContract;
+import com.lexmark.contract.LocalizedSiebelValueContract;
 import com.lexmark.contract.PriceContract;
 import com.lexmark.contract.RequestContract;
 import com.lexmark.contract.RequestListContract;
@@ -23,6 +26,7 @@ import com.lexmark.domain.Price;
 import com.lexmark.domain.PunchoutAccount;
 import com.lexmark.service.util.SearchContractUtil;
 import com.lexmark.services.constants.PunchoutConstants;
+import com.lexmark.util.LocaleUtil;
 
 
 
@@ -41,8 +45,6 @@ public class ContractFactory {
 	 */
 	public static AccountAgreementSoldToContract getAllSiebelAccountListContract(){
 		AccountAgreementSoldToContract contract = new AccountAgreementSoldToContract();
-		contract.setAccountName("Kaiser Foundation Health Plan Inc");
-		
 		return contract;
 	}
 	
@@ -257,5 +259,15 @@ public class ContractFactory {
 		contract.setServiceRequestType("Fleet Management" );*/
 		
 		return contract;
+	}
+    
+	public static  LocalizedSiebelValueContract createLocalizedSiebelValueContract(String lovListName, String lovValue, Locale localeName){
+		LocalizedSiebelValueContract contract = new LocalizedSiebelValueContract();
+		contract.setLocaleName(LocaleUtil.getSupportLocaleCode(localeName));
+		contract.setLovListName(lovListName);
+		contract.setLovValue(lovValue);
+		
+		return contract;
+		
 	}
 }
