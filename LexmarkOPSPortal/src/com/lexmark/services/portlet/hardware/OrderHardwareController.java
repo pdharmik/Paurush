@@ -871,11 +871,11 @@ public class OrderHardwareController extends BaseController {
 		if(pageSource!=null && "map".equalsIgnoreCase(pageSource)){
 			hardwareDetailPageForm.setPageFlow("map");
 			hardwareDetailPageForm.setPlacementId(placementId);
-			hardwareDetailPageForm.setFleetManagementFlag(pageSource);
+			hardwareDetailPageForm.setFleetManagementFlag("true");
 		}else{
 			hardwareDetailPageForm.setPageFlow("");
 			hardwareDetailPageForm.setPlacementId("");
-			hardwareDetailPageForm.setFleetManagementFlag("");
+			hardwareDetailPageForm.setFleetManagementFlag("false");
 		}
 		List<OrderPart> hardwareOrderListToSession = new ArrayList<OrderPart>();
 		hardwareOrderListToSession = (ArrayList<OrderPart>) session.getAttribute("hardwareOrderListToSession");

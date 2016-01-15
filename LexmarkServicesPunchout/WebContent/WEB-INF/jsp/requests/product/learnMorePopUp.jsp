@@ -77,6 +77,10 @@ $(document).ready(function(){
                       <td id="partNumber${counter.index}">                      
                       </td>
                       </tr>
+                      <tr>
+                       <td class="strong"><spring:message code="requestInfo.label.countryOfOrigin"/></td>
+                      <td id="country-Origin-${counter.index}"></td>
+                      </tr>
                       </tbody>
                       </table>
                       </br>
@@ -171,7 +175,7 @@ $(document).ready(function(){
         		 //showOverlay();        	
         		//var url = "https://www.lexmark.com/en_US/epg/products/28E0100.json";
         		//parNum="28E0100";
-        		var url = "https://www.lexmark.com/en_BE/epg/products/"+parNum.trim()+".json";
+        		var url = "https://www.lexmark.com/en_US/epg/products/"+parNum.trim()+".json";
         		//$.getJSON(url,function(result){
         		//	document.getElementById('partId'+id).innerHTML = result.pid;
         		//	document.getElementById('partCatagory'+id).innerHTML = result.category;
@@ -195,6 +199,7 @@ $(document).ready(function(){
               			var ppnInfo = "<B>Print Resolution Black : </B>"+result.printResolutionBlack+ " </br><B>Print Resolution Color : </B>"+result.printResolutionColor;
               			document.getElementById('ppnInfo'+id).innerHTML = ppnInfo;
               			document.getElementById('partDesc'+id).innerHTML = result.description;
+              			$('#country-Origin-'+id).html(result.countryOfOrigin);
               			$('#mrkt_desc'+id).html(result.marketing);
               			//hideOverlay();
               			$('#accor'+id).children('.loadingIcon').hide();

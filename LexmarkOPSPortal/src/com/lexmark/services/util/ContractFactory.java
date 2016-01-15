@@ -3202,7 +3202,8 @@ public class ContractFactory {
 			}
 		}
 		
-contract.setPlacementId(hardwareDetailPageForm.getPlacementId());
+		contract.setPlacementId(hardwareDetailPageForm.getPlacementId());
+		contract.setFleetManagementFlag(hardwareDetailPageForm.getFleetManagementFlag());
 		return contract;
 	}	
 	

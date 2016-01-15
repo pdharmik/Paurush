@@ -140,13 +140,11 @@ public class CreateHardwareRequestImpl implements CreateHardwareRequest {
 		// Setting up ConsumablesServiceRequestData
 		SellableItemsServiceRequestData sellableServiceRequestData = new SellableItemsServiceRequestData();
 		sellableServiceRequestData.setServiceRequestType(contract.getSrType());
-		if(contract.getFleetManagementFlag()!=null && contract.getFleetManagementFlag().equalsIgnoreCase("true")){
-			LOGGER.debug("Setting Map-Web");
-			sourceSystem = "Map-Internal Portal";
+		if(contract.getFleetManagementFlag()!=null && contract.getFleetManagementFlag().equalsIgnoreCase("true")){			
+			sourceSystem = "Map-LBS Internal";
 			}
-			else{
-				LOGGER.debug("Setting Web");
-				sourceSystem = "Internal Portal";
+			else{				
+				sourceSystem = "LBS Internal";
 			}
 		sellableServiceRequestData.setServiceRequestSource(sourceSystem);
 		if (contract.getSRStatus() != null) {
