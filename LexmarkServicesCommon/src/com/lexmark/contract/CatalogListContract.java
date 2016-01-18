@@ -45,6 +45,7 @@ public class CatalogListContract extends MdmSearchContractBase implements Serial
 	
 	private boolean hardwareSuppliesFlag;
 	private boolean hardwareAccessoriesFlag;
+	private String printerMaterialNum;
 	
 	private Date effectiveDate;
 	private String bundleId;//added for b2b this will get the options & warranties on the basis of which bundle
@@ -215,4 +216,11 @@ public class CatalogListContract extends MdmSearchContractBase implements Serial
 	public String getBundleId() {
 		return bundleId;
 	}
+	
+	public String getPrinterMaterialNum() {
+		 	return printerMaterialNum;
+		 	}
+		 	public void setPrinterMaterialNum(String printerMaterialNum) {
+		 		this.printerMaterialNum = printerMaterialNum;
+		 }
 }
