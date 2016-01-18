@@ -45,6 +45,7 @@ public class ContractFactory {
 	 */
 	public static AccountAgreementSoldToContract getAllSiebelAccountListContract(){
 		AccountAgreementSoldToContract contract = new AccountAgreementSoldToContract();
+		contract.setAccountName("Kaiser");
 		return contract;
 	}
 	
@@ -158,12 +159,12 @@ public class ContractFactory {
 		}
 		else if("retrieveBundleGrid".equalsIgnoreCase(callType)){
 			LOGGER.debug("2 in retireveParinterTypes call type is "+callType);
-			contract.setPaymentType("Ship and Bill");
 			contract.setHardwareAccessoriesFlag(true);
 		}
 		contract.setBundleId(StringUtils.isNotBlank(request.getParameter("bundleId"))==true?request.getParameter("bundleId"):"");
 		PunchoutAccount account=(PunchoutAccount)request.getAttribute("punchoutAccount");
-		
+		String materialNum=request.getParameter("model");
+		contract.setPrinterMaterialNum(StringUtils.isNotBlank(materialNum)==true?materialNum:"");
 		contract.setAgreementId(account.getAgreementId());
 		contract.setSoldToNumber(account.getSoldTo());
 		contract.setContractNumber(account.getContractNumber());

@@ -61,14 +61,19 @@ public class LoadAccountInformation{
 	 * @return List 
 	 */
 	 public synchronized List<PunchoutAccount> getAllAccountList(String siebelValue){
+		 LOGGER.debug("Siebel Value"+siebelValue);
 		 List<PunchoutAccount> allAccountList=null;
 		 if(globalAccountMap.size()>0){
 			 allAccountList=globalAccountMap.get(siebelValue);
 		 }
 		 if(allAccountList != null){
+			 LOGGER.debug("all account list size is "+allAccountList.size());
 			return allAccountList;
 		 }
-		initAccountInformation(siebelValue);	
+		 
+		initAccountInformation(siebelValue);
+		allAccountList=globalAccountMap.get(siebelValue);
+		LOGGER.debug("Init account information call " + allAccountList.size());
 		 return allAccountList;
 	 }
 	

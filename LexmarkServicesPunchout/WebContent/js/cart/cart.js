@@ -137,8 +137,14 @@ function doCart(detailsObj,buttonId){
     
     // added for UNSPSC start  
     var cartType=detailsObj.cartType;
-    var unspsc ="";
-    var printerTypeNum=$('#'+detailsObj.productId+"_partType").val();
+    var unspsc ="";var printerTypeNum="";
+  
+    if(detailsObj.quantityId=="quantity_optn_warran"){
+    	printerTypeNum=detailsObj.productId;
+    }else{
+    	printerTypeNum=$('#'+detailsObj.productId+"_partType").val();
+    }
+    
     //printerTypeNum="28E0100";
     // this ajax call will be made only for printers to get the unspsc code.
     // addToCart() to be call for other scenarios from outside the ajax
