@@ -22,8 +22,8 @@ import java.util.Map;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-import com.businessobjects.service.Service_Realtime_DQ_Siebel_business_address_datacleanse.input.DataSet;
-import com.businessobjects.service.Service_Realtime_DQ_Siebel_business_address_datacleanse.input.DataSetRecord;
+import com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.input.DataSet;
+import com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.input.DataSetRecord;
 import com.businessobjects.www.DataServices_Server;
 import com.businessobjects.www.DataServices_ServerLocator;
 import com.businessobjects.www.RealTime_Services;
@@ -193,9 +193,9 @@ public class AddressCleansingServiceImpl implements AddressCleansingService {
 						
 			inputBody.setRecord(inputBodyRecord);
 			LOGGER.debug("Address cleansing ws call start ------- > " + System.currentTimeMillis());
-			com.businessobjects.service.Service_Realtime_DQ_Siebel_business_address_datacleanse.output.DataSet outputBody = services.service_Realtime_DQ_Siebel_business_address_datacleanse(inputBody);
+			com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.output.DataSet outputBody = services.service_Realtime_DQ_Portal_business_address_region_code(inputBody);
 			LOGGER.debug("Address cleansing ws call end ------- > " + System.currentTimeMillis());
-			com.businessobjects.service.Service_Realtime_DQ_Siebel_business_address_datacleanse.output.DataSetRecord outputBodyRecord = outputBody.getRecord();
+			com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.output.DataSetRecord outputBodyRecord = outputBody.getRecord();
 
 			
 			
@@ -224,11 +224,9 @@ public class AddressCleansingServiceImpl implements AddressCleansingService {
 				}
 				else{
 					//If any error with the wrong data, show the error to the user
+					addressDataInput.setRegion(outputBodyRecord.getRegionCode());
 					addressDataInput.setErrorMsgForCleansing(outputBodyRecord.getSavedErrorMessage());
-				}
-			
-			
-			
+				}		
 		
 			LOGGER.debug("Address cleansing end ------- > " + System.currentTimeMillis());
 			

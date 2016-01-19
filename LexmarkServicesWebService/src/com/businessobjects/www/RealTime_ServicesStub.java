@@ -16,7 +16,7 @@ public class RealTime_ServicesStub extends org.apache.axis.client.Stub implement
     static org.apache.axis.description.OperationDesc [] _operations;
 
     static {
-        _operations = new org.apache.axis.description.OperationDesc[6];
+        _operations = new org.apache.axis.description.OperationDesc[7];
         _initOperationDesc1();
     }
 
@@ -88,7 +88,17 @@ public class RealTime_ServicesStub extends org.apache.axis.client.Stub implement
         oper.setStyle(org.apache.axis.constants.Style.DOCUMENT);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         _operations[5] = oper;
-
+        
+        oper = new org.apache.axis.description.OperationDesc();
+        oper.setName("Service_Realtime_DQ_Portal_business_address_region_code");
+        param = new org.apache.axis.description.ParameterDesc(new javax.xml.namespace.QName("http://businessobjects.com/service/Service_Realtime_DQ_Portal_business_address_region_code/input", "DataSet"), org.apache.axis.description.ParameterDesc.IN, new javax.xml.namespace.QName("http://businessobjects.com/service/Service_Realtime_DQ_Portal_business_address_region_code/input", ">DataSet"), com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.input.DataSet.class, false, false);
+        oper.addParameter(param);
+        oper.setReturnType(new javax.xml.namespace.QName("http://businessobjects.com/service/Service_Realtime_DQ_Portal_business_address_region_code/output", ">DataSet"));
+        oper.setReturnClass(com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.output.DataSet.class);
+        oper.setReturnQName(new javax.xml.namespace.QName("http://businessobjects.com/service/Service_Realtime_DQ_Portal_business_address_region_code/output", "DataSet"));
+        oper.setStyle(org.apache.axis.constants.Style.DOCUMENT);
+        oper.setUse(org.apache.axis.constants.Use.LITERAL);
+        _operations[6] = oper;
     }
 
     public RealTime_ServicesStub() throws org.apache.axis.AxisFault {
@@ -287,7 +297,34 @@ public class RealTime_ServicesStub extends org.apache.axis.client.Stub implement
             cachedSerClasses.add(cls);
             cachedSerFactories.add(beansf);
             cachedDeserFactories.add(beandf);
+            
+            qName = new javax.xml.namespace.QName("http://businessobjects.com/service/Service_Realtime_DQ_Portal_business_address_region_code/input", ">>DataSet>Record");
+            cachedSerQNames.add(qName);
+            cls = com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.input.DataSetRecord.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
 
+            qName = new javax.xml.namespace.QName("http://businessobjects.com/service/Service_Realtime_DQ_Portal_business_address_region_code/input", ">DataSet");
+            cachedSerQNames.add(qName);
+            cls = com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.input.DataSet.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://businessobjects.com/service/Service_Realtime_DQ_Portal_business_address_region_code/output", ">>DataSet>Record");
+            cachedSerQNames.add(qName);
+            cls = com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.output.DataSetRecord.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
+
+            qName = new javax.xml.namespace.QName("http://businessobjects.com/service/Service_Realtime_DQ_Portal_business_address_region_code/output", ">DataSet");
+            cachedSerQNames.add(qName);
+            cls = com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.output.DataSet.class;
+            cachedSerClasses.add(cls);
+            cachedSerFactories.add(beansf);
+            cachedDeserFactories.add(beandf);
     }
 
     protected org.apache.axis.client.Call createCall() throws java.rmi.RemoteException {
@@ -557,5 +594,38 @@ public class RealTime_ServicesStub extends org.apache.axis.client.Stub implement
   throw axisFaultException;
 }
     }
+    
+    public com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.output.DataSet service_Realtime_DQ_Portal_business_address_region_code(com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.input.DataSet inputBody) throws java.rmi.RemoteException {
+        if (super.cachedEndpoint == null) {
+            throw new org.apache.axis.NoEndPointException();
+        }
+        org.apache.axis.client.Call _call = createCall();
+        _call.setOperation(_operations[6]);
+        _call.setUseSOAPAction(true);
+        _call.setSOAPActionURI("service=Service_Realtime_DQ_Portal_business_address_region_code");
+        _call.setEncodingStyle(null);
+        _call.setProperty(org.apache.axis.client.Call.SEND_TYPE_ATTR, Boolean.FALSE);
+        _call.setProperty(org.apache.axis.AxisEngine.PROP_DOMULTIREFS, Boolean.FALSE);
+        _call.setSOAPVersion(org.apache.axis.soap.SOAPConstants.SOAP11_CONSTANTS);
+        _call.setOperationName(new javax.xml.namespace.QName("", "Service_Realtime_DQ_Portal_business_address_region_code"));
 
+        setRequestHeaders(_call);
+        setAttachments(_call);
+ try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {inputBody});
+
+        if (_resp instanceof java.rmi.RemoteException) {
+            throw (java.rmi.RemoteException)_resp;
+        }
+        else {
+            extractAttachments(_call);
+            try {
+                return (com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.output.DataSet) _resp;
+            } catch (java.lang.Exception _exception) {
+                return (com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.output.DataSet) org.apache.axis.utils.JavaUtils.convert(_resp, com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.output.DataSet.class);
+            }
+        }
+  } catch (org.apache.axis.AxisFault axisFaultException) {
+	  throw axisFaultException;
+  }
+    }
 }
