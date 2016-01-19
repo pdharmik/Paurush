@@ -315,12 +315,7 @@ public class CreateHardwareRequestImpl implements CreateHardwareRequest {
 		if (contract.getShipToAddress().getIsAddressCleansed()) {
 			shipToAddress.setAddressCleansedFlag("Y");
 		} else {
-			shipToAddress.setAddressCleansedFlag("N");
-			if(contract.getShipToAddress().getState() !=null && !"".equals(contract.getShipToAddress().getState().trim())){
-			shipToAddress.setRegion(contract.getShipToAddress().getState());
-			}else{
-				shipToAddress.setRegion("");
-			}
+			shipToAddress.setAddressCleansedFlag("N");			
 		}
 		
 		
@@ -512,12 +507,7 @@ public class CreateHardwareRequestImpl implements CreateHardwareRequest {
 				if (contract.getBillToAddress().getIsAddressCleansed()) {
 					billToAddress.setAddressCleansedFlag("Y");
 				} else {
-					billToAddress.setAddressCleansedFlag("N");
-					if(contract.getBillToAddress().getState() !=null && !"".equals(contract.getBillToAddress().getState().trim())){
-					billToAddress.setRegion(contract.getBillToAddress().getState());
-					}else{
-						billToAddress.setRegion("");
-					}
+					billToAddress.setAddressCleansedFlag("N");					
 				}
 				
 				paymentInformation.setBillToAddress(billToAddress);
@@ -583,12 +573,7 @@ public class CreateHardwareRequestImpl implements CreateHardwareRequest {
 					if (contract.getBillToAddress().getIsAddressCleansed()) {
 						billToAddress.setAddressCleansedFlag("Y");
 					} else {
-						billToAddress.setAddressCleansedFlag("N");
-						if(contract.getBillToAddress().getState() !=null && !"".equals(contract.getBillToAddress().getState().trim())){
-						billToAddress.setRegion(contract.getBillToAddress().getState());
-						}else{
-							billToAddress.setRegion("");
-						}
+						billToAddress.setAddressCleansedFlag("N");						
 					}
 					paymentInformation.setBillToAddress(billToAddress);
 				}

@@ -292,7 +292,9 @@ public class ClaimServiceImpl implements ClaimService {
 				shipToAddress.setAddressCleansedFlag("Y");
 			}else{
 				shipToAddress.setAddressCleansedFlag("N");
-			}
+			}			
+			shipToAddress.setRegion(contract.getActivity().getShipToAddress().getRegion().replaceAll(",", ""));
+			
 
 		   recommendedPartsList = new SiebelRecommendedPartsList[contract.getActivity().getOrderPartList().size()];
 			int i = 0;	
@@ -374,6 +376,7 @@ public class ClaimServiceImpl implements ClaimService {
 			}else{
 				shipToAddress.setAddressCleansedFlag("N");
 			}
+			shipToAddress.setRegion(contract.getActivity().getShipToAddress().getRegion().replaceAll(",", ""));
 			recommendedPartsList = new SiebelRecommendedPartsList[1];
 			PartInformation partInformation = new PartInformation();
 			

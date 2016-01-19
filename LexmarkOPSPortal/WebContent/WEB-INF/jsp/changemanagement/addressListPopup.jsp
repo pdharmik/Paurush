@@ -883,7 +883,7 @@ function hideAddAddress() {
 		<%-- Changes for MPS 2.1--%>
 		addServiceAddressElement(null,null,jQuery('#addrLine1').val(),jQuery('#addrLine2').val(),
 		jQuery('#cityPopup').val(),jQuery('#state_popup').val(),null,jQuery('#country_popup').val(),jQuery('#zipCode').val(),
-		jQuery('#storeName').val(),null, null, null,null,jQuery('#officeNo').val(),null,null,null,null,null,jQuery('#lbsFlag1').val(),jQuery('#lodAddress1').val());
+		jQuery('#storeName').val(),null, null, null,null,jQuery('#officeNo').val(),null,null,null,cleanseRegion,null,jQuery('#lbsFlag1').val(),jQuery('#lodAddress1').val());
 		<%--Ends--%>
 		}
 	}
@@ -909,7 +909,7 @@ function hideAddAddress() {
 	function ignoreAndSave(){		
 		addServiceAddressElement(null,null,jQuery('#addrLine1').val(),jQuery('#addrLine2').val(),
 		jQuery('#cityPopup').val(),jQuery('#state_popup').val(),null,jQuery('#country_popup').val(),jQuery('#zipCode').val(),
-		jQuery('#storeName').val(),null, null, null,null,jQuery('#officeNo').val(),null,null,null,null,null,jQuery('#lbsFlag1').val(),jQuery('#lodAddress1').val());
+		jQuery('#storeName').val(),null, null, null,null,jQuery('#officeNo').val(),null,null,null,cleanseRegion,null,jQuery('#lbsFlag1').val(),jQuery('#lodAddress1').val());
 	}
 	function changeLBSFlag()
 	{

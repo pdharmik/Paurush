@@ -371,12 +371,7 @@ public class ManageAssetServiceImpl implements ManageAssetService {
 				moveFromAddr.setPhysicalLocation3(SiebelInstallAddr.getPhysicalLocation3());
 				if(SiebelInstallAddr.getIsAddressCleansed()){
 					moveFromAddr.setAddressCleansedFlag("Y");
-				}else{
-					if(SiebelInstallAddr.getState() !=null && !"".equals(SiebelInstallAddr.getState().trim())){
-						moveFromAddr.setRegion(SiebelInstallAddr.getState());
-					}else{
-						moveFromAddr.setRegion("");
-					}
+				}else{					
 					moveFromAddr.setAddressCleansedFlag("N");
 				}		
 				moveFromAddr.setAddressMessage(SiebelInstallAddr.getSavedErrorMessage());
@@ -501,12 +496,7 @@ public class ManageAssetServiceImpl implements ManageAssetService {
 		
 		if(SiebelServiceAddr.getIsAddressCleansed()){
 			installAddr.setAddressCleansedFlag("Y");
-		}else{
-			if(SiebelServiceAddr.getState() !=null && !"".equals(SiebelServiceAddr.getState().trim())){
-			installAddr.setRegion(SiebelServiceAddr.getState());
-			}else{
-				installAddr.setRegion("");
-			}
+		}else{			
 			installAddr.setAddressCleansedFlag("N");
 		}		
 		installAddr.setAddressMessage(SiebelServiceAddr.getSavedErrorMessage());
