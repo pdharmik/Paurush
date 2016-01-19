@@ -23,8 +23,17 @@ public class SiebelAccountListContract extends ContractBase implements
     private String contractNumber;
     private boolean lbsFlag;
     private boolean partnerPortal;
+    private String soldToType;
     
-    public boolean isPartnerPortal() {
+    public String getSoldToType() {
+		return soldToType;
+	}
+
+	public void setSoldToType(String soldToType) {
+		this.soldToType = soldToType;
+	}
+
+	public boolean isPartnerPortal() {
 		return partnerPortal;
 	}
 

@@ -73,7 +73,7 @@ public class AmindOrderSuppliesAssetDetailService {
 						|| contract.getPageName().equalsIgnoreCase(
 								"CmDecommissionDeviceDetail") || contract
 						.getPageName().equalsIgnoreCase("BreakfixDeviceDetail")))        {
-        	searchExpression = searchExpression+ "AND ([LXK MPS Pick Supplies.Id] IS NULL AND  [Order Entry - Line Items.Id] IS NULL) ";
+        	searchExpression = searchExpression+ "AND ([LXK MPS Pick Supplies.Id] IS NULL AND  [Order Entry - Line Items.Id] IS NULL AND [Agreement Entitlement.LXK MPS Entitlement Status]='Valid') ";
         }
         else if(contract.getPageName()!= null && contract.getPageName().equalsIgnoreCase("ConsumableDeviceDetail"))
         {
