@@ -32,7 +32,7 @@
 
 
 <script type="text/javascript" src="<html:rootPath/>js/toggler.js?version=0.1"></script>
-<script type="text/javascript" src="<html:rootPath/>js/LbsService.js?version=3.58"></script>
+<script type="text/javascript" src="<html:rootPath/>js/LbsService.js?version=3.59"></script>
 <script type="text/javascript" src="<html:rootPath/>js/LBSDbFilters.js?version=1.11"></script>
 <script type="text/javascript" src="<html:rootPath/>js/addressPopup.js?version=1"></script>
 
@@ -814,6 +814,10 @@ function showPopupMessages(message,callback){
 		$("#fleetMgmtForm #lbs_buildingName").val(physicalLoca1);
 		$("#fleetMgmtForm #lbs_floorName").val(physicalLoca2);
 		$("#fleetMgmtForm #lbs_physicalLocation3").val(physicalLoca3);
+		if (addAssetRedirect.assetLifeCycle!=null && addAssetRedirect.assetLifeCycle=="Shipped"){
+			addAssetRequest(addAssetRedirect.assetId);
+			return;
+		}
 		jQuery("#fleetMgmtForm").submit();
 	}
 	
@@ -1720,6 +1724,17 @@ function setMoveToAndInstallAddress(address)
 
 function clearConditions(){
 	deviceStatus.clearApplyFilter(false);
+}
+function initOpenAddressPopup(){
+	
+	$('#gridFilterValues').val(
+			$("#lbs_address").val()+",,,"+				
+			$("#lbs_city").val()+","+
+			$("#lbs_state").val()+",,,,,"+
+			$("#lbs_zipCode").val()+","+
+			$("#lbs_country").val());		
+	moveAssetFlag = 1;
+	openAddressPopup();
 }
 </script>
 <div style="display: none;">
