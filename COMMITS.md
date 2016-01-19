@@ -1,4 +1,4 @@
-# Formatting
+## Formatting
 These formatting rules are intended to make the git log easier to read
 for reviewers.
 
@@ -14,15 +14,15 @@ for reviewers.
 4. Paragraphs should be separated by blank lines.
 
 
-# Content
+## Content
 
-## Subject Line
+### Subject Line
 
 The subject line (first line of the message) should be a very short
 description of what change is being made -- i.e. describe the feature
 you are implementing or the bug you are fixing.
 
-## Long Description
+### Long Description
 
 The long description after that should more completely describe the
 work. The goal of this description is to explain the changes to another
@@ -47,7 +47,7 @@ This description and should answer the following three questions:
      called for in the requirements.  
    * Explain why those changes were necessary
 
-## Ticket references
+### Ticket references
 
 At the bottom of the commit message, include any outside references to
 the CR/issue/problem/SR ticket which generated this change.  
@@ -56,13 +56,13 @@ If possible, include a full URL to the ticket.  If not, include both the
 ticket number and the system from which it comes.
 
 
-# Examples
+## Examples
 
-## Bad commit message:
+### Bad commit message:
 
     Fix login bug
 
-## Improved commit message:
+### Improved commit message:
 
     Redirect user to the requested page after login
 
@@ -76,7 +76,7 @@ ticket number and the system from which it comes.
     HPQC CR: 000000 ZZZ-NNNNNNNNNYYYYMMDDHHSS
     ServiceNow PRB000000: https://lexmark.service-now.com/nav_to.do?uri=problem_task.do?sys_id=XXXXXXXXXXXXXXXXXXXXXXX
 
-# References:
+## References:
 
 * [5 Useful Tips for a better commit message] (https://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message)
 * [A note about git commit messages] (http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.htm])
