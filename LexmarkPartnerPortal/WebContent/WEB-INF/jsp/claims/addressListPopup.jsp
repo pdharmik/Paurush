@@ -564,6 +564,8 @@ function hideAddAddress() {
 									}
 								else if(error=="cleanseError")
 									{
+									// populate region in case of address cleansing error.
+									cleanseRegion = obj2.region;
 									jQuery('#errorMsg_popup').html(obj2.cleansedError);
 									jQuery('#errorMsg_popup').show();
 									jQuery("#ignoreSaveAddress").show();
