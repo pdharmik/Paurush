@@ -1336,7 +1336,7 @@ var timezoneOffsetServiceRequest="";
     	closeCustomizedWindow();
 		callOmnitureAction('Service Request', 'Service Request View Detail');
         var iLeft = (window.screen.availWidth-820)/2; 
-        var timezoneOffset = ${timezoneOffset};    // Added for CR CHG0006531 AMS 15.11
+        var timezoneOffset = "${timezoneOffset}";    // Added for CR CHG0006531 AMS 15.11
        
         
         var url="<portlet:renderURL windowState='<%= LiferayWindowState.EXCLUSIVE.toString() %>'><portlet:param name='action' value='serviceRequestDrillDownLightBox' /></portlet:renderURL>&serviceRequestNumber="+ serviceRequestNumber+"&lightBox=lightBox"+"&timezoneOffset="+timezoneOffset+"&g="+(typeof dhtmlXGridObject=="function"?false:true); //modified for AMS 15.11 Release

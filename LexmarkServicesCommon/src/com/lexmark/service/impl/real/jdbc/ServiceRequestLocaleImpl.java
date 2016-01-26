@@ -285,7 +285,7 @@ public class ServiceRequestLocaleImpl implements ServiceRequestLocale {
 			SRAdministrationListContract contract) {
 		SRAdministrationListResult result = new SRAdministrationListResult();
 		try {			
-			Query query = HibernateUtil.getSession().createQuery("select sl from SiebelLocalization sl");
+			Query query = HibernateUtil.getSession().createQuery("select sl from SiebelLocalization sl where sl.statusOrder is not null");
 			//logger.debug(query);
 			for(Iterator it=query.iterate();it.hasNext();){
 				SiebelLocalization sl = (SiebelLocalization) it.next();
