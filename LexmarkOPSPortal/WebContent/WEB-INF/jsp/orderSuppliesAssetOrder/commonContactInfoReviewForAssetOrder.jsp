@@ -65,7 +65,7 @@ jQuery(document).ready( function() {
 				  </li>
                   <li>
                     <label><spring:message code="requestInfo.label.description"/></label>
-                    <span id="description" class="multiLine">${assetDetailPageForm.serviceRequest.addtnlDescription}</span>
+                    <span id="description" class="multiLine wFull notesOverflow">${assetDetailPageForm.serviceRequest.addtnlDescription}</span>
 				  </li>
 				</ul>
 			  </div>

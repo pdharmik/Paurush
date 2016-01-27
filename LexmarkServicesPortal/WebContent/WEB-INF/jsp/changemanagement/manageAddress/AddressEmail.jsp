@@ -80,7 +80,7 @@
               </tr>
               <tr>
                 <td valign="top"  class="table-td-style16"><strong><spring:message code="requestInfo.label.description"/></strong></td>
-                <td valign="top"  class="table-td-style16" id="description"></td>
+                <td valign="top"  class="table-td-style16"><div id ="description" class="smallNotesOverflow"></div></td>
               </tr>
               <tr>
                 <td valign="top"  class="table-td-style16"><strong><spring:message code="requestInfo.label.dateOfChange"/></strong></td>
@@ -186,7 +186,7 @@
              <td colspan="2" valign="top"  class="table-td-style16"> &nbsp;</td>
              </tr>
               <tr>
-                <td colspan="2" valign="top"  class="table-td-style16" id="attachmentDescription"></td>
+                <td colspan="2" valign="top"  class="table-td-style16"><div id="attachmentDescription" class="smallNotesOverflow w300"></div></td>
                 
               </tr>
               </table>

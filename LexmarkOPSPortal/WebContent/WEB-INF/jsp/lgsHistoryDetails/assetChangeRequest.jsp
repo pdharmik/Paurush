@@ -733,7 +733,7 @@ if(currURL.indexOf("dFFlag=true")==-1){
           <div class="columnsOne">
             <div class="infoBox columnInner rounded shadow">
               <h4><spring:message code="requestInfo.heading.notes"/></h4>
-              <p class="w70p multiLine"><span id="notes">${requestForm.serviceRequest.notes}</span></p>
+              <p class="w70p multiLine notesOverflow noteWrap"><span id="notes">${requestForm.serviceRequest.notes}</span></p>
             </div>
           </div>
         </div>

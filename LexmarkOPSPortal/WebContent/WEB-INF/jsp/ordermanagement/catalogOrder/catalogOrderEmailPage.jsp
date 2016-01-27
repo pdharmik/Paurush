@@ -243,7 +243,7 @@
               </tr>
               <tr>
                 <td valign="top" width="100" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong><spring:message code="requestInfo.label.specialInstructions"/></strong></td>
-                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"> ${catalogDetailPageForm.specialInstruction}</td>
+                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><div class="smallNotesOverflow">  ${catalogDetailPageForm.specialInstruction}</div></td>
               </tr>
               <%-- <tr>
                 <td valign="top" width="100" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong><spring:message code="requestInfo.label.defaultSpecialInstructions"/></strong></td>

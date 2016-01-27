@@ -231,7 +231,7 @@
               </tr>
              
               <tr>
-                <td colspan="2" valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;word-wrap: break-word;word-break: break-all;width:500px" id="attachmentDescription"></td>
+                <td colspan="2" valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;word-wrap: break-word;word-break: break-all;width:500px"><div class="notesOverflow" id="attachmentDescription"></div></td>
                 
               </tr>
               </table>
@@ -505,7 +505,7 @@
               </tr>              
               
               <tr>
-                <td colspan="2" valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;word-wrap: break-word;word-break: break-all;width:500px" id="attachmentDescription"></td>
+                <td colspan="2" valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;word-wrap: break-word;word-break: break-all;width:500px"><div class="notesOverflow" id="attachmentDescription"></div></td>
                 
               </tr>
               </table>
@@ -758,7 +758,7 @@
               </tr>
               
               <tr>
-                <td colspan="2" valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;word-wrap: break-word;word-break: break-all;width:500px" id="attachmentDescription"></td>
+                <td colspan="2" valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;word-wrap: break-word;word-break: break-all;width:500px" ><div class="notesOverflow" id="attachmentDescription"></div></td>
                 
               </tr>
               </table>

@@ -72,7 +72,7 @@
               </tr>
               <tr>
                 <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong><spring:message code="requestInfo.label.description"/></strong></td>
-                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><span id="addtnlInfo_description"> </span></td>
+                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><div class="smallNotesOverflow w300" id="addtnlInfo_description"> </div></td>
               </tr>
             </table></td>
         </tr>
@@ -180,7 +180,7 @@
               </tr>
               <tr>
                 <td valign="top" width="100" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong><spring:message code="requestInfo.label.specialInstructions"/></strong></td>
-                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"> <span id="spclInstruction"></span></td>
+                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"> <div class="smallNotesOverflow w300" id="spclInstruction"></div></td>
               </tr>
               
               
@@ -239,7 +239,7 @@
                 <th colspan="2" align="left" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;background-color:#e7e7e7;border-bottom-color:#aaaaaa; border-bottom-width:1px; border-bottom-style:dotted;"><spring:message code="requestInfo.heading.notes"/></th>
               </tr>
               <tr>
-                <td valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><span id="notes"></span></td>
+                <td valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><div  class="smallNotesOverflow w300" id="notes"></div></td>
               </tr>
             </table></td>
         </tr>

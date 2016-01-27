@@ -270,7 +270,7 @@ jQuery(document).ready( function() {
           			<div class="columnsOne">
             			<div class="infoBox columnInner rounded shadow">
             				<h4><spring:message code="requestInfo.heading.notes"/></h4>
-            				 <p class="multiLine" ><span id="attachmentDescription">${manageContactForm.attachmentDescription}</span></p>
+            				 <p class="multiLine noteWRap notesOverflow" ><span id="attachmentDescription">${manageContactForm.attachmentDescription}</span></p>
             			</div>
             		</div>
             	</div>

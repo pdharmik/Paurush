@@ -680,6 +680,15 @@ display:inline-block;
 .pageCounts_container,.div-style48{
 	background-color: white;width:100%;
 }
+.smallNotesOverflow{
+	word-wrap: break-word; 
+	overflow: auto; 
+	width: 250px; 
+	max-height: 100px;
+}
+.notesOverflow{
+	max-height:95px;overflow:auto;
+}
 .attachmentDescription{
 	word-wrap: break-word;word-break: normal;width:500px;
 	}
