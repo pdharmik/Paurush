@@ -778,7 +778,7 @@
           			<div class="columnsOne">
             			<div class="infoBox columnInner rounded shadow">
             				<h4><spring:message code="requestInfo.heading.notes"/></h4>
-            				 <p class="multiLine" style="word-wrap: break-word;word-break: normal;width:500px"><span id="attachmentDescription">${manageAssetForm.assetDetail.notes}</span></p>
+            				 <p class="multiLine notesOverflow" style="word-wrap: break-word;word-break: normal;"><span id="attachmentDescription">${manageAssetForm.assetDetail.notes}</span></p>
             			</div>
             		</div>
             	</div>

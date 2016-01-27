@@ -266,6 +266,7 @@
         <hr class="separator" />
 <!--         Added for CI 14-02-03 STARTS-->
         <p class="inlineTitle"><spring:message code="requestInfo.heading.notes"/> &amp; <spring:message code="requestInfo.heading.attachments"/></p>
+        <c:if test = "${pageView ne 'CHLOthers' }">
         <div class="portletBlock">
           <div class="columnsOne">
             <div class="infoBox columnInner rounded shadow">
@@ -276,15 +277,16 @@
             </div>
           </div>
         </div>
+        </c:if>
 <!--         Added for CI 14-02-03 ENDS-->
         <!-- Below section available only for CHL and Others -->
 		<c:if test="${pageView =='CHLOthers'}">
 			<div class="portletBlock infoBox">
-	          <div class="columnsTwo">
+	          <div class="columnsOne">
 	            <div class="columnInner">
+	            <h4><spring:message code="requestInfo.label.notes"/></h4>
 	              <ul class="form wordBreak">
 	                <li>
-	                  <label for="notes"><spring:message code="requestInfo.label.notes"/></label>
 	                  <span class="multiLine" id="notes">${requestForm.serviceRequest.notes }</span> </li>
 	              </ul>
 	            </div>

@@ -398,7 +398,7 @@ ajaxSuccessFunction=function updateRequest(){
           			<div class="columnsOne">
             			<div class="infoBox columnInner rounded shadow">
             				<h4><spring:message code="requestInfo.heading.notes"/></h4>
-            				 <p class="multiLine">${addressForm.attachmentDescription}</p>
+            				 <p class="multiLine noteWrap notesOverflow">${addressForm.attachmentDescription}</p>
             			</div>
             		</div>
             	</div>

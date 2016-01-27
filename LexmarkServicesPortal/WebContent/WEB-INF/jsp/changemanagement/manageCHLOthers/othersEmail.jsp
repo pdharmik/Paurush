@@ -98,7 +98,7 @@
               </tr>
               <tr>
                 <td valign="top"  class="table-td-style16"><strong><spring:message code="requestInfo.label.description"/></strong></td>
-                <td valign="top"  class="table-td-style16" id="specialInstruction">
+                <td valign="top"  class="table-td-style16"><div class="smallNotesOverflow" id="specialInstruction"></div>
 				
 				</td>
               </tr>
@@ -157,7 +157,7 @@
               </tr>
               <tr>
                 <td valign="top" class="table-td-style16" width="30px"><strong><spring:message code="requestInfo.label.notes"/></strong></td>
-                <td valign="top" class="table-td-style16" id="rqstDesc1">
+                <td valign="top" class="table-td-style16"><div class="smallNotesOverflow w300" id="rqstDesc1"></div>
 				
 				</td>
               </tr>
@@ -182,8 +182,8 @@
               
               <tr>
                 <td valign="top" class="table-td-style16"><strong><spring:message code="requestInfo.label.notes"/></strong></td>
-                <td valign="top" class="table-td-style16" id="rqstDesc">
-				
+                <td valign="top" class="table-td-style16">
+					<div id="rqstDesc" class="smallNotesOverflow w300"></div>
 				</td>
               </tr>
             </c:if>
