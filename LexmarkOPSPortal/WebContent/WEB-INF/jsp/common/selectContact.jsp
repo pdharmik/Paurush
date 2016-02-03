@@ -245,7 +245,8 @@ var validationFlagPopup;//For validation
 						if(stage==0){
 										var cellObj = contactGrid.cellById(rId,cInd);
 										<%-- Changed for defect 7975 MPS 2.1 --%>
-	   								  cellObj.setValue(jQuery(cellObj.getValue()).val());
+										var cellvalue=jQuery(cellObj.getValue()).val();cellvalue=checkUndefined(cellvalue);
+	   								  cellObj.setValue(cellvalue);
 	   								<%-- Ends Changed for defect 7975 MPS 2.1 --%>
 
 							}else if(stage==1){
@@ -319,7 +320,9 @@ var validationFlagPopup;//For validation
 			var cellObj = contactGrid.cellById(rId,i);
 			var cellvalue=cellObj.getValue();
 			contactGrid.setCellExcellType(rId,i,"ro");
-			cellObj.cell.innerHTML=jQuery(cellvalue).val();
+			cellvalue=jQuery(cellvalue).val();
+			cellvalue=checkUndefined(cellvalue);
+			cellObj.cell.innerHTML=cellvalue;
 			
 			}
 		 <%-- Ends Changed for defect 7975 MPS 2.1 --%>
@@ -387,7 +390,7 @@ var validationFlagPopup;//For validation
 		<%-- Changed for defect 7975 MPS 2.1 --%>
 		//Validate Work Phone
 		var cellObj = contactGrid.cellById(rId,5);
-		var cellvalue=jQuery(cellObj.getValue()).val();
+		var cellvalue=jQuery(cellObj.getValue()).val();cellvalue=checkUndefined(cellvalue);
 		<%--Ends Changed for defect 7975 MPS 2.1 --%>
 		//alert('wp '+cellvalue);
 		if(!phoneValidate(cellvalue,"workphone","changeContact")){
@@ -395,8 +398,8 @@ var validationFlagPopup;//For validation
 		}
 		<%-- Changed for defect 7975 MPS 2.1 --%>
 		//Validate Alternate Phone
-		var cellObj = contactGrid.cellById(rId,6);
-		cellvalue=jQuery(cellObj.getValue()).val();
+		cellObj = contactGrid.cellById(rId,6);
+		cellvalue=jQuery(cellObj.getValue()).val();cellvalue=checkUndefined(cellvalue);
 		<%--Ends Changed for defect 7975 MPS 2.1 --%>
 		//alert('ap '+cellvalue);
 		if(!phoneValidate(cellvalue,"alternatephone","changeContact")){
@@ -404,8 +407,8 @@ var validationFlagPopup;//For validation
 		}
 		<%-- Changed for defect 7975 MPS 2.1 --%>
 		//Validate Email Address
-		var cellObj = contactGrid.cellById(rId,7);
-		cellvalue=jQuery(cellObj.getValue()).val();
+		cellObj = contactGrid.cellById(rId,7);
+		cellvalue=jQuery(cellObj.getValue()).val();cellvalue=checkUndefined(cellvalue);
 		<%--Ends Changed for defect 7975 MPS 2.1 --%>
 		//alert('ea '+cellvalue);
 		if(!emailValidate(cellvalue,"emailAddr","changeContact")){
@@ -423,6 +426,9 @@ var validationFlagPopup;//For validation
 			return true;
 		}
 		
+	}
+	function checkUndefined(val){
+		return typeof val==="undefined"? "": val;
 	}
 
 	//Update the contact. If user edit a cell and select it, this method will be called
