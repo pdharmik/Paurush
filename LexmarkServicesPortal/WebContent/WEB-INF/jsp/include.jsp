@@ -62,16 +62,28 @@ var timezoneOffset = (offsetMinute/60);//It will make it positive value
 		if(!title){
 			title = "<spring:message code='exception.generalError.title'/>";
 		}
-		new Liferay.Popup({
-	        title: title,
-	        position: [450,150], 
-	        modal: true,
-	        width: 480, 
-	        height: 150,
-	        xy: [100, 100],
-	        onClose: function() {showSelect();},
-	        message:msg
-	    });
+		dialog=jQuery('#reportPopup').dialog({
+			autoOpen: false,
+			title: title,
+			modal: true,
+			draggable: false,
+			resizable: false,
+			position: [450,150],
+			height: 150,
+			width: 520,
+			xy: [100, 100],
+			
+			open: function(){	
+				jQuery('#reportPopupSpan').html(msg);
+			},
+			close: function(event,ui){
+				showSelect();
+				dialog.dialog('destroy');					 
+				dialog=null;
+			}
+			});
+		
+		dialog.dialog('open');
 	
 	}
 	function hideSelect(){   
@@ -529,5 +541,6 @@ function showOverlayPopup(){
 <div id="processingHintPopup" tabindex="-1" style="display:none">
    &nbsp;&nbsp;<img class="margin-top-10px" src="<html:imagesPath/>loading-icon.gif">&nbsp;&nbsp; <spring:message code="processing"/><br>
 </div>
+<div id="reportPopup" style="display:none"><span id="reportPopupSpan" style="font-weight: bold"></span></div>
 <html:statusBanner id="${pageId}" showError="${showDefaultError}"/>
 
