@@ -171,7 +171,7 @@ if(addressFlag!=null){
 						<p class="info banner"><spring:message code="requestInfo.popup.cleansedAddresses"/></p>
 						<div class="portletBlock infoBox">
 						<div class="columnsOne">
-						<div class="columnInner floatR" style="width: 234px;">
+						<div class="columnInner floatR wCleansed_Address">
 						<ul class="roDisplay">
 						
 						

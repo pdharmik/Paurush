@@ -2349,3 +2349,6 @@ background-color: #eff0f6 !important;
 #commentsDiv > ul > li {
     list-style-type: none !important;
 }
+.wCleansed_Address{
+       width: 234px;
+}
