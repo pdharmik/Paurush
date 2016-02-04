@@ -139,7 +139,7 @@ if(addressFlag!=null){
 										<img src="<html:imagesPath/>loading-icon.gif" id="loadingImage_state" style="display: none;"/>
 										<img src="<html:imagesPath/>transparent.png" class="helpIconPopup ui-icon info-icon" id="helpIconRegion" title="<spring:message code="requestInfo.addressInfo.label.regionDetails"/>" />
 										</span>
-										<div id="stateorzipmesg" class="note pageTitle" ><span class="margin-top--8px">(<spring:message code="requestInfo.addressInfo.label.regionDetails"/>)</span></div>
+										<div id="stateorzipmesg" class="wAuto note pageTitle" ><span class="margin-top--8px">(<spring:message code="requestInfo.addressInfo.label.regionDetails"/>)</span></div>
 									</li>
 									<li>
 										<label for="zipCode" ><spring:message code="requestInfo.addressInfo.label.postalCode"/><span class="req">**</span>
@@ -171,7 +171,7 @@ if(addressFlag!=null){
 						<p class="info banner"><spring:message code="requestInfo.popup.cleansedAddresses"/></p>
 						<div class="portletBlock infoBox">
 						<div class="columnsOne">
-						<div class="columnInner floatR">
+						<div class="columnInner floatR wCleansed_Address">
 						<ul class="roDisplay">
 						
 						
@@ -194,7 +194,7 @@ if(addressFlag!=null){
 								</ul>
 								<p class="check">
 								<input type="checkbox" id="check_popup"	onclick="javascript:validate_popup();" /> 
-								<label for="modAddress" class="floatR">
+								<label for="modAddress">
 								<%-- <spring:message code="requestInfo.popup.cleansedAddresses"/> --%>
 								<spring:message code="requestInfo.popup.usecleansedAddresses"/>
 								</label>
@@ -547,6 +547,7 @@ function hideAddAddress() {
 									jQuery('#cleansedAddress').show(function(){ 
 									<%-- Set the check box by default selected and rebrand it , 
 									check passing the extra values as it will be required during cleansing. --%>
+									$('#check_popup').next('span.checkbox_Span').css('float','left');
 										$('#check_popup').attr('checked',true);
 										checkboxRebrandFunction($('#check_popup'));
 										validate_popup();
