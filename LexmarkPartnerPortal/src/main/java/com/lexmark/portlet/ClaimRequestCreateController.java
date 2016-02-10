@@ -1004,12 +1004,12 @@ public class ClaimRequestCreateController {
 						
 
 						shipToAddress.append(account.getAddress().getPrimaryAddressID()!=null?account.getAddress().getPrimaryAddressID()+"/" :"/");
-						shipToAddress.append(account.getAddress().getPrimaryAddressName()!=null?account.getAddress().getStoreFrontName()+"/":"/");
-						shipToAddress.append(account.getAddress().getPrimaryAddressName()!=null?account.getAddress().getPrimaryAddressName()+"/":"/");
+						shipToAddress.append(account.getAddress().getStoreFrontName()!=null?account.getAddress().getStoreFrontName()+"/":"/");
+						shipToAddress.append(account.getAddress().getPrimaryAddressName()!=null?account.getAddress().getPrimaryAddressName().replace('/','\u2215')+"/":"/");
 						shipToAddress.append(account.getAddress().getPrimaryAddressLine1()!=null?account.getAddress().getPrimaryAddressLine1()+"/":"/");
 						shipToAddress.append(account.getAddress().getPrimaryAddressLine1()!=null?account.getAddress().getPrimaryOfficeNumber()+"/":"/");
 
-						shipToAddress.append(account.getAddress().getPrimaryAddressLine2()!=null?account.getAddress().getPrimaryAddressLine2()+"/":"/");
+						shipToAddress.append(account.getAddress().getPrimaryAddressLine2()!=null?account.getAddress().getPrimaryAddressLine2().replace('/','\u2215')+"/":"/");
 						shipToAddress.append(account.getAddress().getPrimaryCity()!=null?account.getAddress().getPrimaryCity()+"/":"/");
 						shipToAddress.append(account.getAddress().getPrimaryCounty()!=null?account.getAddress().getPrimaryCounty()+"/":"/");
 						shipToAddress.append(account.getAddress().getPrimaryState()!=null?account.getAddress().getPrimaryState()+"/":"/");
