@@ -218,8 +218,12 @@ public class RequestsDebriefController {
 		
 		logger.debug("Problem Code Level  is ------------------- "+activity.getDebrief().getActualFailureCode().getValue());
 		logger.debug("Full Problem Code  is ------------------- "+activity.getActualFailureCode().getValue());
-		activity.getDebrief().getActualFailureCode().setValue(activity.getActualFailureCode().getValue());
-		
+		if(activity.getActualFailureCode().getValue()== "" || activity.getActualFailureCode().getValue()==null){
+			activity.getDebrief().getActualFailureCode().setValue(activity.getDebrief().getActualFailureCode().getValue());
+			
+		}else{
+			activity.getDebrief().getActualFailureCode().setValue(activity.getActualFailureCode().getValue());
+		}
 		String fromPage = requestsDebriefForm.getFromPage();
 		if(PortalSessionUtil.isDuplicatedSubmit(request, requestsDebriefForm)){
 			if("requestDetailView".equalsIgnoreCase(fromPage)){
