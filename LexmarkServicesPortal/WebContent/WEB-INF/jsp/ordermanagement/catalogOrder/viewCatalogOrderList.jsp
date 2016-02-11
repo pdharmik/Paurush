@@ -61,7 +61,7 @@ behavior: url(/LexmarkServicesPortal/WEB-INF/css/PIE.htc) !important;
 <%-- 	  <c:if test='${sessionScope.accountCurrentDetails["rowCount"]!="1"}'> --%>
         <h3 class="pageTitle"><spring:message code="requestInfo.heading.catalogFor"/>
         
-        <c:set var = "accountName" value = "${sessionScope.accountCurrentDetails['accountName'] }"/>
+        <c:set var = "accountName" value = "${accountName}"/>
       <c:set var = "agreementName" value = "${sessionScope.accountCurrentDetails['agreementName'] }"/>
       
     	<c:if test="${accountName ne '' && agreementName ne '' }">
