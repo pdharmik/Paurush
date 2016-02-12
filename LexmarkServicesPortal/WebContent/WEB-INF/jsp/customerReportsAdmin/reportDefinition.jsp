@@ -3,7 +3,6 @@
 <style type="text/css"><%@ include file="../../css/combo/dhtmlxcombo.css" %></style> 
 <script type="text/javascript"><%@ include file="../../../js/grid/dhtmlxcommon.js"%></script>
 <script type="text/javascript"><%@ include file="../../../js/combo/dhtmlxcombo.js"%></script>
-<script src="/html/themes/classic/javascript/tree/jquery-1.4.js" type="text/javascript"></script>
 <script src="/html/themes/classic/javascript/tree/jquery.treeview.js" type="text/javascript"></script>
 <portlet:resourceURL var="customerTreeDetails" id="getCustomerTreeDetails"></portlet:resourceURL>
 <portlet:resourceURL var="customerMdmAccountDetails" id="getCustomerMdmAccountDetails"></portlet:resourceURL>
