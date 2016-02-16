@@ -410,7 +410,7 @@
 		 var html="<ul>";
 		 for(key in formatValidation){
 			 if(typeof formatValidation[key] != 'boolean'){
-				 if(formatValidation[key][0].indexOf("[")>0 || formatValidation[13][1].indexOf("Consumables")){
+				 if(formatValidation[key][0].indexOf("[")>0 || formatValidation[key][1].indexOf("Consumables")>0){					 
 					 //this is for list of quantity validation
 					 var flagValid=false;
 					 for(i=0;i<=formatValidation[key][3];i++){

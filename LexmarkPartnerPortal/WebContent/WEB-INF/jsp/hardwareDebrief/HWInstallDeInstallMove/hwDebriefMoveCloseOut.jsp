@@ -243,9 +243,9 @@ var backURL={
 	});
 	--%>
 </script>
-<script type="text/javascript" src="<html:rootPath/>js/validation.js?version=4"></script>
-<script type="text/javascript" src="<html:rootPath/>js/hardwareDebreif.js?version=8"></script>
-<script type="text/javascript" src="<html:rootPath/>js/commonAddress.js"></script>
+<script type="text/javascript" src="<html:rootPath/>js/validation.js?version=<html:fileCacheVersion/>"></script>
+<script type="text/javascript" src="<html:rootPath/>js/hardwareDebreif.js?version=<html:fileCacheVersion/>"></script>
+<script type="text/javascript" src="<html:rootPath/>js/commonAddress.js?version=<html:fileCacheVersion/>"></script>
 <jsp:include page="/WEB-INF/jsp/hardwareDebrief/HWInstallDeInstallMove/commonHwCloseOut/commonHardwareValidation.jsp"></jsp:include>	    
 
 <script type="text/javascript">
