@@ -59,7 +59,7 @@ if ("${hardwareDetailPageForm.serviceRequest.secondaryContact.firstName }"=="" |
 				  </li>
                   <li>
                     <label><spring:message code="requestInfo.label.description"/></label>
-                  <span id="addtnlInfo_description" class="multiLine">  ${hardwareDetailPageForm.serviceRequest.addtnlDescription}</span>
+                  <span id="addtnlInfo_description" class="multiLine noteWrap">  ${hardwareDetailPageForm.serviceRequest.addtnlDescription}</span>
 				  </li>
 				</ul>
 			  </div>

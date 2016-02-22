@@ -511,8 +511,8 @@ var backURL={
 		backURLocation:"${hardwareDebriefForm.backURL}"	 
 };
 </script>
-	<script type="text/javascript" src="<html:rootPath/>js/validation.js?version=4"></script>
- <script type="text/javascript" src="<html:rootPath/>js/hardwareDebreif.js?version=9"></script>
+	<script type="text/javascript" src="<html:rootPath/>js/validation.js?version=<html:fileCacheVersion/>"></script>
+ <script type="text/javascript" src="<html:rootPath/>js/hardwareDebreif.js?version=<html:fileCacheVersion/>"></script>
 <script>
 	
  	var partnerAccountOrganizationIdHidden=null;

@@ -2835,3 +2835,12 @@ overflow:auto;
 .portlet-msg-error{
 	margin:5px 0 !important;
 }
+.smallNotesOverflow{
+	word-wrap: break-word; 
+	overflow: auto; 
+	width: 250px; 
+	max-height: 100px;
+}
+.notesOverflow{
+	max-height:95px;overflow:auto;
+}

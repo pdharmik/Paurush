@@ -80,5 +80,9 @@ public class RealTime_ServicesProxy implements com.businessobjects.www.RealTime_
     return realTime_Services.RT_ADDR_MATCH_CUST_SQL_INS_UPD(inputBody);
   }
   
-  
+  public com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.output.DataSet service_Realtime_DQ_Portal_business_address_region_code(com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.input.DataSet inputBody) throws java.rmi.RemoteException{
+	if (realTime_Services == null)
+	  _initRealTime_ServicesProxy();
+	return realTime_Services.service_Realtime_DQ_Portal_business_address_region_code(inputBody);
+  }	
 }

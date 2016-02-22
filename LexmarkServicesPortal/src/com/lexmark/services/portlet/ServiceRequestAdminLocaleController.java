@@ -72,6 +72,7 @@ public class ServiceRequestAdminLocaleController extends BaseController {
 		 */
 		
 		SRAdministrationListContract contract = ContractFactory.getSRAdministrationListContract();
+		contract.setRetrieveAll(true);
 		logger.debug("The contract is as below---->>>");
 		ObjectDebugUtil.printObjectContent(contract, logger);
 		//Retrieving all the option value & store that in a list
@@ -121,6 +122,7 @@ public class ServiceRequestAdminLocaleController extends BaseController {
 		try {
 			logger.debug("inside");
 			SRAdministrationListContract contract = ContractFactory.getSRAdministrationListContract();
+			contract.setRetrieveAll(true);
 			logger.debug("The contract is as below---->>>");
 			ObjectDebugUtil.printObjectContent(contract, logger);
 			

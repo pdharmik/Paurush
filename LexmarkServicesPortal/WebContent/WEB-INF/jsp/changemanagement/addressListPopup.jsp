@@ -707,6 +707,8 @@ function hideAddAddress() {
 								}
 							else if(error=="cleanseError")
 								{
+								// populate region in case of address cleansing error.
+								cleanseRegion = obj2.region;
 								jQuery('#errorMsg_popup').html('<li class="portlet-msg-error">'+obj2.cleansedError+'</li>');
 								jQuery('#errorMsg_popup').show();
 								jQuery("#ignoreSaveAddress").show();
@@ -893,7 +895,7 @@ function hideAddAddress() {
 		<%-- Changes for MPS 2.1--%>
 		addServiceAddressElement(null,null,jQuery('#addrLine1').val(),jQuery('#addrLine2').val(),
 		jQuery('#cityPopup').val(),jQuery('#state_popup').val(),null,jQuery('#country_popup').val(),jQuery('#zipCode').val(),
-		jQuery('#storeName').val(),null, null, null,null,jQuery('#officeNo').val(),null,null,null,null,null,jQuery('#lbsFlag1').val(),jQuery('#lodAddress1').val());
+		jQuery('#storeName').val(),null, null, null,null,jQuery('#officeNo').val(),null,null,null,cleanseRegion,null,jQuery('#lbsFlag1').val(),jQuery('#lodAddress1').val());
 		<%--Ends--%>
 		}
 	}
@@ -916,10 +918,10 @@ function hideAddAddress() {
 		cleanseCounty=county;
 	}
 	
-	function ignoreAndSave(){		
+	function ignoreAndSave(){
 		addServiceAddressElement(null,null,jQuery('#addrLine1').val(),jQuery('#addrLine2').val(),
 		jQuery('#cityPopup').val(),jQuery('#state_popup').val(),null,jQuery('#country_popup').val(),jQuery('#zipCode').val(),
-		jQuery('#storeName').val(),null, null, null,null,jQuery('#officeNo').val(),null,null,null,null,null,jQuery('#lbsFlag1').val(),jQuery('#lodAddress1').val());
+		jQuery('#storeName').val(),null, null, null,null,jQuery('#officeNo').val(),null,null,null,cleanseRegion,null,jQuery('#lbsFlag1').val(),jQuery('#lodAddress1').val());
 	}
 	function changeLBSFlag()
 	{

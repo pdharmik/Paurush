@@ -98,7 +98,7 @@
               </tr>
               <tr>
                 <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong><spring:message code="requestInfo.label.description"/></strong></td>
-                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;" id="specialInstruction">
+                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><div id="specialInstruction" class="notesOverflow noteWrap w300"></div>
 				
 				</td>
               </tr>
@@ -157,7 +157,7 @@
               </tr>
               <tr>
                 <td valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:11px; width="30px"><strong><spring:message code="requestInfo.label.notes"/></strong></td>
-                <td valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;" id="rqstDesc1">
+                <td valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><div class="notesOverflow noteWrap w300" id="rqstDesc1"></div>
 				
 				</td>
               </tr>
@@ -182,7 +182,7 @@
               
               <tr>
                 <td valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong><spring:message code="requestInfo.label.notes"/></strong></td>
-                <td valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;" id="rqstDesc">
+                <td valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><div class="notesOverflow noteWrap w300" id="rqstDesc"></div>
 				
 				</td>
               </tr>

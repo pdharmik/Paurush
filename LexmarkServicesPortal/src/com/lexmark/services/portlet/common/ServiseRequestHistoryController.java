@@ -153,7 +153,7 @@ public class ServiseRequestHistoryController extends BaseController{
 	 * @param response 
 	 * @throws Exception 
 	 */
-	@ResourceMapping("retrieveBreakfixSRList")
+	@ResourceMapping("retrieveBreakfixServiceRequestList")
 	public void retrieveServiceRequestList(ResourceRequest request, ResourceResponse response) throws Exception{
 		logger.debug("------------- Step 1---retrieveServiceRequestList started---------["+System.nanoTime()+"]");
 		
@@ -247,7 +247,7 @@ public class ServiseRequestHistoryController extends BaseController{
 	 * @param model 
 	 * @throws Exception 
 	 */
-	@ResourceMapping("downloadServiceRequestsURL")
+	@ResourceMapping("downloadServiceRequestsCsvPdfURL")
 	public void downloadServiceRequestsURL(ResourceRequest request,
 			ResourceResponse response, Model model) throws Exception{
 

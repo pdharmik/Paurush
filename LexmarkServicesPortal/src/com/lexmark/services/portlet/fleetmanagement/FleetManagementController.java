@@ -570,6 +570,11 @@ public class FleetManagementController extends BaseController{
 		model.addAttribute(ChangeMgmtConstant.GRIDTYPE, gridType);
 		model.addAttribute("requestStatusLOVMap", requestStatusLOVMap);
 		 //For MPS Phase 2.1
+		/* param check if include grid js files are already available in page. */
+		String includeGrid=request.getParameter("inc");
+		if(includeGrid!=null){
+			model.addAttribute("includeGrid", includeGrid);
+		}
 		return "fleetmanagement/deviceHistoryPopup";
 		
 		

@@ -89,7 +89,7 @@
               </tr>
               <tr>
                 <td valign="top"  class="table-td-style16"><strong><spring:message code="requestInfo.label.description"/></strong></td>
-                <td valign="top"  class="table-td-style16" id="specialInstruction">
+                <td valign="top"  class="table-td-style16"><div id="specialInstruction" class="noteWrap notesOverflow w300"></div>
 				
 				</td>
               </tr>
@@ -251,6 +251,7 @@ else{
 if(window.opener.window.document.getElementById("notesOrCommentBlock")!=null){
 	window.document.getElementById("notesOrCommentBlock").innerHTML = window.opener.window.document.getElementById("notesOrCommentBlock").innerHTML;
 	}
+jQuery("#rqstDesc").addClass("w300");
 if(window.opener.window.document.getElementById("addressDiv")!=null){
 window.document.getElementById("addressDiv").innerHTML = window.opener.window.document.getElementById("addressDiv").innerHTML;
 }

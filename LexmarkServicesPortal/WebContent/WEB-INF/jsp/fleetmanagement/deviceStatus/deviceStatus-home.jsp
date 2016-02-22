@@ -14,6 +14,12 @@
 		<c:if test="${fleetMgmtForm.showDeviceUtilization}">
 			<c:set var="showDeviceStatusUtil" value="block"/>	
 		</c:if>
+		
+		<%-- 16.2 - 19716 - Fields addition for Access Validation in DeviceStatus Popup --%>
+		<input type="hidden" id="showDeviceStatusInPopup" name="showDeviceStatusInPopup" value="${fleetMgmtForm.showDeviceStatus}"/>
+		<input type="hidden" id="showDeviceStatusUtilInPopup" name="showDeviceStatusUtilInPopup" value="${fleetMgmtForm.showDeviceUtilization}"/>
+		<%-- Ends 16.2 - 19716 - Fields addition for Access Validation in DeviceStatus Popup --%>
+				
 		<div id="main-device-Status" style="position:relative;height: 33px; display: ${showDeviceStatus};">
 				<div class="mapDeviceStatus wAuto" id="device-status-main">
 					<span class="mapDeviceStatusSpan" onclick="openDeviceStatus()">
@@ -115,14 +121,20 @@
 			roleList.push("${loopStatus}");
 			</c:forEach>
 			function showDeviceStatusOnAccess(deviceStat,deviceUtilz){
+				
 				if(deviceStat && (roleList.indexOf("<%=ROLE_SERVICE_SUPPORT%>")!=-1 ||roleList.indexOf("<%=ROLE_SERVICE_SUPPORT_DUP%>")!=-1 )){
 					$('#main-device-Status').show();
+					$('#showDeviceStatusInPopup').val("true"); <%-- 16.2-19716 change --%>
 				}else{
 					$('#main-device-Status').hide();
+					$('#showDeviceStatusInPopup').val("false"); /* 16.2-19716 change */
 				} if (deviceUtilz && (roleList.indexOf("<%=ROLE_ACCOUNT_MANAGEMENT%>")!=-1 )){
 					$('#main-device-utilization').show();
+					$('#showDeviceStatusUtilInPopup').val("true"); <%-- 16.2-19716 change --%>
 				}else{
 					$('#main-device-utilization').hide();
+					$('#showDeviceStatusUtilInPopup').val("false"); <%-- 16.2-19716 change --%>
 				}
+				
 			}
 			</script>

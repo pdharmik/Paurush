@@ -62,6 +62,7 @@ public class CatalogListService {
     private QueryObject criteriaWithContractNumber;
     private boolean hardwareFlag;
     private Date effectiveDate;
+    private String printerMaterialNum;
 	
 	public CatalogListService(CatalogListContract contract) {
 		if (contract == null) {
@@ -78,6 +79,7 @@ public class CatalogListService {
 		this.contractNumber = contract.getContractNumber();
 		this.hardwareFlag = contract.isHardwareFlag();
 		this.effectiveDate = contract.getEffectiveDate();
+		this.printerMaterialNum = contract.getPrinterMaterialNum();
 	}
 
 	public void checkRequiredFields() {
@@ -94,6 +96,9 @@ public class CatalogListService {
 		builder.append("[agreementId] = '" + agreementId  + "'");
 		if(isNotBlank(productType)) {
 			builder.append(" AND [productType] = '" + trim(productType) + "'");
+		}
+		if (isNotBlank(printerMaterialNum)) {						//changes as per email "Model Name Population B2B"
+			 			builder.append(" AND [LXK MPS Printer Material #] = '" + trim(printerMaterialNum) + "'");
 		}
 		if(isNotBlank(productModel)) {
 			builder.append(" AND ([LXK MPS Product Model] = '" + trim(productModel) + "' OR [LXK MPS Supplies Model] = '" + trim(productModel) + "')");

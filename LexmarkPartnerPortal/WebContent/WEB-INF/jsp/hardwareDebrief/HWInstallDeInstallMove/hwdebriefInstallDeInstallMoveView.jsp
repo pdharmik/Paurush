@@ -342,7 +342,7 @@ So that any changes to type of request there need not be code level changes
 			backURLocation:"${hardwareDebriefForm.backURL}"	 
 	 };
  </script>  
- <script type="text/javascript" src="<html:rootPath/>js/hardwareDebreif.js?version=2"></script>
+ <script type="text/javascript" src="<html:rootPath/>js/hardwareDebreif.js?version=<html:fileCacheVersion/>"></script>
  
  <script>
  <%-- Below value is for BACK URL--%>

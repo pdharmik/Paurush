@@ -103,7 +103,7 @@
 					  </li>
 	                  <li>
 	                    <label><spring:message code="requestInfo.label.description"/></label>
-	                    <span id="specialInstruction">${assetAcceptForm.serviceRequest.addtnlDescription }</span>
+	                    <span id="specialInstruction" class="wFull">${assetAcceptForm.serviceRequest.addtnlDescription }</span>
 					  </li>
 					  </ul>
 				  </div>

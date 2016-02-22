@@ -388,11 +388,6 @@ public class CreateConsumableRequestImpl implements CreateConsumableRequest {
 			shipToAddress.setAddressCleansedFlag("Y");
 		} else {
 			shipToAddress.setAddressCleansedFlag("N");
-			if(contract.getShipToAddress().getState() !=null && !"".equals(contract.getShipToAddress().getState().trim())){
-			shipToAddress.setRegion(contract.getShipToAddress().getState());
-			}else{
-				shipToAddress.setRegion("");
-			}
 		}
 		LOGGER.debug("address cleansing flag:: "
 				+ contract.getShipToAddress().getIsAddressCleansed());
@@ -637,11 +632,6 @@ public class CreateConsumableRequestImpl implements CreateConsumableRequest {
 					billToAddress.setAddressCleansedFlag("Y");
 				} else {
 					billToAddress.setAddressCleansedFlag("N");
-					if(contract.getBillToAddress().getState() !=null && !"".equals(contract.getBillToAddress().getState().trim())){
-					billToAddress.setRegion(contract.getBillToAddress().getState());
-					}else{
-						billToAddress.setRegion("");
-					}
 				}
 				paymentInformation.setBillToAddress(billToAddress);
 			}

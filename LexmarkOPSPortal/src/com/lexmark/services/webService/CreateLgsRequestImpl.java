@@ -51,7 +51,7 @@ public class CreateLgsRequestImpl implements CreateLgsRequest {
 	private String receiverName = "";
 	private String synchOrAsynch = "asynch";
 	//private String returnDetail_x003F_ = "no";
-	private String sourceSystem = "Web";
+	private String sourceSystem = "";
 
 	
 	/**
@@ -155,6 +155,15 @@ public class CreateLgsRequestImpl implements CreateLgsRequest {
 		serviceRequestData.setServiceRequestNumber(contract.getServiceRequest().getServiceRequestNumber());
 		serviceRequestData.setServiceRequestType(contract.getServiceRequest().getServiceRequestType().getValue());
 		LOGGER.debug(" Calling WM -- ServiceRequestType--->"+contract.getServiceRequest().getServiceRequestType().getValue());
+		
+		if(contract.getFleetManagementFlag()!=null && contract.getFleetManagementFlag().equalsIgnoreCase("true")){
+			LOGGER.debug("Setting Map-Web");
+			sourceSystem = "Map-LBS Internal";
+		}
+		else{
+			LOGGER.debug("Setting Web");
+			sourceSystem = "LBS Internal";
+		}
 		
 		serviceRequestData.setServiceRequestSource(sourceSystem);		
 		

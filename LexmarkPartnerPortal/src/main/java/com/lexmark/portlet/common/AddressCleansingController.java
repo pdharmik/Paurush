@@ -18,6 +18,7 @@ package com.lexmark.portlet.common;
 
 import static com.lexmark.util.ChangeMgmtConstant.ADDRESSCLEANSEFIELDS_INPUT;
 import static com.lexmark.util.ChangeMgmtConstant.ADDRESSCLEANSEFIELDS_OUTPUT;
+import static com.lexmark.util.ChangeMgmtConstant.ADDRESSCLEANSEDREGION;
 
 import java.io.PrintWriter;
 import java.util.Map;
@@ -128,6 +129,8 @@ public class AddressCleansingController{
 					LOGGER.debug("errors>>>>>>>>>>>>" + error_mesg);
 					responseBody.append("\"cleansedError\":\""+error_mesg+ "\"");
 					
+					String outputRegion = (String) PropertyUtils.getProperty(addressDataOutput, ADDRESSCLEANSEDREGION);
+					responseBody.append(",\""+ADDRESSCLEANSEDREGION+"\":\""+outputRegion+"\"");
 				}
 				else{
 				LOGGER.debug("Going for writing the cleansed address");

@@ -323,7 +323,7 @@
           			<div class="columnsOne">
             			<div class="infoBox columnInner rounded shadow bgSolid">
             				<h4><spring:message code="requestInfo.heading.notes"/></h4>
-            				 <p id="notes" class="multiLine">${hardwareDetailPageForm.attachmentDescription}</p>
+            				 <p id="notes" class="multiLine noteWrap notesOverflow">${hardwareDetailPageForm.attachmentDescription}</p>
             			</div>
             		</div>
             	</div>

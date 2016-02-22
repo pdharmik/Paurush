@@ -219,7 +219,7 @@ public class AmindRequestDataConversionUtil {
 	}
 	
 	public static List<Account> convertCatalogAccountToAccountList(
-			List<? extends AccountBasedDo> accountsDo, String contractNumber) {
+			List<? extends AccountBasedDo> accountsDo, String contractNumber, String soldToType) {
 		if (accountsDo == null) {
 			return new ArrayList<Account>();
 		}
@@ -232,9 +232,30 @@ public class AmindRequestDataConversionUtil {
 					if (LangUtil.isNotEmpty(entitlementDo.getSuppliesCatalogDo())) {
 						for (Iterator<SuppliesSAPCatalogDo> iter = entitlementDo.getSuppliesCatalogDo().iterator(); iter.hasNext();) {
 							SuppliesSAPCatalogDo catalogDo = iter.next();
-							if ("AB".equalsIgnoreCase(catalogDo.getSoldToType()) || "SB".equalsIgnoreCase(catalogDo.getSoldToType())
-									 || (LangUtil.isNotBlank(contractNumber) && !contractNumber.equalsIgnoreCase(catalogDo.getContractNumber())) || "Inactive".equalsIgnoreCase(catalogDo.getContractSAPSatus())) {
-								iter.remove();
+							if (soldToType != null) {
+								if (!soldToType.equalsIgnoreCase(catalogDo						// changes as per email "INC0168189 :Duplicate account"
+										.getSoldToType())
+										|| (LangUtil.isNotBlank(contractNumber) && !contractNumber
+												.equalsIgnoreCase(catalogDo
+														.getContractNumber()))
+										|| "Inactive"
+												.equalsIgnoreCase(catalogDo
+														.getContractSAPSatus())) {
+									iter.remove();
+								}
+							} else {
+								if ("AB".equalsIgnoreCase(catalogDo
+										.getSoldToType())
+										|| "SB".equalsIgnoreCase(catalogDo
+												.getSoldToType())
+										|| (LangUtil.isNotBlank(contractNumber) && !contractNumber
+												.equalsIgnoreCase(catalogDo
+														.getContractNumber()))
+										|| "Inactive"
+												.equalsIgnoreCase(catalogDo
+														.getContractSAPSatus())) {
+									iter.remove();
+								}
 							}
 						}
 					}

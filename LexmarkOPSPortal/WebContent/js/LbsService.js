@@ -343,7 +343,11 @@ SiebelJSON.prototype={
 			this.username=v;
 		},
 		setDefaultArea:function(s){
-			this["defaultArea"]=JSON.parse(JSON.stringify(s));
+			var a=JSON.parse(s);
+			a.lat=parseFloat(a.lat);
+			a.lng=parseFloat(a.lng);
+			this["defaultArea"]=a;
+		
 		},
 		setLanguage:function(l){
             this["lang"]=l;
@@ -1588,3 +1592,7 @@ function handleMultiSelectCancel(){
 	showMapBtnClicked();hideOverlay();
 	deviceStatus.clearApplyFilter(false);
 }
+var addAssetRedirect={
+		assetId:"",
+		assetLifeCycle:""
+};

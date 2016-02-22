@@ -145,7 +145,7 @@
                   <span>${requestForm.serviceRequest.costCenter }</span></li>
                 <li>
                   <label><spring:message code="requestInfo.label.description"/></label>
-                  <span class="multiLine">${requestForm.serviceRequest.addtnlDescription}</span></li>
+                  <span class="multiLine noteWrap">${requestForm.serviceRequest.addtnlDescription}</span></li>
                
               </ul>
             </div>
@@ -165,7 +165,7 @@
 	                  <span class="multiLine">${requestForm.serviceRequest.notes }</span>
 	                </li>
 	              </ul> -->
-	              ${requestForm.serviceRequest.notes }
+	              <div class="noteWrap notesOverflow">${requestForm.serviceRequest.notes }</div>
 	            </div>
 	          </div>
 	          

@@ -32,7 +32,7 @@
 
 
 <script type="text/javascript" src="<html:rootPath/>js/toggler.js?version=0.1"></script>
-<script type="text/javascript" src="<html:rootPath/>js/LbsService.js?version=3.57"></script>
+<script type="text/javascript" src="<html:rootPath/>js/LbsService.js?version=3.59"></script>
 <script type="text/javascript" src="<html:rootPath/>js/LBSDbFilters.js?version=1.11"></script>
 <script type="text/javascript" src="<html:rootPath/>js/addressPopup.js?version=1"></script>
 
@@ -814,6 +814,10 @@ function showPopupMessages(message,callback){
 		$("#fleetMgmtForm #lbs_buildingName").val(physicalLoca1);
 		$("#fleetMgmtForm #lbs_floorName").val(physicalLoca2);
 		$("#fleetMgmtForm #lbs_physicalLocation3").val(physicalLoca3);
+		if (addAssetRedirect.assetLifeCycle!=null && addAssetRedirect.assetLifeCycle=="Shipped"){
+			addAssetRequest(addAssetRedirect.assetId);
+			return;
+		}
 		jQuery("#fleetMgmtForm").submit();
 	}
 	
@@ -1181,6 +1185,7 @@ function showPopupMessages(message,callback){
 	
 	
 	function setAccountInformation(accId,accName){
+		hideNav();<%--Added for 16.2 Need to hide the left nav if its showing. --%>
 		//This is for setting MDM ID and MDM Level for Account Information 
 				initAccountInfor(accId,accName);
 		//Ends This is for setting MDM ID and MDM Level for Account Information
@@ -1423,7 +1428,7 @@ function showPopupMessages(message,callback){
 	}
 	function openHistoryPopup(){
 		
-		 var url='${viewDeviceHistoryPopup}&requestTypeStr='+requestHistoryObj.getGridType();
+		 var url='${viewDeviceHistoryPopup}&requestTypeStr='+requestHistoryObj.getGridType()+"&inc="+(typeof dhtmlXGridObject=="function"?false:true);
 		 
 			showOverlay();
 			jQuery('#deviceHistoryPopup').load(url,function(){
@@ -1631,6 +1636,21 @@ function showDeviceStatus(id)
 	//fire ajax to get data from server
 	showOverlay();
 	$.getJSON("${deviceStatusURL}&id="+id,function(response){
+		
+		<%-- Added for 16.2 - 19716 - Access checking in Device Status modal --%>
+		if($('#showDeviceStatusInPopup').val().toLowerCase() === "true"){
+			$("#alertsPopUpStatusSuppliesDiv,#alertsPopUpStatusDeviceDiv,#reportsStatusspopUpStatusDiv").show();				
+		}else{
+			$("#alertsPopUpStatusSuppliesDiv,#alertsPopUpStatusDeviceDiv,#reportsStatusspopUpStatusDiv").hide();
+		}
+		
+		if($('#showDeviceStatusUtilInPopup').val().toLowerCase() === "true"){
+			$("#utilisationPopUpStatusDiv,#expiredStatusspopUpStatusDiv").show();
+		}else{
+			$("#utilisationPopUpStatusDiv,#expiredStatusspopUpStatusDiv").hide();
+		}
+		<%-- Ends 16.2 - 19716 - Access checking in Device Status modal --%>
+		
 		if(response !=null){
 			$('#expired-status-popup').html(templateDeviceStatusPopup.generateExpiring(response.getDeviceStatusOutput));
 			$('#alert-device-status-popup').html(templateDeviceStatusPopup.generateAlert({alert:response.getDeviceStatusOutput.DeviceStatus.DeviceAlert}));
@@ -1704,6 +1724,17 @@ function setMoveToAndInstallAddress(address)
 
 function clearConditions(){
 	deviceStatus.clearApplyFilter(false);
+}
+function initOpenAddressPopup(){
+	
+	$('#gridFilterValues').val(
+			$("#lbs_address").val()+",,,"+				
+			$("#lbs_city").val()+","+
+			$("#lbs_state").val()+",,,,,"+
+			$("#lbs_zipCode").val()+","+
+			$("#lbs_country").val());		
+	moveAssetFlag = 1;
+	openAddressPopup();
 }
 </script>
 <div style="display: none;">

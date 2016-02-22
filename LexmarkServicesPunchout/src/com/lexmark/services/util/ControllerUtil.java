@@ -29,24 +29,32 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.xml.serialize.OutputFormat;
 import org.apache.xml.serialize.XMLSerializer;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.w3c.dom.Document;
 
 import com.lexmark.contract.CatalogListContract;
+import com.lexmark.contract.LocalizedSiebelValueContract;
 import com.lexmark.contract.PriceContract;
 import com.lexmark.contract.RequestContract;
 import com.lexmark.domain.Bundle;
 import com.lexmark.domain.HardwareCatalog;
+import com.lexmark.domain.ListOfValues;
 import com.lexmark.domain.OrderPart;
 import com.lexmark.domain.Part;
 import com.lexmark.domain.Price;
 import com.lexmark.domain.PunchoutAccount;
+import com.lexmark.exceptionimpl.runtime.LGSRuntimeException;
 import com.lexmark.result.CatalogListResult;
+import com.lexmark.result.LocalizedSiebelValueResult;
 import com.lexmark.result.PriceResult;
 import com.lexmark.result.RequestResult;
 import com.lexmark.service.api.CrmSessionHandle;
 import com.lexmark.service.api.GlobalService;
 import com.lexmark.service.api.OrderSuppliesCatalogService;
 import com.lexmark.service.api.RequestTypeServiceB2B;
+import com.lexmark.service.impl.real.jdbc.HibernateUtil;
+import com.lexmark.service.impl.real.jdbc.InfrastructureException;
 import com.lexmark.services.api.RetrievePriceService;
 import com.lexmark.services.constants.BeanFieldNames;
 import com.lexmark.services.constants.PunchoutConstants;
@@ -72,6 +80,9 @@ public class ControllerUtil {
 	private static Properties aribaProperty;
 	private static final String NCAL_ACNT ="NCAL HealthConnect Certified";
 	private static final String SCAL_ACNT ="SCAL HealthConnect Certified";
+	private static final String SQL_GET_SIEBEL_LOCALIZATION ="SELECT sl.display_Value as displayValue FROM siebel_localization s,  siebel_localization_locale  sl, supported_locale l " +
+			" where s.siebel_localization_id = sl.siebel_localization_id and sl.supported_locale_id = l.supported_locale_id " + 
+			" and l.supported_locale_code = :local_code and s.siebel_Value = :siebel_value and s.option_type = :option_type";
 
 	public static Properties getConfigProperties() {
 		if (aribaProperty == null) {
@@ -953,6 +964,52 @@ public class ControllerUtil {
 		LOGGER.debug("in return 4 list size is "+punchoutAccountList.size());
 		return punchoutAccountList;
 	}
+	public static LocalizedSiebelValueResult retrieveLocalizedSiebelValue(LocalizedSiebelValueContract contract) {
+		LocalizedSiebelValueResult result = new LocalizedSiebelValueResult();
+		String localizedSiebelValue = null;
+		String localeName = contract.getLocaleName();
+		String lovValue = contract.getLovValue();
+		String lovType = contract.getLovListName();
+		ListOfValues lov = new ListOfValues();
+		lov.setType(lovType);
+		lov.setValue(lovValue);
+		
+		try {
+			Query query = HibernateUtil.getSession().createSQLQuery(SQL_GET_SIEBEL_LOCALIZATION);
+			query.setParameter("local_code", localeName);
+			query.setParameter("siebel_value" , lovValue);
+			query.setParameter("option_type", lovType);
+			List list = query.list();
+			if(list != null && list.size() > 0) {
+				localizedSiebelValue = (String) list.get(0);
+			} 
+		} catch (HibernateException ex) {
+			throw new InfrastructureException(ex);
+		} finally {
+			HibernateUtil.closeSession();
+		}
+		lov.setName(localizedSiebelValue);
+		
+		result.setLovValue(lov);
+		return result;
+	}
+	public static String portalSiebelLocalization(String LOV, String siebelValue){
+		LocalizedSiebelValueContract localizedSiebelValueContract = ContractFactory.createLocalizedSiebelValueContract(LOV,siebelValue,null);
+		LocalizedSiebelValueResult result = new LocalizedSiebelValueResult();
+		String accname="";
+		try {
+			result = ControllerUtil.retrieveLocalizedSiebelValue(localizedSiebelValueContract);
+		} catch (InfrastructureException ex) {
+			
+			throw new LGSRuntimeException("Exception while retrieving localized SR_TYPE LOV list from DB",ex);
+		}
+		ListOfValues localLovValue = result.getLovValue();
+		if(localLovValue !=null){
+			accname= localLovValue.getName();
+		}
+		return accname;
+	}
+	
 
 }
 

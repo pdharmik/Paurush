@@ -1396,4 +1396,6 @@ public interface ChangeMgmtConstant {
 	 String MAPS_REQUEST = "MapsRequest";
 	 String SHOW_MAPS_REQUEST = "LBS";
 	 String SUBAREA_INSTALLDEINSTALL = "HW MADC Install/Decommission";
+	 
+	 String ADDRESSCLEANSEDREGION = "region";
 }

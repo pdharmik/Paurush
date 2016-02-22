@@ -314,7 +314,7 @@
                                                 ||  (manageAssetForm.assetDetail.installAddress.levelOfDetails.toLowerCase() eq 'mix - see floor' 
                                                      &&  manageAssetForm.assetDetail.installAddress.floorLevelOfDetails.toLowerCase() eq 'grid level') }">
         
-                      	<li id="gridLiAdd>
+                      	<li id="gridLiAdd">
 							<div id="installedXYLblDiv">
 							<label id="installedXYLbl">Grid X/Y : </label><label id="installedCoords"></label>
 							</div>
@@ -358,7 +358,7 @@
           			<div class="columnsOne">
             			<div class="infoBox columnInner rounded shadow">
             				<h4><spring:message code="requestInfo.heading.notes"/></h4>
-            				 <p class="multiLine attachmentDescription">${attachmentForm.attachmentDescription}</p>
+            				 <p class="multiLine attachmentDescription notesOverflow">${attachmentForm.attachmentDescription}</p>
             			</div>
             		</div>
             	</div>

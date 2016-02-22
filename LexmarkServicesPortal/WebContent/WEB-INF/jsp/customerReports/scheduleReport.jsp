@@ -257,7 +257,7 @@ input[type="text"], input[type="password"], input[type="date"], textarea, textar
 								</c:if>
 								<td align="left">
 								    <a id="prevLocalizedDateValue${counter.index}" onClick="moveDate('localizedDateValue${counter.index}', -1);" class="validDateAction" title="Previous Day"><<</a>&nbsp;
-								    <form:hidden id="dateValue${counter.index}" path="runNowParameters[${counter.index}].value"/>
+								    <form:hidden id="dateValue${counter.index}" path="runNowParameters[${counter.index}].value" class="reportDates"/>
 								    <input type="text" id="localizedDateValue${counter.index}" size="7" onMouseUp="show_cal('localizedDateValue${counter.index}', null, null);" readOnly="readOnly"/>
 								    <img id="imgLocalizedDateValue${counter.index}" align="top"  class="ui_icon_sprite calendar-icon" src="<html:imagesPath/>transparent.png" onClick="show_cal('localizedDateValue${counter.index}', null, null)"/>&nbsp;
 								    <a id="nextLocalizedDateValue${counter.index}" onClick="moveDate('localizedDateValue${counter.index}', 1);" class="validDateAction" title="Next Day">>></a>&nbsp;
@@ -539,7 +539,7 @@ input[type="text"], input[type="password"], input[type="date"], textarea, textar
 								</c:if>
 								<td align="left">
 								    <a id="prevLocalizedDateValue${counter.index}" onClick="moveDate('slocalizedDateValue${counter.index}', -1);" class="validDateAction" title="Previous Day"><<</a>&nbsp;
-								    <form:hidden id="sdateValue${counter.index}" path="scheduleParameters[${counter.index}].value"/>
+								    <form:hidden id="sdateValue${counter.index}" path="scheduleParameters[${counter.index}].value" class="sreportDates"/>
 								    <input type="text" id="slocalizedDateValue${counter.index}" size="7" onMouseUp="show_cal('slocalizedDateValue${counter.index}', null, null);" readOnly="readOnly"/>
 								    <img id="imgLocalizedDateValue${counter.index}" align="top"  class="ui_icon_sprite calendar-icon" src="<html:imagesPath/>transparent.png" onClick="show_cal('slocalizedDateValue${counter.index}', null, null)"/>&nbsp;
 								    <a id="nextLocalizedDateValue${counter.index}" onClick="moveDate('slocalizedDateValue${counter.index}', 1);" class="validDateAction" title="Next Day">>></a>&nbsp;
@@ -1110,6 +1110,9 @@ showToolTip('helpIcon');
 		var requiredValid=false;
 		var maxLengthValid=false;
 		var numericValid=false;
+		var validDates = false;
+		
+		validDates = validateDates();
 		
 		differentDate = dateDiff(scheduleReportForm);
 		runNowFlag = runNowCheckBox.checked;
@@ -1135,7 +1138,7 @@ showToolTip('helpIcon');
 		
 		var scheduleInfo = validateScheduleInfo();
 		
-		 if(requiredValid && maxLengthValid && numericValid && scheduleInfo && differentDate)
+		 if(requiredValid && maxLengthValid && numericValid && scheduleInfo && differentDate && validDates)
 			 {
 			
 			 jQuery('#scheduleReportForm').submit();
@@ -1804,6 +1807,52 @@ function dateDiff(scheduleReportForm) {
 		}
 }
 
+
+    
+	function validateDates() {
+		var startDateStr = "";
+		var endDateStr = "";
+		if (jQuery("#runNowParamsDisplay").css('display') != 'none') {
+			var runNowparams = <%=parametersLength%>;
+			jQuery(".reportDates").each(function(){
+				var name = jQuery(this).attr("name");
+				var dateValue = jQuery(this).val();
+				
+				var paramName = name.split('.')[0]+".name"; 
+				var datetype = jQuery("input[name~='"+paramName+"']").val();
+				if(datetype.toLowerCase().search("start") != -1  ){
+					startDateStr = dateValue;
+				}else if(datetype.toLowerCase().search("end") != -1  ){
+					endDateStr = dateValue;
+				}
+			});
+			
+		}else if(jQuery("#scheduleParamsDisplay").css('display') != 'none'){
+			var schParams = <%=parametersLength%>;
+			jQuery(".sreportDates").each(function(){
+				var name = jQuery(this).attr("name");
+				var dateValue = jQuery(this).val();
+				var paramName = name.split('.')[0]+".name";
+				var datetype = jQuery("input[name~='"+paramName+"']").val();
+				if(datetype.toLowerCase().search("start") != -1  ){
+					
+					startDateStr = dateValue;
+				}else if(datetype.toLowerCase().search("end") != -1  ){
+					
+					endDateStr = dateValue;
+				}
+			});
+		}
+		var startDate = new Date(startDateStr);
+		var endDate = new Date(endDateStr);
+
+		if(startDate > endDate){
+			showError("<spring:message code='customerReports.scheduleReport.dateValidation'/>" ,null, true);
+			return false;
+		}else{
+			return true;
+		}
+	}
 </script>
 <script type="text/javascript">
 //---- Ominture script 

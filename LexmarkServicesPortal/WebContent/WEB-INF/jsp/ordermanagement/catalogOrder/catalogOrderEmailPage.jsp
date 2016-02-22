@@ -71,7 +71,7 @@
               </tr>
               <tr>
                 <td valign="top"  class="table-td-style16"><strong><spring:message code="requestInfo.label.description"/></strong></td>
-                <td valign="top"  class="table-td-style16"><span id="addtnlInfo_description"> </span></td>
+                <td valign="top"  class="table-td-style16"><div id="addtnlInfo_description" class="smallNotesOverflow"> </div></td>
               </tr>
             </table></td>
         </tr>
@@ -245,7 +245,7 @@
               </tr>
               <tr>
                 <td valign="top" width="100" class="table-td-style16"><strong><spring:message code="requestInfo.label.specialInstructions"/></strong></td>
-                <td valign="top"  class="table-td-style16"> ${catalogDetailPageForm.specialInstruction}</td>
+                <td valign="top"  class="table-td-style16"><div class="smallNotesOverflow"> ${catalogDetailPageForm.specialInstruction}</div></td>
               </tr>
               <%-- <tr>
                 <td valign="top" width="100" class="table-td-style16"><strong><spring:message code="requestInfo.label.defaultSpecialInstructions"/></strong></td>
@@ -307,7 +307,7 @@
                 <th colspan="2" align="left" class="table-td-style15"><spring:message code="requestInfo.heading.notes"/></th>
               </tr>
               <tr>
-                <td valign="top" class="table-td-style16"><span id="notes">${catalogDetailPageForm.attachmentDescription}</span></td>
+                <td valign="top" class="table-td-style16"><div style="width:382px;" class="smallNotesOverflow" id="notes">${catalogDetailPageForm.attachmentDescription}</div></td>
               </tr>
             </table></td>
         </tr>

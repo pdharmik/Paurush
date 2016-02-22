@@ -24,6 +24,8 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 
+import com.lexmark.services.util.ControllerUtil;
+
 /**
  * Created by IntelliJ IDEA.
  * User: jkalathi
@@ -40,7 +42,7 @@ public class PunchoutSetup extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private XPath xpath;
-	
+	private static String PORTAL_URL=ControllerUtil.getConfigProperties().getProperty("ariba.portal.redirectUrl");
 
 	/**
 	 * @param servletConfig 
@@ -167,11 +169,13 @@ public class PunchoutSetup extends HttpServlet {
 		}
 
 		String payloadId = buyerCookie + "@lexmark.com";
-		String url = "https://portal.lexmark.com/LexmarkServicesPunchout/punchoutcatalog?";
+		StringBuffer url=new StringBuffer(PORTAL_URL);
+		url.append("?");
 		String params = getParams(buyerCookie, supplierCookie, identity,
 				operation, formPostURL, networkUserId, sharedSecret, dept,
 				currency);
-		String startPageURL = StringEscapeUtils.escapeXml(url + params);
+		url.append(params);
+		String startPageURL = StringEscapeUtils.escapeXml(url.toString());
 
 		String iso_8601_date_format = "yyyy-MM-dd'T'HH:mm:ssZ";
 		final SimpleDateFormat iso8601 = new SimpleDateFormat(

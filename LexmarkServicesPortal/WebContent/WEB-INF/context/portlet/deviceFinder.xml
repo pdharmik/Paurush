@@ -15,7 +15,8 @@
 	<bean id="serviceRequestController" class="com.lexmark.services.portlet.ServiceRequestController">	</bean>	
 	<bean id="pageCountsController" class="com.lexmark.services.portlet.PageCountsController">
 	</bean>	
-	
+	<bean id="multiplePageCountsController" class="com.lexmark.services.portlet.fleetmanagement.MultiplePageCountsUpdateController">
+	</bean>
 	<!-- Handler Mappings -->
 
 	<bean class="org.springframework.web.portlet.mvc.annotation.DefaultAnnotationHandlerMapping">

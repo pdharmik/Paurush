@@ -329,7 +329,7 @@ function backDisable() {
 								
 								<li>
 									<label for="desc2"><spring:message code="requestInfo.label.specialInstructions"/></label> 
-									<span style="word-break:break-all" class="multiLine">${hardwareDetailPageForm.specialInstruction}</span>
+									<span style="word-break:break-all" class="multiLine noteWrap">${hardwareDetailPageForm.specialInstruction}</span>
 								</li>
 											                  
 							</ul>
@@ -457,7 +457,7 @@ function backDisable() {
           			<div class="columnsOne">
             			<div class="infoBox columnInner rounded shadow">
             				<h4><spring:message code="requestInfo.heading.notes"/></h4>
-            				 <p class="multiLine">${hardwareDetailPageForm.attachmentDescription}</p>
+            				 <p class="multiLine noteWrap notesOverflow">${hardwareDetailPageForm.attachmentDescription}</p>
             			</div>
             		</div>
             	</div>

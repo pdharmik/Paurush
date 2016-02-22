@@ -64,7 +64,14 @@ public class HardwareDetailPageForm extends BaseForm implements Serializable{
 	//added for LBS1.5
 	private String pageFlow;
 	private String placementId;
+	private String fleetManagementFlag;
 	
+	public String getFleetManagementFlag() {
+		return fleetManagementFlag;
+	}
+	public void setFleetManagementFlag(String fleetManagementFlag) {
+		this.fleetManagementFlag = fleetManagementFlag;
+	}
 	public String getCreditCardEncryptedNo() {
 		return creditCardEncryptedNo;
 	}

@@ -167,9 +167,7 @@ function backDisable() {
 									<ul class="form">
 									<li>
 										<label><spring:message code="requestInfo.label.partsToBeInstalled"/>:</label>
-										<span>
-											<span id="description" class="multiLine">${assetDetailPageForm.asset.partsToBeInstalled}</span>
-										</span>
+											<span id="description" class="multiLine wFull">${assetDetailPageForm.asset.partsToBeInstalled}</span>
 									</li>
 									</ul>
 								</div>
@@ -556,7 +554,7 @@ function backDisable() {
           			<div class="columnsOne">
             			<div class="infoBox columnInner rounded shadow">
             				<h4><spring:message code="requestInfo.heading.notes"/></h4>
-            				 <p class="multiLine noteWrap">${assetDetailPageForm.attachmentDescription}</p>
+            				 <p class="multiLine noteWrap notesOverflow">${assetDetailPageForm.attachmentDescription}</p>
             			</div>
             		</div>
             	</div>

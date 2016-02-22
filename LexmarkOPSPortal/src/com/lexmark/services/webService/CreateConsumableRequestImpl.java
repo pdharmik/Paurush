@@ -143,11 +143,11 @@ public class CreateConsumableRequestImpl implements CreateConsumableRequest {
 		String sourceSystem=null;
 		if(contract.getFleetManagementFlag()!=null && contract.getFleetManagementFlag().equalsIgnoreCase("true")){
 		LOGGER.debug("Setting Map-Web");
-			sourceSystem = "Map-Internal Portal";
+			sourceSystem = "Map-LBS Internal";
 		}
 		else{
 			LOGGER.debug("Setting Web");
-		sourceSystem = "Internal Portal";
+		sourceSystem = "LBS Internal";
 		}
 		
 		ConsumablesServiceRequestWSInput2 consumablesServiceRequestWSInput2 = new ConsumablesServiceRequestWSInput2();
@@ -344,12 +344,7 @@ public class CreateConsumableRequestImpl implements CreateConsumableRequest {
 		if (contract.getShipToAddress().getIsAddressCleansed()) {
 			shipToAddress.setAddressCleansedFlag("Y");
 		} else {
-			shipToAddress.setAddressCleansedFlag("N");
-			if(contract.getShipToAddress().getState() !=null && !"".equals(contract.getShipToAddress().getState().trim())){
-			shipToAddress.setRegion(contract.getShipToAddress().getState());
-			}else{
-				shipToAddress.setRegion("");
-			}
+			shipToAddress.setAddressCleansedFlag("N");			
 		}
 		LOGGER.debug("address cleansing flag:: "
 				+ contract.getShipToAddress().getIsAddressCleansed());
@@ -593,12 +588,7 @@ public class CreateConsumableRequestImpl implements CreateConsumableRequest {
 				if (contract.getBillToAddress().getIsAddressCleansed()) {
 					billToAddress.setAddressCleansedFlag("Y");
 				} else {
-					billToAddress.setAddressCleansedFlag("N");
-					if(contract.getBillToAddress().getState() !=null && !"".equals(contract.getBillToAddress().getState().trim())){
-					billToAddress.setRegion(contract.getBillToAddress().getState());
-					}else{
-						billToAddress.setRegion("");
-					}
+					billToAddress.setAddressCleansedFlag("N");					
 				}
 				paymentInformation.setBillToAddress(billToAddress);
 			}

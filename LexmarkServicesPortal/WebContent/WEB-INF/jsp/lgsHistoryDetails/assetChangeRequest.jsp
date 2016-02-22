@@ -20,6 +20,9 @@
 .status table td {
 	width:25% !important;
 }
+#description{
+	width:100%;
+}
 </style>
 <% request.setAttribute("subTabSelected","requestHistory");%>
 <%@page import="com.liferay.portal.util.PortalUtil"%>
@@ -605,7 +608,7 @@ if(currURL.indexOf("dFFlag=true")==-1){
           <div class="columnsOne">
             <div class="infoBox columnInner rounded shadow">
               <h4><spring:message code="requestInfo.heading.notes"/></h4>
-              <p class="w70p multiLine"><span id="notes">${requestForm.serviceRequest.notes}</span></p>
+              <p class="w70p multiLine attachmentDescription notesOverflow"><span id="notes">${requestForm.serviceRequest.notes}</span></p>
             </div>
           </div>
         </div>

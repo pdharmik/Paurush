@@ -18,9 +18,6 @@ import javax.xml.ws.soap.SOAPFaultException;
 import com.lexmark.constants.LexmarkConstants;
 import com.lexmark.domain.GlobalAccount;
 import com.lexmark.domain.LexmarkTransaction;
-import com.lexmark.emc.client.servicesweb.DocumentumWebServiceFacade;
-import com.lexmark.emc.client.servicesweb.impl.DocumentumWebServiceFacadeImpl;
-import com.lexmark.properties.schema.sw.document.DocumentProperties.DocumentInfo;
 import com.lexmark.service.api.GlobalService;
 import com.lexmark.service.impl.real.GlobalServiceFacadeImpl;
 import com.lexmark.util.LocaleUtil;
@@ -48,14 +45,7 @@ public class DocumentumWebServiceUtil {
  	public static String OBJECT_TYPE = "portal_services_document";
  	public static String DOCUMENT_SERVER_TIMEZONE =  getConfigProperties().getProperty("documentum.ServerTimeZone");
 
- 	public static DocumentumWebServiceFacade  getDocumentumWebServiceFacade(){
- 		DocumentumWebServiceFacade target = new DocumentumWebServiceFacadeImpl(SERVICE_END_POINT,
-					REPOSITORY_NAME, 
-					SUPERUSER_NAME,
-					PASSWORD, 
-					APPLICATION_NAME);
- 		return target;
- 	}
+ 	
  	
  	private static Properties documentumProperty;
 	public static Properties getConfigProperties() {
@@ -117,42 +107,7 @@ public class DocumentumWebServiceUtil {
  		return sb.toString(); 
  	}
  	
- 	public static DocumentInfo getDocumentInfo(ActionRequest request, String filePath, String definitionId, String reportUniqueId,  String docType, GlobalService globalService, Date fileContentDate){
-		DocumentInfo metaData = new DocumentInfo();
-		
-		String localeCode = LocaleUtil.getSupportLocaleCode(request.getLocale());
-		String fileName = getFileNameFromPath(filePath);
-		String fileType = getDocumentTypeFromFilePath(filePath);
-		
-		metaData.setLocale(localeCode);
-		metaData.setAContentType(fileType);
-		metaData.setFileName(fileName);
-		metaData.setObjectName(mergeFileName(fileName, fileContentDate, reportUniqueId));
-		metaData.setFileContentDate(fileContentDate);
-		if(DOCUMENT_TYPE_REPORT.equalsIgnoreCase(docType)) {
-			metaData.setRFolderPath(REPORT_FOLDER_PATH);
-		} else {
-			metaData.setRFolderPath(DOCUMENT_FOLDER_PATH);
-		}
-		metaData.setRObjectType(OBJECT_TYPE);
-		metaData.setDefinitionId(definitionId);
-		String mdmId = PortalSessionUtil.getMdmId(request.getPortletSession());
-		metaData.setMdmId(mdmId);
-		String mdmLevel = PortalSessionUtil.getMdmLevel(request.getPortletSession());
-		metaData.setMdmlevel(mdmLevel);
-		metaData.setUsernumber(PortalSessionUtil.getServiceUser(request.getPortletSession()).getUserNumber());
-		
-		GlobalServiceFacadeImpl globalServiceFacade = new GlobalServiceFacadeImpl();
-		globalServiceFacade.setGlobalService(globalService);
-		PortletSession session = request.getPortletSession();
-		LexmarkTransaction lexmarkTran = PerformanceTracker.startTracking(LexmarkConstants.TARGET_SYSTEM_SIEBEL, "retriveGlobalAccount"
-				, mdmId, PortalSessionUtil.getServiceUser(session).getEmailAddress());
-		GlobalAccount account = globalServiceFacade.retriveGlobalAccount(mdmId, mdmLevel);
-		PerformanceTracker.endTracking(lexmarkTran);
-		metaData.setLegalName(account.getLegalName());
-
-		return metaData;
- 	}
+ 	
 
  	public static boolean isFileFormatSupported(RuntimeException runtimeException) {
  		

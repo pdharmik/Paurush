@@ -3222,6 +3222,11 @@ behavior: url(/LexmarkPartnerPortal/WebContent/css/PIE.htc) !important;
 					jQuery('#showProbErrorCode2').show();
 					jQuery('#showProbErrorCode2').html("");
 					jQuery('#showProbErrorCode2').html("<input type=\"textarea\" id=\"numericCode2\" onkeyup=\"validateNumericCode();\" \><span id=\"errorMsgNumCode\" class=\"errorColor\" style=\"display: none; color: red\"><B>Problem Code Not Found</B></span");
+				    var actualFailureCode="${claimDebriefForm.activity.actualFailureCode.value}";
+					var array=actualFailureCode.split(";");
+					if(array[0]=="Error Code Displayed"){
+						$('#numericCode2').val(array[1]);
+					}
 				}
 				else{
 					if(null != document.getElementById("numericCode2")){
