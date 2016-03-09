@@ -366,7 +366,6 @@ public class OrderHardwareController extends BaseController {
 			LOGGER.debug("Sold To ::::   "+hardwareDetails.get("soldToNumber")+" Bill To Address ::::   "+hardwareDetails.get("billToAddress")+" paymentType ::::   "+hardwareDetails.get("paymentType"));
 		}
 		hardwareCatalogContract.setPaymentType(paymentType);
-		hardwareCatalogContract.setSoldToNumber(soldToNumber);
 		LOGGER.debug("contractNumber "+accDetails.get("contractNumber"));
 		hardwareCatalogContract.setContractNumber(accDetails.get("contractNumber"));
 		hardwareCatalogContract.setHardwareFlag(true);
@@ -463,7 +462,6 @@ public class OrderHardwareController extends BaseController {
 			contract.setProductType(request.getParameter("productType"));
 			contract.setContractNumber(accDetails.get("contractNumber"));
 			contract.setPaymentType(paymentType);
-			contract.setSoldToNumber(soldToNumber);
 			contract.setEffectiveDate(new Date());
 			LOGGER.debug("----- Part number "+request.getParameter("partNumber")+" productModel "+request.getParameter("productModel")+" producttype "+
 					request.getParameter("productType"));
@@ -611,7 +609,6 @@ public class OrderHardwareController extends BaseController {
 			contract.setProductModel(request.getParameter("productModel"));
 			contract.setProductType(request.getParameter("productType"));*/
 			contract.setPaymentType(paymentType);
-			contract.setSoldToNumber(soldToNumber);
 			contract.setContractNumber(accDetails.get("contractNumber"));
 			contract.setHardwareFlag(true);
 			contract.setHardwareAccessoriesFlag(true);
@@ -2366,7 +2363,6 @@ public class OrderHardwareController extends BaseController {
 		/***start changes for Siebel Localization LOV***/		
 		PaymentListContract paymentContract = ContractFactory.getPaymentListContract(request, true);
 		Map<String,String> accDetails =(Map<String,String>)session.getAttribute(ChangeMgmtConstant.ACNTCURRDETAILS,PortletSession.APPLICATION_SCOPE);
-		paymentContract.setSoldToNumber(billToAddress.getSoldToNumber());
 		paymentContract.setContractNumber(accDetails.get("contractNumber"));
 		CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));
 		paymentContract.setSessionHandle(crmSessionHandle);
@@ -2465,7 +2461,6 @@ public class OrderHardwareController extends BaseController {
 			paymentType = hardwareDetails.get("paymentType");
 		}
 		hardwareListContract.setPaymentType(paymentType);
-		hardwareListContract.setSoldToNumber(soldToNumber);
 		hardwareListContract.setContractNumber(accDetails.get("contractNumber"));
 		hardwareListContract.setHardwareFlag(true);
 		hardwareListContract.setEffectiveDate(new Date());
@@ -2970,7 +2965,6 @@ public class OrderHardwareController extends BaseController {
 		try {
 			contract.setSessionHandle(crmSessionHandle);
 			contract.setPaymentType("Ship and Bill");
-			contract.setSoldToNumber(soldToNumber);
 			contract.setContractNumber(accDetails.get("contractNumber"));
 			contract.setHardwareFlag(true);
 			contract.setHardwareAccessoriesFlag(true);
