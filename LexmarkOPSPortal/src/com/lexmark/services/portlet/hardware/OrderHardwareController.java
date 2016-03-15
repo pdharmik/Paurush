@@ -605,14 +605,10 @@ public class OrderHardwareController extends BaseController {
 		}		
 		try {
 			contract.setSessionHandle(crmSessionHandle);
-			/*contract.setPartNumber(request.getParameter("partNumber"));
-			contract.setProductModel(request.getParameter("productModel"));
-			contract.setProductType(request.getParameter("productType"));*/
 			contract.setPaymentType(paymentType);
 			contract.setContractNumber(accDetails.get("contractNumber"));
 			contract.setHardwareFlag(true);
 			contract.setHardwareAccessoriesFlag(true);
-			//contract.setNewQueryIndicator(true);
 			LOGGER.debug("----- Part number "+request.getParameter("partNumber")+" productModel "+request.getParameter("productModel")+" producttype "+
 					request.getParameter("productType"));
 			
@@ -664,18 +660,6 @@ public class OrderHardwareController extends BaseController {
 			out.print(accessoriesXML);
 			out.flush();
 			out.close();
-			/*StringBuffer responseBody=new StringBuffer();
-			responseBody.append("\"accessoriesXML\":\""+accessoriesXML+"\"");
-			responseBody.append(",\"recordCount\":\""+recordCount+"\"");
-			responseBody.insert(0, "{");
-			responseBody.insert(responseBody.length(), "}");
-			LOGGER.debug("response body finally is " + responseBody.toString());
-			PrintWriter out =  response.getWriter();
-			response.setContentType("text/html");
-			out.print(responseBody.toString());
-			out.flush();
-			out.close();
-			responseBody.delete(0, responseBody.length());*/
 		} finally {
 			globalService.releaseSessionHandle(crmSessionHandle);
 		}
