@@ -64,9 +64,7 @@ public class PaymentTypeListService {
 		if (isEmpty(agreementId)) {
 			throw new IllegalArgumentException("agreementId is null or empty!");
 		}
-		if (isEmpty(soldToNumber)) {
-			throw new IllegalArgumentException("soldToNumber is null or empty!");
-		}
+
 	}
 	
 	public void buildSearchExpression() {
@@ -78,10 +76,11 @@ public class PaymentTypeListService {
 		searchExpression.append("'");
 		
 		if (!hardwareFlag) {
+			if(isNotBlank(soldToNumber)) { 						                              
 			searchExpression.append(" AND EXISTS ([LXK MPS Sold To #] ='");
 			searchExpression.append(soldToNumber);
 			searchExpression.append("')");
-			
+			}
 			if(isNotBlank(contractNumber)) {
 				searchExpression.append(" AND EXISTS ([LXK MPS Contract #] = '");
 				searchExpression.append(contractNumber);
@@ -92,19 +91,22 @@ public class PaymentTypeListService {
 			childExpression.append("[LXK MPS SAP Contract #]='");
 			childExpression.append(contractNumber);
 			childExpression.append("'");
+			if(isNotBlank(soldToNumber)) {													  
 			childExpression.append(" AND [LXK MPS SAP Sold To #] ='");
 			childExpression.append(soldToNumber);	
 			childExpression.append("'");
+			}
 			criteria = new QueryObject(OrderPartDo.class,
 					ActionEvent.QUERY);
 			
 			criteria.addComponentSearchSpec(OrderPartDo.class, searchExpression.toString());
 			criteria.addComponentSearchSpec(SuppliesCatalogDo.class, childExpression.toString());
 		} else {
+			if(isNotBlank(soldToNumber)) {													
 			searchExpression.append(" AND [sapSoldTo] ='");
 			searchExpression.append(soldToNumber);
 			searchExpression.append("'");
-			
+			}
 			if(isNotBlank(contractNumber)) {
 				searchExpression.append(" AND [sapContract] = '");
 				searchExpression.append(contractNumber);

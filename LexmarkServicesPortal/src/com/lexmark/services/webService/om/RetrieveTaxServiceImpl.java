@@ -78,12 +78,8 @@ public class RetrieveTaxServiceImpl implements RetrieveTaxService{
 		TaxData taxData = new TaxData();
 		Header header = new Header();
 		
-		//header.setSourceReferenceId(contract.getSourceReferenceId());
-		header.setSoldToNumber(contract.getSoldToNumber());
-		//header.setShipToNumber(contract.getShipToNumber());
 		
-		header.setSalesOrganization(contract.getSalesOrganization());  /*****Commented as Siebel need some time to provide the proper value for SalesOrg****/
-//		header.setSalesOrganization("LXK United States"); /*****HardCoded SalesOrg******/
+		header.setSalesOrganization(contract.getSalesOrganization());
 		header.setCountry(contract.getCountry());
 		header.setCity(contract.getCity());
 		header.setRegion(contract.getRegion());
