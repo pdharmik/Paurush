@@ -77,7 +77,7 @@ public class PunchoutSetupResponse implements Filter{
 		     aribaParamMap.put("networkUserId", networkUserId);
 		     aribaParamMap.put("sharedSecret", sharedSecret);
 		     aribaParamMap.put("formPostURL", formPostURL);
-		     aribaParamMap.put("formAriba", String.valueOf(true));
+		     aribaParamMap.put("fromAriba", String.valueOf(true));
 		     session.setAttribute(PunchoutConstants.ARIBA_PARAMS, aribaParamMap);
 		      String homeUrl = "";
 		      
