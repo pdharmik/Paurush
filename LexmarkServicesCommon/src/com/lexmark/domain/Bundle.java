@@ -25,6 +25,9 @@ public class Bundle {
 	private List<OrderPart> orderParts;//This will contain details of order part added to session B2B
 	private String unspscCode;
 	
+	private String imgUrl;
+	private String partTypeB2b;
+	
 	public String getAssetId() {
 		return assetId;
 	}
@@ -110,7 +113,8 @@ public class Bundle {
 				+ ", contractLineItemId=" + contractLineItemId + ", salesOrg="
 				+ salesOrg + ", bundleMaterialID=" + bundleMaterialID
 				+ ", sapLineID=" + sapLineID 
-				+ ", bundleQty="+bundleQty+
+				+ ", bundleQty="+bundleQty
+				+", partTypeB2B="+partTypeB2b+
 				"]";
 	}
 	// Added for B2B release 
@@ -169,5 +173,35 @@ public class Bundle {
 	public void setUnspscCode(String unspscCode) {
 		this.unspscCode = unspscCode;
 	}
+
+	
+	/**
+	 * @return the imgUrl
+	 */
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	/**
+	 * @param imgUrl the imgUrl to set
+	 */
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+	/**
+	 * @return the partTypeB2b
+	 */
+	public String getPartTypeB2b() {
+		return partTypeB2b;
+	}
+
+	/**
+	 * @param partTypeB2b the partTypeB2b to set
+	 */
+	public void setPartTypeB2b(String partTypeB2b) {
+		this.partTypeB2b = partTypeB2b;
+	}
+
 	
 }
