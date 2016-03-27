@@ -218,9 +218,28 @@ public class CatalogListContract extends MdmSearchContractBase implements Serial
 	}
 	
 	public String getPrinterMaterialNum() {
-		 	return printerMaterialNum;
-		 	}
-		 	public void setPrinterMaterialNum(String printerMaterialNum) {
+		return printerMaterialNum;
+	}
+	public void setPrinterMaterialNum(String printerMaterialNum) {
 		 		this.printerMaterialNum = printerMaterialNum;
-		 }
+	}
+	public String toString(){
+		StringBuffer sb=new StringBuffer();
+		if(this.getSoldToNumber()!=null){
+			sb.append(this.getSoldToNumber());
+		}
+		if(this.getPrinterMaterialNum()!=null){
+			sb.append(this.getPrinterMaterialNum());
+		}
+		if(this.getBundleId()!=null){
+			sb.append(this.getBundleId());
+		}
+		if(this.getAgreementId()!=null){
+			sb.append(this.getAgreementId());
+		}		
+		if(this.getContractNumber()!=null){
+			sb.append(this.getContractNumber());
+		}
+		return sb.toString();
+	}
 }

@@ -36,5 +36,21 @@ public class PriceContract {
 	public void setPoNumber(String poNumber) {
 		this.poNumber = poNumber;
 	}
-
+	
+	public String toString(){
+		StringBuffer sb=new StringBuffer();
+		if(this.getContractNumber()!=null){
+			sb.append(this.getContractNumber());
+		}
+		if(this.getPoNumber()!=null){
+			sb.append(this.getPoNumber());
+		}
+		List<Price> prices=this.getPriceList();
+		if(prices!=null){
+			for(Price price:prices){
+				sb.append(price.getContractLineItemId());
+			}
+		}
+		return sb.toString();
+	}
 }

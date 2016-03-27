@@ -83,4 +83,23 @@ public class HardwareCatalogContract extends MdmSearchContractBase implements Se
 	public void setEffectiveDate(Date effectiveDate) {
 		this.effectiveDate = effectiveDate;
 	}
+	
+	public String toString(){
+		StringBuffer sb=new StringBuffer();
+		if(this.getAgreementId()!=null){
+			sb.append(this.getAgreementId());
+		}if(this.getContractNumber()!=null){
+			sb.append(this.getContractNumber());
+		}if(this.getSoldToNumber()!=null){
+			sb.append(this.getSoldToNumber());
+		}if(this.getLocationType()!=null){
+			sb.append(this.getLocationType());
+		}if(this.getPartType()!=null){
+			sb.append(this.getPartType());
+		}if(this.getProductType()!=null){
+			sb.append(this.getProductType());
+		}
+		return sb.toString();
+	}
+	
 }
