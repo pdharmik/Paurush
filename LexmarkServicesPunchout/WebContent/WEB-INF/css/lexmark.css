@@ -220,10 +220,7 @@ div.gridLoading {
 	width:90%;
 	padding: 25px 0;
 	margin-bottom:10px;
-	background-color:#e6e6f0;
-	opacity:0.3;
-	-moz-opacity:0.3;
-	filter:alpha(opacity=30);
+	background-color:#fff;
 	font-size:20pt;
 	text-align:center;
 }

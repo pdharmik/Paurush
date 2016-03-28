@@ -1,0 +1,1221 @@
+body {
+	margin:0;
+	padding:0;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#333;
+	background:#c3c3c3;
+}
+p {
+	font-size:12px;
+	color:#333;
+	padding:5px;
+	line-height:20px;
+	width:99%;
+	margin:0;
+}
+h3 {
+	font-size:14px;
+	color:#5f5f5f;
+	text-transform:uppercase;
+	margin:0;
+	padding:0;
+	font-weight:normal;
+}
+select {
+	width:90%;
+}
+select a:visited {
+	width:90%;
+	background:#f2f2f2;
+}
+p a {
+	color:#336699;
+	text-decoration:underline;
+}
+/*#wrapper {
+	max-width:1280px;
+	width:95%;
+	margin:10px auto;
+	padding:0;
+	border:1px solid #dddddd;
+	display: table;
+	background:#fff;
+}*/
+.red-txt {
+	color:#d70000;
+}
+/* Top & Header section start */
+header {
+	margin:0 auto;
+	width:100%;
+}
+/*#top-header {
+	float:left;
+	background:url(/LexmarkServicesPunchout/images/top-gradient.jpg) repeat-x;
+	height:29px;
+	text-align:right;
+	padding-right:10px;
+	width:99.3%;
+}
+#top-header a {
+	color:#3a7fa8;
+	font-size:12px;
+	text-decoration:none;
+	line-height:28px;
+	padding:0 3px;
+}
+#top-header a:hover {
+	text-decoration:underline;
+}*/
+#banner-inner {
+	float:left;
+	width:100%;
+	margin:-5px auto 0 auto;
+	background:#ededed;
+	height:95px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	color:#696969;
+	font-size:24px;
+	line-height:15px;
+}
+.left-bnr-text {
+	float:left;
+	width:35.15625%;
+	margin:40px 0 0 20px;
+}
+.compny-nme {
+	float:right;
+	margin:25px 100px 0 0;
+	font-size:26px;
+	color:#d70000;
+	text-transform:uppercase;
+}
+.top-notification {
+	float:left;
+	width:100%;
+	height:37px;
+	line-height:42px;
+	padding:0;
+	font-size:12px;
+	background:url(/LexmarkServicesPunchout/images/noti-arrow.jpg) no-repeat left #e6e6f0;
+}
+/* Top & Header section End */
+
+/* Middle section Start */
+/* Left section Start */
+/*#layout-grid {
+	float:left;
+	margin:10px 0 10px 10px;
+}*/
+.pageTitle {
+	font-weight:bold;
+	font-size:22px;
+	margin:20px 0;
+}
+.pageTitleHeader {
+	float:left;
+	background:#e6e6f0;
+	width:98.5%;
+	padding:10px 0 10px 10px;
+	font-size:16px;
+	margin: 10px 5px 10px 5px;
+}
+#left-nav {
+	float:left;
+	border-right:1px solid #d8d8d8;
+	padding:0 5px 0 0;
+	width:99%;
+	margin:0 0 0 5px;
+	max-width:245px;
+}
+.left-nav-inner {
+	float:left;
+	width:98%;
+	clear:both;
+	margin:0 0 10px 6px;
+	padding: 0 0 10px;
+	/*background:#e6e6e6;*/
+	background: #fff;
+}
+.left-title {
+	float:left;
+	width:100%;
+	margin:5px 0;
+	font-size:16px;
+	color:#515151;
+	text-transform:uppercase;
+	text-align:center;
+}
+.left-address {
+	float:left;
+	padding:0 0 0 10px;
+	width:95%;
+}
+.left-nav-inner ul {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	border: 1px solid #d8d8d8;
+}
+.left-nav-inner ul li {
+	list-style-type:none;
+	overflow:hidden;
+	font-size:12px;
+}
+.left-nav-inner ul li a {
+	margin:0;
+	padding: 2px 0 2px 10px;
+	font-size:14px;
+	float:left;
+	width:100%;
+	line-height:24px;
+	text-decoration:none;
+	font-weight: bold;
+}
+.left-nav-inner ul li a:hover {
+	//background-color: #eff0f6;
+	margin:0;
+	text-decoration: none !important;
+}
+.left-nav-inner ul li a.active {
+	//background-color: #eff0f6;
+	margin:0;
+	font-weight: bold;
+	text-decoration: none !important;
+}
+.consumable-sctn {
+	float:left;
+	background:#faf2bb;
+	color:#202020;
+	padding:5px;
+	width:83.6734693877551%;
+	border:1px solid #f0e495;
+	margin:10px 0 0 13px;
+	border-radius:5px;
+	text-align:center;
+	font-size:14px;
+}
+/* Left section end */
+#portlet-wrap {
+	//float:left;
+	max-width:975px;
+	width:100%;
+	margin:0;
+	padding:0;
+	display:inline;
+}
+.table-link {
+	font-size:10px;
+	color:#4e66b2;
+}
+.table-link a {
+	color:#336699;
+	text-decoration:underline;
+}
+.table-link a:hover {
+	text-decoration:none;
+}
+.table-title-small {
+	color:#1d1d25;
+	font-size:14px;
+}
+.pagination-cntnr {
+	float:left;
+	font-size:12px;
+	text-align:right;
+	width:30%;
+	margin:10px 0;
+	line-height:28px;
+}
+.page-no a {
+	float:left;
+	margin:2px;
+	background:#fff;
+	color:#1d1d25;
+	font-size:12px;
+	width:8px;
+	border:1px solid #d8d8d8;
+	padding:0 6px;
+	text-decoration:none;
+	line-height:20px;
+}
+.page-no a:hover {
+	float:left;
+	margin:2px;
+	background:#faf2bb;
+	color:#1d1d25;
+	border:1px solid #f0e495;
+	padding:0 6px;
+}
+.page-no a.active {
+	float:left;
+	margin:2px;
+	background:#f2f2f2;
+	color:#1d1d25;
+	border:1px solid #d8d8d8;
+	padding:0 6px;
+}
+/* Middle section end */
+
+/* Footer section Start */
+.footer {
+	background:#e6e6e6;
+	color:#4d4d4d;
+	float:left;
+}
+.footer-text {
+	float:left;
+	width:99%;
+	line-height:25px;
+	margin:5px;
+	font-size:12px;
+	border-bottom:1px solid #d8d8d8;
+}
+.footer-text-last-child {
+	float:left;
+	width:99%;
+	line-height:25px;
+	margin:5px;
+	font-size:12px;
+}
+.copyright-cntnr{
+	float:left;
+	width:100%;
+	margin:10px 0;
+	font-size:11px;
+	color:#696969;
+	text-align:center;
+}
+/* Footer section End */
+/* Inner page start */
+#breadcrum-cart-cntnr {
+	//float:left;
+	width:99.5%;
+	padding:5px 0 5px 0;
+	margin:0 0 5px 0;
+}
+.breadcrum-cntnr {
+	float:left;
+	font-size:12px;
+	color:#3c3c3c;
+	width:75%;
+	border:1px solid #f2f2f2;
+	height:20px;
+	line-height:20px;
+	padding:5px;
+}
+.breadcrum-cntnr a {
+	color:#3c3c3c;
+	text-decoration:none;
+}
+.breadcrum-cntnr a:hover {
+	text-decoration:underline;
+}
+.breadcrum-cntnr a.active {
+	text-decoration:underline;
+}
+#cart-cntnr {
+	float:right;
+	width:auto;
+	border:1px solid #d8d8d8;
+	border-radius:5px;
+	padding:5px 5px 5px 30px;
+	height:auto;
+	background:url(/LexmarkServicesPunchout/images/cart.jpg) no-repeat scroll 5px center;
+	font-weight:bold;
+	font-size:16px;
+	color:#1d1d25;
+}
+.mid-cntnr {
+	margin:5px 0;
+}
+.printer-block {
+	float:left;
+	max-width:210px;
+	width:28.5%;
+	min-height:130px;
+	margin:0 30px 30px 0;
+	border:1px solid #d8d8d8;
+	border-radius:5px;
+	background:#f8f8f8;
+}
+.printer-block:hover {
+	border:1px solid #e0ebf1;
+	border-radius:5px;
+	background:#f5fbff;
+}
+.printer-title {
+	float:left;
+	width:100%;
+	text-align:center;
+	margin:10px 0;
+	font-size:14px;
+	font-weight:bold;
+	color:#3f3f3f;
+}
+.printer-title a {
+	color:#3f3f3f;
+	text-decoration:none;
+}
+.printer-title a:hover {
+	color:#336699;
+	text-decoration:underline;
+}
+.printer-img {
+	float:left;
+	width: 100%;
+	height:81px;
+	margin:0 0 0 50px;
+}
+.printer-cntnr {
+	background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    float: left;
+   	margin: 15px 0;
+    padding: 15px;
+    width:calc(100% - 32px);
+}
+.prdctpge-printerimg {
+	float:left;
+	width:10%;
+	height:72px;
+}
+.printer-details-cntnr {
+	float:left;
+	width:calc(90% - 30px);
+	margin:0 15px;
+}
+.discrptn-table {
+	float:left;
+	width:100%;
+	overflow:scroll;
+	margin:5px 0 5px 0;
+}
+
+.discrptn-table-parts {
+	width:100%;
+	overflow:scroll;
+	margin:5px 0 5px 0;
+	border:1px solid #8c8c8c;
+}
+.table-title {
+	font-size:14px;
+	color:#1d1d25;
+	line-height:25px;
+	padding:0 0 0 5px;
+}
+.table-txt {
+	color:#4d4d4d;
+	font-size:12px;
+	padding:0 0 0 5px;
+	height:25px;
+	line-height:25px;
+}
+.quntity-cart-cntnr {
+	margin:20px 0 0;
+}
+.quntity-cart-cntnr2 {
+	float:left;
+	width:50%;
+}
+.delete {
+	cursor:pointer;
+	float:right;
+	width:16px;
+	height:20px;
+	padding:5px 0;
+}
+.price {
+	float:left;
+	font-weight:bold;
+	color:#8c8c8c;
+	font-size:16px;
+	padding:10px 0;
+	text-align: center;
+	width:30%;
+}
+.quntyty-cntnr {
+	font-size:14px;
+	color:#9b9b9b;
+}
+.quntyty-refresh-cntnr {
+	float:left; 
+	padding: 5px 0;
+    width: 30%;
+}
+.quntyty-cntnr2 {
+	float:right;
+	font-size:16px;
+	color:#9b9b9b;
+}
+.quntyty-cntnr2 input{
+	width:25px;
+	margin:0 0 0 5px !important;
+	text-align:center;
+	border:1px solid #d8d8d8;
+}
+.refresh {
+	float:right;
+	width:7%;
+	height:14px;
+	margin:3px;
+}
+.update-cart {
+	float:right;
+	width:30%;
+	font-size:12px;
+	margin:0 10px 0 0;
+}
+.price-btn-cntnr {
+	font-size:16px;
+	font-weight:bold;
+}
+.price-btn-cntnr > div {
+    height: 35px;
+}
+.price-btn-cntnr2 {
+	font-size:10px;
+	font-weight:bold;	
+}
+.cart-btn-total-cntnr {
+	float:left;
+	width:100%;
+	margin:5px 0;
+}
+.cart-btn {
+	float:left;
+	height:auto;
+	margin:10px 5px 0 0;
+}
+.verisign {
+	float:left;
+	width:50px;
+	height:25px;
+	margin:5px 0 0 10px;
+}
+.total {
+	float:right;
+	width:25%;
+	font-size:16px;
+	text-transform:uppercase;
+	text-align:right;
+	margin:10px 0 0 0;
+}
+/* Supplies Page */
+.supplies-mid-cntnr {
+	float:left;
+	width:100%;
+	margin:5px 0;
+	background:#eff0f6;
+	padding:10px 0 40px 0;
+}
+.supplies-title {
+	float:left;
+	font-size:16px;
+	border-bottom:1px solid #e8e8e8;
+	width:95%;
+	text-align:center;
+	line-height:25px;
+	margin:10px 0 0 20px;
+}
+#printer-type {
+	float:left;
+	width:32.5%;
+	min-height:90px;
+	margin:10px 0 0 75px;
+	border-right:2px solid #e8e8e8;
+}
+.title-blue {
+	float:left;
+	width:100%;
+	padding:5px 0;
+	color:#5880b3;
+	font-size:14px;
+	font-weight:bold;
+}
+div.gridbox_light table.hdr td div.hdrcell {
+background: url('/LexmarkServicesPunchout/images/gridImgs/lex/hdr_divider.gif') no-repeat center left!important;
+width:100%!important;
+white-space: nowrap;
+overflow: hidden;
+min-height:20px;
+}
+#Product-no {
+	float:left;
+	width:450px;
+	margin:10px 0 0 20px;
+	background:url(/LexmarkServicesPunchout/images/supplies-img.jpg) no-repeat right bottom;
+	font-size:12px;
+}
+.product-no-form{
+	width:45%; 
+	float:left; 
+	margin:5px 0; 
+	background:#f2f2f2; 
+	border:1px solid #f2f2f2; 
+	color:#6f6f6f; 
+	border:1px solid #b2b2b2; 
+	padding:2px;
+}
+.supplies-printerimg {
+	float:left;
+	width:14%;
+	height:72px;
+	margin:10px 0 0 10px;
+}
+.supplies-details-cntnr {
+	float:left;
+	width:83%;
+	margin:10px 0 0 5px;
+}
+.supplies-table-cntnr {
+	float:left;
+	width:100%;
+}
+.supplies-title-small {
+	background:#E0E0E0;
+	padding:10px 0 10px 10px;
+	font-size:14px;
+	color:#303030;
+	font-weight:bold;
+}
+.supplies-product-list a {
+	float:left;
+	font-size:12px;
+	color:#4e66b2;
+	text-decoration:underline;
+}
+.supplies-product-list a:hover {
+	float:left;
+	color:#4e66b2;
+	text-decoration:none;
+}
+/* Supplies Page End */
+
+/* Hardware Request */
+#wrapper-popup {
+	float:left;
+	width:98%;
+	padding:5px;
+	height:auto;
+	background:#fff;
+}
+#popup-title {
+	float:left;
+	width:90%;
+	font-size:14px;
+	font-weight:bold;
+	color:#1d1d25;
+	margin-bottom:10px;
+}
+#popup-title a {
+	text-decoration:none;
+	color:#1e68bc !important;
+}
+#popup-title a:hover {
+	text-decoration:underline;
+	color:#1e68bc;
+}
+.popup-table-cntnr {
+	float:left;
+	width:48%;
+	border:1px solid #d8d8d8;
+	margin:10px 15px 0 0;
+	font-size:14px;
+	color:#828282;
+}
+.popup-black-txt {
+	color:#1d1d25;
+	line-height:25px;
+	border-bottom:1px solid #d8d8d8;
+	padding-left:5px;
+	font-size:12px;
+	width:230px;
+}
+.popup-gray-txt {
+	float:left;
+	color:#aaaaaa;
+	line-height:25px;
+	width:222px;
+	font-size:12px;
+	border-bottom:1px solid #d8d8d8;
+	padding-left:3px;
+}
+.popup-cntct-ship-cntnr {
+	float:left;
+	width:47%;
+	margin:10px 15px 0 0;
+	border:1px solid #c0c0c0;
+	border-radius:5px;
+	padding:5px;
+}
+.popup-title-black {
+	float:left;
+	font-size:12px;
+	font-weight:bold;
+	line-height:22px;
+	width:95%;
+}
+.request-items-cntnr {
+	float:left;
+	width:100%;
+	margin:5px 0;
+}
+.request-img {
+	float:left;
+	padding:5px;
+}
+.popup-shipment-cntnr {
+	float:left;
+	padding:5px;
+	width:98%;
+	border:1px solid #d8d8d8;
+	border-radius:5px;
+	margin:5px 0;
+}
+.popup-product-img {
+	float:left;
+	width:101px;
+	height:112px;
+	margin:5px 0 0 5px;
+}
+.popup-product-txt ul {
+	width:95%;
+	padding:0 0 0 5px;
+	margin-left: 15px;
+	list-style-type:circle;
+	font-size:12px;
+}
+.popup-product-txt ul li {
+	width:100%;
+	list-style-type:circle;
+	padding:0 0 0 10px;
+	line-height:22px;
+	/*background:url(/LexmarkServicesPunchout/images/circle.jpg) no-repeat left top;*/
+}
+/* Hardware Request End */
+
+
+.black_overlay {
+	display: none;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	z-index:1001;
+	-moz-opacity: 0.8;
+	opacity:.80;
+	filter: alpha(opacity=80);
+}
+.white_content {
+	display: none;
+	position: absolute;
+	top: 5%;
+	left: 13%;
+	width: 72%;
+	padding: 5px;
+	border: 2px solid #eaeaea;
+	background-color: white;
+	z-index:1002;
+	overflow: auto;
+}
+.accor_content {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+.button {
+	text-decoration: none;
+	background-color:#1dc232 !important;
+	color:#fff !important;
+	line-height:20px;
+	font-size:12px;
+	cursor:pointer;
+}
+.button a {
+	text-decoration: none;
+	background:#1e68bc;
+	color:#fff;
+}
+.button:hover {
+	background: 138948 !important;
+	transition: all 0.3s ease 0s;
+ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0094cb', endColorstr='#00678e');
+}
+.button:active ,.button:focus {
+	background: #1dc232!important;
+ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0076a3', endColorstr='#00aced');
+}
+.button_gray {
+	text-decoration: none;
+	background:#f8f8f8;
+	border:1px solid #b7b7b7;
+	color:#606060;
+	border-radius:3px!important;
+	line-height:20px;
+	font-size:12px;
+	cursor:pointer;
+}
+.button_gray a {
+	text-decoration: none;
+	background:#f8f8f8;
+	color:#606060;
+}
+.button_gray:hover {
+	background: #f8f8f8;
+	background: -webkit-gradient(linear, left top, left bottom, from(#e6e6e6), to(#eeeeee));
+	background: -moz-linear-gradient(top, #e6e6e6, #eeeeee);
+ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#e6e6e6', endColorstr='#eeeeee');
+}
+.button_gray:active {
+	color: #80bed6;
+	background: -webkit-gradient(linear, left top, left bottom, from(#e6e6e6), to(#eeeeee));
+	background: -moz-linear-gradient(top, #e6e6e6, #eeeeee);
+ filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#e6e6e6', endColorstr='#eeeeee');
+}
+.supplies-btn-cntnr {
+	float:left;
+	height:auto;
+	margin:0 0 0 160px;
+	clear:both;
+}
+
+div.left-nav-header h3 {
+    color: #1d1d25;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 25px;
+    margin: 0;
+    padding-left: 10px;
+    text-indent: 0;
+}
+
+.journal-content{
+	clear:both;
+	height:40px;
+	margin:3px;
+	overflow:hidden;
+}
+.journal-content h1{
+	font-size:1.8em;
+	color:#008a44;
+	font-weight:normal;
+	display:inline-block;
+	padding: 0;
+	margin:0;
+	float:left;
+	width:auto
+}
+.journal-content .stepContent {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0 0 0 10px;
+    padding: 0;
+}
+td.pModel {
+	width: 16%;
+	border-right:1px dotted #aaa
+}
+td.pModel ul { margin:10px }
+td.pModel ul li { list-style-type:none; }
+td.pModel ul li.pModelName {
+	font-weight:bold;
+	border-top: 1px solid #e7e7e7;
+	margin-top:5px;
+	padding-top:5px
+}
+ul.roDisplay {margin:0}
+ul.roDisplay li {
+	background:none;
+	width:60%;
+	margin-left:0;
+	padding:0;
+	list-style-type:none!important;
+}
+ul.roDisplay li span {
+	display:inline-block;
+	padding-top:2px;
+	line-height:1.8em
+}
+ul.roDisplay li label { /* Added by offshore for building, floor, office */
+	display: inline-block;
+    width: 100px;
+    font-weight: bold;
+}
+.strong { 
+	font-weight:bold;
+	padding: 3px 0 3px 5px;
+} /*Bold text*/
+ul.form {
+	float:left;
+	width:96%;
+	margin-bottom:5px;
+	margin-left:5px;
+}
+ul.form li {
+	background:none;
+	display:block;
+	clear:both;
+	list-style-type:none!important;
+	line-height:0.2em;
+	padding-left:0;
+}
+ul.form li label {
+	display:inline-block;
+	padding:2px 0 2px 0;
+	width:95%;
+	margin-left:0;
+	color: #1d1d25;
+	vertical-align:top;
+	line-height:1.2em;
+}
+ul.form li span {
+	display:inline-block;
+	float:left;
+	padding:2px 5px 2px 0;
+	line-height:1.8em;
+}
+.even_row { background:#eff0f6; }
+.odd_row { background:#ffffff }
+tr.altRow td { background-color:#f0f0f0 }
+ .quantity-cntnr2 {
+       float:right;
+       width:95%;
+       font-size:16px;
+       color:#9b9b9b;
+}
+.update-cart2 {
+       float:right;
+       width:64%;
+       font-size:12px;
+       margin:2px 0 0 0;
+}
+.bundleInfo{
+float:left!important;
+text-align:left!important;
+margin-left: 13%;
+}
+ul.roDisplay {margin:0}
+ul.roDisplay li {
+	background:none;
+	width:80%;
+	margin-left:0;
+	padding-top:10px;
+	list-style-type:none!important;
+}
+.loadingIcon {
+    background: #efefff none repeat scroll 0 0;
+    height: 100%;
+    opacity: 0.7;
+    position: absolute;
+    width: 100%;
+}
+.loadingIcon > img {
+    left: 45%;
+    position: absolute;
+    top: 46%;
+}
+
+@media only screen and (min-width: 150px) and (max-width:1280px) { /* min-width 480px, mobile-only styles, use when QAing mobile issues */
+#top-links-cntnr {
+	float:left;
+	background:url(/LexmarkServicesPunchout/images/top-gradient.jpg) repeat-x;
+	height:29px;
+	text-align:right;
+	padding-right:10px;
+	width:99%;
+}
+.pageTitle {	
+	font-weight:bold;
+	font-size:22px;
+	margin:20px 0;
+}
+.pageTitleHeader {
+	float:left;
+	background:#e6e6f0;
+	width:98.5%;
+	padding:10px 0 10px 10px;
+	font-size:16px;
+	margin: 10px 5px 10px 5px;
+}
+#left-nav {
+	float:left;
+	border-right:1px solid #d8d8d8;
+	padding:0 5px 0 0;
+	width:26%;
+	margin:0 0 0 5px;
+	max-width:245px;
+}
+.portlet-boundary {
+    clear: both;
+}
+#portlet-wrap {
+	//float:left;
+	width:70%;
+	padding:0;
+	display:inline;
+}
+.footer {
+	background:#e6e6e6;
+	color:#4d4d4d;
+	float:left;
+}
+.footer-inner {
+	float:left;
+	width:96.5%;
+	padding:10px;
+	background:#e6e6e6;
+	clear:both;
+	margin-top:10px;
+}
+.printer-cntnr {
+	float:left;
+	width:99.69230769230769%;
+	border:1px solid #d8d8d8;
+	background:#fff;
+	padding:0 0 10px 0;
+	margin:10px 0 0 0;
+}
+.printer-details-cntnr {
+	float:left;
+	width:47.5%;
+	margin:0 0 0 15px;
+}
+.supplies-title {
+	float:left;
+	font-size:16px;
+	border-bottom:1px solid #e8e8e8;
+	width:95%;
+	text-align:center;
+	line-height:25px;
+	margin:10px 0 0 20px;
+}
+.pagination-cntnr {
+    width: 42%;
+}
+#printer-type {
+	float:left;
+	width:38%;
+	margin:10px 0 0 30px;
+}
+#Product-no {
+	width:45%;
+	margin:10px 0 0 20px;
+}
+.quntity-cart-cntnr {
+	width:33%;
+}
+#cart-cntnr {
+	width:16.795%;
+}
+.prdctpge-printerimg {
+	width:13%;
+}
+.quntity-cart-cntnr2 {
+    width: 30%;
+}
+.white_content {
+	display: none;
+	position: absolute;
+	top: 5%;
+	left:1.5%;
+	width: 95%;
+	z-index:1002;
+	overflow: auto;
+}
+.product-no-form {
+    width: 68%;
+}
+.w10{
+	width:13%;
+}
+.w100{
+	width:100% !important;
+}
+#supplyGrid_container table{
+	width:100%!important;
+}
+	.banner {
+	background:#FFC url(../../images/attention.png) no-repeat 10px 7px;
+	border:2px solid #FC3;
+	padding:15px 10px 15px 50px;
+	margin:10px 5px 5px 5px;
+}
+.ok {
+	background-color:#DFD;
+	background-image: url(../../images/check.png);
+	border-color:#47CA0F
+}
+	.info {
+	font-weight:bold;
+	font-size:14px;
+	padding:5px 10px;
+}
+}
+
+
+
+div.gridbox_light table.obj td,.aui input, .aui button, .aui select, .aui textarea{
+	font-family: "tpHero",Arial,sans-serif !important;
+}
+td.table-title {
+    background-color: #c7c7c7 !important;
+}
+
+
+#accordion-container {
+	font-size: 13px;
+	width: 670px;
+	margin: 30px 0;
+}
+h2.accordion-header {
+	font-size: 16px;
+	font-weight: 600;
+	margin: 5px 0 0 0;
+	padding: 15px 20px;
+	cursor: pointer;
+	color: #31313b;
+	border-left: 5px solid #1dc232;
+	background-color: #e0e0e0;
+}
+.active-header {
+	background: url(http://www.lexmark.com/b2b/common/images/up_arrow.png) #c7c7c7;
+	background-repeat: no-repeat;
+	background-position: 97% 50%;
+}
+.active-header:hover {
+	background: url(http://www.lexmark.com/b2b/common/images/up_arrow.png) #c7c7c7;
+	background-repeat: no-repeat;
+	background-position: 97% 50%;
+}
+.inactive-header {
+	background: url(http://www.lexmark.com/b2b/common/images/down_arrow.png) #e0e0e0;
+	background-repeat: no-repeat;
+	background-position: 97% 50%;
+}
+.inactive-header:hover {
+	background: url(http://www.lexmark.com/b2b/common/images/down_arrow.png) #c7c7c7;
+	background-repeat: no-repeat;
+	background-position: 97% 50%;
+}
+.accordion-content {
+	display: none;
+	padding: 10px;
+	font-weight: 300;
+	line-height: 1.4;
+	color: #626262;
+}
+.clearBoth{
+    clear: both;
+}
+#mainRightNavContainer {
+    margin-right: 20px;
+}
+.product_title{
+	color:#138948;
+	font-size:23px;	
+}
+.printerDescription{
+	font-size:12px; 
+	line-height:17px;
+}
+.part_info{
+	margin:10px 0 50px;
+	
+}
+.blueColor{
+	color: #0061DE;
+}
+ul.included-list, ul.specs-list {
+    margin-left: 10px;
+}
+.arrowLi{
+	background: url("/lexmark-punchout-theme/images/custom/arrow-gray.gif") no-repeat scroll left 4px;
+    list-style: outside none none;
+    padding: 0 0 0 20px;
+}
+
+
+
+.printer-details-cntnr-cart{
+	float: left;
+    margin: 0 10px;
+    width: calc(40% - 30px);
+}
+.altbutton, .altbutton a{
+	background: #fff;
+    border: 1px solid rgb(0, 148, 28);
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px rgb(182, 182, 182);
+    color: rgb(0, 148, 28) !important;
+    cursor: pointer;
+   	padding: 9px 25px !important;
+    text-decoration: none !important;	
+    text-transform: uppercase;
+}
+.altbutton:hover {
+    background: rgb(0, 148, 28) none repeat scroll 0 0;
+    border: 1px solid rgb(0, 148, 28);
+    color: rgb(255, 255, 255) !important;
+}
+
+.cartButton, .cartButton a{
+	background: rgb(0, 148, 28) none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px rgb(182, 182, 182);
+    color: rgb(255, 255, 255) !important;
+    cursor: pointer;
+    padding: 10px 25px !important;
+    text-decoration: none !important;	
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px rgb(158, 63, 63);
+}
+.cartButton:hover {
+    background: rgb(0, 199, 38) none repeat scroll 0 0;
+    color: rgb(255, 255, 255) !important;
+}
+.info.banner.ok {
+    background: rgb(238, 255, 238) none repeat scroll 0 0;
+    border: 1px solid rgb(144, 238, 144);
+    border-radius: 5px;
+    padding: 5px;
+}
+#shoppingCartDetails{
+	overflow-y: auto;
+}
+.pointer{
+	cursor:pointer;
+}
+.option_Warranties_Content {
+    border: 1px solid #b1b1b9;
+    border-radius: 3px;
+    width: 100%;
+    float:left;
+}
+.floatL {
+    float: left;
+}
+.floatR { 
+	float:right!important
+}
+.optn-warrn-content {
+    display: none;
+    border-top: 1px solid rgb(238, 238, 238);
+    padding: 5px;
+}
+.borderLeftGreen{
+	border-left:4px solid rgb(29, 194, 50);	
+}
+#search,#globalSearch {
+    margin: 3px;
+}
+#globalSearch {
+    padding: 0 10px !important;
+    background-color: #000 !important;
+}
