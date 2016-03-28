@@ -325,6 +325,9 @@ header {
 	font-weight:bold;
 	font-size:16px;
 	color:#1d1d25;
+	position: absolute;
+	right: 15px;
+	top: 15px;
 }
 .mid-cntnr {
 	margin:5px 0;
@@ -1218,4 +1221,7 @@ ul.included-list, ul.specs-list {
 #globalSearch {
     padding: 0 10px !important;
     background-color: #000 !important;
+}
+#main-content #column-2 {
+   position: relative;
 }
