@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.lexmark.contract.api.MdmSearchContractBase;
+import com.lexmark.util.KeyGenerator;
 
 public class HardwareCatalogContract extends MdmSearchContractBase implements Serializable {
 
@@ -85,21 +86,8 @@ public class HardwareCatalogContract extends MdmSearchContractBase implements Se
 	}
 	
 	public String toString(){
-		StringBuffer sb=new StringBuffer();
-		if(this.getAgreementId()!=null){
-			sb.append(this.getAgreementId());
-		}if(this.getContractNumber()!=null){
-			sb.append(this.getContractNumber());
-		}if(this.getSoldToNumber()!=null){
-			sb.append(this.getSoldToNumber());
-		}if(this.getLocationType()!=null){
-			sb.append(this.getLocationType());
-		}if(this.getPartType()!=null){
-			sb.append(this.getPartType());
-		}if(this.getProductType()!=null){
-			sb.append(this.getProductType());
-		}
-		return sb.toString();
+		return KeyGenerator.generateKey(agreementId,contractNumber,soldToNumber,
+				locationType,partType,productType);		
 	}
 	
 }

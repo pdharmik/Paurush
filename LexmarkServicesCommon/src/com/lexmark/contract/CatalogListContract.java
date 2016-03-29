@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import com.lexmark.contract.api.MdmSearchContractBase;
 import com.lexmark.service.api.CrmSessionHandle;
+import com.lexmark.util.KeyGenerator;
 
 
 
@@ -224,22 +225,7 @@ public class CatalogListContract extends MdmSearchContractBase implements Serial
 		 		this.printerMaterialNum = printerMaterialNum;
 	}
 	public String toString(){
-		StringBuffer sb=new StringBuffer();
-		if(this.getSoldToNumber()!=null){
-			sb.append(this.getSoldToNumber());
-		}
-		if(this.getPrinterMaterialNum()!=null){
-			sb.append(this.getPrinterMaterialNum());
-		}
-		if(this.getBundleId()!=null){
-			sb.append(this.getBundleId());
-		}
-		if(this.getAgreementId()!=null){
-			sb.append(this.getAgreementId());
-		}		
-		if(this.getContractNumber()!=null){
-			sb.append(this.getContractNumber());
-		}
-		return sb.toString();
+		return KeyGenerator.generateKey(soldToNumber,printerMaterialNum,
+				bundleId,agreementId,contractNumber);
 	}
 }
