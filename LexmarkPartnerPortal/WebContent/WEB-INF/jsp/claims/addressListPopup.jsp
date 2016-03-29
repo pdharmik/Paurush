@@ -139,7 +139,7 @@ if(addressFlag!=null){
 										<img src="<html:imagesPath/>loading-icon.gif" id="loadingImage_state" style="display: none;"/>
 										<img src="<html:imagesPath/>transparent.png" class="helpIconPopup ui-icon info-icon" id="helpIconRegion" title="<spring:message code="requestInfo.addressInfo.label.regionDetails"/>" />
 										</span>
-										<div id="stateorzipmesg" class="note pageTitle" ><span class="margin-top--8px">(<spring:message code="requestInfo.addressInfo.label.regionDetails"/>)</span></div>
+										<div id="stateorzipmesg" class="wAuto note pageTitle" ><span class="margin-top--8px">(<spring:message code="requestInfo.addressInfo.label.regionDetails"/>)</span></div>
 									</li>
 									<li>
 										<label for="zipCode" ><spring:message code="requestInfo.addressInfo.label.postalCode"/><span class="req">**</span>
@@ -171,11 +171,11 @@ if(addressFlag!=null){
 						<p class="info banner"><spring:message code="requestInfo.popup.cleansedAddresses"/></p>
 						<div class="portletBlock infoBox">
 						<div class="columnsOne">
-						<div class="columnInner">
+						<div class="columnInner floatR wCleansed_Address">
 						<ul class="roDisplay">
 						
 						
-								<li><div id="storefront_popup_span"></div>
+								<li style="width:100%"><div id="storefront_popup_span"></div>
 									<div id="addrLine1_popup_span"></div>
 									<div id="houseNumber_popup_span"></div>
 									<div id="addrLine2_popup_span"></div>
@@ -201,6 +201,7 @@ if(addressFlag!=null){
 								</p>
 								
 							</div>
+							<div style="clear:both"></div>
 						</div>
 					</div>
 						<div class="buttonContainer">
@@ -423,6 +424,19 @@ function hideAddAddress() {
 			jQuery('#state_popup').addClass('errorColor');
 			jQuery('#zipCode').addClass('errorColor');
 			}
+		
+		var countryListWithoutZip = [];	
+		<c:forEach items="${countryListWithoutZip}" var="listZip">
+		countryListWithoutZip.push("${listZip.value}");
+		</c:forEach>	 
+		var selectedCountry = jQuery('#country_popup option:selected').val();
+		if(selectedCountry!=""){
+			if(countryListWithoutZip.indexOf(selectedCountry) == -1 &&  $('#zipCode').val().trim()==""){
+				validationFlag=false
+				jQuery('#address_error_div_popup').append('<li><strong><spring:message code="validation.address.zipCode"/></strong></li>');
+			}
+			
+		}
 	
 		if(validationFlag==false)
 			return false;
@@ -432,6 +446,9 @@ function hideAddAddress() {
 	}
 		
 	function showCleansedaddress() {
+		
+			
+			
 		 <%-- callOmnitureAction('<%=LexmarkPPOmnitureConstants.SELECTANADDRESSPOPUP%>','<%=LexmarkPPOmnitureConstants.ADDRESSPOPUPSAVENEWADDRESS%>'); --%>
 		//clear the div error contents
 			jQuery('#address_error_div_popup').html('');
@@ -527,7 +544,14 @@ function hideAddAddress() {
 									}
 									//modified for MPS 2.1 end
 
-									jQuery('#cleansedAddress').show();
+									jQuery('#cleansedAddress').show(function(){ 
+									<%-- Set the check box by default selected and rebrand it , 
+									check passing the extra values as it will be required during cleansing. --%>
+									$('#check_popup').next('span.checkbox_Span').css('float','left');
+										$('#check_popup').attr('checked',true);
+										checkboxRebrandFunction($('#check_popup'));
+										validate_popup();
+									});
 									//if error div is already show hide it
 									jQuery('#errorMsg_popup').hide();
 									document.getElementById('button_popup').style.display = "none";
@@ -541,6 +565,8 @@ function hideAddAddress() {
 									}
 								else if(error=="cleanseError")
 									{
+									// populate region in case of address cleansing error.
+									cleanseRegion = obj2.region;
 									jQuery('#errorMsg_popup').html(obj2.cleansedError);
 									jQuery('#errorMsg_popup').show();
 									jQuery("#ignoreSaveAddress").show();
@@ -605,6 +631,7 @@ function hideAddAddress() {
 		else{
 			goForCleanseAddrFlg = false;
 			enableInputs();
+			$('#state_popup').removeAttr('disabled');
 		}
 		
 	}
@@ -729,7 +756,7 @@ function hideAddAddress() {
 		<%-- Changes for MPS 2.1--%>
 		addPartnerAddressElement(null,jQuery('#storeName').val(),null, null, 
 				jQuery('#addrLine1').val(), null, jQuery('#addrLine2').val(),jQuery('#cityPopup').val(),
-				jQuery('#officeNo').val(),jQuery('#state_popup').val(), null,null,jQuery('#country_popup').val(), jQuery('#zipCode').val(),
+				jQuery('#officeNo').val(),jQuery('#state_popup').val(), null,cleanseRegion,jQuery('#country_popup').val(), jQuery('#zipCode').val(),
 				null,null,null,null,null,null);
 		<%--Ends--%>
 		}
@@ -756,7 +783,7 @@ function hideAddAddress() {
 		//Changed for CI BRD 13-10-08
 		addPartnerAddressElement(null,jQuery('#storeName').val(),null, null, jQuery('#addrLine1').val(), 
 				null, jQuery('#addrLine2').val(),jQuery('#cityPopup').val(),jQuery('#officeNo').val(), jQuery('#state_popup').val(), 
-				null,null,jQuery('#country_popup').val(), jQuery('#zipCode').val(),null,null,null,null,null,null);
+				null,cleanseRegion,jQuery('#country_popup').val(), jQuery('#zipCode').val(),null,null,null,null,null,null);
 	}
 
 	function getState(){

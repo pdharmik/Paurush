@@ -23,6 +23,7 @@ import javax.portlet.ResourceRequest;
 import javax.portlet.ResourceResponse;
 import javax.portlet.ResourceURL;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
@@ -218,8 +219,10 @@ public class RequestsDebriefController {
 		
 		logger.debug("Problem Code Level  is ------------------- "+activity.getDebrief().getActualFailureCode().getValue());
 		logger.debug("Full Problem Code  is ------------------- "+activity.getActualFailureCode().getValue());
-		activity.getDebrief().getActualFailureCode().setValue(activity.getActualFailureCode().getValue());
 		
+		if(!StringUtils.isBlank(activity.getActualFailureCode().getValue()))
+			activity.getDebrief().getActualFailureCode().setValue((activity.getActualFailureCode().getValue()));
+					
 		String fromPage = requestsDebriefForm.getFromPage();
 		if(PortalSessionUtil.isDuplicatedSubmit(request, requestsDebriefForm)){
 			if("requestDetailView".equalsIgnoreCase(fromPage)){

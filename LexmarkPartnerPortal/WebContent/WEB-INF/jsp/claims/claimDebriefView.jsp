@@ -773,6 +773,8 @@ behavior: url(/LexmarkPartnerPortal/WebContent/css/PIE.htc) !important;
 						</div><!-- portlet-footer -->
 					</div>
 					<script type="text/javascript">
+					   var numericCodeFlag = true;
+					   var showProbValidateMsg = false;
 						jQuery(document).ready(function() {	
 							if("${claimDebriefForm.activity.technician.newContactFlag}" == "true"){
 								document.getElementById("technicianLastNameDD").style.display = "";
@@ -784,8 +786,7 @@ behavior: url(/LexmarkPartnerPortal/WebContent/css/PIE.htc) !important;
 								getprobCode(selectProblemCode1Val,'1');
 							}
 							
-							var numericCodeFlag = true;
-							var showProbValidateMsg = false;
+							
 							
 							// added for Problem Code CI 15.4 end
 						});		
@@ -3222,6 +3223,11 @@ behavior: url(/LexmarkPartnerPortal/WebContent/css/PIE.htc) !important;
 					jQuery('#showProbErrorCode2').show();
 					jQuery('#showProbErrorCode2').html("");
 					jQuery('#showProbErrorCode2').html("<input type=\"textarea\" id=\"numericCode2\" onkeyup=\"validateNumericCode();\" \><span id=\"errorMsgNumCode\" class=\"errorColor\" style=\"display: none; color: red\"><B>Problem Code Not Found</B></span");
+				    var actualFailureCode="${claimDebriefForm.activity.actualFailureCode.value}";
+					var array=actualFailureCode.split(";");
+					if(array[0]=="Error Code Displayed"){
+						$('#numericCode2').val(array[1]);
+					}
 				}
 				else{
 					if(null != document.getElementById("numericCode2")){

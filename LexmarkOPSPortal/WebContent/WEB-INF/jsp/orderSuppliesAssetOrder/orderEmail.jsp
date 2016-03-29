@@ -16,7 +16,6 @@
 	<tr>
     	<td style="background-color:#dadada"><img src="<html:imagesPath/>/logoLexEmail.png" width="598" height="65" /></td>
   	</tr>
-	<br></br>
 	
   <tr>
     <td style="background-color:#3A7FA8;"><table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -73,7 +72,7 @@
               </tr>
               <tr>
                 <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong><spring:message code="requestInfo.label.description"/></strong></td>
-                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;">${assetDetailPageForm.serviceRequest.addtnlDescription}</td>
+                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><div class="w300 noteWrap notesOverflow">${assetDetailPageForm.serviceRequest.addtnlDescription}</div></td>
               </tr>
             
             </table></td>
@@ -404,7 +403,7 @@
               </tr>
               <tr>
                 <td valign="top" width="100" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong><spring:message code="requestInfo.label.specialInstructions"/></strong></td>
-                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;">${assetDetailPageForm.specialInstruction}</td>
+                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><div class="w300 noteWrap notesOverflow">${assetDetailPageForm.specialInstruction}</div></td>
               </tr>
 			   <%-- <tr>
                 <td valign="top" width="100" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong><spring:message code="requestInfo.label.defaultSpecialInstructions"/></strong></td>
@@ -481,7 +480,7 @@
                 <th colspan="2" align="left" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;background-color:#e7e7e7;border-bottom-color:#aaaaaa; border-bottom-width:1px; border-bottom-style:dotted;"><spring:message code="requestInfo.heading.notes"/></th>
               </tr>
               <tr> <td valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:11px;">
-         		   ${assetDetailPageForm.attachmentDescription}
+         		  <div class="w300 noteWrap notesOverflow" style="width: 380px ! important;"> ${assetDetailPageForm.attachmentDescription}</div>
             </td></tr>
             </table></td>
         </tr>
@@ -525,8 +524,7 @@
       </table>
       
       </td>
-  </tr><br></br>
-  <br></br><br></br>
+  </tr>
 </table>
 <br>
 <table width="800" border="0" cellspacing="0" cellpadding="0" align="center">

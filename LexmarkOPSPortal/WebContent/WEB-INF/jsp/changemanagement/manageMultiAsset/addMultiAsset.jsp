@@ -372,6 +372,29 @@ jQuery(document).ready(function() {
 			jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"<spring:message code='validation.Asset.installAssetFlag.format.errorMsg'/>" 
 			+ "</strong></li>");
 		}
+		var showErrorMsgForDeviceInfo = false;
+		for(var assetIndex in deviceMapObj)
+			{
+		    if(deviceMapObj[assetIndex]==true)
+		    	{
+		    	if(jQuery('#'+assetIndex+'_serialNumber').val()=="" 
+                    && jQuery('#'+assetIndex+'_ipAddress').val()==""
+                    && jQuery('#'+assetIndex+'_hostName').val()==""
+                    && jQuery('#'+assetIndex+'_deviceTag').val()==""
+                    && jQuery('#chlNodeValueLabel_'+assetIndex).val()==""
+                    && jQuery('#'+assetIndex+'_installDateInput').val()==""
+                    )
+					{	
+						validationflag=true;
+						showErrorMsgForDeviceInfo = true;
+
+					}
+		    	}
+			}
+		if(showErrorMsgForDeviceInfo==true){
+			jQuery("#errorDiv").append("<li class=\"portlet-msg-error\"><strong>"+"Please enter at least one device information to proceed." 
+		              + "</strong></li>");
+		}
 		if(validationflag==true){
 			jQuery("#errorDiv").show();
 			jQuery(document).scrollTop(0);

@@ -215,7 +215,7 @@
 		</div>
 	<script id="list-template" type="text/x-handlebars-template">
     
-        {{#assets}}
+        {{#assetInfo.assets}} <%--Changes for 16.2--%>
         
 		<div class="deviceDetailsDiv" id="deviceDetails{{id}}" onclick="highlightAsset('{{id}}');">
 			<div class="deviceInfoDiv">
@@ -288,14 +288,24 @@
 							<li id="cntrlPanel{{id}}"><a target class="cursor-pointer" onClick="openCntlPanelPopup()" ><spring:message code='lbs.label.controlpanel'/></a><br/></li>
 							<li id="sprtDwnlds{{id}}"><a class="cursor-pointer" onClick="showSupportDownlds('{{id}}')" ><spring:message code='lbs.label.supportanddownloads'/></a><br/></li>
 							<li id="pgCounts{{id}}"><a class="cursor-pointer" onClick="openPopUp('{{id}}', '{{serialNumber}}', '{{ipAddress}}', '{{modelNumber}}', '{{customerDeviceTag}}')" ><spring:message code='lbs.label.updatepagecount'/></a><br/></li>
-							<li><a style="cursor: pointer;" onclick="showDeviceStatus('{{id}}');"><spring:message code="fleetmanagement.headers.devicestatus"/></a></li>
+							
+							<%-- Changes for CR 19716 16.2--%>
+							<c:set var="showDeviceStatusLink" value="none"/>
+							
+							<c:if test="${fleetMgmtForm.showDeviceStatus or fleetMgmtForm.showDeviceUtilization}">
+								<c:set var="showDeviceStatusLink" value="block"/>
+							</c:if>
+							{{#if ../showDeviceStat}}
+							<li><a style="cursor: pointer; display: ${showDeviceStatusLink}" onclick="showDeviceStatus('{{id}}');"><spring:message code="fleetmanagement.headers.devicestatus"/></a></li>
+							{{/if}}
+							<%-- Ends Changes for CR 19716 16.2--%>							
 							</ul>
 						</div>
 						
 			    	</div>					
 			</div>			
 	</div>
-{{/assets}}					
+{{/assetInfo.assets}}					
 </script>
 
 <script id="deviceInfoExt" type="text/x-handlebars-template">
@@ -730,8 +740,13 @@
 				var assetLifeCycle=("assetLifeCycle" in assetIfo)?assetIfo.assetLifeCycle:null;
 				if(assetLifeCycle!=null && assetLifeCycle=="Shipped"){
 					<%-- Redirect it to Install Asset page  --%>
-					
-					addAssetRequest(assetId);
+					addAssetRedirect.assetId=assetId;
+					addAssetRedirect.assetLifeCycle=assetLifeCycle;
+					if($("#fleetMgmtForm #lbs_extAddressId").val().length == 0){
+					initOpenAddressPopup();
+					}else{
+						addAssetRequest(assetId);
+					}
 					return;
 				}
 				//alert($('#backInfo').val());

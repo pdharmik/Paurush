@@ -139,11 +139,11 @@ public class CreateServiceRequestImpl implements
 		String sourceSystem=null;
 		if(contract.getFleetManagementFlag()!=null && contract.getFleetManagementFlag().equalsIgnoreCase("true")){
 		LOGGER.debug("Setting Map-Web");
-			sourceSystem = "Map-Internal Portal";
+			sourceSystem = "Map-LBS Internal";
 		}
 		else{
 			LOGGER.debug("Setting Web");
-		sourceSystem = "Internal Portal";
+		sourceSystem = "LBS Internal";
 		}
 
 		WebServiceDocumentMetaData documentMetaData = new WebServiceDocumentMetaData(

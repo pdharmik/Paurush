@@ -360,7 +360,10 @@ SiebelJSON.prototype={
 			this.username=v;
 		},
 		setDefaultArea:function(s){
-			this["defaultArea"]=JSON.parse(s);
+			var a=JSON.parse(s);
+			a.lat=parseFloat(a.lat);
+			a.lng=parseFloat(a.lng);
+			this["defaultArea"]=a;
 		},
 		setLanguage:function(l){
             this["lang"]=l;
@@ -921,7 +924,15 @@ function Filters(){};
 			if(typeof templateDevice !== 'function'){
 				initHandleBar();
 			}
-			$('#deviceContent').append(templateDevice(info));
+			var info1={};
+			if($('#showDeviceStatusInPopup').val()==="true" || $('#showDeviceStatusUtilInPopup').val()==="true"){
+				info1={"showDeviceStat":true,
+						"assetInfo":info};
+			}else{
+				info1={"showDeviceStat":false,
+						"assetInfo":info};
+			}
+			$('#deviceContent').append(templateDevice(info1));
 			
 			var arrDeviceId=[];
 			for(var i=0;i<info.assets.length;i++){
@@ -1520,3 +1531,7 @@ function handleMultiSelectCancel(){
 	showMapBtnClicked();hideOverlay();
 	deviceStatus.clearApplyFilter(false);
 }
+var addAssetRedirect={
+		assetId:"",
+		assetLifeCycle:""
+};

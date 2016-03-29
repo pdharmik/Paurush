@@ -100,7 +100,7 @@
               </tr>
               <tr>
                 <td valign="top"  class="table-td-style16"><strong><spring:message code="requestInfo.label.description"/></strong></td>
-                <td valign="top"  class="table-td-style16" id="addtnlInfo_description">
+                <td valign="top"  class="table-td-style16"><div id="addtnlInfo_description" class="smallNotesOverflow"></div>
 				
 				</td>
               </tr>

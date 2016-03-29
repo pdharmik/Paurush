@@ -73,7 +73,7 @@
               </tr>
               <tr>
                 <td valign="top"  class="table-td-style16"><strong><spring:message code="requestInfo.label.description"/></strong></td>
-                <td valign="top"  class="table-td-style16"><span id="addtnlInfo_description"> </span></td>
+                <td valign="top"  class="table-td-style16"><div class="smallNotesOverflow w300" id="addtnlInfo_description"> </div></td>
               </tr>
             </table></td>
         </tr>
@@ -181,7 +181,7 @@
               </tr>
               <tr>
                 <td valign="top" width="100" class="table-td-style16"><strong><spring:message code="requestInfo.label.specialInstructions"/></strong></td>
-                <td valign="top"  class="table-td-style16"> <span id="spclInstruction"></span></td>
+                <td valign="top"  class="table-td-style16"> <div class="smallNotesOverflow w300" id="spclInstruction"></div></td>
               </tr>
               
               
@@ -240,7 +240,7 @@
                 <th colspan="2" align="left" class="table-td-style15"><spring:message code="requestInfo.heading.notes"/></th>
               </tr>
               <tr>
-                <td valign="top" class="table-td-style16"><span id="notes"></span></td>
+                <td valign="top" class="table-td-style16"> <div class="smallNotesOverflow w300" id="notes"></div></td>
               </tr>
             </table></td>
         </tr>

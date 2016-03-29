@@ -2043,6 +2043,7 @@ public class CommonController extends BaseController{
 			if(isHardwarePage.equalsIgnoreCase("true")){
 				siebelAccountListContract.setAgreementFlag(true);
 				siebelAccountListContract.setHardwareFlag(true);
+				siebelAccountListContract.setSoldToType("HW");
 			}
 		}
 		/*End Add*/

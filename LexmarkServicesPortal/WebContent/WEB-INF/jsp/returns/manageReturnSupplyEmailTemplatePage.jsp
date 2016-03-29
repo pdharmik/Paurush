@@ -99,7 +99,7 @@
               <tr>
                 <td valign="top"  class="table-td-style16"><strong><spring:message code="requestInfo.label.description"/></strong></td>
                 <td valign="top"  class="table-td-style16" >
-				<span id ="addtnlInfo_description"></span>
+				<div id ="addtnlInfo_description" class="smallNotesOverflow"></div>
 				</td>
               </tr>
               
@@ -159,7 +159,7 @@
               </tr>
               <tr>
                 <td valign="top" class="table-td-style16"><strong><spring:message code="requestInfo.label.notes"/></strong></td>
-                <td valign="top" class="table-td-style16"><span id="notes"></span></td>
+                <td valign="top" class="table-td-style16"><div id="notes" class="smallNotesOverflow"></div></td>
               </tr>
              </table>			  
 			  </td>

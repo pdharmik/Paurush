@@ -1,5 +1,7 @@
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
-<%@ include file="/WEB-INF/jsp/includeGrid.jsp"%>
+<c:if test='${includeGrid eq "true" || includeGrid eq null}'>
+<jsp:include page="/WEB-INF/jsp/includeGrid.jsp"/>
+</c:if>
 <jsp:include page="/WEB-INF/jsp/common/dynamicGridInitialize.jsp"></jsp:include>
 <%@page import ="static com.lexmark.services.util.ChangeMgmtConstant.ISPOPUP"%>
 <%@page import=" static com.lexmark.constants.LexmarkConstants.gridConfigurationValues" %>

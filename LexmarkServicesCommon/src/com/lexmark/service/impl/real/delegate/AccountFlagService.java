@@ -30,6 +30,7 @@ import com.lexmark.service.impl.real.domain.AgreementRelatedAccountsDO;
 import com.lexmark.service.impl.real.domain.CatalogEntitlementAccountDo;
 import com.lexmark.service.impl.real.util.AmindServiceUtil;
 import com.lexmark.util.LangUtil;
+
 import org.apache.logging.log4j.Logger;
 
 
@@ -54,6 +55,7 @@ public class AccountFlagService {
 	private SiebelAccountListContract contract;
 	private String contractNumber;
 	private boolean partnerPortal;
+	private String soldToType;
 
 	public AccountFlagService(SiebelAccountListContract contract) {
 		if (contract == null) {
@@ -64,6 +66,7 @@ public class AccountFlagService {
 		this.contract = contract;
 		contractNumber = contract.getContractNumber();
 		partnerPortal = contract.isPartnerPortal();
+		soldToType = contract.getSoldToType();
 	}
 
 	public void checkRequiredFields() {
@@ -245,7 +248,7 @@ public class AccountFlagService {
 			}
 			result.setQuantityServicesMap(tempQuantityServicesMap);
 			result.setQuantitySuppliesMap(tempQuantitySuppliesMap);
-			result.setAccountList(convertCatalogAccountToAccountList(notNull(entitlementDoList), contractNumber));
+			result.setAccountList(convertCatalogAccountToAccountList(notNull(entitlementDoList), contractNumber, soldToType));
 		} else {
 			result.setCatalogEntitlementFlag(false);
 		}
@@ -255,7 +258,7 @@ public class AccountFlagService {
 	public List<Account> queryAndGetResultCatalogAgreement() {
 		IDataManager dataManager = getSession().getDataManager();
 		List<Account> result = convertCatalogAccountToAccountList(notNull(dataManager
-				.query(criteria)), contractNumber);
+				.query(criteria)), contractNumber, soldToType);
 		return result;
 	}
 

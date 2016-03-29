@@ -14,4 +14,5 @@ public interface RealTime_Services extends java.rmi.Remote {
     public com.businessobjects.service.Service_Realtime_DQ_Siebel_business_address_datacleanse.output.DataSet service_Realtime_DQ_Siebel_business_address_datacleanse(com.businessobjects.service.Service_Realtime_DQ_Siebel_business_address_datacleanse.input.DataSet inputBody) throws java.rmi.RemoteException;
     public com.businessobjects.service.RT_ADDRESS.output.ROOT RT_ADDRESS(com.businessobjects.service.RT_ADDRESS.input.ROOT inputBody) throws java.rmi.RemoteException;
     public com.businessobjects.service.RT_ADDR_MATCH_CUST_SQL_INS_UPD.output.ROOT RT_ADDR_MATCH_CUST_SQL_INS_UPD(com.businessobjects.service.RT_ADDR_MATCH_CUST_SQL_INS_UPD.input.ROOT inputBody) throws java.rmi.RemoteException;
+    public com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.output.DataSet service_Realtime_DQ_Portal_business_address_region_code(com.businessobjects.service.Service_Realtime_DQ_Portal_business_address_region_code.input.DataSet inputBody) throws java.rmi.RemoteException;
 }

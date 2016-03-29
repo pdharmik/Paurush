@@ -204,9 +204,9 @@ var backURL={
 };
 
 </script>
-<script type="text/javascript" src="<html:rootPath/>js/validation.js?version=4"></script>
-<script type="text/javascript" src="<html:rootPath/>js/hardwareDebreif.js?version=7"></script>
-<script type="text/javascript" src="<html:rootPath/>js/commonAddress.js"></script>
+<script type="text/javascript" src="<html:rootPath/>js/validation.js?version=<html:fileCacheVersion/>"></script>
+<script type="text/javascript" src="<html:rootPath/>js/hardwareDebreif.js?version=<html:fileCacheVersion/>"></script>
+<script type="text/javascript" src="<html:rootPath/>js/commonAddress.js?version=<html:fileCacheVersion/>"></script>
 <jsp:include page="/WEB-INF/jsp/hardwareDebrief/HWInstallDeInstallMove/commonHwCloseOut/commonHardwareValidation.jsp"></jsp:include>	 
 
 <script>
@@ -239,7 +239,6 @@ var formatValidation={
 		7:["userEnteredActivity.serviceRequest.asset.ipV6","<spring:message code="requestInfo.hardwareDebreief.common.closeOut.validation.IpAddress" javaScriptEscape="true"/>",isIPV6],
 		12:["userEnteredActivity.serviceRequest.asset.pageCounts[].type","<spring:message code="requestInfo.errorMsg.pageCountType" javaScriptEscape="true" />",checkBlankValue,pageCountslength],
 		9:["userEnteredActivity.serviceRequest.asset.pageCounts[].count","<spring:message code="claim.errorMsg.qtyMustBeNumThan0" javaScriptEscape="true" arguments="${pageCountTitle}" />",checkQuantity,pageCountslength],
-		13:["","",,],
 		save:false,
 		closeOut:false
 };

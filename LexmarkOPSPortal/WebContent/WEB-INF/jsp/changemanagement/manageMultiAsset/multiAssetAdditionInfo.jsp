@@ -254,9 +254,14 @@ YUI().use('node-base', function (Y) {
 	});
 });
 var assetIndex=${astNbr};
+
+var deviceCount =0;
+var deviceMapObj={"0":true};
 function addaDevice()
 {
 	assetIndex+=1;
+	deviceCount++;
+	deviceMapObj[deviceCount]=true;
 	
 	$('#multiAddContent').append(multiAddTemplate({index:assetIndex}));
 	showBuildingFloorZoneForMultiAdd(assetIndex);
@@ -290,7 +295,7 @@ function addaDevice()
 
 function removeaDevice(assetNo)
 {
-
+	deviceMapObj[assetNo]=false;
 	$("#asset_"+assetNo).remove();
 	$("#hrtag_"+assetNo).remove();
 	$('#multiAddContent_'+assetNo).remove();

@@ -1940,8 +1940,22 @@ public class ContractFactory {
 			}
 			if(request.getParameter("fromFleetManager")!=null && request.getParameter("fromFleetManager").equalsIgnoreCase("true")){
 				LOGGER.debug("FROM FLEET MANAGEMENT NO DATE RANGE");
-				requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE);
-				requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE);
+				if(StringUtils.isBlank(request.getParameter("searchCriterias"))){
+					/* This denotes the request is NOT for Open Requests. Its for Request history.. So No Date Range.*/
+					requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE);
+					requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE);	
+				}else{
+					Date todayDt = new Date();
+					Calendar dtCal = new GregorianCalendar();
+					dtCal.setTime(todayDt);
+					dtCal.add(Calendar.DAY_OF_MONTH, -90);
+					Date before90Days = dtCal.getTime();
+					TimezoneUtil.adjustDate(before90Days, timezoneOffset); 
+					requestListContract.getFilterCriteria().put(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE,DateUtil.convertDateToGMTString(before90Days));
+					requestListContract.getFilterCriteria().put(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE,DateUtil.convertDateToGMTString(todayDt));
+							
+				}
+		
 			}
 		//End added for LBS	
 			
@@ -2894,7 +2908,6 @@ public class ContractFactory {
 		String agreementId = (String) session.getAttribute("agreementId");
 		contract.setMdmId(PortalSessionUtil.getMdmId(session));
 		contract.setMdmLevel(PortalSessionUtil.getMdmLevel(session));
-		contract.setSoldToNumber(soldTo);
 		contract.setAgreementId(agreementId);
 		contract.setHardwareFlag(isHardwareFlag);
 		return contract;
@@ -3037,7 +3050,6 @@ public class ContractFactory {
 		LOGGER.debug("PostalCode "+shipToAddress.getPostalCode());
 		
 		taxContract.setSalesOrganization(salesOrg);
-		taxContract.setSoldToNumber(soldToNumber);
 		taxContract.setCountry(shipToAddress.getCountryISOCode());
 		taxContract.setCity(shipToAddress.getCity());
 		taxContract.setRegion(shipToAddress.getRegion());
@@ -3188,7 +3200,8 @@ public class ContractFactory {
 			}
 		}
 		
-contract.setPlacementId(hardwareDetailPageForm.getPlacementId());
+		contract.setPlacementId(hardwareDetailPageForm.getPlacementId());
+		contract.setFleetManagementFlag(hardwareDetailPageForm.getFleetManagementFlag());
 		return contract;
 	}	
 	

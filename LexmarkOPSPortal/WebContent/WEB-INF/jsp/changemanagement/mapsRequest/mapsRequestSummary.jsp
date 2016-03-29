@@ -218,7 +218,7 @@ jQuery(document).ready(function() {
 					  </c:if> --%>
 	                  <li>
 	                    <label for="rqstDesc"><spring:message code="requestInfo.label.notesMapReview"/></label>
-	                    <span id="rqstDesc">${mapsRequestForm.notesOrComments }<br>${mapsRequestForm.notesForNewBuilding }</br></span>
+	                    <span class="wFull notesOverflow" id="rqstDesc">${mapsRequestForm.notesOrComments }<br>${mapsRequestForm.notesForNewBuilding }</br></span>
 					  </li>
 					    <li>
                            <label for="moveAsset"><spring:message code="requestInfo.label.moveAsset"/></label>

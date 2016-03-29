@@ -23,10 +23,6 @@
     <include name="**/*.jar"/>
   </fileset>
  
-  <fileset dir="../DctmWebServiceClient/dist/lib" >
- 	<include name="**/*.jar"/>
-  </fileset>
- 	
   <fileset dir="../LexmarkServicesWebService/dist/lib" >
  	 	<include name="**/*.jar"/>
   </fileset>
@@ -115,7 +111,6 @@
 	<copy todir="${dist}/tmp/WEB-INF/context" file="${configurationFolder}/${build.env}/creditCard.properties" overwrite="true"/>
 
 	<copy file="../LexmarkServicesCommon/dist/lib/LexmarkServicesCommon.jar" todir="${dist}/tmp/WEB-INF/lib" />
-	<copy file="../DctmWebServiceClient/dist/lib/DctmWebServiceClient.jar" todir="${dist}/tmp/WEB-INF/lib" />
 	<copy file="../LexmarkServicesWebService/dist/lib/LexmarkServicesWebService.jar" todir="${dist}/tmp/WEB-INF/lib" />
   			
 	<zip

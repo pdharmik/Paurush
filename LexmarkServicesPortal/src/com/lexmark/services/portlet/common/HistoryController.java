@@ -1392,7 +1392,11 @@ public class HistoryController extends BaseController{
 			  String moveToAddressGrouped = requestForm.getServiceRequest().getAsset().getMoveToAddressGrouped();
 			  LOGGER.debug("address grouped == "+moveToAddressGrouped);
 			  if(StringUtils.isNotBlank(moveToAddressGrouped)){
-				  requestForm.getServiceRequest().getAsset().setInstallAddress(createAddressfromString(moveToAddressGrouped));				  
+				  GenericAddress physicalAddress= requestForm.getServiceRequest().getAsset().getInstallAddress();
+				  requestForm.getServiceRequest().getAsset().setInstallAddress(createAddressfromString(moveToAddressGrouped));	
+				  requestForm.getServiceRequest().getAsset().getInstallAddress().setPhysicalLocation1(physicalAddress.getPhysicalLocation1());
+				  requestForm.getServiceRequest().getAsset().getInstallAddress().setPhysicalLocation2(physicalAddress.getPhysicalLocation2());
+				  requestForm.getServiceRequest().getAsset().getInstallAddress().setPhysicalLocation3(physicalAddress.getPhysicalLocation3());
 			  }
 			  //Ends Added for CR 16731 LBS 
 			  

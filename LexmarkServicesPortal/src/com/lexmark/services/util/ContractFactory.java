@@ -1977,9 +1977,24 @@ public class ContractFactory {
 					LOGGER.debug("Adding service Type");
 					requestListContract.setServiceType(cmType);
 				}
+			
+				if(StringUtils.isBlank(request.getParameter("searchCriterias"))){
+					/* This denotes the request is NOT for Open Requests. Its for Request history.. So No Date Range.*/
+					requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE);
+					requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE);	
+				}else{
+					Date todayDt = new Date();
+					Calendar dtCal = new GregorianCalendar();
+					dtCal.setTime(todayDt);
+					dtCal.add(Calendar.DAY_OF_MONTH, -90);
+					Date before90Days = dtCal.getTime();
+					TimezoneUtil.adjustDate(before90Days, timezoneOffset); 
+					requestListContract.getFilterCriteria().put(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE,DateUtil.convertDateToGMTString(before90Days));
+					requestListContract.getFilterCriteria().put(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE,DateUtil.convertDateToGMTString(todayDt));
+							
+				}
 				
-				requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE);
-				requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE);
+				
 			}
 		//End added for LBS	
 			
@@ -2932,7 +2947,6 @@ public class ContractFactory {
 		String agreementId = (String) session.getAttribute("agreementId");
 		contract.setMdmId(PortalSessionUtil.getMdmId(session));
 		contract.setMdmLevel(PortalSessionUtil.getMdmLevel(session));
-		contract.setSoldToNumber(soldTo);
 		contract.setAgreementId(agreementId);
 		contract.setHardwareFlag(isHardwareFlag);
 		return contract;
@@ -3075,7 +3089,6 @@ public class ContractFactory {
 		LOGGER.debug("PostalCode "+shipToAddress.getPostalCode());
 		
 		taxContract.setSalesOrganization(salesOrg);
-		taxContract.setSoldToNumber(soldToNumber);
 		taxContract.setCountry(shipToAddress.getCountryISOCode());
 		taxContract.setCity(shipToAddress.getCity());
 		taxContract.setRegion(shipToAddress.getRegion());

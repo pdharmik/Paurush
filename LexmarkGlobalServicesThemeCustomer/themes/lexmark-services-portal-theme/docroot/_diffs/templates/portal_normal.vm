@@ -199,7 +199,7 @@ $theme.include($body_top_include)
 		#if ($show_sign_out)
 			#set ($nav_item_class = "")
 			<li class="$nav_item_class">
-				<a href="$sign_out_url?referer=/group/global-services/">$sign_out_text</a>
+				<a href="$sign_out_url?referer=/prtl-custlogout.html">$sign_out_text</a>
 			</li>
 		#end
 		    

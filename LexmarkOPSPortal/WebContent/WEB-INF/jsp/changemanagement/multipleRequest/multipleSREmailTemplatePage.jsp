@@ -14,7 +14,7 @@
 	th {padding:0 5px 0 5px;}
 </style>
 
-<table width="100%">
+<table width="800" style="margin:0 auto">
 	<tr id="topEmail">
 		<td align="left">
 		&nbsp;&nbsp;<a id="btmEmail" onclick="javascript:showEmailPopup();">
@@ -100,7 +100,8 @@
               </tr>
               <tr>
                 <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;"><strong><spring:message code="requestInfo.label.description"/></strong></td>
-                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;" id="addtnlInfo_description">
+                <td valign="top"  style="font-family:Arial, Helvetica, sans-serif; font-size:11px;">
+                <div id="addtnlInfo_description" class="smallNotesOverflow"></div>
 				
 				</td>
               </tr>

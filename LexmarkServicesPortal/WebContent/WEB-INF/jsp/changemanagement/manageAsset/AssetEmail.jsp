@@ -15,6 +15,10 @@
 	td {padding:0 5px 0 5px;}
 	th {padding:0 5px 0 5px;}
 	.ie7 .lableWidth{width:10%!important;}
+	#attachmentDescription{
+		max-height:100px;
+		overflow:auto;
+	}
 </style>
  <c:choose>
  <c:when test="${typeOfRequest =='Add_Asset'}">
@@ -272,7 +276,7 @@
               </tr>
              
               <tr>
-                <td colspan="2" valign="top"  class="attachmentDescription2" id="attachmentDescription"></td>
+                <td colspan="2" valign="top"  class="attachmentDescription2" ><div id="attachmentDescription"></div></td>
                 
               </tr>
               </table>
@@ -546,7 +550,7 @@
               </tr>              
               
               <tr>
-                <td colspan="2" valign="top"  class="attachmentDescription2" id="attachmentDescription"></td>
+                <td colspan="2" valign="top"  class="attachmentDescription2"><div id="attachmentDescription"></div></td>
                 
               </tr>
               </table>
@@ -799,7 +803,7 @@
               </tr>
               
               <tr>
-                <td colspan="2" valign="top"  class="attachmentDescription2" id="attachmentDescription"></td>
+                <td colspan="2" valign="top"  class="attachmentDescription2"><div id="attachmentDescription"></div></td>
                 
               </tr>
               </table>

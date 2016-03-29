@@ -14,10 +14,6 @@
     <fileset dir="${lib}" >
 	  <include name="**/*.jar"/>
     </fileset>
- 	
-    <fileset dir="../DctmWebServiceClient/dist/lib" >
-    	<include name="**/*.jar"/>
-    </fileset>
   	
   	<fileset dir="../LexmarkServicesWebService/dist/lib" >
   	    	<include name="**/*.jar"/>
@@ -36,11 +32,8 @@
     <mkdir dir="${build}"/>
   </target>
 
-  <target name="buildDctmWebServiceClient">
-	 <ant dir="../DctmWebServiceClient" target="dist" inheritAll="false"/>
-  </target>
 	
-  <target name="compile" depends="init, buildDctmWebServiceClient"
+  <target name="compile" depends="init"
         description="compile the source " >
   	<echo>${build}</echo>
 

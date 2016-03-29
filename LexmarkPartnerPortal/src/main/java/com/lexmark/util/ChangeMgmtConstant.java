@@ -1026,4 +1026,6 @@ public interface ChangeMgmtConstant {
 	 String SHOW_ASSET_ACCEPTANCE = "Show Asset Acceptance";
 	 /********for ONLY_ASSET_ACCEPTANCE**********/
 	 String ONLY_ASSET_ACCEPTANCE = "Only Asset Acceptance";
+	 
+	 String ADDRESSCLEANSEDREGION = "region";
 }

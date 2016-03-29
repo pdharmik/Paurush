@@ -285,7 +285,8 @@ public class OrderSuppliesCatalogController extends BaseController {
 		String splitterFlag = "false";
 		if(accDetails != null){
 			accountName = accDetails.get("accountName");
-			model.addAttribute("accountName",accountName);
+			accountName=accountName.replace("\"", "&quot;");
+			model.addAttribute("accountsName",accountName);
 			
 			if(accDetails.get("splitterFlag")!=null){
 				splitterFlag = accDetails.get("splitterFlag");

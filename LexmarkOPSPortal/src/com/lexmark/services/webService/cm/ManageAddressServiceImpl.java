@@ -129,7 +129,7 @@ public class ManageAddressServiceImpl implements ManageAddressService {
 		ServiceRequest srData=null;
 		String serviceRequestNumber =null;
 		//final String sourceSystem = "SERVICES WEB PORTAL";
-		final String sourceSystem = "Web";
+		String sourceSystem = null;
 		
 		//ObjectFactory factory = new ObjectFactory();
 		
@@ -203,6 +203,16 @@ public class ManageAddressServiceImpl implements ManageAddressService {
 		
 		cmServiceReqData.setCustomerReferenceNumber(srData.getCustomerReferenceId());
 		cmServiceReqData.setCostCenter(srData.getCostCenter());
+		
+		if(serviceReqContract.getFleetManagementFlag()!=null && serviceReqContract.getFleetManagementFlag().equalsIgnoreCase("true")){
+			LOGGER.debug("Setting Map-Web");
+				sourceSystem = "Map-LBS Internal";
+		}
+		else{
+			LOGGER.debug("Setting Web");
+			sourceSystem = "LBS Internal";
+		}
+		
 		cmServiceReqData.setServiceRequestSource(sourceSystem);
 		//notes attachment start
 		cmServiceReqData.setAttachmentNotes(srData.getNotes());

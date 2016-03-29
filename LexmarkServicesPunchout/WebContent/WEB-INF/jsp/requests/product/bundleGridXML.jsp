@@ -5,15 +5,19 @@
 <rows total_count="${totalcount}" pos="${startPos}">
 	<c:forEach var="bundle" items="${bundleItems}" varStatus="status">
 		<row id="${bundle.bundleId}">
-		
-		<cell><![CDATA[${getOptionsAndWarrantiesVar}&bundleId=${bundle.bundleId}&cNum=${bundle.contractNumber}&cartType=printers<%-- Options warranties data goes here--%>]]>
+		 <c:forEach var="partList" items="${bundle.partList}" varStatus="counter" begin="0">
+		  <c:if test="${partList.partType == 'Printers'}">
+           			<c:set var="model" value="${partList.partNumber}"/>     	
+                </c:if> 
+		 </c:forEach>
+		<cell><![CDATA[${getOptionsAndWarrantiesVar}&bundleId=${bundle.bundleId}&cNum=${bundle.contractNumber}&cartType=printers&model=${model}<%-- Options warranties data goes here--%>]]>
 		</cell>
 		    <cell><![CDATA[<div id="bundle${status.index+1}">
         <div class="printer-cntnr">
               <div class="prdctpge-printerimg"><img src="<html:imagesPath/>product-printer.jpg" width="89" height="72" alt="Mono Laser Printers"></div>
               <div class="printer-details-cntnr">
-            <br/><span style="font-size:24px;font-weight:bold;" id="printerId">${bundle.configId}</span><br/>
-            <span style="font-size:12px;">${bundle.mpsDescription}</span><br/><br/>
+            <br/><span style="font-size:12px;" id="printerId">${bundle.configId}</span><br/>
+            <span style="font-size:12px;font-weight:bold;">${bundle.mpsDescription}</span><br/><br/>
             <span style="font-size:12px;">${bundle.bundleName}</span><br/>
             <p style="width:90%; padding:0; font-size:12px; line-height:17px;">${bundle.description} <a href = "javascript:learnMorePopup('${bundle.bundleId}');">&nbsp;&nbsp;<B><spring:message code="shoppingCart.printers.link"/></B></a>
             </p>
@@ -66,7 +70,7 @@
                 </c:choose>
                 </div>
                    
-            <div class="price-btn-cntnr"><div class="price-btn-cntnr">${bundle.price}<c:if test="${not empty bundle.price}">(${bundle.currency})</c:if></div>
+            <div class="price-btn-cntnr"><div>${bundle.price}<c:if test="${not empty bundle.price}">(${bundle.currency})</c:if></div>
              <c:choose>
             	<c:when test="${bundle.bundleQty ne null && bundle.bundleQty ne 0}">
               <input name="Update Cart" title="" id="cartButton${bundle.bundleId}" type="button" class="button" value="Update Cart" border="0" onclick="moveToCart('${bundle.bundleId}',this.id)">
@@ -93,17 +97,17 @@
                 </c:choose>
                 </div>
                    
-           <div class="quntity-cart-cntnr"> 
-               <div class="price-btn-cntnr" style="width: 90%!important;"><spring:message code="requestInfo.error.priceUnavailable"/></div>
+           <div class="floatR"> 
+               <div class="price-btn-cntnr" style="width: 100%!important;"><spring:message code="requestInfo.error.priceUnavailable"/></div>
                 
                 </div>
              <c:choose>
             	<c:when test="${bundle.bundleQty ne null && bundle.bundleQty ne 0}">
-              <div><input name="Update Cart" title="" id="cartButton${bundle.bundleId}" type="button" class="button" value="Update Cart" border="0" onclick="moveToCart('${bundle.bundleId}',this.id)">
+              <div><input name="Update Cart" title="" id="cartButton${bundle.bundleId}" type="button" class="button floatR" value="Update Cart" border="0" onclick="moveToCart('${bundle.bundleId}',this.id)">
             </div>
                </c:when>
                 <c:otherwise>
-                 <input name="Add to Cart" title="" id="cartButton${bundle.bundleId}" type="button" class="button" value="Add to Cart" border="0" onclick="moveToCart('${bundle.bundleId}',this.id)">
+                 <input name="Add to Cart" title="" id="cartButton${bundle.bundleId}" type="button" class="button floatR" value="Add to Cart" border="0" onclick="moveToCart('${bundle.bundleId}',this.id)">
                  </c:otherwise>
                 </c:choose>
               </div>
