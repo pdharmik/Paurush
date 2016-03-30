@@ -53,4 +53,7 @@ public class PunchoutConstants {
 	public static final String CART_TYPE = "cartType";
 	/** Constant for PunchoutConstants */
 	public static final String ACNT_TYPE = "acntType";
+	
+	public static final String ARIBA_PARAMS = "aribaParamMap";
+	
 }
