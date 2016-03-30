@@ -41,7 +41,7 @@ public class HardwareSapCatalogDo extends BaseEntity implements Serializable {
 	private String sapStatus;
 	private String assetId;
 	private String mpsDescription;
-	private String PartTypeB2b;
+	private String partTypeB2b;
 	private String configId;
 	
 	
@@ -264,13 +264,6 @@ public class HardwareSapCatalogDo extends BaseEntity implements Serializable {
 		this.sapStatus = sapStatus;
 	}
 
-	public String getPartTypeB2b() {
-		return PartTypeB2b;
-	}
-
-	public void setPartTypeB2b(String partTypeB2b) {
-		PartTypeB2b = partTypeB2b;
-	}
 
 	public String getConfigId() {
 		return configId;
@@ -278,6 +271,20 @@ public class HardwareSapCatalogDo extends BaseEntity implements Serializable {
 
 	public void setConfigId(String configId) {
 		this.configId = configId;
+	}
+
+	/**
+	 * @return the partTypeB2b
+	 */
+	public String getPartTypeB2b() {
+		return partTypeB2b;
+	}
+
+	/**
+	 * @param partTypeB2b the partTypeB2b to set
+	 */
+	public void setPartTypeB2b(String partTypeB2b) {
+		this.partTypeB2b = partTypeB2b;
 	}
 	
 }
