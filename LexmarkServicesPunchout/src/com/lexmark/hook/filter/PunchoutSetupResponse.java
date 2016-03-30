@@ -34,9 +34,7 @@ public class PunchoutSetupResponse implements Filter{
 	   private String REPUBLIC_ACNT;
 	   private static Logger LOGGER = LogManager.getLogger(PunchoutSetupResponse.class);
 	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub		
-	}
+	public void destroy() {}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
