@@ -21,7 +21,7 @@ h3 {
 	padding:0;
 	font-weight:normal;
 }
-select {
+select, .wid90per {
 	width:90%;
 }
 select a:visited {
@@ -326,8 +326,9 @@ header {
 	font-size:16px;
 	color:#1d1d25;
 	position: absolute;
-	right: 15px;
+	right: 20px;
 	top: 15px;
+	cursor: pointer;
 }
 .mid-cntnr {
 	margin:5px 0;
@@ -613,12 +614,11 @@ min-height:20px;
 	margin-bottom:10px;
 }
 #popup-title a {
-	text-decoration:none;
-	color:#1e68bc !important;
+	color:#000000 !important;
+	text-decoration: underline;
 }
 #popup-title a:hover {
-	text-decoration:underline;
-	color:#1e68bc;
+	color:#009900 !important;
 }
 .popup-table-cntnr {
 	float:left;
@@ -631,18 +631,17 @@ min-height:20px;
 .popup-black-txt {
 	color:#1d1d25;
 	line-height:25px;
-	border-bottom:1px solid #d8d8d8;
 	padding-left:5px;
 	font-size:12px;
 	width:230px;
 }
 .popup-gray-txt {
 	float:left;
-	color:#aaaaaa;
+	color:#808080;
+	overflow:hidden;
 	line-height:25px;
 	width:222px;
 	font-size:12px;
-	border-bottom:1px solid #d8d8d8;
 	padding-left:3px;
 }
 .popup-cntct-ship-cntnr {
@@ -883,7 +882,7 @@ ul.form li span {
 	padding:2px 5px 2px 0;
 	line-height:1.8em;
 }
-.even_row { background:#eff0f6; }
+.even_row { background:#efefef; }
 .odd_row { background:#ffffff }
 tr.altRow td { background-color:#f0f0f0 }
  .quantity-cntnr2 {
@@ -1119,6 +1118,9 @@ h2.accordion-header {
 #mainRightNavContainer {
     margin-right: 20px;
 }
+#showPrinterDetails{
+    padding-top: 30px;
+}
 .product_title{
 	color:#138948;
 	font-size:23px;	
@@ -1149,6 +1151,9 @@ ul.included-list, ul.specs-list {
 	float: left;
     margin: 0 10px;
     width: calc(40% - 30px);
+}
+.printer-details-cntnr-cart .item_Description{
+	padding:0;
 }
 .altbutton, .altbutton a{
 	background: #fff;
@@ -1215,13 +1220,82 @@ ul.included-list, ul.specs-list {
 .borderLeftGreen{
 	border-left:4px solid rgb(29, 194, 50);	
 }
+#search{
+    width: 80px; 
+    height: 13px;
+}
 #search,#globalSearch {
-    margin: 3px;
+    margin:1px 3px;
 }
 #globalSearch {
     padding: 0 10px !important;
+    height: 22px;
     background-color: #000 !important;
 }
 #main-content #column-2 {
    position: relative;
+}
+#globalSearchList > h3 {
+    font-weight: normal;
+    text-transform: none;
+}
+.globalSearch_List {
+    margin: 30px 0;
+}
+.description_Detail > a {
+    color: #00941c;
+    font-size: 16px;
+    text-decoration: none;
+}
+.globalSearch_List .description_Area {
+    width: 75%;
+}
+.globalSearch_List .description_Detail {
+    margin: 0 20px;
+}
+.globalSearch_List .qty_AddToCart {
+    width: 25%;
+}
+.globalSearch_List .price,.globalSearch_List label {
+    text-align: right;
+    width: 100%;
+}
+select#optionsSize {
+    width: 50px;
+}
+#option_Form {
+    margin-left: 100px;
+}
+.blueColor,.countdescription{
+	color:#0061de
+}
+.countdescription{
+	margin: 0 10px;	
+}
+.padding-top-5px{
+	padding-top: 5px;
+}
+#pagingAreaPopup > div {
+    width: 720px !important;
+}
+#requestDetails{
+	max-height: 500px;
+	overflow-y: auto
+}
+.table-img-left{
+	width: 10%;
+	padding-right: 10px; 
+	vertical-align: top;
+}
+.dashedBorderBottom{
+	border-bottom:1px dashed #c0c0c0;
+}
+.w96-per{
+	width: 96%;
+}
+.w98-per{
+	width: 98% !important;
+}
+#accor1 tbody td {
+    padding-top: 5px;
 }

@@ -5,6 +5,7 @@ import java.util.Locale;
 
 import javax.portlet.PortletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -192,31 +193,27 @@ public class XmlOutputGenerator {
 			Part parentPart=parts.get(j);
 			String partBundleId=parentPart.getCatalogId();
 			if(parentPart.getCatalogType()!=null){
-				logger.debug("parentPart.getCatalogType()"+parentPart.getCatalogType());
 				StringBuffer xmlRow=new StringBuffer();
 				StringBuffer tempXmlRow=new StringBuffer();
 				if(parentPart.getCatalogType().equalsIgnoreCase("Hardware Bundles")){
 					
 					if(parentPart.getBundleParentLineId()==null || parentPart.getBundleParentLineId().equals("")){
-						//sizeCount++;
 						boolean sectionAppear = false;
-						logger.debug("Parent Bundle");
-						
-//							if(size>1){
-//								xmlRow.append("  <cell><![CDATA[<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th>Part Number</th><th>Description</th><th>Part Type</th><th>Quantity</th></tr></thead>");
-//								}
 								for(int k=0;k<parts.size();k++){
 									Part part=parts.get(k);
 									if(partBundleId !=null && part.getBundleParentLineId()!=null && partBundleId.equalsIgnoreCase(part.getBundleParentLineId())){
-										sectionAppear = true;
-										logger.debug("sectionAppear ::: " + sectionAppear);
+										sectionAppear = true;										
 										tempXmlRow.append("<tr>");
 										tempXmlRow.append("<td>"+part.getPartNumber() +"</td>");
 										tempXmlRow.append("<td>"+part.getDescription() +"</td>");
-										tempXmlRow.append("<td>"+part.getDeviceType() +"</td>");
-										tempXmlRow.append("<td>"+Integer.parseInt(part.getOrderQuantity()) / Integer.parseInt(parentPart.getOrderQuantity()) +"</td>");								
-										tempXmlRow.append("</tr>");
-										part.setBundleParentLineId("donee");	
+										tempXmlRow.append("<td>"+part.getDeviceType() +"</td>");										
+										if(StringUtils.isBlank(part.getOrderQuantity()) || StringUtils.isBlank(parentPart.getOrderQuantity())){
+											tempXmlRow.append("<td></td>");
+										}
+										else{
+											tempXmlRow.append("<td>"+Integer.parseInt(part.getOrderQuantity()) / Integer.parseInt(parentPart.getOrderQuantity()) +"</td>");
+										}																		
+										tempXmlRow.append("</tr>");										
 									}
 								}
 
