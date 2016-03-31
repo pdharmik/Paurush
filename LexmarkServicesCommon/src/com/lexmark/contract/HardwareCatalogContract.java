@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.lexmark.contract.api.MdmSearchContractBase;
+import com.lexmark.util.KeyGenerator;
 
 public class HardwareCatalogContract extends MdmSearchContractBase implements Serializable {
 
@@ -83,4 +84,10 @@ public class HardwareCatalogContract extends MdmSearchContractBase implements Se
 	public void setEffectiveDate(Date effectiveDate) {
 		this.effectiveDate = effectiveDate;
 	}
+	
+	public String toString(){
+		return KeyGenerator.generateKey(agreementId,contractNumber,soldToNumber,
+				locationType,partType,productType);		
+	}
+	
 }
