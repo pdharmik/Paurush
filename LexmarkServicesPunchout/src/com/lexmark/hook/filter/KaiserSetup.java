@@ -24,10 +24,7 @@ public class KaiserSetup implements Filter{
 	private static Logger LOGGER = LogManager.getLogger(KaiserSetup.class);
 	private static String KAISER_ACNT;
 	@Override
-	public void destroy() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void destroy() {}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
