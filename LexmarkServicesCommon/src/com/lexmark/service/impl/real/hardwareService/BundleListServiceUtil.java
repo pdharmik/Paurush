@@ -35,6 +35,7 @@ public class BundleListServiceUtil {
 					bundle.setBillingModel(pickSapCatalogDo.getBillingModel());
 					bundle.setPartList(populateParts(pickSapCatalogDo));
 					bundle.setConfigId(pickSapCatalogDo.getConfigId());
+					bundle.setPartTypeB2b(pickSapCatalogDo.getPartTypeB2b());
 					
 					bundles.add(bundle);
 				}
@@ -56,6 +57,7 @@ public class BundleListServiceUtil {
 				part.setPaymentTypes(Arrays.asList(sapPaymentType.getBillingModel()));
 				part.setPartType(sapPaymentType.getPartType());
 				part.setParentLineItemNumber(sapPaymentType.getParentLineItemNumber());
+				part.setPartTypeMVFB2b(sapPaymentType.getPartTypeMVFB2b());
 				parts.add(part);
 			}
 		}

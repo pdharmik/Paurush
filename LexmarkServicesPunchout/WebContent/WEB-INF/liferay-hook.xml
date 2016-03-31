@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hook PUBLIC "-//Liferay//DTD Hook 6.2.0//EN" "http://www.liferay.com/dtd/liferay-hook_6_2_0.dtd">
+
+<hook>
+	<servlet-filter>
+		<servlet-filter-name>Punchout Setup Response</servlet-filter-name>
+		<servlet-filter-impl>com.lexmark.hook.filter.PunchoutSetupResponse</servlet-filter-impl>
+	</servlet-filter>
+	<servlet-filter-mapping>
+		<servlet-filter-name>Punchout Setup Response</servlet-filter-name>
+		<url-pattern>/punchoutcatalog/*</url-pattern>
+	</servlet-filter-mapping>
+</hook>

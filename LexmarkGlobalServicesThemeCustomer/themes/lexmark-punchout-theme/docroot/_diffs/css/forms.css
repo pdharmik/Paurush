@@ -56,29 +56,17 @@ input[type="submit"] {
 	background-color: #286898;
 	border: 0;
 	color: #fff;
-	font-size: 11px;
-	text-transform: uppercase;
+	font-size: 13px;
+	font-weight:bold;
 	background-image: none;
-	border-radius: 12px;
-	-moz-border-radius: 12px;
-    -webkit-border-radius: 12px;
 }
 
 input[type="button"] {
 	cursor: pointer;
+	font-weight:bold;
 	padding:4px 7px;
-	font-size: 11px;
-	text-transform: uppercase;
-	background-image: none;
-	border-radius: 12px;
-	-moz-border-radius: 12px;
-    -webkit-border-radius: 12px;	
-}
-
-input[type="reset"]:hover, input[type="submit"]:focus, input[type="button"]:focus, input[type="reset"]:focus {
-	background: #DFF4FF;
-	border: 1px solid #A7CEDF;
-	color: #369;
+	font-size: 13px;
+	background-image: none;	
 }
 
 /* ---------- IE6 chokes on attribute selectors in a chain, so we separate them into their own rule ---------- */

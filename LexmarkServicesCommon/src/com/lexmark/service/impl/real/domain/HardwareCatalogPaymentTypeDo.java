@@ -24,7 +24,8 @@ public class HardwareCatalogPaymentTypeDo extends BaseEntity implements Serializ
 	private String catalogId;
 	private String materialId;
 	private String parentLineItemNumber;
-	private String PartTypeMVFB2b;
+	private String partTypeMVFB2b;
+	
 
 	
 	public String getQuantity() {
@@ -102,12 +103,17 @@ public class HardwareCatalogPaymentTypeDo extends BaseEntity implements Serializ
 	public void setParentLineItemNumber(String parentLineItemNumber) {
 		this.parentLineItemNumber = parentLineItemNumber;
 	}
+	/**
+	 * @return the partTypeMVFB2b
+	 */
 	public String getPartTypeMVFB2b() {
-		return PartTypeMVFB2b;
+		return partTypeMVFB2b;
 	}
-
+	/**
+	 * @param partTypeMVFB2b the partTypeMVFB2b to set
+	 */
 	public void setPartTypeMVFB2b(String partTypeMVFB2b) {
-		PartTypeMVFB2b = partTypeMVFB2b;
+		this.partTypeMVFB2b = partTypeMVFB2b;
 	}
 	
 }

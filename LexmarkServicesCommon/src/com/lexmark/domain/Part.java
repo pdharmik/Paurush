@@ -112,7 +112,8 @@ public class Part implements Serializable {
     private String deinstallComments;
     private String deinstallHostName;
     private boolean typePrinter;
-
+    private String partTypeMVFB2b;
+    
     public String getInstallProduct() {
 		return installProduct;
 	}
@@ -817,6 +818,20 @@ public class Part implements Serializable {
 
 	public void setTypePrinter(boolean typePrinter) {
 		this.typePrinter = typePrinter;
+	}
+
+	/**
+	 * @return the partTypeMVFB2b
+	 */
+	public String getPartTypeMVFB2b() {
+		return partTypeMVFB2b;
+	}
+
+	/**
+	 * @param partTypeMVFB2b the partTypeMVFB2b to set
+	 */
+	public void setPartTypeMVFB2b(String partTypeMVFB2b) {
+		this.partTypeMVFB2b = partTypeMVFB2b;
 	}
 
 }

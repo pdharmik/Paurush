@@ -56,6 +56,7 @@ public class PunchoutConstants {
 	
 	public static final String ARIBA_PARAMS = "aribaParamMap";
 	
+
 	public static final String BUNDLEID="bundleId";
 	
 	public static final String CONFIGID="configId";
@@ -79,4 +80,5 @@ public class PunchoutConstants {
 	public static final String DOUBLEQUOTE="\"";
 	public static final String COLON=":";
 	public static final String PRODUCT_OPTIONSWARRANTIES="OptionsANDWarranties";
+
 }

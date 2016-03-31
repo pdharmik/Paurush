@@ -65,12 +65,6 @@ public class RequestTypeListServiceB2B {
 		this.isChangeRequests = contract.isChangeRequestFlag();
 	}
 
-	public void checkRequiredFields() {
-		if (isEmpty(soldTo)) {
-			throw new IllegalArgumentException("soldTo is null or empty!");
-		}
-	}
-
 	public void buildSearchExpression() {
 		searchExpression = buildRequestTypeSearchExpression();
 		criteria = buildRequestTypeCriteria();
@@ -287,12 +281,12 @@ public class RequestTypeListServiceB2B {
 			builder.append(" AND ([LXK MPS SR Area] <>'Adhoc' OR [LXK MPS SR Area] IS NULL OR [LXK MPS SR Sub Area] IS NULL) AND ([LXK MPS SR Area] <>'HW Order' AND [LXK MPS SR Area] <>'Hardware-Ship and Install') AND ([LXK MPS SR Type] = 'Fleet Management') AND ([LXK MPS SR Sub Area] <> 'Project Based' OR [LXK MPS SR Area] IS NULL OR [LXK MPS SR Sub Area] IS NULL)");
 		}
 		
-//		if (isEmpty(chlNodeId)) {
+
 		if (breakfix) {
 			builder.append("AND (([LXK MPS SR Area] <> 'Install' AND [LXK MPS SR Area] <> 'MADC' AND [LXK MPS SR Area] <> 'Data Management'");
 			builder.append(" AND [LXK MPS SR Area] <> 'HW Order' AND [LXK MPS SR Area] <> 'Hardware-Ship and Install') OR [LXK MPS SR Area] IS NULL)");
 		} else if (allRequestWithBreakfix) {
-			// builder.append("AND ((([LXK MPS SR Area] ~<> 'Adhoc' ) AND ([LXK MPS SR Area] ~<> 'Install' AND [LXK MPS SR Sub Area] ~<> 'Project Based') AND ([LXK MPS SR Area] <> 'HW Order' AND [LXK MPS SR Area] <> 'Hardware-Ship and Install')) OR ([LXK MPS SR Area] IS NULL OR [LXK MPS SR Sub Area] IS NULL) ) AND (([LXK MPS Source] <> 'LDCM') OR ([LXK MPS Source] ='LDCM' AND ([LXK MPS Portal Order Id] IS NOT NULL)))");
+			
 			builder.append(" AND (([LXK MPS SR Sub Area] ~<> 'Project Based') OR [LXK MPS SR Area] IS NULL OR [LXK MPS SR Sub Area] IS NULL) AND "
 					+ "(([LXK MPS SR Area] ~<> 'Adhoc' OR [LXK MPS SR Area] IS NULL OR [LXK MPS SR Sub Area] IS NULL))  AND (([LXK MPS Source] <> 'LDCM') OR ([LXK MPS Source] ='LDCM' AND ([LXK MPS Portal Order Id] IS NOT NULL)))");
 		} else {
@@ -509,6 +503,6 @@ public class RequestTypeListServiceB2B {
 	
 	private String addHardwareRequestsFilter() {
 		String hardwareRequestsFiler; 
-		return hardwareRequestsFiler = " AND (([LXK MPS SR Area] <> 'HW Order' AND [LXK MPS SR Area] <> 'Hardware-Ship and Install'))";
+		return hardwareRequestsFiler = " AND (([LXK MPS SR Area] = 'HW Order' OR [LXK MPS SR Area] = 'Hardware-Ship and Install'))";
 	}
 }
