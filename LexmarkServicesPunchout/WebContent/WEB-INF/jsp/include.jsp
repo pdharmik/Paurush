@@ -41,7 +41,7 @@
 <c:if test="${not included}">
 
 <script type="text/javascript"><%@ include file="../../js/validation.js"%></script>
-<style type="text/css"><%@ include file="../css/lexmark.css" %></style> 
+<style type="text/css"><%@ include file="../../css/lexmark.css" %></style> 
 <script type="text/javascript">
 var isCatalogPage="false";
 var isHardwarePage="false";
@@ -377,11 +377,9 @@ var timezoneOffset = (offsetMinute/60);//It will make it positive value
 		}).addClass("waiting");
 		jQuery("#processingHint").css({
 			display:"block",
-			width: "300px",
-			height:"50px",
-			left: parseInt( jQuery.ui.dialog.overlay.width() )/2-100,
+			left: parseInt( jQuery.ui.dialog.overlay.width() )/2-50,
 			top: document.documentElement.scrollTop + document.body.scrollTop + document.documentElement.clientHeight/2 - 50 +"px"
-		}).addClass("waiting").html('&nbsp;&nbsp;<img style="margin-top: 10px;" src="<html:imagesPath/>loading-icon.gif">&nbsp;&nbsp;<spring:message code="processing"/><br>');
+		}).addClass("waiting").html('<img src="/lexmark-punchout-theme/images/custom/loading_big.gif"><br>');
 		jQuery(window.document.body).addClass("waiting");
 	}
 	function showOverlay2(){
@@ -394,11 +392,9 @@ var timezoneOffset = (offsetMinute/60);//It will make it positive value
 		}).addClass("waiting");
 		jQuery("#processingHint").css({
 			display:"block",
-			width: "300px",
-			height:"50px",
-			left: parseInt( jQuery.ui.dialog.overlay.width() )/2-100,
+			left: parseInt( jQuery.ui.dialog.overlay.width() )/2-50,
 			top: document.documentElement.clientHeight/2 - 50 +"px"
-		}).addClass("waiting").html('&nbsp;&nbsp;<img style="margin-top: 10px;" src="<html:imagesPath/>loading-icon.gif">&nbsp;&nbsp;<spring:message code="processing"/><br>');
+		}).addClass("waiting").html('<img src="/lexmark-punchout-theme/images/custom/loading_big.gif"><br>');
 		jQuery(window.document.body).addClass("waiting");
 	}
 	function hideOverlay(){
@@ -421,10 +417,8 @@ function showOverlayPopup(){
 		}).addClass("waiting");
 		jQuery("#processingHintPopup").css({
 			display:"block",
-			width: "300px",
-			height: "50px",
 			zIndex:1005,
-			left: parseInt( jQuery.ui.dialog.overlay.width() )/2-100,
+			left: parseInt( jQuery.ui.dialog.overlay.width() )/2-50,
 			top: document.documentElement.scrollTop + document.documentElement.clientHeight/2 - 100 +"px"
 		}).addClass("waiting");
 		jQuery(window.document.body).addClass("waiting");
@@ -511,12 +505,12 @@ function showOverlayPopup(){
 <div id="overlay" style="display:none">
 </div>
 <div id="processingHint" tabindex="-1" >
-   &nbsp;&nbsp;<img style="margin-top: 10px;" src="<html:imagesPath/>loading-icon.gif">&nbsp;&nbsp;<spring:message code="processing"/><br>
+  <img src="/lexmark-punchout-theme/images/custom/loading_big.gif"><br>
 </div>
 <div id="overlayPopup" style="display:none">
 </div>
 <div id="processingHintPopup" tabindex="-1" style="display:none">
-   &nbsp;&nbsp;<img style="margin-top: 10px;" src="<html:imagesPath/>loading-icon.gif">&nbsp;&nbsp; <spring:message code="processing"/><br>
+   <img src="/lexmark-punchout-theme/images/custom/loading_big.gif"><br>
 </div>
 <html:statusBanner id="${pageId}" showError="${showDefaultError}"/>
 
