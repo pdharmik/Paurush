@@ -53,4 +53,30 @@ public class PunchoutConstants {
 	public static final String CART_TYPE = "cartType";
 	/** Constant for PunchoutConstants */
 	public static final String ACNT_TYPE = "acntType";
+	
+	public static final String ARIBA_PARAMS = "aribaParamMap";
+	
+	public static final String BUNDLEID="bundleId";
+	
+	public static final String CONFIGID="configId";
+	public static final String MPSDESCRIPTION="mpsdesc";
+	public static final String NAME="name";
+	public static final String DESCRIPTION="desc";
+	public static final String CONTRACTNUMBER="contractNo";
+	public static final String PARTS="parts";
+	public static final String PRINTERS="Printers";
+	public static final String NUMBER="no";
+	public static final String PARTDESCRIPTION="pdesc";
+	public static final String QUANTITY_PART="qty";
+	public static final String BUNDLETYPE="bundleType";
+	public static final String PRINTERPARTNUMBER="printerPartNo";
+	public static final String PRICE="price";
+	public static final String CURRENCY="curr";
+	public static final String BILLINGMODEL="billingModel";
+	
+	public static final String IMAGE="img";
+	public static final String BUNDLEQUANTITY="bQty";
+	public static final String DOUBLEQUOTE="\"";
+	public static final String COLON=":";
+	public static final String PRODUCT_OPTIONSWARRANTIES="OptionsANDWarranties";
 }

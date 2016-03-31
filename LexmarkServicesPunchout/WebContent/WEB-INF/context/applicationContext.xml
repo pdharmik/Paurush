@@ -143,7 +143,7 @@ http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcac
 	<bean id="requestTypeB2bService" class="com.lexmark.service.impl.real.AmindRequestTypeServiceB2B"></bean>
 	
 	<bean id="loadAllAccountList" class="com.lexmark.services.servlet.LoadAccountInformation"></bean>
-	<bean id="loadPriceInformation" class="com.lexmark.services.servlet.LoadPriceInformation"></bean>
+	<bean id="priceCacheController" class="com.lexmark.services.cache.PriceCacheController"></bean>	
 	
 	<bean id="orderHardwareService" class="com.lexmark.service.impl.real.AmindOrderHardwareService"></bean>
 	<bean id="orderSuppliesCatalogService" class="com.lexmark.service.impl.real.AmindOrderSuppliesCatalogService"/>

@@ -44,8 +44,7 @@ import com.liferay.portal.util.PortalUtil;
 public class MyRequestController {
 
 	private static Logger LOGGER = LogManager.getLogger(MyRequestController.class);
-	private static String KAISER_ACNT = ControllerUtil.getConfigProperties().getProperty("ariba.kaiser");
-	private static String REPUBLIC_ACNT = ControllerUtil.getConfigProperties().getProperty("ariba.republic");
+	
 	
 	@Autowired
 	private LoadAccountInformation allAccountInformation;
@@ -59,47 +58,6 @@ public class MyRequestController {
 	@RequestMapping
 	public String showDefaultView(RenderRequest request, RenderResponse response,Model model) throws Exception{
 		LOGGER.debug("[ In  showDefaultView ]");
-		
-		PortletSession session = request.getPortletSession();
-		String currURL=response.createRenderURL().toString();
-		boolean fromAriba = currURL.indexOf("aribaParamUrl")!=-1;
-		LOGGER.debug("currURL==="+currURL);
-		HttpServletRequest httpReq = PortalUtil.getOriginalServletRequest(PortalUtil.getHttpServletRequest(request));
-		String aribaParamURL = httpReq.getParameter("aribaParamUrl");
-		LOGGER.debug("aribaParamURL in my request controller "+aribaParamURL);
-		if(null!=aribaParamURL){
-			fromAriba=true;
-		}
-		String acntType = null;
-		boolean isKaiser = currURL.indexOf("kaiser")!=-1;
-		if(!fromAriba){
-			session.setAttribute("fromAriba", false, PortletSession.APPLICATION_SCOPE);	
-			if(isKaiser){
-				LOGGER.debug("account is Kaiser");
-				acntType = "KAISER";
-			}
-			else{
-				LOGGER.debug("account is Republic");
-				acntType = "REPUBLIC";
-			}
-		}
-		else{
-			ControllerUtil.setAribaParam(request, session);
-			String supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
-			LOGGER.debug("supplierId::::"+supplierId);
-			
-			if(supplierId.equalsIgnoreCase(KAISER_ACNT))
-			{
-				acntType = "KAISER";
-			}
-			else if(supplierId.equalsIgnoreCase(REPUBLIC_ACNT))
-			{
-				acntType = "REPUBLIC";
-			}
-			session.setAttribute("fromAriba", true, PortletSession.APPLICATION_SCOPE);	
-		}
-		session.setAttribute(PunchoutConstants.ACNT_TYPE, acntType, PortletSession.APPLICATION_SCOPE);
-		model.addAttribute(PunchoutConstants.ACNT_TYPE, acntType);
 		LOGGER.debug("[ Out  showDefaultView ]");	
 		return "myRequest/leftNavLinks";
 	}

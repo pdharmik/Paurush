@@ -4,7 +4,7 @@
             <tr>
                   <td class="supplies-title-small"><spring:message code="product.suppliesTitle.productList"/></td>
                   <td class="supplies-title-small"><spring:message code="product.suppliesTitle.partNumber"/></td>
-                  <c:if test="${fromAriba =='true'}">
+                   <c:if test='${sessionScope.aribaParamMap["fromAriba"]=="true"}'>
                   <td class="supplies-title-small"><spring:message code="requestInfo.heading.unitPrice"/></td>                 
                   <td class="supplies-title-small"><spring:message code="requestInfo.heading.Qty"/></td>
                    </c:if>
@@ -20,7 +20,7 @@
                     </tr>
                     </table></td>
                   <td style="padding-left:5px;">${orderPart.partNumber}</td>
-                   <c:if test="${fromAriba =='true'}">
+                    <c:if test='${sessionScope.aribaParamMap["fromAriba"]=="true"}'>
                   <c:choose>
                   <c:when test="${orderPart.price eq null ||  orderPart.price eq '' || orderPart.price eq '0'}">
                   <td style="padding-left:5px;" class="price-btn-cntnr2">Price Not Available</td>

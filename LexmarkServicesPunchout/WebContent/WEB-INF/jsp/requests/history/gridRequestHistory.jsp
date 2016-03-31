@@ -35,10 +35,14 @@ var url= "${retrieveGrid}"
 	requestHistoryGrid.init();
 	requestHistoryGrid.enablePaging(true,15, 2, "pagingArea", true, "infoArea");
 	requestHistoryGrid.setPagingSkin("bricks");
-    requestHistoryGrid.loadXML(url);
     requestHistoryGrid.attachEvent("onXLE", function() {
     	document.getElementById('loadingNotification').style.display = 'none';
 	});
+    
+    function refreshHistoryGrid(){
+    	requestHistoryGrid.clearAndLoad(url);
+    	
+    }
 
         function goToRequestDetails(srNumber, requestType){
         

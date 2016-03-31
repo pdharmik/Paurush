@@ -95,6 +95,8 @@ jQuery.getJSON(obj.url+"&pr="+obj.bundleId+"&qt="+obj.qty+"&ct="+obj.cartType,fu
 
 
 function moveToCart(productId,buttonId){	
+	//Keep a copy of the object in cartt...
+	cartItems.addtoItems(bundlesObj.bundlesData[productId]);
 	var objectDet={quantityId:"quantity",productId:productId,bundleId:"",optionWarranty:false,cartType:"printers"};
 	doCart(objectDet,buttonId);
 }
@@ -208,5 +210,17 @@ function showShoppingCart(cartType){
     	calledFromLEftNav(shoppingCartObject);
 	
 }
-
+var cartItems={
+		items:[],
+		addtoItems:function(item){
+			this.items.push(item);			
+		},
+		getItem:function (itemNo){
+			for(var i=0;i<this.items.length;i++){
+				if(this.items[i].bundleId==itemNo){
+					return this.items[i];
+				}
+			}
+		}
+}
 

@@ -7,7 +7,7 @@
 }
 </style>
    <div id="portlet-wrap" style="width:100%!important">
-   	<c:if test="${fromAriba == 'true'}">
+   	 <c:if test='${sessionScope.aribaParamMap["fromAriba"]=="true"}'>
    	<c:if test="${forGlobalSearch != 'true'}">
       	 <div id="breadcrum-cart-cntnr">
        	 	<div class="breadcrum-cntnr"><a style="cursor: pointer;" onclick="calledFromLEftNav('reqSupplyLink')"><spring:message code="changemanagement.popup.label.orderSupplies"/></a> > <a class="active"><spring:message code="product.suppliesTitle.productList"/></a></div>
@@ -22,14 +22,14 @@
 							<div id="tab_supplyGrid"  style="display:block;">
 								<div id="supplyGrid_container" style="width:100%;"></div>
 								<div id="loadingNotification_supplyGrid" class='gridLoading'>
-	        	<br/><spring:message code='loadingNotification'/>&nbsp;&nbsp;<img src="<html:imagesPath/>gridloading.gif"/><br/>
+	        	<br/><img src="/lexmark-punchout-theme/images/custom/loading_big.gif"/><br/>
 	    	  </div>
 	  							
 	  							<div><span id="pagingArea"></span>&nbsp;<span id="infoArea"></span></div>
 	  						</div>
-	  						 <c:if test="${fromAriba == 'true'}">
+	  						  <c:if test='${sessionScope.aribaParamMap["fromAriba"]=="true"}'>
 		  						 <c:if test="${forGlobalSearch != 'true'}">
-		  						 	<input name="Continue" title="" type="button" class="button" value="Shopping Cart" border="0" onclick="showShoppingCart('supplies')">
+		  						 	<input name="Continue" title="" type="button" class="button floatR" value="Shopping Cart" border="0" onclick="showShoppingCart('supplies')">
 		  						 </c:if>
 	  						 </c:if>
 	    				</div>
@@ -44,7 +44,7 @@ url+="&cType="+cartCheckObj.cartType;
 }
 var headerString = "<div class='supplies-table-cntnr'><table  border='0' cellspacing='0' cellpadding='0' class='discrptn-table-header w100'><tr><td bgcolor='#e6e6f0' class='w10 table-title' ></td><td bgcolor='#e6e6f0' class='table-title'><spring:message code='product.suppliesTitle.productList'/></td><td bgcolor='#e6e6f0' class='w10 table-title'><spring:message code='product.suppliesTitle.partNumber'/></td><td bgcolor='#e6e6f0' class='w10 table-title'><spring:message code='requestInfo.heading.unitPrice'/></td><td bgcolor='#e6e6f0' class='w10 table-title'><spring:message code='requestInfo.heading.Qty'/></td><td bgcolor='#e6e6f0' class='w10 table-title'>&nbsp;</td></tr></table></div>";
 
-if("${fromAriba}" != "true"){
+if("${sessionScope.aribaParamMap["fromAriba"]}" != "true"){
 	headerString = "<div class='supplies-table-cntnr'><table  border='0' cellspacing='0' cellpadding='0' class='discrptn-table-header w100'><tr><td bgcolor='#e6e6f0' class='w10 table-title' ></td><td bgcolor='#e6e6f0' class='table-title'><spring:message code='product.suppliesTitle.productList'/></td><td bgcolor='#e6e6f0' class='w10 table-title'><spring:message code='product.suppliesTitle.partNumber'/></td></tr></table></div>";
 }
 
@@ -72,7 +72,7 @@ else{
 bundleSupplyGrid.setPagingSkin("bricks");
 bundleSupplyGrid.attachEvent("onXLE", function() {
 	jQuery('#loadingNotification_supplyGrid').hide();
-	if("${fromAriba}"=="true" && "${forGlobalSearch}" != "true"){
+	if("${sessionScope.aribaParamMap["fromAriba"]}"=="true" && "${forGlobalSearch}" != "true"){
 			loadCartSize(cartObj);
 	}
 });
