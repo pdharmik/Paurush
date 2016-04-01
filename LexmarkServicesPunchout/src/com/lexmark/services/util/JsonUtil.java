@@ -1,7 +1,6 @@
 package com.lexmark.services.util;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,7 +16,6 @@ import com.lexmark.domain.Bundle;
 import com.lexmark.domain.ListOfValues;
 import com.lexmark.domain.OrderPart;
 import com.lexmark.domain.Part;
-import com.lexmark.domain.Price;
 import com.lexmark.services.constants.PunchoutConstants;
 
 /**
@@ -29,46 +27,18 @@ import com.lexmark.services.constants.PunchoutConstants;
 public class JsonUtil {
 	
 	private static Logger LOGGER = LogManager.getLogger(ControllerUtil.class);
-	/**
-	 * @param key 
-	 * @param value 
-	 * @param StringBuilder 
-	 * @param isArray 
-	 * */
-	public static void appendToJSON(String key,String value,StringBuilder stringBuilder,boolean isArray){
-		if(isArray){
-			stringBuilder.append("\""+key+"\":["+value+"],");
-		}
-		else{
-			stringBuilder.append("\""+key+"\":\""+value+"\",");
-		}
-		
-	}
+	private static final int mediumBufferLen=2000;
+	private static final int smallBufferLen=90;
+	private static final int longBufferLen= 10000;
 	
-	/**
-	 * @param map 
-	 * @param stringBuilder  
-	 * */
-	public static void converMapToComboSelect(Map<String,String> map,StringBuilder stringBuilder){
-		Set<String> keySet=map.keySet();
-		int keyIndex=0;
-		for(String key:keySet){
-			stringBuilder.append("[\""+key+"\",\""+map.get(key).replaceAll(",", "&#44;")+"\"],");
-				if(keyIndex==keySet.size()-1){
-					stringBuilder.delete(stringBuilder.length()-1,stringBuilder.length());
-				}
-				
-			keyIndex++;
-		}
-		
-	}
 	
 	/**
 	 * @param lovList 
 	 * @return String 
 	 */
 	public static String generateProductModelJSON(List<ListOfValues> lovList){
-		StringBuilder json=new StringBuilder("[");
+		StringBuilder json=new StringBuilder(mediumBufferLen);
+		json.append("[");
 		if(lovList==null){
 			json.append("]");
 			return json.toString();
@@ -76,10 +46,13 @@ public class JsonUtil {
 		
 		for(ListOfValues value:lovList){
 			json.append("{");
-			appendToJSON("name",value.getName(),json,false);
-			appendToJSON("value",value.getValue(),json,false);
-			json.deleteCharAt(json.length()-1);
-			json.append("},");
+			json.append("\"name\":\"")
+				.append(value.getName())
+				.append("\",")
+				.append("\"value\":\"")
+				.append(value.getValue())
+				.append("\"")		
+				.append("},");
 		}
 		json.deleteCharAt(json.length()-1);
 		json.append("]");
@@ -92,10 +65,12 @@ public class JsonUtil {
 	 */
 	public static String generateCartJSON(Map<String,String> params){
 		
-		StringBuilder json=new StringBuilder("{");
-		appendToJSON(PunchoutConstants.CUR_TIME,String.valueOf(System.currentTimeMillis()),json,false);
+		StringBuilder json=new StringBuilder(smallBufferLen);
+		json.append("{")
+		.append("\"").append(PunchoutConstants.CUR_TIME).append("\":\"")
+		.append(String.valueOf(System.currentTimeMillis())).append("\",");
 		for(String key:params.keySet()){
-			appendToJSON(key,params.get(key),json,false);
+			json.append("\"").append(key).append("\":\"").append(params.get(key)).append("\",");
 		}	
 		json.deleteCharAt(json.length()-1);
 		json.append("}");
@@ -109,7 +84,7 @@ public class JsonUtil {
 	 * @return
 	 */
 	public static String convertBundleToJson(List<Bundle> bundleItems){
-		StringBuilder json=new StringBuilder();
+		StringBuilder json=new StringBuilder(longBufferLen*bundleItems.size());
 		json.append("{");
 		for(Bundle bundle:bundleItems){
 			json.append("\"").append(bundle.getBundleId()).append("\":{");
@@ -178,7 +153,7 @@ public class JsonUtil {
 	 * @param bundles
 	 */
 	public static String updateAndGenerateAccessories(List<OrderPart> parts, String bundleId){
-		 StringBuilder sb=new StringBuilder();
+		 StringBuilder sb=new StringBuilder(longBufferLen*parts.size());
 		 sb.append("[");
 		for(OrderPart part:parts){
 			//update with Image
@@ -211,7 +186,7 @@ public class JsonUtil {
 	 * @return
 	 */
 	public static String convertPrinterListJSON(Map<String,List<String>> printerMap){
-		StringBuilder sb=new StringBuilder();
+		StringBuilder sb=new StringBuilder(longBufferLen);
 		sb.append("{");
 		Set<String> keys=printerMap.keySet();
 		for(String key:keys){

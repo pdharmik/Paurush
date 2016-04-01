@@ -24,7 +24,7 @@ div.gridbox_light table.obj td img {
 tr.altRow td { background-color:#f0f0f0 !important; }
 </style>    
 
-<div class="mid-cntnr"> mappp = ${sessionScope.aribaParamMap}
+<div class="mid-cntnr">
 <div class="columnInner separatorV">
                          <div id="div_bundleGrid">
 							<div id="tab_bundleGrid"  style="display:block;">

@@ -36,8 +36,6 @@ function getDataForGlobalSearch(params){
 			$('#loadingNotification_printer').hide();
 			bundlesObj.bundlesData=jsonBundles.bundle;
 			bundlesObj.globalSearchAccessories=jsonBundles.optionsWarranties;
-			console.log(JSON.stringify(bundlesObj.bundlesData));
-			console.log(JSON.stringify(bundlesObj.globalSearchAccessories));
 			bundlesObj.parseData_searchResult();
 								
 							

@@ -876,7 +876,6 @@ public class ControllerUtil {
 		try {
 			final PrintWriter out = response.getWriter();
 			response.setProperty("Cache-Control", "max-age=0,no-cache,no-store");
-			response.setProperty("Expires", "max-age=0,no-cache,no-store");
 			response.setContentType("text/javascript");
 			out.write(val);
 			out.flush();

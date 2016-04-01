@@ -398,11 +398,7 @@ public class RequestPrintersController {
 			
 		} catch (Exception e) {
 			LOGGER.debug("Exception occured in Global Search .. "+e.getMessage());
-			result = new GlobalCatalogListResult();
-			e.getMessage();
-			e.printStackTrace();
-		}
-		finally{
+		}finally{
 			globalService.releaseSessionHandle(crmSessionHandle);
 		}
 		

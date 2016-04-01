@@ -71,7 +71,6 @@ public class RightNavController {
 	@RequestMapping
 	public String showDefaultView(RenderRequest request, RenderResponse response,Model model,PortletSession session) {
 		LOGGER.debug(("[ In  showDefaultView ]"));
-		System.out.println("Supplier Cookie" +session.getAttribute("supplierCookie" , PortletSession.APPLICATION_SCOPE));
 		session.setAttribute(PunchoutConstants.CART_SESSION,ControllerUtil.initShoppingCart());
 		LOGGER.debug(("[ Before Account Call]"));
 		

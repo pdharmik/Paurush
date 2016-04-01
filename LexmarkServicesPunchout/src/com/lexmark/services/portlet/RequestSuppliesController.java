@@ -456,7 +456,6 @@ public class RequestSuppliesController {
 				 
 			
 			 PriceResult bundlePriceResult = new PriceResult();
-			 //bundlePriceResult=ControllerUtil.getPriceForParts(contract.getContractNumber(),partsList,retrievePriceService);
 			 
 			 for(Price price:bundlePriceResult.getPriceOutputList()){
 					for(OrderPart parts:partsList)
