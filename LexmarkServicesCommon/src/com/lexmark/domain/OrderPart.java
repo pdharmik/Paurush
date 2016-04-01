@@ -65,6 +65,16 @@ public class OrderPart implements Serializable {
 	private String mpsQuantity;
 	private List<SuppliesSplitterCatalog> suppliesCatalogList;
 	private String unspscCode;
+	private String b2bProductFamilyName;
+	
+	public String getB2bProductFamilyName() {
+		return b2bProductFamilyName;
+	}
+
+	public void setB2bProductFamilyName(String b2bProductFamilyName) {
+		this.b2bProductFamilyName = b2bProductFamilyName;
+	}
+
 	
 	public String getUnspscCode() {
 		return unspscCode;

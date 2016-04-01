@@ -129,6 +129,10 @@
 	         		<key><value>mpsQuantity</value></key>
 	         		<value>LXK MPS Quantity</value>
 				</entry>	
+				<entry>
+					<key><value>b2bProductFamilyName</value></key>
+					<value>LXK MPS B2B Product Family Name</value>
+				</entry>
 	     	</map>
 		</property>
 	   	     	  
