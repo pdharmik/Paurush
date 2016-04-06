@@ -35,12 +35,9 @@ var validationmsg={
 		qtyInvalid:"<spring:message code="validation.quantity.format.errorMsg"/>"
 }
 jQuery(document).ready(function(){
-	if("${forGlobalSearch}" != "true"){
+	
 	  	loadCartSize(cartObj);
-	}
-	else{
-		jQuery("#totItems").show();
-	}
+	
 });
 
 function removeFromCart(bId, cartType){
@@ -61,9 +58,8 @@ function refreshQty(bId, cartType){
 var dialogCart;
 jQuery('.orderCart').click(function(){
 	var shoppingCartObject={cart:"",id:"shoppingCart"};
-    
-	//printerObject.printerType=jQuery(this).attr('id');
-	global_click_msgs.clickedFrom="orderCart";//defined in rightNavHome.jsp
+    global_click_msgs.clickedFrom="orderCart";//defined in rightNavHome.jsp
 	calledFromLEftNav(shoppingCartObject); 
 });
 </script>
+<div class="clearBoth"></div>

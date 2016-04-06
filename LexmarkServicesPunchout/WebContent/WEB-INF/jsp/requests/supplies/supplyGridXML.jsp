@@ -15,7 +15,7 @@
               <td style="border-right:1px solid #8c8c8c;" class="w10 table-txt"><img src="<html:imagesPath/>product-list-1.jpg" width=\"40\" height=\"26\" /> </td>
                 <td style="border-right:1px solid #8c8c8c;" class="table-txt">${supply.description} </td>
                 <td class="w10 table-txt">${supply.partNumber}</td>
-                <c:if test="${fromAriba == 'true'}">
+                 <c:if test='${sessionScope.aribaParamMap["fromAriba"]=="true"}'>
                 <td class="w10 table-txt" style="border-right:1px solid #8c8c8c;border-left:1px solid #8c8c8c">${supply.price}</td>
                 </c:if>
                 
@@ -30,7 +30,7 @@
 	                </c:forEach>	                
                 </c:when>                
                 </c:choose>
-                 <c:if test="${fromAriba == 'true'}">
+                 <c:if test='${sessionScope.aribaParamMap["fromAriba"]=="true"}'>
                 <td class="w10 table-txt"><input type="text" id="quantity${supply.partNumber}" value="${supply.orderQuantity}" <c:if test="${isExit == '1'}">disabled="disabled"</c:if> style="width:25px; text-align:center; border:1px solid #d8d8d8;"/></td>
                 
                 <c:set var="cartText" value="Add To Cart"/>

@@ -173,8 +173,7 @@ public class PunchoutItemDAO {
 		
 		Element money = doc.createElement("Money");
 		money.setAttribute("currency", "USD");		
-		money.appendChild(doc.createTextNode("" + ControllerUtil.calculateTotal(_sform.getCartItems()
-				, BeanFieldNames.PRICE.getValue(cartType), BeanFieldNames.QUANTITY.getValue(cartType)).doubleValue()));
+		money.appendChild(doc.createTextNode("" + ControllerUtil.calculateTotal(_sform.getCartItems()).doubleValue()));
 		elmTotal.appendChild(money);
 		
 		BigDecimal unitPrice = null;

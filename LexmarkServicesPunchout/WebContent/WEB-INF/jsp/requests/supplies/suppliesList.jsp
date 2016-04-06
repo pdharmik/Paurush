@@ -61,7 +61,7 @@ function loadPrinterModel(value){
 </script>
 
     <div id="portlet-wrap" style="width:100%!important">
-    <c:if test="${fromAriba == 'true'}">
+     <c:if test='${sessionScope.aribaParamMap["fromAriba"]=="true"}'>
       <div id="breadcrum-cart-cntnr">
         <jsp:include page="/WEB-INF/jsp/shoppingCart/totalItems.jsp"/>
       </div>

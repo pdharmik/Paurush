@@ -133,7 +133,7 @@ public class RequestHistoryController {
 		
 		LOGGER.debug(("[ in retrieveGrid]"));
 		PortletSession session = request.getPortletSession();
-		String supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
+		String supplierId = ControllerUtil.getSupplierId(session);
 		request.setAttribute(PunchoutConstants.PUNCHOUT_ACCOUNT, ControllerUtil.getPunchoutAccount(allAccountInformation.getAllAccountList(supplierId), request));
 		
 		
