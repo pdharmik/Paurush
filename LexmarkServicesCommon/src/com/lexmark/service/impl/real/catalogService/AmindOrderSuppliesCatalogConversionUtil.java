@@ -400,6 +400,7 @@ public class AmindOrderSuppliesCatalogConversionUtil {
 				part.setPrinterDescription(partDo.getPrinterDescription());
 				part.setMpsQuantity(partDo.getMpsQuantity());
 				part.setSuppliesCatalogList(populateSuppliesCatalog(partDo));
+				part.setB2bProductFamilyName(partDo.getB2bProductFamilyName());
 				orderParts.add(part);
 			}
 			return orderParts;
@@ -492,6 +493,7 @@ public class AmindOrderSuppliesCatalogConversionUtil {
 	    		accessories.setProductId(partDo.getProductId());
 				accessories.setProductModel(partDo.getProductModel());
 				accessories.setSuppliesModel(partDo.getSuppliesModel());
+				accessories.setB2bProductFamilyName(partDo.getB2bProductFamilyName());
 	    		if(LangUtil.isNotEmpty(partDo.getSuppliesSplitterCatalog()) && partDo.getSuppliesSplitterCatalog().get(0)!=null) {
 					SuppliesSplitterCatalogDo suppCatalog  = partDo.getSuppliesSplitterCatalog().get(0);
 					accessories.setContractNo(suppCatalog.getContractNumber());
@@ -541,6 +543,7 @@ public class AmindOrderSuppliesCatalogConversionUtil {
 			supplies.setSupplyId(partDo.getSupplyId());
 			supplies.setConsumableType(partDo.getConsumableType());
 			supplies.setMpsQuantity(partDo.getMpsQuantity());
+			supplies.setB2bProductFamilyName(partDo.getB2bProductFamilyName());
 			if(LangUtil.isNotEmpty(partDo.getSuppliesSplitterCatalog()) && partDo.getSuppliesSplitterCatalog().get(0)!=null) {
 				SuppliesSplitterCatalogDo suppCatalog  = partDo.getSuppliesSplitterCatalog().get(0);
 				supplies.setContractNo(suppCatalog.getContractNumber());

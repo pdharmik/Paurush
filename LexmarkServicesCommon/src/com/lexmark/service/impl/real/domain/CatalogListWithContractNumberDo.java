@@ -40,6 +40,16 @@ public class CatalogListWithContractNumberDo extends BaseEntity implements Seria
 	private String printerDescription;
 	private String productTypeNonB2B;
 	private String mpsQuantity;
+	private String b2bProductFamilyName;
+	
+	public String getB2bProductFamilyName() {
+		return b2bProductFamilyName;
+	}
+
+	public void setB2bProductFamilyName(String b2bProductFamilyName) {
+		this.b2bProductFamilyName = b2bProductFamilyName;
+	}
+
 
 	public String getMpsQuantity() {
 		return mpsQuantity;
