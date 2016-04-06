@@ -6,14 +6,14 @@ public enum BeanFieldNames {
 /** Constant for BeanFieldNames */
 	PRICE("price","price"),
 	/** Constant for BeanFieldNames */
-	QUANTITY("bundleQty","orderQuantity"),
+	QUANTITY("quantity","orderQuantity"),
 	/** Constant for BeanFieldNames */
 	ID("bundleId","partNumber"),
 	/** Constant for BeanFieldNames */
-	PRODUCTID("bundleProductId","productId"),
+	PRODUCTID("productId","productId"),
 	/** Constant for BeanFieldNames */
-	DESCRIPTION("description","description"),
-	SAPLINEID("sapLineID",""),
+	DESCRIPTION("itemDescription","description"),
+	SAPLINEID("sapLineId",""),
 	CONTRACTNO("contractNumber",""),
 	UNSPSCCODE("unspscCode","unspscCode");
 	/**.
