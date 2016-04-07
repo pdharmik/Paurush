@@ -398,7 +398,7 @@ public class ControllerUtil {
 	 * @param qty 
 	 * @param bundleId 
 	 */
-	public  static void addShoppingCartParts(PortletSession session, String prodIdValue,String qty,String bundleId,String cartType){
+	public  static void addShoppingCartParts(PortletSession session, String prodIdValue,String qty,String bundleId,String cartType,String unspscCode,String marketingName){
 		
 		
 		Map<String, ShoppingCartForm> _shoppingForm = (Map<String, ShoppingCartForm>) session.getAttribute(PunchoutConstants.CART_SESSION);		
@@ -412,11 +412,9 @@ public class ControllerUtil {
 			OrderPart orderPart=null;
 			List<OrderPart> orderParts=null;
 			if(StringUtils.isBlank(bundleId)){
-				LOGGER.debug(" Finding within Global Search");
 				orderParts  = (List<OrderPart>) session.getAttribute(PunchoutConstants.PRODUCT_OPTIONSWARRANTIES);
 				
 			}else{
-				LOGGER.debug(" Finding with Bundles of NCAL SCAL");	
 				List<Bundle> _productListSession  = (List<Bundle>) session.getAttribute(PunchoutConstants.PRODUCT_BUNDLE);
 				Bundle bundle=findWithinBundle(_productListSession, bundleId);
 				orderParts=bundle.getOrderParts();							
@@ -426,7 +424,8 @@ public class ControllerUtil {
 			cartItems.add(_cartItem);
 		}
 		_cartItem.setQuantity(qty);
-		
+		_cartItem.setUnspscCode(unspscCode);
+		_cartItem.setMarketingName(marketingName);
 		
 	}
 	
@@ -438,7 +437,7 @@ public class ControllerUtil {
 	 * This method should only be used to add Bundles to the cart
 	 * if required to add supplied item create separate method.
 	 */
-	public  static void addToShoppingCart(PortletSession session, String bundleId,String qty,String cartType,String unspscCode){
+	public  static void addToShoppingCart(PortletSession session, String bundleId,String qty,String cartType,String unspscCode,String marketingName){
 		
 		List<Bundle> _productListSession = (List<Bundle>) session.getAttribute(PunchoutConstants.PRODUCT_BUNDLE);
 		
@@ -462,6 +461,8 @@ public class ControllerUtil {
 			
 		}
 		_cartItem.setQuantity(qty);
+		_cartItem.setUnspscCode(unspscCode);
+		_cartItem.setMarketingName(marketingName);
 		
 	}
 	
@@ -517,6 +518,7 @@ public class ControllerUtil {
 	 * 
 	 * */
 	public static CartItem createShoppingCartItem(OrderPart part){
+		LOGGER.debug("in createShoppingCartItem, unspsc code is "+part.getUnspscCode()+" product is is "+part.getProductId()+" part number is "+part.getPartNumber());
 		CartItem cartItem= new CartItem();
 		cartItem.setItemId(part.getPartNumber());
 		cartItem.setPrice(part.getPrice());

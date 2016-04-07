@@ -186,7 +186,7 @@ public class PunchoutItemDAO {
 		String unspscCode = "";
 		for(Object _cartItem:_sform.getCartItems()){
 						
-			description=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.DESCRIPTION.getValue(cartType));
+			description=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.MARKETINGNAME.getValue(cartType));
 			unitPrice = (BigDecimal)ControllerUtil.readProperty(_cartItem, BeanFieldNames.PRICE.getValue(cartType));
 			//supplierPartId=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.ID.getValue(cartType));
 			manufactureId=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.PRODUCTID.getValue(cartType));

@@ -15,7 +15,8 @@ public enum BeanFieldNames {
 	DESCRIPTION("itemDescription","description"),
 	SAPLINEID("sapLineId",""),
 	CONTRACTNO("contractNumber",""),
-	UNSPSCCODE("unspscCode","unspscCode");
+	UNSPSCCODE("unspscCode","unspscCode"),
+	MARKETINGNAME("marketingName","marketingName");	
 	/**.
 	 * 
 	 * This method gives the Bean field names
