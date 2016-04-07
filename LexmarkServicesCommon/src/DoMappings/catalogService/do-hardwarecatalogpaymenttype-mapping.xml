@@ -86,6 +86,30 @@
 					</key>
 					<value>LXK MPS B2B Part Type MVF</value>
 				</entry>
+				<entry>
+					<key>
+						<value>b2bMarketingNameMVF</value>
+					</key>
+					<value>LXK B2B Marketing Name MVF</value>
+				</entry>
+				<entry>
+					<key>
+						<value>b2bMarketingShortDescMVF</value>
+					</key>
+					<value>LXK B2B Marketing Short Description MVF</value>
+				</entry>
+				<entry>
+					<key>
+						<value>b2bMaterialDescMVF</value>
+					</key>
+					<value>LXK B2B Material Description MVF</value>
+				</entry>
+				<entry>
+					<key>
+						<value>b2bMfgBrandMVF</value>
+					</key>
+					<value>LXK B2B Mfg Brand MVF</value>
+				</entry>
 		     </map>
 		</property>
 

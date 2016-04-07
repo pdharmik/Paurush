@@ -66,7 +66,11 @@ public class OrderPart implements Serializable {
 	private List<SuppliesSplitterCatalog> suppliesCatalogList;
 	private String unspscCode;
 	private String b2bProductFamilyName;
-	
+	private String b2bMarketingShortDesc;
+	private String b2bMarketingName;
+	private String b2bModel;
+	private String b2bMfgBrand;
+
 	public String getB2bProductFamilyName() {
 		return b2bProductFamilyName;
 	}
@@ -75,7 +79,38 @@ public class OrderPart implements Serializable {
 		this.b2bProductFamilyName = b2bProductFamilyName;
 	}
 
-	
+	public String getB2bMarketingShortDesc() {
+		return b2bMarketingShortDesc;
+	}
+
+	public void setB2bMarketingShortDesc(String b2bMarketingShortDesc) {
+		this.b2bMarketingShortDesc = b2bMarketingShortDesc;
+	}
+
+	public String getB2bMarketingName() {
+		return b2bMarketingName;
+	}
+
+	public void setB2bMarketingName(String b2bMarketingName) {
+		this.b2bMarketingName = b2bMarketingName;
+	}
+
+	public String getB2bModel() {
+		return b2bModel;
+	}
+
+	public void setB2bModel(String b2bModel) {
+		this.b2bModel = b2bModel;
+	}
+
+	public String getB2bMfgBrand() {
+		return b2bMfgBrand;
+	}
+
+	public void setB2bMfgBrand(String b2bMfgBrand) {
+		this.b2bMfgBrand = b2bMfgBrand;
+	}
+
 	public String getUnspscCode() {
 		return unspscCode;
 	}

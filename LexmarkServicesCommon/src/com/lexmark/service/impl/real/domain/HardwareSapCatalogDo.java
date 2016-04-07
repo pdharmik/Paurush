@@ -7,7 +7,7 @@ import com.amind.common.domain.BaseEntity;
 
 /**
  * @author Vano
- * mapping-file: "do-hardwaresapcatalog-mapping.xml"
+// * mapping-file: "do-hardwaresapcatalog-mapping.xml"
  */
 
 public class HardwareSapCatalogDo extends BaseEntity implements Serializable {
@@ -43,8 +43,43 @@ public class HardwareSapCatalogDo extends BaseEntity implements Serializable {
 	private String mpsDescription;
 	private String partTypeB2b;
 	private String configId;
+	private String b2bMarketingShortDesc;
+	private String b2bMarketingName;
+	private String b2bModel;
+	private String b2bMfgBrand;
 	
-	
+	public String getB2bMarketingShortDesc() {
+		return b2bMarketingShortDesc;
+	}
+
+	public void setB2bMarketingShortDesc(String b2bMarketingShortDesc) {
+		this.b2bMarketingShortDesc = b2bMarketingShortDesc;
+	}
+
+	public String getB2bMarketingName() {
+		return b2bMarketingName;
+	}
+
+	public void setB2bMarketingName(String b2bMarketingName) {
+		this.b2bMarketingName = b2bMarketingName;
+	}
+
+	public String getB2bModel() {
+		return b2bModel;
+	}
+
+	public void setB2bModel(String b2bModel) {
+		this.b2bModel = b2bModel;
+	}
+
+	public String getB2bMfgBrand() {
+		return b2bMfgBrand;
+	}
+
+	public void setB2bMfgBrand(String b2bMfgBrand) {
+		this.b2bMfgBrand = b2bMfgBrand;
+	}
+
 	public String getAssetId() {
 		return assetId;
 	}
