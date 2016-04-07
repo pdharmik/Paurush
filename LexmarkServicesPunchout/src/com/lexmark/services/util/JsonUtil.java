@@ -1,6 +1,8 @@
 package com.lexmark.services.util;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -153,9 +155,47 @@ public class JsonUtil {
 	 * @param bundles
 	 */
 	public static String updateAndGenerateAccessories(List<OrderPart> parts, String bundleId){
-		 StringBuilder sb=new StringBuilder(longBufferLen*parts.size());
-		 sb.append("[");
+		//Group parts based on Model family.
+		Map<String,List<OrderPart>> groupByFamily=new HashMap<>();
 		for(OrderPart part:parts){
+			String modelFamily=part.getB2bProductFamilyName();
+			List<OrderPart> partsOfFamily;
+			if(StringUtils.isBlank(modelFamily)){
+				modelFamily="others";
+			}
+			//Check whether it exists in map. otherwise put it
+			partsOfFamily=groupByFamily.get(modelFamily);
+			if(partsOfFamily==null){
+				partsOfFamily=new ArrayList<>();
+			}
+			partsOfFamily.add(part);
+			groupByFamily.put(modelFamily, partsOfFamily);
+		}
+		
+		Set<String> modelFamilies=groupByFamily.keySet();
+		 StringBuilder sb=new StringBuilder(longBufferLen*parts.size());
+		 sb.append("{");
+		 int groupId=0;
+		 for(String modelFamily:modelFamilies){
+			 sb.append("\"").append(groupId).append("\":{")
+			 .append("\"groupId\":").append(groupId++).append(",")
+			 .append("\"type\":\"")
+			 .append(modelFamily).append("\",")
+			 .append("\"list\":[").append(createPartJSON(groupByFamily.get(modelFamily))).append("],")
+			 .append("\"bId\":\"").append(bundleId).append("\"")
+			 .append("},");
+		 }
+		if(modelFamilies.size()>0){
+			sb.deleteCharAt(sb.length()-1);	
+		}
+		
+		sb.append("}");
+		return sb.toString();
+			 
+	}
+	private static String createPartJSON(List<OrderPart> parts){
+		StringBuilder sb=new StringBuilder(mediumBufferLen);
+		for(OrderPart part:parts){ 
 			//update with Image
 			if(part.getPartNumber()!=null){
 				try {
@@ -169,7 +209,7 @@ public class JsonUtil {
 			.append("\"desc\":\"")
 			.append(StringUtils.isNotBlank(part.getDescription())==true?part.getDescription():"").append("\",")
 			.append("\"pNo\":\"").append(part.getPartNumber()).append("\",")
-			.append("\"bId\":\"").append(bundleId).append("\",")
+			.append("\"modelFamily\":\"").append(part.getB2bProductFamilyName()).append("\",")
 			.append("\"qty\":\"").append(StringUtils.isNotBlank(part.getOrderQuantity())==true?part.getOrderQuantity():"").append("\",")
 			.append("\"price\":\"").append(part.getPrice()==null?"":part.getPrice()).append("\"},");
 			
@@ -177,9 +217,7 @@ public class JsonUtil {
 		if(parts.size()>0){
 			sb.deleteCharAt(sb.length()-1);	
 		}		
-		sb.append("]");
 		return sb.toString();
-			 
 	}
 	/**
 	 * @param printerMap

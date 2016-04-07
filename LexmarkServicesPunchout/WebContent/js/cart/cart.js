@@ -192,14 +192,13 @@ function doCart(detailsObj,buttonId){
     }
     
 }
-function addOptnsWarranties(obj){
-	var buttonId=jQuery(obj).attr('id');
-
-	var splits=jQuery(obj).attr('id').split("_");
-	
-	var objectDet={quantityId:"quantity_optn_warran",productId:splits[1],bundleId:splits[2],optionWarranty:true,cartType:"printers"};
-	doCart(objectDet,buttonId);
-	
+function addOptnsWarranties(index,bId){
+	var familyParts=bundlesObj.bundlesData[bId].accessories[index].list;
+	var buttonId='addToCartOptnWarran'+bId;
+	for(var i=0;i<familyParts.length;i++){		
+		var objectDet={quantityId:"quantity_optn_warran",productId:familyParts[i].pNo,bundleId:bId,optionWarranty:true,cartType:"printers"};
+		doCart(objectDet,buttonId);
+	}
 	
 }
 function showShoppingCart(cartType){

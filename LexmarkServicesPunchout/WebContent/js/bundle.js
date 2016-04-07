@@ -103,17 +103,19 @@
 				return msg;
 			},
 			parseData_searchResult:function(){
-				console.log('in here');
-					var len=Object.keys(bundlesObj.bundlesData);
-					for(var i=0;i<len;i++){
-						console.log(bundlesObj.bundlesData[i]);
-						console.log(bundlesObj.bundleTemplate(bundlesObj.bundlesData[index]));
-						$('#globalSearch_container #bundle-global-search').append(bundlesObj.bundleTemplate(bundlesObj.bundlesData[index]));
+					var keys=Object.keys(bundlesObj.bundlesData);
+					for(var i=0;i<keys.length;i++){
+						var bId=keys[i];
+						$('#globalSearch_container #bundle-global-search').append(bundlesObj.bundleTemplate(bundlesObj.bundlesData[bId]));
 					}
-					console.log(bundlesObj.accessoriesTemplateObj(bundlesObj.globalSearchAccessories[i]));
-					//for(var i=0;i<bundlesObj.globalSearchAccessories.length;i++){
-						$('#globalSearch_container #accessories-global-search').append(bundlesObj.accessoriesTemplateObj({"accessories":bundlesObj.globalSearchAccessories}));
-					//}
+					keys=Object.keys(bundlesObj.globalSearchAccessories);
+					
+					for(var i=0;i<keys.length;i++){
+						var accId=keys[i];
+						$('#globalSearch_container #accessories-global-search').append(bundlesObj.accessoriesTemplateObj(bundlesObj.globalSearchAccessories[accId]));						
+					}			   		
+						
+
 			}		
 	}; 
  

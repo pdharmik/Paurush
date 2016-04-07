@@ -67,7 +67,11 @@ tr.altRow td { background-color:#f0f0f0 !important; }
 		var url="${getOptionsAndWarrantiesVar}&cartType=printers&bundleId="+bundleId+"&cNum="+bundle.contractNo+"&model="+bundle.printerPartNo;
 				$.getJSON(url,function(accessories){
 				bundlesObj.bundlesData[bundleId].accessories=accessories;
-				$('#options_warr_content'+bundleId).siblings('.optn-warrn-content').html("").append(bundlesObj.accessoriesTemplateObj(bundle));
+				$('#options_warr_content'+bundleId).siblings('.optn-warrn-content').children('.gridLoading').hide();
+					var keys=Object.keys(accessories);
+					for(var i=0;i<keys.length;i++){
+						$('#options_warr_content'+bundleId).siblings('.optn-warrn-content').children('.options-table').children('tbody').append(bundlesObj.accessoriesTemplateObj(accessories[i]));
+					}			   	
 			});	
 		
 		
@@ -248,25 +252,31 @@ tr.altRow td { background-color:#f0f0f0 !important; }
 			<div class="gridLoading" id="loadingNotification_printer" style="">
 				<img src="/lexmark-punchout-theme/images/custom/loading_big.gif"><br>
 	    	 </div>
+			 
+              <table class="options-table" width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size:12px; overflow:auto;">
+				<tbody>
+               		<tr>
+                  		<td class="supplies-title-small borderLeftGreen"><spring:message code="product.suppliesTitle.productList"/></td>
+                  		<td class="supplies-title-small"><spring:message code="product.suppliesTitle.partNumber"/></td>
+                  		<c:if test='${sessionScope.aribaParamMap["fromAriba"]=="true"}'>
+                  		<td class="supplies-title-small"><spring:message code="requestInfo.heading.unitPrice"/></td>                 
+                  		<td class="supplies-title-small"><spring:message code="requestInfo.heading.Qty"/></td>
+                   		</c:if>
+                  		<td class="supplies-title-small">&nbsp;</td>
+                	</tr>
+				</tbody>
+			 </table>
+		
+
 		</div>
 		</div>
       </div>
      </script>
      
       <script id="accessories-list-template" type="text/x-handlebars-template">
-     <div id="accor1">
-              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size:12px; overflow:auto;">
-            <tr>
-                  <td class="supplies-title-small borderLeftGreen"><spring:message code="product.suppliesTitle.productList"/></td>
-                  <td class="supplies-title-small"><spring:message code="product.suppliesTitle.partNumber"/></td>
-                  <c:if test='${sessionScope.aribaParamMap["fromAriba"]=="true"}'>
-                  <td class="supplies-title-small"><spring:message code="requestInfo.heading.unitPrice"/></td>                 
-                  <td class="supplies-title-small"><spring:message code="requestInfo.heading.Qty"/></td>
-                   </c:if>
-                  <td class="supplies-title-small">&nbsp;</td>
-                </tr>
-           
-            {{#accessories}}
+    
+          <tr><td>{{type}}</td></tr>
+            {{#list}}
              <tr>
                   <td height="35" align="left" valign="middle"><table width="260" border="0" cellspacing="0" cellpadding="0" style="margin-left:10px;">
                       <tr>
@@ -283,19 +293,17 @@ tr.altRow td { background-color:#f0f0f0 !important; }
                   {{#if price}}
                   	 <td style="padding-left:5px;">{{price}}</td>
                  	 <td align="center" valign="middle"><input type="text" name="Quantity" id="quantity_optn_warran{{pNo}}" style="width:25px; text-align:center; border:1px solid #d8d8d8;">{{qty}}</input></td>
-                  	 <td height="30" align="center" valign="middle">
-							<button  class="button" id="addToCartOptnWarran_{{pNo}}_{{bId}}" onClick="addOptnsWarranties(this)">Add To Cart</button>
-					</td>
                  {{else}}
                  	 <td style="padding-left:5px;" class="price-btn-cntnr2">Price Not Available</td>
                  	 <td align="center" valign="middle"><input type="text" name="Quantity" id="quantity_optn_warran{{pNo}}" disabled="disabled" style="width:25px; text-align:center; border:1px solid #d8d8d8;"></td>
-                  	 <td align="center" valign="middle"></td>
-                 
                  {{/if}}
                  </c:if>
               </tr>
-            {{/accessories}}
-              </table>
-		</div>
+            {{/list}}
+			<tr>
+				<td height="30" align="center" valign="middle">
+							<button  class="button" id="addToCartOptnWarran{{bId}}" onClick="addOptnsWarranties('{{groupId}}','{{bId}}')">Add To Cart</button>
+					</td>
+             </tr>
       </script>
   <jsp:include page="learnMorePopUp.jsp"></jsp:include>  
