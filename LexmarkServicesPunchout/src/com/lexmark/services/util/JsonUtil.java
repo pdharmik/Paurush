@@ -211,7 +211,8 @@ public class JsonUtil {
 			.append("\"pNo\":\"").append(part.getPartNumber()).append("\",")
 			.append("\"modelFamily\":\"").append(part.getB2bProductFamilyName()).append("\",")
 			.append("\"qty\":\"").append(StringUtils.isNotBlank(part.getOrderQuantity())==true?part.getOrderQuantity():"").append("\",")
-			.append("\"price\":\"").append(part.getPrice()==null?"":part.getPrice()).append("\"},");
+			.append("\"price\":\"").append(part.getPrice()==null?"":part.getPrice()).append("\",")
+			.append("\"model\":\"").append(part.getB2bModel()).append("\"},");
 			
 		}
 		if(parts.size()>0){

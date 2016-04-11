@@ -10,26 +10,36 @@
 </style>
 	<h3>Search Result</h3>
 	<div class="heading">
-			<div style="margin-top:30px;" class="showCount">
-			        <form name="option_Form" id="option_Form">
-			            <span style="font-size: 12px;" class="countdescription">Display</span>
-			            <select onchange="" name="ItemSize" id="optionsSize">
-			              	<option selected="" value="10">10</option>
-							<option value="25">25</option>
-							<option value="50">50</option>
-			            </select>
-			          <span style="font-size: 12px;" class="countdescription">Item per page</span>
-			        </form>
-			</div>
+		<br/><br/>
+		<div class="showCount">
+		        <form name="option_Form" id="option_Form">
+		            <span class="countdescription">Display</span>
+		            <select onchange="" name="ItemSize" id="optionsSize">
+		              	<option selected="" value="10">10</option>
+						<option value="25">25</option>
+						<option value="50">50</option>
+		            </select>
+		          <span class="countdescription">Item per page</span>
+		        </form>
+		</div>
 	</div>
 	<div id="globalSearch_container">
-		<div id="accessories-global-search"></div>
+		<table id="accessories-global-search">
+			<thead>
+				<tr>
+					<td colspan="3"></td>
+					<td align="right" class="qtyHeader">Qty</td>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
 		<div id="bundle-global-search"></div>
 	</div>
 
 <script>
 function getDataForGlobalSearch(params){
-	//$('#globalSearch_container').html('');
+	$('#accessories-global-search tbody,#bundle-global-search').html('');
+	$('#globalSearch_container #accessories-global-search').hide();
 	showOverlay();				
 		$.getJSON("${loadGlobalSearchList}"+convertToParams(params),function(jsonBundles){
 			hideOverlay();
@@ -62,7 +72,7 @@ function getDataForGlobalSearch(params){
 	<div class="floatR qty_AddToCart">
 		<div class="price">{{price}}({{curr}})</div><br/>
 		<label>Quantity</label>
-		<input class="floatR" type="text" name="Quantity" id="quantity{{bundleId}}" style="width:25px; margin:0 0 0 5px; text-align:center; border:1px solid #d8d8d8;"/>
+		<input class="quantityInputBox floatR" type="text" name="Quantity" id="quantity{{bundleId}}"/>
 		<div class="clearBoth"></div><br/>
 		<input type="button" id="globalCart_{{bundleId}}" class="button floatR" value="Add To Cart" onclick="moveToCart('{{bundleId}}',this.id)"/>
 	</div>

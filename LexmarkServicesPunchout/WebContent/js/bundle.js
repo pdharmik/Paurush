@@ -130,6 +130,7 @@ function gotToOptions(bundleId){
 		closeShoppingCartPopup();
 }
 function learnMorePopup(bundleId){
+		$('#learn-more-popup-loading-img').show();
 		$('#learn-more-content').html('');
 		var partList=bundlesObj.bundlesData[bundleId].parts;
 		for(var i=0;i<partList.length;i++){
@@ -138,8 +139,9 @@ function learnMorePopup(bundleId){
 			$.getJSON(url,function(response){
 				$('#part_info'+response.pn).append(bundlesObj.learnMoreObj(response));
 				initAccordian('part_info'+response.pn);
-			});	
-		}	
+				$('#learn-more-popup-loading-img').hide();
+			});
+		}
 		dialogLearnMore.dialog('open');
 }
 function convertToParams(params){

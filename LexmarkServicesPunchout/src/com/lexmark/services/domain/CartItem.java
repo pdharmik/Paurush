@@ -13,7 +13,8 @@ public class CartItem {
 	itemType,
 	productId,
 	sapLineId,
-	contractNumber;
+	contractNumber,
+	marketingName;
 	private BigDecimal price;
 	private boolean showOptions;
 	
@@ -133,6 +134,19 @@ public class CartItem {
 	public void setContractNumber(String contractNumber) {
 		this.contractNumber = contractNumber;
 	}
+	/**
+	 * @return the marketingName
+	 */
+	public String getMarketingName() {
+		return marketingName;
+	}
+	/**
+	 * @param marketingName the marketingName to set
+	 */
+	public void setMarketingName(String marketingName) {
+		this.marketingName = marketingName;
+	}
+	
 
 	
 }
