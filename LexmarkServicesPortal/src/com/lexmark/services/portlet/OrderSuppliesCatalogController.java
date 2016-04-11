@@ -657,7 +657,6 @@ public class OrderSuppliesCatalogController extends BaseController {
 				
 			}
 			catalogListContract.setPaymentType(paymentType);
-			catalogListContract.setSoldToNumber(soldToNumber);
 			catalogListContract.setContractNumber(accDetails.get("contractNumber"));
 			CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle 
 					(PortalSessionUtil.getSiebelCrmSessionHandle(request));
@@ -730,7 +729,6 @@ public class OrderSuppliesCatalogController extends BaseController {
 				
 			}
 			catalogListContract.setPaymentType(paymentType);
-			catalogListContract.setSoldToNumber(soldToNumber);
 			catalogListContract.setContractNumber(accDetails.get("contractNumber"));
 			catalogListContract.setHardwareFlag(false);
 			ObjectDebugUtil.printObjectContent(catalogListContract, LOGGER);
@@ -804,7 +802,6 @@ public class OrderSuppliesCatalogController extends BaseController {
 				
 			}
 			catalogListContract.setPaymentType(paymentType);
-			catalogListContract.setSoldToNumber(soldToNumber);
 			catalogListContract.setContractNumber(accDetails.get("contractNumber"));
 			catalogListContract.setHardwareFlag(false);
 			
@@ -937,7 +934,6 @@ public class OrderSuppliesCatalogController extends BaseController {
 			contract.setCatalogFlag(true);
 			if(splitterFlag.equalsIgnoreCase("true")){
 				contract.setPaymentType(paymentType);
-				contract.setSoldToNumber(soldToNumber);
 				contract.setContractNumber(accDetails.get("contractNumber"));
 			}
 			
@@ -2922,7 +2918,6 @@ public class OrderSuppliesCatalogController extends BaseController {
 				PortletSession.APPLICATION_SCOPE);
 		/***start changes for Siebel Localization LOV***/
 		PaymentListContract paymentContract = ContractFactory.getPaymentListContract(request, false);
-		paymentContract.setSoldToNumber(billToAddress.getSoldToNumber());
 		paymentContract.setContractNumber(accDetails.get("contractNumber"));
 		CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));
 		paymentContract.setSessionHandle(crmSessionHandle);
