@@ -43,6 +43,12 @@
 	
 	<cache name="cannedQueries" maxElementsInMemory="20" eternal="false"
 	overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />	
+	
+	<cache name="retrieveBundleList" maxElementsInMemory="50" eternal="false"
+	overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="500" />
+	
+	<cache name="retrieveOptionsAndWarranties" maxElementsInMemory="50" eternal="false"
+	overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="500" />
 
 		
 </ehcache>
