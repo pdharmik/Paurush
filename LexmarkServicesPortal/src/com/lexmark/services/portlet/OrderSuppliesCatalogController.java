@@ -251,22 +251,17 @@ public class OrderSuppliesCatalogController extends BaseController {
 		}
 		String relatedServiceRequestNumber = request.getParameter("relatedServiceRequestNumber");
 		if(relatedServiceRequestNumber == null || "".equals(relatedServiceRequestNumber)){
-			//Lets remove the request number from session	
+				
 			session.setAttribute("catalogDetailPageFormSession", null);
 			session.removeAttribute("draftSrNumber");
 			session.removeAttribute("draftSrID");
 		}
-		//Call the retrieveCatalogFieldList method with the agreement Id		
+				
 		
 		String accountName;
 		String pageFrom = request.getParameter("pageFrom");	
 		
-		/*Commented the previous implementation for L5 acount as part of MPS 2.1 Wave 1 Changes for consumables, 
-		 * as currently everything will setup based on the account selection only. 
-		 * The same needs to be updated for the CommonController Account Selection
-		 */
 		
-		// added defect #7697
 		
 		String currURL=PortalUtil.getCurrentURL(request);
 		boolean isPartnerRequest=currURL.indexOf(ChangeMgmtConstant.ISPARTNERPORTAL)!=-1;
@@ -279,7 +274,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 		accDetails=(Map<String,String>)session.getAttribute("accountCurrentDetails",PortletSession.APPLICATION_SCOPE);
 		}
 		 
-		//ends here
+		
 			
 		String soldTo = "";
 		String splitterFlag = "false";
@@ -294,7 +289,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 		}	
 		
 		
-		/*Added for MPS 2.1 Wave 1 Consumables for Splitter Logic*/		
+			
 		
 		if(splitterFlag.equalsIgnoreCase("false")){
 			CatalogListContract catalogListContract = new CatalogListContract();
@@ -357,7 +352,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 			String productTypeData = "<select id=\"\"><option value=\"\">"+PropertiesMessageUtil.getPropertyMessage(LexmarkSPConstants.MESSAGE_BUNDLE_NAME,"requestInfo.option.select", request.getLocale())+"</option></select>";
 			model.addAttribute("productTypeData", productTypeData);		
 		}
-		/*End Add*/
+		
 		
 		session.removeAttribute("agreementId");
 		session.setAttribute("agreementId", accDetails.get("agreementId"));
@@ -397,13 +392,9 @@ public class OrderSuppliesCatalogController extends BaseController {
 		LOGGER.debug("--------------------- [IN] redirectCatalogOrderDetailsPage method-------------------");
 		HttpServletRequest httpReq = PortalUtil.getOriginalServletRequest(PortalUtil.getHttpServletRequest(request));
 		String userSegment = PortalSessionUtil.getUserType(request.getPortletSession());
-		/**
-		 * Changes for 9993 MPS 2.1
-		 * */
+		
 		AccountContact accContact=commonController.getContactInformation(request, response);
-		/**
-		 * Ends Changes for 9993 MPS 2.1
-		 * */
+		
 		CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));
 		RequestContract contract = new RequestContract();
 		contract.setServiceRequestNumber(httpReq.getParameter("requestNumber"));
@@ -580,14 +571,14 @@ public class OrderSuppliesCatalogController extends BaseController {
 				roundedFileSizeDisplay = roundedFileSizeDisplay.divide(new BigDecimal("1"), 2, BigDecimal.ROUND_HALF_UP);
 				
 				modifiedAttachment.setSizeForDisplay(String.valueOf(roundedFileSizeDisplay));
-				//start doing the manipulation for display name
+				
 				String attachName = attachment.getAttachmentName();
 				String fileNameWithTimestamp = attachName.substring(attachName.indexOf('@')+1, attachName.length());
 				
 				displayAttachment = fileNameWithTimestamp.substring(0,fileNameWithTimestamp.lastIndexOf('_'));
 				displayAttachment = displayAttachment+"."+attachment.getExtension();
 				
-				//end completing the manipulation for display name
+				
 				modifiedAttachment.setDisplayAttachmentName(displayAttachment);
 				modifiedAttachmentList.add(modifiedAttachment);
 			}
@@ -1005,7 +996,6 @@ public class OrderSuppliesCatalogController extends BaseController {
 							LOGGER.info("start printing lex logger");
 							LEXLOGGER.logTime("** MPS PERFORMANCE TESTING SAP CALL RETRIEVE TONER PRICE LIST ==>: " + (System.currentTimeMillis()- timeBeforeCall)/1000.0);
 							LOGGER.info("end printing lex loggger");
-							//catalogPartList.get(0).setMpsQuantity("5");
 							content = getXmlOutputGenerator(request.getLocale()).catalogToDataViewXml(catalogPartList,
 									catalogListResult.getTotalCount(), contract.getStartRecordNumber(), session,priceResult, paymentType,true);
 						}else if(selectedPaymentType.equalsIgnoreCase(ChangeMgmtConstant.PAYMENT_TYPE_PAY_NOW)){
@@ -1089,12 +1079,11 @@ public class OrderSuppliesCatalogController extends BaseController {
 		if(catalogOrderListToSession==null){
 			catalogOrderListToSession = new ArrayList<OrderPart>();
 		}
-		//Here please check if the catalogid is there the session list. If it is there in the list update that otherwise add that.
+		
 		
 		if (catalogOrderListToSession!=null){			
 			for(int i=0;i<catalogOrderListToSession.size();i++){
 				if(catalogId.equalsIgnoreCase(catalogOrderListToSession.get(i).getCatalogId())){
-					//Update is required
 					catalogOrderListToSession.remove(i);
 					break;
 				}
@@ -1202,7 +1191,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 		}
 		List<OrderPart> catalogOrderListToSession = new ArrayList<OrderPart>();
 		catalogOrderListToSession = (ArrayList<OrderPart>) session.getAttribute("catalogOrderListToSession");
-		//Part details added to the cart
+		
 		if (catalogOrderListToSession!=null){
 			List<OrderPart> catalogPartList = new ArrayList<OrderPart>();
 				for(OrderPart part : catalogOrderListToSession){
@@ -1240,9 +1229,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 		
 		catalogDetailPageForm.setMaxPartsToBeOrdered(getMaxPartsToBeOrdered());
 		
-		//Call to get default special instruction for this account
-		//Changed for MPS 2.1
-		String mdmLevel = PortalSessionUtil.getMdmLevel(session);//LexmarkConstants.MDM_LEVEL_SIEBEL;
+		String mdmLevel = PortalSessionUtil.getMdmLevel(session);
 		String mdmId=PortalSessionUtil.getMdmId(session);
 		Map<String,String> accDetails =(Map<String,String>)session.getAttribute("accountCurrentDetails",
 				PortletSession.APPLICATION_SCOPE);
@@ -1256,16 +1243,9 @@ public class OrderSuppliesCatalogController extends BaseController {
 		String accountIdForAddressFlag=accDetails.get("accountId");
 		LOGGER.debug("accountIdForAddressFlag"+accountIdForAddressFlag);
 	
-		/* Added for JAN release for Request Expedite Order*/
-		//-----------------START---- 8133 -------------------------------
-		//If customer Raised the request
 		
 			catalogDetailPageForm.setExpediteOrderAllowed(accDetails.get("requestExpedite").equals("true")?true:false);
 		
-		//----------------END------ 8133 ------------------------------	
-		
-		
-		//Lets call amind to get the default special instructioncatalogOrderListToSession.get(i).getPrice()
 		PortletSession portletSession = request.getPortletSession();
 		SiebelAccountListContract siebelAccountListContract = new SiebelAccountListContract();
 		siebelAccountListContract.setMdmId(mdmId);
@@ -1323,7 +1303,6 @@ public class OrderSuppliesCatalogController extends BaseController {
 		ResourceURL resURL1 = response.createResourceURL();
 		resURL1.setResourceID("displayAttachment");
 		model.addAttribute("displayAttachment", resURL1.toString());
-		//Setting the related service request number for draft SR
 		String draftSrNumber = (String)session.getAttribute("draftSrNumber");
 		String draftSrID=(String)session.getAttribute("draftSrID");
 		if(!("".equals(draftSrNumber)||draftSrNumber==null)){
@@ -1338,7 +1317,6 @@ public class OrderSuppliesCatalogController extends BaseController {
 			
 			session.removeAttribute("attachmentList");
 		}
-		//If it is draft SR, need to add attachment to the page
 		AttachmentForm attachForm = new AttachmentForm();
 		List<Attachment> attachmentList = new ArrayList<Attachment>();
 		attachmentList = (ArrayList<Attachment>) session.getAttribute("attachmentList");
@@ -1364,14 +1342,12 @@ public class OrderSuppliesCatalogController extends BaseController {
 				roundedFileSizeDisplay = roundedFileSizeDisplay.divide(new BigDecimal("1"), 2, BigDecimal.ROUND_HALF_UP);
 				
 				modifiedAttachment.setSizeForDisplay(String.valueOf(roundedFileSizeDisplay));
-				//start doing the manipulation for display name
 				String attachName = attachment.getAttachmentName();
 				String fileNameWithTimestamp = attachName.substring(attachName.indexOf('@')+1, attachName.length());
 				
 				displayAttachment = fileNameWithTimestamp.substring(0,fileNameWithTimestamp.lastIndexOf('_'));
 				displayAttachment = displayAttachment+"."+attachment.getExtension();
 				
-				//end completing the manipulation for display name
 				modifiedAttachment.setDisplayAttachmentName(displayAttachment);
 				modifiedAttachmentList.add(modifiedAttachment);
 			}
@@ -1382,7 +1358,6 @@ public class OrderSuppliesCatalogController extends BaseController {
 		model.addAttribute("attachmentForm",attachForm);
 		model.addAttribute("catalogDetailPageForm", catalogDetailPageForm);
 		model.addAttribute("attachmentFormDisplay", catalogDetailPageForm);
-		//Initializes the form for file upload
 		FileUploadForm fileUploadForm = new FileUploadForm();
 		model.addAttribute("fileUploadForm", fileUploadForm);
 		LOGGER.debug("---------------------- [OUT] showCatalogDetailPage --------------------------------");
@@ -1424,7 +1399,6 @@ public class OrderSuppliesCatalogController extends BaseController {
 					for(int j=0;j<bindingResult.getAllErrors().size();j++){
 						LOGGER.debug("Errors are in controller "+bindingResult.getAllErrors().get(j).getCode().toString());
 					}
-					//Display part list after validation
 					String paramPrefix = null;
 					String orderQuantity = null;
 					String catalogId = "";
@@ -1525,7 +1499,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 								}
 							}
 						}
-					}//outer for loop
+					}
 					catalogDetailPageForm.setCatalogPartList(modifiedCatalogPartListForCatalogForm);
 					reviewCatalogOrderForm.setCatalogPartList(modifiedCatalogPartList);
 					List <Attachment> attachmentList = new ArrayList<Attachment>();
@@ -1540,7 +1514,6 @@ public class OrderSuppliesCatalogController extends BaseController {
 					if(attachForm.getAttachmentList() !=null){
 						fileUploadForm.setFileCount(attachForm.getAttachmentList().size());
 						}
-					//End display part list after validation
 					model.addAttribute("catalogDetailPageForm", catalogDetailPageForm);
 					model.addAttribute("reviewCatalogOrderForm", reviewCatalogOrderForm);
 					model.addAttribute("creditCurrency",creditCurrency);
@@ -1598,9 +1571,6 @@ public class OrderSuppliesCatalogController extends BaseController {
 										
 										orderPart.setMpsQuantity(catalogOrderListToSession.get(j).getMpsQuantity());
 										
-										/*MPS 2.1 Changes. Removing Implicit Flag*/
-										
-										/*Ends*/
 										if(splitterFlag.equalsIgnoreCase("true")){
 											orderPart.setContractLineItemId(catalogOrderListToSession.get(j).getContractLineItemId());
 											orderPart.setSalesOrg(catalogOrderListToSession.get(j).getSalesOrg());
@@ -1636,9 +1606,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 									orderPart.setProductId(catalogOrderListToSession.get(j).getProductId());
 									
 									orderPart.setMpsQuantity(catalogOrderListToSession.get(j).getMpsQuantity());
-									/*MPS 2.1 Changes. Removing Implicit Flag*/
 									
-									/*End*/
 									if(splitterFlag.equalsIgnoreCase("true")){
 										if(catalogOrderListToSession.get(j).getUnitPrice()!= null){
 											if(catalogOrderListToSession.get(j).getUnitPrice() != "0" || catalogOrderListToSession.get(j).getUnitPrice() != ""){
@@ -1670,14 +1638,13 @@ public class OrderSuppliesCatalogController extends BaseController {
 							}
 						}
 					}
-				}//outer for loop
+				}
 				reviewCatalogOrderForm.setCatalogPartList(modifiedCatalogPartList);
 				catalogDetailPageForm.setCatalogPartList(modifiedCatalogPartListForCatalogForm);
 				if(splitterFlag.equalsIgnoreCase("true")){
 					
 					if(catalogFinalFlags.get("finalTaxCalcFlag") == true){
-						
-						//Tax Call 					
+											
 						TaxContract taxContract = ContractFactory.getOrderTaxContract(modifiedCatalogPartList, 
 								catalogDetailPageForm.getShipToAddress(), session, false);
 						ObjectDebugUtil.printObjectContent(taxContract, LEXLOGGER);
@@ -1693,8 +1660,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 		                    catalogDetailPageForm.setTotalAmt(priceMap.get("grandTotal"));
 		                    catalogDetailPageForm.setSubTotal(priceMap.get("totalPrice"));
 		                    catalogDetailPageForm.setTax(priceMap.get("totalTax"));
-		                    
-		                  //Populate Taxes in the part list
+		                  
 							for(Price price1 : taxresult.getLineInformationList()){
 								for(OrderPart orderPart : modifiedCatalogPartList){
 									if(price1.getSourceReferenceLineId().equalsIgnoreCase(orderPart.getCatalogId())){
@@ -1732,7 +1698,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 				}			
 				
 				catalogDetailPageForm.setAttachmentList(attachmentList);
-				//changes for email page				
+							
 				
 				if(catalogDetailPageForm.getPoNumber()!=null){
 					
@@ -1769,11 +1735,11 @@ public class OrderSuppliesCatalogController extends BaseController {
 					attachForm.setListOfFileTypes(listOfFileTypes);
 					attachForm.setAttMaxCount(attMaxCount);
 					
-					//changes for mps2.1
+					
 					if(attachForm.getAttachmentList() !=null){
 						fileUploadForm.setFileCount(attachForm.getAttachmentList().size());
 						}
-						//changes for mps2.1
+						
 					model.addAttribute("attachmentForm", attachForm);
 					model.addAttribute("fileUploadForm", fileUploadForm);
 					
@@ -1801,7 +1767,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 				for(int j=0;j<bindingResult.getAllErrors().size();j++){
 					LOGGER.debug("Errors are in controller "+bindingResult.getAllErrors().get(j).getCode().toString());
 				}
-				//Display part list after validation				
+							
 				String paramPrefix = null;
 				String orderQuantity = null;
 				String catalogId = "";
@@ -1896,10 +1862,9 @@ public class OrderSuppliesCatalogController extends BaseController {
 							}
 						}
 					}
-				}//outer for loop
-				
+				}
 				catalogDetailPageForm.setCatalogPartList(modifiedCatalogPartList);
-				//End Display part list after validation
+				
 				model.addAttribute("catalogDetailPageForm", catalogDetailPageForm);
 				model.addAttribute("reviewCatalogOrderForm", reviewCatalogOrderForm);
 				model.addAttribute("attachmentForm", attachForm);
@@ -1960,9 +1925,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 									orderPart.setProductId(catalogOrderListToSession.get(j).getProductId());
 									
 									orderPart.setMpsQuantity(catalogOrderListToSession.get(j).getMpsQuantity());
-									/*MPS 2.1 Changes. Removing Implicit Flag*/
 									
-									/*Ends*/
 									
 									if(splitterFlag.equalsIgnoreCase("true")){
 										orderPart.setContractLineItemId(catalogOrderListToSession.get(j).getContractLineItemId());
@@ -2012,12 +1975,12 @@ public class OrderSuppliesCatalogController extends BaseController {
 						}
 					}
 				}
-			}//outer for loop
+			}
 			catalogDetailPageForm.setCatalogPartList(modifiedCatalogPartList);
 			
 			List <Attachment> attachmentList = new ArrayList<Attachment>();
 			attachmentList = (ArrayList<Attachment>) session.getAttribute("attachmentList");
-			//Adding correct data for the attachment
+			
 			if(attachmentList!=null && !attachmentList.isEmpty()){
 				
 				for(int i=0;i<attachmentList.size();i++){
@@ -2040,7 +2003,6 @@ public class OrderSuppliesCatalogController extends BaseController {
 			CreateConsumableServiceRequestContract createServiceReqContract = 
 				ContractFactory.getCatalogDraftReqContract(catalogDetailPageForm, request);
 			
-//			Updated By MPS Offshore Team for create Vendor Order
 			List<String> userRoleList = PortalSessionUtil.getUserRoles(session);		
 			boolean isVendorFlag = false;
 			if(!userRoleList.isEmpty() && ((userRoleList.contains(LexmarkConstants.ROLE_SERVICE_MANAGER)) || 
@@ -2060,13 +2022,13 @@ public class OrderSuppliesCatalogController extends BaseController {
 			
 			String serviceRequestNumber = result.getServiceRequestNumber();
 			String srRowId = result.getServiceRequestRowId();
-			//Received the servicerequestnumber from webmethods. Lets call aMind
+			
 			AttachmentContract contract = new AttachmentContract();
 			List <Attachment> createSRAttachmentList = new ArrayList<Attachment>();
 			if(attachmentList!=null && !attachmentList.isEmpty()){
 				
 				for (int i=0;i<attachmentList.size();i++){
-					if(attachmentList.get(i).getId()==null || attachmentList.get(i).getId().equalsIgnoreCase("")){//newly created attachments
+					if(attachmentList.get(i).getId()==null || attachmentList.get(i).getId().equalsIgnoreCase("")){
 						
 						createSRAttachmentList.add(attachmentList.get(i));
 					}
@@ -2114,7 +2076,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 	 * @return String 
 	 * @throws Exception  
 	 */
-	//Here you have to call webmethod webservice and also you have to call amind attachment service
+	
 	@RenderMapping(params="action=confirmCatalogOrder")
 	public String confirmCatalogOrder(
 			RenderRequest request, 
@@ -2185,11 +2147,11 @@ public class OrderSuppliesCatalogController extends BaseController {
 			catalogDetailPageForm.setSelectedPaymentType(catDetails.get("paymentType"));
 		}
 				
-		//This is the time to call webmethods webservice
+		
 		CreateConsumableServiceRequestContract createServiceReqContract = 
 			ContractFactory.getCatalogServiceReqContract(catalogDetailPageForm, reviewCatalogOrderForm, request);
 				
-//		Updated By MPS Offshore Team for create Vendor Order
+
 		List<String> userRoleList = PortalSessionUtil.getUserRoles(session);		
 		boolean isVendorFlag = false;
 		if(!userRoleList.isEmpty() && ((userRoleList.contains(LexmarkConstants.ROLE_SERVICE_MANAGER)) || 
@@ -2245,11 +2207,11 @@ public class OrderSuppliesCatalogController extends BaseController {
 		}
 		
 		
-		//this is to enable re-submit of SR form on submit/draft exception
+		
 		Long tokenInSession = (Long)session.getAttribute(LexmarkConstants.SUBMIT_TOKEN, session.PORTLET_SCOPE);
 		BaseForm baseForm = (BaseForm)catalogDetailPageForm;
 		baseForm.setSubmitToken(tokenInSession);
-		//Received the servicerequestnumber from webmethods. Lets call aMind
+		
 			
 		model.addAttribute("creditFlag", creditFlag);
 		model.addAttribute("catalogDetailPageForm", catalogDetailPageForm);
@@ -2323,7 +2285,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 					cartViewCatalogOrderListToSession.add(orderPart);
 				}
 				cartViewForm.setCatalogPartList(catalogPartList);
-				session.setAttribute("cartViewCatalogOrderListToSession", cartViewCatalogOrderListToSession);//This will be used for cart view modification
+				session.setAttribute("cartViewCatalogOrderListToSession", cartViewCatalogOrderListToSession);
 		}
 		model.addAttribute("cartViewForm", cartViewForm);
 		return "ordermanagement/catalogOrder/cartView";
@@ -2345,15 +2307,15 @@ public class OrderSuppliesCatalogController extends BaseController {
 		
 		List<OrderPart> cartViewCatalogOrderListToSession = (ArrayList<OrderPart>) session.getAttribute
 				("cartViewCatalogOrderListToSession");
-		//Changes for Cart Deletion MPS 2.1
+		
 		List<?> catalogOrderListToSession = (ArrayList<?>) session.getAttribute("catalogOrderListToSession");
 
-		//Ends Changes for Cart Deletion MPS 2.1
+		
 		if (cartViewCatalogOrderListToSession!=null){
 			
 			for(int i=0;i<cartViewCatalogOrderListToSession.size();i++){
 				if(catalogId.equalsIgnoreCase(cartViewCatalogOrderListToSession.get(i).getCatalogId())){
-					//Update is required
+					
 					if("update".equalsIgnoreCase(jobType)){
 						
 						OrderPart orderPart = new OrderPart();
@@ -2380,29 +2342,28 @@ public class OrderSuppliesCatalogController extends BaseController {
 						orderPart.setCatalogId(catalogId);
 						orderPart.setConsumableType(cartViewCatalogOrderListToSession.get(i).getConsumableType());
 						cartViewCatalogOrderListToSession.remove(i);
-						//if orderQuantity is zero dont add the part to the session
-						//else remove the quantity from the cart but we cant do that. We need to handle that if any error comes
+						
 						cartViewCatalogOrderListToSession.add(orderPart);
 					}else{						
-						//Changes for Cart Deletion MPS 2.1
+						
 						catalogOrderListToSession.remove(i);
-						//Ends Changes for Cart Deletion MPS 2.1
+						
 						cartViewCatalogOrderListToSession.remove(i);
 					}
 					session.removeAttribute("cartViewCatalogOrderListToSession");
-					//Changes for Cart Deletion MPS 2.1
+					
 					session.removeAttribute("catalogOrderListToSession");
-					//Ends Changes for Cart Deletion MPS 2.1
+					
 					session.setAttribute("cartViewCatalogOrderListToSession", cartViewCatalogOrderListToSession);
-					//Changes for Cart Deletion MPS 2.1
+					
 					session.setAttribute("catalogOrderListToSession",catalogOrderListToSession);
-					//Ends Changes for Cart Deletion MPS 2.1
+					
 					break;
 				}
 			}
 		}
 		
-		//Printing the values
+		
 		List<OrderPart> printCartViewCatalogOrderListToSession = (ArrayList<OrderPart>) session.getAttribute
 				("cartViewCatalogOrderListToSession");
 		
@@ -2413,7 +2374,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 				"Quantity "+printCartViewCatalogOrderListToSession.get(i).getPartQuantity());
 			}
 		}
-		//complete printing the values
+		
 		LOGGER.debug("---------------------------------- [OUT]updateCartViewURL-------------------");
 	}
 	
@@ -2475,7 +2436,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 			}
 		}
 		session.setAttribute("catalogOrderListToSession", catalogOrderListToSession);
-		//String successMessage = "Your cart has been successfully updated";
+		
 		String successMessage = PropertiesMessageUtil.getPropertyMessage(LexmarkSPConstants.MESSAGE_BUNDLE_NAME,
 				"cartUpdate.success.msg", request.getLocale());
 		PrintWriter out = response.getWriter();
@@ -2525,11 +2486,11 @@ public class OrderSuppliesCatalogController extends BaseController {
 		attachForm.setListOfFileTypes(listOfFileTypes);
 		attachForm.setAttMaxCount(attMaxCount);
 		
-		//changes for mps2.1
+		
 		if(attachForm.getAttachmentList() !=null){
 			fileUploadForm.setFileCount(attachForm.getAttachmentList().size());
 			}
-			//changes for mps2.1
+			
 		model.addAttribute("attachmentForm", attachForm);
 		model.addAttribute("fileUploadForm", fileUploadForm);
 		model.addAttribute("catalogDetailPageForm", catalogDetailPageForm);
@@ -2564,7 +2525,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 				}
 			}
 		}
-		//Printing the values
+		
 		List<OrderPart> printCatalogOrderListToSession = (ArrayList<OrderPart>) session.getAttribute("catalogOrderListToSession");
 		if (printCatalogOrderListToSession!=null){
 			
@@ -2575,7 +2536,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 				"Part Description "+printCatalogOrderListToSession.get(i).getPartDesc());
 			}
 		}
-		//complete printing the values
+		
 		LOGGER.debug("---------------------------------- [OUT]deleteFromCatalogDetail-------------------");
 	}
 	
@@ -2885,7 +2846,6 @@ public class OrderSuppliesCatalogController extends BaseController {
 			}
 			sb.append("</complete>");
 			
-			//Adding Bill To List to Session
 			request.getPortletSession().setAttribute("billToAddressMap", billToMap ,PortletSession.APPLICATION_SCOPE);
 		} 
 		return sb.toString();
@@ -2901,7 +2861,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 	public void getPaymentType(ResourceRequest request, ResourceResponse response) throws Exception{
 		LOGGER.debug("---------------- [IN] getPaymentType--------------------------");			
 		
-		//Retrieve Map from session and set the Bill To in the session
+		
 		PortletSession session = request.getPortletSession();
 		GenericAddress billToAddress=new GenericAddress();
 		if(request.getParameter("soldTo")!=null && request.getParameter("soldTo").equalsIgnoreCase("singleAddress")){
@@ -2916,7 +2876,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 		}
 		Map<String,String> accDetails =(Map<String,String>)session.getAttribute(ChangeMgmtConstant.ACNTCURRDETAILS,
 				PortletSession.APPLICATION_SCOPE);
-		/***start changes for Siebel Localization LOV***/
+		
 		PaymentListContract paymentContract = ContractFactory.getPaymentListContract(request, false);
 		paymentContract.setContractNumber(accDetails.get("contractNumber"));
 		CrmSessionHandle crmSessionHandle = globalService.initCrmSessionHandle(PortalSessionUtil.getSiebelCrmSessionHandle(request));
@@ -2941,7 +2901,6 @@ public class OrderSuppliesCatalogController extends BaseController {
 					(SiebelLocalizationOptionEnum.CONSUMABLE_PAYMENT_TYPE.getValue(), request.getLocale());
 			
 		} catch (LGSDBException e) {
-			// TODO Auto-generated catch block
 			exceptionList.add(e.getMessage());
 		}
 		ListIterator it = paymentType.listIterator();
@@ -2956,7 +2915,7 @@ public class OrderSuppliesCatalogController extends BaseController {
 				}
 			}
 		}
-		/***end changes for Siebel Localization LOV***/
+		
 		StringBuffer responseBody=new StringBuffer();
 		
 		response.setContentType("text/html");
