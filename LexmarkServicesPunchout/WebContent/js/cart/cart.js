@@ -132,9 +132,11 @@ function doCart(detailsObj,buttonId){
     var obj={
 			 cartSizeId:"totItems"
 	 };
+    if(!buttonId.contains('addToCartOptnWarran')){
+    	jQuery("#"+buttonId).val("Update Cart");
+        jQuery("#"+buttonId).html("Update Cart");
+    }
     
-    jQuery("#"+buttonId).val("Update Cart");
-    jQuery("#"+buttonId).html("Update Cart");
     var id=jQuery('#printerId').html();
     
     // added for UNSPSC start  
@@ -192,23 +194,47 @@ function doCart(detailsObj,buttonId){
     }
     
 }
-function addOptnsWarranties(obj){
-	var buttonId=jQuery(obj).attr('id');
-
-	var splits=jQuery(obj).attr('id').split("_");
-	
-	var objectDet={quantityId:"quantity_optn_warran",productId:splits[1],bundleId:splits[2],optionWarranty:true,cartType:"printers"};
-	doCart(objectDet,buttonId);
-	
+function addOptnsWarranties(index,bId){
+	var familyParts=bundlesObj.bundlesData[bId].accessories[index].list;
+	var buttonId='addToCartOptnWarran'+bId;
+	var numberPatrn = /^\s*\d+\s*$/;
+	var validationReq = true;
+	var invalidParts = [];
+	for(var i=0;i<familyParts.length;i++){		
+		var objectDet={quantityId:"quantity_optn_warran",productId:familyParts[i].pNo,bundleId:bId,optionWarranty:true,cartType:"printers"};
+		var queryParam=objectDet.quantityId+objectDet.productId;
+		var quantity=jQuery('#'+queryParam).val().trim();
+		if(quantity!=null && $.trim(quantity).length>0 && parseInt(quantity) > 0 && numberPatrn.exec(quantity)) {
+			validationReq = false;
+			doCart(objectDet,buttonId);
+			if(invalidParts.indexOf(queryParam) != -1){
+				invalidParts.splice(invalidParts.indexOf(queryParam), 1);
+			}			
+				
+		}
+		else{
+			jQuery('#'+queryParam).removeClass('errorColor');
+			invalidParts.push(queryParam);
+		}
+		
+	}
+	if(validationReq){
+		jQuery('#errorMsgPopup').show();
+		jQuery('#errorMsgPopup').append("<li><strong>"+validationmsg.qtyInvalid+"</strong></li>");
+		for(var i=0;i<invalidParts.length;i++){		
+			jQuery('#'+invalidParts[i]).addClass('errorColor');
+		}
+	}
 	
 }
+var flagForCartPopup = true;
 function showShoppingCart(cartType){
 	var shoppingCartObject={cart:"",id:"shoppingCart",cartType:cartType};
     
     	//printerObject.printerType=jQuery(this).attr('id');
     	global_click_msgs.clickedFrom="showShoppingCart";//defined in rightNavHome.jsp
     	calledFromLEftNav(shoppingCartObject);
-	
+    	flagForCartPopup = false;
 }
 var cartItems={
 		items:[],

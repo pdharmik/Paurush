@@ -502,14 +502,14 @@ function showOverlayPopup(){
 <c:set var="showDefaultError" value="true" scope="request"></c:set>
 
 </c:if>
-<div id="overlay" style="display:none">
+<div id="overlay"  class="noDisplay">
 </div>
 <div id="processingHint" tabindex="-1" >
   <img src="/lexmark-punchout-theme/images/custom/loading_big.gif"><br>
 </div>
-<div id="overlayPopup" style="display:none">
+<div id="overlayPopup"  class="noDisplay">
 </div>
-<div id="processingHintPopup" tabindex="-1" style="display:none">
+<div id="processingHintPopup" tabindex="-1"  class="noDisplay">
    <img src="/lexmark-punchout-theme/images/custom/loading_big.gif"><br>
 </div>
 <html:statusBanner id="${pageId}" showError="${showDefaultError}"/>

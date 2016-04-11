@@ -5,22 +5,24 @@
 }
 </style>
 
-<div id="learnMorePopUp" style="display:none">
+<div id="learnMorePopUp" class="noDisplay">
                   
                   
-                  <div id="popup-title" style="margin-top:20px !important;"><spring:message code="product.popupTitle.productSpecifications"/></div>
+                  <div id="popup-title" class="marginT20px"><spring:message code="product.popupTitle.productSpecifications"/></div>
                   <div id="wrapper-popup">
-                    <div id="accObj4" style="width:84%; float:right; height:auto;"></div>
+                    <div id="accObj4"></div>
                      
                   	
                   		<div id="learn-more-content">
                   		</div>
-                    
+                    <div align="center" id="learn-more-popup-loading-img">
+						<img src="/lexmark-punchout-theme/images/custom/loading_big.gif"><br><br><br> 
+					</div>
                     	
                    
                     
                     </div> 
-                    <div style="clear:both"></div>
+                    <div class="clearBoth"></div>
 </div>
              <script>
              var dialogLearnMore;

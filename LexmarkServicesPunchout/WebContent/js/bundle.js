@@ -103,17 +103,19 @@
 				return msg;
 			},
 			parseData_searchResult:function(){
-				console.log('in here');
-					var len=Object.keys(bundlesObj.bundlesData);
-					for(var i=0;i<len;i++){
-						console.log(bundlesObj.bundlesData[i]);
-						console.log(bundlesObj.bundleTemplate(bundlesObj.bundlesData[index]));
-						$('#globalSearch_container #bundle-global-search').append(bundlesObj.bundleTemplate(bundlesObj.bundlesData[index]));
+					var keys=Object.keys(bundlesObj.bundlesData);
+					for(var i=0;i<keys.length;i++){
+						var bId=keys[i];
+						$('#globalSearch_container #bundle-global-search').append(bundlesObj.bundleTemplate(bundlesObj.bundlesData[bId]));
 					}
-					console.log(bundlesObj.accessoriesTemplateObj(bundlesObj.globalSearchAccessories[i]));
-					//for(var i=0;i<bundlesObj.globalSearchAccessories.length;i++){
-						$('#globalSearch_container #accessories-global-search').append(bundlesObj.accessoriesTemplateObj({"accessories":bundlesObj.globalSearchAccessories}));
-					//}
+					keys=Object.keys(bundlesObj.globalSearchAccessories);
+					
+					for(var i=0;i<keys.length;i++){
+						var accId=keys[i];
+						$('#globalSearch_container #accessories-global-search').append(bundlesObj.accessoriesTemplateObj(bundlesObj.globalSearchAccessories[accId]));						
+					}			   		
+						
+
 			}		
 	}; 
  
@@ -128,6 +130,7 @@ function gotToOptions(bundleId){
 		closeShoppingCartPopup();
 }
 function learnMorePopup(bundleId){
+		$('#learn-more-popup-loading-img').show();
 		$('#learn-more-content').html('');
 		var partList=bundlesObj.bundlesData[bundleId].parts;
 		for(var i=0;i<partList.length;i++){
@@ -136,8 +139,9 @@ function learnMorePopup(bundleId){
 			$.getJSON(url,function(response){
 				$('#part_info'+response.pn).append(bundlesObj.learnMoreObj(response));
 				initAccordian('part_info'+response.pn);
-			});	
-		}	
+				$('#learn-more-popup-loading-img').hide();
+			});
+		}
 		dialogLearnMore.dialog('open');
 }
 function convertToParams(params){

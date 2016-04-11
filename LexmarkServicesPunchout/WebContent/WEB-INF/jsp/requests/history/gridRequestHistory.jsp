@@ -2,16 +2,16 @@
 <%@ taglib prefix="html" tagdir="/WEB-INF/tags/html" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <portlet:resourceURL var="retrieveGrid" id="retrieveGrid"></portlet:resourceURL>
-<div id="portlet-wrap" style="width:100%!important">
+<div id="portlet-wrap">
       <div class="pageTitle"><spring:message code="changemanagement.common.button.requestHistory"/></div>
       
-      <div id="requestHistoryGrid_container" class="gridbox gridbox_light" style="width:100%!important"></div>
+      <div id="requestHistoryGrid_container" class="gridbox gridbox_light"></div>
       <div id="loadingNotification" class='gridLoading'>
-	        	<br/><spring:message code='loadingNotification'/>&nbsp;&nbsp;<img src="<html:imagesPath/>gridloading.gif"/><br/>
+	        	<br/><img src="/lexmark-punchout-theme/images/custom/loading_big.gif"/><br/>
 	    	  </div>
 	  <div class="pagination"><span id="pagingArea"></span><span id="infoArea"></span></div>
     </div>
-   <div id="requestDetailsPopup" style="display:none" ></div>
+   <div id="requestDetailsPopup"></div>
 <script>
 
 var requestHistoryGrid;
