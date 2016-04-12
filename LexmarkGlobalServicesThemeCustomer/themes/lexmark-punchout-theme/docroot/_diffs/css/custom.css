@@ -209,8 +209,11 @@ div.clear {
 
 #content {
     background: rgb(255, 255, 255) none repeat scroll 0 0;
-    border: 1px solid rgb(145, 145, 145);
+	border-color: #919191;
     border-radius: 5px;
+    border-style: solid;
+    border-width: 1px 1px 2px;
+    margin-bottom: 3px;
     width: 100%;
 }
 
@@ -1365,7 +1368,7 @@ div.simple-finder span.input-field input {
 
 
 .button {
-	text-decoration: none;
+	text-decoration: none !important;
 	background-color:#1e68bc !important;
 	color:#fff !important;
 	line-height:20px;
@@ -1374,11 +1377,13 @@ div.simple-finder span.input-field input {
 	border: 0 none;
 	padding:10px 25px!important;
 }
-.button:hover {
+.button:hover,.button_cancel:hover {
+	text-decoration: none !important;
 	background: #138948 !important;
 	transition: all 0.3s ease 0s;
 }
 .button:active ,.button:focus {
+	text-decoration: none;
 	background: #164c89!important;
 }
 
@@ -1443,17 +1448,13 @@ div.simple-finder span.input-field input {
 
 
 .button_cancel, #loginCancelBtn {
-	background-color: #FFFFFF;
-    border: 1px solid #286898;
-    color: #286898;
+	background-color: rgb(29, 194, 50);
+    color: #ffffff !important;
     text-decoration: none !important;
 	cursor: pointer;
-	padding:3px 8px;
-	font-size: 11px;
+	padding:10px 25px !important;
+	font-size: 12px;
 	text-transform: uppercase;
-	border-radius: 12px;
-	-moz-border-radius: 12px;
-    -webkit-border-radius: 12px;
 }
 
 #myFavoriteAddressesBtn, #accountAddressesBtn {
@@ -1539,12 +1540,15 @@ span.portlet-title {
 }
 /*CI-6 changes end*/
 #footer {
-	background: none repeat scroll 0 0 #fff;
-    border-top: 3px solid #a5a5aa;
-	height: 100%;	
-	padding: 15px 20px;
-	/* margin-top: 4px; */
-    text-align:center;
+	background: rgb(235, 235, 228) none repeat scroll 0 0;
+    border-color: rgb(145, 145, 145);
+    border-radius: 5px 5px 0 0;
+    border-style: solid;
+    border-width: 1px 1px 0;
+    height: 100%;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
 }
 
 #footer img {
