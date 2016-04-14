@@ -288,6 +288,10 @@ public class AmindOrderSuppliesCatalogConversionUtil {
 			part.setProductId(partDo.getProductId());
 			part.setPrice(new BigDecimal(partDo.getPrice()));
 			part.setMpsQuantity(partDo.getMpsQuantity());
+			part.setB2bMarketingName(partDo.getB2bMarketingName());
+			part.setB2bMarketingShortDesc(partDo.getB2bMarketingShortDesc());
+			part.setB2bModel(partDo.getB2bModel());
+			part.setB2bMfgBrand(partDo.getB2bMfgBrand());
 			orderParts.add(part);
 		}
 
@@ -320,6 +324,10 @@ public class AmindOrderSuppliesCatalogConversionUtil {
 			part.setPrinterName(partDo.getPrinterName());
 			part.setPrinterDescription(partDo.getPrinterDescription());
 			part.setMpsQuantity(partDo.getMpsQuantity());
+			part.setB2bMarketingName(partDo.getB2bMarketingName());
+			part.setB2bMarketingShortDesc(partDo.getB2bMarketingShortDesc());
+			part.setB2bModel(partDo.getB2bModel());
+			part.setB2bMfgBrand(partDo.getB2bMfgBrand());
     		if (LangUtil.isNotEmpty(partDo.getSuppliesSplitterCatalog())) {
 				
 				for (SuppliesSplitterCatalogDo suppCatalog : partDo.getSuppliesSplitterCatalog())
@@ -401,6 +409,10 @@ public class AmindOrderSuppliesCatalogConversionUtil {
 				part.setMpsQuantity(partDo.getMpsQuantity());
 				part.setSuppliesCatalogList(populateSuppliesCatalog(partDo));
 				part.setB2bProductFamilyName(partDo.getB2bProductFamilyName());
+				part.setB2bMarketingName(partDo.getB2bMarketingName());
+				part.setB2bMarketingShortDesc(partDo.getB2bMarketingShortDesc());
+				part.setB2bModel(partDo.getB2bModel());
+				part.setB2bMfgBrand(partDo.getB2bMfgBrand());
 				orderParts.add(part);
 			}
 			return orderParts;
@@ -457,6 +469,10 @@ public class AmindOrderSuppliesCatalogConversionUtil {
 				accessories.setProductModel(partDo.getProductModel());
 				accessories.setSuppliesModel(partDo.getSuppliesModel());
 				accessories.setMpsQuantity(partDo.getMpsQuantity());
+				accessories.setB2bMarketingName(partDo.getB2bMarketingName());
+				accessories.setB2bMarketingShortDesc(partDo.getB2bMarketingShortDesc());
+				accessories.setB2bModel(partDo.getB2bModel());
+				accessories.setB2bMfgBrand(partDo.getB2bMfgBrand());
 	    		if(LangUtil.isNotEmpty(partDo.getSuppliesSplitterCatalog()) && partDo.getSuppliesSplitterCatalog().get(0)!=null) {
 					SuppliesSplitterCatalogDo suppCatalog  = partDo.getSuppliesSplitterCatalog().get(0);
 					accessories.setContractNo(suppCatalog.getContractNumber());
@@ -494,6 +510,10 @@ public class AmindOrderSuppliesCatalogConversionUtil {
 				accessories.setProductModel(partDo.getProductModel());
 				accessories.setSuppliesModel(partDo.getSuppliesModel());
 				accessories.setB2bProductFamilyName(partDo.getB2bProductFamilyName());
+				accessories.setB2bMarketingName(partDo.getB2bMarketingName());
+				accessories.setB2bMarketingShortDesc(partDo.getB2bMarketingShortDesc());
+				accessories.setB2bModel(partDo.getB2bModel());
+				accessories.setB2bMfgBrand(partDo.getB2bMfgBrand());
 	    		if(LangUtil.isNotEmpty(partDo.getSuppliesSplitterCatalog()) && partDo.getSuppliesSplitterCatalog().get(0)!=null) {
 					SuppliesSplitterCatalogDo suppCatalog  = partDo.getSuppliesSplitterCatalog().get(0);
 					accessories.setContractNo(suppCatalog.getContractNumber());
@@ -537,13 +557,16 @@ public class AmindOrderSuppliesCatalogConversionUtil {
 			OrderPart supplies = new OrderPart();
 			supplies.setPartNumber(partDo.getPartNumber());
 			supplies.setDescription(partDo.getDescription());
-//			supplies.setDeviceType(partDo.getd)
 			supplies.setModel(partDo.getProductModel());
 			supplies.setCatalogId(partDo.getCatalogId());
 			supplies.setSupplyId(partDo.getSupplyId());
 			supplies.setConsumableType(partDo.getConsumableType());
 			supplies.setMpsQuantity(partDo.getMpsQuantity());
 			supplies.setB2bProductFamilyName(partDo.getB2bProductFamilyName());
+			supplies.setB2bMarketingName(partDo.getB2bMarketingName());
+			supplies.setB2bMarketingShortDesc(partDo.getB2bMarketingShortDesc());
+			supplies.setB2bModel(partDo.getB2bModel());
+			supplies.setB2bMfgBrand(partDo.getB2bMfgBrand());
 			if(LangUtil.isNotEmpty(partDo.getSuppliesSplitterCatalog()) && partDo.getSuppliesSplitterCatalog().get(0)!=null) {
 				SuppliesSplitterCatalogDo suppCatalog  = partDo.getSuppliesSplitterCatalog().get(0);
 				supplies.setContractNo(suppCatalog.getContractNumber());
