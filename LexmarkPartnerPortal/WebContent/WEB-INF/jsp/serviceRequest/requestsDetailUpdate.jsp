@@ -1264,7 +1264,6 @@ var shipToaddrFlag = [];
 						recommendGrid.prftInit();
 						recommendGrid.setSizes();
 						recommendGrid.setColumnHidden(4,true);
-						//recommendGrid.setColumnHidden(5,true);
 						recommendGrid.setColumnHidden(6,true);
 						//*********************//
 						if("${serviceRequestDetailForm.activity.addressStatus}"=="${serviceRequestDetailForm.addressStatusList[0]}"){
