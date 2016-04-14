@@ -56,34 +56,27 @@ public class ShoppingCartController {
 			@RequestParam(value="isOptnWarr", required=false) String partsOrdering,
 			@RequestParam("bundleId") String bundleId,
 			@RequestParam("cartType") String cartType,
-			@RequestParam("unspscCode") String unspscCode)
+			@RequestParam("unspscCode") String unspscCode,
+			@RequestParam("marketingName") String marketingName)
 			throws IOException {
-		LOGGER.debug(" in addToShoppingCart");
-		
-		LOGGER.debug("prod id="+prodId +" qty = "+qty+" cart type is"+cartType+" unspscCode is "+unspscCode);
 		
 		Map<String, ShoppingCartForm> _shoppingFormList = (Map<String, ShoppingCartForm>) session.getAttribute(PunchoutConstants.CART_SESSION);		
 		
 		if(StringUtils.isNotBlank(partsOrdering) && "true".equalsIgnoreCase(partsOrdering)){
-			LOGGER.debug("adding options and warranties ");
-			ControllerUtil.addShoppingCartParts(session, prodId, qty, bundleId, cartType);
+			ControllerUtil.addShoppingCartParts(session, prodId, qty, bundleId, cartType, unspscCode, marketingName);
 		}else{
-			LOGGER.debug("adding bundles ... ");
-			ControllerUtil.addToShoppingCart(session,prodId,qty,cartType,unspscCode);
+			ControllerUtil.addToShoppingCart(session,prodId,qty,cartType,unspscCode,marketingName);
 		}		
 	
 		int cartSize = getCartSize(request, cartType);
 		if(null != session.getAttribute("forGlobalSearch") && (Boolean)session.getAttribute("forGlobalSearch")){
-			LOGGER.debug("for global search add to shopping cart");
 			cartSize = getCartSize(request, "supplies")+getCartSize(request, "printers");
 			cartType = "globalSearch";
 		}
 		
-		LOGGER.debug("fROM SESSION ITEMS IN CART===========>" + cartSize);
 		Map<String,String> params=new HashMap<String,String>();
 		params.put(PunchoutConstants.SIZE,String.valueOf(cartSize));
 		params.put(PunchoutConstants.CART_TYPE,cartType);
-		LOGGER.debug("GENERATEDJSONCART"+JsonUtil.generateCartJSON(params));
 		ControllerUtil.prepareResponse(response, JsonUtil.generateCartJSON(params));
 		
 	}

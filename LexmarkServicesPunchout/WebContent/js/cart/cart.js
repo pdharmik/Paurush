@@ -139,7 +139,9 @@ function doCart(detailsObj,buttonId){
     
     // added for UNSPSC start  
     var cartType=detailsObj.cartType;
-    var unspsc ="";var printerTypeNum="";
+    var unspsc ="";
+    var printerTypeNum="";
+    var marketingName = "";
   
     if(detailsObj.quantityId=="quantity_optn_warran"){
     	printerTypeNum=detailsObj.productId;
@@ -156,6 +158,7 @@ function doCart(detailsObj,buttonId){
     	         dataType : 'json',
     	          success: function (data) {
     	        	 unspsc = data.UNSPSCCode;
+    	        	 marketingName = data.marketing;
     	        	 addToCart();
     	          },
     				failure:function (data){
@@ -181,7 +184,8 @@ function doCart(detailsObj,buttonId){
     	    	isOptnWarr:detailsObj.optionWarranty,
     	    	cartType:detailsObj.cartType,
     	    	bundleId:detailsObj.bundleId,
-    	    	unspscCode:unspsc
+    	    	unspscCode:unspsc,
+    	    	marketingName:marketingName
         	},
         	type:'POST',
         	dataType:'JSON',
