@@ -134,6 +134,10 @@ function continueCallFromLeftNav(linkIdFromLeftNav){
 			linkIdFromLeftNav.id === "shoppingCart" &&
 			global_click_msgs.clickedFrom === "orderCart")
 	{
+	if(!flagForCartPopup){
+			hideOverlay();
+			return;
+		}
 		var shoppingCartPopupUrl = divResourceMapping.url[index];
 		jQuery('#shoppingCartPopup').load(shoppingCartPopupUrl, {cartType: cartCheckObj.cartType}, function(){
 
@@ -147,7 +151,7 @@ function continueCallFromLeftNav(linkIdFromLeftNav){
 				height: '600',
 				width: '950',
 				open: function(event, ui){
-					jQuery('#backBtn').hide();
+					jQuery('.backBtn').hide();
 				},
 				close: function(event,ui){
 					closeShoppingCartPopup();
@@ -177,10 +181,8 @@ function continueCallFromLeftNav(linkIdFromLeftNav){
 			  success:function(content){
 				  hideOverlay();
 				  jQuery("#storeContent").hide();
-				  jQuery('#mainRightNavContainer div').each(function(){
-					 
+				  jQuery('#mainRightNavContainer>div').each(function(){
 					  jQuery(this).hide();
-					  jQuery(this).html('');
 				  });
 				  if(linkIdFromLeftNav != 'globalSearchList'){
 					  jQuery('.leftNavLinks li').each(function(){
@@ -194,7 +196,7 @@ function continueCallFromLeftNav(linkIdFromLeftNav){
 				  }
 				  if(global_click_msgs.clickedFrom === "showShoppingCart")
 				  {
-					  jQuery('#backBtn').show();
+					  jQuery('.backBtn').show();
 				  }
 			  }
 		});
@@ -228,12 +230,14 @@ function showHome(flag)
 	
 }
 function showHideDivs(exceptDiv){
+	$('#shoppingCartDetails').remove();
+	flagForCartPopup = true;
 	jQuery('#mainRightNavContainer').children('div').each(function(){
 		
 		if(exceptDiv != undefined && exceptDiv==$(this).attr('id')){
 			$(this).show();
 		}else{
-			$(this).hide();
+			$("#"+$(this).attr('id')).hide();
 		}
 		
 	});
@@ -317,28 +321,28 @@ jQuery('.health-connect-links a').click(function(){
 </c:if>
 <div id="mainRightNavContainer">
 <%-- Mind before adding DIV over here. will get hidden on page load and other conditions...  --%>
-		<div id="historyList" style="display: none;">
+		<div id="historyList">
 			<jsp:include page="/WEB-INF/jsp/requests/history/gridRequestHistory.jsp"/>
 		</div>
 		<c:if test='${sessionScope.aribaParamMap["isKaiser"]=="false"}'>
-			<div id="suppliesList" style="display: none;"></div>
+			<div id="suppliesList" class="noDisplay"></div>
 		</c:if>	
-		<div id="printerProducts" style="display: none;">
+		<div id="printerProducts" class="noDisplay">
 				<jsp:include page="/WEB-INF/jsp/requests/product/printerProduct.jsp"/>
 		</div>
 		
-		<div id="shoppingCart" style="display: none;"></div>
-		<div id="suppliesProduct" style="display: none;"></div>
-		<div id="eQuote" style="display: none;"></div>
+		<div id="shoppingCart" class="noDisplay"></div>
+		<div id="suppliesProduct" class="noDisplay"></div>
+		<div id="eQuote" class="noDisplay"></div>
 		<c:if test='${sessionScope.aribaParamMap["isKaiser"]=="false"}'>
-		<div id="printersList" style="display: none;">
+		<div id="printersList" class="noDisplay">
 			<jsp:include page="/WEB-INF/jsp/requests/product/printersList.jsp"/>
 		</div>
 		</c:if>
-		<div id="globalSearchList" style="display: none;">
+		<div id="globalSearchList" class="noDisplay">
 			<jsp:include page="/WEB-INF/jsp/requests/globalSearchList.jsp"/>
 		</div>
-		<div id="showPrinterDetails" style="display: none;"></div><%-- this div shows the printer details from (Buy Options) cart --%>
+		<div id="showPrinterDetails" class="noDisplay"></div><%-- this div shows the printer details from (Buy Options) cart --%>
 </div>
-<div id="shoppingCartPopup" style="display:none" ></div>
-<div style="display: none;" id="cxmlDiv"></div>
+<div id="shoppingCartPopup" class="noDisplay"></div>
+<div class="noDisplay" id="cxmlDiv"></div>

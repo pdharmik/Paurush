@@ -12,7 +12,7 @@
        <c:if test='${sessionScope.aribaParamMap["isKaiser"]=="true"}'>
       	<!-- Added the Home Link -->
       	<div class="left-nav-header">        	
-        	<h3><a href="#" title="Home" id="homeLink"><spring:message code="myRequest.leftNavLinks.homeLink"/></a><input class="button floatR" type="button" id="globalSearch" value="search" onclick="globalSearch();"/><input class="floatR" type="text" id="search" style="width:80px;height:10px;"/></h3>
+        	<h3><a href="#" title="Home" id="homeLink"><spring:message code="myRequest.leftNavLinks.homeLink"/></a><input class="button floatR" type="button" id="globalSearch" value="search" onclick="globalSearch();"/><input class="floatR" type="text" id="search"/></h3>
         </div><br/>
       </c:if>
         <div class="left-nav-header">       	

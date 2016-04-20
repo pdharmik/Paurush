@@ -373,17 +373,14 @@ header {
 }
 .printer-cntnr {
 	background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 7px;
+    border-bottom: 1px solid #ddd;
     float: left;
-   	margin: 15px 0;
-    padding: 15px;
-    width:calc(100% - 32px);
+    padding: 20px 0;
+    width:100%;
 }
 .prdctpge-printerimg {
 	float:left;
 	width:10%;
-	height:72px;
 }
 .printer-details-cntnr {
 	float:left;
@@ -403,8 +400,9 @@ header {
 	margin:5px 0 5px 0;
 	border:1px solid #8c8c8c;
 }
-.table-title {
-	font-size:14px;
+td.table-title {	
+    background-color: #c7c7c7 !important;
+	font-size:15px;
 	color:#1d1d25;
 	line-height:25px;
 	padding:0 0 0 5px;
@@ -419,16 +417,21 @@ header {
 .quntity-cart-cntnr {
 	margin:20px 0 0;
 }
-.quntity-cart-cntnr2 {
+.quntity-cart-cntnr2{
 	float:left;
-	width:50%;
+	width:25%;
 }
-.delete {
-	cursor:pointer;
-	float:right;
-	width:16px;
-	height:20px;
-	padding:5px 0;
+.cart_sub_total{
+	float:left;
+	width:25%;
+	text-align: right;
+}
+.cart_sub_total >span{
+	font-size: 21px;
+	font-weight: bold;
+}
+.quntity-cart-cntnr2 > div {
+    padding: 0 5px;
 }
 .price {
 	float:left;
@@ -442,11 +445,6 @@ header {
 .quntyty-cntnr {
 	font-size:14px;
 	color:#9b9b9b;
-}
-.quntyty-refresh-cntnr {
-	float:left; 
-	padding: 5px 0;
-    width: 30%;
 }
 .quntyty-cntnr2 {
 	float:right;
@@ -464,12 +462,6 @@ header {
 	width:7%;
 	height:14px;
 	margin:3px;
-}
-.update-cart {
-	float:right;
-	width:30%;
-	font-size:12px;
-	margin:0 10px 0 0;
 }
 .price-btn-cntnr {
 	font-size:16px;
@@ -490,21 +482,22 @@ header {
 .cart-btn {
 	float:left;
 	height:auto;
-	margin:10px 5px 0 0;
+	margin:10px 5px 0 5px;
 }
 .verisign {
 	float:left;
 	width:50px;
 	height:25px;
-	margin:5px 0 0 10px;
+	margin:15px 10px 0 10px;
 }
 .total {
-	float:right;
-	width:25%;
-	font-size:16px;
-	text-transform:uppercase;
-	text-align:right;
-	margin:10px 0 0 0;
+	float: right;
+    font-size: 21px;
+    font-weight: bold;
+    margin: 20px 20px 0 0;
+    text-align: left;
+    text-transform: uppercase;
+    width: 25%;
 }
 /* Supplies Page */
 .supplies-mid-cntnr {
@@ -579,7 +572,7 @@ min-height:20px;
 }
 .supplies-title-small {
 	background:#E0E0E0;
-	padding:10px 0 10px 10px;
+	padding:10px 0;
 	font-size:14px;
 	color:#303030;
 	font-weight:bold;
@@ -1065,11 +1058,6 @@ ul.roDisplay li {
 div.gridbox_light table.obj td,.aui input, .aui button, .aui select, .aui textarea{
 	font-family: "tpHero",Arial,sans-serif !important;
 }
-td.table-title {
-    background-color: #c7c7c7 !important;
-}
-
-
 #accordion-container {
 	font-size: 13px;
 	width: 670px;
@@ -1136,7 +1124,7 @@ h2.accordion-header {
 .blueColor{
 	color: #0061DE;
 }
-ul.included-list, ul.specs-list {
+ul.included-list, ul.specs-list, .marginL10px {
     margin-left: 10px;
 }
 .arrowLi{
@@ -1201,7 +1189,6 @@ ul.included-list, ul.specs-list {
 	cursor:pointer;
 }
 .option_Warranties_Content {
-    border: 1px solid #b1b1b9;
     border-radius: 3px;
     width: 100%;
     float:left;
@@ -1219,6 +1206,7 @@ ul.included-list, ul.specs-list {
 }
 .borderLeftGreen{
 	border-left:4px solid rgb(29, 194, 50);	
+	padding-left: 10px;
 }
 #search{
     width: 80px; 
@@ -1262,6 +1250,7 @@ ul.included-list, ul.specs-list {
 }
 select#optionsSize {
     width: 50px;
+    margin: 0px;
 }
 #option_Form {
     margin-left: 100px;
@@ -1298,4 +1287,99 @@ select#optionsSize {
 }
 #accor1 tbody td {
     padding-top: 5px;
+}
+td.option_group_header{
+	padding:20px 0 0 10px;
+	font-size:16px;
+}
+td.supplies-product-list {
+    padding-left: 20px;
+}
+input.quantityInputBox{
+	width:25px; 
+	margin:0 0 0 5px !important;
+	text-align:center;
+}
+.options-table input[name="Quantity"] {
+    margin-right: 0;
+}
+#accessories-global-search .option_group_header,#requestDetailsPopup,#historyList,.noDisplay {
+    display: none;
+}
+#accessories-global-search{
+	display:none;
+	width:100%;
+}
+#accessories-global-search .qtyHeader{
+	padding-right:14px;
+}
+td.borderRight{
+	border-right: 1px solid rgb(140, 140, 140);
+}
+#accObj{
+	width: 100%;
+	float:left;
+}
+#accObj4{
+	 width:84%; float:right; height:auto;
+}
+.paddingL5px{
+	padding-left: 5px
+}
+.marginT20px{
+	margin-top:20px;
+}
+.item_Description{
+	padding:0; font-size:12px; line-height:17px; font-weight:bold;
+}
+.ui-dialog-titlebar {
+    margin: 10px 0;
+}
+.redColor{
+	color:#c00000;
+}
+img.img-text-top {
+    vertical-align: text-top;
+}
+.cart-Message{
+	left: 10px;
+    margin: 0 !important;
+    position: absolute;
+    top: 70px;
+    width: 40%;
+}
+.cart-table-header {
+    margin-top: 20px;
+    width: 100%;
+    font-weight: bold;
+}
+.cart-table-header .prdctpge-printerimg {
+    height: auto;
+}
+.altWhitebutton{
+	background: rgb(255, 255, 255) !important;
+    border: 1px solid;
+    box-shadow:1px 1px 5px rgb(182, 182, 182);
+    border-radius: 3px;
+    color: rgb(0, 148, 28) !important;
+    padding: 6px 10px !important;
+    text-transform: uppercase;
+}
+.altWhitebutton:hover{
+    background: rgb(0, 148, 28) !important;
+    border: 1px solid rgb(0, 148, 28) !important;
+    color:#fff !important;
+}
+.altGreenbutton.button {
+    background: rgb(0, 148, 28) !important;
+    border: 1px solid rgb(0, 148, 28) !important;
+    border-radius: 3px;
+    box-shadow: 1px 1px 5px rgb(182, 182, 182);
+    padding: 6px 10px !important;
+    text-shadow: 1px 1px 1px rgb(158, 63, 63);
+    text-transform: uppercase;
+}
+.altGreenbutton.button:hover {
+    background: rgb(0, 199, 38) !important;
+    border: 1px solid rgb(0, 199, 38) !important;
 }
