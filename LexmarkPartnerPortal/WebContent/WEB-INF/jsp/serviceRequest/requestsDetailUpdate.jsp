@@ -1253,7 +1253,7 @@ var shipToaddrFlag = [];
 						recommendGrid.setImagePath("<html:imagesPath/>gridImgs/");
 						recommendGrid.setHeader(autoAppendPlaceHolder('<spring:message code="claim.headerList.requestUpdate.recommendedPart"/>',7));
 						recommendGrid.setColAlign("left,left,left,left,left,left,left");
-						recommendGrid.setInitWidths("200,200,200,200,0,0,0");
+						recommendGrid.setInitWidths("200,200,200,200,0,20,0");
 						recommendGrid.setColTypes("ro,ro,ro,ro,ro,ro,ro");
 						recommendGrid.setColSorting("na,str,str,str,na,na,na");
 						recommendGrid.enableAutoWidth(true);
@@ -1264,7 +1264,6 @@ var shipToaddrFlag = [];
 						recommendGrid.prftInit();
 						recommendGrid.setSizes();
 						recommendGrid.setColumnHidden(4,true);
-						recommendGrid.setColumnHidden(5,true);
 						recommendGrid.setColumnHidden(6,true);
 						//*********************//
 						if("${serviceRequestDetailForm.activity.addressStatus}"=="${serviceRequestDetailForm.addressStatusList[0]}"){
