@@ -155,8 +155,7 @@ public class CatalogFieldListService {
 				}
 			}
 
-			if (LangUtil.isNotBlank(paymentType)
-					&& LangUtil.isNotBlank(soldToNumber)) {
+			if (LangUtil.isNotBlank(paymentType)) {
 				builder.append(" AND (EXISTS (([LXK MPS Billing Model MVF] = '"
 						+ paymentType + "'");
 
