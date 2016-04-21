@@ -2105,7 +2105,7 @@ div.left-nav-header h3 {
     float: right;
 }
 /*************************** sprite-image icons **************************/
-.ui-icon {
+.ui_icon_sprite {
     background-image:url("/lexmark-punchout-theme/images/custom/ui-icons-sprite.png") ;
     background-repeat: no-repeat;
     color: transparent;
@@ -2123,7 +2123,7 @@ div.left-nav-header h3 {
   max-width:40px ;
 }
 
-.widgets {
+.widgets_sprite {
   height: 100px ;
   width: 100px ;
   max-width:100px ;

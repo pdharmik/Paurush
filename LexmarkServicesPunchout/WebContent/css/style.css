@@ -854,26 +854,29 @@ ul.form {
 }
 ul.form li {
 	background:none;
-	display:block;
-	clear:both;
+	display:block;    
+	float: left;
 	list-style-type:none!important;
 	line-height:0.2em;
 	padding-left:0;
+	padding-bottom: 10px;
+	width: 100%;
 }
 ul.form li label {
 	display:inline-block;
-	padding:2px 0 2px 0;
-	width:95%;
-	margin-left:0;
+	font-weight:bold;
+	float: left;
+	width:48%;
+	margin:0;
 	color: #1d1d25;
 	vertical-align:top;
 	line-height:1.2em;
 }
 ul.form li span {
-	display:inline-block;
-	float:left;
-	padding:2px 5px 2px 0;
-	line-height:1.8em;
+	 display: inline-block;
+    float: right;
+    line-height: 15px;
+    width: 46%;
 }
 .even_row { background:#efefef; }
 .odd_row { background:#ffffff }
@@ -1264,7 +1267,7 @@ select#optionsSize {
 .padding-top-5px{
 	padding-top: 5px;
 }
-#pagingAreaPopup > div {
+#pagingAreaPopup > div,.pagination>span>div{
     width: 720px !important;
 }
 #requestDetails{
@@ -1315,6 +1318,9 @@ input.quantityInputBox{
 }
 td.borderRight{
 	border-right: 1px solid rgb(140, 140, 140);
+}
+.aui h4{
+	font-size: 12px !important;
 }
 #accObj{
 	width: 100%;
@@ -1382,4 +1388,16 @@ img.img-text-top {
 .altGreenbutton.button:hover {
     background: rgb(0, 199, 38) !important;
     border: 1px solid rgb(0, 199, 38) !important;
+}
+.status table {
+	width:480px;
+	margin:10px auto;
+	border-collapse:collapse
+}
+.status table td {
+	border:1px solid #aaa;
+	text-align:center;
+	border-top:0 none;
+	border-bottom:0 none;
+	width:33.3%
 }

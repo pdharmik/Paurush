@@ -132,7 +132,7 @@ function doCart(detailsObj,buttonId){
     var obj={
 			 cartSizeId:"totItems"
 	 };
-    if(!buttonId.contains('addToCartOptnWarran')){
+    if(buttonId.indexOf('addToCartOptnWarran') == -1){
     	jQuery("#"+buttonId).val("Update Cart");
         jQuery("#"+buttonId).html("Update Cart");
     }
