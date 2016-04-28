@@ -1,9 +1,12 @@
 package com.lexmark.services.portlet.requestHistory;
 
+import java.math.RoundingMode;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.HashMap;
 
 import javax.portlet.PortletSession;
 import javax.portlet.ResourceRequest;
@@ -17,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
+import com.lexmark.constants.LexmarkConstants;
 import com.lexmark.contract.RequestContract;
 import com.lexmark.contract.RequestListContract;
 import com.lexmark.domain.Part;
@@ -93,6 +97,8 @@ public class RequestHistoryController {
 
 	private static final String PATH="requests/history/";
 	private ServiceRequestLocale  serviceRequestLocale;
+	private static final String SHIPMENT = "shipment";
+	private static final String RETURN = "return";
 	/**
 	 * @return ServiceRequestLocale 
 	 */
@@ -190,7 +196,8 @@ public class RequestHistoryController {
 		result=requestTypeB2bService.retrieveSupplyRequestDetailB2B(contract);
 		
 		serviceRequest= result.getServiceRequest();
-		
+		serviceRequest.setItemSubTotalBeforeTax(serviceRequest.getItemSubTotalBeforeTax().setScale(2, RoundingMode.CEILING));
+		serviceRequest.setTotalAmount(serviceRequest.getTotalAmount().setScale(2, RoundingMode.CEILING));
 		}
 		catch (Exception e) {
 			LOGGER.debug("Exception occured" + e.getMessage());
@@ -206,6 +213,17 @@ public class RequestHistoryController {
 			populateShipmentDetailsForSupplies(request,result,requestDetails);
 		}
 		
+		List<ServiceRequestOrderLineItem> shipmentList = result.getServiceRequest().getShipmentOrderLines();
+		
+		Map<String,String> shipmentXmlMap=new HashMap<String,String>();
+		for(ServiceRequestOrderLineItem shipment : shipmentList){
+			shipment.setShipmentProgress(checkProgress(shipment.getStatus(), SHIPMENT));
+			String xml = getXmlOutputGenerator(request.getLocale()).generateServiceRequestShipment(shipment, request);
+			shipmentXmlMap.put(shipment.getPartnumber(), xml);
+			
+		}
+		requestDetails.getServiceRequest().setShipmentOrderLines(shipmentList);
+		model.addAttribute("shipmentXmlMap", shipmentXmlMap);
 		model.addAttribute(PunchoutConstants.REQUEST_DETAILS,requestDetails);
 		return PATH+"requestDetails";
 	}
@@ -355,6 +373,30 @@ private void setPendingQty(List<ServiceRequestOrderLineItem> pendingShipments){
 		lineItem.setQuantity(String.valueOf(actualQty));			
 	}
 		
+}
+
+public int checkProgress(String status, String type) {
+	int progress = 0;
+	if (SHIPMENT.equals(type)) {
+		if (LexmarkConstants.SHIPMENTSTATUS_SHIPPED.equals(status)) {
+			progress = 66;
+		} else if (LexmarkConstants.SHIPMENTSTATUS_DELIVERED.equals(status)) {
+			progress = 100;
+		} else if (LexmarkConstants.TECHNICIANSTATUS_CANCELLED.equals(status)){
+			return 0;
+		} else {
+			progress = 33;
+		}
+	} else if (RETURN.equals(type)) { 
+		if (LexmarkConstants.SHIPMENTSTATUS_DELIVERED.equals(status)) {
+			progress = 100;
+		} else if (LexmarkConstants.TECHNICIANSTATUS_CANCELLED.equals(status)){
+			return 1;
+		} else {
+			progress = 50;
+		}
+	}
+	return progress;
 }
 
 }

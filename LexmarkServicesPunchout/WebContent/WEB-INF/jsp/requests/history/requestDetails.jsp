@@ -1,6 +1,9 @@
 <%@ taglib prefix="html" tagdir="/WEB-INF/tags/html" %>
 <%@ taglib prefix="util" uri="/WEB-INF/tld/lexmark-util.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link rel="stylesheet" type="text/css" href="<html:rootPath/>/css/jquery/jquery-ui.css"/>
+<script type="text/javascript" src='<html:rootPath/>/js/jquery.progressbar.js'></script>
 <div id="wrapper-popup">
 <div id="requestDetails">
     <div class="journal-content">
@@ -182,7 +185,7 @@
      <tbody>
      <tr>
      <td class="table-img-left">
-   		<div class="request-img"><img src="<html:imagesPath/>icon-image.jpg" width="84" height="70" alt="Request Items Image"></div>
+   		<div class="request-img"><img class="ui_icon_sprite widgets_sprite inProcess-icon" src="<html:imagesPath/>transparent.jpg" width="84" height="70" alt="Request Items Image"></div>
     </td>
     <td class="wid90per">
   <div class="columnInner separatorV">
@@ -191,56 +194,98 @@
 								<div id="div_inprocessGridContainer" class="w100"></div>
 	  							<div class="pagination"><span id="pagingAreaPopup"></span><span id="infoAreaPopup"></span></div>
 	  						</div>
-	    				</div><!-- mygrid_container -->
+	    				</div>
 	              	 	</div>
     </td>
     </tr>
     </tbody>
     </table>
     </div>
-    <div class="popup-shipment-cntnr w98-per">
-    <div id="popup-title" class="h4 w98-per"><spring:message code="serviceRequest.label.shipment"/><a href="#">XXXXXXXXXXXX</a></div>
-    <table class="assetDetail" width="100%" cellspacing="0" cellpadding="0" border="0">
-     <tbody>
-     <tr>
-     <td class="table-img-left">
-    <div class="request-img"><img src="<html:imagesPath/>icon-image.jpg" width="84" height="70" alt="Request Items Image"></div>
-    </td>
-    <td class="wid90per">
-    <table width="88%" border="0" cellspacing="0" cellpadding="0" class="dashedBorderBottom">
-  <tr>
-    <td width="450" height="25" align="center" valign="bottom"><table width="100%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td width="450" height="25" align="left" valign="bottom"><img src="<html:imagesPath/>processbar.jpg" width="428" height="13" alt="Progress Bar" /></td>
-      </tr>
-      <tr>
-        <td><table width="95%" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td align="center" valign="top" class="table-txt"><spring:message code="serviceRequest.label.inProcess"/></td>
-            <td align="center" valign="top" class="table-txt"><spring:message code="serviceRequest.label.shipped"/></td>
-            <td align="center" valign="top" class="table-txt"><spring:message code="serviceRequest.label.delivered"/></td>
-          </tr>
-        </table></td>
-      </tr>
-    </table></td>
-    <td width="450" align="center" valign="top"><table width="90%" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-        <td class="table-txt"><spring:message code="serviceRequest.label.carrier"/></td>
-        <td class="table-txt"></td>
-        </tr>
-      <tr>
-        <td class="table-txt"><spring:message code="serviceRequest.label.shippedDate"/></td>
-        <td class="table-txt"></td>
-        </tr>
-      <tr>
-        <td class="table-txt"><spring:message code="Details.supplyRequestDetails.label.actualDeliveryDate"/></td>
-        <td align="right" class="table-txt"></td>
-        </tr>
-    </table></td>
-  </tr>
-  </table>
-</td></tr></tbody></table>
-    </div>
+    <c:forEach var="shipmentForm" items="${requestDetails.serviceRequest.shipmentOrderLines}" varStatus="status">
+    		 <div class="portletBlock infoBox rounded shadow floatL w98-per" id="suppliesShipment">
+          <div class="columnsOne">
+            <div class="columnInner">
+              <h4><spring:message code="serviceRequest.label.shipment"/>:&nbsp;${shipmentForm.trackingNumber}</h4>
+              <div class="icon floatL"><img class="ui_icon_sprite widgets_sprite widgets-truck-rt-icon" src="<html:imagesPath/>transparent.png" width="100" height="100" /></div>
+              <div class="columnInner separatorV">
+              <table class="shipment wFull">
+                  <tr>
+                    <td class="w70p"><div class="status">
+                        <div id="div_shipmentProgressBar${status.count}" class="status-bar"></div> 
+                        <table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                             <td align="center" valign="top" class="table-txt"><spring:message code="serviceRequest.label.inProcess"/></td>
+		            		 <td align="center" valign="top" class="table-txt"><spring:message code="serviceRequest.label.shipped"/></td>
+		           			 <td align="center" valign="top" class="table-txt"><spring:message code="serviceRequest.label.delivered"/></td>
+                          </tr>
+                        </table>
+                     </div></td>
+                    <td><ul class="form wFull">
+		                        <li>
+		                          <label><spring:message code="serviceRequest.label.carrier"/>:</label>
+		                          <span>${shipmentForm.carrier}</span></li>
+		                          </li>
+		                        <li>
+		                          <label><spring:message code="serviceRequest.label.shippedDate"/>:</label>
+		                          <span>${shipmentForm.actualShipDate}</span>                 
+		                          </li>
+		                          <li>
+		                          <label><spring:message code="Details.supplyRequestDetails.label.actualDeliveryDate"/></label>		                        
+		                          <span>${shipmentForm.actualDeliveryDate}</span>
+		                          </li>
+		                </ul>
+
+                    </td>
+                  </tr>
+                  <tr>
+                  	<td colspan="2">
+		                <div id="div_shipmentPrintTable${status.count}">
+						<div id="tab_shipmentGrid${status.count}"  style="display:block;">
+						<div id="div_shipmentGrid_container${status.count}" class="width-100per"></div>
+							<div class="pagination"><span id="div_shipmentPagingArea${status.count}"></span><span id="div_shipmentInfoAreaPopup${status.count}"></span></div>				
+		 				</div>
+		    			</div> 
+                  	</td>
+                  </tr>
+                </table>   			
+                </div>
+            </div>
+          </div>
+        </div>		   
+		<script>
+		
+		 var barImages = { 0: '<html:imagesPath/>progressBar/progressbg_red.gif',
+	        		45:	'<html:imagesPath/>progressBar/progressbg_half.gif',
+	           		55: '<html:imagesPath/>progressBar/progressbg_orange.gif',
+	        		70: '<html:imagesPath/>progressBar/progressbg_green.gif'};
+	        	var barImagesCancel = {0: '<html:imagesPath/>progressBar/progressbg_black.gif'};
+				if(${shipmentForm.shipmentProgress==0}){
+					$('#div_shipmentProgressBar${status.count}').progressBar(100, { width:480,speed:25,increment:1,height:12,showText: false, boxImage: '<html:imagesPath/>progressBar/progressbar.gif', barImage:barImagesCancel} );
+				}else{
+					$('#div_shipmentProgressBar${status.count}').progressBar(${shipmentForm.shipmentProgress}, { width:480,speed:25,increment:1,height:12,showText: false, boxImage: '<html:imagesPath/>progressBar/progressbar.gif', barImage:barImages} );
+				}
+		
+		    SRShipmentGrid${status.count} = new dhtmlXGridObject('div_shipmentGrid_container${status.count}');
+		    SRShipmentGrid${status.count}.setImagePath("<html:imagesPath/>gridImgs/");
+		    SRShipmentGrid${status.count}.setHeader("<spring:message code='serviceRequest.listHeader.pendingshipment2'/>");
+		    SRShipmentGrid${status.count}.setColAlign("left,left,left,left,left,left,left");
+		    SRShipmentGrid${status.count}.setColTypes("sub_row,ro,ro,ro,ro,ro,ro");
+		    SRShipmentGrid${status.count}.setInitWidths("20,200,170,110,100,120,120");
+		    SRShipmentGrid${status.count}.enableAutoWidth(true);
+		    SRShipmentGrid${status.count}.enableMultiline(true);
+		    SRShipmentGrid${status.count}.enableAutoHeight(true);
+		    SRShipmentGrid${status.count}.init(); 
+		    SRShipmentGrid${status.count}.prftInit();
+		    SRShipmentGrid${status.count}.enablePaging(true,15, 2, "div_shipmentPagingArea${status.count}", true, "div_shipmentInfoAreaPopup${status.count}");
+		    SRShipmentGrid${status.count}.setPagingSkin("bricks");
+		    SRShipmentGrid${status.count}.setSkin("light");
+		    SRShipmentGrid${status.count}.setColumnHidden(5,true);
+		    SRShipmentGrid${status.count}.loadXMLString('${shipmentXmlMap[shipmentForm.partnumber]}');
+		    
+	</script>
+    </c:forEach>
+    
+    
   </div>
   </div>
   
