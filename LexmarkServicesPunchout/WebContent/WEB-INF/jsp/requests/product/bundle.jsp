@@ -175,6 +175,7 @@ tr.altRow td { background-color:#f0f0f0 !important; }
                <tr>
              <td  class="table-title"><b><spring:message code="orderSupplies.placeOrderHeader.partNumber"/></b></td>
              <td  class="table-title"><b><spring:message code="orderSupplies.placeOrderHeader.description"/></b></td>
+			 <td  class="table-title"><b><spring:message code="serviceRequest.listHeader.model"/></b></td>
              <td  class="table-title"><b><spring:message code="requestInfo.heading.Qty"/></b></td>
            </tr>
 			        	
@@ -183,6 +184,7 @@ tr.altRow td { background-color:#f0f0f0 !important; }
                 <tr class="">
                   <td class="table-txt borderRight">{{no}}</td>
                   <td class="table-txt borderRight">{{pdesc}}</td>
+				  <td class="table-txt borderRight">{{model}}</td>
                   <td class="table-txt">{{qty}}</td>
                 </tr>
          		{{/parts}}
