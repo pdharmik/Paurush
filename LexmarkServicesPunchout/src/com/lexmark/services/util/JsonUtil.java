@@ -113,7 +113,7 @@ public class JsonUtil {
 					json.append("{");
 					json.append("\"no\":\"").append(part.getPartNumber()).append("\",");
 					json.append("\"pdesc\":\"").append(part.getDescription()).append("\",");
-					json.append("\"model\":\"").append(part.getModel()).append("\",");
+					json.append("\"model\":\"").append(part.getProductModel()!=null?part.getProductModel():"").append("\",");
 					json.append("\"qty\":").append(StringUtils.isNotBlank(part.getOrderQuantity())==true?part.getOrderQuantity():0);
 					json.append("},");
 					
