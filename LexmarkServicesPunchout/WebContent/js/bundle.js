@@ -129,9 +129,10 @@ function gotToOptions(bundleId){
 		showHideDivs('showPrinterDetails');
 		closeShoppingCartPopup();
 }
-function learnMorePopup(bundleId){
+function learnMorePopup(bundleId,type){
 		$('#learn-more-popup-loading-img').show();
 		$('#learn-more-content').html('');
+		if(type=='bundle'){
 		var partList=bundlesObj.bundlesData[bundleId].parts;
 		for(var i=0;i<partList.length;i++){
 			$('#learn-more-content').append('<div class="part_info" id="part_info'+partList[i].no+'"><p class=\"product_title\">'+partList[i].no +'-'+partList[i].pdesc+'</p></div>');
@@ -139,7 +140,17 @@ function learnMorePopup(bundleId){
 			$.getJSON(url,function(response){
 				$('#part_info'+response.pn).append(bundlesObj.learnMoreObj(response));
 				initAccordian('part_info'+response.pn);
-				$('#learn-more-popup-loading-img').hide();
+				$('#learn-more-popup-loading-img,.packagedSize_in').hide();
+			});
+		}
+		}
+		else{
+			$('#learn-more-content').append('<div class="part_info" id="part_info'+bundleId+'"><p class=\"product_title\">'+bundleId +'</p></div>');
+			var url = "https://www.lexmark.com/en_US/epg/products/"+bundleId+".json";
+			$.getJSON(url,function(response){
+				$('#part_info'+response.pn).append(bundlesObj.learnMoreObj(response));
+				initAccordian('part_info'+response.pn);
+				$('#learn-more-popup-loading-img,.not_bundle,.size_in').hide();
 			});
 		}
 		dialogLearnMore.dialog('open');

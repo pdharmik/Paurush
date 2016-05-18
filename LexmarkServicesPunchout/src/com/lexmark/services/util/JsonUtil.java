@@ -101,9 +101,12 @@ public class JsonUtil {
 			String partNumber="";//this will contain the partnumber of the partType printer
 			String url="";
 			String bundleType="";
+			String bundleBrand="";
+			String bundleModel="";
 			List<Part> parts=bundle.getPartList();
 				for(Part part:parts){
-					
+					bundleBrand = part.getB2bMfgBrandMVF();
+					bundleModel = part.getProductModel();
 					if("Printers".equalsIgnoreCase(part.getPartType())){
 						partNumber=part.getPartNumber();
 					}
@@ -138,6 +141,8 @@ public class JsonUtil {
 			}
 			
 			json.append("\"img\":\"").append(url).append("\",");
+			json.append("\"bundleBrand\":\"").append(bundleBrand).append("\",");
+			json.append("\"bundleModel\":\"").append(bundleModel).append("\",");
 			json.append("\"bQty\":").append(StringUtils.isNotBlank(bundle.getBundleQty())==true?bundle.getBundleQty():0);
 			json.append("},");
 			
