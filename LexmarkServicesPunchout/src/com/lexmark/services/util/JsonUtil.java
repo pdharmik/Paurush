@@ -139,7 +139,7 @@ public class JsonUtil {
 					LOGGER.error(" Image URL not found "+e.getMessage());
 				}
 			}
-			
+			bundle.setImgUrl(url);
 			json.append("\"img\":\"").append(url).append("\",");
 			json.append("\"bundleBrand\":\"").append(bundleBrand).append("\",");
 			json.append("\"bundleModel\":\"").append(bundleModel).append("\",");
