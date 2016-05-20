@@ -40,6 +40,7 @@ function removeFromCART(obj){
 				jQuery("#shoppingCartDetails").html("");
 				jQuery("#shoppingCartDetails").html("<div class=\"info ok banner\">Your cart is Empty</div>");
 			}
+			loadCartSize(cartObj);
 		}
 		
 	});
