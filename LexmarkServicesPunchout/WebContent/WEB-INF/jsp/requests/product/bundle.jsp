@@ -112,12 +112,12 @@ tr.altRow td { background-color:#f0f0f0 !important; }
 	</script>  
       
     <script id="learn-more-part-template" type="text/x-handlebars-template">
-			<p>{{marketing}}</p>
+			<p class="not_bundle">{{marketing}}</p>
 			<p class="blueColor">{{name}}</p>
 			<h2  class="accordion-header">Product Description</h2>
 				<div class="accordion-content">{{description}}</div>
-			<h2  class="accordion-header">What's Included</h2>
-				<div class="accordion-content">
+			<h2  class="accordion-header not_bundle">What's Included</h2>
+				<div class="accordion-content not_bundle">
 					<ul class="included-list">
 						{{#inTheBox}} 
 							<li class="arrowLi">{{this}}</li>
@@ -126,13 +126,15 @@ tr.altRow td { background-color:#f0f0f0 !important; }
 				</div>
 			<h2  class="accordion-header">Specs</h2>
 				<div class="accordion-content">
-					<ul class="specs-list">
-						<li class="arrowLi">Size (in. - H x W x D) :{{size_in}}</li>
-						<li class="arrowLi">Print Resolution Black :{{printResolutionBlack}}</li>
-						<li class="arrowLi">Print Resolution Color :{{printResolutionColor}}</li>
+					<ul class="specs-list">                  
+						<li class="arrowLi size_in">Size (in. - H x W x D) :{{size_in}}</li>                       
+						<li class="arrowLi packagedSize_in">Size (in. - H x W x D) :{{packagedSize_in}}</li>                      
+						<li class="arrowLi not_bundle">Print Resolution Black :{{printResolutionBlack}}</li>
+						<li class="arrowLi not_bundle">Print Resolution Color :{{printResolutionColor}}</li>
 						<li class="arrowLi">Country of Origin :{{countryOfOrigin}}</li>
-						<li class="arrowLi">Weight (lb.) : {{weight_lb}}</li>
-						<li class="arrowLi">UNSPSC Code :{{UNSPSCCode}}</li></ul>
+						<li class="arrowLi not_bundle">Weight (lb.) : {{weight_lb}}</li>
+						<li class="arrowLi ">UNSPSC Code :{{UNSPSCCode}}</li>
+                        <li class="arrowLi not_bundle">Product Certifications :{{productCertifications}}</li></ul>
 				</div>							
 	 </script> 
 	 
@@ -164,12 +166,10 @@ tr.altRow td { background-color:#f0f0f0 !important; }
      
      <script id="bundle-list-template" type="text/x-handlebars-template">
        <div class="printer-cntnr">
-           <div class="prdctpge-printerimg"><img src="<html:imagesPath/>product-printer.jpg" width="89" height="72" alt="Mono Laser Printers"></div>
+           <div class="prdctpge-printerimg"><img src="{{img}}" width="89" height="72" alt="Mono Laser Printers"></div>
            <div class="printer-details-cntnr">
-			<div class="product_title" id="printerId">{{configId}}</div>
-         	<div class="printerDescription"><strong>{{mpsdesc}}</strong></div>
-         	<div class="printerDescription">{{name}}</div>
-         	<div class="printerDescription">{{desc}}</div>
+			<div class="product_title" id="printerId">{{bundleBrand}}  {{bundleModel}}</div>
+         	<div class="printerDescription">{{configId}}</div>
          
          <table width="300" border="0" cellspacing="0" cellpadding="0" class="discrptn-table-parts">
                <tr>
@@ -198,7 +198,7 @@ tr.altRow td { background-color:#f0f0f0 !important; }
           	<input type="hidden" id="{{bundleId}}_partType" value="{{printerPartNo}}" />
              
              </table>
-		 	<div><br/><a  class="button simplelink " href = "javascript:learnMorePopup('{{bundleId}}');">
+		 	<div><br/><a  class="button simplelink " href = "javascript:learnMorePopup('{{bundleId}}','bundle');">
          		&nbsp;&nbsp;<B><spring:message code="shoppingCart.printers.link"/></B></a><br/><br/>
          	</div>
 		 <c:if test='${sessionScope.aribaParamMap["fromAriba"]=="true"}'>	
@@ -282,23 +282,27 @@ tr.altRow td { background-color:#f0f0f0 !important; }
              <tr>
                   <td height="35" align="left" valign="middle"><table width="260" border="0" cellspacing="0" cellpadding="0" class="marginL10px">
                       <tr>
-                      <td width="45" align="left" valign="middle">
+                      <td width="45" align="left" valign="top">
                       <img src="{{img}}" width="60" height="26" alt="Product List"/>
                       </td>
-                      <td align="left" valign="middle" class="supplies-product-list">
+                      <td align="left" valign="top" class="supplies-product-list">
                       {{desc}}
+						<br/><br/>
+						<a  class="button simplelink " href = "javascript:learnMorePopup('{{pNo}}','accessories');">
+         					&nbsp;&nbsp;<B><spring:message code="shoppingCart.printers.link"/></B></a>
+						<br/><br/><br/>
                       </td>
                     </tr>
                     </table></td>
-				  <td style="padding-left:5px;">{{model}}</td>
-                  <td style="padding-left:5px;">{{pNo}}</td>
+				  <td valign="top" style="padding-left:5px;">{{model}}</td>
+                  <td valign="top" style="padding-left:5px;">{{pNo}}</td>
                    <c:if test='${sessionScope.aribaParamMap["fromAriba"]=="true"}'>
                   {{#if price}}
-                  	 <td class="paddingL5px">{{price}}</td>
-                 	 <td align="right" valign="middle"><input type="text" name="Quantity" id="quantity_optn_warran{{pNo}}" class="quantityInputBox">{{qty}}</input></td>
+                  	 <td valign="top" class="paddingL5px">{{price}}</td>
+                 	 <td valign="top" align="right" ><input type="text" name="Quantity" id="quantity_optn_warran{{pNo}}" class="quantityInputBox">{{qty}}</input></td>
                  {{else}}
-                 	 <td class="paddingL5px price-btn-cntnr2">Price Not Available</td>
-                 	 <td align="right" valign="middle"><input type="text" name="Quantity" id="quantity_optn_warran{{pNo}}" disabled="disabled" class="quantityInputBox"></td>
+                 	 <td valign="top" class="paddingL5px price-btn-cntnr2">Price Not Available</td>
+                 	 <td valign="top" align="right" ><input type="text" name="Quantity" id="quantity_optn_warran{{pNo}}" disabled="disabled" class="quantityInputBox"></td>
                  {{/if}}
                  </c:if>
               </tr>

@@ -9,15 +9,8 @@
     <c:choose>
     	<c:when test="${fn:length(shoppingCartFormBundles.cartItems) >0 || fn:length(shoppingCartFormSupplies.cartItems) >0}">
     		<div class="floatR">
-    			<div class="verisign"><img src="<html:imagesPath/>verisign.jpg" width="50" height="25" alt="Verisign"></div>
-			   	<c:if test="${shoppingCartType eq 'printers' }">
-			   		<div class="cart-btn"><input name="Back" onClick="goBackToProducts()" type="button" class="backBtn altGreenbutton button" value="Back" border="0"/></div>
-			   	</c:if>
-			   	<c:if test="${shoppingCartType eq 'supplies' }"> 
-			   		<div class="cart-btn"><input name="Back" onClick="goBackToSupplies()" type="button" class="backBtn altGreenbutton button" value="Back" border="0"/></div>
-			   	</c:if>   	
+    			<div class="verisign"><img src="<html:imagesPath/>verisign.jpg" width="50" height="25" alt="Verisign"></div>  	
 			    <div class="cart-btn"><input name="Continue Shopping" onClick="showHome(true);closeShoppingCartPopup();" type="button" class="altWhitebutton button" value="Continue Shopping" border="0"/></div>
-			    <div class="cart-btn"><input name="Exit" onClick="exitCart()" type="button" class="altGreenbutton button" value="Cancel" border="0"/></div>
 			    <div class="cart-btn"><input name="Submit Order" id="submit_order" onClick="submitOrder()" type="button" class="altGreenbutton button" value="Submit Order" border="0"/></div>
 			    <div class="clearBoth"></div>
    			</div>
@@ -34,15 +27,8 @@
 		    <div class="total">Total*:<span class="floatR" id="cart_totalPrice"><strong>$${totalPrice}</strong></span></div>
 		    <div class="clearBoth"></div>
    			<div class="floatR">
-			    <div class="verisign"><img src="<html:imagesPath/>verisign.jpg" width="50" height="25" alt="Verisign"></div>
-			   	<c:if test="${shoppingCartType eq 'printers' }">
-			   		<div class="cart-btn"><input name="Back" onClick="goBackToProducts()" type="button" class="backBtn altGreenbutton button" value="Back" border="0"/></div>
-			   	</c:if>
-			   	<c:if test="${shoppingCartType eq 'supplies' }"> 
-			   		<div class="cart-btn"><input name="Back" onClick="goBackToSupplies()" type="button" class="backBtn altGreenbutton button" value="Back" border="0"/></div>
-			   	</c:if>   	
+			    <div class="verisign"><img src="<html:imagesPath/>verisign.jpg" width="50" height="25" alt="Verisign"></div> 	
 			    <div class="cart-btn"><input name="Continue Shopping" onClick="showHome(true);closeShoppingCartPopup();" type="button" class="altWhitebutton button" value="Continue Shopping" border="0"/></div>
-			    <div class="cart-btn"><input name="Exit" onClick="exitCart()" type="button" class="altGreenbutton button" value="Cancel" border="0"/></div>
 			    <div class="cart-btn"><input name="Submit Order" id="submit_order" onClick="submitOrder()" type="button" class="altGreenbutton button" value="Submit Order" border="0"/></div>
    			</div>
     	</c:when>
