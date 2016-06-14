@@ -173,8 +173,7 @@ public class PunchoutItemDAO {
 		
 		Element money = doc.createElement("Money");
 		money.setAttribute("currency", "USD");		
-		money.appendChild(doc.createTextNode("" + ControllerUtil.calculateTotal(_sform.getCartItems()
-				, BeanFieldNames.PRICE.getValue(cartType), BeanFieldNames.QUANTITY.getValue(cartType)).doubleValue()));
+		money.appendChild(doc.createTextNode("" + ControllerUtil.calculateTotal(_sform.getCartItems()).doubleValue()));
 		elmTotal.appendChild(money);
 		
 		BigDecimal unitPrice = null;
@@ -187,7 +186,7 @@ public class PunchoutItemDAO {
 		String unspscCode = "";
 		for(Object _cartItem:_sform.getCartItems()){
 						
-			description=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.DESCRIPTION.getValue(cartType));
+			description=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.MARKETINGNAME.getValue(cartType));
 			unitPrice = (BigDecimal)ControllerUtil.readProperty(_cartItem, BeanFieldNames.PRICE.getValue(cartType));
 			//supplierPartId=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.ID.getValue(cartType));
 			manufactureId=(String)ControllerUtil.readProperty(_cartItem, BeanFieldNames.PRODUCTID.getValue(cartType));

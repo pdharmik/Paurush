@@ -73,6 +73,7 @@ public class ServiceRequestOrderLineItem extends BaseEntity implements Serializa
 	//For OPS portal
 	private String authorizationCode;
 	private String authorizationReason;
+	private int shipmentProgress;
 	public String getAuthorizationCode() {
 		return authorizationCode;
 	}
@@ -479,6 +480,14 @@ public class ServiceRequestOrderLineItem extends BaseEntity implements Serializa
 
 	public void setServiceProviderName(String serviceProviderName) {
 		this.serviceProviderName = serviceProviderName;
+	}
+
+	public int getShipmentProgress() {
+		return shipmentProgress;
+	}
+
+	public void setShipmentProgress(int shipmentProgress) {
+		this.shipmentProgress = shipmentProgress;
 	}
 
 }

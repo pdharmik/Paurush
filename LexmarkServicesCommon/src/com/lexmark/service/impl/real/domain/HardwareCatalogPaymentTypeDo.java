@@ -24,9 +24,38 @@ public class HardwareCatalogPaymentTypeDo extends BaseEntity implements Serializ
 	private String catalogId;
 	private String materialId;
 	private String parentLineItemNumber;
-	private String PartTypeMVFB2b;
+	private String partTypeMVFB2b;
+	private String b2bMarketingNameMVF;
+	private String b2bMarketingShortDescMVF;
+	private String b2bMaterialDescMVF;
+	private String b2bMfgBrandMVF;
+	
 
 	
+	public String getB2bMarketingNameMVF() {
+		return b2bMarketingNameMVF;
+	}
+	public void setB2bMarketingNameMVF(String b2bMarketingNameMVF) {
+		this.b2bMarketingNameMVF = b2bMarketingNameMVF;
+	}
+	public String getB2bMarketingShortDescMVF() {
+		return b2bMarketingShortDescMVF;
+	}
+	public void setB2bMarketingShortDescMVF(String b2bMarketingShortDescMVF) {
+		this.b2bMarketingShortDescMVF = b2bMarketingShortDescMVF;
+	}
+	public String getB2bMaterialDescMVF() {
+		return b2bMaterialDescMVF;
+	}
+	public void setB2bMaterialDescMVF(String b2bMaterialDescMVF) {
+		this.b2bMaterialDescMVF = b2bMaterialDescMVF;
+	}
+	public String getB2bMfgBrandMVF() {
+		return b2bMfgBrandMVF;
+	}
+	public void setB2bMfgBrandMVF(String b2bMfgBrandMVF) {
+		this.b2bMfgBrandMVF = b2bMfgBrandMVF;
+	}
 	public String getQuantity() {
 		return quantity;
 	}
@@ -102,12 +131,17 @@ public class HardwareCatalogPaymentTypeDo extends BaseEntity implements Serializ
 	public void setParentLineItemNumber(String parentLineItemNumber) {
 		this.parentLineItemNumber = parentLineItemNumber;
 	}
+	/**
+	 * @return the partTypeMVFB2b
+	 */
 	public String getPartTypeMVFB2b() {
-		return PartTypeMVFB2b;
+		return partTypeMVFB2b;
 	}
-
+	/**
+	 * @param partTypeMVFB2b the partTypeMVFB2b to set
+	 */
 	public void setPartTypeMVFB2b(String partTypeMVFB2b) {
-		PartTypeMVFB2b = partTypeMVFB2b;
+		this.partTypeMVFB2b = partTypeMVFB2b;
 	}
 	
 }

@@ -9,8 +9,15 @@
 	<!--	
 	<cache name="retrieveAccountAgreementList" maxElementsInMemory="50" eternal="false"
 	overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />
+	-->	
+	<cache name="retrieveBundleList" maxElementsInMemory="50" eternal="false"
+	overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />
 	
 	<cache name="retrievePriceList" maxElementsInMemory="50" eternal="false"
-	overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />	
-		-->
+	overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />
+	
+	<cache name="retrieveOptionsAndWarranties" maxElementsInMemory="50" eternal="false"
+	overflowToDisk="true" timeToIdleSeconds="0" timeToLiveSeconds="7200" />
+	
+		
 </ehcache>

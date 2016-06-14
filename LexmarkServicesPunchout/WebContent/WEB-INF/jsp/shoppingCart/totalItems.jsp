@@ -3,9 +3,11 @@
 
 <portlet:resourceURL var="refreshCart" id="getCartSize"></portlet:resourceURL>
 <script type="text/javascript" src="<html:rootPath/>/js/cart/cart.js?v=1"></script>
-<div class="orderCart" id="cart-cntnr" style="cursor: pointer;"><spring:message code="requestInfo.label.order"/><c:if test="${forGlobalSearch != 'true'}"><img id="cartLoading" src="<html:imagesPath/>loading-icon.gif"/></c:if><span id="totItems" style="display:none;">0</span> <spring:message code="requestInfo.label.items"/></div>
+<div class="orderCart pointer" id="cart-cntnr" ><spring:message code="requestInfo.label.order"/>
+<c:if test="${forGlobalSearch != 'true'}"><img id="cartLoading" src="<html:imagesPath/>loading-icon.gif"/></c:if>
+<span id="totItems" class="noDisplay">0</span> <spring:message code="requestInfo.label.items"/></div>
 
-<div id="shoppingCart" style="display:none"></div>
+<div id="shoppingCart" class="noDisplay"></div>
 
 <portlet:resourceURL var="removeCart" id="removeFromCart"></portlet:resourceURL>
 <portlet:resourceURL var="updateCart" id="updateQty"></portlet:resourceURL>
@@ -35,12 +37,9 @@ var validationmsg={
 		qtyInvalid:"<spring:message code="validation.quantity.format.errorMsg"/>"
 }
 jQuery(document).ready(function(){
-	if("${forGlobalSearch}" != "true"){
+	
 	  	loadCartSize(cartObj);
-	}
-	else{
-		jQuery("#totItems").show();
-	}
+	
 });
 
 function removeFromCart(bId, cartType){
@@ -56,14 +55,15 @@ function refreshQty(bId, cartType){
 	addQtyCartObj.cartType=cartType;
 	
 	addCartQty(addQtyCartObj);
+	var subTotal=addQtyCartObj.qty * Number(jQuery('#price_'+bId).text());
+	jQuery('#subTotal_'+bId).html(subTotal);
 }
 
 var dialogCart;
 jQuery('.orderCart').click(function(){
 	var shoppingCartObject={cart:"",id:"shoppingCart"};
-    
-	//printerObject.printerType=jQuery(this).attr('id');
-	global_click_msgs.clickedFrom="orderCart";//defined in rightNavHome.jsp
+    global_click_msgs.clickedFrom="orderCart";//defined in rightNavHome.jsp
 	calledFromLEftNav(shoppingCartObject); 
 });
 </script>
+<div class="clearBoth"></div>

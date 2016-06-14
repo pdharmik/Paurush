@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import javax.portlet.PortletRequest;
 
@@ -14,13 +15,12 @@ import org.apache.logging.log4j.Logger;
 import com.lexmark.contract.AccountAgreementSoldToContract;
 import com.lexmark.contract.CatalogListContract;
 import com.lexmark.contract.CreateServiceRequestB2bContract;
+import com.lexmark.contract.GlobalCatalogListContract;
 import com.lexmark.contract.HardwareCatalogContract;
-import com.lexmark.contract.LocalizedSiebelLOVListContract;
 import com.lexmark.contract.LocalizedSiebelValueContract;
 import com.lexmark.contract.PriceContract;
 import com.lexmark.contract.RequestContract;
 import com.lexmark.contract.RequestListContract;
-import com.lexmark.domain.Bundle;
 import com.lexmark.domain.Pagination;
 import com.lexmark.domain.Price;
 import com.lexmark.domain.PunchoutAccount;
@@ -58,7 +58,7 @@ public class ContractFactory {
 		PunchoutAccount account=(PunchoutAccount)request.getAttribute("punchoutAccount");
 	
 		contract.setAccountId(account.getAccountId());
-		contract.setSoldTo(account.getSoldTo());
+		
 		contract.setContactId(account.getContactId());
 	
 		return contract;
@@ -77,13 +77,6 @@ public class ContractFactory {
 		contract.setHardwareFlag(true);
 		contract.setContractNumber(account.getContractNumber());
 		contract.setEffectiveDate(new Date());
-		
-		//Hardcoded values
-		/*	contract.setSoldToNumber("0000180030");
-		contract.setAgreementId("1-80OJBVX");
-		contract.setContractNumber("0005005978");
-		contract.setPaymentType("Delayed Purchase");
-		*/
 		return contract;
 	}
 	
@@ -101,13 +94,6 @@ public class ContractFactory {
 		contract.setContractNumber(account.getContractNumber());
 		contract.setEffectiveDate(new Date());
 		contract.setProductType(StringUtils.isNotBlank(request.getParameter("prodTyp"))==true?request.getParameter("prodTyp"):"");
-		
-		//Hardcoded values
-		/*contract.setSoldToNumber("0000180030");
-		contract.setAgreementId("1-80OJBVX");
-		contract.setContractNumber("0005005978");
-		contract.setPaymentType("Delayed Purchase");*/
-		
 		return contract;
 	}
 	
@@ -132,13 +118,6 @@ public class ContractFactory {
 		contract.setProductModel(StringUtils.isNotBlank(request.getParameter("prodMod"))==true?request.getParameter("prodMod"):"");
 		contract.setPartNumber(StringUtils.isNotBlank(request.getParameter("partNum"))==true?request.getParameter("partNum"):"");
 		contract.setCatalogFlag(true);
-		
-		//Hardcoded values
-		/*contract.setSoldToNumber("0000180030");
-		contract.setAgreementId("1-80OJBVX");
-		contract.setContractNumber("0005005880");
-		contract.setPaymentType("Ship and Bill");*/
-		//contract.setProductType("Laser");
 		return contract;
 	}
 	
@@ -183,33 +162,25 @@ public class ContractFactory {
 				, new String[0]);
 		SearchContractUtil.copyPaginationToContract(pagination, contract);
 		
-		PunchoutAccount account=(PunchoutAccount)request.getAttribute("punchoutAccount");
 		String partTypeParam = StringUtils.isNotBlank(request.getParameter("partType"))==true?request.getParameter("partType"):"";
-		String partType = ControllerUtil.getPrinterPartType(partTypeParam);
 		if(request.getParameter("certType")!=null){
-			
 			String certifiedProduct=ControllerUtil.getCertifiedProduct(request.getParameter("certType"));
 			contract.setLocationType(certifiedProduct);
 		}
-		
-		//contract.setContractNumber(StringUtils.isNotBlank(request.getParameter("cNum"))==true?request.getParameter("cNum"):"");//contractNumber
-		contract.setProductType(StringUtils.isNotBlank(request.getParameter("pTyp"))==true?request.getParameter("pTyp"):"");//Producttype
-		contract.setPartType(partType);//partType		
+		boolean isProduct=Boolean.parseBoolean(request.getParameter("isProduct"));
+		if(isProduct){
+			contract.setProductType(partTypeParam);
+		}else{
+			String partType = ControllerUtil.getPrinterPartType(partTypeParam);
+			contract.setPartType(partType);	
+		}
+
 		contract.setContractNumber(punchoutAccount.getContractNumber());
 		contract.setAgreementId(punchoutAccount.getAgreementId());
         contract.setSoldToNumber(punchoutAccount.getSoldTo());
         
-        // contract.setPaymentType("Ship and Bill");
-        //contract.setProductModel("W850n");
-        //contract.setProductType("Laser");
-        
-        /*contract.setAgreementId("1-80OJBVX");
-        contract.setSoldToNumber("0000180030");
-        contract.setContractNumber("0005005880");*/
-        
         contract.setEffectiveDate(new Date());
-        contract.setStartRecordNumber(0);
-        contract.setIncrement(40);
+        contract.setStartRecordNumber(-1);
         contract.setNewQueryIndicator(true);
         return contract;
 	}
@@ -232,16 +203,15 @@ public class ContractFactory {
 	 * @param contractNo 
 	 * @return PriceContract 
 	 */
-	public static PriceContract getHardwareBundlePriceContract(List<Bundle> hardwarePartList, String contractNo){
+	public static PriceContract getPriceContract(Set<String> contractLineIds, String contractNo){
 		PriceContract priceContract = new PriceContract();
 		List<Price> priceInputList = new ArrayList<Price>();	
-		for(Bundle part:hardwarePartList){
+		for(String contractLineItem:contractLineIds){
 			Price price = new Price();
-			price.setContractLineItemId(part.getContractLineItemId());
+			price.setContractLineItemId(contractLineItem);
 			priceInputList.add(price);
 		}
 		priceContract.setContractNumber(contractNo);
-		//priceContract.setContractNumber("0040000157");
 		priceContract.setPriceList(priceInputList);
 		LOGGER.debug("End of Price Contract");
 		return priceContract;
@@ -252,15 +222,33 @@ public class ContractFactory {
      */
     public static CreateServiceRequestB2bContract createServiceRequestContract(){
 		CreateServiceRequestB2bContract contract=new CreateServiceRequestB2bContract();
-		/*	
-		contract.setArea("Update Request");
-		contract.setSubArea("Consumable Mass Order Upload");
-		contract.setContactId("Contact ID");
-		contract.setRequesterType("Ariba");
-		contract.setServiceRequestType("Fleet Management" );*/
-		
 		return contract;
 	}
+    
+    public static GlobalCatalogListContract createGlobalSearchListContract(PunchoutAccount punchoutAccount,PortletRequest request){
+    	
+    	LOGGER.debug("searchNumber is "+request.getParameter("searchNumber"));
+		String searchNumber = request.getParameter("searchNumber");		
+    	GlobalCatalogListContract globalCatalogListContract = new GlobalCatalogListContract();
+    	globalCatalogListContract.setAccSoldToNumber(punchoutAccount.getSoldTo());
+		globalCatalogListContract.setAccAgreementId(punchoutAccount.getAgreementId());
+		globalCatalogListContract.setAccContractNumber(punchoutAccount.getContractNumber());
+		globalCatalogListContract.setAccEffectiveDate(new Date());
+		globalCatalogListContract.setAccPartNumber(searchNumber);
+		globalCatalogListContract.setBunAgreementId(punchoutAccount.getAgreementId());
+		globalCatalogListContract.setBunSoldToNumber(punchoutAccount.getSoldTo());
+		globalCatalogListContract.setBunContractNumber(punchoutAccount.getContractNumber());
+		globalCatalogListContract.setBunEffectiveDate(new Date());
+		globalCatalogListContract.setBunPartNumber(searchNumber);
+		globalCatalogListContract.setSupSoldToNumber(punchoutAccount.getSoldTo());
+		globalCatalogListContract.setSupAgreementId(punchoutAccount.getAgreementId());
+		globalCatalogListContract.setSupContractNumber(punchoutAccount.getContractNumber());
+		globalCatalogListContract.setSupEffectiveDate(new Date());
+		globalCatalogListContract.setSupPartNumber(searchNumber);
+		globalCatalogListContract.setAccHardwareAccessoriesFlag(true);
+    	return globalCatalogListContract;
+    	
+    }
     
 	public static  LocalizedSiebelValueContract createLocalizedSiebelValueContract(String lovListName, String lovValue, Locale localeName){
 		LocalizedSiebelValueContract contract = new LocalizedSiebelValueContract();

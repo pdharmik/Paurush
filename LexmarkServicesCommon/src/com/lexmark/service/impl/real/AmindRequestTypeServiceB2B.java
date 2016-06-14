@@ -68,7 +68,7 @@ public class AmindRequestTypeServiceB2B extends AmindSiebelCrmService implements
 			} else {
 				
 				final RequestTypeListServiceB2B service = new RequestTypeListServiceB2B(contract, REQUEST_TYPE_FIELD_MAP);
-				service.checkRequiredFields();
+				
 				service.setSession(session);
 				service.setChldSession(chldSession);
 				service.setTotalCountSession(totalCountSession);

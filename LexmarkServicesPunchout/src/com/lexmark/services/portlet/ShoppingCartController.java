@@ -23,6 +23,7 @@ import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
 import com.lexmark.services.constants.BeanFieldNames;
 import com.lexmark.services.constants.PunchoutConstants;
+import com.lexmark.services.domain.CartItem;
 import com.lexmark.services.form.ShoppingCartForm;
 import com.lexmark.services.util.ControllerUtil;
 import com.lexmark.services.util.JsonUtil;
@@ -55,34 +56,27 @@ public class ShoppingCartController {
 			@RequestParam(value="isOptnWarr", required=false) String partsOrdering,
 			@RequestParam("bundleId") String bundleId,
 			@RequestParam("cartType") String cartType,
-			@RequestParam("unspscCode") String unspscCode)
+			@RequestParam("unspscCode") String unspscCode,
+			@RequestParam("marketingName") String marketingName)
 			throws IOException {
-		LOGGER.debug(" in addToShoppingCart");
-		
-		LOGGER.debug("prod id="+prodId +" qty = "+qty+" cart type is"+cartType+" unspscCode is "+unspscCode);
 		
 		Map<String, ShoppingCartForm> _shoppingFormList = (Map<String, ShoppingCartForm>) session.getAttribute(PunchoutConstants.CART_SESSION);		
 		
 		if(StringUtils.isNotBlank(partsOrdering) && "true".equalsIgnoreCase(partsOrdering)){
-			LOGGER.debug("addShoppingCartParts");
-			ControllerUtil.addShoppingCartParts(session, prodId, qty, bundleId, cartType);
+			ControllerUtil.addShoppingCartParts(session, prodId, qty, bundleId, cartType, unspscCode, marketingName);
 		}else{
-			LOGGER.debug("addToShoppingCart");
-			ControllerUtil.addToShoppingCart(session,prodId,qty,cartType,unspscCode);
+			ControllerUtil.addToShoppingCart(session,prodId,qty,cartType,unspscCode,marketingName);
 		}		
 	
 		int cartSize = getCartSize(request, cartType);
 		if(null != session.getAttribute("forGlobalSearch") && (Boolean)session.getAttribute("forGlobalSearch")){
-			LOGGER.debug("for global search add to shopping cart");
 			cartSize = getCartSize(request, "supplies")+getCartSize(request, "printers");
 			cartType = "globalSearch";
 		}
 		
-		LOGGER.debug("fROM SESSION ITEMS IN CART===========>" + cartSize);
 		Map<String,String> params=new HashMap<String,String>();
 		params.put(PunchoutConstants.SIZE,String.valueOf(cartSize));
 		params.put(PunchoutConstants.CART_TYPE,cartType);
-		LOGGER.debug("GENERATEDJSONCART"+JsonUtil.generateCartJSON(params));
 		ControllerUtil.prepareResponse(response, JsonUtil.generateCartJSON(params));
 		
 	}
@@ -139,42 +133,26 @@ public class ShoppingCartController {
 		LOGGER.debug(("[ In  showShoppingCart ]"));
 		LOGGER.debug("cart type is "+cartType);
 		Map<String, ShoppingCartForm> shoppingCartForm = new HashMap<String, ShoppingCartForm>();
-		List<Object> cartItems = new ArrayList<Object>();
+		List<CartItem> cartItems = null;
 		BigDecimal total = new BigDecimal(0);
 		if(!cartType.equalsIgnoreCase("globalSearch")){
 			LOGGER.debug("cartType in if block is "+cartType);
 			shoppingCartForm=(Map<String, ShoppingCartForm>)session.getAttribute(PunchoutConstants.CART_SESSION);
 		    cartItems=shoppingCartForm.get(cartType).getCartItems();
-		    total=ControllerUtil.calculateTotal(cartItems,
-					BeanFieldNames.PRICE.getValue(cartType),
-							BeanFieldNames.QUANTITY.getValue(cartType));
+		    total=ControllerUtil.calculateTotal(cartItems);
 		    if("printers".equalsIgnoreCase(cartType)){
 		    	model.addAttribute("shoppingCartFormBundles", shoppingCartForm.get(cartType));
-		    }
-		    else{
+		    }else{
 		    	model.addAttribute("shoppingCartFormSupplies", shoppingCartForm.get(cartType));
 		    }
 		    model.addAttribute("shoppingCartType", cartType);
-		}
-		else{
+		}else{
 			LOGGER.debug("in shopping cart controller, else block");
 		    shoppingCartForm=(Map<String, ShoppingCartForm>)session.getAttribute(PunchoutConstants.CART_SESSION);
 			cartItems=shoppingCartForm.get("printers").getCartItems();
-			LOGGER.debug("printer type added to cart item");
-			 total=ControllerUtil.calculateTotal(cartItems,
-						BeanFieldNames.PRICE.getValue("printers"),
-								BeanFieldNames.QUANTITY.getValue("printers"));
-			 LOGGER.debug("total is "+total);
-			 cartItems = shoppingCartForm.get("supplies").getCartItems();
-			 LOGGER.debug("supplies type added to cart item");
-			 total=total.add(ControllerUtil.calculateTotal(cartItems,
-						BeanFieldNames.PRICE.getValue("supplies"),
-						BeanFieldNames.QUANTITY.getValue("supplies")));
-			 LOGGER.debug("total is "+total);
-			 ShoppingCartForm bundlesform = shoppingCartForm.get("printers");
-			 LOGGER.debug("bundles size is "+bundlesform.getCartItems().size());
-			 ShoppingCartForm suppliesform = shoppingCartForm.get("supplies");
-			 LOGGER.debug("suppliesform size is "+suppliesform.getCartItems().size());
+			total=ControllerUtil.calculateTotal(cartItems);
+			cartItems = shoppingCartForm.get("supplies").getCartItems();
+    		total=total.add(ControllerUtil.calculateTotal(cartItems));
 			 model.addAttribute("shoppingCartFormBundles", shoppingCartForm.get("printers"));
 			 model.addAttribute("shoppingCartFormSupplies", shoppingCartForm.get("supplies"));
 			 model.addAttribute("shoppingCartType", "globalSearch");
@@ -209,14 +187,8 @@ public class ShoppingCartController {
 			Map<String, ShoppingCartForm> shoppingCartForm=(Map<String, ShoppingCartForm>)session.getAttribute(PunchoutConstants.CART_SESSION);			
 			
 			params.put(PunchoutConstants.CART_TYPE,cartType);		
-			ControllerUtil.removeFromList(shoppingCartForm.get(cartType).getCartItems(), productId,BeanFieldNames.ID.getValue(cartType));
-			
-			if(cartType.equalsIgnoreCase("printers"))
-				ControllerUtil.removeFromList(shoppingCartForm.get(cartType).getCartItems(), productId,BeanFieldNames.ID.getValue("supplies"));
-				
-			BigDecimal total=ControllerUtil.calculateTotal(shoppingCartForm.get(cartType).getCartItems(),
-				BeanFieldNames.PRICE.getValue(cartType),
-				BeanFieldNames.QUANTITY.getValue(cartType));
+			ControllerUtil.removeFromList(shoppingCartForm.get(cartType).getCartItems(), productId);
+			BigDecimal total=ControllerUtil.calculateTotal(shoppingCartForm.get(cartType).getCartItems());
         	LOGGER.debug("total pr"+total);
         	params.put(PunchoutConstants.TOTAL,total.toPlainString());
         	params.put(PunchoutConstants.STATUS, PunchoutConstants.SUCCESS);
@@ -253,13 +225,11 @@ public class ShoppingCartController {
 		try{
 			Map<String, ShoppingCartForm> shoppingCartForm=(Map<String, ShoppingCartForm>)session.getAttribute(PunchoutConstants.CART_SESSION);
 			//ShoppingCartForm shoppingCartForm = (ShoppingCartForm) session.getAttribute(PunchoutConstants.CART_SESSION);
-		Object _cartItem=ControllerUtil.findInList(shoppingCartForm.get(cartType).getCartItems(), productId,BeanFieldNames.ID.getValue(cartType));
-		ControllerUtil.updateQty(_cartItem, BeanFieldNames.QUANTITY.getValue(cartType), quantity);
+		CartItem _cartItem=ControllerUtil.findWithinCartItems(shoppingCartForm.get(cartType).getCartItems(), productId);
+		_cartItem.setQuantity(quantity);
 		params.put(PunchoutConstants.QUANTITY, quantity);
 		params.put(PunchoutConstants.CART_TYPE, cartType);
-		BigDecimal total=ControllerUtil.calculateTotal(shoppingCartForm.get(cartType).getCartItems(),
-				BeanFieldNames.PRICE.getValue(cartType),
-				BeanFieldNames.QUANTITY.getValue(cartType));
+		BigDecimal total=ControllerUtil.calculateTotal(shoppingCartForm.get(cartType).getCartItems());
         LOGGER.debug("total pr"+total);
         
         params.put(PunchoutConstants.TOTAL,total.toPlainString());

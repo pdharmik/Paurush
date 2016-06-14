@@ -75,25 +75,6 @@ public class RequestSubmitController {
 		 
 	}
 	
-	/**
-	 * @param request 
-	 * @param response 
-	 */
-	@ResourceMapping("createServiceRequest")
-	private void createSR(ResourceRequest request,ResourceResponse response){
-		/*HttpServletRequest httpServletRequest = PortalUtil.getHttpServletRequest(request);
-        HttpSession webSession = httpServletRequest.getSession();*/
-		PortletSession session = request.getPortletSession();
-		SessionInformation information=ControllerUtil.populateSessionInformation(session);
-		 try{
-		// createServiceRequest.createServiceRequestB2B(information,ContractFactory.createServiceRequestContract());
-		 
-		 }catch(Exception e){
-			 LOGGER.debug("Exception occured" + e.getMessage());
-			 //e.printStackTrace();
-			 
-		 }
-		 
-	}
+	
 	
 }

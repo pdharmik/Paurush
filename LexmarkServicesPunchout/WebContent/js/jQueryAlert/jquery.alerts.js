@@ -129,7 +129,7 @@
 					});
 				break;
 				case 'confirm':
-					$("#popup_message").after('<div id="popup_panel"><a href="javascript:void(0);" class="button" id="popup_ok"><span>'+ $.alerts.okButton +'</span></a>&nbsp;<a href="javascript:void(0);" class="button_cancel" id="popup_cancel" ><span>' + $.alerts.cancelButton + '</span></a></div>');
+					$("#popup_message").after('<div id="popup_panel"><a href="javascript:void(0);" class="button simplelink" id="popup_ok"><span>'+ $.alerts.okButton +'</span></a>&nbsp;<a href="javascript:void(0);" class="button simplelink" id="popup_cancel" ><span>' + $.alerts.cancelButton + '</span></a></div>');
 					$("#popup_ok").click( function() {
 						$.alerts._hide();
 						if( callback ) callback(true);
@@ -167,7 +167,7 @@
 					$("#popup_prompt").focus().select();
 				break;
 				case 'iConfirm':
-					$("#popup_message").after('<div id="popup_panel" style="text-align:'+$.alerts.iPosition+';"><a href="javascript:void(0);" class="button" id="popup_ok"><span>'+ $.alerts.iOkButton +'</span></a>&nbsp;<a href="javascript:void(0);" class="button_cancel" id="popup_cancel" ><span>' + $.alerts.iCancelButton + '</span></a></div>');
+					$("#popup_message").after('<div id="popup_panel" style="text-align:'+$.alerts.iPosition+';"><a href="javascript:void(0);" class="button simplelink" id="popup_ok"><span>'+ $.alerts.iOkButton +'</span></a>&nbsp;<a href="javascript:void(0);" class="button simplelink" id="popup_cancel" ><span>' + $.alerts.iCancelButton + '</span></a></div>');
 					$("#popup_ok").click( function() {
 						$.alerts._hide();
 						if( callback ) callback(true);

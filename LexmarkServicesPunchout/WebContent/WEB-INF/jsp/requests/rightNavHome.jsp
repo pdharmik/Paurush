@@ -1,7 +1,11 @@
-<style type="text/css"><%@ include file="/WEB-INF/css/style.css" %></style>
-<style type="text/css"><%@ include file="/WEB-INF/css/text-scroller.css" %></style>
+
+
 <%@ include file="/WEB-INF/jsp/include.jsp"%>
+<link rel="stylesheet" type="text/css" href="<html:rootPath/>/css/style.css"/>
+<link rel="stylesheet" type="text/css" href="<html:rootPath/>/css/text-scroller.css"/>
+<link rel="stylesheet" type="text/css" href="<html:rootPath/>/css/jquery-ui.css"/>
 <%@ include file="/WEB-INF/jsp/includeGrid.jsp"%>
+<script src="<html:rootPath/>/js/bundle.js?v=<html:fileCacheVersion/>"></script>
 
 
 <portlet:resourceURL var="loadHistoryList" id="loadHistoryList"></portlet:resourceURL>
@@ -9,29 +13,14 @@
 <portlet:resourceURL var="loadSuppliesList" id="loadSuppliesList"></portlet:resourceURL>
 <portlet:resourceURL var="loadGlobalSearchList" id="loadGlobalSearchList"></portlet:resourceURL>
 
-<portlet:actionURL var="loadPrinterProducts" windowState="<%=LiferayWindowState.EXCLUSIVE.toString()%>">
-	<portlet:param name="action" value="loadPrinterProducts"/>
-</portlet:actionURL>
+<portlet:resourceURL var="loadPrinterProducts" id="loadPrinterProducts"></portlet:resourceURL>
 
 <portlet:resourceURL var="loadShoppingCart" id="loadShoppingCart"></portlet:resourceURL>
 <portlet:resourceURL var="loadSuppliesProduct" id="loadSuppliesProduct"></portlet:resourceURL>
 <portlet:resourceURL var="clearCartSession" id="clearCartSession"></portlet:resourceURL>
 
 <portlet:resourceURL var="getCXMLencodedTextvar" id="getCXMLencodedText"></portlet:resourceURL>
-<portlet:resourceURL var="createServiceRequestvar" id="createServiceRequest"></portlet:resourceURL>
 
-<div id="mainRightNavContainer">
-		<div id="historyList"></div>
-		<div id="suppliesList"></div>
-		<div id="printerProducts"></div>
-		<div id="shoppingCart"></div>
-		<div id="suppliesProduct"></div>
-		<div id="eQuote"></div>
-		<div id="printersList"><!--<jsp:include page="/WEB-INF/jsp/requests/product/printersList.jsp"/>--></div>
-		<div id="globalSearchList"></div>
-</div>
-<div id="shoppingCartPopup" style="display:none" ></div>
-<div style="display: none;" id="cxmlDiv"></div>
 <script>
 
 var global_click_msgs={clickedFrom:""};//This will be used in certifiedProducts.jsp and printerlist.jsp this will help to differentiate the calls of the grid
@@ -40,40 +29,35 @@ var global_click_msgs={clickedFrom:""};//This will be used in certifiedProducts.
 var divResourceMapping={
 		divId:[ "historyList",       "printersList",      "suppliesList",       "printerProducts",       "suppliesProduct","shoppingCart","globalSearchList"],
 		linkId:["historyLink",       "reqPrinterLink",    "reqSupplyLink",      "printerProduct",        "suppliesProduct","shoppingCart","globalSearchList"],
-		activeLinkId:["historyLink",       "reqPrinterLink",    "reqSupplyLink",      "reqPrinterLink",        "reqSupplyLink","shoppingCart","globalSearchList"],
-		url:[   "${loadHistoryList}","${loadPrinterList}","${loadSuppliesList}","${loadPrinterProducts}","${loadSuppliesProduct}","${loadShoppingCart}","${loadGlobalSearchList}"]
+		activeLinkId:["historyLink",       "reqPrinterLink",    "reqSupplyLink",      "reqPrinterLink",  "reqSupplyLink","shoppingCart","globalSearchList"],
+		url:[   "${loadHistoryList}","${loadPrinterList}","${loadSuppliesList}",		"",				  "${loadSuppliesProduct}","${loadShoppingCart}","${loadGlobalSearchList}"]
 		
 };
 var cartCheckObj={cartType:"printers",qty:0};
 var flag=true;
-var acntType;
 var continueShoppingFlag=true;
 var searchNumber = "";
 
 jQuery(document).bind("loadOtherPortlet",eventHandler);
 function eventHandler(e,params){
-	var qty = jQuery('#totItems').html();
-	if(params.indexOf("globalSearchList_") > -1){
-		var searchArray = params.split("_"); 
-		params = "globalSearchList";
-		searchNumber = searchArray[1];
-		jQuery("#historyLink,#reqPrinterLink,#reqSupplyLink").removeClass("active");
+	
+	switch(params){
+		case "historyLink":
+			 $("#storeContent").hide();
+			showHideDivs('historyList');
+			refreshHistoryGrid();
+			break;
+		case "reqPrinterLink":
+			break;
+		case "reqSupplyLink":
+			break;
+		case "globalSearchList":
+			$("#storeContent").hide();
+			showHideDivs('globalSearchList');
+			break;
+					
 	}
-	if((params=="reqSupplyLink" && cartCheckObj.cartType=="printers" && cartCheckObj.qty>0)||(params=="reqPrinterLink" && cartCheckObj.cartType=="supplies" && cartCheckObj.qty>0)){
-		flag=false;
-		calledFromLEftNav(params);
-	}else{
-		
-		calledFromLEftNav(params);
-	}
-	if(flag){
-	jQuery("#historyLink,#reqPrinterLink,#reqSupplyLink").removeClass("active");
-	jQuery("#"+params).addClass("active");
-	}else if(params=="historyLink"){
-		jQuery("#historyLink,#reqPrinterLink,#reqSupplyLink").removeClass("active");
-		jQuery("#"+params).addClass("active");
-		flag=true;
-	}
+
 }
 
 
@@ -97,7 +81,8 @@ function calledFromLEftNav(linkIdFromLeftNav){
 	});
 	
 	 var qty = jQuery('#totItems').html();
-	 if("${fromAriba}"=="false"){
+	 
+	 if("${sessionScope.aribaParamMap["fromAriba"]}"=="false"){
 		 continueCallFromLeftNav(linkIdFromLeftNav);
 	 }
 	 else{
@@ -149,6 +134,10 @@ function continueCallFromLeftNav(linkIdFromLeftNav){
 			linkIdFromLeftNav.id === "shoppingCart" &&
 			global_click_msgs.clickedFrom === "orderCart")
 	{
+	if(!flagForCartPopup){
+			hideOverlay();
+			return;
+		}
 		var shoppingCartPopupUrl = divResourceMapping.url[index];
 		jQuery('#shoppingCartPopup').load(shoppingCartPopupUrl, {cartType: cartCheckObj.cartType}, function(){
 
@@ -162,7 +151,7 @@ function continueCallFromLeftNav(linkIdFromLeftNav){
 				height: '600',
 				width: '950',
 				open: function(event, ui){
-					jQuery('#backBtn').hide();
+					jQuery('.backBtn').hide();
 				},
 				close: function(event,ui){
 					closeShoppingCartPopup();
@@ -192,10 +181,8 @@ function continueCallFromLeftNav(linkIdFromLeftNav){
 			  success:function(content){
 				  hideOverlay();
 				  jQuery("#storeContent").hide();
-				  jQuery('#mainRightNavContainer div').each(function(){
-					 
+				  jQuery('#mainRightNavContainer>div').each(function(){
 					  jQuery(this).hide();
-					  jQuery(this).html('');
 				  });
 				  if(linkIdFromLeftNav != 'globalSearchList'){
 					  jQuery('.leftNavLinks li').each(function(){
@@ -209,7 +196,7 @@ function continueCallFromLeftNav(linkIdFromLeftNav){
 				  }
 				  if(global_click_msgs.clickedFrom === "showShoppingCart")
 				  {
-					  jQuery('#backBtn').show();
+					  jQuery('.backBtn').show();
 				  }
 			  }
 		});
@@ -233,16 +220,27 @@ function showHome(flag)
 	continueShoppingFlag=flag;
 	hideOverlay();
 	jQuery("#historyLink,#reqPrinterLink,#reqSupplyLink").removeClass("active");
-	jQuery('#mainRightNavContainer div').each(function(){
-		jQuery(this).hide();
-		jQuery(this).html('');
-	});
-
-	if(acntType === "KAISER")
+	showHideDivs();
+	<c:if test='${sessionScope.aribaParamMap["isKaiser"]=="true"}'>
 		jQuery("#storeContent").show();
-	else if(acntType === "REPUBLIC")
-		calledFromLEftNav("reqPrinterLink");
+	</c:if>
+	<c:if test='${sessionScope.aribaParamMap["isRepublic"]=="true"}'>
+			calledFromLEftNav("reqPrinterLink");
+	</c:if>
 	
+}
+function showHideDivs(exceptDiv){
+	$('#shoppingCartDetails').remove();
+	flagForCartPopup = true;
+	jQuery('#mainRightNavContainer').children('div').each(function(){
+		
+		if(exceptDiv != undefined && exceptDiv==$(this).attr('id')){
+			$(this).show();
+		}else{
+			$("#"+$(this).attr('id')).hide();
+		}
+		
+	});
 }
 
 function exitCart()
@@ -274,9 +272,8 @@ function closeShoppingCartPopup()
 }
 
 $( document ).ready(function() {
-	var cartCheckObj={cartType:"printers",qty:0};
-    jQuery("#storeContent").hide();
-    acntType = "${acntType}";
+	$("#storeContent").hide();
+    
     showHome(false);
 });
 
@@ -284,28 +281,68 @@ var objLinkProducts={id:"",partType:"",isPrinter:""};
 var printerObject={printerType:"",id:"printerProduct"};
 
 jQuery('.printer-links a').click(function(){
-	objLinkProducts={id:"",partType:"",isPrinter:""};
-	if(jQuery(this).attr('id')=='dot_matrix'){
-		objLinkProducts.partType="Dot Matrix"
-		objLinkProducts.isPrinter="true";		
-	}
-	else
-	{
-		objLinkProducts.partType=jQuery(this).attr('id');
-		objLinkProducts.isPrinter="false";
-	}
-	objLinkProducts.id="printerProduct";
+
 	
-	global_click_msgs.clickedFrom="homePageProducts";//defined in rightNavHome.jsp
-	calledFromLEftNav(objLinkProducts.id);
+	showHideDivs('printerProducts');
+	$("#storeContent").hide();
+	
+	 if($(this).attr('id')=='dot_matrix'){
+		 
+		 getDataForPrinter_Types({
+			 	"isProduct":true,
+				"cType":"printers",
+				"partType":"Dot Matrix"		
+			});	 
+		
+	 }else{
+		 getDataForPrinter_Types({
+			 	"isProduct":false,
+				"cType":"printers",
+				"partType":$(this).attr('id')		
+			});	 
+	 }
+	
+	return false;
 });
 
 jQuery('.health-connect-links a').click(function(){
-	objLinkProducts={id:"",certType:"",isPrinter:""};
+	 objLinkProducts={id:"",certType:"",isPrinter:""};
 	objLinkProducts.id="printerProduct";
 	objLinkProducts.certType=jQuery(this).attr('id');
 	global_click_msgs.clickedFrom="certProducts";//defined in rightNavHome.jsp
-	calledFromLEftNav(objLinkProducts.id);
+	calledFromLEftNav(objLinkProducts.id); 
+	
 });
 
 </script>
+
+<c:if test='${sessionScope.aribaParamMap["fromAriba"]=="true"}'>
+	<jsp:include page="/WEB-INF/jsp/shoppingCart/totalItems.jsp"/>
+</c:if>
+<div id="mainRightNavContainer">
+<%-- Mind before adding DIV over here. will get hidden on page load and other conditions...  --%>
+		<div id="historyList">
+			<jsp:include page="/WEB-INF/jsp/requests/history/gridRequestHistory.jsp"/>
+		</div>
+		<c:if test='${sessionScope.aribaParamMap["isKaiser"]=="false"}'>
+			<div id="suppliesList" class="noDisplay"></div>
+		</c:if>	
+		<div id="printerProducts" class="noDisplay">
+				<jsp:include page="/WEB-INF/jsp/requests/product/printerProduct.jsp"/>
+		</div>
+		
+		<div id="shoppingCart" class="noDisplay"></div>
+		<div id="suppliesProduct" class="noDisplay"></div>
+		<div id="eQuote" class="noDisplay"></div>
+		<c:if test='${sessionScope.aribaParamMap["isKaiser"]=="false"}'>
+		<div id="printersList" class="noDisplay">
+			<jsp:include page="/WEB-INF/jsp/requests/product/printersList.jsp"/>
+		</div>
+		</c:if>
+		<div id="globalSearchList" class="noDisplay">
+			<jsp:include page="/WEB-INF/jsp/requests/globalSearchList.jsp"/>
+		</div>
+		<div id="showPrinterDetails" class="noDisplay"></div><%-- this div shows the printer details from (Buy Options) cart --%>
+</div>
+<div id="shoppingCartPopup" class="noDisplay"></div>
+<div class="noDisplay" id="cxmlDiv"></div>

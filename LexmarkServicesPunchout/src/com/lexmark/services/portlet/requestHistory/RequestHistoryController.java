@@ -1,9 +1,12 @@
 package com.lexmark.services.portlet.requestHistory;
 
+import java.math.RoundingMode;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.HashMap;
 
 import javax.portlet.PortletSession;
 import javax.portlet.ResourceRequest;
@@ -17,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.portlet.bind.annotation.ResourceMapping;
 
+import com.lexmark.constants.LexmarkConstants;
 import com.lexmark.contract.RequestContract;
 import com.lexmark.contract.RequestListContract;
 import com.lexmark.domain.Part;
@@ -93,6 +97,8 @@ public class RequestHistoryController {
 
 	private static final String PATH="requests/history/";
 	private ServiceRequestLocale  serviceRequestLocale;
+	private static final String SHIPMENT = "shipment";
+	private static final String RETURN = "return";
 	/**
 	 * @return ServiceRequestLocale 
 	 */
@@ -132,9 +138,8 @@ public class RequestHistoryController {
 	public String retrieveGrid(ResourceRequest request,ResourceResponse response,Model model) throws Exception{
 		
 		LOGGER.debug(("[ in retrieveGrid]"));
-		//List<ServiceRequest> data=new GenerateMockData().generateRequestGrid();
 		PortletSession session = request.getPortletSession();
-		String supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
+		String supplierId = ControllerUtil.getSupplierId(session);
 		request.setAttribute(PunchoutConstants.PUNCHOUT_ACCOUNT, ControllerUtil.getPunchoutAccount(allAccountInformation.getAllAccountList(supplierId), request));
 		
 		
@@ -146,42 +151,25 @@ public class RequestHistoryController {
 	.initCrmSessionHandle(PortalSessionUtil
 				.getSiebelCrmSessionHandle(request));
 	contract.setSessionHandle(crmSessionHandle);
-		LOGGER.debug(("[ Printing COntract]"));
 	ObjectDebugUtil.printObjectContent(contract, LOGGER);
-		LOGGER.debug(("[ Printed COntract]"));
-		// real call
 		result=requestTypeB2bService.retrieveRequestListB2B(contract);
-		//MOCK added
-		LOGGER.debug(("[ Printed COntract]"));
+		
 		//GenerateMockData generateMock= new GenerateMockData();
 		//result = generateMock.generateRequestListResult();
 		}catch(Exception e){
 			LOGGER.debug("Exception occured" + e.getMessage());
-			//e.printStackTrace();
 			LOGGER.error("[Exception occured in retrieving the list ]");
-		}finally{
-			//globalService.releaseSessionHandle(crmSessionHandle);
+		}finally{			
 			if(result==null){
 				result=new RequestListResult();
 			}
 		}
-		LOGGER.debug(("[ Printed1]"));
-		LOGGER.debug(String.format("[length of the List is %s]",result.getRequestList()==null?"null":result.getRequestList().size()));
-		LOGGER.debug(("[ Printed2]"));
 		model.addAttribute(PunchoutConstants.GRID_DATA, result.getRequestList());
 		model.addAttribute(PunchoutConstants.TOTAL_COUNT, result.getTotalCount());
 		response.setContentType("text/xml");
 		LOGGER.debug(("[ out retrieveGrid]"));
 		return PATH+"requestGridXml";
 	}
-
-	
-
-	
-
-	
-
-
 	
 	/**
 	 * @param request 
@@ -206,31 +194,36 @@ public class RequestHistoryController {
 				
 		ObjectDebugUtil.printObjectContent(contract, LOGGER);
 		result=requestTypeB2bService.retrieveSupplyRequestDetailB2B(contract);
-		//Mock Call Added
-		
-		//GenerateMockData generateMock= new GenerateMockData();
-		//result = generateMock.generateRequestDetails();
 		
 		serviceRequest= result.getServiceRequest();
-		
+		serviceRequest.setItemSubTotalBeforeTax(serviceRequest.getItemSubTotalBeforeTax().setScale(2, RoundingMode.CEILING));
+		serviceRequest.setTotalAmount(serviceRequest.getTotalAmount().setScale(2, RoundingMode.CEILING));
 		}
 		catch (Exception e) {
 			LOGGER.debug("Exception occured" + e.getMessage());
-			//e.printStackTrace();
 		}
 		
-		//ServiceRequest sr=new ServiceRequest();
 		RequestDetailsForm requestDetails = new RequestDetailsForm();
 		
 		requestDetails.setServiceRequest(serviceRequest);
-		if(serviceRequest.getRequestType().equalsIgnoreCase(TYPE_HARDWARE)){
+		if(serviceRequest.getArea().getValue().equalsIgnoreCase("HW Order")){
 			populateShipmentDetailsForHardware(request,result,requestDetails);
 		}
-		else if(serviceRequest.getRequestType().equalsIgnoreCase(TYPE_SUPPLIES)){
-			
+		else{
 			populateShipmentDetailsForSupplies(request,result,requestDetails);
 		}
 		
+		List<ServiceRequestOrderLineItem> shipmentList = result.getServiceRequest().getShipmentOrderLines();
+		
+		Map<String,String> shipmentXmlMap=new HashMap<String,String>();
+		for(ServiceRequestOrderLineItem shipment : shipmentList){
+			shipment.setShipmentProgress(checkProgress(shipment.getStatus(), SHIPMENT));
+			String xml = getXmlOutputGenerator(request.getLocale()).generateServiceRequestShipment(shipment, request);
+			shipmentXmlMap.put(shipment.getPartnumber(), xml);
+			
+		}
+		requestDetails.getServiceRequest().setShipmentOrderLines(shipmentList);
+		model.addAttribute("shipmentXmlMap", shipmentXmlMap);
 		model.addAttribute(PunchoutConstants.REQUEST_DETAILS,requestDetails);
 		return PATH+"requestDetails";
 	}
@@ -247,7 +240,6 @@ public class RequestHistoryController {
 private ShipmentForm getPendingShipmentData(List<ServiceRequestOrderLineItem> pendingShipments, Locale locale){
 	String METHOD_NAME = "getPendingShipmentData";
 	
-	//LOGGER.enter(CLASS_NAME, METHOD_NAME);
 	ShipmentForm shipForm = new ShipmentForm();
 	String[] pendingShipmentsGeneratorPatterns = new String[] {
 			PARTNO, PROD_DESCRIPTN, PART_TYPE, PENDING_QUANTITY, DEVICE_TYPE, PRICE}; //For MPS Phase 2.1
@@ -265,9 +257,7 @@ private ShipmentForm getPendingShipmentData(List<ServiceRequestOrderLineItem> pe
 				
 				shipForm.setShipmentXML(pendingShipmentsXML);
 			}
-			
-			LOGGER.debug("getPendingShipmentData ShipmentXML= "+shipForm.getShipmentXML());
-			//LOGGER.exit(CLASS_NAME, METHOD_NAME );
+	
 	return shipForm;
 	
 }
@@ -279,7 +269,6 @@ public XmlOutputGenerator getXmlOutputGenerator(Locale locale) {
 
 private void populateShipmentDetailsForSupplies(ResourceRequest request,RequestResult result,RequestDetailsForm requestDetails){
 	if(result.getServiceRequest().getPendingShipments() != null && !result.getServiceRequest().getPendingShipments().isEmpty()){
-		LOGGER.debug("PendingShipments section starts ");
 		this.setPendingQty(result.getServiceRequest().getPendingShipments());
 		
 		
@@ -288,11 +277,9 @@ private void populateShipmentDetailsForSupplies(ResourceRequest request,RequestR
 	else{
 		List<ServiceRequestOrderLineItem> orderLineItems = new ArrayList<ServiceRequestOrderLineItem>();
 		for (Part part : LangUtil.notNull(result.getServiceRequest().getParts())) {
-				LOGGER.debug("Part Status :::" + part.getStatus());
 				if(!"Authorized".equalsIgnoreCase(part.getStatus())){
 					ServiceRequestOrderLineItem item = new ServiceRequestOrderLineItem();
 					item.setPartnumber(part.getPartNumber());
-					LOGGER.debug("Implicit flag:: " + part.getImplicitFlag());
 					if(part.getImplicitFlag()){
 						item.setProductDescription("Lexmark Recommended");
 					}
@@ -318,7 +305,6 @@ private void populateShipmentDetailsForSupplies(ResourceRequest request,RequestR
 					}
 					if(itemStatus == 0){
 						itemAuthorized.setPartnumber(part.getPartNumber());
-						LOGGER.debug("Implicit flag:: " + part.getImplicitFlag());
 						if(part.getImplicitFlag()){
 							itemAuthorized.setProductDescription("Lexmark Recommended");
 						}
@@ -340,7 +326,6 @@ private void populateShipmentDetailsForSupplies(ResourceRequest request,RequestR
 				
 			
 		}
-		/*LOGGER.debug("getPendingShipments is not blank ");*/
 		requestDetails.setPendingRequest(getPendingShipmentData(orderLineItems, request.getLocale()));
 	}
 	
@@ -356,29 +341,21 @@ private void populateShipmentDetailsForHardware(ResourceRequest request,RequestR
 			"partNumber", "description", "partType", "orderQuantity","deviceType","price"}; 
 	
 	String pendingShipmentsXML="";
-	generateMockShipment(result);
-	if(result.getServiceRequest().getParts()!=null){
-		LOGGER.debug(" Part List Size" + result.getServiceRequest().getParts().size());
-		
-		
+	if(result.getServiceRequest().getParts()!=null){		
 		 pendingShipmentsXML = getXmlOutputGenerator(
 				request.getLocale()).generatePendingSHipment(result.getServiceRequest().getParts(),result.getServiceRequest().getParts().size(),0,pendingShipmentsGeneratorPatterns,request);
 		if(pendingShipmentsXML != null){
 			pendingShipmentsXML = pendingShipmentsXML.replace("\n", "");
 		}
 	}
-	LOGGER.debug("before exception");
 	shipForm.setShipmentXML(pendingShipmentsXML);
-	LOGGER.debug("pendingShipmentsXML"+pendingShipmentsXML);
-	requestDetails.setPendingRequest(shipForm);
-	
-	
+	requestDetails.setPendingRequest(shipForm);	
 	
 }
+
 private void setPendingQty(List<ServiceRequestOrderLineItem> pendingShipments){
 	String METHOD_NAME = "setPendingQty";
 	
-	//LOGGER.enter(CLASS_NAME, METHOD_NAME);
 	for(ServiceRequestOrderLineItem lineItem : pendingShipments){
 		int pendingQty = lineItem.getPendingQuantity();
 		int backOrderQty = lineItem.getBackOrderQuantity();
@@ -393,24 +370,33 @@ private void setPendingQty(List<ServiceRequestOrderLineItem> pendingShipments){
 		else{
 			actualQty = pendingQty;
 		}
-		LOGGER.debug("Pending Qty::"+ pendingQty + " :: Back Order Qty::"+ backOrderQty + " :: Actual Pending Qty::"+ actualQty);
 		lineItem.setQuantity(String.valueOf(actualQty));			
 	}
-	
-	//LOGGER.exit(CLASS_NAME, METHOD_NAME );		
+		
 }
 
-private void generateMockShipment(RequestResult result){
-	
-	List<Part> list = new ArrayList<Part>();
-	for(int i=0;i<2;i++){
-	Part part = new Part();
-	part.setCatalogType("Hardware Bundles");
-	part.setCatalogId("12300");
-	
-	list.add(part);
+public int checkProgress(String status, String type) {
+	int progress = 0;
+	if (SHIPMENT.equals(type)) {
+		if (LexmarkConstants.SHIPMENTSTATUS_SHIPPED.equals(status)) {
+			progress = 66;
+		} else if (LexmarkConstants.SHIPMENTSTATUS_DELIVERED.equals(status)) {
+			progress = 100;
+		} else if (LexmarkConstants.TECHNICIANSTATUS_CANCELLED.equals(status)){
+			return 0;
+		} else {
+			progress = 33;
+		}
+	} else if (RETURN.equals(type)) { 
+		if (LexmarkConstants.SHIPMENTSTATUS_DELIVERED.equals(status)) {
+			progress = 100;
+		} else if (LexmarkConstants.TECHNICIANSTATUS_CANCELLED.equals(status)){
+			return 1;
+		} else {
+			progress = 50;
+		}
 	}
-	
-	
+	return progress;
 }
+
 }

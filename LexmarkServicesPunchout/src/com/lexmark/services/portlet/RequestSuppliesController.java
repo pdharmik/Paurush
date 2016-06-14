@@ -103,14 +103,11 @@ public class RequestSuppliesController {
 			ResourceResponse response,Model model,PortletSession session) throws InterruptedException, ExecutionException {
 		LOGGER.debug(("[ In  loadSuppliesList ]"));
 		
-		String fromAriba = session.getAttribute("fromAriba", PortletSession.APPLICATION_SCOPE).toString();
-		LOGGER.debug("Request Supplies Controller loadSuppliesList--------------- "+fromAriba);
-		model.addAttribute("fromAriba", fromAriba);
 		session.setAttribute("forGlobalSearch",false);
 		//need to call product type list for drop down
 		
 		//starting here
-		String supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
+		String supplierId = ControllerUtil.getSupplierId(session);
 		List<PunchoutAccount> punchoutAccountList = ControllerUtil.getPunchoutAccountList(allAccountInformation.getAllAccountList(supplierId), request);
 		LOGGER.debug("punchAcntList size in showPrinterList is === "+punchoutAccountList.size());
 		ExecutorService executor = Executors.newFixedThreadPool(punchoutAccountList.size());
@@ -186,10 +183,7 @@ public class RequestSuppliesController {
 	public String showSuppliesProduct(ResourceRequest request,
 			ResourceResponse response, Model model, PortletSession session) {
 		LOGGER.debug(("[ In  loadSuppliesProduct ]"));
-		String fromAriba = session.getAttribute("fromAriba", PortletSession.APPLICATION_SCOPE).toString();
-		LOGGER.debug("fromAriba from session in Request Supplies Controller --------------- "+fromAriba);
-		model.addAttribute("fromAriba", fromAriba);
-		
+			
 		return PATH+"suppliesProduct";
 	}
 	/**
@@ -205,8 +199,8 @@ public class RequestSuppliesController {
 	public String retrieveSupplyGrid(ResourceRequest request,
 			ResourceResponse response,Model model,PortletSession session) throws InterruptedException, ExecutionException {
 		LOGGER.debug(("[ In  retrieveSupplyGrid ]"));
-		String supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
-		request.setAttribute(PunchoutConstants.PUNCHOUT_ACCOUNT, ControllerUtil.getPunchoutAccount(allAccountInformation.getAllAccountList(supplierId), request));//This is for temporary purpose
+		String supplierId = ControllerUtil.getSupplierId(session);
+		
 		
 		if(null != session.getAttribute("supplyItems")){
 			session.removeAttribute("supplyItems");
@@ -335,10 +329,7 @@ public class RequestSuppliesController {
 		}*/
 		
 		session.setAttribute(PunchoutConstants.PRODUCT_BUNDLE, partsList);
-		ControllerUtil.updateItemsWithCartData(session, request.getParameter("cType"), "");
-		String fromAriba = session.getAttribute("fromAriba", PortletSession.APPLICATION_SCOPE).toString();
-		LOGGER.debug("fromAriba from session in Request Supplies Controller --------------- "+fromAriba);
-		model.addAttribute("fromAriba", fromAriba);
+		
 		LOGGER.debug("partlist size is "+partsList.size());
 		model.addAttribute(PunchoutConstants.SUPPLY_ITEMS, partsList);
 		model.addAttribute(PunchoutConstants.TOTAL_COUNT, totalCount);
@@ -433,19 +424,7 @@ public class RequestSuppliesController {
 	      
 			ControllerUtil.prepareResponse(response, JsonUtil.generateProductModelJSON(productModel));
 			session.setAttribute("productModelMap", productModelMap, PortletSession.APPLICATION_SCOPE);
-		/*CatalogListContract contract=ContractFactory.getProductModelContract(request);
-		ObjectDebugUtil.printObjectContent(contract, LOGGER);
-		List<ListOfValues> productModel=null;
-		try{
-			CatalogListResult result=catalogService.retrievePrinterTypesB2B(contract);
-			productModel=result.getLovList();			
-			LOGGER.debug(String.format("[Lov list size is %s]",productModel==null?"0":productModel.size()));
-		}catch(Exception e){
-			LOGGER.error("[Error occured ]"+e.getCause());
-		}finally{
-			ControllerUtil.prepareResponse(response, JsonUtil.generateProductModelJSON(productModel));
-			LOGGER.debug("Exit get product model");	
-		}*/
+	
 	}
 	
 	public CatalogListResult retrieveAccessoriesB2bCall(ResourceRequest request,CatalogListContract contract){
@@ -467,7 +446,7 @@ public class RequestSuppliesController {
 			 result=catalogService.retrieveAccessoriesB2b(contract);
 			 LOGGER.debug("here");
 			 partsList=result.getPartsList();
-			// partsList=new GenerateMockData().generateSuppliesProductList();
+			
 			 for(OrderPart parts : partsList){
 				 LOGGER.debug("PARTS PARTNUMBER--"+parts.getPartNumber()+"--CATALOG ID--"+parts.getCatalogId()+"--CONTRACTLINHEITEMID--"+parts.getContractLineItemId());
 				 
@@ -476,8 +455,7 @@ public class RequestSuppliesController {
 			 if(null != partsList && partsList.size()>0){
 				 
 			
-			 PriceResult bundlePriceResult = null;
-			 bundlePriceResult=ControllerUtil.getPriceForParts(contract.getContractNumber(),partsList,retrievePriceService);
+			 PriceResult bundlePriceResult = new PriceResult();
 			 
 			 for(Price price:bundlePriceResult.getPriceOutputList()){
 					for(OrderPart parts:partsList)

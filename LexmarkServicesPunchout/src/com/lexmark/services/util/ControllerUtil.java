@@ -1,6 +1,5 @@
 package com.lexmark.services.util;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -8,19 +7,17 @@ import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.portlet.PortletRequest;
 import javax.portlet.PortletSession;
-import javax.portlet.ResourceRequest;
 import javax.portlet.ResourceResponse;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.codec.binary.Base64;
@@ -38,13 +35,13 @@ import com.lexmark.contract.LocalizedSiebelValueContract;
 import com.lexmark.contract.PriceContract;
 import com.lexmark.contract.RequestContract;
 import com.lexmark.domain.Bundle;
-import com.lexmark.domain.HardwareCatalog;
 import com.lexmark.domain.ListOfValues;
 import com.lexmark.domain.OrderPart;
 import com.lexmark.domain.Part;
 import com.lexmark.domain.Price;
 import com.lexmark.domain.PunchoutAccount;
 import com.lexmark.exceptionimpl.runtime.LGSRuntimeException;
+import com.lexmark.hook.filter.PunchoutSetupResponse;
 import com.lexmark.result.CatalogListResult;
 import com.lexmark.result.LocalizedSiebelValueResult;
 import com.lexmark.result.PriceResult;
@@ -56,18 +53,10 @@ import com.lexmark.service.api.RequestTypeServiceB2B;
 import com.lexmark.service.impl.real.jdbc.HibernateUtil;
 import com.lexmark.service.impl.real.jdbc.InfrastructureException;
 import com.lexmark.services.api.RetrievePriceService;
-import com.lexmark.services.constants.BeanFieldNames;
 import com.lexmark.services.constants.PunchoutConstants;
+import com.lexmark.services.domain.CartItem;
 import com.lexmark.services.domain.SessionInformation;
-import com.lexmark.services.form.Bullet;
-import com.lexmark.services.form.LearnMoreForm;
-import com.lexmark.services.form.Marketing;
 import com.lexmark.services.form.ShoppingCartForm;
-import com.lexmark.services.form.TechSpec;
-import com.lexmark.services.mock.GenerateMockData;
-import com.lexmark.services.servlet.LoadPriceInformation;
-import com.lexmark.servlet.PunchOutSetupResponse;
-import com.liferay.portal.util.PortalUtil;
 
 
 public class ControllerUtil {
@@ -89,7 +78,7 @@ public class ControllerUtil {
 			Properties props = new Properties();
 			InputStream in;
 			try {
-				in = PunchOutSetupResponse.class
+				in = PunchoutSetupResponse.class
 						.getResourceAsStream(CONFIG_FILE_NAME);
 				props.load(in);
 				in.close();
@@ -297,16 +286,15 @@ public class ControllerUtil {
 	 * @param prodIdValue 
 	 * @param compareField 
 	 */
-	public static void removeFromList(List<Object> cartList,String prodIdValue,String compareField){
+	public static void removeFromList(List<CartItem> cartList,String prodIdValue){
 		if(cartList==null){
 			return ;
 		}
 		int i=-1;
 		boolean found=false;
-		for(Object _cart:cartList){
-			i++;
-			
-			if(_cart!=null && compare(_cart,compareField,prodIdValue)){
+		for(CartItem _cart:cartList){
+			i++;			
+			if(_cart.getItemId().equals(prodIdValue)){
 				found=true;
 				break;
 			}
@@ -325,17 +313,13 @@ public class ControllerUtil {
 	 * @param qtyField 
 	 * @return BigDecimal 
 	 */
-	public static BigDecimal calculateTotal(List<Object> cartBundle,String priceField,String qtyField){
+	public static BigDecimal calculateTotal(List<CartItem> cart){
 		BigDecimal totalPrice=new BigDecimal("0");
-			if(cartBundle!=null){
+			if(cart!=null){
 			
-	        for(Object b:cartBundle){
-	        	BigDecimal price=(BigDecimal)ControllerUtil.readProperty(b, priceField);
-	        	String qty = (String)ControllerUtil.readProperty(b, qtyField);
-	        	if(qtyField.equalsIgnoreCase("bundleqty") && qty == null)
-	        	{
-	        		qty = (String)ControllerUtil.readProperty(b, "orderQuantity");
-	        	}
+	        for(CartItem _item:cart){
+	        	BigDecimal price=_item.getPrice();
+	        	String qty = _item.getQuantity();
 	        	totalPrice=totalPrice.add(new BigDecimal(qty).multiply(price==null?new BigDecimal("0"):price));
 	        }
 		}
@@ -357,10 +341,8 @@ public class ControllerUtil {
 		ObjectDebugUtil.printObjectContent(contract, LOGGER);
 		try {
 			result=service.retrievePrinterTypesB2B(contract);
-			//LOGGER.debug("[ THIS IS MOCK CALL !!]");
-		//	result.setLovList(new GenerateMockData().generatePrintersList());
+		
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			LOGGER.error("[Exception while getting printer types b2b ]"+e.getCause());
 		}
 		return result;
@@ -388,13 +370,8 @@ public class ControllerUtil {
 			LOGGER.debug("b4 calling retrieveAccessoriesB2b");
 			result = service.retrieveAccessoriesB2b(contract);
 			LOGGER.debug("after calling retrieveAccessoriesB2b");
-			result.setLovList(service.retrieveAccessoriesB2b(contract).getLovList());
-			result.setLovList(service.retrievePrinterTypesB2B(contract).getLovList());
-			//.debug("[ THIS IS MOCK CALL !!]");
-			////result.setLovList(new GenerateMockData().generatePrintersList());
-			//result.setAccessoriesList(new GenerateMockData().generateWarrantiesList());
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			LOGGER.error("[Exception while getting printer types b2b ]"+e.getCause());
 		}
 		LOGGER.debug("out amindRetrieveAccessoriesB2B");
@@ -410,26 +387,9 @@ public class ControllerUtil {
 	 */
 	public static void updateBundlesWithOptionswarranties(PortletSession session, String bundleId, 
 			List<OrderPart> accessories, String cartType){
-		List<Object> bundles = (List<Object>) session.getAttribute(PunchoutConstants.PRODUCT_BUNDLE);
-		//List<Bundle> _cart_bundles = (List<Bundle>) session.getAttribute(PunchoutConstants.CART_SESSION);
-		Map<String, ShoppingCartForm> shoppingCartForm=(Map<String, ShoppingCartForm>)session.getAttribute(PunchoutConstants.CART_SESSION);
-		List<Object> _cart_bundles = (List<Object>) shoppingCartForm.get(cartType).getCartItems();
-		List<Object> finalList=new ArrayList<Object>();
-		if(bundles != null){
-		finalList.addAll(bundles);
-		}if(_cart_bundles != null){
-		finalList.addAll(_cart_bundles);
-		}
-		
-		LOGGER.debug(" size ="+finalList==null?0:finalList.size());
-		
-		for(Object bundle:finalList){
-			if(bundle instanceof Bundle && bundleId.equalsIgnoreCase(((Bundle) bundle).getBundleId())){
-				LOGGER.debug(String.format("[ bundle id = %s found in the list ]",bundleId));
-				((Bundle) bundle).setOrderParts(accessories);
-			}
-		}
-		
+		List<Bundle> bundles = (List<Bundle>) session.getAttribute(PunchoutConstants.PRODUCT_BUNDLE);
+		Bundle bundle=findWithinBundle(bundles, bundleId);
+		bundle.setOrderParts(accessories);	
 	}
 	
 	/**
@@ -438,92 +398,137 @@ public class ControllerUtil {
 	 * @param qty 
 	 * @param bundleId 
 	 */
-	public  static void addShoppingCartParts(PortletSession session, String prodIdValue,String qty,String bundleId,String cartType){
+	public  static void addShoppingCartParts(PortletSession session, String prodIdValue,String qty,String bundleId,String cartType,String unspscCode,String marketingName){
 		
-		List<Object> _productListSession  = (List<Object>) session.getAttribute(PunchoutConstants.PRODUCT_BUNDLE);
-		List<OrderPart> bundleOrderParts = new ArrayList<OrderPart>();
-		List<Object> bundleParts = new ArrayList<Object>();
 		
-		for(Object bundle:_productListSession){
-			if(bundleId.equalsIgnoreCase(((Bundle) bundle).getBundleId())){
-				bundleOrderParts = (List<OrderPart>) ((Bundle) bundle).getOrderParts();
-				session.setAttribute("bundleAcc", bundleOrderParts);
-				bundleParts = (List<Object>) session.getAttribute("bundleAcc");
-			}
-		}		
-		
-		LOGGER.debug(" size ="+_productListSession ==null?0:_productListSession .size());			
 		Map<String, ShoppingCartForm> _shoppingForm = (Map<String, ShoppingCartForm>) session.getAttribute(PunchoutConstants.CART_SESSION);		
-		List<Object> cartItems=_shoppingForm.get(cartType).getCartItems();		
+		List<CartItem> cartItems=_shoppingForm.get(cartType).getCartItems();		
 		
-		//Check whether in the cart or not
-		Object _cartItem=ControllerUtil.findInList(_shoppingForm.get(cartType).getCartItems(), prodIdValue,BeanFieldNames.ID.getValue("supplies"));
+		//Check whether the item is in cart or not
+		CartItem _cartItem=findWithinCartItems(cartItems, prodIdValue);
 		if(_cartItem==null){
-			LOGGER.debug(String.format(" [the product is not there in cart id = %s] ",bundleId));
-			//This is new item to be added to cart
-			//Prior to that need to get the data from the session list first
-			_cartItem=ControllerUtil.findInList(bundleParts, prodIdValue,BeanFieldNames.ID.getValue("supplies"));
-			//copy bundle properties
-			//copy part properties
+			LOGGER.debug(String.format(" [the product is not there in cart id = %s] ",prodIdValue));
+			
+			OrderPart orderPart=null;
+			List<OrderPart> orderParts=null;
+			if(StringUtils.isBlank(bundleId)){
+				orderParts  = (List<OrderPart>) session.getAttribute(PunchoutConstants.PRODUCT_OPTIONSWARRANTIES);
+				
+			}else{
+				List<Bundle> _productListSession  = (List<Bundle>) session.getAttribute(PunchoutConstants.PRODUCT_BUNDLE);
+				Bundle bundle=findWithinBundle(_productListSession, bundleId);
+				orderParts=bundle.getOrderParts();							
+			}	
+			orderPart=findWithinOptions(orderParts, prodIdValue);
+			_cartItem=createShoppingCartItem(orderPart);
 			cartItems.add(_cartItem);
 		}
+		_cartItem.setQuantity(qty);
+		_cartItem.setUnspscCode(unspscCode);
+		_cartItem.setMarketingName(marketingName);
 		
-		/*//Lets search for the productId in the orderpartlist
-		Object partItem=ControllerUtil.findInList((List<Object>)ControllerUtil.readProperty(_cartItem, "orderParts") ,prodIdValue,compareField);*/
-		ControllerUtil.updateQty(_cartItem, BeanFieldNames.QUANTITY.getValue("supplies"), qty);
 	}
 	
 	/**
 	 * @param session 
 	 * @param prodId 
 	 * @param qty 
+	 * 
+	 * This method should only be used to add Bundles to the cart
+	 * if required to add supplied item create separate method.
 	 */
-	public  static void addToShoppingCart(PortletSession session, String prodId,String qty,String cartType,String unspscCode){
+	public  static void addToShoppingCart(PortletSession session, String bundleId,String qty,String cartType,String unspscCode,String marketingName){
 		
-		List<Object> _productListSession = (List<Object>) session.getAttribute(PunchoutConstants.PRODUCT_BUNDLE);
-		if(null != session.getAttribute("supplyItems") && !"printers".equalsIgnoreCase(cartType)){
-			LOGGER.debug("supplies item is not null in session");
-			_productListSession = (List<Object>) session.getAttribute("supplyItems");
-		}
-		//LOGGER.debug(" size ="+_productListSession ==null?0:_productListSession .size());
-		LOGGER.debug(" size = "+_productListSession.size());
-			
+		List<Bundle> _productListSession = (List<Bundle>) session.getAttribute(PunchoutConstants.PRODUCT_BUNDLE);
+		
 		Map<String, ShoppingCartForm> _shoppingForm = (Map<String, ShoppingCartForm>) session.getAttribute(PunchoutConstants.CART_SESSION);
-		List<Object> cartItems=_shoppingForm.get(cartType).getCartItems();
+		List<CartItem> cartItems=_shoppingForm.get(cartType).getCartItems();
 		
+		//Check whether the item is in cart or not
+		CartItem _cartItem=findWithinCartItems(cartItems, bundleId);
 		
-		//Check whether in the cart or not
-		Object _cartItem=ControllerUtil.findInList(_shoppingForm.get(cartType).getCartItems(), prodId,BeanFieldNames.ID.getValue(cartType));
-		
-		LOGGER.debug(_shoppingForm.get(cartType).getCartItems());
 		if(_cartItem==null){
-			LOGGER.debug(String.format(" [the product is not there in cart id = %s] ",prodId));
+			LOGGER.debug(String.format(" [the product is not there in cart id = %s] ",bundleId));
 			//This is new item to be added to cart
 			//Prior to that need to get the data from the session list first
-			_cartItem=ControllerUtil.findInList(_productListSession , prodId,BeanFieldNames.ID.getValue(cartType));
-			
-			if(cartType.equalsIgnoreCase("supplies")){
-				OrderPart addedCartItem = (OrderPart)_cartItem;
-			}
-			else{
-				Bundle addedCartItem = (Bundle)_cartItem;
-				addedCartItem.setUnspscCode(unspscCode);
-			}
-			
-			//copy bundle properties
-			//copy part properties	
-			LOGGER.debug("cart item is "+cartItems);
-			ObjectDebugUtil.printObjectContent(_cartItem, LOGGER);			
+			Bundle bundle=findWithinBundle(_productListSession, bundleId);
+			LOGGER.debug("Item Bundle "+bundle);
+			bundle.setUnspscCode(unspscCode);
+			LOGGER.debug("after unspsc" +cartItems );
+			LOGGER.debug("length" +cartItems.size() );
+			_cartItem=createShoppingCartItem(bundle);
 			cartItems.add(_cartItem);
 			
 		}
-		else{
-			Bundle addedCartItem = (Bundle)_cartItem;
-			addedCartItem.setUnspscCode(unspscCode);
+		_cartItem.setQuantity(qty);
+		_cartItem.setUnspscCode(unspscCode);
+		_cartItem.setMarketingName(marketingName);
+		
+	}
+	
+	public static Bundle findWithinBundle(List<Bundle> bundles,String id){
+		for(Bundle bundle:bundles){
+			if(bundle.getBundleId().equalsIgnoreCase(id)){
+				return bundle;
+			}
 		}
-		
-		ControllerUtil.updateQty(_cartItem, BeanFieldNames.QUANTITY.getValue(cartType), qty);	
-		
+		return null;
+	}
+	
+	public static CartItem findWithinCartItems(List<CartItem> cartItems,String id){
+		for(CartItem cartItem:cartItems){
+			if(cartItem.getItemId().equalsIgnoreCase(id)){
+				return cartItem;
+			}
+		}
+		return null;
+	}
+	
+	public static OrderPart findWithinOptions(List<OrderPart> orderParts,String id){
+		for(OrderPart part:orderParts){
+			if(part.getPartNumber().equalsIgnoreCase(id)){
+				return part;
+			}
+		}
+		return null;
+	}
+	/*
+	 * This method creates a bundle object and set
+	 * its properties to be shown in the shopping cart details.
+	 * 
+	 * */
+	public static CartItem createShoppingCartItem(Bundle bundle){
+		CartItem cartItem= new CartItem();
+		cartItem.setItemId(bundle.getBundleId());
+		cartItem.setPrice(bundle.getPrice());
+		cartItem.setItemName(bundle.getBundleName());
+		cartItem.setItemDescription(bundle.getMpsDescription());
+		cartItem.setConfigId(bundle.getConfigId());
+		cartItem.setImgUrl(bundle.getImgUrl());
+		cartItem.setItemType("bundle");
+		cartItem.setShowOptions(true);
+		cartItem.setProductId(bundle.getBundleProductId());
+		cartItem.setContractNumber(bundle.getContractNumber());
+		cartItem.setSapLineId(bundle.getSapLineID());
+		return cartItem;		
+	}
+	/*
+	 * This method creates a Part object and set
+	 * its properties to be shown in the shopping cart details.
+	 * 
+	 * */
+	public static CartItem createShoppingCartItem(OrderPart part){
+		LOGGER.debug("in createShoppingCartItem, unspsc code is "+part.getUnspscCode()+" product is is "+part.getProductId()+" part number is "+part.getPartNumber());
+		CartItem cartItem= new CartItem();
+		cartItem.setItemId(part.getPartNumber());
+		cartItem.setPrice(part.getPrice());
+		cartItem.setProductId(part.getProductId());
+		//cartItem.setItemName(part.get);
+		cartItem.setItemDescription(part.getDescription());
+		//cartItem.setConfigId(part.getConfigId());
+		cartItem.setImgUrl(part.getPartImg());
+		cartItem.setItemType("options");
+		return cartItem;		
 	}
 	/**
 	 * @param destination 
@@ -597,83 +602,6 @@ public class ControllerUtil {
 	}
 
 	/**
-	 * @param bulletList 
-	 * @param marketingList 
-	 * @param techSpecList 
-	 * @return LearnMoreForm 
-	 * @throws SQLException 
-	 * @throws IOException 
-	 */
-	public static LearnMoreForm getLearnMoreDetails(List bulletList,
-			List marketingList, List techSpecList) throws SQLException, IOException {
-
-		LearnMoreForm learnMoreForm= new LearnMoreForm();
-		//bullet list
-		List<Bullet> list= new ArrayList<Bullet>();
-		if(bulletList !=null){
-		for(int i = 0; i < bulletList.size(); i++){
-			Bullet bullet = new Bullet();
-			Object[] row = (Object[]) bulletList.get(i);
-			bullet.setValue((String)row[1]);
-			LOGGER.debug("bullet value"+bullet.getValue());
-			list.add(bullet);
-		}
-		learnMoreForm.setBulletList(list);
-		}
-		//Marketing List
-		if(marketingList !=null){
-		for(int i = 0; i < marketingList.size(); i++){
-			Marketing marketing= new Marketing();
-			Object[] row = (Object[]) marketingList.get(i);
-			marketing.setPartId((String)row[0]);
-			marketing.setPpmInfo((String)row[1]);
-			marketing.setProductImage((String)row[2]);
-			marketing.setFamilyImage((String)row[3]);
-			marketing.setPartName((String)row[4]);
-			marketing.setCatagory((String)row[7]);
-			marketing.setName((String)row[8]);
-			marketing.setUrl((String)row[9]);
-			marketing.setPrice((BigDecimal)row[10]);
-			StringBuffer str = new StringBuffer();
-		       String strng=null;
-		       if((java.sql.Clob) row[11] != null){
-		       BufferedReader bufferRead = new BufferedReader(((java.sql.Clob) row[11]).getCharacterStream());
-		       while ((strng=bufferRead .readLine())!=null)
-		       {
-		    	   str.append(strng);
-		       }
-		       }
-		       if(str !=null){
-		    	   marketing.setDescription(str.toString());
-		       }else{
-		    	   marketing.setDescription("");
-		       }
-		       
-		       marketing.setPartNumber((String)row[12]);
-		       marketing.setMkt_desc((String)row[13]);
-		       
-		       LOGGER.debug("marketing.setPartId"+marketing.getPartId());
-		       LOGGER.debug("marketing.setPpmInfo"+marketing.getPpmInfo());
-		       LOGGER.debug("marketing.setPartName"+marketing.getPartName());
-		       LOGGER.debug("marketing.setDescription"+marketing.getDescription());
-		       LOGGER.debug("marketing.setCatagory"+marketing.getCatagory());
-		       
-		       learnMoreForm.setMarketing(marketing);
-		}
-		}
-		//Tech Spec List
-		if(techSpecList !=null){
-		for(int i = 0; i < techSpecList.size(); i++){
-			TechSpec techSpec = new TechSpec();
-			Object[] row = (Object[]) techSpecList.get(i);
-			techSpec.setAttribute((String)row[0]);
-			techSpec.setValue((String)row[1]);
-			learnMoreForm.setTechSpec(techSpec);
-		}
-		}
-		return learnMoreForm;
-	}
-	/**
 	 * @return ShoppingCartForm 
 	 */
 	public static Map<String, ShoppingCartForm> initShoppingCart(){
@@ -681,54 +609,18 @@ public class ControllerUtil {
 		
 		ShoppingCartForm printersForm=new ShoppingCartForm();
 		//printersForm.setCartType("printers");
-		printersForm.setCartItems(new ArrayList<Object>());
+		printersForm.setCartItems(new ArrayList<CartItem>());
 		formList.put("printers", printersForm);
 		
 		ShoppingCartForm suppliesForm=new ShoppingCartForm();
 		//suppliesForm.setCartType("supplies");
-		suppliesForm.setCartItems(new ArrayList<Object>());
+		suppliesForm.setCartItems(new ArrayList<CartItem>());
 		formList.put("supplies", suppliesForm);
 				
 		return formList;
 	}
 	
-	/**
-	 * @param session 
-	 */
-	public static void updateItemsWithCartData(PortletSession session, String cartType, String bundleId){
-		LOGGER.debug("inside updateItemsWithCartData");
-		Map<String, ShoppingCartForm> _form=(Map<String, ShoppingCartForm>)session.getAttribute(PunchoutConstants.CART_SESSION);
-		List<Object> amindList=(List<Object>)session.getAttribute(PunchoutConstants.PRODUCT_BUNDLE);
-		if(amindList==null){
-			return;
-		}
-		List<Object> _cartItems=_form.get(cartType).getCartItems();
-		List<OrderPart> orderParts = new ArrayList<OrderPart>();
 		
-		for(Object cartItem:_cartItems){
-			if(cartType.equalsIgnoreCase("printers") && cartItem instanceof OrderPart && bundleId.length() > 0)
-			{
-				Object itemBundle=findInList(amindList, bundleId, BeanFieldNames.ID.getValue(cartType));
-				orderParts = ((Bundle) itemBundle).getOrderParts();
-				
-				for(Object orderPart:orderParts){
-					if(((OrderPart) orderPart).getPartNumber().equalsIgnoreCase((String)readProperty(cartItem, BeanFieldNames.ID.getValue("supplies"))))
-					{
-						updateQty(orderPart, BeanFieldNames.QUANTITY.getValue("supplies"), 
-							(String)readProperty(cartItem, BeanFieldNames.QUANTITY.getValue("supplies")));
-					}
-				}
-			}
-			else
-			{
-				Object item=findInList(amindList,(String)readProperty(cartItem, BeanFieldNames.ID.getValue(cartType))
-						, BeanFieldNames.ID.getValue(cartType));
-				updateQty(item, BeanFieldNames.QUANTITY.getValue(cartType), 
-					(String)readProperty(cartItem, BeanFieldNames.QUANTITY.getValue(cartType)));
-			}
-		}
-	}
-	
 
 	/**
 	 * @param session 
@@ -795,105 +687,64 @@ public class ControllerUtil {
 	 * @return List 
 	 * @throws Exception 
 	 */
-	public static List<Bundle> getBundlePrice(LoadPriceInformation loadPriceInformation, ResourceRequest request,PunchoutAccount punchoutAccount) throws Exception {
-		List<Bundle> bundleList = null;
-		PunchoutAccount account=(PunchoutAccount)request.getAttribute("punchoutAccount");
-		if(!LoadPriceInformation.allBundlePriceMap.isEmpty()){
-			LOGGER.debug("Retrieving data from cache bundle price map" + punchoutAccount.getAccountId() +"----------------->>"+punchoutAccount.getContractNumber());	
+	public static Set<String> getBundleContractLineItems(List<Bundle> bundleList)  {
 		
-			Map<String, Map<String,List<HardwareCatalog>>> allBundlePriceMap = LoadPriceInformation.allBundlePriceMap;
-			Map<String, List<HardwareCatalog>> catalogMap = allBundlePriceMap.get(punchoutAccount.getAccountId());
-			List<HardwareCatalog> hardwareCatalogList= catalogMap.get(punchoutAccount.getContractNumber());
-			if(hardwareCatalogList != null){
-			for(HardwareCatalog hardwareCatalog:hardwareCatalogList){
-				bundleList = hardwareCatalog.getBundleList();
-			}
-			}
-			return bundleList;
-		}else{
-			LOGGER.debug("price cache is empty, loading from normal map"  + punchoutAccount.getAccountId() +"----------------->>"+punchoutAccount.getContractNumber());
-			Map<String, Map<String,List<HardwareCatalog>>> allBundlePriceMap = loadPriceInformation.getAllBundlePriceMap();
-			Map<String, List<HardwareCatalog>> catalogMap = allBundlePriceMap.get(punchoutAccount.getAccountId());
-			List<HardwareCatalog> hardwareCatalogList= catalogMap.get(punchoutAccount.getContractNumber());
-			if(hardwareCatalogList != null){
-			for(HardwareCatalog hardwareCatalog:hardwareCatalogList){
-				bundleList = hardwareCatalog.getBundleList();
-			}
-			}
-			return bundleList;
-	}
-		
-	}
-	
-	public static PriceResult getPriceForParts(String contractNumber,List<OrderPart> partsList,RetrievePriceService retrievePriceService){
-		 PriceResult bundlePriceResult = null;
-		 PriceContract priceContract =new PriceContract();
-			List<Price> priceList=new ArrayList<Price>();
-			for(OrderPart parts:partsList){
-				LOGGER.debug("contract line item id"+parts.getContractLineItemId());
-				Price price =new Price();
-				price.setPartNumber(parts.getPartNumber());
-				price.setContractLineItemId(parts.getContractLineItemId());
-				priceList.add(price);
-			}
-			priceContract.setPriceList(priceList);
-			if(contractNumber !=null){
-				LOGGER.debug("contract number --- > "+ contractNumber);
-				priceContract.setContractNumber(contractNumber);
+		Set<String> contractLineItems=new HashSet<>();
+		for(Bundle bundle:bundleList){
+			String contractLineItem=bundle.getContractLineItemId();
+			if(StringUtils.isNotBlank(contractLineItem)){
+				contractLineItems.add(contractLineItem);
 			}			
-			try {
-				bundlePriceResult = retrievePriceService.retrievePriceList(priceContract);
-			} catch (Exception e) {
-				
-				e.printStackTrace();
-			}
-			
-		return bundlePriceResult;
+		}		
+		return contractLineItems;
 	}
 	
 	/**
-	 * @return ShoppingCartForm 
+	 * @param contractNumber
+	 * @param partsList
+	 * @param retrievePriceService
+	 * @return
+	 * @throws Exception 
 	 */
-	public static void setAribaParam(PortletRequest request, PortletSession session){
-		if((HashMap<String, String>)session.getAttribute("aribaParamMap", PortletSession.APPLICATION_SCOPE) !=null){
-			session.setAttribute("aribaParamMap", null, PortletSession.APPLICATION_SCOPE);
-		}
-		if(session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) !=null){
-			session.setAttribute("supplierId", null, PortletSession.APPLICATION_SCOPE);
-		}
-		LOGGER.debug(("[ After HashMap ]"));
-		HttpServletRequest httpReq = PortalUtil.getOriginalServletRequest(PortalUtil.getHttpServletRequest(request));
-				
-		String aribaSetupParams = null;
-		Cookie[] cookies = httpReq.getCookies();
-		    if (cookies != null) {
-		      for (int i = 0; i < cookies.length; i++) {
-		        if (cookies[i].getName().equalsIgnoreCase("aribasetup")) {
-		          aribaSetupParams = cookies[i].getValue();
-		          LOGGER.debug("aribaSetupParams:::"+aribaSetupParams);
-		          break;
-		        }
-		      }
-		    }
-		    
-		byte[] valueDecoded= Base64.decodeBase64(aribaSetupParams != null ? aribaSetupParams : "");
-		String URLParams = new String(valueDecoded);
-		String urlParamsArray[]= URLParams.split(";");
-		LOGGER.debug(("[ After SPlit ]"+URLParams));
-		HashMap<String, String> aribaParamMap = new HashMap<String, String>();
-		for(int i=0;i<urlParamsArray.length;i++){
-			int j = urlParamsArray[i].indexOf("=");
-			String paramKey = urlParamsArray[i].substring(0,j);
-			//LOGGER.debug("paramKey:::"+paramKey);
-			String paramValue = urlParamsArray[i].substring(j+1);
-			//LOGGER.debug("paramValue:::"+paramValue);
-			aribaParamMap.put(paramKey, paramValue);
-			
-			if(paramKey.equalsIgnoreCase("supplierId"))
-				session.setAttribute("supplierId", paramValue, PortletSession.APPLICATION_SCOPE);
-		}
-		session.setAttribute("aribaParamMap", aribaParamMap, PortletSession.APPLICATION_SCOPE);
+	public static Set<String> getPartsContractLineItem(List<OrderPart> partsList) {
+		Set<String> contractLineItems=new HashSet<>();
+		for(OrderPart part:partsList){
+			String contractLineItem=part.getContractLineItemId();
+			if(StringUtils.isNotBlank(contractLineItem)){
+				contractLineItems.add(contractLineItem);
+			}			
+		}	
+		return contractLineItems;				
 	}
+	
+	/**
+	 * @param retrievePriceService
+	 * @param contractLineItems
+	 * @param contractNumber
+	 * @return
+	 * @throws Exception 
+	 */
+	private static Map<String,Price>  doPriceCall(RetrievePriceService retrievePriceService,
+			Set<String> contractLineItems,String contractNumber) {
+				PriceContract priceContract =ContractFactory.getPriceContract(contractLineItems, contractNumber);
+				ObjectDebugUtil.printObjectContent(priceContract, LOGGER);
+				PriceResult result=null;
+				try{
+					result=retrievePriceService.retrievePriceList(priceContract);
+				}catch(Exception e ){
+					LOGGER.debug(" Exception occued in retrieving price "+e.getMessage());
+				}
+				Map<String, Price> priceMap=new HashMap<>();
+				if(result!=null){
+					List<Price> priceList=result.getPriceOutputList();
+					for(Price price:priceList){
+						priceMap.put(price.getContractLineItemId(), price);
+					}
+				}
+				
+				return priceMap;
+	}
+	
 	
 	public static String getCertifiedProduct(String certProduct){
 		LOGGER.debug("CERTIFIED PRODUCT is-->"+certProduct);
@@ -948,9 +799,6 @@ public class ControllerUtil {
 								
 				if((cNum.trim().length() > 0 && ac.getContractNumber().equalsIgnoreCase(cNum)) ||
 					(cNum.trim().length() == 0 && ac.getContractName().equalsIgnoreCase("base"))){
-					//punchoutAccountList.add(ac);
-					//LOGGER.debug("in return 1");
-					//return punchoutAccountList;
 				}
 				punchoutAccountList.add(ac);
 			}
@@ -964,6 +812,11 @@ public class ControllerUtil {
 		LOGGER.debug("in return 4 list size is "+punchoutAccountList.size());
 		return punchoutAccountList;
 	}
+	
+	/**
+	 * @param contract
+	 * @return
+	 */
 	public static LocalizedSiebelValueResult retrieveLocalizedSiebelValue(LocalizedSiebelValueContract contract) {
 		LocalizedSiebelValueResult result = new LocalizedSiebelValueResult();
 		String localizedSiebelValue = null;
@@ -993,6 +846,11 @@ public class ControllerUtil {
 		result.setLovValue(lov);
 		return result;
 	}
+	/**
+	 * @param LOV
+	 * @param siebelValue
+	 * @return
+	 */
 	public static String portalSiebelLocalization(String LOV, String siebelValue){
 		LocalizedSiebelValueContract localizedSiebelValueContract = ContractFactory.createLocalizedSiebelValueContract(LOV,siebelValue,null);
 		LocalizedSiebelValueResult result = new LocalizedSiebelValueResult();
@@ -1010,7 +868,72 @@ public class ControllerUtil {
 		return accname;
 	}
 	
+	
+	
+	/**
+	 * @param response
+	 * @param val
+	 */
+	public static void writeResponse(ResourceResponse response,String val){
+		try {
+			final PrintWriter out = response.getWriter();
+			response.setProperty("Cache-Control", "max-age=0,no-cache,no-store");
+			response.setContentType("text/javascript");
+			out.write(val);
+			out.flush();
+			out.close();
+		} catch (IOException e) {
+			LOGGER.error("IOException while invoking response#getWriter(),"
+					+ e.getMessage());
+		}
+	
 
+	}
+	
+	/**
+	 * @param priceMap
+	 * @param bundles
+	 */
+	public static void updateBundleWithPrice(Map<String,Price> priceMap,List<Bundle> bundles){
+		for(Bundle bundle:bundles){
+			Price price=priceMap.get(bundle.getContractLineItemId());
+			if(price!=null){
+				bundle.setPrice(new BigDecimal(price.getPrice()));
+				bundle.setCurrency(price.getCurrency());
+			}
+		}
+	}
+	
+	/**
+	 * @param priceMap
+	 * @param parts
+	 */
+	public static void updatePartsWithPrice(Map<String,Price> priceMap,List<OrderPart> parts){
+		for(OrderPart part:parts){
+			// Update with price 
+			Price price=priceMap.get(part.getContractLineItemId());
+			if(price!=null){
+				part.setPrice(new BigDecimal(price.getPrice()));
+				part.setCurrency(price.getCurrency());
+			}
+		}
+	}
+	
+	
+	/**
+	 * @param session
+	 * @return
+	 */
+	public static String getSupplierId(PortletSession session){
+		Map<String,String> aribaParams=(Map<String,String>)session.getAttribute(PunchoutConstants.ARIBA_PARAMS,PortletSession.APPLICATION_SCOPE);
+		String supplierId=aribaParams.get("supplierId");
+		return supplierId==null?"":supplierId;
+	}
+	
+	public static boolean getFromAriba(PortletSession session){
+		Map<String,String> aribaParams=(Map<String,String>)session.getAttribute(PunchoutConstants.ARIBA_PARAMS,PortletSession.APPLICATION_SCOPE);
+		return Boolean.valueOf(aribaParams.get("fromAriba"));
+	}
 }
 
 

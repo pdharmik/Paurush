@@ -35,7 +35,11 @@ public class BundleListServiceUtil {
 					bundle.setBillingModel(pickSapCatalogDo.getBillingModel());
 					bundle.setPartList(populateParts(pickSapCatalogDo));
 					bundle.setConfigId(pickSapCatalogDo.getConfigId());
-					
+					bundle.setPartTypeB2b(pickSapCatalogDo.getPartTypeB2b());
+					bundle.setB2bMarketingName(pickSapCatalogDo.getB2bMarketingName());
+					bundle.setB2bMarketingShortDesc(pickSapCatalogDo.getB2bMarketingShortDesc());
+					bundle.setB2bModel(pickSapCatalogDo.getB2bModel());
+					bundle.setB2bMfgBrand(pickSapCatalogDo.getB2bMfgBrand());
 					bundles.add(bundle);
 				}
 			}
@@ -56,6 +60,12 @@ public class BundleListServiceUtil {
 				part.setPaymentTypes(Arrays.asList(sapPaymentType.getBillingModel()));
 				part.setPartType(sapPaymentType.getPartType());
 				part.setParentLineItemNumber(sapPaymentType.getParentLineItemNumber());
+				part.setPartTypeMVFB2b(sapPaymentType.getPartTypeMVFB2b());
+				part.setB2bMarketingNameMVF(sapPaymentType.getB2bMarketingNameMVF());
+				part.setB2bMarketingShortDescMVF(sapPaymentType.getB2bMarketingShortDescMVF());
+				part.setB2bMaterialDescMVF(sapPaymentType.getB2bMaterialDescMVF());
+				part.setB2bMfgBrandMVF(sapPaymentType.getB2bMfgBrandMVF());
+				part.setProductModel(sapPaymentType.getProductModel());
 				parts.add(part);
 			}
 		}

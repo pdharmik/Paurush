@@ -129,10 +129,10 @@ public class GlobalBundleListService {
 		}
 		
 		if (isNotBlank(partNumber)) {
-			mainSearchspec.append(" AND ([LXK MPS Component Part #] = '"
-					+ trim(partNumber) + "' "
-					+ "OR EXISTS ([LXK MPS Supply Part# MVF] = '"
-					+ trim(partNumber) + "'))");
+			mainSearchspec.append(" AND (([LXK MPS Component Part #] = '"
+					+ trim(partNumber) + "' "+ " or [LXK B2B Marketing Short Description] ~= '"+ trim(partNumber) + "'" + " or [LXK B2B Model] ~= '"+ trim(partNumber) + "'" + " or [LXK B2B Marketing Name] ~= '"+ trim(partNumber) + "'" + ")"
+					+ " OR EXISTS ([LXK MPS Supply Part# MVF] = '"
+					+ trim(partNumber) + "'"+" or [LXK B2B Marketing Short Description MVF]='"+ trim(partNumber) + "'" + " or [LXK MPS Product Model MVF]='"+ trim(partNumber) + "'" + " or [LXK B2B Marketing Name MVF] ='"+ trim(partNumber) + "'" + "))");
 		}
 		
 		if (isNotBlank(partType)) {

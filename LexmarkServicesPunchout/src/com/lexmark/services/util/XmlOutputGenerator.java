@@ -5,6 +5,8 @@ import java.util.Locale;
 
 import javax.portlet.PortletRequest;
 
+import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -54,6 +56,10 @@ public class XmlOutputGenerator {
     /**
 	 * @return ServiceRequestLocale 
 	 */
+    private static final int mediumBufferLen=5000;
+	private static final int smallBufferLen=2000;
+	private static final int longBufferLen= 10000;
+    
 	public ServiceRequestLocale getServiceRequestLocale() {
     	if(serviceRequestLocale == null) {
     		serviceRequestLocale = new ServiceRequestLocaleImpl();
@@ -192,31 +198,27 @@ public class XmlOutputGenerator {
 			Part parentPart=parts.get(j);
 			String partBundleId=parentPart.getCatalogId();
 			if(parentPart.getCatalogType()!=null){
-				logger.debug("parentPart.getCatalogType()"+parentPart.getCatalogType());
 				StringBuffer xmlRow=new StringBuffer();
 				StringBuffer tempXmlRow=new StringBuffer();
 				if(parentPart.getCatalogType().equalsIgnoreCase("Hardware Bundles")){
 					
 					if(parentPart.getBundleParentLineId()==null || parentPart.getBundleParentLineId().equals("")){
-						//sizeCount++;
 						boolean sectionAppear = false;
-						logger.debug("Parent Bundle");
-						
-//							if(size>1){
-//								xmlRow.append("  <cell><![CDATA[<div class=\"dhx_sub_row\"><table class=\"displayGrid\"><thead><tr><th>Part Number</th><th>Description</th><th>Part Type</th><th>Quantity</th></tr></thead>");
-//								}
 								for(int k=0;k<parts.size();k++){
 									Part part=parts.get(k);
 									if(partBundleId !=null && part.getBundleParentLineId()!=null && partBundleId.equalsIgnoreCase(part.getBundleParentLineId())){
-										sectionAppear = true;
-										logger.debug("sectionAppear ::: " + sectionAppear);
+										sectionAppear = true;										
 										tempXmlRow.append("<tr>");
 										tempXmlRow.append("<td>"+part.getPartNumber() +"</td>");
 										tempXmlRow.append("<td>"+part.getDescription() +"</td>");
-										tempXmlRow.append("<td>"+part.getDeviceType() +"</td>");
-										tempXmlRow.append("<td>"+Integer.parseInt(part.getOrderQuantity()) / Integer.parseInt(parentPart.getOrderQuantity()) +"</td>");								
-										tempXmlRow.append("</tr>");
-										part.setBundleParentLineId("donee");	
+										tempXmlRow.append("<td>"+part.getDeviceType() +"</td>");										
+										if(StringUtils.isBlank(part.getOrderQuantity()) || StringUtils.isBlank(parentPart.getOrderQuantity())){
+											tempXmlRow.append("<td></td>");
+										}
+										else{
+											tempXmlRow.append("<td>"+Integer.parseInt(part.getOrderQuantity()) / Integer.parseInt(parentPart.getOrderQuantity()) +"</td>");
+										}																		
+										tempXmlRow.append("</tr>");										
 									}
 								}
 
@@ -279,5 +281,28 @@ public class XmlOutputGenerator {
 		xml.append("</rows>\n");
 		xml.insert(0, "<?xml version=\"1.0\" ?>\n <rows total_count=\"" + sizeCount + "\" pos=\"" + posStart+ "\">\n");
 		return xml.toString();
+	}
+	
+	public String generateServiceRequestShipment(ServiceRequestOrderLineItem shipment,PortletRequest request) {
+		StringBuilder xml=new StringBuilder(longBufferLen);
+		StringBuilder xmlrow=new StringBuilder(mediumBufferLen);		
+		StringBuilder tempXmlRow=new StringBuilder(smallBufferLen);
+		
+		xml.append("<?xml version=\"1.0\" ?>\n <rows total_count=\"1\" pos=\"0\">\n");
+		xml.append("<row id=\"0\">\n");
+		tempXmlRow.append("<table><tr>");
+		tempXmlRow.append("<td><b>Serial Number</b> : "+shipment.getSerialNumber() +"</td>");
+		tempXmlRow.append("</tr></table>");
+		xmlrow.append("<cell><![CDATA["+tempXmlRow.toString()+"]]></cell>");
+		xmlrow.append("<cell><![CDATA[" + shipment.getPartnumber()+ "]]></cell>\n");
+		xmlrow.append("<cell><![CDATA[" + shipment.getProductDescription()+ "]]></cell>\n");
+		xmlrow.append("<cell><![CDATA[" + shipment.getPartType()+ "]]></cell>\n");
+		xmlrow.append("<cell><![CDATA[" + shipment.getVendorProduct()+ "]]></cell>\n");
+		xmlrow.append("<cell><![CDATA[" + shipment.getQuantity()+ "]]></cell>\n");
+		xmlrow.append("<cell><![CDATA[" + shipment.getPrice()+ "]]></cell>\n");
+		xml.append(xmlrow);
+		xml.append("</row>");
+		xml.append("</rows>\n");
+		return StringEscapeUtils.escapeJavaScript(xml.toString());
 	}
 }

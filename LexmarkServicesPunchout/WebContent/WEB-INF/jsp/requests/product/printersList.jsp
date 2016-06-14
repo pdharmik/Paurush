@@ -2,34 +2,60 @@
 
 <div id="printerList">
 <div id="portlet-wrap" style="width:100%!important">
-	 <c:if test="${fromAriba == 'true'}">
-     	 <div id="breadcrum-cart-cntnr">
-       		 <jsp:include page="/WEB-INF/jsp/shoppingCart/totalItems.jsp"/>
-      	</div>
-      </c:if>
-      <div class="pageTitle"><spring:message code="meterRead.label.Printer"/></div>
+	  <div class="pageTitle"><spring:message code="meterRead.label.Printer"/></div>
       <div class="mid-cntnr">
-      <c:if test="${fn:length(bundleList) == 0 }">
-      
-     <div><spring:message code="requestInfo.error.noRecordFound"/></div>
-      </c:if>
-        <c:forEach items="${bundleList}" var="pList" varStatus="status">
-        <div class="printer-block">
-          <div class="printer-title"><a href="#" id="${pList.key}">${pList.key}</a></div>
-          <div class="printer-img"><img src="<html:imagesPath/>color-laser.jpg" width="110" height="81" alt="${pList.key }"></div>
-        </div>
-     </c:forEach>
+    	<div id="printer-List-content">
+    		<div id="loading-printer-list" class='gridLoading'><img src="/lexmark-punchout-theme/images/custom/loading_big.gif"/><br/>
+    	</div>
+       
       </div>
     </div>
-    </div>
-    
+</div>
+  </div>  
 <script>
-var printerObject={printerType:"",id:"printerProduct"};
-    jQuery('.printer-title a').click(function(){
-    	printerObject.printerType=jQuery(this).attr('id');
-    	global_click_msgs.clickedFrom="printerList";//defined in rightNavHome.jsp
-    	calledFromLEftNav(printerObject);
-});
- </script>
+
+var printerListObj={
+		bundleList:{},
+		initTemplate:function(){
+			YUI().use('handlebars','node-base', function (Y) {
+				printerListObj.printerListTemplate = Y.Handlebars.compile(Y.one('#printerList-template').getHTML());
+			});
+		},
+		generateBundleHtml:function(){
+			if(printerListObj.printerListTemplate==undefined){
+				printerListObj.initTemplate();
+			}else{
+				return printerListObj.printerListTemplate(printerListObj.bundleList);
+			}
+		},
+		getDataPrinterList:function(){
+			$('#loading-printer-list').show();
+			var url="${loadPrinterList}";
+			$.getJSON(url,function(printerList){
+				$('#loading-printer-list').hide();
+				printerListObj.bundleList=printerList;
+				$('#printerList #printer-List-content').append(printerListObj.generateBundleHtml());
+				
+			});
+		}
+};
+function loadPrinterListData(){
+	printerListObj.getDataPrinterList();
+}
+</script>
+<script id="printerList-template" type="text/x-handlebars-template">
+ 		{{#if bundleList}}
+				{{#bundleList}}
+                	<div class="printer-block">
+          			<div class="printer-title"><a href="#" id="{{key}}">{{key}}</a></div>
+          			<div class="printer-img"><img src="<html:imagesPath/>color-laser.jpg" width="110" height="81" alt="{{key}}"></div>
+        			</div>
+         		{{/bundleList}}
+                
+           {{else}}    
+            	<div><spring:message code="requestInfo.error.noRecordFound"/></div>        	
+           {{/if}}
+
+</script>
    
    

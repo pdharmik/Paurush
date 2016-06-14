@@ -3,6 +3,8 @@ package com.lexmark.services.form;
 import java.io.Serializable;
 import java.util.List;
 
+import com.lexmark.services.domain.CartItem;
+
 public class ShoppingCartForm implements Serializable{
 
 	/**
@@ -10,7 +12,7 @@ public class ShoppingCartForm implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private String cartType;
-	private List<Object> cartItems;
+	private List<CartItem> cartItems;
 	/**
 	 * @param cartType 
 	 */
@@ -26,13 +28,13 @@ public class ShoppingCartForm implements Serializable{
 	/**
 	 * @param cartItems 
 	 */
-	public void setCartItems(List<Object> cartItems) {
+	public void setCartItems(List<CartItem> cartItems) {
 		this.cartItems = cartItems;
 	}
 	/**
 	 * @return List 
 	 */
-	public List<Object> getCartItems() {
+	public List<CartItem> getCartItems() {
 		return cartItems;
 	}
 	

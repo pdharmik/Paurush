@@ -60,8 +60,6 @@ public class RightNavController {
 	@Autowired
 	private LoadAccountInformation allAccountInformation;
 	
-	private static String KAISER_ACNT = ControllerUtil.getConfigProperties().getProperty("ariba.kaiser");
-	private static String REPUBLIC_ACNT = ControllerUtil.getConfigProperties().getProperty("ariba.republic");
 	   
 	/**
 	 * @param request 
@@ -73,65 +71,6 @@ public class RightNavController {
 	@RequestMapping
 	public String showDefaultView(RenderRequest request, RenderResponse response,Model model,PortletSession session) {
 		LOGGER.debug(("[ In  showDefaultView ]"));
-		String currURL=response.createRenderURL().toString();		
-		boolean fromAriba = false;
-		String supplierId="";
-		LOGGER.debug("currURL==="+currURL);
-		HttpServletRequest httpReq = PortalUtil.getOriginalServletRequest(PortalUtil.getHttpServletRequest(request));
-		String aribaParamURL = httpReq.getParameter("aribaParamUrl");
-		LOGGER.debug("aribaParamURL in right nav controller "+aribaParamURL);
-		if(null!=aribaParamURL){
-			fromAriba=true;
-		}
-		String acntType = null;
-		boolean isKaiser = currURL.indexOf("kaiser")!=-1;
-		if(!fromAriba){
-			session.setAttribute("fromAriba", false, PortletSession.APPLICATION_SCOPE);	
-			if(isKaiser){
-				LOGGER.debug("account is kaiser");
-				acntType = "KAISER";
-			}
-			else{
-				LOGGER.debug("account is republic");
-				acntType = "REPUBLIC";
-			}
-		}
-		else{		
-			ControllerUtil.setAribaParam(request, session);
-			 supplierId = (String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE) != null?(String) session.getAttribute("supplierId", PortletSession.APPLICATION_SCOPE):"";
-			
-			LOGGER.debug("supplierId::::"+supplierId);
-			if(supplierId.equalsIgnoreCase(KAISER_ACNT))
-			{
-				acntType = "KAISER";
-			}
-			else if(supplierId.equalsIgnoreCase(REPUBLIC_ACNT))
-			{
-				acntType = "REPUBLIC";
-			}
-			session.setAttribute("fromAriba", true, PortletSession.APPLICATION_SCOPE);	
-		}
-			
-			if(session.getAttribute(PunchoutConstants.ACCOUNT_LIST, PortletSession.APPLICATION_SCOPE) != null){
-				session.setAttribute(PunchoutConstants.ACCOUNT_LIST, null, PortletSession.APPLICATION_SCOPE);			
-			}
-			
-			if(session.getAttribute(PunchoutConstants.ACNT_TYPE, PortletSession.APPLICATION_SCOPE) != null){
-				session.setAttribute(PunchoutConstants.ACNT_TYPE, null, PortletSession.APPLICATION_SCOPE);			
-			}
-			
-			
-		
-		session.setAttribute(PunchoutConstants.ACNT_TYPE, acntType, PortletSession.APPLICATION_SCOPE);
-		model.addAttribute(PunchoutConstants.ACNT_TYPE, acntType);
-		model.addAttribute("fromAriba", fromAriba);
-		
-		/*allAccountInformation.acntType = "Deutsche Postbank AG";
-		allAccountInformation.forceRefresh();*/
-		List<PunchoutAccount> acntList = allAccountInformation.getAllAccountList(supplierId);
-		session.setAttribute(PunchoutConstants.ACCOUNT_LIST, acntList, PortletSession.APPLICATION_SCOPE);
-		request.setAttribute("callType", "showDefaultView");
-		
 		session.setAttribute(PunchoutConstants.CART_SESSION,ControllerUtil.initShoppingCart());
 		LOGGER.debug(("[ Before Account Call]"));
 		

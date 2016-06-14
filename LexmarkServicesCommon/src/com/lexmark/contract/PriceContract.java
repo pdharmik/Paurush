@@ -3,6 +3,7 @@ package com.lexmark.contract;
 import java.util.List;
 
 import com.lexmark.domain.Price;
+import com.lexmark.util.KeyGenerator;
 
 public class PriceContract {
 	private String contractNumber;	
@@ -36,5 +37,15 @@ public class PriceContract {
 	public void setPoNumber(String poNumber) {
 		this.poNumber = poNumber;
 	}
-
+	
+	public String toString(){
+		StringBuffer sb=new StringBuffer(KeyGenerator.generateKey(contractNumber,poNumber));
+		List<Price> prices=this.getPriceList();
+		if(prices!=null){
+			for(Price price:prices){
+				sb.append(price.getContractLineItemId());
+			}
+		}
+		return sb.toString();
+	}
 }

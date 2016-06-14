@@ -184,7 +184,7 @@
 				</entry>
 				<entry>
 					<key>
-						<value>PartTypeB2b</value>
+						<value>partTypeB2b</value>
 					</key>
 					<value>LXK MPS B2B Part Type</value>
 				</entry>
@@ -192,6 +192,23 @@
 	         		<key><value>configId</value></key>
 	         		<value>LXK MPS Config ID</value>
 				</entry>
+				<entry>
+	         		<key><value>b2bMarketingShortDesc</value></key>
+	         		<value>LXK B2B Marketing Short Description</value>
+				</entry>
+				<entry>
+	         		<key><value>b2bMarketingName</value></key>
+	         		<value>LXK B2B Marketing Name</value>
+				</entry>
+				<entry>
+	         		<key><value>b2bModel</value></key>
+	         		<value>LXK B2B Model</value>
+				</entry>
+				<entry>
+	         		<key><value>b2bMfgBrand</value></key>
+	         		<value>LXK B2B Mfg Brand</value>
+				</entry>
+	
 			</map>
 		</property>
 

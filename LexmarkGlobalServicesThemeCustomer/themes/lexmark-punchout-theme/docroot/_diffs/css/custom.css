@@ -1,9 +1,112 @@
-body {
-	background: #a5a5aa !important;
+.aui body {
+	background: #c3c3c3 !important;
 	font-size:12px;
 	color:#1d1d25;
-	font-family: Arial, Verdana,sans-serif;
+	font-family:"tpHero",Arial,sans-serif;
 }
+
+
+/* START: TP Hero @font-face */
+@font-face {
+	font-family: 'tpHero';
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-light-webfont.eot');
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-light-webfont.eot?#iefix') format('embedded-opentype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-light-webfont.woff2') format('woff2'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-light-webfont.woff') format('woff'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-light-webfont.ttf') format('truetype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-light-webfont.svg#tp_herolight') format('svg');
+	font-weight: 100;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'tpHero';
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-lightitalic-webfont.eot');
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-lightitalic-webfont.eot?#iefix') format('embedded-opentype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-lightitalic-webfont.woff2') format('woff2'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-lightitalic-webfont.woff') format('woff'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-lightitalic-webfont.ttf') format('truetype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-lightitalic-webfont.svg#tp_herolight_italic') format('svg');
+	font-weight: 100;
+	font-style: italic;
+}
+@font-face {
+	font-family: 'tpHero';
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-regular-webfont.eot');
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-regular-webfont.eot?#iefix') format('embedded-opentype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-regular-webfont.woff2') format('woff2'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-regular-webfont.woff') format('woff'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-regular-webfont.ttf') format('truetype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-regular-webfont.svg#tp_heroregular') format('svg');
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'tpHero';
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-regularitalic-webfont.eot');
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-regularitalic-webfont.eot?#iefix') format('embedded-opentype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-regularitalic-webfont.woff2') format('woff2'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-regularitalic-webfont.woff') format('woff'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-regularitalic-webfont.ttf') format('truetype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-regularitalic-webfont.svg#tp_heroregular_italic') format('svg');
+	font-weight: 300;
+	font-style: italic;
+}
+@font-face {
+	font-family: 'tpHero';
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-medium-webfont.eot');
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-medium-webfont.eot?#iefix') format('embedded-opentype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-medium-webfont.woff2') format('woff2'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-medium-webfont.woff') format('woff'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-medium-webfont.ttf') format('truetype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-medium-webfont.svg#tp_heromedium') format('svg');
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'tpHero';
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-mediumitalic-webfont.eot');
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-mediumitalic-webfont.eot?#iefix') format('embedded-opentype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-mediumitalic-webfont.woff2') format('woff2'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-mediumitalic-webfont.woff') format('woff'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-mediumitalic-webfont.ttf') format('truetype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-mediumitalic-webfont.svg#tp_heromedium_italic') format('svg');
+	font-weight: 400;
+	font-style: italic;
+}
+@font-face {
+	font-family: 'tpHero';
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-semibold-webfont.eot');
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-semibold-webfont.eot?#iefix') format('embedded-opentype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-semibold-webfont.woff2') format('woff2'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-semibold-webfont.woff') format('woff'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-semibold-webfont.ttf') format('truetype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-semibold-webfont.svg#tp_herosemibold') format('svg');
+	font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'tpHero';
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-semibolditalic-webfont.eot');
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-semibolditalic-webfont.eot?#iefix') format('embedded-opentype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-semibolditalic-webfont.woff2') format('woff2'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-semibolditalic-webfont.woff') format('woff'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-semibolditalic-webfont.ttf') format('truetype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-semibolditalic-webfont.svg#tp_herosemibold_italic') format('svg');
+	font-weight: 600;
+	font-style: italic;
+}
+@font-face {
+	font-family: 'tpHero';
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-bold-webfont.eot');
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-bold-webfont.eot?#iefix') format('embedded-opentype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-bold-webfont.woff2') format('woff2'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-bold-webfont.woff') format('woff'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-bold-webfont.ttf') format('truetype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-bold-webfont.svg#tp_herobold') format('svg');
+	font-weight: 700;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'tpHero';
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-bolditalic-webfont.eot');
+	src: url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-bolditalic-webfont.eot?#iefix') format('embedded-opentype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-bolditalic-webfont.woff2') format('woff2'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-bolditalic-webfont.woff') format('woff'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-bolditalic-webfont.ttf') format('truetype'), url('http://www.lexmark.com/common/lxk-framework/v2/resources/fonts/tp-hero/tphero-bolditalic-webfont.svg#tp_herobold_italic') format('svg');
+	font-weight: 700;
+	font-style: italic;
+}
+/* These are bolder than we'll ever actually use */
+/*
+@font-face {
+    font-family: 'tpHero';
+    .fn-include-webfont(tphero-extrabold-webfont, tp_heroextrabold);
+    font-weight: 800;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'tpHero';
+    .fn-include-webfont(tphero-extrabolditalic-webfont, tp_heroextrabold_italic);
+    font-weight: 800;
+    font-style: italic;
+}
+@font-face {
+    font-family: 'tpHero';
+    .fn-include-webfont(tphero-black-webfont, tp_heroblack);
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'tpHero';
+    .fn-include-webfont(tphero-blackitalic-webfont, tp_heroblack_italic);
+    font-weight: 900;
+    font-style: italic;
+}
+*/
+/* These are bolder than we'll ever actually use */
+/* END: TP Hero @font-face */
+
 .aui .nav.nav-account-controls {
     float: right;
 }
@@ -19,33 +122,45 @@ body {
 a {
 	text-decoration: none;
 }
-a.portlet-icon-back {
-    color: #1e68bc !important;
-}
 a:hover {
 	text-decoration: underline;
 }
 
-#headerMenuButton{
-	text-decoration: none;
-	}
-
 #headerMenuButton:hover{
 	text-decoration: underline
 	}
-
-.aui a {
-    color: #1e68bc;
-    text-decoration: none;
+.themecolor {
+    color: rgb(0, 148, 28);
 }
-.aui a:hover {
-    color: #5c8ec7;
+.aui a {
+    color: #1d1d25;
+    text-decoration: underline;
+}
+.aui a:hover,#top-header-navigation a:hover {
+    color: #00941C;
 }
 .aui a:focus,.aui a:active {
-    color: #164c89;
+    color: #1d1d25;
 	outline:none;
 	text-decoration:none;
 }
+
+#headerMenuButton,a.simplelink,a.simplelink:hover,a.simplelink:focus,a.simplelink:active{
+	text-decoration: none;
+}
+
+a.portlet-icon-back {
+    color: #1e68bc !important;
+}
+.aui hr{
+	margin:6px 0;
+	border-style:inset;
+}
+
+#top-header-navigation a,#top-header-navigation a:focus,#top-header-navigation a:active{
+    color: #828282;
+}
+
 #top-header a, #bottom-header a, #footer a{
 	text-decoration: none !important;
 }
@@ -64,32 +179,43 @@ div.clear {
 #wrapper {
 	margin: 0 auto;
 	display:table;
-	background-color:#fff;
 	clear: both;
 	padding: 0;
 	width: 95%;
 	min-width: 1024px;
 }
 #banner {
-	padding: 0;
-	height: 70px;
-	border-bottom: 1px solid #e6e6f0;
-    border-top: 2px solid #3af23a;
-	margin: 0 !important;
-	position:relative
+	background:url("/lexmark-punchout-theme/images/custom/header_new.png") scroll left bottom;
+	border-color: #919191;
+    border-radius: 0 0 5px 5px;
+    border-style: solid;
+    border-width: 0 1px 1px;
+    height: 110px;
+    margin: 0 0 3px !important;
+    padding: 0;
+    position: relative;
 }
 
 #banner .logo { 
 	margin: 0; 
 	padding: 0 !important;
-	background:url("/lexmark-punchout-theme/images/custom/company_logo.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-	width: 168px;
+	background:url("/lexmark-punchout-theme/images/custom/lexmark-logo_new.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+	width: 170px;
 	height: 56px;
 	position: absolute;
 	top: 13px;
 	left: 20px; 
 }
 
+#content {
+    background: rgb(255, 255, 255) none repeat scroll 0 0;
+	border-color: #919191;
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px 1px 2px;
+    margin-bottom: 3px;
+    width: 100%;
+}
 
 #lexmark-language-select { margin: 0; left: 195px; position: absolute; top: 20px;}
 
@@ -132,7 +258,7 @@ div.clear {
 }
 
 #top-header {
-	top: 20px;
+	top: 0px;
 	position: absolute;
 	right: 20px;
 	background: none;
@@ -161,13 +287,13 @@ div.clear {
 #top-header-navigation li {
 	list-style: none;
 	float: left;
-	padding: 0 5px;
+	padding: 0 10px;
 	position: static !important;
-	background:  url(../images/custom/dottedVert.gif) no-repeat left center !important;
+	background:  url(../images/custom/arrow-gray.gif) no-repeat left center !important;
 }	
-#top-header-navigation li:first-child {
+/*#top-header-navigation li:first-child {
 	background: none !important;
-}
+}*/
 
 #top-header-navigation ul.lfr-dock-list {
 	background: #fff !important;
@@ -207,7 +333,6 @@ div.clear {
 	width: 100%;
 	margin: 1px 0 0 0!important;
 	padding: 0 !important;
-	height: 37px;
 }	
 
  #topnavigation li, #add-page {
@@ -218,7 +343,6 @@ div.clear {
 	margin: 0 !important;
 	padding: 3px 0 0 6px !important;
 	display: block;
-	height: 37px;
 	font-size: 14px !important;
 	font-weight: bold !important;
 	}
@@ -597,7 +721,7 @@ div.notification-footer-inner {
 	height:7px;
 }
 
-*html  div.notification-footer-inner {
+* html  div.notification-footer-inner {
 	height: auto;
 	padding: 7px 0 0 0;
 }
@@ -767,7 +891,7 @@ div.portlet-wrap {
 
 
 
-*html div.portlet-wrap {
+* html div.portlet-wrap {
 	margin: 0;
 	width: 99%;
 	}
@@ -1244,23 +1368,22 @@ div.simple-finder span.input-field input {
 
 
 .button {
-	text-decoration: none;
+	text-decoration: none !important;
 	background-color:#1e68bc !important;
 	color:#fff !important;
-	border-radius:3px!important;
 	line-height:20px;
 	font-size:12px;
 	cursor:pointer;
 	border: 0 none;
-	padding:3px 10px!important;
-	text-transform:uppercase;
+	padding:10px 25px!important;
 }
-.button:hover {
-	padding:3px 10px!important;
-	background: #5c8ec7 !important;
+.button:hover,.button_cancel:hover {
+	text-decoration: none !important;
+	background: #138948 !important;
+	transition: all 0.3s ease 0s;
 }
 .button:active ,.button:focus {
-	padding:3px 10px!important;
+	text-decoration: none;
 	background: #164c89!important;
 }
 
@@ -1325,17 +1448,13 @@ div.simple-finder span.input-field input {
 
 
 .button_cancel, #loginCancelBtn {
-	background-color: #FFFFFF;
-    border: 1px solid #286898;
-    color: #286898;
+	background-color: rgb(29, 194, 50);
+    color: #ffffff !important;
     text-decoration: none !important;
 	cursor: pointer;
-	padding:3px 8px;
-	font-size: 11px;
+	padding:10px 25px !important;
+	font-size: 12px;
 	text-transform: uppercase;
-	border-radius: 12px;
-	-moz-border-radius: 12px;
-    -webkit-border-radius: 12px;
 }
 
 #myFavoriteAddressesBtn, #accountAddressesBtn {
@@ -1421,12 +1540,15 @@ span.portlet-title {
 }
 /*CI-6 changes end*/
 #footer {
-	background: none repeat scroll 0 0 #fff;
-    border-top: 3px solid #a5a5aa;
-	height: 100%;	
-	padding: 15px 20px;
-	/* margin-top: 4px; */
-    text-align:center;
+	background: rgb(235, 235, 228) none repeat scroll 0 0;
+    border-color: rgb(145, 145, 145);
+    border-radius: 5px 5px 0 0;
+    border-style: solid;
+    border-width: 1px 1px 0;
+    height: 100%;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
 }
 
 #footer img {
@@ -1514,10 +1636,6 @@ span.portlet-title {
 	margin:16px 0;
 }
 
-.objbox table .rowselected td a, #formReportDefinitionDetail table tbody tr td a.selected {
-	font-weight: bold !important;
-	color: #1d1d25 !important;
-}
 
 .ui-dialog.ui-resizable .ui-dialog-content div.status-bar {
 	left: 130px;
@@ -1690,7 +1808,7 @@ span.portlet-title {
 	color:#f00;
 }
 .dhx_header_cmenu h4, .h4{
-	background:#e6e6f0!important;
+	background:#c7c7c7!important;
 	color:#1d1d25!important;
 }
 /* Header */
@@ -1749,11 +1867,6 @@ select {
 
 /* FORM INPUT FIELDS HIGHLIGHT */
 /* By offshore, added input:focus to focus in popup */
-input:focus, input.ieFocusHack, input.focus, .form input:focus, .form input.ieFocusHack, textarea:focus, .form textarea:focus, .form textarea.ieFocusHack, .form select:focus, .form select.ieFocusHack, .displayGrid input:focus, .displayGrid input.ieFocusHack {
-	background-color:lightyellow;
-	border:2px #FC3 solid;
-	padding:3px!important;
-}
 .radio input:focus, .radio input.ieFocusHack, .radio textarea:focus, .radio textarea.ieFocusHack, .radio select:focus, .radio select.ieFocusHack {
 	background-color:transparent;
 	border:0 none;
@@ -1772,10 +1885,11 @@ li.error input[type="text"], li.error input[type="password"], li.error select {
 	background-color:#ffe9e9
 }
 div.error {
-	color:#F00;
-	border:2px #F00 solid;
-	margin:0 5px 10px 5px;
-	padding:5px 10px;
+	color:#000;
+	border:1px solid #ffaaaa;
+	border-radius:5px;
+	margin:5px 0;
+	padding:5px;
 	overflow:hidden;
 	background-color:#ffe9e9;
 	list-style-type: none !important;/*By offshore, for error list */
@@ -1807,77 +1921,6 @@ div.error ul {
 	background:#fff;
 	clear:both
 }
-/*.button, .button:focus, .button_cancel, .button_cancel:focus {
-	display: inline-block;
-	outline: none;
-	cursor: pointer;
-	text-align: center;
-	text-decoration: none;
-	font: 12px/100% Arial, Helvetica, sans-serif;
-	min-width:50px;
-	padding: .4em 1em .45em;
-	text-shadow: 0 1px 1px rgba(0,0,0,.3);
-	border: solid 1px #0076a3;
-	-webkit-border-radius: .4em;
-	-moz-border-radius: .4em;
-	border-radius: .4em;
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-	box-shadow: 0 1px 2px rgba(0,0,0,.2);
-	text-transform: uppercase;
-	margin-right:5px;
-	line-height:normal !important;
-}
-
-.ie .button, .ie .button:focus, .ie .gridbox .button, .ie .gridbox .button:focus {
-	background: url(../images/custom/buttonBg.jpg) #0076a3 repeat-x 0px 0px;
-}
-.button, .button:focus, .gridbox .button, .gridbox .button:focus {color: #1d1d25;
-	background: #00abea;
-	background: -webkit-gradient(linear, left top, left bottom, from(#00abea), to(#0076a3));
-	background: -moz-linear-gradient(top, #00abea, #0076a3);
-}
-
-.ie .button:hover, .ie .gridbox .button:hover {
-	background: url(../images/custom/buttonBghover.jpg) #0094cb repeat-x 0px 0px;
-}
-.button:hover, .gridbox .button:hover {background: #0094cb;
-	background: -webkit-gradient(linear, left top, left bottom, from(#0094cb), to(#00678e));
- 	background: -moz-linear-gradient(top, #0094cb, #00678e); /* Changed by offshore 
-}
-.ie .button:active, .ie .gridbox .button:active, .bactive {
-	background: url(../images/custom/buttonBgactive.jpg) #80bed6 repeat-x 0px 0px;
-}
-.button:active, .gridbox .button:active {color: #80bed6;
-	background: -webkit-gradient(linear, left top, left bottom, from(#0076a3), to(#00aced));
-	background: -moz-linear-gradient(top, #0076a3, #00aced);
-}
-.ie .button_cancel, .ie .gridbox .button_cancel {
-	background: url(../images/custom/cancelButtonBg.jpg) #fefefe repeat-x 0px 0px;
-}
-.button_cancel, .gridbox .button_cancel {color: #606060;
-	border: solid 1px #b7b7b7;
-	background: #fefefe;
-	background: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#ededed));
-	background: -moz-linear-gradient(top, #fefefe, #ededed);
-}
-.ie .button_cancel:hover, .ie .gridbox .button_cancel:hover {
-	background: url(../images/custom/cancelButtonBghover.jpg) #dcdcdc repeat-x 0px 0px;
-}
-.button_cancel:hover, .gridbox .button_cancel:hover {background: #dcdcdc;
-	background: -webkit-gradient(linear, left top, left bottom, from(#fefefe), to(#dcdcdc));
-	background: -moz-linear-gradient(top, #fefefe, #dcdcdc);
-}
-.ie .button_cancel:active, .ie .gridbox .button_cancel:active {
-	background: url(../images/custom/cancelButtonBgactive.jpg) #999 repeat-x 0px 0px;
-}
-.button_cancel:active, .gridbox .button_cancel:active {color: #999;
-	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#fefefe));
-	background: -moz-linear-gradient(top, #ededed, #fefefe);
-}
-
-.button:hover, .button_cancel:hover { text-decoration: none; }
-.button:active, .button_cancel:active {position: relative;top: 1px;}*/
 
 .disabled, .disabled:hover, .disabled:active {
 	cursor: default;
@@ -1910,7 +1953,7 @@ div.gridbox_light table.hdr td div.hdrcell {
 	overflow: hidden;
 	width: 90%;
 }
-div.gridbox_light .xhdr { background: #e6e6f0 !important; }
+div.gridbox_light .xhdr { background: #c7c7c7 !important; }
 div.gridbox_light table.obj { border-bottom: 0 none!important; }
 div.gridbox_light table.obj tr.rowselected { }
 div.gridbox_light table.obj td {
@@ -1986,10 +2029,11 @@ background: url(../images/custom/disabledButtonhover.jpg) #77b3cb repeat-x 0px 0
 
 /**************Banner implemantation by Sathees****************/
 div.left-nav-header {
-	margin: 0;
-	padding: 0;
-	height: 25px;
-	background:  #e6e6f0;
+	background:  url(../images/custom/nav-container.png) repeat scroll left bottom;
+	border-radius: 5px 5px 0 0;
+    height: 25px;
+    margin: 0;
+    padding: 5px 0;
 }
 
 div.left-nav-header h3 {
@@ -2004,11 +2048,10 @@ div.left-nav-header h3 {
 .displayGrid { border-collapse:collapse;width:100% }
 .displayGrid tr th {
 	font-weight:bold;
-	background:url(../images/custom/bg_off_customize.png) repeat-x;
-	/*background: #d9e1ec;*/
+	background:#e0e0e0;
 	height:0;
 	padding:4px 10px;
-	color: #FFFFFF!important;
+	color: #000!important;
 }
 .displayGrid tr td {
 	height:0;
@@ -2019,7 +2062,6 @@ div.left-nav-header h3 {
 }
 .noBorder tr td { border:0 none; }
 .displayGrid tr.altRow td { background-color:#f0f0f0 }
-.displayGrid tr:hover td { background: #FFC; }
 .displayGrid tr td img {
 	display:inline-block;
 	vertical-align: middle
@@ -2036,7 +2078,7 @@ div.left-nav-header h3 {
 .dhx_sub_row .displayGrid {
 	border:1px solid #ccc;
 	width:700px; /* set so that even at 1024 resolution, it's fully visible. Change to 95% if the #wrapper max width is being set.*/
-	margin:10px auto 20px 20px; /* Chnage to "10px auto 20px" if width is set to 95%*/
+	margin: 10px 0;
 }
 
 
@@ -2063,7 +2105,7 @@ div.left-nav-header h3 {
     float: right;
 }
 /*************************** sprite-image icons **************************/
-.ui-icon {
+.ui_icon_sprite {
     background-image:url("/lexmark-punchout-theme/images/custom/ui-icons-sprite.png") ;
     background-repeat: no-repeat;
     color: transparent;
@@ -2081,7 +2123,7 @@ div.left-nav-header h3 {
   max-width:40px ;
 }
 
-.widgets {
+.widgets_sprite {
   height: 100px ;
   width: 100px ;
   max-width:100px ;

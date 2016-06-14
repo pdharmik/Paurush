@@ -1940,7 +1940,7 @@ public class ContractFactory {
 			}
 			if(request.getParameter("fromFleetManager")!=null && request.getParameter("fromFleetManager").equalsIgnoreCase("true")){
 				LOGGER.debug("FROM FLEET MANAGEMENT NO DATE RANGE");
-				if(StringUtils.isBlank(request.getParameter("searchCriterias"))){
+			if(StringUtils.isBlank(request.getParameter("searchCriterias")) || ChangeMgmtConstant.CHANGE_REQUESTS.equalsIgnoreCase(request.getParameter("gridType"))){
 					/* This denotes the request is NOT for Open Requests. Its for Request history.. So No Date Range.*/
 					requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_STARTDATE);
 					requestListContract.getFilterCriteria().remove(ChangeMgmtConstant.SEARCHTYPE_DATERANGE_ENDDATE);	

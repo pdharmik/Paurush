@@ -92,7 +92,7 @@ public class GlobalSuppliesListService {
 			builder.append(" AND [partType] = '" + trim(partType) + "'");
 		}
 		if(isNotBlank(partNumber)) {
-			builder.append(" AND [partNumber] ~= '" + trim(partNumber) + "'"); // case insensitive search 
+			builder.append(" AND ([partNumber] ~= '" + trim(partNumber) + "'" +" or [LXK B2B Marketing Short Description] ~= '"+ trim(partNumber) + "'" + "or [LXK B2B Model] ~= '"+ trim(partNumber) + "'" + " or [LXK B2B Marketing Name] ~= '"+ trim(partNumber) +"')"); // case insensitive search 
 			builder.append(" AND [implicitFlag] <> 'Y'" );
 		}
 		
