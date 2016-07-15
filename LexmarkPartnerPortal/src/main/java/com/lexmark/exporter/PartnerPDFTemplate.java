@@ -168,7 +168,7 @@ public class PartnerPDFTemplate {
 			 buf.append(generateCloseOutActivityString(activity));
 		 }
 		 buf.append(generateTecnicianString(activity));
-		 buf.append(generateTecnicianInstructions(activity));
+		 buf.append(generateTecnicianInstructions(activity)); 
 		 List<TechnicianInstruction> technicianInstructions = activity.getServiceInstructionList();
 		 if (technicianInstructions != null && !technicianInstructions.isEmpty()){
 			 buf.append(generateTechnicianInstructionsListString(technicianInstructions));
