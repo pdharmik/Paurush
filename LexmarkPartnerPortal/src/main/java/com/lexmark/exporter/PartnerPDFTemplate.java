@@ -606,7 +606,6 @@ public class PartnerPDFTemplate {
 	}
 	
 	private String generateTecnicianInstructions(Activity activity){
-		System.out.println("inside generateTecnicianInstructions"+activity.getActivityServiceInstructions());
 		if(activity.getActivityServiceInstructions() == null){
 			return "";
 		}
