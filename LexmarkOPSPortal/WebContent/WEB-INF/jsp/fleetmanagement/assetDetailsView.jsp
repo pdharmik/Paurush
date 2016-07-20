@@ -258,8 +258,8 @@
 				</div>
 			</div>
 			<div class="createRequestMenu" id="createRequestMenu{{id}}" style="display:none;">
-					<span class="popup_arrow">
-						<span class="popup_arrow-inner"></span>
+					<span class="popup_arrow_low">
+						<span class="popup_arrow-inner_low"></span>
 					</span>
 									<c:if test="${fleetMgmtForm.showSupplies}">
 										<div><a style="cursor: pointer;" onClick="createSuppliesRequest('{{id}}');"><spring:message code='lbs.label.supplies'/></a></div>
@@ -482,15 +482,16 @@
 	
 	function showCreateRequestPop(deviceId){
 		$('#createRequestMenu'+deviceId).show().position({
-			  my: "right top",
-			  at: "right bottom",
+			  my: "right bottom",
+			  at: "right top",
 			  of: "#createRequests"+deviceId,
 			  collision:"none"
 			});
-		var dcTotal = $('#deviceContent').offset().top + $("#deviceContent").height();
-		var crTotal = $("#createRequestMenu"+deviceId).offset().top+$("#createRequestMenu"+deviceId).height();
-		if(crTotal>dcTotal)
-			$('#deviceContent').animate({scrollTop: $('#deviceContent').scrollTop()+(crTotal-dcTotal)+15}, 'slow');
+		var dcTotal = $('#deviceContent').offset().top;
+		var crTotal = $("#createRequestMenu"+deviceId).offset().top;
+		if(crTotal<dcTotal){
+			$('#deviceContent').animate({scrollTop: $('#deviceContent').scrollTop()-(dcTotal-crTotal)-15}, 'slow');	
+		}
 		$('#createRequestMenu'+deviceId).mouseleave(function(){
 			$(this).hide();
 		});
