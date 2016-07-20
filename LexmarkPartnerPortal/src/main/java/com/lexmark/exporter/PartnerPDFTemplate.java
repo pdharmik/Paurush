@@ -168,7 +168,7 @@ public class PartnerPDFTemplate {
 			 buf.append(generateCloseOutActivityString(activity));
 		 }
 		 buf.append(generateTecnicianString(activity));
-		 
+		 buf.append(generateTecnicianInstructions(activity)); 
 		 List<TechnicianInstruction> technicianInstructions = activity.getServiceInstructionList();
 		 if (technicianInstructions != null && !technicianInstructions.isEmpty()){
 			 buf.append(generateTechnicianInstructionsListString(technicianInstructions));
@@ -600,6 +600,21 @@ public class PartnerPDFTemplate {
 			 		"<b>").append(localizeMessage("claim.label.technician")).append("</b>" +
 			 		activity.getTechnician().getLastName() +
 			 		" , " + activity.getTechnician().getFirstName() +
+			 		"</div>" +
+			 	"</div>");
+		return buf.toString();
+	}
+	
+	private String generateTecnicianInstructions(Activity activity){
+		if(activity.getActivityServiceInstructions() == null){
+			return "";
+		}
+		StringBuffer buf = new StringBuffer();
+		buf.append("<br/><div id ='bd'>" +
+			 		"<div id='st'>").append(localizeMessage("claim.label.technicianInstructions")).append("</div>" +
+			 		"<div id='tf' style='padding: 10px 5px 20px 5px; '>" +
+			 		"<b>").append("</b>" +
+			 		activity.getActivityServiceInstructions()+
 			 		"</div>" +
 			 	"</div>");
 		return buf.toString();
