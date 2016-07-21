@@ -365,7 +365,7 @@ public class XmlOutputGeneratorTest {
 		List<PartLineItem> list = PartnerDomainMockDataGenerator.getRecommendedPartLineItemListForTesting();
 		PartLineItem part = new PartLineItem();
 		list.add(part);
-		String result = xmlOutputGenerator.convertRecommendedPartListToXML(list);
+		String result = xmlOutputGenerator.convertRecommendedPartListToXML(list,true);
 		assetStringExist(result,"cell");
 	}
 	

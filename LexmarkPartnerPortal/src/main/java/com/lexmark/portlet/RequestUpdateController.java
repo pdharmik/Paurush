@@ -305,10 +305,11 @@ public class RequestUpdateController {
 		//localize additional payments
 		if(activity.getAdditionalPaymentRequestList() != null){
 			ControllerUtil.batchLocalizeAdditionPayments(activity.getAdditionalPaymentRequestList(), serviceRequestLocaleService, locale);
-		}		
-		
+		}	
+		logger.debug("ShipTo Default---->>>>"+activity.getAddressStatus());	
 		XmlOutputGenerator xmlOutputGenerator = new XmlOutputGenerator(locale);
-		String recommendedPartListXML = xmlOutputGenerator.convertRecommendedPartListToXML(activity.getRecommendedPartList());
+		Boolean shipToDefault = (activity.getAddressStatus().equalsIgnoreCase("Ship to Customer")?false:true);
+		String recommendedPartListXML = xmlOutputGenerator.convertRecommendedPartListToXML(activity.getRecommendedPartList(),shipToDefault);
 		String activityNoteListXML = xmlOutputGenerator.convertNoteListToXML(activity.getActivityNoteList(), contactId);
 		ResourceURL resURL = response.createResourceURL();
 		resURL.setResourceID("retrievePartnerAddressListURL");
@@ -360,10 +361,7 @@ public class RequestUpdateController {
 		if(session!=null&& session.getAttribute("attachmentList")!=null){
 			session.removeAttribute("attachmentList");
 		}
-		// added for BRD 14-07-02
-		logger.debug("b4 getting user details from session");
-		Boolean shipToDefault = (Boolean)request.getPortletSession().getAttribute("SHIP_TO_DEFAULT", javax.portlet.PortletSession.APPLICATION_SCOPE);
-		logger.debug("after getting user details from session "+shipToDefault.toString());
+		
 		if(shipToDefault){
 			logger.debug("shipToDefault == true");
 			model.addAttribute("ShipToDefault", "true");
