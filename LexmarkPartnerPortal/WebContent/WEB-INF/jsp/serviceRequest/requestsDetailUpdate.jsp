@@ -1015,6 +1015,7 @@ var shipToaddrFlag = [];
 							
 							<%-- Added for LEX:AIR00066994 end --%>
 							<c:if test="${serviceRequestDetailForm.activity.partnerAccount.orderPartsFlag}">
+							<c:if test="${ShipToDefault}">
 								<div id="addPartSection">
 									<table>
 										<tr>
@@ -1036,10 +1037,12 @@ var shipToaddrFlag = [];
 										</tr>
 									</table>
 								</div>
+								</c:if>
 							</c:if>
 							<br>
 							<label for="activity.shipToAddress.addressId" class="error"
 							style="display: none;"><spring:message code="claim.errorMsg.partnerAddress"/></label>
+							<c:if test="${ShipToDefault}">
 							<div id="partnerAddressDiv">
 								<table>
 									<tr>
@@ -1096,6 +1099,7 @@ var shipToaddrFlag = [];
 						</td>
 
 									</tr>
+									<c:if test="${ShipToDefault}">
 									<tr id="selectOtherAddress">
 										<%--Done for CI BRD13-10-26 STARTS --%>
 										<td colspan="2"><a href="javascript:void(0);" id="installedAddressLink" onClick="return popupAddress(id);">
@@ -1103,8 +1107,11 @@ var shipToaddrFlag = [];
 										</td>
 										<%--Done for CI BRD13-10-26 ENDS --%>
 									</tr>
+									</c:if>
 								</table>
+								
 								</div>
+								</c:if>
 <!-- 							 address list start		 -->
 <!-- 							<div id="partnerAddressList" class="scroll" style="display:none;"> -->
 <!-- 							<table width="100%"> -->
@@ -2354,6 +2361,11 @@ var shipToaddrFlag = [];
 							if(showshipToDefaultFlag){
 								return;
 							}
+							
+							if((!showshipToDefaultFlag) && (ShipToDefault == "false"))
+								{
+								confirmSubmitUpdateRequest();
+								}
 							else{
 							if("${serviceRequestDetailForm.activity.addressStatus}"!="${serviceRequestDetailForm.addressStatusList[0]}"){
 							    var postalCode = document.getElementById('postalCodeLabel').innerHTML;
