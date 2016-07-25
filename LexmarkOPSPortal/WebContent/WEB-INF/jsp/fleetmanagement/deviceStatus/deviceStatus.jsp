@@ -101,12 +101,17 @@
 
 <script id="device-utilization" type="text/x-handlebars-template">
 {{#if Utilization}}
-<table><thead><tr><th>Serial Number</th><th>Actual LTPC</th><th>Expected LTPC</th></tr></thead>
-			{{#Utilization}}
+<div class="headerTable">
+<table><thead><tr><th>Serial Number</th><th>Expected</th><th>Actual</th></tr></thead></table></div>
+
+<div class="bodyTable">
+<table>			
+{{#Utilization}}
 			<tr><td><a onclick="highLightInMap('{{id}}')">{{serialNumber}}</a></td>
-				<td>{{ActualLTPC}}</td><td>{{ExpectedLTPC}}</td></tr>
+				<td>{{ExpectedLTPC}}</td><td>{{MonthlyAvgUsage}}</td></tr>
 			{{/Utilization}}	
 </table>
+</div>
 {{/if}}
 </script>
 <script id="device-report-Status" type="text/x-handlebars-template">
@@ -188,6 +193,27 @@ function highLightInMap(id){
 <script type="text/javascript" src="<html:rootPath/>js/deviceStatus.js?version=0.02"></script>
 <script>
 $(document).ready(function(){
+	$('.headerTable table').width($('.bodyTable table').width());
+	$('.bodyTable tr').each(function(){
+	  $(this).children('td').each(function(){
+	      ar.push($(this).width())
+	      });
+	                     
+	                           
+	  return false;
+	});
+	console.log(ar);
+	var count = 0;
+	$('.headerTable tr').each(function(){
+	  $(this).children('th').each(function(){
+	    $(this).width(ar[count]);
+	    count++;
+	  });
+	                         
+	                             
+	  return false;
+	});
+	
 	$('#alerts_sup_dev').change(function(){
 		if($(this).val()==""){
 			deviceStatus.__alerts.clear(true);
