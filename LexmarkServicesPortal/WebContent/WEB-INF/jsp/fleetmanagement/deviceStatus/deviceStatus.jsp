@@ -210,6 +210,7 @@ utilizationArray.push({"value":"Select All", "displayValue":"<spring:message cod
 <c:forEach items="${utilization}" var="loopStatus">
 utilizationArray.push({"value":"${loopStatus.key}","displayValue":"${loopStatus.value}"});
 </c:forEach>
+utilizationArray.push({"value":"NoUtilization", "displayValue":"NoUtilization"});
 
 
 
