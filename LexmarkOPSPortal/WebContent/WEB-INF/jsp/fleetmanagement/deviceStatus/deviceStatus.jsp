@@ -101,17 +101,15 @@
 
 <script id="device-utilization" type="text/x-handlebars-template">
 {{#if Utilization}}
-<div class="headerTable">
-<table><thead><tr><th>Serial Number</th><th>Expected</th><th>Actual</th></tr></thead></table></div>
-
-<div class="bodyTable">
-<table>			
-{{#Utilization}}
+<div>
+<table><thead><tr><th>Serial Number</th><th>Target</th><th>Actual</th></tr></thead></table></div>
+			<div><table>
+			{{#Utilization}}
 			<tr><td><a onclick="highLightInMap('{{id}}')">{{serialNumber}}</a></td>
-				<td>{{ExpectedLTPC}}</td><td>{{MonthlyAvgUsage}}</td></tr>
-			{{/Utilization}}	
-</table>
-</div>
+			<td>{{ExpectedLTPC}}</td><td>{{MonthlyAvgUsage}}</td></tr>
+			{{/Utilization}}
+			</table></div>	
+
 {{/if}}
 </script>
 <script id="device-report-Status" type="text/x-handlebars-template">
@@ -176,6 +174,7 @@ utilizationArray.push({"value":"Select All", "displayValue":"Select All"});
 <c:forEach items="${utilization}" var="loopStatus">
 utilizationArray.push({"value":"${loopStatus.key}","displayValue":"${loopStatus.value}"});
 </c:forEach>
+utilizationArray.push({"value":"NoUtilization", "displayValue":"NoUtilization"});
 var reportingStatArray=[];
 reportingStatArray.push({"value":"", "displayValue":"Select Reporting Status"});
 reportingStatArray.push({"value":"Select All", "displayValue":"Select All"});
@@ -193,7 +192,8 @@ function highLightInMap(id){
 <script type="text/javascript" src="<html:rootPath/>js/deviceStatus.js?version=0.02"></script>
 <script>
 $(document).ready(function(){
-	$('.headerTable table').width($('.bodyTable table').width());
+	var ar = [];
+$('.headerTable table').width($('.bodyTable table').width());
 	$('.bodyTable tr').each(function(){
 	  $(this).children('td').each(function(){
 	      ar.push($(this).width())

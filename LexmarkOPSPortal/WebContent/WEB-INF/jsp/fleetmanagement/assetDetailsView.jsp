@@ -44,7 +44,7 @@
 						<div id="alertsDeviceStatusDescriptionContent"></div>
 					</div>
 					<div id="utilizationStatusDescription"  class="statusDescriptionBlock">
-						<label><b>Utilization</b></label>
+						<label><b>Utilization Monthly Average</b></label>
 						<div id="utilizationStatusDescriptionContent"></div>
 					</div>
 					<div id="reportingStatusDescription"  class="statusDescriptionBlock">
@@ -244,7 +244,7 @@
 					<img src="<html:imagesPath/>loading-icon.gif" id="loadigFavorite{{id}}" style="display: none;"/>
 					<span id="bookmarkMsg{{id}}">{{{generateBkmrkMsg}}}</span>
 				</div>
-				<spring:message code='lbs.label.serialno'/> :<span class="deviceSerialNo" ><a style="cursor:pointer" onClick="lbs.highLightInMap('{{id}}');">{{serialNumber}}</a></span><br/>
+				<spring:message code='lbs.label.serialno'/> :<span class="deviceSerialNo" ><a style="cursor:pointer" onClick="highLightInMap('{{id}}');">{{serialNumber}}</a></span><br/>
 				<spring:message code='lbs.label.ipaddress'/> :<span class="deviceIP" >{{ipAddress}}</span><br/>
 				<spring:message code='lbs.label.customerdevicetag'/>:<span class="deviceTag">{{customerDeviceTag}}</span>
 				<div style='margin-top:10px'>
@@ -258,8 +258,8 @@
 				</div>
 			</div>
 			<div class="createRequestMenu" id="createRequestMenu{{id}}" style="display:none;">
-					<span class="popup_arrow_low">
-						<span class="popup_arrow-inner_low"></span>
+					<span class="popup_arrow">
+						<span class="popup_arrow-inner"></span>
 					</span>
 									<c:if test="${fleetMgmtForm.showSupplies}">
 										<div><a style="cursor: pointer;" onClick="createSuppliesRequest('{{id}}');"><spring:message code='lbs.label.supplies'/></a></div>
@@ -481,20 +481,25 @@
 	
 	
 	function showCreateRequestPop(deviceId){
-		$('#createRequestMenu'+deviceId).show().position({
-			  my: "right bottom",
-			  at: "right top",
-			  of: "#createRequests"+deviceId,
-			  collision:"none"
+			$('#createRequestMenu'+deviceId).show().position({
+				  my: "right bottom",
+				  at: "right top",
+				  of: "#createRequests"+deviceId,
+				  collision:"none"
+				});
+			var dcTotal = $('#deviceContent').offset().top;
+			var crTotal = $("#createRequestMenu"+deviceId).offset().top;
+			console.log('dcTotal : ' + dcTotal);
+			console.log('crTotal : ' + crTotal);
+			if(crTotal<dcTotal){
+				console.log('$(#deviceContent).scrollTop() : ' + $('#deviceContent').scrollTop());
+				console.log('dcTotal-crTotal : ' + (dcTotal-crTotal));
+				console.log('finally  : ' + ($('#deviceContent').scrollTop()-(dcTotal-crTotal)-15));
+				$('#deviceContent').animate({scrollTop: $('#deviceContent').scrollTop()-(dcTotal-crTotal)-15}, 'slow');	
+			}
+			$('#createRequestMenu'+deviceId).mouseleave(function(){
+				$(this).hide();
 			});
-		var dcTotal = $('#deviceContent').offset().top;
-		var crTotal = $("#createRequestMenu"+deviceId).offset().top;
-		if(crTotal<dcTotal){
-			$('#deviceContent').animate({scrollTop: $('#deviceContent').scrollTop()-(dcTotal-crTotal)-15}, 'slow');	
-		}
-		$('#createRequestMenu'+deviceId).mouseleave(function(){
-			$(this).hide();
-		});
 	}
 	
 	

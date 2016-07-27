@@ -25,7 +25,7 @@
 					 </div>	
 					<div id="utilisationPopUpStatusDiv" class="deviceStatusSubHeader openSub">
 						<div  onclick="toggleClass('#utilisationPopUpStatusDiv','openSub');toggleSlide('#utilization-status-popup','up')">
-							<span class="mapDeviceStatusHeader">Utilization</span>
+							<span class="mapDeviceStatusHeader">Utilization Monthly Average</span>
 							<span class="arrow_icon up-down floatR"></span>
 						</div>
 						<div id="utilization-status-popup"  >
@@ -90,16 +90,16 @@
 			<script id="utilization-popup-Details" type="text/x-handlebars-template">
 				
 				<table><thead><tr>
-					<th style="border-left:0">Actual</th>
-					<th>Expected</th>
+					<th style="border-left:0">Target</th>
+					<th>Actual</th>
 					<th>Utilization Level</th>
 					</tr>
 				</thead>
 				{{#if DeviceStatus.Utilization}}
 				{{#DeviceStatus.Utilization}}
 				
-				<tr><td>{{ActualLTPC}}</td>
-				<td>{{ExpectedLTPC}}</td>
+				<tr><td>{{ExpectedLTPC}}</td>
+				<td>{{MonthlyAvgUsage}}</td>
 				<td>{{UtilizationLevel}}</td></tr>
 				{{/DeviceStatus.Utilization}}	
 				{{else}}
