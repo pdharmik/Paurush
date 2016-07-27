@@ -62,14 +62,28 @@ function MultiSelect(multiSelectObj)
 				for(var i=0;i<this.list.length;i++){
 					if(this.list[i].value != "Select All" && this.list[i].value != "NoUtilization")
 						$('#'+this.ele+'-options').append("<option value=\""+this.list[i].value+"\">"+this.list[i].displayValue+"</option>");
+										
+					}
+					if(this.list[i].value === "NoUtilization")
+					{
+						$('#'+this.ele+'-options').append("<option value=\""+this.list[i].value+"\">"+this.list[i].displayValue+"</option>");
+
+					}
 				}
 				for(var i=1;i<this.list.length;i++){
 					if(this.list[i].value != "NoUtilization")
-					{					
-				jQuery('#'+this.ele+"-dropZone ul").append("<li><input id=\""+this.ele+"-listValue"+i+
-						"\" class=\"listValue\" type=\"checkbox\" value=\""+this.list[i].value+"\" />"+
-						this.list[i].displayValue+"</li>");
-			}}				$('#'+this.ele+' input').on('click',function(){
+						{					
+					jQuery('#'+this.ele+"-dropZone ul").append("<li><input id=\""+this.ele+"-listValue"+i+
+							"\" class=\"listValue\" type=\"checkbox\" value=\""+this.list[i].value+"\" />"+
+							this.list[i].displayValue+"</li>");
+				}
+					if(this.list[i].value === "NoUtilization")
+					{
+						jQuery('#'+this.ele+"-dropZone ul").append("<li class=\"noDisplay\"><input id=\""+this.ele+"-listValue"+i+
+								"\" class=\"listValue\" type=\"checkbox\" value=\""+this.list[i].value+"\" />"+
+								this.list[i].displayValue+"</li>");
+					}}
+				$('#'+this.ele+' input').on('click',function(){
 					var arr=$('#'+that.ele+'-options').val();
 					var contentItem=$(this).val();
 					if(arr==null || contentItem == "Select All"){
@@ -81,8 +95,14 @@ function MultiSelect(multiSelectObj)
 							$('#'+that.ele+'-options').children('option').each(function(){
 							var content = $(this).val();
 							if(content != "")
+								
 								arr.push(content);
-							});
+								
+								
+							});	
+							arr.push("NoUtilization");
+							console.log(arr);
+							
 							$(this).parent('li').parent('ul').children('li').each(function(){
 								$(this).children('input[type=\'checkbox\']').prop('checked', true);
 							});
