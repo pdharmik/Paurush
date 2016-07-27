@@ -47,7 +47,7 @@
 						<div id="alertsDeviceStatusDescriptionContent"></div>
 					</div>
 					<div id="utilizationStatusDescription"  class="statusDescriptionBlock">
-						<label><b><spring:message  code="fleetmanagement.headers.utilization"/></b></label>
+						<label><b><spring:message  code="fleetmanagement.headers.utilizationmonthlyaverage"/></b></label>
 						<div id="utilizationStatusDescriptionContent"></div>
 					</div>
 					<div id="reportingStatusDescription"  class="statusDescriptionBlock">
@@ -230,7 +230,7 @@
 					<img src="<html:imagesPath/>loading-icon.gif" id="loadigFavorite{{id}}" style="display: none;"/>
 					<span id="bookmarkMsg{{id}}">{{{generateBkmrkMsg}}}</span>
 				</div>
-				<spring:message code='lbs.label.serialno'/> :<span class="deviceSerialNo" ><a style="cursor:pointer" onClick="lbs.highlightMap('{{id}}');">{{serialNumber}}</a></span><br/>
+				<spring:message code='lbs.label.serialno'/> :<span class="deviceSerialNo" ><a style="cursor:pointer" onClick="highLightInMap('{{id}}');">{{serialNumber}}</a></span><br/>
 				<spring:message code='lbs.label.ipaddress'/> :<span class="deviceIP" >{{ipAddress}}</span><br/>
 				<spring:message code='lbs.label.customerdevicetag'/>:<span class="deviceTag">{{customerDeviceTag}}</span>
 				<div class='margin-top-10px'> 
@@ -447,13 +447,21 @@
 	
 	function showCreateRequestPop(deviceId){
 		$('#createRequestMenu'+deviceId).show().position({
-			  my: "right top",
-			  at: "right bottom",
+			  my: "right bottom",
+			  at: "right top",
 			  of: "#createRequests"+deviceId,
 			  collision:"none"
 			});
-		$('#deviceContent').animate({
-		    scrollTop: $('#createRequestMenu'+deviceId).offset().top-$('#deviceContent .deviceDetailsDiv:first-child').offset().top-200}, 'fast');
+		var dcTotal = $('#deviceContent').offset().top;
+		var crTotal = $("#createRequestMenu"+deviceId).offset().top;
+		console.log('dcTotal : ' + dcTotal);
+		console.log('crTotal : ' + crTotal);
+		if(crTotal<dcTotal){
+			console.log('$(#deviceContent).scrollTop() : ' + $('#deviceContent').scrollTop());
+			console.log('dcTotal-crTotal : ' + (dcTotal-crTotal));
+			console.log('finally  : ' + ($('#deviceContent').scrollTop()-(dcTotal-crTotal)-15));
+			$('#deviceContent').animate({scrollTop: $('#deviceContent').scrollTop()-(dcTotal-crTotal)-15}, 'slow');	
+		}
 		$('#createRequestMenu'+deviceId).mouseleave(function(){
 			$(this).hide();
 		});

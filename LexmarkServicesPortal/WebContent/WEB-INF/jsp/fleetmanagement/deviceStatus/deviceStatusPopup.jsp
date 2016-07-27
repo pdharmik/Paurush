@@ -28,7 +28,7 @@
 
 					<div id="utilisationPopUpStatusDiv" class="deviceStatusSubHeader openSub">
 						<div  onclick="toggleClass('#utilisationPopUpStatusDiv','openSub');toggleSlide('#utilization-status-popup','up')">
-							<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.utilization"/></span>
+							<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.utilizationmonthlyaverage"/></span>
 							<span class="arrow_icon up-down floatR"></span>
 						</div>
 						<div id="utilization-status-popup" >
@@ -93,18 +93,18 @@
 			</script>
 			<script id="utilization-popup-Details" type="text/x-handlebars-template">
 				
-				<table><thead><tr>
+				<table><thead><tr>fleetmanagement.tableheaders.expected
 				
-					<th style="border-left:0"><spring:message code="fleetmanagement.deviceStatusPopup.headers.actual"/></th>
-					<th><spring:message code="deviceStatus.tbheader.expected"/></th>
+					<th style="border-left:0"><spring:message code="fleetmanagement.tableheaders.expected"/></th>
+					<th><spring:message code="fleetmanagement.tableheaders.actual"/></th>
 					<th><spring:message code="deviceStatus.tbheader.utilizationLevel"/></th>
 					</tr>
 				</thead>
 				{{#if DeviceStatus.Utilization}}
 				{{#DeviceStatus.Utilization}}
 				
-				<tr><td>{{ActualLTPC}}</td>
-				<td>{{ExpectedLTPC}}</td>
+				<tr><td>{{ExpectedLTPC}}</td>
+				<td>{{MonthlyAvgUsage}}</td>
 				<td>{{UtilizationLevel}}</td></tr>
 				{{/DeviceStatus.Utilization}}
 				{{else}}

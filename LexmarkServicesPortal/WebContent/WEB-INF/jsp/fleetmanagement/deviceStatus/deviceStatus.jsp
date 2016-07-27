@@ -139,7 +139,7 @@
 <script id="device-utilization" type="text/x-handlebars-template">
 {{#if Utilization}}
 <div class="headerTable">
-<table><thead><tr><th><spring:message code="fleetmanagement.tableheaders.serialnumber"/></th><th><spring:message code="fleetmanagement.tableheaders.expected"/></th><th><spring:message code="fleetmanagement.tableheaders.actual"/></th></tr></thead></table></div>
+<table><thead><tr><th><spring:message code="fleetmanagement.tableheaders.serialnumber"/></th><th><spring:message code="fleetmanagement.tableheaders.target"/></th><th><spring:message code="fleetmanagement.tableheaders.actual"/></th></tr></thead></table></div>
 <div class="bodyTable">
 <table>
 			{{#Utilization}}
@@ -343,6 +343,7 @@ var mock={
 <script type="text/javascript" src="<html:rootPath/>js/deviceStatus.js?version=0.05"></script>
 <script>
 $(document).ready(function(){
+	var ar = [];
 	$('.headerTable table').width($('.bodyTable table').width());
 	$('.bodyTable tr').each(function(){
 	  $(this).children('td').each(function(){
