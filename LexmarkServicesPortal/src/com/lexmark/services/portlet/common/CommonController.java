@@ -1045,6 +1045,9 @@ public class CommonController extends BaseController{
 			LOGGER.debug("accountList.size()= "+accountList.size());
 			String servicePartQuantity = "";
 			String suppliesPartQuantity = "";
+							
+			boolean catalogExpediteFlag = false;
+						
 			for(int i=0;i<accountList.size();i++){
 				LOGGER.debug("account name is ==================== "+accountList.get(i).getAccountName()+" and account ID is ==================== "+accountList.get(i).getAccountId());
 				
@@ -1057,7 +1060,17 @@ public class CommonController extends BaseController{
 				if(null != accountList.get(i).getQuantitySupplies()){
 					suppliesPartQuantity = accountList.get(i).getQuantitySupplies();
 				}
+				if(!catalogExpediteFlag)
+				{
+					catalogExpediteFlag =accountList.get(i).isCatalogExpediteFlag(); 
+				}
 			}
+			Map<String,String> accountCurrentDetailsPartner=(Map<String, String>)portletSession.getAttribute(ChangeMgmtConstant.ACNTCURRDETAILS, PortletSession.APPLICATION_SCOPE);
+			accountCurrentDetailsPartner.put(ChangeMgmtConstant.CATALOG_ENTITLEMENT_FLAG,String.valueOf(accountFlagResult.isCatalogEntitlementFlag()));
+			accountCurrentDetailsPartner.put(ChangeMgmtConstant.ASSET_ENTITLEMENT_FLAG,String.valueOf(accountFlagResult.isAssetEntitlementFlag()));
+			accountCurrentDetailsPartner.put(ChangeMgmtConstant.REQUESTEXPEDITE,String.valueOf(catalogExpediteFlag));		
+			portletSession.setAttribute(ChangeMgmtConstant.ACNTCURRDETAILS, accountCurrentDetailsPartner ,PortletSession.APPLICATION_SCOPE);
+			LOGGER.debug("after modified the accountCurrentDetailsPartner session values are-->>>"+accountCurrentDetailsPartner.toString());
 			
 				portletSession.setAttribute("servicePartQuantity", servicePartQuantity ,PortletSession.APPLICATION_SCOPE);
 				portletSession.setAttribute("suppliesPartQuantity", suppliesPartQuantity ,PortletSession.APPLICATION_SCOPE);			
@@ -2197,7 +2210,9 @@ public class CommonController extends BaseController{
 				
 				
 				long timeBeforeCall=System.currentTimeMillis();
-				SiebelAccountListResult siebelAccountListResult = globalService.retrieveSiebelAgreementList(siebelAccountListContract);
+				//The below call is stopped as per the INC0220223/CHG0014471
+				//SiebelAccountListResult siebelAccountListResult = globalService.retrieveSiebelAgreementList(siebelAccountListContract);
+				SiebelAccountListResult siebelAccountListResult = null;
 				long timeAfterCall=System.currentTimeMillis();
 				
 				PerformanceUtil.calcTime(perfLogger, PerformanceConstant.COMMON_MSG_RETRIEVECATALOGAGREEMENTLIST, timeBeforeCall,timeAfterCall, PerformanceConstant.SYSTEM_SIEBEL,siebelAccountListContract);
@@ -2236,7 +2251,7 @@ public class CommonController extends BaseController{
 				LOGGER.debug("Partner Portal suppliesPartQuantity set in session =================== "+suppliesPartQuantity);
 				
 			}catch(Exception e){
-				LOGGER.debug("Exception occured while retrieving account flags for partner portal");
+				LOGGER.debug("Exception occured while retrieving account flag for partner portal");
 				accountDetailsValues.put(ChangeMgmtConstant.CATALOG_ENTITLEMENT_FLAG,"false");
 				accountDetailsValues.put(ChangeMgmtConstant.ASSET_ENTITLEMENT_FLAG,"false");
 				accountDetailsValues.put(ChangeMgmtConstant.REQUESTEXPEDITE,"false");
