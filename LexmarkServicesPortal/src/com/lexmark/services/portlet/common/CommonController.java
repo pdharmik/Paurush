@@ -2251,7 +2251,7 @@ public class CommonController extends BaseController{
 				LOGGER.debug("Partner Portal suppliesPartQuantity set in session =================== "+suppliesPartQuantity);
 				
 			}catch(Exception e){
-				LOGGER.debug("Exception occured while retrieving account flags for partner portal");
+				LOGGER.debug("Exception occured while retrieving account flag for partner portal");
 				accountDetailsValues.put(ChangeMgmtConstant.CATALOG_ENTITLEMENT_FLAG,"false");
 				accountDetailsValues.put(ChangeMgmtConstant.ASSET_ENTITLEMENT_FLAG,"false");
 				accountDetailsValues.put(ChangeMgmtConstant.REQUESTEXPEDITE,"false");
