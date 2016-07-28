@@ -307,8 +307,10 @@ public class RequestUpdateController {
 			ControllerUtil.batchLocalizeAdditionPayments(activity.getAdditionalPaymentRequestList(), serviceRequestLocaleService, locale);
 		}	
 		logger.debug("ShipTo Default---->>>>"+activity.getAddressStatus());	
+		logger.debug("ServiceType---->>>>"+activity.getActivityType().getValue());
 		XmlOutputGenerator xmlOutputGenerator = new XmlOutputGenerator(locale);
-		Boolean shipToDefault = (activity.getAddressStatus().equalsIgnoreCase("Ship to Customer")?false:true);
+		Boolean shipToDefault = ((activity.getAddressStatus().equalsIgnoreCase(LexmarkConstants.SHIP_TO_CUSTOMER)&&(activity.getActivityType().getValue().equalsIgnoreCase(LexmarkConstants.CONSUMABLE_SVC_PART)))?false:true);
+		logger.debug("Final ShipToDefault is-->>>"+shipToDefault.toString());
 		String recommendedPartListXML = xmlOutputGenerator.convertRecommendedPartListToXML(activity.getRecommendedPartList(),shipToDefault);
 		String activityNoteListXML = xmlOutputGenerator.convertNoteListToXML(activity.getActivityNoteList(), contactId);
 		ResourceURL resURL = response.createResourceURL();
