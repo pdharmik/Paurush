@@ -2391,7 +2391,13 @@ public class XmlOutputGenerator {
 				}
 			//	String recommendedQuantity = rePartLineItem.getRecommendedQuantity()==null?"":rePartLineItem.getRecommendedQuantity();
 					xml.append(" <row id=\""+ (partId)+"\">");
-					xml.append("  <cell><![CDATA[<table><tr><td><select id=\"qty_"+partId+"\" disabled = "+shipToDefault+"\" onchange=\"selectQty(this);\" onclick=\"saveOption(this);\" >"+generateOption()+"</select></td></tr></table>]]></cell>");
+					if(!shipToDefault){
+					xml.append("  <cell><![CDATA[<table><tr><td><select id=\"qty_"+partId+"\" disabled ="+!shipToDefault+" onchange=\"selectQty(this);\" onclick=\"saveOption(this);\" >"+generateOption()+"</select></td></tr></table>]]></cell>");
+					}
+					else
+					{
+					xml.append("  <cell><![CDATA[<table><tr><td><select id=\"qty_"+partId+"\" onchange=\"selectQty(this);\" onclick=\"saveOption(this);\" >"+generateOption()+"</select></td></tr></table>]]></cell>");
+					}
 					xml.append("  <cell><![CDATA["+ rePartLineItem.getRecommendedQuantity() +"]]></cell>");
 					xml.append("  <cell><![CDATA["+ XMLEncodeUtil.escapeXML(rePartLineItem.getPartNumber())+"]]></cell>");
 					xml.append("  <cell><![CDATA["+ XMLEncodeUtil.escapeXML(rePartLineItem.getPartName()) +"]]></cell>");

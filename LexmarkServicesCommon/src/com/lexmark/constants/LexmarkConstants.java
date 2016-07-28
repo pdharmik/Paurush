@@ -724,4 +724,6 @@ public class LexmarkConstants {
 	public static final String SIEBEL_SESSION_ID_OPS = "siebelSessionIDOPS";
 	
 	public static final String SIEBEL_SESSION_ID_B2B = "siebelSessionIDB2B";
+	public static final String SHIP_TO_CUSTOMER = "Ship to Customer";
+	public static final String CONSUMABLE_SVC_PART ="Consumable SVC Parts & Install";
 }

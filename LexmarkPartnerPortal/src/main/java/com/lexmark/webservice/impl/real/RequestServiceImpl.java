@@ -224,6 +224,8 @@ public class RequestServiceImpl implements RequestService {
 					   contract.getActivity().getShipToAddress().getAddressLine1().equals("")){
 
 				   shipToAddress = new SiebelAddress();
+				   shipToAddress.setAddressLine1("");
+				   shipToAddress.setCity("");
 			   } else {
 				   String shipToStateProvince = null;
 					if(contract.getActivity().getShipToAddress().getStateProvince() != null && 
