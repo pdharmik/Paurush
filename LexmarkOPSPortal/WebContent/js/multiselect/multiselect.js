@@ -61,6 +61,7 @@ function MultiSelect(multiSelectObj)
 				$('#'+this.ele+'-placeholderContent').html(this.list[0].displayValue);
 				for(var i=0;i<this.list.length;i++){
 					if(this.list[i].value != "Select All" && this.list[i].value != "NoUtilization")
+					{	//console.log(this.list[i].value);
 						$('#'+this.ele+'-options').append("<option value=\""+this.list[i].value+"\">"+this.list[i].displayValue+"</option>");
 										
 					}
@@ -72,17 +73,18 @@ function MultiSelect(multiSelectObj)
 				}
 				for(var i=1;i<this.list.length;i++){
 					if(this.list[i].value != "NoUtilization")
-						{					
+					{					
 					jQuery('#'+this.ele+"-dropZone ul").append("<li><input id=\""+this.ele+"-listValue"+i+
 							"\" class=\"listValue\" type=\"checkbox\" value=\""+this.list[i].value+"\" />"+
 							this.list[i].displayValue+"</li>");
-				}
+					}
 					if(this.list[i].value === "NoUtilization")
 					{
 						jQuery('#'+this.ele+"-dropZone ul").append("<li class=\"noDisplay\"><input id=\""+this.ele+"-listValue"+i+
 								"\" class=\"listValue\" type=\"checkbox\" value=\""+this.list[i].value+"\" />"+
 								this.list[i].displayValue+"</li>");
-					}}
+					}
+				}
 				$('#'+this.ele+' input').on('click',function(){
 					var arr=$('#'+that.ele+'-options').val();
 					var contentItem=$(this).val();
@@ -97,11 +99,10 @@ function MultiSelect(multiSelectObj)
 							if(content != "")
 								
 								arr.push(content);
-								
-								
+																
 							});	
 							arr.push("NoUtilization");
-							console.log(arr);
+							
 							
 							$(this).parent('li').parent('ul').children('li').each(function(){
 								$(this).children('input[type=\'checkbox\']').prop('checked', true);
