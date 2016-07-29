@@ -819,10 +819,12 @@ function Filters(){};
 			showAssetInLeftNav:function(infoVal,item){
 				var contentDiv="";
 				var detailsDiv="";
+				var utilizationDetailsDiv = "";
 				
 				if(item=="asset"){
 					contentDiv="deviceContent";
 					detailsDiv="deviceDetails";
+					utilizationDetailsDiv = "utilizationDetailsDiv";
 				}
 				else if(item=="placement"){
 					contentDiv="placementContent";
@@ -841,6 +843,13 @@ function Filters(){};
 					}, 1000);
 				
 				jQuery('#'+detailsDiv+infoVal).addClass('greenBackground');
+				
+				$("#"+utilizationDetailsDiv).scrollTop(0);
+				
+				$("#"+utilizationDetailsDiv).animate({ 
+					scrollTop: ($('#'+contentDiv+infoVal).offset().top)-($("#"+utilizationDetailsDiv).offset().top) 
+					}, 1000);
+
 			}
 			
 			

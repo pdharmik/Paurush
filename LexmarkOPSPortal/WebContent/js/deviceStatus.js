@@ -104,21 +104,28 @@ function DeviceStatus(){
 				this.utilizationMultiSelect.clear();
 				$('#utilizationStatusRadioFlag').attr('checked',false);
 				that.checkAndSetRadio();
+				
 				$('#utilizationStatusDescriptionContent').html('');
 				$('#utilizationStatusDescription').hide();
 			    adjustLeftNav();
-				if(flag===true)
-					that.postJSON();
+			    if(flag===true)
+			    	that.postJSON();
 				checkboxReset();
 			};
 			this.getValue=function(){
+							
 				if(this.utilizationMultiSelect.getValue()==null){
 					return null;
 				}
+				
+				
 				return {
 						"category":"Utilization",
-						"details":this.utilizationMultiSelect.getValue()				
+						"details":this.utilizationMultiSelect.getValue()
+												
 					   };
+					   				   				   
+					  
 			};
 			this.onSelect=function(objData){
 				//select the radio & device Status 
@@ -130,6 +137,7 @@ function DeviceStatus(){
 				else{
 					deviceStatus.__utilization.clear(true);
 				}
+				
 				$('#utilizationStatusRadioFlag').attr('checked',flag);
 				deviceStatus.__alerts.clearSupplies(false);
 				deviceStatus.__alerts.clearDevice(false);
@@ -262,7 +270,8 @@ function DeviceStatus(){
 				deviceStatusJSON.push(values);
 			
 			values=this.__utilization.getValue();
-			if(values!=null)
+				if(values!=null)
+					
 				deviceStatusJSON.push(values);
 			
 			values=this.__reportingStatus.getValue();
@@ -271,6 +280,7 @@ function DeviceStatus(){
 			
 			values=this.__expirationStatus.getValue();
 			if(values!=null)
+				
 				deviceStatusJSON.push(values);
 			
 			
@@ -286,14 +296,17 @@ function DeviceStatus(){
 		
 		
 		this.inIt=function(){
+			
 			this.__alerts=new Alerts(alertSuppliesObj,alertDeviceObj);
 			this.__utilization=new Utilization(utilizationObj);
+			
 			this.__reportingStatus=new ReportingStatus(reportingObj);
 			this.__expirationStatus=new ExpirationStatus(expirationObj);
 		};
 		
-				
+						
 		this.checkAndSetRadio=function(){
+		
 			var deviceStatusArr=["reportingStatusRadioFlag","alertsSuppliesStatusRadioFlag","alertsDeviceStatusRadioFlag"];
 			var deviceUTArr=["expiredStatusRadioFlag","utilizationStatusRadioFlag"];
 			for(var i in deviceStatusArr){
@@ -305,11 +318,15 @@ function DeviceStatus(){
 				}
 			}
 			for(var i in deviceUTArr){
+				
 				if($('#'+deviceUTArr[i]).prop('checked')){
+					
 					$('#mapDeviceUTRadioFlag').attr('checked',true);
 					$('#mapDeviceStatusRadioFlag').attr('checked',false);
+					
 					radioReset();
 					return;
+				
 				}
 			}
 			
@@ -332,6 +349,7 @@ function DeviceStatus(){
 			if(respObj.Utilization){
 				$('#utilizationStatusDescriptionContent').html(templateDeviceUtil(respObj));
 				$('#utilizationStatusDescription').show();
+				divisionTable();
 			}else{
 				$('#utilizationStatusDescriptionContent').html('');
 				$('#utilizationStatusDescription').hide();
@@ -363,7 +381,27 @@ function DeviceStatus(){
 		};
 	};
 
-	
+function divisionTable(){
+	console.log("inside table");
+	var ar = [];
+	$('.headerTable table').width($('.bodyTable table').width());
+	$('.bodyTable tr').each(function(){
+		$(this).children('td').each(function(){
+	      ar.push($(this).width())
+	    });
+		return false;
+	});
+	console.log(ar);
+	var count = 0;
+	$('.headerTable tr').each(function(){
+	  $(this).children('th').each(function(){
+	    $(this).width(ar[count]);
+	    count++;
+	  });
+	  return false;
+	})
+}
+
 	
 
 var alertSuppliesObj,alertDeviceObj,utilizationObj,reportingObj,expirationObj;
@@ -383,9 +421,10 @@ var alertSuppliesObj,alertDeviceObj,utilizationObj,reportingObj,expirationObj;
 		utilizationObj=new MultiSelect({
 			"elementId":'utilization_pages',
 			"elementWidth":widthAuto,
-			"dataList":utilizationArray
+			"dataList":utilizationArray		
 			
 		});
+		
 		
 		reportingObj=new MultiSelect({
 			"elementId":'reporting_status',
@@ -410,7 +449,10 @@ var alertSuppliesObj,alertDeviceObj,utilizationObj,reportingObj,expirationObj;
 		reportingObj.setClickFunction(deviceStatus.__reportingStatus.onSelect);
 		expirationObj.setClickFunction(deviceStatus.__expirationStatus.onSelect);
 	}
-	var deviceStatus=new DeviceStatus();
+	
+	
+
+	var deviceStatus=new DeviceStatus();	
 	var templateDeviceAlert,templateDeviceUtil,templateDeviceRprtStat,expirationStat;
 	YUI().use('handlebars', 'node-base', function (Y) {
 		 Y.on('domready', function () {

@@ -51,7 +51,7 @@
 							<div class="subMenuPanel">
 							</div>
 							<div id="utilization_pages" class="onlyDropdownMultiSelect"></div>
-							<div  id="utilizationStatusDescription"  class="statusDescriptionBlock">
+							<div  id="utilizationStatusDescription"  class="statusDescriptionBlock threeCellTable">
 								
 							</div>
 							
@@ -101,11 +101,11 @@
 
 <script id="device-utilization" type="text/x-handlebars-template">
 {{#if Utilization}}
-<div>
+<div class="headerTable">
 <table><thead><tr><th>Serial Number</th><th>Target</th><th>Actual</th></tr></thead></table></div>
-			<div><table>
+			<div class="bodyTable" id="utilizationDetailsDiv{{id}}"><table>
 			{{#Utilization}}
-			<tr><td><a onclick="highLightInMap('{{id}}')">{{serialNumber}}</a></td>
+			<tr id="try_{{serialNumber}}"><td><a onclick="highLightInMap('{{id}}')">{{serialNumber}}</a></td>
 			<td>{{ExpectedLTPC}}</td><td>{{MonthlyAvgUsage}}</td></tr>
 			{{/Utilization}}
 			</table></div>	
@@ -192,27 +192,6 @@ function highLightInMap(id){
 <script type="text/javascript" src="<html:rootPath/>js/deviceStatus.js?version=0.02"></script>
 <script>
 $(document).ready(function(){
-	var ar = [];
-$('.headerTable table').width($('.bodyTable table').width());
-	$('.bodyTable tr').each(function(){
-	  $(this).children('td').each(function(){
-	      ar.push($(this).width())
-	      });
-	                     
-	                           
-	  return false;
-	});
-	console.log(ar);
-	var count = 0;
-	$('.headerTable tr').each(function(){
-	  $(this).children('th').each(function(){
-	    $(this).width(ar[count]);
-	    count++;
-	  });
-	                         
-	                             
-	  return false;
-	});
 	
 	$('#alerts_sup_dev').change(function(){
 		if($(this).val()==""){
