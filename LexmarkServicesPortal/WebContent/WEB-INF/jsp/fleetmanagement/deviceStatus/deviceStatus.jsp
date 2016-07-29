@@ -51,7 +51,7 @@
 							<div class="subMenuPanel">
 							</div>
 							<div id="utilization_pages" class="onlyDropdownMultiSelect"></div>
-							<div  id="utilizationStatusDescription"  class="statusDescriptionBlock">
+							<div  id="utilizationStatusDescription"  class="statusDescriptionBlock threeCellTable">
 								
 							</div>
 							
@@ -139,9 +139,8 @@
 <script id="device-utilization" type="text/x-handlebars-template">
 {{#if Utilization}}
 <div class="headerTable">
-<table><thead><tr><th><spring:message code="fleetmanagement.tableheaders.serialnumber"/></th><th><spring:message code="fleetmanagement.tableheaders.target"/></th><th><spring:message code="fleetmanagement.tableheaders.actual"/></th></tr></thead></table></div>
-<div class="bodyTable">
-<table>
+<table><thead><tr><th><spring:message code="fleetmanagement.tableheaders.serialnumber"/></th><th><spring:message code="fleetmanagement.tableheaders.expected"/></th><th><spring:message code="fleetmanagement.tableheaders.actual"/></th></tr></thead></table></div>
+<div class="bodyTable"><table>
 			{{#Utilization}}
 			<tr><td><a onclick="highLightInMap('{{id}}')">{{serialNumber}}</a></td>
 				<td>{{ExpectedLTPC}}</td><td>{{MonthlyAvgUsage}}</td></tr>
@@ -343,27 +342,6 @@ var mock={
 <script type="text/javascript" src="<html:rootPath/>js/deviceStatus.js?version=0.05"></script>
 <script>
 $(document).ready(function(){
-	var ar = [];
-	$('.headerTable table').width($('.bodyTable table').width());
-	$('.bodyTable tr').each(function(){
-	  $(this).children('td').each(function(){
-	      ar.push($(this).width())
-	      });
-	                     
-	                           
-	  return false;
-	});
-	console.log(ar);
-	var count = 0;
-	$('.headerTable tr').each(function(){
-	  $(this).children('th').each(function(){
-	    $(this).width(ar[count]);
-	    count++;
-	  });
-	                         
-	                             
-	  return false;
-	});
 	
 	$('#alerts_sup_dev').change(function(){
 		if($(this).val()==""){

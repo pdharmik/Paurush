@@ -1,5 +1,5 @@
 .journal-content-article {
-	margin:0 20px;
+	margin:0 20px !important;
 	border: none;
 	background-color:#fff !important;
 	height:25px !important;
@@ -11,7 +11,7 @@ margin:0px !important;
 height: auto;
 line-height:20px !important;
 }
-#ActionsMenu {
+#ActionsMenu,#addDevice_List {
 	border:1px solid #c9c9d1;
 	background:#fff;
 	margin-top: 0px;
@@ -23,6 +23,9 @@ line-height:20px !important;
 	z-index:1002!important;
 	position:absolute;
 	right:60px;
+}
+#addDevice_List .popup_arrow {
+    right: 0;
 }
 .createRequestMenu div:hover, #ActionsMenu div:hover, #FiltersMenu div:hover {
 	color:#1e68bc;
@@ -338,7 +341,6 @@ top:100px;
 }
 #preferenceAndFilter{
 clear: both;
-margin-top:5px;
 width:100%;
 }
 
@@ -1201,6 +1203,13 @@ float:right;
     text-align: left;
     display:none;
 }
+.statusDescriptionBlock .bodyTable {
+    height: 55px;
+    overflow: auto;
+}
+#utilizationStatusDescription td, #utilizationStatusDescription th {
+    width: 33%;
+}
 .fontBold{
 	font-weight:bold;
 }
@@ -1211,6 +1220,20 @@ float:right;
 .statusDescriptionBlock table tr td a{
 	cursor:pointer;
 	}
+.statusDescriptionBlock{
+	border-top: 1px solid #c9c9c1;
+    margin: 5px;
+    max-height: 100px;
+    text-align: left;
+    display:none;
+}
+.statusDescriptionBlock .bodyTable {
+    height: 55px;
+    overflow: auto;
+}
+#utilizationStatusDescription td, #utilizationStatusDescription th {
+    width: 33%;
+}
 #closelocation_history {
     margin: 3px 1px !important;
 }

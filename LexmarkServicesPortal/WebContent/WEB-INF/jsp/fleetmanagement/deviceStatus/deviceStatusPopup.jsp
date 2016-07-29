@@ -25,7 +25,7 @@
 					    </div>	
 						
 
-
+					
 					<div id="utilisationPopUpStatusDiv" class="deviceStatusSubHeader openSub">
 						<div  onclick="toggleClass('#utilisationPopUpStatusDiv','openSub');toggleSlide('#utilization-status-popup','up')">
 							<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.utilizationmonthlyaverage"/></span>
@@ -35,7 +35,8 @@
 						    <div class="subMenuPanel">
 						    </div>
 			            </div>
-			        </div>	
+			        </div>
+			       
 					<div id="reportsStatusspopUpStatusDiv" class="deviceStatusSubHeader openSub">
 						<div  onclick="toggleClass('#reportsStatusspopUpStatusDiv','openSub');toggleSlide('#report-status-popup','up')">
 							<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.reportingstatus"/></span>
@@ -46,7 +47,8 @@
 						    <div class="subMenuPanel">
 							</div>
 						</div>
-					</div>	
+					</div>
+					
 					<div id="expiredStatusspopUpStatusDiv" class="deviceStatusSubHeader openSub">
 						<div  onclick="toggleClass('#expiredStatusspopUpStatusDiv','openSub');toggleSlide('#expired-status-popup','up')">
 							<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.expiringTerms"/></span>
@@ -57,7 +59,7 @@
 						    <div class="subMenuPanel"></div>
 						</div>
 					</div>	
-				
+					
 				</div>
 				
 			</div>
@@ -93,18 +95,18 @@
 			</script>
 			<script id="utilization-popup-Details" type="text/x-handlebars-template">
 				
-				<table><thead><tr>fleetmanagement.tableheaders.expected
+				<table><thead><tr>
 				
-					<th style="border-left:0"><spring:message code="fleetmanagement.tableheaders.expected"/></th>
-					<th><spring:message code="fleetmanagement.tableheaders.actual"/></th>
+					<th style="border-left:0"><spring:message code="fleetmanagement.deviceStatusPopup.headers.actual"/></th>
+					<th><spring:message code="fleetmanagement.tableheaders.expected"/></th>
 					<th><spring:message code="deviceStatus.tbheader.utilizationLevel"/></th>
 					</tr>
 				</thead>
 				{{#if DeviceStatus.Utilization}}
 				{{#DeviceStatus.Utilization}}
 				
-				<tr><td>{{ExpectedLTPC}}</td>
-				<td>{{MonthlyAvgUsage}}</td>
+				<tr><td>{{MonthlyAvgUsage}}</td>
+				<td>{{ExpectedLTPC}}</td>
 				<td>{{UtilizationLevel}}</td></tr>
 				{{/DeviceStatus.Utilization}}
 				{{else}}
