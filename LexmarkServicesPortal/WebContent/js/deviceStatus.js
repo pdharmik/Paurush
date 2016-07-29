@@ -332,6 +332,7 @@ function DeviceStatus(){
 			if(respObj.Utilization){
 				$('#utilizationStatusDescriptionContent').html(templateDeviceUtil(respObj));
 				$('#utilizationStatusDescription').show();
+				divisionTable();
 			}else{
 				$('#utilizationStatusDescriptionContent').html('');
 				$('#utilizationStatusDescription').hide();
@@ -362,7 +363,27 @@ function DeviceStatus(){
 		    adjustLeftNav();
 		};
 	};
-
+	
+	function divisionTable(){
+		console.log("inside table");
+		var ar = [];
+		$('.headerTable table').width($('.bodyTable table').width());
+		$('.bodyTable tr').each(function(){
+			$(this).children('td').each(function(){
+		      ar.push($(this).width())
+		    });
+			return false;
+		});
+		console.log(ar);
+		var count = 0;
+		$('.headerTable tr').each(function(){
+		  $(this).children('th').each(function(){
+		    $(this).width(ar[count]);
+		    count++;
+		  });
+		  return false;
+		})
+	}
 	
 	
 
