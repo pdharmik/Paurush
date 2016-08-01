@@ -825,6 +825,7 @@ function Filters(){};
 					contentDiv="deviceContent";
 					detailsDiv="deviceDetails";
 					utilizationDetailsDiv = "utilizationDetailsDiv";
+					bodyDiv = "bodyTable"
 				}
 				else if(item=="placement"){
 					contentDiv="placementContent";
@@ -844,12 +845,11 @@ function Filters(){};
 				
 				jQuery('#'+detailsDiv+infoVal).addClass('greenBackground');
 				
-				$("#"+utilizationDetailsDiv).scrollTop(0);
-				
-				$("#"+utilizationDetailsDiv).animate({ 
-					scrollTop: ($('#'+contentDiv+infoVal).offset().top)-($("#"+utilizationDetailsDiv).offset().top) 
+				$(".bodyTable").scrollTop(0);
+				$('#try_'+infoVal).parent().parent().parent('.bodyTable').animate({ 
+					scrollTop: ($('#try_'+infoVal).offset().top)-($('#try_'+infoVal).parent().parent().parent('.bodyTable').offset().top) 
 					}, 1000);
-
+				
 			}
 			
 			
