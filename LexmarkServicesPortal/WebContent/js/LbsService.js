@@ -804,6 +804,12 @@ function Filters(){};
 					}, 1000);
 				
 				jQuery('#deviceDetails'+infoVal).addClass('greenBackground');
+				
+				$(".bodyTable").scrollTop(0);
+				$('#try_'+infoVal).parent().parent().parent('.bodyTable').animate({ 
+					scrollTop: ($('#try_'+infoVal).offset().top)-($('#try_'+infoVal).parent().parent().parent('.bodyTable').offset().top) 
+					}, 1000);
+				
 			}
 			
 			

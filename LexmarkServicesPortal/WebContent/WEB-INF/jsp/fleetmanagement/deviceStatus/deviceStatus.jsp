@@ -142,7 +142,7 @@
 <table><thead><tr><th><spring:message code="fleetmanagement.tableheaders.serialnumber"/></th><th><spring:message code="fleetmanagement.tableheaders.expected"/></th><th><spring:message code="fleetmanagement.tableheaders.actual"/></th></tr></thead></table></div>
 <div class="bodyTable"><table>
 			{{#Utilization}}
-			<tr><td><a onclick="highLightInMap('{{id}}')">{{serialNumber}}</a></td>
+			<tr id="try_{{id}}"><td><a onclick="highLightInMap('{{id}}')">{{serialNumber}}</a></td>
 				<td>{{ExpectedLTPC}}</td><td>{{MonthlyAvgUsage}}</td></tr>
 			{{/Utilization}}	
 </table></div>

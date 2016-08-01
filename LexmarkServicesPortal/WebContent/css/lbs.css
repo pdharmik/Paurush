@@ -1195,21 +1195,7 @@ float:right;
     position: absolute;
     right: 0;
 }
-.statusDescriptionBlock{
-	border-top: 1px solid #c9c9c1;
-    margin: 5px;
-    max-height: 100px;
-    overflow: auto;
-    text-align: left;
-    display:none;
-}
-.statusDescriptionBlock .bodyTable {
-    height: 55px;
-    overflow: auto;
-}
-#utilizationStatusDescription td, #utilizationStatusDescription th {
-    width: 33%;
-}
+
 .fontBold{
 	font-weight:bold;
 }
