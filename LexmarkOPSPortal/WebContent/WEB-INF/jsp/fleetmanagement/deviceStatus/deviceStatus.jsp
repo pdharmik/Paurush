@@ -105,7 +105,7 @@
 <table><thead><tr><th>Serial Number</th><th>Target</th><th>Actual</th></tr></thead></table></div>
 			<div class="bodyTable" id="utilizationDetailsDiv{{id}}"><table>
 			{{#Utilization}}
-			<tr id="try_{{serialNumber}}"><td><a onclick="highLightInMap('{{id}}')">{{serialNumber}}</a></td>
+			<tr id="try_{{id}}"><td><a onclick="highLightInMap('{{id}}')">{{serialNumber}}</a></td>
 			<td>{{ExpectedLTPC}}</td><td>{{MonthlyAvgUsage}}</td></tr>
 			{{/Utilization}}
 			</table></div>	
