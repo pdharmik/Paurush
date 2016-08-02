@@ -44,16 +44,15 @@ jQuery(".left-nav-header #homeLink").click(function(){
 	showHome();
 });
 
-function globalSearch(){
-	var searchNumber = document.getElementById("search").value;
-	//showOverlay();
-	//window.location.href='';
-	//window.location.href='<portlet:renderURL><portlet:param name="action" value="globalSearch" /></portlet:renderURL>';
-	raiseEvent("globalSearchList");
-	getDataForGlobalSearch({
-		  "searchNumber":searchNumber
-	  });
-	
+function globalSearch()
+{
+var res = document.getElementById("search").value;
+var searchNumber=res.replace(/lexmark/i,"");
+searchNumber.trim();
+raiseEvent("globalSearchList");
+getDataForGlobalSearch({
+"searchNumber":searchNumber
+});
 }
 
 </script>
