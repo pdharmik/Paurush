@@ -183,10 +183,55 @@ $theme.include($top_messages_include)
 		<div id="top-header-navigation" class="sort-pages modify-pages">
 	
 		<ul>
-		#if ($show_page_settings)
-			<li>#parse ("$full_templates_path/dock.vm")</li>
-		#else
-			<li><b><span>$user_greeting</span></b></li>
+			<li >
+				<a href="https://shop.lexmark.com/ecommerce/myaccount.do?cust_id=CUST-KAISER" $nav_child.getTarget()><span>My Account</span></a>							
+			</li>		
+			<li >
+				<a href="https://status.lexmark.com/web/guest/order-status" $nav_child.getTarget()><span>Order Status</span></a>							
+			</li>
+	
+			<li >
+				<a href="http://www.lexmark.com/b2b/order_help.html" $nav_child.getTarget()><span>Order Help</span></a>							
+			</li>	   
+		</ul>
+		
+		 
+		 </div>
+		 </div>
+		<div id="bottom-header">
+			<div id="bottom-header-navigation" class="sort-pages modify-pages">
+				<ul>
+					#foreach ($nav_item in $nav_items)
+						#if ($nav_item.hasChildren())
+						#if ($nav_item.getName() == "BottomHeader")
+								#foreach ($nav_child in $nav_item.getChildren())
+			
+									#if ($nav_child.isSelected())
+										#set ($nav_item_class = "selected")
+									#else
+										#set ($nav_item_class = "")
+									#end
+			
+						<li class="$nav_item_class">
+							<a href="$nav_child.getURL()" $nav_child.getTarget()><span>$nav_child.getName()</span></a>
+			
+						</li>
+								#end
+							#end
+			
+			
+						#end
+					#end
+			
+				</ul>
+			</div>
+		</div>
+		
+	</header>
+	<div id="content">
+		
+		#if ($has_navigation || $is_signed_in)
+			#parse ("$full_templates_path/top_navigation.vm")
 		#end
 		
 			<li>
