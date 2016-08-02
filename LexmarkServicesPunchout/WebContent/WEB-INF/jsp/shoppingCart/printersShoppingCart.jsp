@@ -19,10 +19,11 @@
 			<span>${cartBundle.itemId}</span><span>${cartBundle.itemName}</span><br/>
             <div class="item_Description">${cartBundle.itemDescription} </div>            
 			<div>Price:<span id="price_${cartBundle.itemId}">${cartBundle.price}</span></div>
-            <c:if test="${cartBundle.showOptions}">
+      <!--    <c:if test="${cartBundle.showOptions}">
             	<a href="javascript:gotToOptions('${cartBundle.itemId}')">Buy Options</a>
-            </c:if>
-            
+            </c:if> 
+		      
+	    -->
 	    </div>
 		<div class="quntity-cart-cntnr2">
 			<div class="quntyty-refresh-cntnr floatL">
