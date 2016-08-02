@@ -43,4 +43,9 @@
     </div>
 				    
 </c:forEach>
+
+<p> SubTotal is in US Dollars </p>
+<p>*Prices quoted on this Site,including prices appearing at checkout,DO NOT INCLUDE APPLICABLE TAXES OR AIR SHIPPING CHARGES AND WILL DIFFER FROM THE ACTUAL AMOUNT CHARGED.After receiving your order,Lexmark will notify you regarding the amount of taxes and shipping costs that apply to your order.Promotional offers and prices are for a limited period of time.Final order amounts,including tax and exact shipping, will be communicated following receipt of your online order</p>
+
+
    		 
