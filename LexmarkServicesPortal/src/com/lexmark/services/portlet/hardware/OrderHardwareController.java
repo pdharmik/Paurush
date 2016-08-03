@@ -2253,27 +2253,27 @@ public class OrderHardwareController extends BaseController {
 				}
 				
 				if(billTo.getCity()!=null && !billTo.getCity().equals("")){
-					sb.append(replaceNullWithBlankString(billTo.getCity()));
+					sb.append(replaceNullWithBlankString(StringEscapeUtils.escapeJavaScript(billTo.getCity())));
 					if((billTo.getState()!=null && !billTo.getState().equals("")) || (billTo.getCountry()!=null && !billTo.getCountry().equals(""))){
 						sb.append(",");
 					}
 				}
 				
 				if(billTo.getState()!=null && !billTo.getState().equals("")){
-					sb.append(replaceNullWithBlankString(billTo.getState()));
+					sb.append(replaceNullWithBlankString(StringEscapeUtils.escapeJavaScript(billTo.getState())));
 					if(billTo.getCountry()!=null && !billTo.getCountry().equals("")){
 						sb.append(",");
 					}
 				}
 				
 				if(billTo.getCountry()!=null && !billTo.getCountry().equals("")){
-					sb.append(replaceNullWithBlankString(billTo.getCountry()));
+					sb.append(replaceNullWithBlankString(StringEscapeUtils.escapeJavaScript(billTo.getCountry())));
 					if(billTo.getPostalCode()!=null && !billTo.getPostalCode().equals("")){
 						sb.append("<br/>");
 					}
 				}					
 				if(billTo.getPostalCode()!=null && !billTo.getPostalCode().equals("")){
-					sb.append(replaceNullWithBlankString(billTo.getPostalCode()));
+					sb.append(replaceNullWithBlankString(StringEscapeUtils.escapeJavaScript(billTo.getPostalCode())));
 				}
 				
 				sb.append("</div>");
