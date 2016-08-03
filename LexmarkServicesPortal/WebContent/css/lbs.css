@@ -1212,6 +1212,7 @@ float:right;
     max-height: 100px;
     text-align: left;
     display:none;
+    overflow:auto;
 }
 .statusDescriptionBlock .bodyTable {
     height: 55px;
