@@ -858,13 +858,14 @@ public class DocumentManagementServiceImpl implements DocumentManagementService 
 			logger.info("No of rows deleted "+rowsDeleted);
 			}
 			session.clear();
+			Session sessionInsertUpdate = HibernateUtil.getSession();
 			if(countryListArray.size()>0){
 				for(int i=0;i<countryListArray.size();i++){
 					logger.debug("in countryListArray for insert into db---"+countryListArray.size());
 					 Category_Country country = new Category_Country();
 					 country.setCategory_id_original(categoryId);
 					 country.setCountry(countryListArray.get(i));
-					 session.save(country);
+					 sessionInsertUpdate.save(country);
 				}
 			}
 			
