@@ -105,6 +105,10 @@ public class DocumentAdminController extends BaseController{
 
     @Autowired
     private GlobalLegalEntityService globalLegalEntityService;
+    
+    @Autowired 
+	private GeographyService geographyService; 
+    
 	@Resource
 	private List<GeographyListResult> allCountryList;
 
@@ -155,7 +159,9 @@ public class DocumentAdminController extends BaseController{
 		Map<String, String> countryMap = new HashMap<String, String>();
 		try{
 			
-			List<GeographyCountryContract> savedCountryList = (List<GeographyCountryContract>)allCountryList.get(0).getCountryList();
+			GeographyListResult countryListResult = geographyService.getCountryDetails();
+			List<GeographyCountryContract> savedCountryList = countryListResult.getCountryList();	
+		//	List<GeographyCountryContract> savedCountryList = (List<GeographyCountryContract>)allCountryList.get(0).getCountryList();
 			for(int i =0;i<countryListForUser.size();i++){
 				logger.debug("countryListForUser are "+countryListForUser.size());
 				logger.debug("countryListForUser are "+countryListForUser.get(i));
