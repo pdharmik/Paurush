@@ -27,6 +27,7 @@ public class AccountAccess implements Serializable{
 	
 	private String createMapSRFlag;
 	private String fleetManagerFlag;
+	private String lbsUtilization;
 	
 	public String getCreateServiceReqFlag() {
 		return createServiceReqFlag;
@@ -123,6 +124,14 @@ public class AccountAccess implements Serializable{
 	}
 	public String getShowB2BRequestFlag() {
 		return showB2BRequestFlag;
+	}
+
+
+	public String getLbsUtilization() {
+		return lbsUtilization;
+	}
+	public void setLbsUtilization(String lbsUtilization) {
+		this.lbsUtilization = lbsUtilization;
 	}
 
 

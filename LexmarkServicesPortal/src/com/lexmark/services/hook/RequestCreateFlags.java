@@ -41,6 +41,7 @@ public class RequestCreateFlags {
 	private static final String CREATE_MAP_REQUEST = "CREATE MAP REQUEST";
 	private static final String FLEET_MANAGER_FLAG = "FLEET MANAGER FLAG";
 	private static final String SHOW_B2B_REQUEST = "SHOW B2B FLAG";
+	private static final String LBS_UTILIZATION = "LBS UTILIZATION";
 	
 	private static Logger logger = LogManager.getLogger(RequestCreateFlags.class);
 	/**
@@ -180,7 +181,8 @@ public class RequestCreateFlags {
 						requestAccessMap.put(SHOW_SERVICE_REQUEST, accountReqAccess.getShowServiceReqFlag());
 						requestAccessMap.put(SHOW_SUPPLIES_REQUEST, accountReqAccess.getShowSuppliesReqFlag());
 						requestAccessMap.put(SHOW_CHANGE_MGMT_REQUEST, accountReqAccess.getShowAccountMgmtReqFlag());
-						requestAccessMap.put(SHOW_HARDWARE_REQUEST, accountReqAccess.getShowHardwareReqFlag());// Added for Hardware Request in MPS2.1
+						requestAccessMap.put(SHOW_HARDWARE_REQUEST, accountReqAccess.getShowHardwareReqFlag());
+						requestAccessMap.put(LBS_UTILIZATION, accountReqAccess.getLbsUtilization());// Added for Hardware Request in MPS2.1
 						
 					}else if(userType != null && userType.equalsIgnoreCase("Customer")){
 						if((showServiceReq != null && showServiceReq.equalsIgnoreCase("true")) && accountReqAccess.getShowServiceReqFlag().equalsIgnoreCase("true")){
@@ -221,9 +223,10 @@ public class RequestCreateFlags {
 				int count = 0;
 				while(itr.hasNext()){
 					String key = itr.next();
-					if((key.equals(SHOW_SERVICE_REQUEST) || key.equals(SHOW_SUPPLIES_REQUEST) || key.equals(SHOW_CHANGE_MGMT_REQUEST) || key.equals(SHOW_HARDWARE_REQUEST))
-						&& requestAccessMap.get(key).equalsIgnoreCase("true")){
-							count ++;
+					if(((key.equals(SHOW_SERVICE_REQUEST) || key.equals(SHOW_SUPPLIES_REQUEST) || key.equals(SHOW_CHANGE_MGMT_REQUEST) || key.equals(SHOW_HARDWARE_REQUEST)) && 
+							requestAccessMap.get(key).equalsIgnoreCase("true")) || ((key.equals(LBS_UTILIZATION) && requestAccessMap.get(key).equalsIgnoreCase("true")) || 
+									((key.equals(LBS_UTILIZATION) && requestAccessMap.get(key).equalsIgnoreCase("false"))))){
+										count ++;
 					}
 					
 				}
@@ -266,7 +269,7 @@ public class RequestCreateFlags {
 							}
 						
 						
-						
+						requestAccessMap.put(LBS_UTILIZATION, accountReqAccess.getLbsUtilization());
 						requestAccessMap.put(CREATE_HARDWARE_REQUEST, accountReqAccess.getCreateHardwareReqFlag());// Added for Hardware Request in MPS2.1
 						requestAccessMap.put(CREATE_MAP_REQUEST, accountReqAccess.getCreateMapSRFlag());//LBS MapSR Flag
 						requestAccessMap.put(FLEET_MANAGER_FLAG, accountReqAccess.getFleetManagerFlag());//LBS MapSR Flag
@@ -357,6 +360,13 @@ public class RequestCreateFlags {
 							}else{
 								requestAccessMap.put(FLEET_MANAGER_FLAG, "false");
 							}
+							
+							if((accountReqAccess.getLbsUtilization() == null || accountReqAccess.getLbsUtilization() == "") && accountReqAccess.getLbsUtilization().equalsIgnoreCase("true")){
+								requestAccessMap.put(LBS_UTILIZATION, "true");
+							}else if((accountReqAccess.getLbsUtilization() != null || accountReqAccess.getLbsUtilization() != "") && accountReqAccess.getLbsUtilization().equalsIgnoreCase("false")){
+								requestAccessMap.put(LBS_UTILIZATION, "false");
+							}
+							
 					}else{
 						logger.debug("***Customer does not have Create access*****");
 						requestAccessMap.put(CREATE_SERVICE_REQUEST, "False");
@@ -417,6 +427,11 @@ public class RequestCreateFlags {
 					logger.debug("FLEET_MANAGER_FLAG is there" + requestAccessMap.get(FLEET_MANAGER_FLAG));
 					//session.setAttribute("fleetManageDropFlag", requestAccessMap.get(FLEET_MANAGER_FLAG));
 				}
+				
+				if(requestAccessMap != null && requestAccessMap.containsKey(LBS_UTILIZATION)){
+					logger.debug("LBS Utilization ========= " + requestAccessMap.get(LBS_UTILIZATION));
+				}
+				
 				logger.debug("requestAccessMap in chk user roles is -->" + requestAccessMap);
 				//session.setAttribute(ChangeMgmtConstant.USERACCESSMAPATTRIBUTEFORSR, requestAccessMap);
 				
@@ -458,7 +473,7 @@ public class RequestCreateFlags {
 		 
 		/*Added for B2B Request MPS 15.7*/
 		String showB2BRequestFlag="false"; 
-		
+		String lbsUtilization = "";
 	    	
 		AccountAccess acctRequestAccess = new AccountAccess();
 			logger.debug("-------------retrieveSiebelAccountList ended---------accountList Size:"+accountList.size());
@@ -508,6 +523,17 @@ public class RequestCreateFlags {
 						//showFleetManagerFlag = "true";
 						createMapSRFlag = "true";
 					}
+					
+					if(account.getLbsUtilization() == null || account.getLbsUtilization() == ""){
+						lbsUtilization = "true";
+						logger.debug("NULL & BLANK = = = ");
+						}
+						else if(account.getLbsUtilization() != null && (account.getLbsUtilization().equalsIgnoreCase("Expiring") || 
+								account.getLbsUtilization().equalsIgnoreCase("Utilization") || account.getLbsUtilization().equalsIgnoreCase("Utilization and Expiring"))){
+						lbsUtilization = "false";
+						logger.debug("Expiring / Utilization / Utilization&Expiring === ");
+						}
+					
 					/* b2b requests*/
 					logger.debug("b2b flag is------"+account.getB2bFlag());
 					if(account.getB2bFlag().equalsIgnoreCase("Y")){
@@ -532,6 +558,8 @@ public class RequestCreateFlags {
 				//Added for B2B Requests
 				acctRequestAccess.setShowB2BRequestFlag(showB2BRequestFlag);
 				
+				acctRequestAccess.setLbsUtilization(lbsUtilization);
+				
 				logger.debug("MPS*** Verify SHOW Account Level Flags Starts"); 
 				logger.debug(
 						"	SHOW Supplies Req:"+acctRequestAccess.getShowSuppliesReqFlag()+
@@ -549,7 +577,7 @@ public class RequestCreateFlags {
 						" SHOW B2B Requests Flag:"+acctRequestAccess.getShowB2BRequestFlag());
 				logger.debug("NPS*** Verify Create Account Level Flags Ends");
 				
-				
+				logger.debug("LBS UTILIZATION: " + acctRequestAccess.getLbsUtilization());
 			 
 	    
 	    logger.debug("[out verifyRequestAccessFlag4Acct]");

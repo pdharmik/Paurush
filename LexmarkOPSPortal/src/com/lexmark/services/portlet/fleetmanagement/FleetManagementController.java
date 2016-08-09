@@ -38,6 +38,7 @@ import com.lexmark.contract.AssetListContract;
 import com.lexmark.contract.LBSAssetListContract;
 import com.lexmark.contract.LBSCHLContract;
 import com.lexmark.contract.UserFilterSettingContract;
+import com.lexmark.domain.AccountAccess;
 import com.lexmark.domain.Asset;
 import com.lexmark.domain.SiebelLocalization.SiebelLocalizationOptionEnum;
 import com.lexmark.domain.UserFieldsViewSetting;
@@ -105,6 +106,7 @@ public class FleetManagementController extends BaseController{
 	private UserFilterSettingService filterFieldService;
 	
 	private String lbsEndpointURL;
+	private String LBS_UTILIZATION = "LBS UTILIZATION";
 	
 	/**
 	 * @param model 
@@ -166,11 +168,17 @@ public class FleetManagementController extends BaseController{
 		form.setBackInfo(StringUtils.isNotBlank(backJson)==true?StringEscapeUtils.escapeJavaScript(backJson):"");
 		setFleetManagementDataToForm(request,form,model);
 		
+		Map<String,String> requestAccessMap = (Map<String, String>) session.getAttribute(ChangeMgmtConstant.USERACCESSMAPATTRIBUTEFORSR, PortletSession.APPLICATION_SCOPE);
+		LOGGER.debug("MAP ReqeustAccessMap = == " + requestAccessMap);
+		String lbsUtilization = requestAccessMap.get(LBS_UTILIZATION);
 		form.setCompanyName(PortalSessionUtil.getServiceUser(session).getCompanyName());
 		model.addAttribute("fleetMgmtForm", form);
 		request.setAttribute("fleetManagementFlag", "true");
 		model.addAttribute("fleetManagementFlag", "true");
+		model.addAttribute("lbsUtilization", lbsUtilization);
+
 		LOGGER.debug("Setting fleetManagementFlag to true in fleet");
+		LOGGER.debug("lbsUtilization : " + lbsUtilization);
 		
 		
 		return "fleetmanagement/defaultView";
