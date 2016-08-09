@@ -90,16 +90,16 @@
 			<script id="utilization-popup-Details" type="text/x-handlebars-template">
 				
 				<table><thead><tr>
-					<th style="border-left:0">Actual</th>
-					<th>Target</th>
+					<th style="border-left:0">Target</th>
+					<th>Actual</th>
 					<th>Utilization Level</th>
 					</tr>
 				</thead>
 				{{#if DeviceStatus.Utilization}}
 				{{#DeviceStatus.Utilization}}
 				
-				<tr><td>{{MonthlyAvgUsage}}</td>
-				<td>{{ExpectedLTPC}}</td>
+				<tr><td>{{ExpectedLTPC}}</td>
+				<td>{{MonthlyAvgUsage}}</td>
 				<td>{{UtilizationLevel}}</td></tr>
 				{{/DeviceStatus.Utilization}}	
 				{{else}}

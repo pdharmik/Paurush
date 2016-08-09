@@ -97,16 +97,16 @@
 				
 				<table><thead><tr>
 				
-					<th style="border-left:0"><spring:message code="fleetmanagement.deviceStatusPopup.headers.actual"/></th>
-					<th><spring:message code="fleetmanagement.tableheaders.expected"/></th>
+					<th style="border-left:0"><spring:message code="fleetmanagement.tableheaders.expected"/></th>
+					<th><spring:message code="fleetmanagement.deviceStatusPopup.headers.actual"/></th>
 					<th><spring:message code="deviceStatus.tbheader.utilizationLevel"/></th>
 					</tr>
 				</thead>
 				{{#if DeviceStatus.Utilization}}
 				{{#DeviceStatus.Utilization}}
 				
-				<tr><td>{{MonthlyAvgUsage}}</td>
-				<td>{{ExpectedLTPC}}</td>
+				<tr><td>{{ExpectedLTPC}}</td>
+				<td>{{MonthlyAvgUsage}}</td>
 				<td>{{UtilizationLevel}}</td></tr>
 				{{/DeviceStatus.Utilization}}
 				{{else}}
