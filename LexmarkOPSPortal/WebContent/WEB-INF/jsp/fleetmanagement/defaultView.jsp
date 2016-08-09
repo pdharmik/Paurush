@@ -155,7 +155,8 @@ ${header['user-agent']} showCapture=${showCapture}
 	<div class="map">
 	<%-- LBS 1.5 Changes start--%>
 	<div id="deviceStatusContent">
-		<jsp:include page="/WEB-INF/jsp/fleetmanagement/deviceStatus/deviceStatus-home.jsp"/>
+		<%-- <jsp:include page="/WEB-INF/jsp/fleetmanagement/deviceStatus/deviceStatus-home.jsp" /> --%>
+		<%@ include file="/WEB-INF/jsp/fleetmanagement/deviceStatus/deviceStatus-home.jsp" %>
 	</div>
 	<%-- LBS 1.5 Changes ENDS --%>
 			<jsp:include page="maps-iframe.jsp"></jsp:include>

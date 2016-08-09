@@ -101,6 +101,7 @@ public class FleetManagementController extends BaseController{
 	private LBSCHLMappingService lBSCHLMappingService;
 	
 	private String lbsEndpointURL;
+	private String LBS_UTILIZATION = "LBS UTILIZATION";
 	
 	/**
 	 * @param model 
@@ -152,10 +153,15 @@ public class FleetManagementController extends BaseController{
 		form.setCompanyName(PortalSessionUtil.getLdapUserData(session,LexmarkConstants.COMPANYNAME));
 		//Ends lbs 1.5
 		
+		Map<String,String> requestAccessMap = (Map<String, String>) session.getAttribute(ChangeMgmtConstant.USERACCESSMAPATTRIBUTEFORSR, PortletSession.APPLICATION_SCOPE);
+		LOGGER.debug("MAP ReqeustAccessMap = == " + requestAccessMap);
+		String lbsUtilization = requestAccessMap.get(LBS_UTILIZATION);
 		model.addAttribute("fleetMgmtForm", form);
 		request.setAttribute("fleetManagementFlag", "true");
 		model.addAttribute("fleetManagementFlag", "true");
+		model.addAttribute("lbsUtilization", lbsUtilization);
 		LOGGER.debug("Setting fleetManagementFlag to true in fleet");
+		LOGGER.debug("lbsUtilization : " + lbsUtilization);
 		
 		
 		return "fleetmanagement/defaultView";
