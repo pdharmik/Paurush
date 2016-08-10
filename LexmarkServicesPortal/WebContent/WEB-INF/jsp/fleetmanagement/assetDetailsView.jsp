@@ -241,8 +241,8 @@
 				</div>
 			</div>
 			<div class="createRequestMenu" id="createRequestMenu{{id}}" style="display:none;">
-					<span class="popup_arrow">
-						<span class="popup_arrow-inner"></span>
+					<span class="popup_arrow_low">
+						<span class="popup_arrow-inner_low"></span>
 					</span>
 									<c:if test="${fleetMgmtForm.showSupplies}">
 										<div><a class="cursor-pointer" onClick="createSuppliesRequest('{{id}}');"><spring:message code='lbs.label.supplies'/></a></div>
