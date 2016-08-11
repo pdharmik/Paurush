@@ -126,9 +126,13 @@ tr.altRow td { background-color:#f0f0f0 !important; }
 				</div>
 			<h2  class="accordion-header">Specs</h2>
 				<div class="accordion-content">
-					<ul class="specs-list">                  
+					<ul class="specs-list"> 
+						               
 						<li class="arrowLi size_in">Size (in. - H x W x D) :{{size_in}}</li>                       
-						<li class="arrowLi packagedSize_in">Size (in. - H x W x D) :{{packagedSize_in}}</li>                      
+						<li class="arrowLi packagedSize_in">Size (in. - H x W x D) :{{packagedSize_in}}</li>
+						<li class= "arrowLi not_bundle">Print Speed(letter Black)Up to : {{printSpeedLetterBlack}}</li> 
+						<li class= "arrowLi not_bundle">Print Speed(letter Black) Duplex Up to: {{printSpeedLetterBlackDuplex}}</li>
+						<li class= "arrowLi not_bundle">Time to first Page Black(As Fast As) : {{timeToFirstPageBlack}}</li>                       
 						<li class="arrowLi not_bundle">Print Resolution Black :{{printResolutionBlack}}</li>
 						<li class="arrowLi not_bundle">Print Resolution Color :{{printResolutionColor}}</li>
 						<li class="arrowLi">Country of Origin :{{countryOfOrigin}}</li>
