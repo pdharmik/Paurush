@@ -28,6 +28,9 @@ public class AccountAccess implements Serializable{
 	private String createMapSRFlag;
 	private String fleetManagerFlag;
 	private String lbsUtilization;
+	private String lbsExpiring;
+	private String lbsUtilizationExpiring;
+	private String lbsNoAccess;
 	
 	public String getCreateServiceReqFlag() {
 		return createServiceReqFlag;
@@ -132,6 +135,30 @@ public class AccountAccess implements Serializable{
 	}
 	public void setLbsUtilization(String lbsUtilization) {
 		this.lbsUtilization = lbsUtilization;
+	}
+
+
+	public String getLbsExpiring() {
+		return lbsExpiring;
+	}
+	public void setLbsExpiring(String lbsExpiring) {
+		this.lbsExpiring = lbsExpiring;
+	}
+
+
+	public String getLbsUtilizationExpiring() {
+		return lbsUtilizationExpiring;
+	}
+	public void setLbsUtilizationExpiring(String lbsUtilizationExpiring) {
+		this.lbsUtilizationExpiring = lbsUtilizationExpiring;
+	}
+
+
+	public String getLbsNoAccess() {
+		return lbsNoAccess;
+	}
+	public void setLbsNoAccess(String lbsNoAccess) {
+		this.lbsNoAccess = lbsNoAccess;
 	}
 
 

@@ -1247,3 +1247,6 @@ float:right;
 .noDisplay{
 	display:none;	
 }
+.avoid-clicks {
+  pointer-events: none;
+}
