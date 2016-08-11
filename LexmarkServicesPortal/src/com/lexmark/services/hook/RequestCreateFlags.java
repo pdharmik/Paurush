@@ -41,7 +41,10 @@ public class RequestCreateFlags {
 	private static final String CREATE_MAP_REQUEST = "CREATE MAP REQUEST";
 	private static final String FLEET_MANAGER_FLAG = "FLEET MANAGER FLAG";
 	private static final String SHOW_B2B_REQUEST = "SHOW B2B FLAG";
-	private static final String LBS_UTILIZATION = "LBS UTILIZATION";
+	private static final String LBS_UTILIZATION = "lbsUtilization";
+	private static final String LBS_EXPIRING = "lbsExpiring";
+	private static final String LBS_UTILIZATION_EXPIRING = "lbsUtilizationExpiring";
+	private static final String LBS_NO_ACCESS = "lbsNoAccess";
 	
 	private static Logger logger = LogManager.getLogger(RequestCreateFlags.class);
 	/**
@@ -167,7 +170,22 @@ public class RequestCreateFlags {
 						}
 					}
 					
-				
+					if(accountReqAccess.getLbsExpiring().equalsIgnoreCase("Expiring")){
+						logger.debug("Expiring 2");
+						requestAccessMap.put(LBS_EXPIRING, "Expiring");
+					}
+					if(accountReqAccess.getLbsUtilization().equalsIgnoreCase("Utilization")){
+						logger.debug("Utilization 2");
+						requestAccessMap.put(LBS_UTILIZATION, "Utilization");
+					}
+					if(accountReqAccess.getLbsUtilizationExpiring().equalsIgnoreCase("Utilization and Expiring")){
+						logger.debug("Utilization and Expiring 5");
+						requestAccessMap.put(LBS_UTILIZATION_EXPIRING, "Utilization and Expiring");
+					}
+					if(accountReqAccess.getLbsNoAccess().equalsIgnoreCase("No Access")){
+						logger.debug("Null/Blank 2");
+						requestAccessMap.put(LBS_NO_ACCESS, "No Access");
+					}
 				}
 				
 				if (accountReqAccess != null){
@@ -181,8 +199,7 @@ public class RequestCreateFlags {
 						requestAccessMap.put(SHOW_SERVICE_REQUEST, accountReqAccess.getShowServiceReqFlag());
 						requestAccessMap.put(SHOW_SUPPLIES_REQUEST, accountReqAccess.getShowSuppliesReqFlag());
 						requestAccessMap.put(SHOW_CHANGE_MGMT_REQUEST, accountReqAccess.getShowAccountMgmtReqFlag());
-						requestAccessMap.put(SHOW_HARDWARE_REQUEST, accountReqAccess.getShowHardwareReqFlag());
-						requestAccessMap.put(LBS_UTILIZATION, accountReqAccess.getLbsUtilization());// Added for Hardware Request in MPS2.1
+						requestAccessMap.put(SHOW_HARDWARE_REQUEST, accountReqAccess.getShowHardwareReqFlag());// Added for Hardware Request in MPS2.1
 						
 					}else if(userType != null && userType.equalsIgnoreCase("Customer")){
 						if((showServiceReq != null && showServiceReq.equalsIgnoreCase("true")) && accountReqAccess.getShowServiceReqFlag().equalsIgnoreCase("true")){
@@ -208,6 +225,23 @@ public class RequestCreateFlags {
 						}else{
 							requestAccessMap.put(SHOW_HARDWARE_REQUEST, "false");
 						}
+						
+						if(accountReqAccess.getLbsExpiring().equalsIgnoreCase("Expiring")){
+							logger.debug("Expiring 2");
+							requestAccessMap.put(LBS_EXPIRING, "Expiring");
+						}
+						if(accountReqAccess.getLbsUtilization().equalsIgnoreCase("Utilization")){
+							logger.debug("Utilization 2");
+							requestAccessMap.put(LBS_UTILIZATION, "Utilization");
+						}
+						if(accountReqAccess.getLbsUtilizationExpiring().equalsIgnoreCase("Utilization and Expiring")){
+							logger.debug("Utilization and Expiring 5");
+							requestAccessMap.put(LBS_UTILIZATION_EXPIRING, "Utilization and Expiring");
+						}
+						if(accountReqAccess.getLbsNoAccess().equalsIgnoreCase("No Access")){
+							logger.debug("Null/Blank 2");
+							requestAccessMap.put(LBS_NO_ACCESS, "No Access");
+						}
 					}
 				}else{
 					logger.debug("***Customer does not have Request History access*****");
@@ -224,8 +258,10 @@ public class RequestCreateFlags {
 				while(itr.hasNext()){
 					String key = itr.next();
 					if(((key.equals(SHOW_SERVICE_REQUEST) || key.equals(SHOW_SUPPLIES_REQUEST) || key.equals(SHOW_CHANGE_MGMT_REQUEST) || key.equals(SHOW_HARDWARE_REQUEST)) && 
-							requestAccessMap.get(key).equalsIgnoreCase("true")) || ((key.equals(LBS_UTILIZATION) && requestAccessMap.get(key).equalsIgnoreCase("true")) || 
-									((key.equals(LBS_UTILIZATION) && requestAccessMap.get(key).equalsIgnoreCase("false"))))){
+							requestAccessMap.get(key).equalsIgnoreCase("true")) && ((key.equals(LBS_EXPIRING) && requestAccessMap.get(key).equalsIgnoreCase("Expiring")) || 
+									(key.equals(LBS_UTILIZATION) && requestAccessMap.get(key).equalsIgnoreCase("Utilization"))
+									|| (key.equals(LBS_UTILIZATION_EXPIRING) && requestAccessMap.get(key).equalsIgnoreCase("Utilization and Expiring")) || 
+									(key.equals(LBS_NO_ACCESS) && requestAccessMap.get(key).equalsIgnoreCase("No Access")))){
 										count ++;
 					}
 					
@@ -268,8 +304,6 @@ public class RequestCreateFlags {
 								requestAccessMap.put(CREATE_CHANGE_MGMT_REQUEST, accountReqAccess.getCreateAccountMgmtReqFlag());
 							}
 						
-						
-						requestAccessMap.put(LBS_UTILIZATION, accountReqAccess.getLbsUtilization());
 						requestAccessMap.put(CREATE_HARDWARE_REQUEST, accountReqAccess.getCreateHardwareReqFlag());// Added for Hardware Request in MPS2.1
 						requestAccessMap.put(CREATE_MAP_REQUEST, accountReqAccess.getCreateMapSRFlag());//LBS MapSR Flag
 						requestAccessMap.put(FLEET_MANAGER_FLAG, accountReqAccess.getFleetManagerFlag());//LBS MapSR Flag
@@ -361,10 +395,21 @@ public class RequestCreateFlags {
 								requestAccessMap.put(FLEET_MANAGER_FLAG, "false");
 							}
 							
-							if((accountReqAccess.getLbsUtilization() == null || accountReqAccess.getLbsUtilization() == "") && accountReqAccess.getLbsUtilization().equalsIgnoreCase("true")){
-								requestAccessMap.put(LBS_UTILIZATION, "true");
-							}else if((accountReqAccess.getLbsUtilization() != null || accountReqAccess.getLbsUtilization() != "") && accountReqAccess.getLbsUtilization().equalsIgnoreCase("false")){
-								requestAccessMap.put(LBS_UTILIZATION, "false");
+							if(accountReqAccess.getLbsExpiring().equalsIgnoreCase("Expiring")){
+								logger.debug("Expiring 2");
+								requestAccessMap.put(LBS_EXPIRING, "Expiring");
+							}
+							if(accountReqAccess.getLbsUtilization().equalsIgnoreCase("Utilization")){
+								logger.debug("Utilization 2");
+								requestAccessMap.put(LBS_UTILIZATION, "Utilization");
+							}
+							if(accountReqAccess.getLbsUtilizationExpiring().equalsIgnoreCase("Utilization and Expiring")){
+								logger.debug("Utilization and Expiring 5");
+								requestAccessMap.put(LBS_UTILIZATION_EXPIRING, "Utilization and Expiring");
+							}
+							if(accountReqAccess.getLbsNoAccess().equalsIgnoreCase("No Access")){
+								logger.debug("Null/Blank 2");
+								requestAccessMap.put(LBS_NO_ACCESS, "No Access");
 							}
 							
 					}else{
@@ -431,6 +476,15 @@ public class RequestCreateFlags {
 				if(requestAccessMap != null && requestAccessMap.containsKey(LBS_UTILIZATION)){
 					logger.debug("LBS Utilization ========= " + requestAccessMap.get(LBS_UTILIZATION));
 				}
+				if(requestAccessMap != null && requestAccessMap.containsKey(LBS_EXPIRING)){
+					logger.debug("LBS Expiring ========= " + requestAccessMap.get(LBS_EXPIRING));
+				}
+				if(requestAccessMap != null && requestAccessMap.containsKey(LBS_UTILIZATION_EXPIRING)){
+					logger.debug("LBS Utilization Expiring ========= " + requestAccessMap.get(LBS_UTILIZATION_EXPIRING));
+				}
+				if(requestAccessMap != null && requestAccessMap.containsKey(LBS_NO_ACCESS)){
+					logger.debug("LBS No Access ========= " + requestAccessMap.get(LBS_NO_ACCESS));
+				}
 				
 				logger.debug("requestAccessMap in chk user roles is -->" + requestAccessMap);
 				//session.setAttribute(ChangeMgmtConstant.USERACCESSMAPATTRIBUTEFORSR, requestAccessMap);
@@ -474,6 +528,9 @@ public class RequestCreateFlags {
 		/*Added for B2B Request MPS 15.7*/
 		String showB2BRequestFlag="false"; 
 		String lbsUtilization = "";
+		String lbsExpiring = "";
+		String lbsUtilizationExpiring = "";
+		String lbsNoAccess = "";
 	    	
 		AccountAccess acctRequestAccess = new AccountAccess();
 			logger.debug("-------------retrieveSiebelAccountList ended---------accountList Size:"+accountList.size());
@@ -524,15 +581,76 @@ public class RequestCreateFlags {
 						createMapSRFlag = "true";
 					}
 					
-					if(account.getLbsUtilization() == null || account.getLbsUtilization() == ""){
-						lbsUtilization = "true";
-						logger.debug("NULL & BLANK = = = ");
-						}
-						else if(account.getLbsUtilization() != null && (account.getLbsUtilization().equalsIgnoreCase("Expiring") || 
-								account.getLbsUtilization().equalsIgnoreCase("Utilization") || account.getLbsUtilization().equalsIgnoreCase("Utilization and Expiring"))){
-						lbsUtilization = "false";
-						logger.debug("Expiring / Utilization / Utilization&Expiring === ");
-						}
+					if((account.getLbsUtilization() == null || account.getLbsUtilization() == "") && account.getLbsUtilization().equalsIgnoreCase("Utilization")){
+						lbsUtilization = "Utilization";
+						logger.debug("Null/Blank and Utilization = " + lbsUtilization);
+					}
+					else if((account.getLbsUtilization() == null || account.getLbsUtilization() == "") && account.getLbsUtilization().equalsIgnoreCase("Utilization and Expiring")){
+						lbsUtilizationExpiring = "Utilization and Expiring";
+						logger.debug("Null/Blank and Utilization and Expiring 1 = " + lbsUtilizationExpiring);
+					}
+					else if((account.getLbsUtilization() == null || account.getLbsUtilization() == "") && account.getLbsUtilization().equalsIgnoreCase("Expiring")){
+						lbsExpiring = "Expiring";
+						logger.debug("Null/Blank and Expiring = " + lbsExpiring);
+					}
+					else if((account.getLbsUtilization() == null || account.getLbsUtilization() == "") && account.getLbsUtilization().equalsIgnoreCase("Expiring")
+							&& account.getLbsUtilization().equalsIgnoreCase("Utilization and Expiring") && account.getLbsUtilization().equalsIgnoreCase("Utilization")){
+						lbsUtilizationExpiring = "Utilization and Expiring";
+						logger.debug("Null/Blank and Utilization and Expiring 2 = " + lbsUtilizationExpiring);
+					}
+					else if((account.getLbsUtilization() == null || account.getLbsUtilization() == "") && account.getLbsUtilization().equalsIgnoreCase("Expiring")
+							&& account.getLbsUtilization().equalsIgnoreCase("Utilization and Expiring")){
+						lbsUtilizationExpiring = "Utilization and Expiring";
+						logger.debug("Null/Blank and Utilization and Expiring 3 = " + lbsUtilizationExpiring);
+					}
+					else if((account.getLbsUtilization() == null || account.getLbsUtilization() == "") && account.getLbsUtilization().equalsIgnoreCase("Expiring")
+							&& account.getLbsUtilization().equalsIgnoreCase("Utilization")){
+						lbsUtilizationExpiring = "Utilization and Expiring";
+						logger.debug("Null/Blank and Utilization and Expiring 4 = " + lbsUtilizationExpiring);
+					}
+					else if((account.getLbsUtilization() == null || account.getLbsUtilization() == "") && account.getLbsUtilization().equalsIgnoreCase("Utilization and Expiring")
+							&& account.getLbsUtilization().equalsIgnoreCase("Utilization")){
+						lbsUtilizationExpiring = "Utilization and Expiring";
+						logger.debug("Null/Blank and Utilization and Expiring 8 = " + lbsUtilizationExpiring);
+					}
+					else if(account.getLbsUtilization() == null || account.getLbsUtilization() == ""){
+						lbsNoAccess = "No Access";
+						logger.debug("Null/Blank = " + lbsNoAccess);
+					}
+					
+					else if((account.getLbsUtilization() != null || account.getLbsUtilization() != "") && account.getLbsUtilization().equalsIgnoreCase("Utilization")){
+						lbsUtilization = "Utilization";
+						logger.debug("Null/Blank and Utilization = " + lbsUtilization);
+					}
+					else if((account.getLbsUtilization() != null || account.getLbsUtilization() != "") && account.getLbsUtilization().equalsIgnoreCase("Utilization and Expiring")){
+						lbsUtilizationExpiring = "Utilization and Expiring";
+						logger.debug("Null/Blank and Utilization and Expiring 1 = " + lbsUtilizationExpiring);
+					}
+					else if((account.getLbsUtilization() != null || account.getLbsUtilization() != "") && account.getLbsUtilization().equalsIgnoreCase("Expiring")){
+						lbsExpiring = "Expiring";
+						logger.debug("Null/Blank and Expiring = " + lbsUtilization);
+					}
+					else if((account.getLbsUtilization() != null || account.getLbsUtilization() != "") && account.getLbsUtilization().equalsIgnoreCase("Expiring")
+							&& account.getLbsUtilization().equalsIgnoreCase("Utilization and Expiring") && account.getLbsUtilization().equalsIgnoreCase("Utilization")){
+						lbsUtilizationExpiring = "Utilization and Expiring";
+						logger.debug("Null/Blank and Utilization and Expiring 2 = " + lbsUtilizationExpiring);
+					}
+					else if((account.getLbsUtilization() != null || account.getLbsUtilization() != "") && account.getLbsUtilization().equalsIgnoreCase("Expiring")
+							&& account.getLbsUtilization().equalsIgnoreCase("Utilization and Expiring")){
+						lbsUtilizationExpiring = "Utilization and Expiring";
+						logger.debug("Null/Blank and Utilization and Expiring 3 = " + lbsUtilizationExpiring);
+					}
+					else if((account.getLbsUtilization() != null || account.getLbsUtilization() != "") && account.getLbsUtilization().equalsIgnoreCase("Expiring")
+							&& account.getLbsUtilization().equalsIgnoreCase("Utilization")){
+						lbsUtilizationExpiring = "Utilization and Expiring";
+						logger.debug("Null/Blank and Utilization and Expiring 4 = " + lbsUtilizationExpiring);
+					}
+					else if((account.getLbsUtilization() != null || account.getLbsUtilization() != "") && account.getLbsUtilization().equalsIgnoreCase("Utilization and Expiring")
+							&& account.getLbsUtilization().equalsIgnoreCase("Utilization")){
+						lbsUtilizationExpiring = "Utilization and Expiring";
+						logger.debug("Null/Blank and Utilization and Expiring 8 = " + lbsUtilizationExpiring);
+					}
+					
 					
 					/* b2b requests*/
 					logger.debug("b2b flag is------"+account.getB2bFlag());
@@ -558,7 +676,11 @@ public class RequestCreateFlags {
 				//Added for B2B Requests
 				acctRequestAccess.setShowB2BRequestFlag(showB2BRequestFlag);
 				
-				acctRequestAccess.setLbsUtilization(lbsUtilization);
+				acctRequestAccess.setLbsUtilization(lbsUtilization);				
+				acctRequestAccess.setLbsExpiring(lbsExpiring);
+				acctRequestAccess.setLbsUtilizationExpiring(lbsUtilizationExpiring);
+				acctRequestAccess.setLbsNoAccess(lbsNoAccess);
+					
 				
 				logger.debug("MPS*** Verify SHOW Account Level Flags Starts"); 
 				logger.debug(
@@ -577,7 +699,10 @@ public class RequestCreateFlags {
 						" SHOW B2B Requests Flag:"+acctRequestAccess.getShowB2BRequestFlag());
 				logger.debug("NPS*** Verify Create Account Level Flags Ends");
 				
-				logger.debug("LBS UTILIZATION: " + acctRequestAccess.getLbsUtilization());
+				logger.debug("LBS Utilization: " + acctRequestAccess.getLbsUtilization());
+				logger.debug("LBS Expiring: " + acctRequestAccess.getLbsExpiring());
+				logger.debug("LBS Utilization Expiring: " + acctRequestAccess.getLbsUtilizationExpiring());
+				logger.debug("LBS No Access: " + acctRequestAccess.getLbsNoAccess());
 			 
 	    
 	    logger.debug("[out verifyRequestAccessFlag4Acct]");

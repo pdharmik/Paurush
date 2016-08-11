@@ -101,7 +101,10 @@ public class FleetManagementController extends BaseController{
 	private LBSCHLMappingService lBSCHLMappingService;
 	
 	private String lbsEndpointURL;
-	private String LBS_UTILIZATION = "LBS UTILIZATION";
+	private static final String LBS_UTILIZATION = "lbsUtilization";
+	private static final String LBS_EXPIRING = "lbsExpiring";
+	private static final String LBS_UTILIZATION_EXPIRING = "lbsUtilizationExpiring";
+	private static final String LBS_NO_ACCESS = "lbsNoAccess";
 	
 	/**
 	 * @param model 
@@ -155,13 +158,34 @@ public class FleetManagementController extends BaseController{
 		
 		Map<String,String> requestAccessMap = (Map<String, String>) session.getAttribute(ChangeMgmtConstant.USERACCESSMAPATTRIBUTEFORSR, PortletSession.APPLICATION_SCOPE);
 		LOGGER.debug("MAP ReqeustAccessMap = == " + requestAccessMap);
+		if(requestAccessMap != null && requestAccessMap.containsKey(LBS_UTILIZATION)){
+			LOGGER.debug("LBS Utilization ========= " + requestAccessMap.get(LBS_UTILIZATION));
+		}
+		if(requestAccessMap != null && requestAccessMap.containsKey(LBS_EXPIRING)){
+			LOGGER.debug("LBS Utilization ========= " + requestAccessMap.get(LBS_EXPIRING));
+		}
+		if(requestAccessMap != null && requestAccessMap.containsKey(LBS_UTILIZATION_EXPIRING)){
+			LOGGER.debug("LBS Utilization ========= " + requestAccessMap.get(LBS_UTILIZATION_EXPIRING));
+		}
+		if(requestAccessMap != null && requestAccessMap.containsKey(LBS_NO_ACCESS)){
+			LOGGER.debug("LBS Utilization ========= " + requestAccessMap.get(LBS_NO_ACCESS));
+		}
 		String lbsUtilization = requestAccessMap.get(LBS_UTILIZATION);
+		String lbsExpiring = requestAccessMap.get(LBS_EXPIRING);
+		String lbsUtilizationExpiring = requestAccessMap.get(LBS_UTILIZATION_EXPIRING);
+		String lbsNoAccess = requestAccessMap.get(LBS_NO_ACCESS);
 		model.addAttribute("fleetMgmtForm", form);
 		request.setAttribute("fleetManagementFlag", "true");
 		model.addAttribute("fleetManagementFlag", "true");
-		model.addAttribute("lbsUtilization", lbsUtilization);
+		model.addAttribute(LBS_UTILIZATION, lbsUtilization);
+		model.addAttribute(LBS_EXPIRING, lbsExpiring);
+		model.addAttribute(LBS_UTILIZATION_EXPIRING, lbsUtilizationExpiring);
+		model.addAttribute(LBS_NO_ACCESS, lbsNoAccess);
 		LOGGER.debug("Setting fleetManagementFlag to true in fleet");
 		LOGGER.debug("lbsUtilization : " + lbsUtilization);
+		LOGGER.debug("lbsExpiring : " + lbsExpiring);
+		LOGGER.debug("lbsUtilizationExpiring : " + lbsUtilizationExpiring);
+		LOGGER.debug("lbsNoAccess : " + lbsNoAccess);
 		
 		
 		return "fleetmanagement/defaultView";
