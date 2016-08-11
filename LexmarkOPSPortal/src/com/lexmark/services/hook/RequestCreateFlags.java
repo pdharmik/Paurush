@@ -40,7 +40,6 @@ public class RequestCreateFlags {
 	private static final String SHOW_ALL_REQUEST = "SHOW ALL REQUEST" ;	
 	private static final String CREATE_MAP_REQUEST = "CREATE MAP REQUEST";
 	private static final String FLEET_MANAGER_FLAG = "FLEET MANAGER FLAG";
-	private static final String LBS_UTILIZATION = "LBS UTILIZATION";
 	
 	private static Logger logger = LogManager.getLogger(RequestCreateFlags.class);
 	public static Map<String,String>  retrieveReqHistoryAccess4Portal(HttpServletRequest request,
@@ -157,14 +156,12 @@ public class RequestCreateFlags {
 					logger.debug("Show Service Req Flag---->"+accountReqAccess.getShowServiceReqFlag());
 					logger.debug("Show Supply Req Flag---->"+accountReqAccess.getShowSuppliesReqFlag());
 					logger.debug("Show Acc mngmt Flag---->"+accountReqAccess.getShowAccountMgmtReqFlag());
-					logger.debug("Show Hardware Req Flag---->"+accountReqAccess.getShowHardwareReqFlag());
-					logger.debug("LBS Utilization------->" + accountReqAccess.getLbsUtilization());// Added for Hardware Request in MPS2.1
+					logger.debug("Show Hardware Req Flag---->"+accountReqAccess.getShowHardwareReqFlag());// Added for Hardware Request in MPS2.1
 					if(userType != null && (userType.equalsIgnoreCase("Employee"))){
 						requestAccessMap.put(SHOW_SERVICE_REQUEST, accountReqAccess.getShowServiceReqFlag());
 						requestAccessMap.put(SHOW_SUPPLIES_REQUEST, accountReqAccess.getShowSuppliesReqFlag());
 						requestAccessMap.put(SHOW_CHANGE_MGMT_REQUEST, accountReqAccess.getShowAccountMgmtReqFlag());
-						requestAccessMap.put(SHOW_HARDWARE_REQUEST, accountReqAccess.getShowHardwareReqFlag());
-						requestAccessMap.put(LBS_UTILIZATION, accountReqAccess.getLbsUtilization());// Added for Hardware Request in MPS2.1
+						requestAccessMap.put(SHOW_HARDWARE_REQUEST, accountReqAccess.getShowHardwareReqFlag());// Added for Hardware Request in MPS2.1
 						
 					}else if(userType != null && userType.equalsIgnoreCase("Customer")){
 						if((showServiceReq != null && showServiceReq.equalsIgnoreCase("true")) && accountReqAccess.getShowServiceReqFlag().equalsIgnoreCase("true")){
@@ -205,9 +202,8 @@ public class RequestCreateFlags {
 				int count = 0;
 				while(itr.hasNext()){
 					String key = itr.next();
-					if(((key.equals(SHOW_SERVICE_REQUEST) || key.equals(SHOW_SUPPLIES_REQUEST) || key.equals(SHOW_CHANGE_MGMT_REQUEST) || key.equals(SHOW_HARDWARE_REQUEST)) && 
-							requestAccessMap.get(key).equalsIgnoreCase("true")) || ((key.equals(LBS_UTILIZATION) && requestAccessMap.get(key).equalsIgnoreCase("true")) || 
-									((key.equals(LBS_UTILIZATION) && requestAccessMap.get(key).equalsIgnoreCase("false"))))){
+					if((key.equals(SHOW_SERVICE_REQUEST) || key.equals(SHOW_SUPPLIES_REQUEST) || key.equals(SHOW_CHANGE_MGMT_REQUEST) || key.equals(SHOW_HARDWARE_REQUEST)) && 
+							requestAccessMap.get(key).equalsIgnoreCase("true")){
 										count ++;
 					}
 					
@@ -250,8 +246,6 @@ public class RequestCreateFlags {
 								requestAccessMap.put(CREATE_CHANGE_MGMT_REQUEST, accountReqAccess.getCreateAccountMgmtReqFlag());
 							}
 						
-						
-						requestAccessMap.put(LBS_UTILIZATION, accountReqAccess.getLbsUtilization());
 						requestAccessMap.put(CREATE_HARDWARE_REQUEST, accountReqAccess.getCreateHardwareReqFlag());// Added for Hardware Request in MPS2.1
 						requestAccessMap.put(CREATE_MAP_REQUEST, accountReqAccess.getCreateMapSRFlag());//LBS MapSR Flag
 						requestAccessMap.put(FLEET_MANAGER_FLAG, accountReqAccess.getFleetManagerFlag());//LBS MapSR Flag
@@ -402,9 +396,7 @@ public class RequestCreateFlags {
 					logger.debug("FLEET_MANAGER_FLAG is there" + requestAccessMap.get(FLEET_MANAGER_FLAG));
 					//session.setAttribute("fleetManageDropFlag", requestAccessMap.get(FLEET_MANAGER_FLAG));
 				}
-				if(requestAccessMap != null && requestAccessMap.containsKey(LBS_UTILIZATION)){
-					logger.debug("LBS Utilization ========= " + requestAccessMap.get(LBS_UTILIZATION));
-				}
+				
 				logger.debug("requestAccessMap in chk user roles is -->" + requestAccessMap);
 				//session.setAttribute(ChangeMgmtConstant.USERACCESSMAPATTRIBUTEFORSR, requestAccessMap);
 				
@@ -437,7 +429,6 @@ public class RequestCreateFlags {
 		String createHardwareReqFlag = "false";
 		String createMapSRFlag = "false";
 		//String showFleetManagerFlag = "false";
-		String lbsUtilization = "";
 			
 		
 	    	
@@ -486,18 +477,6 @@ public class RequestCreateFlags {
 						//showFleetManagerFlag = "true";
 						createMapSRFlag = "true";
 					}
-					
-					//for(int i=0; i < accountList.size();i++){
-						if(account.getLbsUtilization() == null || account.getLbsUtilization() == ""){
-						lbsUtilization = "true";
-						logger.debug("NULL & BLANK = = = ");
-						}
-						else if(account.getLbsUtilization() != null && (account.getLbsUtilization().equalsIgnoreCase("Expiring") || 
-								account.getLbsUtilization().equalsIgnoreCase("Utilization") || account.getLbsUtilization().equalsIgnoreCase("Utilization and Expiring"))){
-						lbsUtilization = "false";
-						logger.debug("Expiring / Utilization / Utilization&Expiring === ");
-						}
-					//}
 				}
 				acctRequestAccess.setCreateSuppliesReqFlag(createSuppliesReqFlag);
 				acctRequestAccess.setCreateServiceReqFlag(createServiceReqFlag);
@@ -506,7 +485,6 @@ public class RequestCreateFlags {
 				acctRequestAccess.setShowSuppliesReqFlag(showSuppliesReqFlag);
 				acctRequestAccess.setShowServiceReqFlag(showServiceReqFlag);
 				acctRequestAccess.setShowAccountMgmtReqFlag(showAcctMgmtReqFlag);
-				acctRequestAccess.setLbsUtilization(lbsUtilization);
 				
 				//Added for Hardware Request on MPS2.1
 				acctRequestAccess.setCreateHardwareReqFlag(createHardwareReqFlag);
@@ -519,8 +497,7 @@ public class RequestCreateFlags {
 				logger.debug(
 						"	SHOW Supplies Req:"+acctRequestAccess.getShowSuppliesReqFlag()+
 						"	SHOW Service Req:"+acctRequestAccess.getCreateServiceReqFlag()+
-						"	SHOW Account Management Req:"+acctRequestAccess.getCreateAccountMgmtReqFlag() + 
-						"   LBS UTILIZATION: " + acctRequestAccess.getLbsUtilization());
+						"	SHOW Account Management Req:"+acctRequestAccess.getCreateAccountMgmtReqFlag());
 				logger.debug("NPS*** Verify Create Account Level Flags Ends");
 				
 				logger.debug("NPS*** Verify Create Account Level Flags Starts"); 
