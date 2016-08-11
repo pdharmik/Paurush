@@ -136,7 +136,7 @@ tr.altRow td { background-color:#f0f0f0 !important; }
 						<li class="arrowLi not_bundle">Print Resolution Black :{{printResolutionBlack}}</li>
 						<li class="arrowLi not_bundle">Print Resolution Color :{{printResolutionColor}}</li>
 						<li class="arrowLi">Country of Origin :{{countryOfOrigin}}</li>
-						<li class="arrowLi not_bundle">Weight (lb.) : {{weight_lb}}</li>
+						<li class="arrowLi ">Weight (lb.) : {{weight_lb}}</li>
 						<li class="arrowLi ">UNSPSC Code :{{UNSPSCCode}}</li>
                         <li class="arrowLi not_bundle">Product Certifications :{{productCertifications}}</li></ul>
 				</div>							
