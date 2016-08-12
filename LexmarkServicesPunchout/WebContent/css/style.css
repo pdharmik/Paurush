@@ -1187,7 +1187,12 @@ ul.included-list, ul.specs-list, .marginL10px {
 }
 #shoppingCartDetails{
 	overflow-y: auto;
+	position: relative;
 }
+.footer{
+	bottom: -50px;
+	positin: relative;
+	}
 .pointer{
 	cursor:pointer;
 }
