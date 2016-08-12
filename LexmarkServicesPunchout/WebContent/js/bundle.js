@@ -135,10 +135,7 @@ function learnMorePopup(bundleId, type) {
 	if (type == 'bundle') {
 		var partList = bundlesObj.bundlesData[bundleId].parts;
 		for ( var i = 0; i < partList.length; i++) {
-			$('#learn-more-content').append(
-					'<div class="part_info" id="part_info' + partList[i].no
-							+ '"><p class=\"product_title\">' + partList[i].no
-							+ '-' + partList[i].pdesc + '</p></div>');
+			<div class="product_title" id="printerId">{{bundleBrand}}  {{bundleModel}}</div>
 			var url = "https://www.lexmark.com/en_US/epg/products/"
 					+ partList[i].no.trim() + ".json";
 			$.getJSON(url, function(response) {
