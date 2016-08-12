@@ -16,8 +16,10 @@
 		<img src="${cartBundle.imgUrl}"/>
 		</div>
 	    <div class="printer-details-cntnr-cart">		
-			<span>${cartBundle.itemId}</span><span>${cartBundle.itemName}</span><br/>
-            <div class="item_Description">${cartBundle.itemDescription} </div>            
+			<!-- <span>${cartBundle.itemId}</span><span>${cartBundle.itemName}</span><br/>
+            <div class="item_Description">${cartBundle.itemDescription} </div> 
+            -->   
+            <div class="product_title" id="printerId">{{bundleBrand}}  {{bundleModel}}</div>      
 			<div>Price:<span id="price_${cartBundle.itemId}">${cartBundle.price}</span></div>
       <!--    <c:if test="${cartBundle.showOptions}">
             	<a href="javascript:gotToOptions('${cartBundle.itemId}')">Buy Options</a>
@@ -44,14 +46,6 @@
     </div>
 				    
 </c:forEach>
-<footer>
-     <h1>SubTotal is in US Dollars</h1>
-     <p>*Prices quoted on this Site,including prices appearing at checkout,DO NOT INCLUDE APPLICABLE TAXES OR AIR SHIPPING CHARGES AND WILL DIFFER FROM THE ACTUAL AMOUNT CHARGED.After receiving your order,Lexmark will notify you regarding the amount of taxes and shipping costs that apply to your order.Promotional offers and prices are for a limited period of time.Final order amounts,including tax and exact shipping, will be communicated following receipt of your online order</p>    
-</footer>
-
-
-<p> SubTotal is in US Dollars </p>
-<p>*Prices quoted on this Site,including prices appearing at checkout,DO NOT INCLUDE APPLICABLE TAXES OR AIR SHIPPING CHARGES AND WILL DIFFER FROM THE ACTUAL AMOUNT CHARGED.After receiving your order,Lexmark will notify you regarding the amount of taxes and shipping costs that apply to your order.Promotional offers and prices are for a limited period of time.Final order amounts,including tax and exact shipping, will be communicated following receipt of your online order</p>
 
 
    		 
