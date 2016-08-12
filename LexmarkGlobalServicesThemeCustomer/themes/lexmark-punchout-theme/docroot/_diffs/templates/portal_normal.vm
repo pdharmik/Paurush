@@ -166,9 +166,14 @@ $theme.include($body_top_include)
 		<div id="top-header-navigation" class="sort-pages modify-pages">
 		<ul>
 		    
-			<li >
-				<a href="https://status-qa.lexmark.com/web/guest/order-status" $nav_child.getTarget()><span>ORDER STATUS</span></a>
-
+			<li>
+				<a href="https://shop.lexmark.com/ecommerce/myaccount.do?cust_id=CUST-KAISER" title="My Account">My Account</a>
+			</li>
+			<li>
+				<a href="https://status.lexmark.com/web/guest/order-status" title="Order Status">Order Status</a>
+			</li>
+			<li>
+				<a href="http://www.lexmark.com/b2b/order_help.html" title="Order Help">Order Help</a>
 			</li>
 		    
 		 </ul>
