@@ -1551,6 +1551,14 @@ span.portlet-title {
     width: 100%;
 }
 
+#footer li {
+    display: inline;
+    float: right;
+    list-style: outside none none;
+    padding: 0 10px;
+    position: static !important;
+}
+
 #footer img {
     border-right: 1px solid #e6e6f0;
     float: left;
