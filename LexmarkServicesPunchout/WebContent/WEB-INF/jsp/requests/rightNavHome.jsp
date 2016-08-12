@@ -306,11 +306,22 @@ jQuery('.printer-links a').click(function(){
 });
 
 jQuery('.health-connect-links a').click(function(){
-	 objLinkProducts={id:"",certType:"",isPrinter:""};
+	 /*objLinkProducts={id:"",certType:"",isPrinter:""};
 	objLinkProducts.id="printerProduct";
 	objLinkProducts.certType=jQuery(this).attr('id');
 	global_click_msgs.clickedFrom="certProducts";//defined in rightNavHome.jsp
-	calledFromLEftNav(objLinkProducts.id); 
+	calledFromLEftNav(objLinkProducts.id); */
+	showHideDivs('printerProducts');
+	  $("#storeContent").hide();
+	  if($(this).attr('id')=="ncal_printer"){
+		  $('#pageTitle').html('NCAL HealthConnect Certified');
+	  }else{
+		  $('#pageTitle').html('SCAL HealthConnect Certified');
+	  }
+	  getDataForNCAL_SCAL({
+		  "cType":"printers",
+		  "certType":$(this).attr('id')
+	  });
 	
 });
 
