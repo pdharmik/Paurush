@@ -229,14 +229,14 @@ $theme.include($body_top_include)
 <footer id="footer" role="contentinfo">
 		<ul>
 			<li >
-				<a href="http://www.lexmark.com/en_us/privacy-policy.html" $nav_child.getTarget()><span> Privacy Policy </span></a>							
+				<a href="https://www.lexmark.com/en_us/privacy-policy.html" $nav_child.getTarget()><span> Privacy Policy </span></a>							
 			</li>		
 			<li >
-				<a href="http://www.lexmark.com/en_us/terms-and-conditions.html" $nav_child.getTarget()><span>Terms & Conditions</span></a>							
+				<a href="https://www.lexmark.com/en_us/terms-and-conditions.html" $nav_child.getTarget()><span>Terms & Conditions</span></a>							
 			</li>
 	
 			<li >
-				<a href="http://www.lexmark.com/en_us/terms-of-use.html" $nav_child.getTarget()><span>Terms of Use</span></a>							
+				<a href="https://www.lexmark.com/en_us/terms-of-use.html" $nav_child.getTarget()><span>Terms of Use</span></a>							
 			</li>	   
 		</ul>
 		
