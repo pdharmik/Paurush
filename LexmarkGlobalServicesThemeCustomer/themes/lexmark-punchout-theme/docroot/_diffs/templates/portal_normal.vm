@@ -173,7 +173,7 @@ $theme.include($body_top_include)
 				<a href="https://status.lexmark.com/web/guest/order-status" title="Order Status">Order Status</a>
 			</li>
 			<li>
-				<a href="http://www.lexmark.com/b2b/order_help.html" title="Order Help">Order Help</a>
+				<a href="https://www.lexmark.com/b2b/order_help.html" title="Order Help">Order Help</a>
 			</li>
 		    
 		 </ul>
