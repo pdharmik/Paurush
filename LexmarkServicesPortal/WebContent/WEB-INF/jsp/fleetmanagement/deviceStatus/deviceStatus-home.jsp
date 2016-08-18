@@ -31,182 +31,56 @@
 				</div>
 				<div id="device-status-ajax-content"></div>
 			</div>
-			<c:if test="${lbsUtilizationExpiring == 'Utilization and Expiring' }">
-			<div id="main-device-utilization" style="position:relative;height: 33px; display: ${showDeviceStatusUtil};">
-				<div class="mapDeviceStatus wAuto"  id="device-utilization-terms-main">
-					<span class="mapDeviceStatusSpan" onclick="openDeviceUT()">
-						<span class="arrow_icon arrow_right"></span>
-						<input id="mapDeviceUTRadioFlag" type="radio" name="mapDeviceUTRadioFlag" disabled=""/>
-						<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.devicesUtilTerms"/></span>
-					</span>
-					<span class="clearBoth"></span>
-				</div>
-				<div id="device-utilizationAndTerms-ajax-content">
-					<div class="mapUTStatusBody clearBoth">
-					<div id="UtilizationStatusDiv">
-						<div  class="deviceStatusSubHeader" onclick="toggleClass('#UtilizationStatusDiv','openSub');toggleSlide('#utilizationStatusSubMenu','up')">
-							<input id="utilizationStatusRadioFlag" type="radio" name="utilizationStatusRadioFlag" disabled=""/>
-							<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.utilization"/></span>
-							<span class="arrow_icon up-down floatR"></span>
-						</div>
-						<div id="utilizationStatusSubMenu" class="deviceStatusSubMenu">
-							<a class="floatR" href="javascript:deviceStatus.__utilization.clear(true);"><spring:message code="fleetmanagement.headers.clear"/></a>
-							<div class="subMenuPanel">
+			<c:if test="${lbsNoAccess != 'No Access'}">
+				<div id="main-device-utilization" style="position:relative;height: 33px; display: ${showDeviceStatusUtil};">
+					<div class="mapDeviceStatus wAuto"  id="device-utilization-terms-main">
+						<span class="mapDeviceStatusSpan" onclick="openDeviceUT()">
+							<span class="arrow_icon arrow_right"></span>
+							<input id="mapDeviceUTRadioFlag" type="radio" name="mapDeviceUTRadioFlag" disabled=""/>
+							<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.devicesUtilTerms"/></span>
+						</span>
+						<span class="clearBoth"></span>
+					</div>
+					<div id="device-utilizationAndTerms-ajax-content">
+						<div class="mapUTStatusBody clearBoth">
+						<c:if test="${lbsUtilization == 'Utilization' || lbsUtilizationExpiring == 'Utilization and Expiring'}">
+							<div id="UtilizationStatusDiv">
+								<div  class="deviceStatusSubHeader" onclick="toggleClass('#UtilizationStatusDiv','openSub');toggleSlide('#utilizationStatusSubMenu','up')">
+									<input id="utilizationStatusRadioFlag" type="radio" name="utilizationStatusRadioFlag" disabled=""/>
+									<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.utilization"/></span>
+									<span class="arrow_icon up-down floatR"></span>
+								</div>
+								<div id="utilizationStatusSubMenu" class="deviceStatusSubMenu">
+									<a class="floatR" href="javascript:deviceStatus.__utilization.clear(true);"><spring:message code="fleetmanagement.headers.clear"/></a>
+									<div class="subMenuPanel">
+									</div>
+									<div id="utilization_pages" class="onlyDropdownMultiSelect"></div>							
+								</div>
 							</div>
-							<div id="utilization_pages" class="onlyDropdownMultiSelect"></div>							
-						</div>
-					</div> 
-
-					<div id="expiredStatusDiv">
-						<div  class="deviceStatusSubHeader" onclick="toggleClass('#expiredStatusDiv','openSub');toggleSlide('#expiredStatusSubMenu','up')">
-							<input id="expiredStatusRadioFlag" type="radio" name="expiredStatusRadioFlag" disabled=""/>
-							<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.expired"/></span>
-							<span class="arrow_icon up-down floatR"></span>
-						</div>
-						<div id="expiredStatusSubMenu" class="deviceStatusSubMenu">
-							<a class="floatR" href="javascript:deviceStatus.__expirationStatus.clear(true);"><spring:message code="fleetmanagement.headers.clear"/></a>
-							<div class="subMenuPanel">
-								<div id="expiration_status" class="onlyDropdownMultiSelect"></div>
+						</c:if>
+						
+						<c:if test="${lbsExpiring == 'Expiring' || lbsUtilizationExpiring == 'Utilization and Expiring'}">
+							<div id="expiredStatusDiv">
+								<div  class="deviceStatusSubHeader" onclick="toggleClass('#expiredStatusDiv','openSub');toggleSlide('#expiredStatusSubMenu','up')">
+									<input id="expiredStatusRadioFlag" type="radio" name="expiredStatusRadioFlag" disabled=""/>
+									<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.expired"/></span>
+									<span class="arrow_icon up-down floatR"></span>
+								</div>
+								<div id="expiredStatusSubMenu" class="deviceStatusSubMenu">
+									<a class="floatR" href="javascript:deviceStatus.__expirationStatus.clear(true);"><spring:message code="fleetmanagement.headers.clear"/></a>
+									<div class="subMenuPanel">
+										<div id="expiration_status" class="onlyDropdownMultiSelect"></div>
+									</div>
+									
+								</div>
+								
 							</div>
+						</c:if>
+								
 							
 						</div>
-						
-					</div>
-							
-						
 					</div>
 				</div>
-			</div>
-			</c:if>
-			<c:if test="${lbsUtilization == 'Utilization' }">
-			<div id="main-device-utilization" style="position:relative;height: 33px; display: ${showDeviceStatusUtil};">
-				<div class="mapDeviceStatus wAuto"  id="device-utilization-terms-main">
-					<span class="mapDeviceStatusSpan" onclick="openDeviceUT()">
-						<span class="arrow_icon arrow_right"></span>
-						<input id="mapDeviceUTRadioFlag" type="radio" name="mapDeviceUTRadioFlag" disabled=""/>
-						<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.devicesUtilTerms"/></span>
-					</span>
-					<span class="clearBoth"></span>
-				</div>
-				<div id="device-utilizationAndTerms-ajax-content">
-					<div class="mapUTStatusBody clearBoth">
-					<div id="UtilizationStatusDiv">
-						<div  class="deviceStatusSubHeader" onclick="toggleClass('#UtilizationStatusDiv','openSub');toggleSlide('#utilizationStatusSubMenu','up')">
-							<input id="utilizationStatusRadioFlag" type="radio" name="utilizationStatusRadioFlag" disabled=""/>
-							<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.utilization"/></span>
-							<span class="arrow_icon up-down floatR"></span>
-						</div>
-						<div id="utilizationStatusSubMenu" class="deviceStatusSubMenu">
-							<a class="floatR" href="javascript:deviceStatus.__utilization.clear(true);"><spring:message code="fleetmanagement.headers.clear"/></a>
-							<div class="subMenuPanel">
-							</div>
-							<div id="utilization_pages" class="onlyDropdownMultiSelect"></div>							
-						</div>
-					</div> 
-					<div id="expiredStatusDiv" class="avoid-clicks">
-						<div  class="deviceStatusSubHeader" onclick="toggleClass('#expiredStatusDiv','openSub');toggleSlide('#expiredStatusSubMenu','up')">
-							<input id="expiredStatusRadioFlag" type="radio" name="expiredStatusRadioFlag" disabled=""/>
-							<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.expired"/></span>
-							<span class="arrow_icon up-down floatR"></span>
-						</div>
-						<div id="expiredStatusSubMenu" class="deviceStatusSubMenu">
-							<a class="floatR" href="javascript:deviceStatus.__expirationStatus.clear(true);"><spring:message code="fleetmanagement.headers.clear"/></a>
-							<div class="subMenuPanel">
-								<div id="expiration_status" class="onlyDropdownMultiSelect"></div>
-							</div>
-						</div>
-					</div>
-					</div>
-				</div>
-			</div>
-			</c:if>
-			<c:if test="${lbsExpiring == 'Expiring' }">
-			<div id="main-device-utilization" style="position:relative;height: 33px; display: ${showDeviceStatusUtil};">
-				<div class="mapDeviceStatus wAuto"  id="device-utilization-terms-main">
-					<span class="mapDeviceStatusSpan" onclick="openDeviceUT()">
-						<span class="arrow_icon arrow_right"></span>
-						<input id="mapDeviceUTRadioFlag" type="radio" name="mapDeviceUTRadioFlag" disabled=""/>
-						<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.devicesUtilTerms"/></span>
-					</span>
-					<span class="clearBoth"></span>
-				</div>
-				<div id="device-utilizationAndTerms-ajax-content">
-					<div class="mapUTStatusBody clearBoth">
-					<div id="UtilizationStatusDiv" class="avoid-clicks">
-						<div  class="deviceStatusSubHeader" onclick="toggleClass('#UtilizationStatusDiv','openSub');toggleSlide('#utilizationStatusSubMenu','up')">
-							<input id="utilizationStatusRadioFlag" type="radio" name="utilizationStatusRadioFlag" disabled=""/>
-							<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.utilization"/></span>
-							<span class="arrow_icon up-down floatR"></span>
-						</div>
-						<div id="utilizationStatusSubMenu" class="deviceStatusSubMenu">
-							<a class="floatR" href="javascript:deviceStatus.__utilization.clear(true);"><spring:message code="fleetmanagement.headers.clear"/></a>
-							<div class="subMenuPanel">
-							</div>
-							<div id="utilization_pages" class="onlyDropdownMultiSelect"></div>							
-						</div>
-					</div> 
-					<div id="expiredStatusDiv">
-						<div  class="deviceStatusSubHeader" onclick="toggleClass('#expiredStatusDiv','openSub');toggleSlide('#expiredStatusSubMenu','up')">
-							<input id="expiredStatusRadioFlag" type="radio" name="expiredStatusRadioFlag" disabled=""/>
-							<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.expired"/></span>
-							<span class="arrow_icon up-down floatR"></span>
-						</div>
-						<div id="expiredStatusSubMenu" class="deviceStatusSubMenu">
-							<a class="floatR" href="javascript:deviceStatus.__expirationStatus.clear(true);"><spring:message code="fleetmanagement.headers.clear"/></a>
-							<div class="subMenuPanel">
-								<div id="expiration_status" class="onlyDropdownMultiSelect"></div>
-							</div>
-						</div>
-					</div>
-					</div>
-				</div>
-			</div>
-			</c:if>
-			<c:if test="${lbsNoAccess == 'No Access' }">
-			<div id="main-device-utilization" style="position:relative;height: 33px;display:none;">
-				<div class="mapDeviceStatus wAuto"  id="device-utilization-terms-main">
-					<span class="mapDeviceStatusSpan" onclick="openDeviceUT()">
-						<span class="arrow_icon arrow_right"></span>
-						<input id="mapDeviceUTRadioFlag" type="radio" name="mapDeviceUTRadioFlag" disabled=""/>
-						<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.devicesUtilTerms"/></span>
-					</span>
-					<span class="clearBoth"></span>
-				</div>
-				<div id="device-utilizationAndTerms-ajax-content">
-					<div class="mapUTStatusBody clearBoth">
-					<div id="UtilizationStatusDiv">
-						<div  class="deviceStatusSubHeader" onclick="toggleClass('#UtilizationStatusDiv','openSub');toggleSlide('#utilizationStatusSubMenu','up')">
-							<input id="utilizationStatusRadioFlag" type="radio" name="utilizationStatusRadioFlag" disabled=""/>
-							<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.utilization"/></span>
-							<span class="arrow_icon up-down floatR"></span>
-						</div>
-						<div id="utilizationStatusSubMenu" class="deviceStatusSubMenu">
-							<a class="floatR" href="javascript:deviceStatus.__utilization.clear(true);"><spring:message code="fleetmanagement.headers.clear"/></a>
-							<div class="subMenuPanel">
-							</div>
-							<div id="utilization_pages" class="onlyDropdownMultiSelect"></div>							
-						</div>
-					</div> 
-					<div id="expiredStatusDiv">
-						<div  class="deviceStatusSubHeader" onclick="toggleClass('#expiredStatusDiv','openSub');toggleSlide('#expiredStatusSubMenu','up')">
-							<input id="expiredStatusRadioFlag" type="radio" name="expiredStatusRadioFlag" disabled=""/>
-							<span class="mapDeviceStatusHeader"><spring:message code="fleetmanagement.headers.expired"/></span>
-							<span class="arrow_icon up-down floatR"></span>
-						</div>
-						<div id="expiredStatusSubMenu" class="deviceStatusSubMenu">
-							<a class="floatR" href="javascript:deviceStatus.__expirationStatus.clear(true);"><spring:message code="fleetmanagement.headers.clear"/></a>
-							<div class="subMenuPanel">
-								<div id="expiration_status" class="onlyDropdownMultiSelect"></div>
-							</div>
-							
-						</div>
-						
-					</div>
-							
-						
-					</div>
-				</div>
-			</div>
 			</c:if>
 			<portlet:resourceURL var="loadDeviceStatus" id="showDeviceStatus"></portlet:resourceURL>
 			<script>
